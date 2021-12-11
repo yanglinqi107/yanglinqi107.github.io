@@ -6,14 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yanglinqi107.github.io">
-  <title>杨的笔记</title>
+  <title>C++核心编程 | 杨的笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="C++核心编程本阶段主要针对C++&#x3D;&#x3D;面向对象&#x3D;&#x3D;编程技术做详细讲解，探讨C++中的核心和精髓。 1 内存分区模型C++程序在执行时，将内存大方向划分为4个区域  代码区：存放函数体的二进制代码，由操作系统进行管理的 全局区：存放全局变量和静态变量以及常量 栈区：由编译器自动分配释放, 存放函数的参数值,局部变量等 堆区：由程序员分配和释放,若程序员不释放,程序结束时由操作系统回收  内存四区意义">
+  <meta name="description" content="内存分区模型、引用、函数提高、类和对象、文件操作 (非本人所做，资料来自黑马程序员)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="杨的笔记">
+<meta property="og:title" content="C++核心编程">
 <meta property="og:url" content="http://yanglinqi107.github.io/2021/12/09/3%E3%80%81C++%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/index.html">
 <meta property="og:site_name" content="杨的笔记">
-<meta property="og:description" content="C++核心编程本阶段主要针对C++&#x3D;&#x3D;面向对象&#x3D;&#x3D;编程技术做详细讲解，探讨C++中的核心和精髓。 1 内存分区模型C++程序在执行时，将内存大方向划分为4个区域  代码区：存放函数体的二进制代码，由操作系统进行管理的 全局区：存放全局变量和静态变量以及常量 栈区：由编译器自动分配释放, 存放函数的参数值,局部变量等 堆区：由程序员分配和释放,若程序员不释放,程序结束时由操作系统回收  内存四区意义">
+<meta property="og:description" content="内存分区模型、引用、函数提高、类和对象、文件操作 (非本人所做，资料来自黑马程序员)">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yanglinqi107.github.io/2021/12/09/3%E3%80%81C++%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/1545017602518.png">
 <meta property="og:image" content="http://yanglinqi107.github.io/2021/12/09/3%E3%80%81C++%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/1545533548532.png">
@@ -25,9 +25,9 @@
 <meta property="og:image" content="http://yanglinqi107.github.io/2021/12/09/3%E3%80%81C++%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/clip_image002.jpg">
 <meta property="og:image" content="http://yanglinqi107.github.io/2021/12/09/3%E3%80%81C++%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/1545985945198.png">
 <meta property="article:published_time" content="2021-12-09T09:57:13.639Z">
-<meta property="article:modified_time" content="2019-01-17T03:00:11.654Z">
+<meta property="article:modified_time" content="2021-12-11T07:40:10.337Z">
 <meta property="article:author" content="yanglinqi">
-<meta property="article:tag" content="python,mysql,c&#x2F;c++">
+<meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yanglinqi107.github.io/2021/12/09/3%E3%80%81C++%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/1545017602518.png">
   
@@ -180,9 +180,29 @@
             <article id="post-3、C++核心编程" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C++核心编程
+    </h1>
+  
+
+        
+        <a href="/2021/12/09/3%E3%80%81C++%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2021-12-09T09:57:13.639Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-09</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="C-核心编程"><a href="#C-核心编程" class="headerlink" title="C++核心编程"></a>C++核心编程</h1><p>本阶段主要针对C++==面向对象==编程技术做详细讲解，探讨C++中的核心和精髓。</p>
+        <p>内存分区模型、引用、函数提高、类和对象、文件操作</p>
+<p>(非本人所做，资料来自黑马程序员)</p>
+<span id="more"></span>
+
+
+<h1 id="C-核心编程"><a href="#C-核心编程" class="headerlink" title="C++核心编程"></a>C++核心编程</h1><p>本阶段主要针对C++面向对象编程技术做详细讲解，探讨C++中的核心和精髓。</p>
 <h2 id="1-内存分区模型"><a href="#1-内存分区模型" class="headerlink" title="1 内存分区模型"></a>1 内存分区模型</h2><p>C++程序在执行时，将内存大方向划分为<strong>4个区域</strong></p>
 <ul>
 <li>代码区：存放函数体的二进制代码，由操作系统进行管理的</li>
@@ -200,7 +220,7 @@
 <p>​    <strong>全局区：</strong></p>
 <p>​        全局变量和静态变量存放在此.</p>
 <p>​        全局区还包含了常量区, 字符串常量和其他常量也存放在此.</p>
-<p>​        ==该区域的数据在程序结束后由操作系统释放==.</p>
+<p>​        该区域的数据在程序结束后由操作系统释放.</p>
 <p><strong>示例：</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局变量</span></span><br><span class="line"><span class="keyword">int</span> g_a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> g_b = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//全局常量</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> c_g_a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> c_g_b = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//局部变量</span></span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">	<span class="keyword">int</span> b = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//打印地址</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;局部变量a地址为： &quot;</span> &lt;&lt; (<span class="keyword">int</span>)&amp;a &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;局部变量b地址为： &quot;</span> &lt;&lt; (<span class="keyword">int</span>)&amp;b &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;全局变量g_a地址为： &quot;</span> &lt;&lt;  (<span class="keyword">int</span>)&amp;g_a &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;全局变量g_b地址为： &quot;</span> &lt;&lt;  (<span class="keyword">int</span>)&amp;g_b &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//静态变量</span></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> s_a = <span class="number">10</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> s_b = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;静态变量s_a地址为： &quot;</span> &lt;&lt; (<span class="keyword">int</span>)&amp;s_a &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;静态变量s_b地址为： &quot;</span> &lt;&lt; (<span class="keyword">int</span>)&amp;s_b &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;字符串常量地址为： &quot;</span> &lt;&lt; (<span class="keyword">int</span>)&amp;<span class="string">&quot;hello world&quot;</span> &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;字符串常量地址为： &quot;</span> &lt;&lt; (<span class="keyword">int</span>)&amp;<span class="string">&quot;hello world1&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;全局常量c_g_a地址为： &quot;</span> &lt;&lt; (<span class="keyword">int</span>)&amp;c_g_a &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;全局常量c_g_b地址为： &quot;</span> &lt;&lt; (<span class="keyword">int</span>)&amp;c_g_b &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">int</span> c_l_a = <span class="number">10</span>;</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">int</span> c_l_b = <span class="number">10</span>;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;局部常量c_l_a地址为： &quot;</span> &lt;&lt; (<span class="keyword">int</span>)&amp;c_l_a &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;局部常量c_l_b地址为： &quot;</span> &lt;&lt; (<span class="keyword">int</span>)&amp;c_l_b &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -236,8 +256,8 @@
 <p><strong>总结：</strong></p>
 <p>堆区数据由程序员管理开辟和释放</p>
 <p>堆区数据利用new关键字进行开辟内存</p>
-<h3 id="1-3-new操作符"><a href="#1-3-new操作符" class="headerlink" title="1.3 new操作符"></a>1.3 new操作符</h3><p>​    C++中利用==new==操作符在堆区开辟数据</p>
-<p>​    堆区开辟的数据，由程序员手动开辟，手动释放，释放利用操作符 ==delete==</p>
+<h3 id="1-3-new操作符"><a href="#1-3-new操作符" class="headerlink" title="1.3 new操作符"></a>1.3 new操作符</h3><p>​    C++中利用new操作符在堆区开辟数据</p>
+<p>​    堆区开辟的数据，由程序员手动开辟，手动释放，释放利用操作符 delete</p>
 <p>​    语法：<code> new 数据类型</code></p>
 <p>​    利用new创建的数据，会返回该数据对应的类型的指针</p>
 <p><strong>示例1： 基本语法</strong></p>
@@ -313,7 +333,7 @@
 
 <p>结论：C++推荐用引用技术，因为语法方便，引用本质是指针常量，但是所有的指针操作编译器都帮我们做了</p>
 <h3 id="2-6-常量引用"><a href="#2-6-常量引用" class="headerlink" title="2.6 常量引用"></a>2.6 常量引用</h3><p><strong>作用：</strong>常量引用主要用来修饰形参，防止误操作</p>
-<p>在函数形参列表中，可以加==const修饰形参==，防止形参改变实参</p>
+<p>在函数形参列表中，可以加const修饰形参防止形参改变实参</p>
 <p><strong>示例：</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引用使用的场景，通常用来修饰形参</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">showValue</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; v)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//v += 10;</span></span><br><span class="line">	cout &lt;&lt; v &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//int&amp; ref = 10;  引用本身需要一个合法的内存空间，因此这行错误</span></span><br><span class="line">	<span class="comment">//加入const就可以了，编译器优化代码，int temp = 10; const int&amp; ref = temp;</span></span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">int</span>&amp; ref = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//ref = 100;  //加入const后不可以修改变量</span></span><br><span class="line">	cout &lt;&lt; ref &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//函数中利用常量引用防止误操作修改实参</span></span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">	<span class="built_in">showValue</span>(a);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -386,12 +406,12 @@
 
 
 
-<h2 id="4-类和对象"><a href="#4-类和对象" class="headerlink" title="4 类和对象"></a><strong>4</strong> 类和对象</h2><p>C++面向对象的三大特性为：==封装、继承、多态==</p>
-<p>C++认为==万事万物都皆为对象==，对象上有其属性和行为</p>
+<h2 id="4-类和对象"><a href="#4-类和对象" class="headerlink" title="4 类和对象"></a><strong>4</strong> 类和对象</h2><p>C++面向对象的三大特性为：封装、继承、多态</p>
+<p>C++认为万事万物都皆为对象，对象上有其属性和行为</p>
 <p><strong>例如：</strong></p>
 <p>​    人可以作为对象，属性有姓名、年龄、身高、体重…，行为有走、跑、跳、吃饭、唱歌…</p>
 <p>​    车也可以作为对象，属性有轮胎、方向盘、车灯…,行为有载人、放音乐、放空调…</p>
-<p>​    具有相同性质的==对象==，我们可以抽象称为==类==，人属于人类，车属于车类</p>
+<p>​    具有相同性质的对象，我们可以抽象称为类人属于人类，车属于车类</p>
 <h3 id="4-1-封装"><a href="#4-1-封装" class="headerlink" title="4.1 封装"></a>4.1 封装</h3><h4 id="4-1-1-封装的意义"><a href="#4-1-1-封装的意义" class="headerlink" title="4.1.1  封装的意义"></a>4.1.1  封装的意义</h4><p>封装是C++面向对象三大特性之一</p>
 <p>封装的意义：</p>
 <ul>
@@ -713,7 +733,7 @@
 <p>但是呢，你也可以允许你的好闺蜜好基友进去。</p>
 <p>在程序里，有些私有属性 也想让类外特殊的一些函数或者类进行访问，就需要用到友元的技术</p>
 <p>友元的目的就是让一个函数或者类 访问另一个类中私有成员</p>
-<p>友元的关键字为  ==friend==</p>
+<p>友元的关键字为  friend</p>
 <p>友元的三种实现</p>
 <ul>
 <li>全局函数做友元</li>
@@ -829,7 +849,7 @@
 
 
 <p><strong>总结：</strong></p>
-<p>继承的好处：==可以减少重复的代码==</p>
+<p>继承的好处：可以减少重复的代码</p>
 <p>class A : public B; </p>
 <p>A 类称为子类 或 派生类</p>
 <p>B 类称为父类 或 基类</p>
@@ -986,7 +1006,7 @@
 <h4 id="4-7-3-纯虚函数和抽象类"><a href="#4-7-3-纯虚函数和抽象类" class="headerlink" title="4.7.3 纯虚函数和抽象类"></a>4.7.3 纯虚函数和抽象类</h4><p>在多态中，通常父类中虚函数的实现是毫无意义的，主要都是调用子类重写的内容</p>
 <p>因此可以将虚函数改为<strong>纯虚函数</strong></p>
 <p>纯虚函数语法：<code>virtual 返回值类型 函数名 （参数列表）= 0 ;</code></p>
-<p>当类中有了纯虚函数，这个类也称为==抽象类==</p>
+<p>当类中有了纯虚函数，这个类也称为抽象类</p>
 <p><strong>抽象类特点</strong>：</p>
 <ul>
 <li>无法实例化对象</li>
@@ -1081,7 +1101,7 @@
 
 <h2 id="5-文件操作"><a href="#5-文件操作" class="headerlink" title="5 文件操作"></a>5 文件操作</h2><p>程序运行时产生的数据都属于临时数据，程序一旦运行结束都会被释放</p>
 <p>通过<strong>文件可以将数据持久化</strong></p>
-<p>C++中对文件操作需要包含头文件 ==&lt; fstream &gt;==</p>
+<p>C++中对文件操作需要包含头文件 &lt; fstream &gt;</p>
 <p>文件类型分为两种：</p>
 <ol>
 <li><strong>文本文件</strong>     -  文件以文本的<strong>ASCII码</strong>形式存储在计算机中</li>
@@ -1187,7 +1207,7 @@
 <li>close 关闭文件 </li>
 </ul>
 <h3 id="5-2-二进制文件"><a href="#5-2-二进制文件" class="headerlink" title="5.2 二进制文件"></a>5.2 二进制文件</h3><p>以二进制的方式对文件进行读写操作</p>
-<p>打开方式要指定为 ==ios::binary==</p>
+<p>打开方式要指定为 ios::binary</p>
 <h4 id="5-2-1-写文件"><a href="#5-2-1-写文件" class="headerlink" title="5.2.1 写文件"></a>5.2.1 写文件</h4><p>二进制方式写文件主要利用流对象调用成员函数write</p>
 <p>函数原型 ：<code>ostream&amp; write(const char * buffer,int len);</code></p>
 <p>参数解释：字符指针buffer指向内存中一段存储空间。len是读写的字节数</p>
@@ -1209,6 +1229,8 @@
 <ul>
 <li>文件输入流对象 可以通过read函数，以二进制方式读数据</li>
 </ul>
+<hr>
+<p>(非本人所做，资料来自黑马程序员)</p>
 
       
 
@@ -1238,6 +1260,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C/C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -1306,14 +1339,14 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          职工管理系统
         
       </div>
     </a>
   
   
     <a href="/2021/12/09/2%E3%80%81%E9%80%9A%E8%AE%AF%E5%BD%95%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">通讯录管理系统</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -1453,6 +1486,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">C/C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
