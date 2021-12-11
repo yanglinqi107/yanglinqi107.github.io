@@ -6,15 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>机房预约系统C++ | 杨的笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="机房预约系统1、机房预约系统需求1.1 系统简介 学校现有几个规格不同的机房，由于使用时经常出现”撞车”现象,现开发一套机房预约系统，解决这一问题。   1.2 身份简介分别有三种身份使用该程序  学生代表：申请使用机房 教师：审核学生的预约申请 管理员：给学生、教师创建账号  1.3 机房简介机房总共有3间  1号机房   — 最大容量20人 2号机房   — 最多容量50人 3号机房   —">
+  <meta name="description" content="机房预约系统C++1、机房预约系统需求1.1 系统简介 学校现有几个规格不同的机房，由于使用时经常出现”撞车”现象,现开发一套机房预约系统，解决这一问题。   1.2 身份简介分别有三种身份使用该程序  学生代表：申请使用机房 教师：审核学生的预约申请 管理员：给学生、教师创建账号  1.3 机房简介机房总共有3间  1号机房   — 最大容量20人 2号机房   — 最多容量50人 3号机房">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="机房预约系统C++">
 <meta property="og:url" content="http://example.com/2021/12/09/7%E3%80%81%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%96%99/%E8%AE%B2%E4%B9%89/%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="机房预约系统1、机房预约系统需求1.1 系统简介 学校现有几个规格不同的机房，由于使用时经常出现”撞车”现象,现开发一套机房预约系统，解决这一问题。   1.2 身份简介分别有三种身份使用该程序  学生代表：申请使用机房 教师：审核学生的预约申请 管理员：给学生、教师创建账号  1.3 机房简介机房总共有3间  1号机房   — 最大容量20人 2号机房   — 最多容量50人 3号机房   —">
-<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="杨的笔记">
+<meta property="og:description" content="机房预约系统C++1、机房预约系统需求1.1 系统简介 学校现有几个规格不同的机房，由于使用时经常出现”撞车”现象,现开发一套机房预约系统，解决这一问题。   1.2 身份简介分别有三种身份使用该程序  学生代表：申请使用机房 教师：审核学生的预约申请 管理员：给学生、教师创建账号  1.3 机房简介机房总共有3间  1号机房   — 最大容量20人 2号机房   — 最多容量50人 3号机房">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/12/09/7%E3%80%81%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%96%99/%E8%AE%B2%E4%B9%89/%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F/assets/1548682783885.png">
 <meta property="og:image" content="http://example.com/2021/12/09/7%E3%80%81%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%96%99/%E8%AE%B2%E4%B9%89/%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F/assets/1548682206670.png">
 <meta property="og:image" content="http://example.com/2021/12/09/7%E3%80%81%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%96%99/%E8%AE%B2%E4%B9%89/%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F/assets/1548682413343.png">
@@ -82,15 +82,16 @@
 <meta property="og:image" content="http://example.com/2021/12/09/7%E3%80%81%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%96%99/%E8%AE%B2%E4%B9%89/%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F/assets/1548677632792.png">
 <meta property="og:image" content="http://example.com/2021/12/09/7%E3%80%81%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%96%99/%E8%AE%B2%E4%B9%89/%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F/assets/1548677798815.png">
 <meta property="article:published_time" content="2021-12-09T09:57:15.076Z">
-<meta property="article:modified_time" content="2019-02-13T01:34:50.000Z">
+<meta property="article:modified_time" content="2021-12-11T04:16:04.769Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2021/12/09/7%E3%80%81%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%96%99/%E8%AE%B2%E4%B9%89/%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F/assets/1548682783885.png">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="杨的笔记" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/assets/img/head.jpg">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
   <style type="text/css">
@@ -114,7 +115,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/assets/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -125,6 +126,10 @@
 			<ul>
 			
 				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives/index.html">归档</a></li>
+	        
+				<li><a href="/tags/Python">python</a></li>
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
@@ -172,13 +177,17 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/assets/img/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
+			
+				
+			
+				
 			
 				
 			
@@ -201,12 +210,16 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 25%"><a href="/archives/index.html">归档</a></li>
+		        
+					<li style="width: 25%"><a href="/tags/Python">python</a></li>
+		        
+					<li style="width: 25%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -224,9 +237,26 @@
             <article id="post-7、机房预约系统资料/讲义/机房预约系统" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      机房预约系统C++
+    </h1>
+  
+
+        
+        <a href="/2021/12/09/7%E3%80%81%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%96%99/%E8%AE%B2%E4%B9%89/%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
+  	<time datetime="2021-12-09T09:57:15.076Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-09</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="机房预约系统"><a href="#机房预约系统" class="headerlink" title="机房预约系统"></a>机房预约系统</h1><h2 id="1、机房预约系统需求"><a href="#1、机房预约系统需求" class="headerlink" title="1、机房预约系统需求"></a>1、机房预约系统需求</h2><h3 id="1-1-系统简介"><a href="#1-1-系统简介" class="headerlink" title="1.1 系统简介"></a>1.1 系统简介</h3><ul>
+        <span id="more"></span>
+
+<h1 id="机房预约系统C"><a href="#机房预约系统C" class="headerlink" title="机房预约系统C++"></a>机房预约系统C++</h1><h2 id="1、机房预约系统需求"><a href="#1、机房预约系统需求" class="headerlink" title="1、机房预约系统需求"></a>1、机房预约系统需求</h2><h3 id="1-1-系统简介"><a href="#1-1-系统简介" class="headerlink" title="1.1 系统简介"></a>1.1 系统简介</h3><ul>
 <li>学校现有几个规格不同的机房，由于使用时经常出现”撞车”现象,现开发一套机房预约系统，解决这一问题。</li>
 </ul>
 <p><img src="assets/1548682783885.png" alt="1548682783885"></p>
@@ -908,6 +938,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C/C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -1002,6 +1043,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9FC"><span class="toc-number">1.</span> <span class="toc-text">机房预约系统C++</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F%E9%9C%80%E6%B1%82"><span class="toc-number">1.1.</span> <span class="toc-text">1、机房预约系统需求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 系统简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E8%BA%AB%E4%BB%BD%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 身份简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%9C%BA%E6%88%BF%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 机房简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E7%94%B3%E8%AF%B7%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 申请简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E7%B3%BB%E7%BB%9F%E5%85%B7%E4%BD%93%E9%9C%80%E6%B1%82"><span class="toc-number">1.1.5.</span> <span class="toc-text">1.5 系统具体需求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.2.</span> <span class="toc-text">2、创建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 创建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 添加文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%88%9B%E5%BB%BA%E4%B8%BB%E8%8F%9C%E5%8D%95"><span class="toc-number">1.3.</span> <span class="toc-text">3、创建主菜单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E8%8F%9C%E5%8D%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 菜单实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%90%AD%E5%BB%BA%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 搭建接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81-%E9%80%80%E5%87%BA%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.4.</span> <span class="toc-text">4、 退出功能实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E9%80%80%E5%87%BA%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 退出功能实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%B5%8B%E8%AF%95%E9%80%80%E5%87%BA%E5%8A%9F%E8%83%BD"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 测试退出功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81-%E5%88%9B%E5%BB%BA%E8%BA%AB%E4%BB%BD%E7%B1%BB"><span class="toc-number">1.5.</span> <span class="toc-text">5、 创建身份类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E8%BA%AB%E4%BB%BD%E7%9A%84%E5%9F%BA%E7%B1%BB"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 身份的基类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E5%AD%A6%E7%94%9F%E7%B1%BB"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 学生类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-1-%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">5.2.1 功能分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-2-%E7%B1%BB%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">5.2.2 类的创建</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E8%80%81%E5%B8%88%E7%B1%BB"><span class="toc-number">1.5.3.</span> <span class="toc-text">5.3 老师类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-1-%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">5.3.1 功能分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-2-%E7%B1%BB%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">1.5.3.2.</span> <span class="toc-text">5.3.2 类的创建</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-%E7%AE%A1%E7%90%86%E5%91%98%E7%B1%BB"><span class="toc-number">1.5.4.</span> <span class="toc-text">5.4 管理员类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-1-%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">1.5.4.1.</span> <span class="toc-text">5.4.1 功能分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-2-%E7%B1%BB%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">1.5.4.2.</span> <span class="toc-text">5.4.2 类的创建</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81-%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97"><span class="toc-number">1.6.</span> <span class="toc-text">6、  登录模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E5%85%A8%E5%B1%80%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0"><span class="toc-number">1.6.1.</span> <span class="toc-text">6.1 全局文件添加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E7%99%BB%E5%BD%95%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85"><span class="toc-number">1.6.2.</span> <span class="toc-text">6.2  登录函数封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E5%AD%A6%E7%94%9F%E7%99%BB%E5%BD%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.6.3.</span> <span class="toc-text">6.3 学生登录实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-%E6%95%99%E5%B8%88%E7%99%BB%E5%BD%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.6.4.</span> <span class="toc-text">6.4 教师登录实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5-%E7%AE%A1%E7%90%86%E5%91%98%E7%99%BB%E5%BD%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.6.5.</span> <span class="toc-text">6.5 管理员登录实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81-%E7%AE%A1%E7%90%86%E5%91%98%E6%A8%A1%E5%9D%97"><span class="toc-number">1.7.</span> <span class="toc-text">7、 管理员模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E7%AE%A1%E7%90%86%E5%91%98%E7%99%BB%E5%BD%95%E5%92%8C%E6%B3%A8%E9%94%80"><span class="toc-number">1.7.1.</span> <span class="toc-text">7.1  管理员登录和注销</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-1-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">1.7.1.1.</span> <span class="toc-text">7.1.1 构造函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-2-%E7%AE%A1%E7%90%86%E5%91%98%E5%AD%90%E8%8F%9C%E5%8D%95"><span class="toc-number">1.7.1.2.</span> <span class="toc-text">7.1.2  管理员子菜单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-3-%E8%8F%9C%E5%8D%95%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.7.1.3.</span> <span class="toc-text">7.1.3 菜单功能实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-4-%E6%8E%A5%E5%8F%A3%E5%AF%B9%E6%8E%A5"><span class="toc-number">1.7.1.4.</span> <span class="toc-text">7.1.4 接口对接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E6%B7%BB%E5%8A%A0%E8%B4%A6%E5%8F%B7"><span class="toc-number">1.7.2.</span> <span class="toc-text">7.2 添加账号</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-1-%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.7.2.1.</span> <span class="toc-text">7.2.1 添加功能实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-2-%E5%8E%BB%E9%87%8D%E6%93%8D%E4%BD%9C"><span class="toc-number">1.7.2.2.</span> <span class="toc-text">7.2.2 去重操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#7-2-2-1-%E8%AF%BB%E5%8F%96%E4%BF%A1%E6%81%AF"><span class="toc-number">1.7.2.2.1.</span> <span class="toc-text">7.2.2.1 读取信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-2-2-2-%E5%8E%BB%E9%87%8D%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85"><span class="toc-number">1.7.2.2.2.</span> <span class="toc-text">7.2.2.2 去重函数封装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-2-2-3-%E6%B7%BB%E5%8A%A0%E5%8E%BB%E9%87%8D%E6%93%8D%E4%BD%9C"><span class="toc-number">1.7.2.2.3.</span> <span class="toc-text">7.2.2.3 添加去重操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-2-2-4-bug%E8%A7%A3%E5%86%B3"><span class="toc-number">1.7.2.2.4.</span> <span class="toc-text">7.2.2.4 bug解决</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-%E6%98%BE%E7%A4%BA%E8%B4%A6%E5%8F%B7"><span class="toc-number">1.7.3.</span> <span class="toc-text">7.3  显示账号</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-1-%E6%98%BE%E7%A4%BA%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.7.3.1.</span> <span class="toc-text">7.3.1 显示功能实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-2-%E6%B5%8B%E8%AF%95"><span class="toc-number">1.7.3.2.</span> <span class="toc-text">7.3.2 测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-%E6%9F%A5%E7%9C%8B%E6%9C%BA%E6%88%BF"><span class="toc-number">1.7.4.</span> <span class="toc-text">7.4 查看机房</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-4-1-%E6%B7%BB%E5%8A%A0%E6%9C%BA%E6%88%BF%E4%BF%A1%E6%81%AF"><span class="toc-number">1.7.4.1.</span> <span class="toc-text">7.4.1 添加机房信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-4-2-%E6%9C%BA%E6%88%BF%E7%B1%BB%E5%88%9B%E5%BB%BA"><span class="toc-number">1.7.4.2.</span> <span class="toc-text">7.4.2 机房类创建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-4-3-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%9C%BA%E6%88%BF%E4%BF%A1%E6%81%AF"><span class="toc-number">1.7.4.3.</span> <span class="toc-text">7.4.3 初始化机房信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-4-4-%E6%98%BE%E7%A4%BA%E6%9C%BA%E6%88%BF%E4%BF%A1%E6%81%AF"><span class="toc-number">1.7.4.4.</span> <span class="toc-text">7.4.4 显示机房信息</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-%E6%B8%85%E7%A9%BA%E9%A2%84%E7%BA%A6"><span class="toc-number">1.7.5.</span> <span class="toc-text">7.5 清空预约</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-5-1-%E6%B8%85%E7%A9%BA%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.7.5.1.</span> <span class="toc-text">7.5.1 清空功能实现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81-%E5%AD%A6%E7%94%9F%E6%A8%A1%E5%9D%97"><span class="toc-number">1.8.</span> <span class="toc-text">8、 学生模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E5%AD%A6%E7%94%9F%E7%99%BB%E5%BD%95%E5%92%8C%E6%B3%A8%E9%94%80"><span class="toc-number">1.8.1.</span> <span class="toc-text">8.1 学生登录和注销</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-1-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">1.8.1.1.</span> <span class="toc-text">8.1.1 构造函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-2-%E7%AE%A1%E7%90%86%E5%91%98%E5%AD%90%E8%8F%9C%E5%8D%95"><span class="toc-number">1.8.1.2.</span> <span class="toc-text">8.1.2  管理员子菜单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-3-%E8%8F%9C%E5%8D%95%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.8.1.3.</span> <span class="toc-text">8.1.3 菜单功能实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-4-%E6%8E%A5%E5%8F%A3%E5%AF%B9%E6%8E%A5"><span class="toc-number">1.8.1.4.</span> <span class="toc-text">8.1.4 接口对接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-%E7%94%B3%E8%AF%B7%E9%A2%84%E7%BA%A6"><span class="toc-number">1.8.2.</span> <span class="toc-text">8.2 申请预约</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-1-%E8%8E%B7%E5%8F%96%E6%9C%BA%E6%88%BF%E4%BF%A1%E6%81%AF"><span class="toc-number">1.8.2.1.</span> <span class="toc-text">8.2.1 获取机房信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-2-%E9%A2%84%E7%BA%A6%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.8.2.2.</span> <span class="toc-text">8.2.2 预约功能实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-%E6%98%BE%E7%A4%BA%E9%A2%84%E7%BA%A6"><span class="toc-number">1.8.3.</span> <span class="toc-text">8.3 显示预约</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-1-%E5%88%9B%E5%BB%BA%E9%A2%84%E7%BA%A6%E7%B1%BB"><span class="toc-number">1.8.3.1.</span> <span class="toc-text">8.3.1 创建预约类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-2-%E6%98%BE%E7%A4%BA%E8%87%AA%E8%BA%AB%E9%A2%84%E7%BA%A6"><span class="toc-number">1.8.3.2.</span> <span class="toc-text">8.3.2 显示自身预约</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-3-%E6%98%BE%E7%A4%BA%E6%89%80%E6%9C%89%E9%A2%84%E7%BA%A6"><span class="toc-number">1.8.3.3.</span> <span class="toc-text">8.3.3 显示所有预约</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-%E5%8F%96%E6%B6%88%E9%A2%84%E7%BA%A6"><span class="toc-number">1.8.4.</span> <span class="toc-text">8.4 取消预约</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81-%E6%95%99%E5%B8%88%E6%A8%A1%E5%9D%97"><span class="toc-number">1.9.</span> <span class="toc-text">9、 教师模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-%E6%95%99%E5%B8%88%E7%99%BB%E5%BD%95%E5%92%8C%E6%B3%A8%E9%94%80"><span class="toc-number">1.9.1.</span> <span class="toc-text">9.1 教师登录和注销</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1-1-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">1.9.1.1.</span> <span class="toc-text">9.1.1 构造函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1-2-%E6%95%99%E5%B8%88%E5%AD%90%E8%8F%9C%E5%8D%95"><span class="toc-number">1.9.1.2.</span> <span class="toc-text">9.1.2  教师子菜单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1-3-%E8%8F%9C%E5%8D%95%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.9.1.3.</span> <span class="toc-text">9.1.3 菜单功能实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1-4-%E6%8E%A5%E5%8F%A3%E5%AF%B9%E6%8E%A5"><span class="toc-number">1.9.1.4.</span> <span class="toc-text">9.1.4 接口对接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E9%A2%84%E7%BA%A6"><span class="toc-number">1.9.2.</span> <span class="toc-text">9.2 查看所有预约</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2-1-%E6%89%80%E6%9C%89%E9%A2%84%E7%BA%A6%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.9.2.1.</span> <span class="toc-text">9.2.1 所有预约功能实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2-2-%E6%B5%8B%E8%AF%95%E5%8A%9F%E8%83%BD"><span class="toc-number">1.9.2.2.</span> <span class="toc-text">9.2.2 测试功能</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3-%E5%AE%A1%E6%A0%B8%E9%A2%84%E7%BA%A6"><span class="toc-number">1.9.3.</span> <span class="toc-text">9.3 审核预约</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-3-1-%E5%AE%A1%E6%A0%B8%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.9.3.1.</span> <span class="toc-text">9.3.1 审核功能实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-3-2-%E6%B5%8B%E8%AF%95%E5%AE%A1%E6%A0%B8%E9%A2%84%E7%BA%A6"><span class="toc-number">1.9.3.2.</span> <span class="toc-text">9.3.2 测试审核预约</span></a></li></ol></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -1107,6 +1161,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C/C++</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
