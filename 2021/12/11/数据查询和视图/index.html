@@ -20,8 +20,9 @@
 <meta property="og:image" content="http://yanglinqi107.github.io/2021/12/11/%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/20211211215856.png">
 <meta property="og:image" content="http://yanglinqi107.github.io/2021/12/11/%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/20211211235959.png">
 <meta property="og:image" content="http://yanglinqi107.github.io/2021/12/11/%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/20211212000030.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/2021/12/11/%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/2021121200001.png">
 <meta property="article:published_time" content="2021-12-11T09:50:01.000Z">
-<meta property="article:modified_time" content="2021-12-11T16:17:50.369Z">
+<meta property="article:modified_time" content="2021-12-11T16:30:47.329Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
@@ -195,7 +196,7 @@
       
         <p>单表查询、分组统计查询和连接查询</p>
 <span id="more"></span>
-
+<hr>
 <h2 id="数据查询"><a href="#数据查询" class="headerlink" title="数据查询"></a>数据查询</h2><p>关系运算</p>
 <ul>
 <li>选择运算(Selection)</li>
@@ -400,6 +401,8 @@ HAVING过滤组，WHERE过滤行
 <p> 上图更新v_cs视图成功，但下图就指明 v_cs 是<code>join view</code>，不能删除，但却能更新，奇怪</p>
 <p> <img src="/2021/12/11/%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/20211212000030.png" alt="删除数据"></p>
 <p>若视图 view1 数据来源于 表1、表2… 则 表1、表2…等表的数据更新会导致 view1 的数据一同更新；若还有视图 view2 的数据来源于 view1 ，则view2 也会跟着变化；<code>即表table的数据更新一定会导致对应视图view的更新，不论是可变或不可变视图，而可变视图的数据更新也会导致对应表数据的更新</code> </p>
+<p>如果视图关联了一个表中的所有字段，而该表中添加了新字段，视图中是否能查询到新字段？<code>不能</code></p>
+<p><img src="/2021/12/11/%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/2021121200001.png"></p>
 
       
 
