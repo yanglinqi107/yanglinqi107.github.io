@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yanglinqi107.github.io">
   <title>文法和语言 | 杨的笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="文法，推导&#x2F;归约；句型，句子，语言；文法的类型，正规文法，上下文无关文法，文法等价；语法树与二义性。  程序设计语言的描述 语法(Syntax):涉及语言的构成规律，即程序的结构或形式； 语义(Semantics): 指语言所代表的含义； 语用(Pragmatics): 涉及到实际应用。  程序设计语言的形式描述不考虑语义和语用，即只从语法这一侧面来看语言，这种意义下的语言称作&#x3D;&#x3D;形式语言&#x3D;&#x3D; “">
+  <meta name="description" content="文法，推导&#x2F;归约； 句型，句子，语言； 文法的类型，正规文法，上下文无关文法，文法等价； 语法树与二义性">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文法和语言">
 <meta property="og:url" content="http://yanglinqi107.github.io/2022/01/04/2%E3%80%81%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E8%A8%80/index.html">
 <meta property="og:site_name" content="杨的笔记">
-<meta property="og:description" content="文法，推导&#x2F;归约；句型，句子，语言；文法的类型，正规文法，上下文无关文法，文法等价；语法树与二义性。  程序设计语言的描述 语法(Syntax):涉及语言的构成规律，即程序的结构或形式； 语义(Semantics): 指语言所代表的含义； 语用(Pragmatics): 涉及到实际应用。  程序设计语言的形式描述不考虑语义和语用，即只从语法这一侧面来看语言，这种意义下的语言称作&#x3D;&#x3D;形式语言&#x3D;&#x3D; “">
+<meta property="og:description" content="文法，推导&#x2F;归约； 句型，句子，语言； 文法的类型，正规文法，上下文无关文法，文法等价； 语法树与二义性">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/2%E3%80%81%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E8%A8%80/image-20220102161207938.png">
 <meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/2%E3%80%81%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E8%A8%80/image-20220102161237577.png">
 <meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/2%E3%80%81%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E8%A8%80/image-20220102170506838.png">
 <meta property="article:published_time" content="2022-01-04T14:23:34.624Z">
-<meta property="article:modified_time" content="2022-01-02T14:17:24.767Z">
+<meta property="article:modified_time" content="2022-01-04T14:36:45.208Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="编译原理">
 <meta name="twitter:card" content="summary">
@@ -191,7 +191,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>文法，推导/归约；<br>句型，句子，语言；<br>文法的类型，正规文法，上下文无关文法，文法等价；<br>语法树与二义性。 </p>
+        <p>文法，推导/归约；</p>
+<p>句型，句子，语言；</p>
+<p>文法的类型，正规文法，上下文无关文法，文法等价；</p>
+<p>语法树与二义性</p>
+<span id="more"></span> 
+
 <h3 id="程序设计语言的描述"><a href="#程序设计语言的描述" class="headerlink" title="程序设计语言的描述"></a>程序设计语言的描述</h3><ul>
 <li>语法(Syntax):涉及语言的构成规律，即程序的结构或形式；</li>
 <li>语义(Semantics): 指语言所代表的含义；</li>
