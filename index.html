@@ -187,121 +187,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="翻译程序（Translator）"><a href="#翻译程序（Translator）" class="headerlink" title="翻译程序（Translator）"></a>翻译程序（Translator）</h2><p>将源程序译成逻辑上等价的目标程序的程序。翻译程序有二种工作方式：编译和解释</p>
-<h3 id="解释方式-Interpret"><a href="#解释方式-Interpret" class="headerlink" title="解释方式 ( Interpret )"></a>解释方式 ( Interpret )</h3><p>以源程序作为输入，输入一句解释执行一句，不产生完整的目标程序，相应的翻译程序称为解释程序(Interpreter) </p>
- <img src="/2022/01/04/1%E3%80%81%E6%A6%82%E8%AE%BA/image-20220102142837260.png" alt="image-20220102142837260" style="zoom:80%;">
-
-<p>解释方式主要特点是：用户程序是消极的。用户程序运行时，控制点在解释程序，即用户程序的执行离不开解释程序。</p>
-<h3 id="编译方式-Compile"><a href="#编译方式-Compile" class="headerlink" title="编译方式 ( Compile )"></a>编译方式 ( Compile )</h3><p>将源程序全部译为目标程序，该目标程序可在操作系统环境下直接执行，相应的翻译程序称为编译程序(Compiler) </p>
-<img src="/2022/01/04/1%E3%80%81%E6%A6%82%E8%AE%BA/image-20220102143329383.png" alt="image-20220102143329383" style="zoom: 80%;">
-
-<ul>
-<li>编辑程序的工作结果是ASCII码形式的源程序。</li>
-<li>编译程序以ASCII码形式的源程序为输入，它的工作结果是二进制形式的目标程序，但并未包括用户程序中所使用的系统函数的目标代码。从整体上来看，程序是不完整的，程序中的部分地址尚未确定（例系统函数的调用）。</li>
-<li>将二进制形式的用户程序和系统函数目标代码连接成一个程序，对未确定的地址进行定位。</li>
-<li>由操作系统将用户程序装入内存后运行。程序在运行过程中读入数据，经处理加工后输出计算结果。</li>
-</ul>
-<p> 编译方式主要特点是：用户程序是积极的。用户程序执行时，控制点在用户程序自身。除操作系统外，程序运行无需其它支撑软件。</p>
-<h3 id="二种翻译方式比较"><a href="#二种翻译方式比较" class="headerlink" title="二种翻译方式比较"></a>二种翻译方式比较</h3><p> 解释方式和编译方式的主要区别是：目标代码的执行方式不同，基本原理和方法没有本质上的区别。<br>1）解释方式的优点</p>
-<ul>
-<li><p>提供一种直接的交互调试功能，容易获得较好的动态调试效果。</p>
-</li>
-<li><p>使用变量可不预先定义。</p>
-</li>
-<li><p>变量性质可动态修改。<br>2）解释方式的缺点</p>
-</li>
-<li><p>在执行时需动态地对程序进行分析翻译，开销大，其执行速度相当于编译方式的1/10至1/100。</p>
-</li>
-<li><p>解释方式占用内存大</p>
-</li>
-</ul>
-<p>显然解释程序的优点就是编译程序的缺点，反之亦然，对于编译程序的优缺点不再重复叙述。</p>
-<p>对任何一种高级语言，既可采用编译方式，也可采用解释方式，包括汇编语言在内（MASM方式和DEBUG方式）</p>
-<h3 id="几种程序介绍"><a href="#几种程序介绍" class="headerlink" title="几种程序介绍"></a>几种程序介绍</h3><p>【翻译程序】将源语言程序转换为目标语言程序的等价的程序称为翻译程序。</p>
-<p>【编译程序】将高级语言源程序翻译为低级语言目标程序的程序称为编译程序。</p>
-<p>  编译程序的意义：使得多数计算机用户不必考虑与机器有关的繁琐细节，使程序员和程序专家独立于机器。</p>
-<p>【汇编程序】将汇编语言源程序翻译为机器语言目标程序的程序称为汇编程序。</p>
-<p>【反汇编程序】将机器语言源程序翻译为汇编语言目标程序的程序称为反汇编程序。</p>
-<h3 id="编译程序与解释程序的异同"><a href="#编译程序与解释程序的异同" class="headerlink" title="编译程序与解释程序的异同"></a>编译程序与解释程序的异同</h3><p>高级语言有两种翻译途径：==编译与解释==。</p>
-<p>它们的主要区别在于==是否产生目标程序==。</p>
-<p>解释程序不产生目标程序，而是边解释边执行源程序本身，是一种“会话型”语言。（如python）</p>
-<h3 id="高级语言程序的处理过程"><a href="#高级语言程序的处理过程" class="headerlink" title="高级语言程序的处理过程"></a>高级语言程序的处理过程</h3><img src="/2022/01/04/1%E3%80%81%E6%A6%82%E8%AE%BA/image-20220102144639527.png" alt="image-20220102144639527" style="zoom:80%;">
-
-<h3 id="编译程序的5个阶段"><a href="#编译程序的5个阶段" class="headerlink" title="编译程序的5个阶段"></a>编译程序的5个阶段</h3><p>1、词法分析</p>
-<blockquote>
-<p>任务：从左至右读字符流的源程序，识别(拼)单词。<br>【单词】单词是具有独立意义的最小语法单位。<br>多数程序语言中，单词符号一般包括 —各类型的常数、保留字、标识符、运算符、界符等等。<br>识别原则：词法规则<br>描述工具：正规式<br>                  正规文法<br>                  有穷自动机FA<br>自动生成工具：LEX</p>
-</blockquote>
-<p>2、语法分析</p>
-<blockquote>
-<p>任务：依据源程序的语法规则把源程序的单词序列组成更大的语法成分——“组词成句” (表示成语法树) 。<br>识别原则：语法规则<br>描述工具：上下文无关文法<br>                    下推自动机PDA<br>自动生成工具：YACC</p>
-</blockquote>
-<p>3、语义分析与中间代码生成</p>
-<blockquote>
-<p>任务：对语法分析所识别出的各类语法范畴，分析其含义，并进行初步翻译（产生中间代码）。<br>语义审查(静态语义)：上下文相关性、类型匹配、类型转换<br>识别原则：语义规则<br>描述工具：属性文法<br>实现方法：语法制导翻译</p>
-<p>【中间代码】 是一种含义明确、便于处理的记号系统，它通常独立于具体的硬件。这种记号系统或者与现代计算机的指令形式有某种程度的接近，或者能够比较容易地把它变换成现代计算机的机器指令。<br>    许多编译程序采用了一种与“三地址指令”非常近似的“四元式”作为中间代码，其形式是：<br>    (算符 , 运算对象1 , 运算对象2 , 结果)<br>    常用的中间代码有：四元式，三元式，间接三元式，逆波兰记号和树形表示等等。</p>
-</blockquote>
-<p>4、代码优化</p>
-<blockquote>
-<p>任务：对前段产生的中间代码进行加工变换，以期在最后阶段能产生出更为高效（省时间和空间）的目标代码。<br>主要包括：公共子表达式的提取<br>                    循环优化<br>                    删除无用代码等等<br>优化所依循的原则：程序的等价变换规则。</p>
-</blockquote>
-<p>5、目标代码生成</p>
-<blockquote>
-<p>任务：把中间代码（或经优化处理之后）变换成特定机器上的低级语言代码。<br>生成原则：硬件系统结构和机器指令含义。<br>目标代码的形式：<br>        绝对指令代码<br>        可重定位的指令代码<br>        汇编指令代码   </p>
-</blockquote>
-<p>编译程序的另外两个重要的工作是==表格管理==和==出错处理==。</p>
-<blockquote>
-<p>编译过程中源程序的各种信息被保留在种种不同的表格里，编译各阶段的工作都涉及到构造、查找或更新有关的表格，因此需要有表格管理的工作；</p>
-<p>如果编译过程中发现源程序有错误，编译程序应报告错误的性质和错误发生的地点，并且将错误所造成的影响限制在尽可能小的范围内，使得源程序的其余部分能继续被编译下去，有些编译程序还能自动校正错误，这些工作称之为出错处理。</p>
-</blockquote>
-<h3 id="符号表管理"><a href="#符号表管理" class="headerlink" title="符号表管理"></a>符号表管理</h3><p>符号表 </p>
-<ul>
-<li><p>记录源程序中使用的名字</p>
-</li>
-<li><p>收集每个名字的各种属性信息：类型、作用域、分配存储信息</p>
-</li>
-</ul>
-<p>符号表是由若干记录组成的数据结构，每个标识符在表中有一条记录，每条记录有多个域，每个域记载标识符的一个属性。例如下面一条记录说明标识符aaa是整型变量及分配的内存地址</p>
-<table>
-<thead>
-<tr>
-<th>标识符名</th>
-<th>标识符类型</th>
-<th>类型</th>
-<th align="center">地址</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>aaa</td>
-<td>1（表示变量）</td>
-<td>1（表示整型）</td>
-<td align="center">0001</td>
-</tr>
-</tbody></table>
-<p>标识符的各种属性是在编译的不同阶段填入符号表的。词法分析阶段只能分析出标识符名，语法分析阶段只能判断标识符在语句中出现是否合法，只有到了语义分析阶段，才能将标识符的各种属性填入符号表并使用这些属性生成中间代码。 </p>
-<h3 id="出错处理"><a href="#出错处理" class="headerlink" title="出错处理"></a>出错处理</h3><p>出错处理程序的任务包括 检查错误、报告出错信息、排错、恢复编译工作。</p>
-<h3 id="编译程序的组成"><a href="#编译程序的组成" class="headerlink" title="编译程序的组成"></a>编译程序的组成</h3><p>词法分析程序、语法分析程序、语义分析程序、中间代码生成程序、代码优化程序、目标代码生成程序、表格管理程序和出错处理程序</p>
-<img src="/2022/01/04/1%E3%80%81%E6%A6%82%E8%AE%BA/image-20220102150408304.png" alt="image-20220102150408304" style="zoom:80%;">
-
-<h3 id="遍（pass）"><a href="#遍（pass）" class="headerlink" title="遍（pass）"></a>遍（pass）</h3><p>【遍】就是对源程序或源程序的中间结果从头到尾扫描一次，并作有关的加工处理，生成新的中间结果或目标程序。<br>Turbo C是一遍完成编译，以及预处理和后续处理。<br>两遍编译：</p>
-<ul>
-<li>1.进行词法分析、语法分析、语义分析，生成中间代码作为文件保留，以及符号表文件。</li>
-<li>2.优化后生成目标代码作为文件保留。</li>
-</ul>
-<p>三遍编译：</p>
-<ul>
-<li>3.对目标代码的优化。</li>
-</ul>
-<h3 id="编译程序涉及的三种语言"><a href="#编译程序涉及的三种语言" class="headerlink" title="编译程序涉及的三种语言"></a>编译程序涉及的三种语言</h3><p>【源语言】要深刻理解源语言(如 FORTRAN、Pascal或 C)结构(语法)和含义(语义)；<br>【目标语言】最终的目标语言还是机器语言，则必须搞清楚硬件的系统结构和操作系统的功能；<br>【宿主语言】编写编译程序的语言。自编译程序：宿主语言是源语言。例如PASCAL</p>
-<h3 id="编译程序的生成"><a href="#编译程序的生成" class="headerlink" title="编译程序的生成"></a>编译程序的生成</h3><ul>
-<li>手工<ul>
-<li>机器语言</li>
-<li>汇编</li>
-<li>系统程序设计语言，自编译，移植，交叉编译等方式</li>
-</ul>
-</li>
-<li>自动构造工具：lex  yacc</li>
-</ul>
-
+        <p>？？？</p>
+        
       
 
       
@@ -325,62 +212,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/01/04/1%E3%80%81%E6%A6%82%E8%AE%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-语法分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line">CONSTTK const</span><br><span class="line">INTTK int</span><br><span class="line">IDENFR const1</span><br><span class="line">ASSIGN =</span><br><span class="line">INTCON 1</span><br><span class="line">&lt;无符号整数&gt;</span><br><span class="line">&lt;整数&gt;</span><br><span class="line">COMMA ,</span><br><span class="line">IDENFR const2</span><br><span class="line">ASSIGN =</span><br><span class="line">MINU -</span><br><span class="line">INTCON 100</span><br><span class="line">&lt;无符号整数&gt;</span><br><span class="line">&lt;整数&gt;</span><br><span class="line">&lt;常量定义&gt;</span><br><span class="line">SEMICN ;</span><br><span class="line">CONSTTK const</span><br><span class="line">CHARTK char</span><br><span class="line">IDENFR const3</span><br><span class="line">ASSIGN =</span><br><span class="line">CHARCON _</span><br><span class="line">&lt;常量定义&gt;</span><br><span class="line">SEMICN ;</span><br><span class="line">&lt;常量说明&gt;</span><br><span class="line">INTTK int</span><br><span class="line">IDENFR change1</span><br><span class="line">&lt;变量定义&gt;</span><br><span class="line">SEMICN ;</span><br><span class="line">CHARTK char</span><br><span class="line">IDENFR change3</span><br><span class="line">&lt;变量定义&gt;</span><br><span class="line">SEMICN ;</span><br><span class="line">&lt;变量说明&gt;</span><br><span class="line">INTTK int</span><br><span class="line">IDENFR gets1</span><br><span class="line">&lt;声明头部&gt;</span><br><span class="line">LPARENT (</span><br><span class="line">INTTK int</span><br><span class="line">IDENFR var1</span><br><span class="line">COMMA ,</span><br><span class="line">INTTK int</span><br><span class="line">IDENFR var2</span><br><span class="line">&lt;参数表&gt;</span><br><span class="line">RPARENT )</span><br><span class="line">LBRACE &#123;</span><br><span class="line">IDENFR change1</span><br><span class="line">ASSIGN =</span><br><span class="line">IDENFR var1</span><br><span class="line">&lt;因子&gt;</span><br><span class="line">&lt;项&gt;</span><br><span class="line">PLUS +</span><br><span class="line">IDENFR var2</span><br><span class="line">&lt;因子&gt;</span><br><span class="line">&lt;项&gt;</span><br><span class="line">&lt;表达式&gt;</span><br><span class="line">&lt;赋值语句&gt;</span><br><span class="line">SEMICN ;</span><br><span class="line">&lt;语句&gt;</span><br><span class="line">RETURNTK return</span><br><span class="line">LPARENT (</span><br><span class="line">IDENFR change1</span><br><span class="line">&lt;因子&gt;</span><br><span class="line">&lt;项&gt;</span><br><span class="line">&lt;表达式&gt;</span><br><span class="line">RPARENT )</span><br><span class="line">&lt;返回语句&gt;</span><br><span class="line">SEMICN ;</span><br><span class="line">&lt;语句&gt;</span><br><span class="line">&lt;语句列&gt;</span><br><span class="line">&lt;复合语句&gt;</span><br><span class="line">RBRACE &#125;</span><br><span class="line">&lt;有返回值函数定义&gt;</span><br><span class="line">VOIDTK void</span><br><span class="line">MAINTK main</span><br><span class="line">LPARENT (</span><br><span class="line">RPARENT )</span><br><span class="line">LBRACE &#123;</span><br><span class="line">PRINTFTK printf</span><br><span class="line">LPARENT (</span><br><span class="line">STRCON Hello World</span><br><span class="line">&lt;字符串&gt;</span><br><span class="line">RPARENT )</span><br><span class="line">&lt;写语句&gt;</span><br><span class="line">SEMICN ;</span><br><span class="line">&lt;语句&gt;</span><br><span class="line">PRINTFTK printf</span><br><span class="line">LPARENT (</span><br><span class="line">IDENFR gets1</span><br><span class="line">LPARENT (</span><br><span class="line">INTCON 10</span><br><span class="line">&lt;无符号整数&gt;</span><br><span class="line">&lt;整数&gt;</span><br><span class="line">&lt;因子&gt;</span><br><span class="line">&lt;项&gt;</span><br><span class="line">&lt;表达式&gt;</span><br><span class="line">COMMA ,</span><br><span class="line">INTCON 20</span><br><span class="line">&lt;无符号整数&gt;</span><br><span class="line">&lt;整数&gt;</span><br><span class="line">&lt;因子&gt;</span><br><span class="line">&lt;项&gt;</span><br><span class="line">&lt;表达式&gt;</span><br><span class="line">&lt;值参数表&gt;</span><br><span class="line">RPARENT )</span><br><span class="line">&lt;有返回值函数调用语句&gt;</span><br><span class="line">&lt;因子&gt;</span><br><span class="line">&lt;项&gt;</span><br><span class="line">&lt;表达式&gt;</span><br><span class="line">RPARENT )</span><br><span class="line">&lt;写语句&gt;</span><br><span class="line">SEMICN ;</span><br><span class="line">&lt;语句&gt;</span><br><span class="line">&lt;语句列&gt;</span><br><span class="line">&lt;复合语句&gt;</span><br><span class="line">RBRACE &#125;</span><br><span class="line">&lt;主函数&gt;</span><br><span class="line">&lt;程序&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> const1 = <span class="number">1</span>, const2 = <span class="number">-100</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> const3 = <span class="string">&#x27;_&#x27;</span>;</span><br><span class="line"><span class="keyword">int</span> change1;</span><br><span class="line"><span class="keyword">char</span> change3;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gets1</span><span class="params">(<span class="keyword">int</span> var1, <span class="keyword">int</span> var2)</span></span>&#123;</span><br><span class="line">	change1 = var1 + var2;</span><br><span class="line">	<span class="keyword">return</span> (change1);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="built_in">gets1</span>(<span class="number">10</span>, <span class="number">20</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">＜加法运算符＞ ::= +｜-</span><br><span class="line">＜乘法运算符＞  ::= *｜/</span><br><span class="line">＜关系运算符＞  ::=  &lt;｜&lt;=｜&gt;｜&gt;=｜!=｜==</span><br><span class="line">＜字母＞   ::= ＿｜a｜．．．｜z｜A｜．．．｜Z</span><br><span class="line">＜数字＞   ::= ０｜＜非零数字＞</span><br><span class="line">＜非零数字＞  ::= １｜．．．｜９</span><br><span class="line">＜字符＞    ::=  <span class="string">&#x27;＜加法运算符＞&#x27;</span>｜<span class="string">&#x27;＜乘法运算符＞&#x27;</span>｜<span class="string">&#x27;＜字母＞&#x27;</span>｜<span class="string">&#x27;＜数字＞&#x27;</span></span><br><span class="line"><span class="comment">//＜字符串＞   ::=  &quot;｛十进制编码为32,33,35-126的ASCII字符｝&quot;</span></span><br><span class="line"><span class="comment">//＜程序＞    ::= ［＜常量说明＞］［＜变量说明＞］&#123;＜有返回值函数定义＞|＜无返回值函数定义＞&#125;＜主函数＞</span></span><br><span class="line"><span class="comment">//＜常量说明＞ ::=  const＜常量定义＞;&#123; const＜常量定义＞;&#125;</span></span><br><span class="line"><span class="comment">//＜常量定义＞   ::=   int＜标识符＞＝＜整数＞&#123;,＜标识符＞＝＜整数＞&#125;| char＜标识符＞＝＜字符＞&#123;,＜标识符＞＝＜字符＞&#125;</span></span><br><span class="line"><span class="comment">//＜无符号整数＞  ::= ＜非零数字＞｛＜数字＞｝| 0</span></span><br><span class="line"><span class="comment">//＜整数＞        ::= ［＋｜－］＜无符号整数＞</span></span><br><span class="line">＜标识符＞    ::=  ＜字母＞｛＜字母＞｜＜数字＞｝</span><br><span class="line"><span class="comment">//＜声明头部＞   ::=  int＜标识符＞ |char＜标识符＞</span></span><br><span class="line"><span class="comment">//＜变量说明＞  ::= ＜变量定义＞;&#123;＜变量定义＞;&#125;</span></span><br><span class="line"><span class="comment">//＜变量定义＞  ::= ＜类型标识符＞(＜标识符＞|＜标识符＞&#x27;[&#x27;＜无符号整数＞&#x27;]&#x27;)&#123;,(＜标识符＞|＜标识符＞&#x27;[&#x27;＜无符号整数＞&#x27;]&#x27; )&#125;//＜无符号整数＞表示数组元素的个数，其值需大于0</span></span><br><span class="line">＜类型标识符＞      ::=  <span class="keyword">int</span> | <span class="keyword">char</span></span><br><span class="line"><span class="comment">//＜有返回值函数定义＞  ::=  ＜声明头部＞&#x27;(&#x27;＜参数表＞&#x27;)&#x27; &#x27;&#123;&#x27;＜复合语句＞&#x27;&#125;&#x27;</span></span><br><span class="line"><span class="comment">//＜无返回值函数定义＞  ::= void＜标识符＞&#x27;(&#x27;＜参数表＞&#x27;)&#x27;&#x27;&#123;&#x27;＜复合语句＞&#x27;&#125;&#x27;</span></span><br><span class="line"><span class="comment">//＜复合语句＞   ::=  ［＜常量说明＞］［＜变量说明＞］＜语句列＞</span></span><br><span class="line"><span class="comment">//＜参数表＞    ::=  ＜类型标识符＞＜标识符＞&#123;,＜类型标识符＞＜标识符＞&#125;| ＜空＞</span></span><br><span class="line"><span class="comment">//＜主函数＞    ::= void main‘(’‘)’ ‘&#123;’＜复合语句＞‘&#125;’</span></span><br><span class="line"><span class="comment">//＜表达式＞    ::= ［＋｜－］＜项＞&#123;＜加法运算符＞＜项＞&#125;   //[+|-]只作用于第一个&lt;项&gt;</span></span><br><span class="line"><span class="comment">//＜项＞     ::= ＜因子＞&#123;＜乘法运算符＞＜因子＞&#125;</span></span><br><span class="line"><span class="comment">//＜因子＞    ::= ＜标识符＞｜＜标识符＞&#x27;[&#x27;＜表达式＞&#x27;]&#x27;|&#x27;(&#x27;＜表达式＞&#x27;)&#x27;｜＜整数＞|＜字符＞｜＜有返回值函数调用语句＞  </span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//＜语句＞    ::= ＜条件语句＞｜＜循环语句＞| &#x27;&#123;&#x27;＜语句列＞&#x27;&#125;&#x27;| ＜有返回值函数调用语句＞;  |＜无返回值函数调用语句＞;｜＜赋值语句＞;｜＜读语句＞;｜＜写语句＞;｜＜空＞;|＜返回语句＞;</span></span><br><span class="line">   </span><br><span class="line"><span class="comment">//＜赋值语句＞   ::=  ＜标识符＞＝＜表达式＞|＜标识符＞&#x27;[&#x27;＜表达式＞&#x27;]&#x27;=＜表达式＞</span></span><br><span class="line"><span class="comment">//＜条件语句＞  ::= if &#x27;(&#x27;＜条件＞&#x27;)&#x27;＜语句＞［else＜语句＞］</span></span><br><span class="line"><span class="comment">//＜条件＞    ::=  ＜表达式＞＜关系运算符＞＜表达式＞ //整型表达式之间才能进行关系运算｜＜表达式＞    //表达式为整型，其值为0条件为假，值不为0时条件为真                                </span></span><br><span class="line"><span class="comment">//＜循环语句＞   ::=  while &#x27;(&#x27;＜条件＞&#x27;)&#x27;＜语句＞| do＜语句＞while &#x27;(&#x27;＜条件＞&#x27;)&#x27; |for&#x27;(&#x27;＜标识符＞＝＜表达式＞;＜条件＞;＜标识符＞＝＜标识符＞(+|-)＜步长＞&#x27;)&#x27;＜语句＞</span></span><br><span class="line"><span class="comment">//＜步长＞::= ＜无符号整数＞  </span></span><br><span class="line"><span class="comment">//＜有返回值函数调用语句＞ ::= ＜标识符＞&#x27;(&#x27;＜值参数表＞&#x27;)&#x27;</span></span><br><span class="line"><span class="comment">//＜无返回值函数调用语句＞ ::= ＜标识符＞&#x27;(&#x27;＜值参数表＞&#x27;)&#x27;</span></span><br><span class="line"><span class="comment">//＜值参数表＞   ::= ＜表达式＞&#123;,＜表达式＞&#125;｜＜空＞</span></span><br><span class="line"><span class="comment">//＜语句列＞   ::= ｛＜语句＞｝</span></span><br><span class="line"><span class="comment">//＜读语句＞    ::=  scanf &#x27;(&#x27;＜标识符＞&#123;,＜标识符＞&#125;&#x27;)&#x27;</span></span><br><span class="line"><span class="comment">//＜写语句＞    ::= printf &#x27;(&#x27; ＜字符串＞,＜表达式＞ &#x27;)&#x27;| printf &#x27;(&#x27;＜字符串＞ &#x27;)&#x27;| printf &#x27;(&#x27;＜表达式＞&#x27;)&#x27;</span></span><br><span class="line"><span class="comment">//＜返回语句＞   ::=  return[&#x27;(&#x27;＜表达式＞&#x27;)&#x27;]   </span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2022/01/04/%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image-20220102113306597.png" alt="image-20220102113306597"></p>
-<p><img src="/2022/01/04/%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image-20220102113327972.png" alt="image-20220102113327972"></p>
-<p><img src="/2022/01/04/%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image-20220102113353001.png" alt="image-20220102113353001"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/04/%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/">展开全文 >></a>
         </p>
       
 
@@ -2480,6 +2311,80 @@ Display表的结构和维护
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/01/04/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-6、自主存取控制和并发控制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/">自主存取控制和并发控制</a>
+    </h1>
+  
+
+        
+        <a href="/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/" class="archive-article-date">
+  	<time datetime="2021-12-17T00:47:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用户的添加、查看、删除、信息修改；并发控制，事务，隔离</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/">展开全文 >></a>
         </p>
       
 

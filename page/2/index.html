@@ -167,222 +167,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-DFA化简" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/19/DFA%E5%8C%96%E7%AE%80/">词法分析之DFA化简</a>
-    </h1>
-  
-
-        
-        <a href="/2021/12/19/DFA%E5%8C%96%E7%AE%80/" class="archive-article-date">
-  	<time datetime="2021-12-19T05:39:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="DFA化简"><a href="#DFA化简" class="headerlink" title="DFA化简"></a>DFA化简</h2><ul>
-<li>确定有穷自动机M的化简是指：寻找一个状态数比DFA M少的DFA M’，使得L(M)＝ L(M’)。</li>
-<li>一个有穷自动机是化简了的，即是它没有多余状态，并且它的状态中没有两个是互相等价的。</li>
-<li>一个有穷自动机可以通过消除多余状态和合并等价状态而转换成一个最小的与之等价的有穷自动机。</li>
-</ul>
-<p>多余状态</p>
-<blockquote>
-<p>所谓有穷自动机的多余状态，是指这样的状态：从有穷自动机<br>的初态出发，任何输入串也不能到达的那个状态；或者从这个状态<br>没有通路到达终态</p>
-</blockquote>
-<p>等价和可区别的</p>
-<blockquote>
-<p>等价：如果有穷自动机DFA M的两个状态s和t能够识别同样的符号串，则称状态s和t等价。<br><br>可区别的：如果有穷自动机DFA M的两个状态s和t不等价，<br>则称这两个状态是可区别的。<br><br>例如终态与非终态是可区别的。</p>
-</blockquote>
-<h2 id="DFA的最小化过程："><a href="#DFA的最小化过程：" class="headerlink" title="DFA的最小化过程："></a>DFA的最小化过程：</h2><p>最小状态DFA的含义:</p>
-<ul>
-<li>没有多余状态(死状态)</li>
-<li>没有两个状态是互相等价（不可区别）</li>
-</ul>
-<h3 id="分割法"><a href="#分割法" class="headerlink" title="分割法"></a>分割法</h3><p>确定有限自动机M的化简的过程也就是其状态最少化过程：</p>
-<pre><code>    一个DFA M的状态最少化过程是指将 M的状态集分割成一些不相交的子集，使得任何不同的两子集中的状态都是可区别的，而同一子集中的任何两个状态都是等价的。最后，在每个子集中选出一个代表，同时消去其它等价状态。
-</code></pre>
-<hr>
-<p>例：化简下图的DFA</p>
-<p><img src="/2021/12/19/DFA%E5%8C%96%E7%AE%80/20211219135557.png"></p>
-<p>DFA的状态集$K＝{0，1，2 ，3，4，5，6}$</p>
-<ul>
-<li>首先把$M$的状态$K$分为两组：</li>
-</ul>
-<blockquote>
-<p>终态集$K1={3，4，5，6}$<br>非终态集$K2={0，1，2}$<br>显然$K1$与$K2$不等价。</p>
-</blockquote>
-<ul>
-<li>试图$K1，K2$在中寻找一个子集和一个输入符号使得这个子集中的状态可区别的；若可区别，则再分割；继续，一直到不能再分割为止。</li>
-</ul>
-<blockquote>
-<p>讨论终态集$K1={3，4，5，6}$ 是否可分割：<br>${3，4，5，6}_a \subset K1$<br>${3，4，5，6}_b \subset K1$<br>所以状态3，4，5，6均等价，因此$K1$不能再分割。</p>
-</blockquote>
-<blockquote>
-<p>讨论非终态集$K2={0，1，2}$ 是否可分割：<br>${0，1，2}_a \subset {1，3}$<br>它既不属于$K2＝{0，1，2}$，也不属于$K1＝{3，4，5，6}\$<br>将其一分为二<br>${0，2}_a＝{1}\$<br>${1}_a＝{3}$</p>
-</blockquote>
-<p>$K21＝{1}$<br>$K22＝{0，2}$</p>
-<blockquote>
-<p>再讨论$K22={0，2}$ 是否可分割：<br>${0，2}_b ＝{2 ，5}$<br>而它未包括在$K1 ，K21与K22$中，故${0，2}$应一分为二：<br>$K221＝{0}$<br>$K222＝{2}$<br>所以$K$分为四组${3，4，5，6}，{0}，{1}，{2}$。每个组都不可再分。</p>
-</blockquote>
-<ul>
-<li>最后，令状态3代表${3，4，5，6}$。把原来到达4，5，6的弧都导入3，并删除4，5，6状态。即可得到化简后的DFA。</li>
-</ul>
-<p><img src="/2021/12/19/DFA%E5%8C%96%E7%AE%80/20211219141825.png"></p>
-<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><p>【问题描述】DFA化简问题的一种描述是：</p>
-<p>编写一个程序，输入一个确定的有穷自动机（DFA），输出与DFA等价的最简的确定有穷自动机（DFA）。</p>
-<p>【基本要求】设置DFA初始状态X，终态Y，过程态用数字表示：0 1 2 3………</p>
-<p>【测试用例】<br>测试数据： </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X X-a-&gt;0 X-b-&gt;1</span><br><span class="line">Y Y-a-&gt;0 Y-b-&gt;1</span><br><span class="line">0 0-a-&gt;0 0-b-&gt;2</span><br><span class="line">1 1-a-&gt;0 1-b-&gt;1</span><br><span class="line">2 2-a-&gt;0 2-b-&gt;Y</span><br></pre></td></tr></table></figure>
-<p>输出结果应为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">X X-a-&gt;0 X-b-&gt;X</span><br><span class="line">Y Y-a-&gt;0 Y-b-&gt;X</span><br><span class="line">0 0-a-&gt;0 0-b-&gt;2</span><br><span class="line">2 2-a-&gt;0 2-b-&gt;Y</span><br></pre></td></tr></table></figure>
-
-
-
-<p>第一步，读取DFA</p>
-<p><img src="/2021/12/19/DFA%E5%8C%96%E7%AE%80/20211220172727.png"></p>
-<p>第二步，分组</p>
-<p><img src="/2021/12/19/DFA%E5%8C%96%E7%AE%80/20211221111505.png"></p>
-<p><img src="/2021/12/19/DFA%E5%8C%96%E7%AE%80/image-20211230223852010.png" alt="image-20211230223852010"></p>
-<p><img src="/2021/12/19/DFA%E5%8C%96%E7%AE%80/image-20211230223858998.png" alt="image-20211230223858998"></p>
-<p><img src="/2021/12/19/DFA%E5%8C%96%E7%AE%80/image-20211230234549148.png" alt="image-20211230234549148"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C/C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">编译原理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/12/19/DFA%E5%8C%96%E7%AE%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-6、自主存取控制和并发控制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/">自主存取控制和并发控制</a>
-    </h1>
-  
-
-        
-        <a href="/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2021-12-17T00:47:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>用户的添加、查看、删除、信息修改；并发控制，事务，隔离</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-2、数据查询和视图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -937,6 +721,156 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/12/09/6%E3%80%81%E5%9F%BA%E4%BA%8ESTL%E7%9A%84%E6%BC%94%E8%AE%B2%E6%AF%94%E8%B5%9B%E6%B5%81%E7%A8%8B%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-5、C++提高编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/09/5%E3%80%81C++%E6%8F%90%E9%AB%98%E7%BC%96%E7%A8%8B/">C++提高编程</a>
+    </h1>
+  
+
+        
+        <a href="/2021/12/09/5%E3%80%81C++%E6%8F%90%E9%AB%98%E7%BC%96%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2021-12-09T09:57:14.557Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>模板、STL、STL容器、STL函数对象、STL常用算法</p>
+<p>(非本人所做，资料来自黑马程序员)</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C/C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/12/09/5%E3%80%81C++%E6%8F%90%E9%AB%98%E7%BC%96%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-4、职工管理系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/09/4%E3%80%81%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">职工管理系统</a>
+    </h1>
+  
+
+        
+        <a href="/2021/12/09/4%E3%80%81%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
+  	<time datetime="2021-12-09T09:57:13.791Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对应C++核心编程的案例</p>
+<p>(非本人所做，资料来自黑马程序员)</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C/C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/12/09/4%E3%80%81%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
         </p>
       
 
