@@ -16,7 +16,7 @@
 <meta property="og:description" content="无">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-04T07:39:02.000Z">
-<meta property="article:modified_time" content="2022-01-04T14:42:27.597Z">
+<meta property="article:modified_time" content="2022-01-05T01:45:30.428Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="复习">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
 <p>架构元素的通信包括哪些</p>
 <blockquote>
 <p>数据传递机制，如函数调用、远程方法调用、异步通信等；</p>
-<p>控制流，如组件间实现功能需求的信息流、时序控制流、并发/并行控制流、同<br>步控制流等</p>
+<p>控制流，如组件间实现功能需求的信息流、时序控制流、并发/并行控制流、同步控制流等</p>
 </blockquote>
 <p>什么是架构风格</p>
 <blockquote>
@@ -227,7 +227,10 @@
 <p>4+1视图</p>
 <blockquote>
 <p>“4”指四种视图：</p>
-<p>①逻辑视图：描述架构的元素和它们的关系的视图；<br>②过程视图：描述架构的并发和通信元素的视图；<br>③物理视图：描述主要进程和组件在应用硬件上的映射的视图；<br>④开发视图：捕捉软件开发组件内在构造的视图。</p>
+<p>①逻辑视图：描述架构的元素和它们的关系的视图；</p>
+<p>②过程视图：描述架构的并发和通信元素的视图；</p>
+<p>③物理视图：描述主要进程和组件在应用硬件上的映射的视图；</p>
+<p>④开发视图：捕捉软件开发组件内在构造的视图。</p>
 <p>“1”指架构用例(视图)：</p>
 <p>⑤架构用例(视图)：捕捉架构用例，关联其它视图的视图。</p>
 </blockquote>
@@ -256,14 +259,62 @@
 <p>?</p>
 </blockquote>
 <p>软件质量属性主要包括哪些（五种）</p>
+<blockquote>
+<p>①可靠性(reliability)：可靠性是评价操作与所观察行为之间的差别的质量属性。</p>
+<p>②可用性(availability)：可用性是通过衡量软件在指定时间内可正常运作时间的比例，评价软件是否可靠的质量属性。</p>
+<p>③可移植性(portability)：可移植性是评价系统移植到不同平台的难易程度的质量属性。</p>
+<p>④伸缩性(scalability)：伸缩性是评价同一解决方案在业务问题数量骤增时应对好坏的质量属性。</p>
+<p>⑤性能(performance)：性能是评价应用在单位时间内可完成工作量，以及截止时间前完成任务情况的质量属性。</p>
+</blockquote>
 <p>软件可用性取决于（三种时间）</p>
+<blockquote>
+<p>①检错(detect failure)时间；②纠错(correct failure)时间；③重启(restart)应用时间</p>
+</blockquote>
 <p>伸缩性涉及那些方面（四种）</p>
+<blockquote>
+<p>请求负载(request load)、连接(connection)、数据大小(data size)、部署(deployment)</p>
+</blockquote>
 <p>吞吐率指标</p>
+<blockquote>
+<p>吞吐率的定义</p>
+<p>单位时间内应用需处理的工作(事务、消息)个数指标</p>
+<p>吞吐率的度量（两种）及其规律</p>
+<p>度量：平均吞吐率和峰值吞吐率；</p>
+<p>规律：①通常系统的平均吞吐率较低，但峰值吞吐率很高；②随着接收线程(receiving threads)的增加，吞吐率首先增加，但当接收线程过多后吞吐率不增反降</p>
+</blockquote>
 <p>各种架构风格的组件和连接器是什么</p>
+<blockquote>
+<p>管道过滤器(pipe and filter)风格的组件和连接器是什么？</p>
+<p>组件是过滤器，连接器是管道</p>
+<p>面向对象(object-oriented)风格的组件和连接器是什么？</p>
+<p>组件是对象，连接器是方法</p>
+<p>隐式调用(implicit invocation)风格的组件和连接器是什么？</p>
+<p>组件是广播(broadcast)或注册(register)事件的进程，连接器是广播系统(broadcasting system)</p>
+<p>客户端服务端(client-server)风格的组件和连接器是什么？</p>
+<p>组件是客户端和服务端，连接器是网络(network)</p>
+<p>分层(layered)风格的组件和连接器是什么？（有时又翻译成层次风格）</p>
+<p>组件是特定过程(procedure)，连接器是限制可见性的过程调用(procedure call under restricted visibility)</p>
+</blockquote>
 <p>软件性能指标主要有哪几种（三种）</p>
+<blockquote>
+<p>吞吐率、响应时间、截止时间</p>
+</blockquote>
 <p>响应时间的度量（两种）</p>
+<blockquote>
+<p>①保证(guaranteed)响应时间；②平均(average)响应时间</p>
+</blockquote>
 <p>安全性质量指标主要有哪几种（五种）</p>
+<blockquote>
+<p>①真实性(authentication)：应用可以验证与之通信用户和其它应用的身份；</p>
+<p>②授权性(authorization)：符合真实性的用户或应用在连接系统的时候定义了权限；</p>
+<p>③加密性(encryption)：应用发送或接受的信息经过了加密；</p>
+<p>④完整性(integrity)：信息内容传输时可以保持原意，不被改动；</p>
+<p>⑤不可抵赖性(nonrepudiation)：信息发送方留存有发送证明、接收方可验证发送方身份，即收、发双方均不可否认参与过该次信息交换。</p>
+</blockquote>
 <p>实现高可用性的策略（三种）</p>
+<blockquote>
+<p>①消除单点故障；②复制与故障转移；③自动检错(detection)与重启(restart)</p>
+</blockquote>
 <p>信息隐藏原理</p>
 <p>什么是关注点，关注点的类型，关注点分离</p>
 <p>什么是职责驱动的设计</p>
