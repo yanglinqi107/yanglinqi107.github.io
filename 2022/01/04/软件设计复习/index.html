@@ -16,7 +16,7 @@
 <meta property="og:description" content="无">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-04T07:39:02.000Z">
-<meta property="article:modified_time" content="2022-01-05T10:38:44.547Z">
+<meta property="article:modified_time" content="2022-01-06T12:21:24.052Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="复习">
 <meta name="twitter:card" content="summary">
@@ -190,7 +190,44 @@
         <p>无</p>
 <span id="more"></span>
 
-<p>[TOC]</p>
+<hr>
+<h3 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h3><p>各种性能指标的定义及如何到达各种性能指标的方法</p>
+<p>有那些常见架构风格</p>
+<p>架构设计分几个层次</p>
+<p>架构师需要的核心技能是什么</p>
+<p>什么是软件架构（好几种定义，但是主要点是结构，元素，关系，接口）</p>
+<p>软件架构主要关注那些问题</p>
+<p>什么是架构风格</p>
+<p>什么是架构视图</p>
+<p>软件系统中的复杂性有哪些种类</p>
+<p>非功能需求包括哪些（三种）</p>
+<p>软件架构过程（三个迭代步骤）</p>
+<p>软件质量属性主要包括哪些（五种）</p>
+<p>软件可用性取决于（三种时间）</p>
+<p>伸缩性涉及那些方面（四种）</p>
+<p>吞吐率指标</p>
+<p>架构元素的通信包括哪些</p>
+<p>各种架构风格的组件和连接器是什么</p>
+<p>软件性能指标主要有哪几种（三种）</p>
+<p>响应时间的度量（两种）</p>
+<p>安全性质量指标主要有哪几种（五种）</p>
+<p>实现高可用性的策略（三种）</p>
+<p>信息隐藏原理</p>
+<p>什么是关注点，关注点的类型，关注点分离</p>
+<p>什么是职责驱动的设计</p>
+<p>GRASP模式的具体内容，各种模式的定义，解决的什么问题</p>
+<p>OO设计的五个基本原则及课件中讲述的其它软件原理（主要在Java review PPT中，特别是SOLID原则可以自己找找相关例子，通过推荐的参考书或网上）</p>
+<p>组合，继承，针对接口编程，黑盒，白盒重用</p>
+<p>什么是抽象，封装</p>
+<p>MVC模式</p>
+<p>企业应用架构有那三层，各层主要做什么。在各层有那些主要的模式，各层的各种模式的定义和结构内容（展现层，领域层，数据源层）</p>
+<p>4+1视图</p>
+<p>应用的集成策略</p>
+<p>掌握：命令模式，状态模式，装饰模式，观察者模式，策略模式，</p>
+<p>单例模式，工厂方法模式，组合模式，</p>
+<p>适配器模式，外观模式，责任链模式的UML图和java代码</p>
+<p>凡是课件里有关架构的具体例子（一般都有UML图或有代码）都需要仔细体会，重点搞清楚实验指导书里的各个步骤过程怎么做的。</p>
+<hr>
 <h3 id="软件系统中的复杂性有哪些种类"><a href="#软件系统中的复杂性有哪些种类" class="headerlink" title="软件系统中的复杂性有哪些种类"></a>软件系统中的复杂性有哪些种类</h3><blockquote>
 <p>复杂性有两大类：实质复杂性(Essential complexity)、意外复杂性(Accidental complexity)。</p>
 <p>其中，意外复杂性还可细分为必要(Necessary)意外复杂性和非必要(Unnecessary)意外复杂性这两个小类</p>
@@ -349,7 +386,7 @@
 <p>1、展现层的模式</p>
 <p>①页面控制器——定义：一种对象，用于处理 HTTP GET/POST 等网站特定页面或特定活动的请求，并决定页面使用的模型与视图；网站每个逻辑页面都有一个输入控制器；组成结构：输入控制器+模型+视图</p>
 <p>②前端控制器——定义：一种对象，通过将各种请求一并传送至单独的处理器对象进行通用处理、处理器随即发送到命令对象来对每个特定请求做出专门处理的方法，实现对所有网页请求的统一应对；组成结构：处理器对象+命令对象</p>
-<p>③模板视图——定义：从一些辅助对象(从请求中获取到的对象)中取出相关信息，并将其用一种预先设定好的视图展现出来</p>
+<p>③模板视图——定义：从一些辅助对象中取出相关信息，并将其用一种预先设定好的视图展现出来</p>
 <p>④变换视图——定义：根据用户的特定请求，将接收到的数据转化为具体的视图，响应用户请求</p>
 <p>2、纯领域层的模式</p>
 <p>①事务脚本(transaction script，简称 TS 模式)——定义：事务脚本模式将业务逻辑事先组织为一个个单独的过程，每个过程负责处理展现层的一个请求；组成结构：展现层的输入+输入的验证与计算处理过程+数据库的存储过程+激活其它系统操作的过程+格式化、返回展现层数据的过程</p>
@@ -365,16 +402,16 @@
 <h3 id="MVC-模式"><a href="#MVC-模式" class="headerlink" title="MVC 模式"></a>MVC 模式</h3><blockquote>
 <p>MVC 架构中有哪几种组成元素？</p>
 <p>3 种。</p>
-<p>①模型(model)：维护应用的状态及数据（通常是一个 XML文档）的元素；</p>
-<p>②视图(view)：渲染模型（以特定形式向用户展示模型）的元素；</p>
-<p>③控制器(controller)：用户对应用模型进行操作的接口元素。</p>
+<p>①模型：维护应用的状态及数据的元素；</p>
+<p>②视图：渲染模型（以特定形式向用户展示模型）的元素；</p>
+<p>③控制器：用户对应用模型进行操作的接口元素。</p>
 <p>MVC 架构中各元素之间的交互关系</p>
-<p>①“模型”包含应用的数据及更新数据的方法，定义了模型调用和数据操作的接口；</p>
-<p>②“控制器”负责与用户交互，解析用户活动，并将其提交至“模型”，使“模型”对其数据做出相应更新；</p>
-<p>③“视图”可向用户提供“模型”的一种或多种可视化呈现；“模型”做出更新后，“视图”可接收“模型”的变更事件，同样产生相应的变更。</p>
+<p>①模型包含应用的数据及更新数据的方法，定义了模型调用和数据操作的接口；</p>
+<p>②控制器负责与用户交互，解析用户活动，并将其提交至模型，使模型对其数据进行更新；</p>
+<p>③视图可向用户提供模型的一种或多种可视化呈现；模型做出更新后，视图可接收模型的变更事件，同样产生相应的变更。</p>
 </blockquote>
-<h3 id="什么是职责驱动的设计"><a href="#什么是职责驱动的设计" class="headerlink" title="什么是职责驱动的设计"></a>什么是职责驱动的设计</h3><blockquote>
-<p>职责驱动设计是一种设计观点，认为每个对象都有职责，且每个对象间有相互合作</p>
+<h3 id="什么是职责驱动设计"><a href="#什么是职责驱动设计" class="headerlink" title="什么是职责驱动设计"></a>什么是职责驱动设计</h3><blockquote>
+<p>职责驱动设计是一种设计观点，认为每个对象都有职责，且每个对象有相互合作</p>
 <p>职责是有关对象行为的一种界定</p>
 <p>职责的分类，在抽象意义上可分粗粒度职责、细粒度职责两种类型，在通常意义上可分为应知职责、应做职责两种类型</p>
 </blockquote>
@@ -389,14 +426,49 @@
 <p>⑧防止变异(protected variations)——定义：一种分配职责时确保系统元素在其它元素不稳定时不受到影响的原则。解决的问题：怎样分配职责，使某一元素的变异或者不稳定不会影响其它元素正常运行？</p>
 <p>⑨纯虚构(pure fabrication)——定义：一种在职责分配目标不明时，捏造业务上不存在对象来承担职责的原则。解决的问题：怎样分配职责，使信息专家模式行不通时依然保持高内聚低耦合？</p>
 </blockquote>
-<p>信息隐藏原理</p>
-<p>什么是关注点，关注点的类型，关注点分离</p>
-<p>OO设计的五个基本原则及课件中讲述的其它软件原理（主要在Java review PPT中，特别是SOLID原则可以自己找找相关例子，通过推荐的参考书或网上）</p>
-<p>组合，继承，针对接口编程，黑盒，白盒重用</p>
-<p>什么是抽象，封装</p>
-<p>掌握：命令模式，状态模式，装饰模式，观察者模式，策略模式，</p>
-<p>单例模式，工厂方法模式，组合模式，</p>
-<p>适配器模式，外观模式，责任链模式的UML图和java代码</p>
+<h3 id="组合，继承，针对接口编程，黑盒，白盒重用"><a href="#组合，继承，针对接口编程，黑盒，白盒重用" class="headerlink" title="组合，继承，针对接口编程，黑盒，白盒重用"></a>组合，继承，针对接口编程，黑盒，白盒重用</h3><blockquote>
+<p>组合是通过创建由其它对象组合而成的新对象，得到新功能的重用方法；黑盒重用是组合的别称，其复用特点在于组合类包含的对象内部细节不可见。</p>
+<p>继承是通过对现有对象的实现进行扩展，得到新功能的重用方法；白盒重用是继承的别称，其复用特点在于父类的细节在子类中是可见的。</p>
+<p>为什么提倡组合优于继承?</p>
+<p>①从封装性上看：组合是黑盒复用，仅通过接口将包含的对象进行连接，其它对象内部实现细节不可见，封装较好；而继承是白盒复用，父类的实现细节暴露给了子类，破坏了封装性。</p>
+<p>②从依赖上看：组合的类各自只用关注自己的任务，使得实体类间减少了依赖；而继承中的子类需要依赖父类，父类的改动会导致子类也不得不改动，维护工作相对更复杂。</p>
+<p>③从运行上看：组合对象可在运行时(run-time)通过获取其它同类对象的引用，动态地定义；而继承自父类的实现在运行时不可动态改变</p>
+<p>为什么要针对接口编程(而不是针对具体实现)？</p>
+<p>①面向接口时，客户端不必知道正在使用的具体类的对象是什么，从而方便按需更换使用的具体类；</p>
+<p>②通过接口建立对象的联系时，对象之间不用硬连接（hardwired）相互依赖，提升了系统的灵活性，并降低耦合；</p>
+<p>③提升重用性，黑盒复用（组合）中被包含的对象所属的类，可以是任何符合组合类中特定接口的实现类，包含的对象不用写进组合类中。</p>
+</blockquote>
+<h3 id="OO设计的五个基本原则及课件中讲述的其它软件原理"><a href="#OO设计的五个基本原则及课件中讲述的其它软件原理" class="headerlink" title="OO设计的五个基本原则及课件中讲述的其它软件原理"></a>OO设计的五个基本原则及课件中讲述的其它软件原理</h3><blockquote>
+<p>①单一职责原则：一个对象只关注一个单一的职责，且对象只会因一个原因发生变更；</p>
+<p>②开闭原则：类的设计要对扩展开放，对修改关闭，即如果扩展类功能，尽量不修改类原来的内置行为；</p>
+<p>③里氏替换原则：子类可扩展父类的行为，但不能改变父类原有的功能。</p>
+<p>④接口隔离原则：将单一复杂的接口拆分为多组各自负责不同职责的专门接口，避免客户端实现大量不必要的接口或方法。</p>
+<p>⑤依赖倒转原则：针对接口编程而不是针对具体实现，使具体类隔离于具体实现而依赖抽象的接口(或类)。</p>
+</blockquote>
+<h3 id="什么是关注点，关注点的类型，关注点分离"><a href="#什么是关注点，关注点的类型，关注点分离" class="headerlink" title="什么是关注点，关注点的类型，关注点分离"></a>什么是关注点，关注点的类型，关注点分离</h3><blockquote>
+<p>关注点代表一个类的特征(feature)或行为(behavior)；</p>
+<p>关注点的类型主要有 2 大类：横向核心(Core)关注点、纵向交叉(Cross-cutting)关注点；把纵向交叉关注点和横向核心关注点结合起来的过程叫做编织(Weaving)。</p>
+<p>关注点分离是一种过程，将软件系统划分成不同的特征，使每个特征能将数据和行为独立地封装好，供其它类使用，从而提升复用性、易维护性、可测试性</p>
+</blockquote>
+<h3 id="信息隐藏原理"><a href="#信息隐藏原理" class="headerlink" title="信息隐藏原理"></a>信息隐藏原理</h3><blockquote>
+<p>什么是信息隐藏原理?</p>
+<p>一种设计原则，在设计过程中决定把部分模块做好保密处理。</p>
+<p>信息隐藏原理，隐藏了什么?</p>
+<p>信息隐藏原理并不是按字面意义的隐藏信息，而是隐藏的模块（数据展示、算法、接口实现细节等）。</p>
+<p>信息隐藏原理的目的是什么？</p>
+<p>使设计结果对客户不可见（invisible）</p>
+</blockquote>
+<h3 id="什么是抽象，封装"><a href="#什么是抽象，封装" class="headerlink" title="什么是抽象，封装"></a>什么是抽象，封装</h3><blockquote>
+<p>抽象，是指从众多的事务中抽取出具有共同的、本质性的特征作为一个整体，是共同特质的集合形式。</p>
+<p>封装，是将通过抽象所得到的数据信息和操作进行结合，使其形成一个有机的整体，对内执行操作，而对外隐藏细节和数据信息。</p>
+</blockquote>
+<h3 id="常见的设计模式"><a href="#常见的设计模式" class="headerlink" title="常见的设计模式"></a>常见的设计模式</h3><blockquote>
+<p>常见设计模式一共有 23 种，分为 3 个类别：</p>
+<p>①创建型设计模式：在创建对象同时隐藏创建逻辑，而不是使用新的操作直接实例化对象的模式。具体有 5 种设计模式：工厂模式、抽象工厂模式、单例模式、原型模式、建造者模式。</p>
+<p>②结构型设计模式：通过组合接口和定义组合对象，关注类和对象的组合，获得新的功能的模式。具体有 7 种设计模式：代理模式、门面模式、装饰器模式、享元模式、组合模式、适配器模式、桥接模式。</p>
+<p>③行为型设计模式：关注对象之间通信的模式。具体有 11 种设计模式：模板方法模式、策略模式、责任链模式、迭代器模式、命令模式、状态模式、备忘录模式、中介者模式、解释器模式、观察者模式、访问者模式</p>
+</blockquote>
+<p>掌握：命令模式，状态模式，装饰模式，观察者模式，策略模式，单例模式，工厂方法模式，组合模式，适配器模式，外观模式，责任链模式的UML图和java代码</p>
 <p>凡是课件里有关架构的具体例子（一般都有UML图或有代码）都需要仔细体会，重点搞清楚实验指导书里的各个步骤过程怎么做的。</p>
 
       
@@ -540,7 +612,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%A4%8D%E6%9D%82%E6%80%A7%E6%9C%89%E5%93%AA%E4%BA%9B%E7%A7%8D%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">软件系统中的复杂性有哪些种类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%EF%BC%88%E5%A5%BD%E5%87%A0%E7%A7%8D%E5%AE%9A%E4%B9%89%EF%BC%8C%E4%BD%86%E6%98%AF%E4%B8%BB%E8%A6%81%E7%82%B9%E6%98%AF%E7%BB%93%E6%9E%84%EF%BC%8C%E5%85%83%E7%B4%A0%EF%BC%8C%E5%85%B3%E7%B3%BB%EF%BC%8C%E6%8E%A5%E5%8F%A3%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">什么是软件架构（好几种定义，但是主要点是结构，元素，关系，接口）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E4%B8%BB%E8%A6%81%E5%85%B3%E6%B3%A8%E9%82%A3%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">软件架构主要关注那些问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%89%E4%B8%AA%E8%BF%AD%E4%BB%A3%E6%AD%A5%E9%AA%A4%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">软件架构过程（三个迭代步骤）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%88%86%E5%87%A0%E4%B8%AA%E5%B1%82%E6%AC%A1"><span class="toc-number">5.</span> <span class="toc-text">架构设计分几个层次</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%E5%85%83%E7%B4%A0%E7%9A%84%E9%80%9A%E4%BF%A1%E5%8C%85%E6%8B%AC%E5%93%AA%E4%BA%9B"><span class="toc-number">6.</span> <span class="toc-text">架构元素的通信包括哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC"><span class="toc-number">7.</span> <span class="toc-text">什么是架构风格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E5%8A%9F%E8%83%BD%E9%9C%80%E6%B1%82%E5%8C%85%E6%8B%AC%E5%93%AA%E4%BA%9B%EF%BC%88%E4%B8%89%E7%A7%8D%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">非功能需求包括哪些（三种）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9E%B6%E6%9E%84%E8%A7%86%E5%9B%BE"><span class="toc-number">9.</span> <span class="toc-text">什么是架构视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1%E8%A7%86%E5%9B%BE"><span class="toc-number">10.</span> <span class="toc-text">4+1视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E7%9A%84%E9%9B%86%E6%88%90%E7%AD%96%E7%95%A5"><span class="toc-number">11.</span> <span class="toc-text">应用的集成策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%E5%B8%88%E9%9C%80%E8%A6%81%E7%9A%84%E6%A0%B8%E5%BF%83%E6%8A%80%E8%83%BD%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">12.</span> <span class="toc-text">架构师需要的核心技能是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC%E7%9A%84%E7%BB%84%E4%BB%B6%E5%92%8C%E8%BF%9E%E6%8E%A5%E5%99%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">13.</span> <span class="toc-text">各种架构风格的组件和连接器是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E9%82%A3%E4%BA%9B%E5%B8%B8%E8%A7%81%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC"><span class="toc-number">14.</span> <span class="toc-text">有那些常见架构风格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E5%B1%9E%E6%80%A7%E4%B8%BB%E8%A6%81%E5%8C%85%E6%8B%AC%E5%93%AA%E4%BA%9B%EF%BC%88%E4%BA%94%E7%A7%8D%EF%BC%89"><span class="toc-number">15.</span> <span class="toc-text">软件质量属性主要包括哪些（五种）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87%E4%B8%BB%E8%A6%81%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%EF%BC%88%E4%B8%89%E7%A7%8D%EF%BC%89"><span class="toc-number">16.</span> <span class="toc-text">软件性能指标主要有哪几种（三种）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87%E7%9A%84%E5%AE%9A%E4%B9%89%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%B0%E8%BE%BE%E5%90%84%E7%A7%8D%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">17.</span> <span class="toc-text">各种性能指标的定义及如何到达各种性能指标的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%9E%E5%90%90%E7%8E%87%E6%8C%87%E6%A0%87"><span class="toc-number">18.</span> <span class="toc-text">吞吐率指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E7%9A%84%E5%BA%A6%E9%87%8F%EF%BC%88%E4%B8%A4%E7%A7%8D%EF%BC%89"><span class="toc-number">19.</span> <span class="toc-text">响应时间的度量（两种）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%B8%E7%BC%A9%E6%80%A7%E6%B6%89%E5%8F%8A%E9%82%A3%E4%BA%9B%E6%96%B9%E9%9D%A2%EF%BC%88%E5%9B%9B%E7%A7%8D%EF%BC%89"><span class="toc-number">20.</span> <span class="toc-text">伸缩性涉及那些方面（四种）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E8%B4%A8%E9%87%8F%E6%8C%87%E6%A0%87%E4%B8%BB%E8%A6%81%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%EF%BC%88%E4%BA%94%E7%A7%8D%EF%BC%89"><span class="toc-number">21.</span> <span class="toc-text">安全性质量指标主要有哪几种（五种）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%8F%AF%E7%94%A8%E6%80%A7%E5%8F%96%E5%86%B3%E4%BA%8E%EF%BC%88%E4%B8%89%E7%A7%8D%E6%97%B6%E9%97%B4%EF%BC%89"><span class="toc-number">22.</span> <span class="toc-text">软件可用性取决于（三种时间）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7%E7%9A%84%E7%AD%96%E7%95%A5%EF%BC%88%E4%B8%89%E7%A7%8D%EF%BC%89"><span class="toc-number">23.</span> <span class="toc-text">实现高可用性的策略（三种）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%81%E4%B8%9A%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84%E7%9A%84%E4%B8%89%E5%B1%82"><span class="toc-number">24.</span> <span class="toc-text">企业应用架构的三层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E5%B1%82%E4%B8%BB%E8%A6%81%E5%81%9A%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85"><span class="toc-number">25.</span> <span class="toc-text">各层主要做什么事情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E5%B1%82%E7%9A%84%E5%90%84%E7%A7%8D%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E7%BB%93%E6%9E%84%E5%86%85%E5%AE%B9"><span class="toc-number">26.</span> <span class="toc-text">各层的各种模式的定义和结构内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVC-%E6%A8%A1%E5%BC%8F"><span class="toc-number">27.</span> <span class="toc-text">MVC 模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%81%8C%E8%B4%A3%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">28.</span> <span class="toc-text">什么是职责驱动的设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GRASP%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%85%B7%E4%BD%93%E5%86%85%E5%AE%B9%EF%BC%8C%E5%90%84%E7%A7%8D%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%8C%E8%A7%A3%E5%86%B3%E7%9A%84%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-number">29.</span> <span class="toc-text">GRASP模式的具体内容，各种模式的定义，解决的什么问题</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8C%83%E5%9B%B4"><span class="toc-number">1.</span> <span class="toc-text">范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%A4%8D%E6%9D%82%E6%80%A7%E6%9C%89%E5%93%AA%E4%BA%9B%E7%A7%8D%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">软件系统中的复杂性有哪些种类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%EF%BC%88%E5%A5%BD%E5%87%A0%E7%A7%8D%E5%AE%9A%E4%B9%89%EF%BC%8C%E4%BD%86%E6%98%AF%E4%B8%BB%E8%A6%81%E7%82%B9%E6%98%AF%E7%BB%93%E6%9E%84%EF%BC%8C%E5%85%83%E7%B4%A0%EF%BC%8C%E5%85%B3%E7%B3%BB%EF%BC%8C%E6%8E%A5%E5%8F%A3%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">什么是软件架构（好几种定义，但是主要点是结构，元素，关系，接口）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E4%B8%BB%E8%A6%81%E5%85%B3%E6%B3%A8%E9%82%A3%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">软件架构主要关注那些问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%89%E4%B8%AA%E8%BF%AD%E4%BB%A3%E6%AD%A5%E9%AA%A4%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">软件架构过程（三个迭代步骤）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%88%86%E5%87%A0%E4%B8%AA%E5%B1%82%E6%AC%A1"><span class="toc-number">6.</span> <span class="toc-text">架构设计分几个层次</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%E5%85%83%E7%B4%A0%E7%9A%84%E9%80%9A%E4%BF%A1%E5%8C%85%E6%8B%AC%E5%93%AA%E4%BA%9B"><span class="toc-number">7.</span> <span class="toc-text">架构元素的通信包括哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC"><span class="toc-number">8.</span> <span class="toc-text">什么是架构风格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E5%8A%9F%E8%83%BD%E9%9C%80%E6%B1%82%E5%8C%85%E6%8B%AC%E5%93%AA%E4%BA%9B%EF%BC%88%E4%B8%89%E7%A7%8D%EF%BC%89"><span class="toc-number">9.</span> <span class="toc-text">非功能需求包括哪些（三种）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9E%B6%E6%9E%84%E8%A7%86%E5%9B%BE"><span class="toc-number">10.</span> <span class="toc-text">什么是架构视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1%E8%A7%86%E5%9B%BE"><span class="toc-number">11.</span> <span class="toc-text">4+1视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E7%9A%84%E9%9B%86%E6%88%90%E7%AD%96%E7%95%A5"><span class="toc-number">12.</span> <span class="toc-text">应用的集成策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%E5%B8%88%E9%9C%80%E8%A6%81%E7%9A%84%E6%A0%B8%E5%BF%83%E6%8A%80%E8%83%BD%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">13.</span> <span class="toc-text">架构师需要的核心技能是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC%E7%9A%84%E7%BB%84%E4%BB%B6%E5%92%8C%E8%BF%9E%E6%8E%A5%E5%99%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">14.</span> <span class="toc-text">各种架构风格的组件和连接器是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E9%82%A3%E4%BA%9B%E5%B8%B8%E8%A7%81%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC"><span class="toc-number">15.</span> <span class="toc-text">有那些常见架构风格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E5%B1%9E%E6%80%A7%E4%B8%BB%E8%A6%81%E5%8C%85%E6%8B%AC%E5%93%AA%E4%BA%9B%EF%BC%88%E4%BA%94%E7%A7%8D%EF%BC%89"><span class="toc-number">16.</span> <span class="toc-text">软件质量属性主要包括哪些（五种）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87%E4%B8%BB%E8%A6%81%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%EF%BC%88%E4%B8%89%E7%A7%8D%EF%BC%89"><span class="toc-number">17.</span> <span class="toc-text">软件性能指标主要有哪几种（三种）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87%E7%9A%84%E5%AE%9A%E4%B9%89%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%B0%E8%BE%BE%E5%90%84%E7%A7%8D%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">18.</span> <span class="toc-text">各种性能指标的定义及如何到达各种性能指标的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%9E%E5%90%90%E7%8E%87%E6%8C%87%E6%A0%87"><span class="toc-number">19.</span> <span class="toc-text">吞吐率指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E7%9A%84%E5%BA%A6%E9%87%8F%EF%BC%88%E4%B8%A4%E7%A7%8D%EF%BC%89"><span class="toc-number">20.</span> <span class="toc-text">响应时间的度量（两种）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%B8%E7%BC%A9%E6%80%A7%E6%B6%89%E5%8F%8A%E9%82%A3%E4%BA%9B%E6%96%B9%E9%9D%A2%EF%BC%88%E5%9B%9B%E7%A7%8D%EF%BC%89"><span class="toc-number">21.</span> <span class="toc-text">伸缩性涉及那些方面（四种）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E8%B4%A8%E9%87%8F%E6%8C%87%E6%A0%87%E4%B8%BB%E8%A6%81%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%EF%BC%88%E4%BA%94%E7%A7%8D%EF%BC%89"><span class="toc-number">22.</span> <span class="toc-text">安全性质量指标主要有哪几种（五种）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%8F%AF%E7%94%A8%E6%80%A7%E5%8F%96%E5%86%B3%E4%BA%8E%EF%BC%88%E4%B8%89%E7%A7%8D%E6%97%B6%E9%97%B4%EF%BC%89"><span class="toc-number">23.</span> <span class="toc-text">软件可用性取决于（三种时间）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7%E7%9A%84%E7%AD%96%E7%95%A5%EF%BC%88%E4%B8%89%E7%A7%8D%EF%BC%89"><span class="toc-number">24.</span> <span class="toc-text">实现高可用性的策略（三种）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%81%E4%B8%9A%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84%E7%9A%84%E4%B8%89%E5%B1%82"><span class="toc-number">25.</span> <span class="toc-text">企业应用架构的三层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E5%B1%82%E4%B8%BB%E8%A6%81%E5%81%9A%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85"><span class="toc-number">26.</span> <span class="toc-text">各层主要做什么事情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E5%B1%82%E7%9A%84%E5%90%84%E7%A7%8D%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E7%BB%93%E6%9E%84%E5%86%85%E5%AE%B9"><span class="toc-number">27.</span> <span class="toc-text">各层的各种模式的定义和结构内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVC-%E6%A8%A1%E5%BC%8F"><span class="toc-number">28.</span> <span class="toc-text">MVC 模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%81%8C%E8%B4%A3%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1"><span class="toc-number">29.</span> <span class="toc-text">什么是职责驱动设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GRASP%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%85%B7%E4%BD%93%E5%86%85%E5%AE%B9%EF%BC%8C%E5%90%84%E7%A7%8D%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%8C%E8%A7%A3%E5%86%B3%E7%9A%84%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-number">30.</span> <span class="toc-text">GRASP模式的具体内容，各种模式的定义，解决的什么问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%EF%BC%8C%E7%BB%A7%E6%89%BF%EF%BC%8C%E9%92%88%E5%AF%B9%E6%8E%A5%E5%8F%A3%E7%BC%96%E7%A8%8B%EF%BC%8C%E9%BB%91%E7%9B%92%EF%BC%8C%E7%99%BD%E7%9B%92%E9%87%8D%E7%94%A8"><span class="toc-number">31.</span> <span class="toc-text">组合，继承，针对接口编程，黑盒，白盒重用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OO%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%BA%94%E4%B8%AA%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99%E5%8F%8A%E8%AF%BE%E4%BB%B6%E4%B8%AD%E8%AE%B2%E8%BF%B0%E7%9A%84%E5%85%B6%E5%AE%83%E8%BD%AF%E4%BB%B6%E5%8E%9F%E7%90%86"><span class="toc-number">32.</span> <span class="toc-text">OO设计的五个基本原则及课件中讲述的其它软件原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%B3%E6%B3%A8%E7%82%B9%EF%BC%8C%E5%85%B3%E6%B3%A8%E7%82%B9%E7%9A%84%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%85%B3%E6%B3%A8%E7%82%B9%E5%88%86%E7%A6%BB"><span class="toc-number">33.</span> <span class="toc-text">什么是关注点，关注点的类型，关注点分离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E5%8E%9F%E7%90%86"><span class="toc-number">34.</span> <span class="toc-text">信息隐藏原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%8A%BD%E8%B1%A1%EF%BC%8C%E5%B0%81%E8%A3%85"><span class="toc-number">35.</span> <span class="toc-text">什么是抽象，封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">36.</span> <span class="toc-text">常见的设计模式</span></a></li></ol>
                     </div>
                 </span>
             </div>
