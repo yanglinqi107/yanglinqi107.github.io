@@ -6,26 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yanglinqi107.github.io">
-  <title>自主存取控制和并发控制 | 杨的笔记</title>
+  <title>Linux基础 | 杨的笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="用户的添加、查看、删除、信息修改；并发控制，事务，隔离">
+  <meta name="description" content="Linux的使用和常用命令，主要是在 CentOS 8 上试验">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自主存取控制和并发控制">
-<meta property="og:url" content="http://yanglinqi107.github.io/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/index.html">
+<meta property="og:title" content="Linux基础">
+<meta property="og:url" content="http://yanglinqi107.github.io/2022/01/18/Linux%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="杨的笔记">
-<meta property="og:description" content="用户的添加、查看、删除、信息修改；并发控制，事务，隔离">
+<meta property="og:description" content="Linux的使用和常用命令，主要是在 CentOS 8 上试验">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yanglinqi107.github.io/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/20211217090736.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/20211217091041.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/20211217092509.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/20211217095750.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/20211217153708.png">
-<meta property="article:published_time" content="2021-12-17T00:47:40.000Z">
-<meta property="article:modified_time" content="2021-12-18T14:05:16.994Z">
+<meta property="article:published_time" content="2022-01-18T14:15:10.000Z">
+<meta property="article:modified_time" content="2022-01-28T14:17:31.431Z">
 <meta property="article:author" content="yanglinqi">
-<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yanglinqi107.github.io/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/20211217090736.png">
   
     <link rel="alternative" href="/atom.xml" title="杨的笔记" type="application/atom+xml">
   
@@ -173,358 +167,628 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-6、自主存取控制和并发控制" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Linux基础" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      自主存取控制和并发控制
+      Linux基础
     </h1>
   
 
         
-        <a href="/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2021-12-17T00:47:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-17</time>
+        <a href="/2022/01/18/Linux%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2022-01-18T14:15:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>用户的添加、查看、删除、信息修改；并发控制，事务，隔离</p>
+        <p>Linux的使用和常用命令，主要是在 CentOS 8 上试验</p>
 <span id="more"></span>
 
-
-<h2 id="自主存取控制实验"><a href="#自主存取控制实验" class="headerlink" title="自主存取控制实验"></a>自主存取控制实验</h2><h3 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h3><p>使用<code>CREATE USER</code>命令创建用户并设置密码，语法格式如下：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 用户 [IDENTIFIED <span class="keyword">BY</span><span class="string">&#x27;password&#x27;</span>];</span><br><span class="line"><span class="comment">/*用户=&#x27;用户名@登录主机名&#x27;*/</span>    <span class="comment">/*初始用户一般是root@localhost*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*例*/</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">&#x27;ALEX&#x27;</span>@<span class="string">&#x27;LOCALHOST&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> yanglinqi<span class="variable">@localhost</span> identified <span class="keyword">by</span> <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="查看用户"><a href="#查看用户" class="headerlink" title="查看用户"></a>查看用户</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*使用以下命令查看所有用户*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">user</span> <span class="keyword">from</span> mysql.user;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/20211217090736.png"></p>
-<h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><p>使用<code>DROP USER</code>命令删除用户，语法格式如下：</p>
-<p><font color="#FF0000">注：</font>只有用户当前数据库全局权限的用户才能使用<code>DROP</code>命令</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> 用户; </span><br><span class="line"><span class="comment">/*用户形式  用户名@主机  例：yanglinqi@localhost  用户吗是区分大小写的*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*例*/</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">user</span> yanglinqi<span class="variable">@localhost</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="部分基础命令"><a href="#部分基础命令" class="headerlink" title="部分基础命令"></a>部分基础命令</h3><p>linux是大小写敏感，千万要注意</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">init 0		关机</span><br><span class="line">init 1		单用户</span><br><span class="line">init 2		多用户</span><br><span class="line">init 5		图形界面</span><br><span class="line">init 3 		字符界面</span><br><span class="line">init 6 		重启</span><br><span class="line"></span><br><span class="line">clear	清屏</span><br><span class="line">logout	注销 </span><br><span class="line"></span><br><span class="line">whereis</span><br><span class="line">whatis</span><br><span class="line">which</span><br></pre></td></tr></table></figure>
 
 
 
-<p><img src="/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/20211217091041.png"></p>
-<h3 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h3><p>使用<code>SET PASSWORD</code>命令修改某用户登录密码，语法格式如下：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*8.0版本之前*/</span></span><br><span class="line"><span class="keyword">SET</span> PASSWORD <span class="keyword">FOR</span> 用户<span class="operator">=</span>PASSWORD(<span class="string">&#x27;新密码&#x27;</span>);</span><br><span class="line"><span class="comment">/*8.0版本及之后*/</span></span><br><span class="line"><span class="keyword">SET</span> PASSWORD <span class="keyword">FOR</span> 用户<span class="operator">=</span><span class="string">&#x27;新密码&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*例*/</span></span><br><span class="line"><span class="keyword">set</span> password <span class="keyword">for</span> ALEX<span class="variable">@LOCALHOST</span><span class="operator">=</span><span class="string">&#x27;123&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<p><code>mysql -u 用户名 -p 密码</code>（密码可以回车后再输入）</p>
-<p><img src="/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/20211217092509.png" alt="登录测试成功"></p>
-<p>也可以使用以下命令修改密码</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">&#x27;ALEX&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;123&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改用户名"><a href="#修改用户名" class="headerlink" title="修改用户名"></a>修改用户名</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*相当于修改mysql.user这张存有用户信息的表，将ALEX修改为alex*/</span></span><br><span class="line">update mysql.user <span class="keyword">set</span> <span class="keyword">user</span><span class="operator">=</span><span class="string">&#x27;alex&#x27;</span> <span class="keyword">where</span> <span class="keyword">user</span><span class="operator">=</span><span class="string">&#x27;ALEX&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>常用工具</p>
+<p>lrzsz tree screen tmux strace</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">bc    <span class="comment"># 计算器， ctrl+d 退出</span></span><br><span class="line">[root@CentOS8 ~]<span class="comment">#bc</span></span><br><span class="line">bc 1.07.1</span><br><span class="line">Copyright 1991-1994, 1997, 1998, 2000, 2004, 2006, 2008, 2012-2017 Free Software Foundation, Inc.</span><br><span class="line">This is free software with ABSOLUTELY NO WARRANTY.</span><br><span class="line">For details <span class="built_in">type</span> `warranty<span class="string">&#x27;. </span></span><br><span class="line"><span class="string">2^3 # 计算2的3次方</span></span><br><span class="line"><span class="string">8</span></span><br><span class="line"><span class="string">obase=2  # 将192按二进制输出</span></span><br><span class="line"><span class="string">192</span></span><br><span class="line"><span class="string">11000000</span></span><br></pre></td></tr></table></figure>
 
 
-<h3 id="权限控制"><a href="#权限控制" class="headerlink" title="权限控制"></a>权限控制</h3><h4 id="授予权限"><a href="#授予权限" class="headerlink" title="授予权限"></a>授予权限</h4><p>可授予用户列权限、表权限、数据库权限、用户权限等，语法格式如下：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> priv_type <span class="keyword">ON</span> [object_type] &#123;表名<span class="operator">|</span>数据库名&#125; <span class="keyword">TO</span> 用户</span><br><span class="line">[IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;密码&#x27;</span>][<span class="keyword">WITH</span> <span class="keyword">grant</span> option];</span><br></pre></td></tr></table></figure>
-<p><font color="#ff0000">说明：</font></p>
-<p><code>object_type=TABLE|FUNCTION|PROCEDURE</code></p>
-<p><font color="#ff0000">注：</font>若指定密码，则原密码将会被覆盖，如果权限授予一个不存在的用户，则MySQL会自动创建这个用户，但必须为该用户指定密码。</p>
-<p><code>pri_type</code></p>
-<p>列权限、表权限、数据库权限、用户权限参照<code>权限一览表</code></p>
-<p>如果要授予所有权限，则用<code>ALL</code>或者<code>ALL PRIVILEGES</code>表示。</p>
-<p><code>WITH GRANT OPTION</code></p>
-<p>若加上了WITH GRANT OPTION子句，获得某种权限的用户还可以把这种权限再授予其他的用户。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*例*/</span></span><br><span class="line"><span class="comment">/*说明：student是dbst数据库的一张表，需要先使用use dbst;选择该数据库，当然数据库和表都要先创建*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*这条命令给予ALEX表student的权限*/</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span> <span class="keyword">on</span> student <span class="keyword">to</span> ALEX<span class="variable">@LOCALHOST</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">grant</span> update(name) <span class="keyword">on</span> student <span class="keyword">to</span> ALEX<span class="variable">@LOCALHOST</span>;</span><br><span class="line"><span class="comment">/*这条命令给予ALEX更新studnet表中name列的权限*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*?这条命令干嘛的？*/</span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">ON</span> DBST.<span class="operator">*</span> <span class="keyword">TO</span> ALEX<span class="variable">@LOCALHOST</span>;</span><br></pre></td></tr></table></figure>
 
-<h4 id="查看权限："><a href="#查看权限：" class="headerlink" title="查看权限："></a>查看权限：</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> grants <span class="keyword">for</span> <span class="keyword">user</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*例*/</span></span><br><span class="line"><span class="keyword">show</span> grants <span class="keyword">for</span> root<span class="variable">@localhost</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">show</span> grants <span class="keyword">for</span> ALEX<span class="variable">@LOCALHOST</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping www.baidu.com  测试网络是否连接， ctrl+c 停止</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/20211217095750.png"></p>
-<h4 id="回收权限"><a href="#回收权限" class="headerlink" title="回收权限"></a>回收权限</h4><p>使用REVOKE命令可以回收授予的权限，语法格式如下：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> priv_type <span class="keyword">ON</span> &#123;表名<span class="operator">|</span>数据库名&#125; <span class="keyword">FROM</span> 用户;</span><br><span class="line">或 </span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">ALL</span> PRIVILEDGES,<span class="keyword">GRANT</span> OPTION <span class="keyword">FROM</span> 用户;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*例*/</span></span><br><span class="line"><span class="keyword">revoke</span> <span class="keyword">select</span> <span class="keyword">ON</span> student <span class="keyword">from</span> ALEX<span class="variable">@LOCALHOST</span>;</span><br></pre></td></tr></table></figure>
 
-<p><font color="#ff0000">注：</font>只有拥有当前数据库全局CREATE或者UPDATE权限的用户才能使用REVOKE命令。</p>
-<h3 id="一些例子"><a href="#一些例子" class="headerlink" title="一些例子"></a>一些例子</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*创建user_1用户*/</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> user_1<span class="variable">@localhost</span> identified <span class="keyword">by</span> <span class="string">&#x27;1234&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*修改user_1用户密码 1234 成 123456*/</span></span><br><span class="line"><span class="keyword">set</span> password <span class="keyword">for</span> user_1<span class="variable">@localhost</span><span class="operator">=</span><span class="string">&#x27;123456&#x27;</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">/*修改user_1用户名为user_2*/</span></span><br><span class="line">update mysql.user <span class="keyword">set</span> <span class="keyword">user</span><span class="operator">=</span>user_2 <span class="keyword">where</span> <span class="keyword">user</span><span class="operator">=</span><span class="string">&#x27;user_1&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*授予用户对DBEM数据库中employee表的查询、插入、修改、删除等操作*/</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span>,<span class="keyword">insert</span>,update,<span class="keyword">drop</span> <span class="keyword">on</span> dbem.employee <span class="keyword">to</span> user_1<span class="variable">@localhost</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*授予用户user_1对DBEM数据库中employee表的查询、插入、修改、删除权限，并允许其将权限授予给其他用户*/</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span>,<span class="keyword">insert</span>,update,<span class="keyword">drop</span> <span class="keyword">on</span> dbem.employee <span class="keyword">to</span> user_1<span class="variable">@localhost</span> <span class="keyword">with</span> <span class="keyword">grant</span> option;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*回收user_1用户查询数据库dbem的employee表的权限*/</span></span><br><span class="line"><span class="keyword">revoke</span> <span class="keyword">select</span> <span class="keyword">on</span> dbem.employee <span class="keyword">from</span> user_1<span class="variable">@localhost</span>;</span><br></pre></td></tr></table></figure>
 
-<h3 id="权限一览表"><a href="#权限一览表" class="headerlink" title="权限一览表"></a>权限一览表</h3><table>
-<thead>
-<tr>
-<th>语    句</th>
-<th>用 户 权 限</th>
-<th>数据库权限</th>
-<th>表  权  限</th>
-<th>列  权  限</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>SELECT</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td>INSERT</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td>DELETE</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>UPDATE</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>REFERENCES</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>CREATE</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td>ALTER</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td>DROP</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td>INDEX</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>CREATE TEMPORARY TABLES</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>CREATE VIEW</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>SHOW VIEW</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>CREATE ROUTINE</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>ALTER ROUTINE</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>EXECUTE ROUTINE</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>LOCK TABLES</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>CREATE USER</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>SHOW DATABASES</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>FILE</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>PROCESS</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>RELOAD</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>REPLICATION CLIENT</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>REPLICATION SLAVE</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>SHUTDOWN</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>SUPER</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>USAGE</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ctrl alt F1		图形</span><br><span class="line">ctrl alt f2		字符1</span><br><span class="line">ctrl alt f3		字符2</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum -y install name			<span class="comment"># 下载name</span></span><br><span class="line">yum -y install nano			<span class="comment"># 下载nano编辑器</span></span><br><span class="line"></span><br><span class="line">yum remove name 			<span class="comment"># 删除name</span></span><br><span class="line">yum remove gcc				<span class="comment"># 删除gcc编译器</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hostname     完整主机名</span><br><span class="line">sudo -i		 切换root用户</span><br><span class="line">passwd		 设置root用户密码</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">free -h		查看内存 ，-h的作用是把内存以合适的单位显示，而不全是字节</span><br><span class="line">runlevel    查看界面类型</span><br><span class="line">uname -r	查看linux内核版本</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">history		查看输入过命令</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">whoami		<span class="comment"># 查看自己身份</span></span><br><span class="line">who am i	<span class="comment"># 查看系统登录者的信息：名称、终端、时间</span></span><br><span class="line">who			<span class="comment"># 查看系统的所有登录者</span></span><br><span class="line">w 			<span class="comment"># 查看所有登录用户信息，以及正在进行的操作</span></span><br><span class="line"></span><br><span class="line">tty			<span class="comment"># 查看当前终端</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps					显示系统当前的进程</span><br><span class="line">echo $&#123;SHELL&#125;		显示当前系统使用的shell</span><br><span class="line">cat /etc/shells		系统支持的shell类型</span><br></pre></td></tr></table></figure>
+
+
+
+<p>多个命令可以用 “;” 符号分开，如：<code>ls;who</code></p>
+<p>一个命令可以用 \ 分成多行，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@yanglinqi ~]<span class="comment"># ls \</span></span><br><span class="line">&gt; -l</span><br><span class="line">总用量 8</span><br><span class="line">-rw-------. 1 root root 1614 1月  25 00:28 anaconda-ks.cfg</span><br><span class="line">-rw-r--r--. 1 root root 1905 1月  25 12:21 initial-setup-ks.cfg</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 <hr>
-<h2 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h2><h3 id="事务的概念"><a href="#事务的概念" class="headerlink" title="事务的概念"></a><code>事务的概念</code></h3><p>事务由作为一个单独单元的一个或多个SQL语句组成。这个单元中的<br>SQL语句是相互依赖的，整个单元是不可分割的。如果单元中的一个语<br>句不能完成，整个单元就会回滚（撤销操作），所有影响到的数据将返<br>回到事务开始以前的状态。（银行交易、网上购物等）</p>
-<h3 id="ACID原则"><a href="#ACID原则" class="headerlink" title="ACID原则"></a><code>ACID原则</code></h3><ul>
-<li>原子性 Atomicity</li>
-<li>一致性 Consistency</li>
-<li>隔离性 Isolation</li>
-<li>持久性 Durabili</li>
+<h3 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h3><p>推荐软件，Xmanager Power Suite，这是一套软件，包含xShell等</p>
+<p>字符界面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hostname -I   查看ip地址</span><br><span class="line"></span><br><span class="line">在windows系统终端以下命令可以远程连接</span><br><span class="line">ssh 登录的用户@上面查看到的ip地址</span><br><span class="line">例：ssh root@192.168.79.128</span><br><span class="line"></span><br><span class="line">windows远程连接的工具</span><br><span class="line">xShell  或   MobaXterm</span><br></pre></td></tr></table></figure>
+
+<p>使用图像化工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一步，运行Xmanager Power Suite 的 Xmanager.exe</span></span><br><span class="line">在安装Xmanager Power Suite后，桌面出现Xmanager Power Suite的文件夹，里面有Tools文件夹，Tools文件夹里面有Xmanager.exe的快捷方式 Xmanager - Passive，运行Xmanager - Passive，注意：不是Xmanager这个快捷方式，名字不同</span><br><span class="line">运行之后桌面右下角会有图标，鼠标移上去出现 Xmanager Server:0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二步，查看本机的ip</span></span><br><span class="line">在windows的cmd窗口，输入 ipconfig，出现多个ip</span><br><span class="line">选择无线局域网适配器 WLAN 的 IPv4 地址：我的是 192.168.0.108</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第三步</span></span><br><span class="line">在xShell的会话界面输入：<span class="built_in">export</span> DISPLAY=192.168.0.108:0.0   ip换成自己的ip</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在xShell运行图像化工具</span></span><br><span class="line">如：firefox   gedit  </span><br><span class="line"></span><br><span class="line">注：如果出现下面情况</span><br><span class="line">Unable to init server: 无法连接：拒绝连接</span><br><span class="line"></span><br><span class="line">(gedit:3216): Gtk-WARNING **: 21:40:47.754: cannot open display: 192.168.0.108:0.0</span><br><span class="line"></span><br><span class="line">在第三步试一试ipconfig查到的其他几个ip</span><br><span class="line"></span><br><span class="line"><span class="comment"># MobaXterm</span></span><br><span class="line">如果使用的远程控制工具是MobaXterm，需要在Centos或Ubuntu安装文件</span><br><span class="line">yum install xorg-x11-xauth xorg-x11-fonts-* xorg-x11-font-utils xorg-x11-fonts-Type1</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<h3 id="查看硬件信息"><a href="#查看硬件信息" class="headerlink" title="查看硬件信息"></a>查看硬件信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看cpu信息</span></span><br><span class="line">lscpu		</span><br><span class="line">cat /proc/cpuinfo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看内存大小</span></span><br><span class="line">free</span><br><span class="line">cat /proc/meminfo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看硬盘和分区</span></span><br><span class="line">lsblk		</span><br><span class="line">cat /proc/partitions</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看内核版本</span></span><br><span class="line">uname -r</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看操作系统发行版本</span></span><br><span class="line">cat /etc/redhat-release</span><br><span class="line">cat /etc/os-release</span><br><span class="line">lsb_release -a</span><br><span class="line"><span class="comment"># ubuntu</span></span><br><span class="line">cat /etc/os-release</span><br><span class="line">cat /etc/is</span><br><span class="line">cat /etc/issue</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="日期和时间"><a href="#日期和时间" class="headerlink" title="日期和时间"></a>日期和时间</h3><p>Linux的两种时钟</p>
+<ul>
+<li>系统时钟：由Linux内核通过CPU的工作频率进行的</li>
+<li>硬件时钟：主板</li>
 </ul>
-<h3 id="并发控制问题"><a href="#并发控制问题" class="headerlink" title="并发控制问题"></a><code>并发控制问题</code></h3><pre><code>丢失修改：两个事务选择同一行，然后基于最初选定的值更新该行时，由于每个事务都不知道其他事务的存在，因此最后的更新将重写由其他事务所做的更新，导致数据丢失
+<p>相关命令</p>
+<ul>
+<li><p>date     显示和设置系统时间</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">date <span class="comment"># 显示系统时间</span></span><br><span class="line">date -s <span class="string">&#x27;1 year&#x27;</span>  <span class="comment"># 修改时间至1年后</span></span><br><span class="line">date +%s  <span class="comment"># 1643271071 # 以秒显示时间，以1970.1.1 00:00:00开始经过的秒数，1970年为Unix元年</span></span><br><span class="line">date +%F  <span class="comment"># 2022-01-27</span></span><br><span class="line">date +%T  <span class="comment"># 16:14:59</span></span><br><span class="line">date -d @1643271071   <span class="comment"># 显示从起始时间计算1643271071秒后的时间 # 2022年 01月 27日 星期四 16:11:11 CST</span></span><br></pre></td></tr></table></figure></li>
+<li><p>clock ,  hwclock     显示硬件时间</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-s ,  --hctosys    <span class="comment"># 以硬件时钟为准，校正系统时钟</span></span><br><span class="line">-w ,  --systohc    <span class="comment"># 以系统时钟为准，校正硬件时钟</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># clock 和 hwclock 是同一个命令</span></span><br><span class="line">[root@yanglinqi ~]<span class="comment"># ll /usr/sbin/clock</span></span><br><span class="line">lrwxrwxrwx. 1 root root 7 7月  21 2021 /usr/sbin/clock -&gt; hwclock</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>时区：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">CST 	<span class="comment"># 东八区，北京时间</span></span><br><span class="line">UST 	<span class="comment"># 格林威治时间</span></span><br><span class="line">CST - UST = 8 hours <span class="comment"># 差8小时</span></span><br><span class="line">date -u   <span class="comment">#2022年 01月 27日 星期四 08:19:36 UTC </span></span><br><span class="line"></span><br><span class="line">[root@yanglinqi ~]<span class="comment"># ll /etc/localtime</span></span><br><span class="line">lrwxrwxrwx. 1 root root 35 1月  25 12:21 /etc/localtime -&gt; ../usr/share/zoneinfo/Asia/Shanghai</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看时区</span></span><br><span class="line">timedatectl list-timezones  <span class="comment"># 按空格键翻页，按q停止</span></span><br><span class="line"><span class="comment"># 修改时区为 纽约时间 EST</span></span><br><span class="line">[root@yanglinqi ~]<span class="comment"># timedatectl set-timezone America/New_York</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Ubuntu</span></span><br><span class="line">cat /etc/timezone</span><br></pre></td></tr></table></figure>
 
-脏读：一个事务正在访问数据，而其他事务正在更新该数据，但尚未提交，此时会发生脏读问题，即第一个事务所读取的数据是“脏”的
+<p>显示日历：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cal    		<span class="comment"># 显示当月</span></span><br><span class="line">cal -y  	<span class="comment"># 显示全年</span></span><br><span class="line">cal 2022 	<span class="comment"># 显示2022年日历</span></span><br><span class="line">cal 9 1752  <span class="comment"># 显示1752年9月</span></span><br></pre></td></tr></table></figure>
 
-不可重复读：在一个事务内多次读同一数据，在该事务还没有结束时，另外的事务也访问该数据并对其做修改，从而导致第一个事务两次读取的数据不一样
 
-幻读：当一个事务对某行执行了插入或删除操作时，由于该行在另外的事务读取的范围内，从而导致两次读取多出了一行或者消失了一行
-</code></pre>
-<p>对并发控制出现的问题，提出四个隔离级别</p>
-<h3 id="四级隔离级别：定义用户之间隔离和交互的程度"><a href="#四级隔离级别：定义用户之间隔离和交互的程度" class="headerlink" title="四级隔离级别：定义用户之间隔离和交互的程度"></a><code>四级隔离级别</code>：定义用户之间隔离和交互的程度</h3><ul>
-<li><p>读未提交(read uncommitted)：可以<code>读</code>到其他事务还<code>没有提交的数据</code>，仅避免丢失修改，会导致大量数据变化，一级封锁协议</p>
-</li>
-<li><p>读已提交(read committed)：可以<code>看</code>到其他事务添加的<code>新纪录</code>，而且其他事务对现存记录做出的修改一旦被提交，也可以看到，避免丢失修改和脏读，二级封锁协议</p>
-</li>
-<li><p>可重复读(repeatable read)：当前在执行的事务的变化无法被看到，同一事务中执行<code>select数次结果都相同</code>，避免丢失修改、脏读和不可重复读，增强的二级封锁协议</p>
-</li>
-<li><p>可串行化(serializable)：用户之间一个接一个执行事务，避免所有并发控制问题，最大限度的隔离，三级封锁协议</p>
+
+<hr>
+<h3 id="关机和重启："><a href="#关机和重启：" class="headerlink" title="关机和重启："></a>关机和重启：</h3><p>关机：</p>
+<ul>
+<li><code>halt</code></li>
+<li><code>poweroff</code></li>
+</ul>
+<p>重启：</p>
+<ul>
+<li><code>reboot</code><ul>
+<li><code>-f</code> ：强制，不调用 <code>shutdown</code></li>
+<li><code>-p</code>  ：切断电源</li>
+</ul>
 </li>
 </ul>
-<p><font color="#ff0000">注：</font>MySQL默认为repeatable read隔离级别</p>
+<p>关机或重启：<code>shutdown</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">shutdown [OPTION]... [TIME] [MESSAGE]</span><br><span class="line"></span><br><span class="line">-r		reboot</span><br><span class="line">-h		halt</span><br><span class="line">-c		cancel</span><br><span class="line">TIME：	默认为+1</span><br><span class="line">		now  立刻，相当于+0</span><br><span class="line">		+#   相对时间表示法，几分钟后，如+3</span><br><span class="line">		hh:mm  绝对时间表示，指明具体时间</span><br><span class="line"></span><br><span class="line">示例</span><br><span class="line">shutdown -h +3</span><br><span class="line">shutdown -h 17:00</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="设置主机名"><a href="#设置主机名" class="headerlink" title="设置主机名"></a>设置主机名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#临时生效</span></span><br><span class="line">hostname NAME</span><br><span class="line"></span><br><span class="line"><span class="comment">#持久生效</span></span><br><span class="line">hostnamectl set-hostname NAME</span><br><span class="line"></span><br><span class="line"><span class="comment">#主机名不支持使用下划线，但支持横线，可使用字母、横线、数字的组合</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="提示符"><a href="#提示符" class="headerlink" title="提示符"></a>提示符</h3><ul>
+<li><p>显示提示符格式：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$PS1</span></span><br><span class="line"><span class="comment"># [\u@\h \W]\$</span></span><br></pre></td></tr></table></figure></li>
+<li><p>修改提示符格式范例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PS1=<span class="string">&#x27;\[\e[1;5;41;33m\][\u@\h \W]\\$\[\e[0m\]&#x27;</span></span><br><span class="line">PS1=<span class="string">&#x27;\[\e[1;41;33m\][\u@\h \W]\\$\[\e[0m\]&#x27;</span></span><br><span class="line">PS1=<span class="string">&#x27;\[\e[41;33m\][\u@\h \W]\\$\[\e[0m\]&#x27;</span></span><br><span class="line">PS1=<span class="string">&#x27;\[\e[33m\][\u@\h \W]\\$\[\e[0m\]&#x27;</span></span><br><span class="line">PS1=<span class="string">&#x27;\[\e[35m\][\u@\h \W]\\$\[\e[0m\]&#x27;</span></span><br><span class="line"><span class="comment"># 31-37字体颜色，41-47背景颜色</span></span><br><span class="line"><span class="comment"># \$ 是 $    \\$ 是 #</span></span><br><span class="line"></span><br><span class="line">PS1=<span class="string">&quot;\[\e[1;32m\][\t \[\e[1;33m\]\u\[\e[35m\]@\h\[\e[1;31m\] \W\[\e[1;32m\]]\[\e[0m\]\\$&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>提示符格式说明：</p>
+<ul>
+<li>\e   控制符\033</li>
+<li>\u  当前用户</li>
+<li>\h  主机名简称</li>
+<li>\H  主机名</li>
+<li>\w  当前工作目录</li>
+<li>\W  当前工作目录基名</li>
+<li>\t    24小时时间格式</li>
+<li>\T   12小时时间格式</li>
+<li>!      命令历史数</li>
+<li>#    开机后命令历史数</li>
+</ul>
+</li>
+<li><p>在CentOS系统实现持久化保存命令提示符</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;PS1=&quot;\[\e[1;32m\][\t \[\e[1;33m\]\u\[\e[35m\]@\h\[\e[1;31m\] \W\[\e[1;32m\]]\[\e[0m\]\\$&quot;&#x27;</span> &gt; /etc/profile.d/env.sh</span><br><span class="line"></span><br><span class="line">. /etc/profile.d/env.sh   <span class="comment"># 执行sh脚本</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="命令分类"><a href="#命令分类" class="headerlink" title="命令分类"></a>命令分类</h3><ul>
+<li>内部命令：由shell自带，而且通过某种命令形式提供</li>
+<li>外部命令：在文件系统路径下有对应的可执行程序文件</li>
+</ul>
+<p>命令执行过程</p>
+<ul>
+<li>在内部命令中找</li>
+<li>外部命令<ul>
+<li>hash表中查找<ul>
+<li>hash表中没有命令信息，继续</li>
+<li>hash有命令信息，但命令的磁盘路径人为改变，报错</li>
+</ul>
+</li>
+<li>$PATH 中的路径中查找</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">ll /bin/bash -h   <span class="comment"># 集成在bash文件中的命令为内部命令</span></span><br><span class="line"><span class="comment"># 查看内部命令</span></span><br><span class="line"><span class="built_in">enable</span>   <span class="comment"># 所有启用的内部命令</span></span><br><span class="line"><span class="built_in">help</span> 	 <span class="comment"># 所有内部命令，禁用的命令前面带有*号</span></span><br><span class="line"></span><br><span class="line">ls /bin		<span class="comment"># bin文件夹下的其他命令为外部命令，在磁盘文件中</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断命令是内部命令还是外部命令</span></span><br><span class="line"><span class="built_in">type</span> 命令名</span><br><span class="line"><span class="comment">#例</span></span><br><span class="line"><span class="built_in">type</span> <span class="built_in">help</span>  <span class="comment"># help is a shell builtin</span></span><br><span class="line"><span class="built_in">type</span> hostname  <span class="comment"># hostname is hashed (/usr/bin/hostname)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># shell会先在内部命令bash中查找命令，没有再在文件中查找命令，若没有找到，则报错</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span> 		<span class="comment"># 查找的路径</span></span><br><span class="line"><span class="comment"># /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 即是内部也是外部命令，优先执行内部命令，备用的效果</span></span><br><span class="line"><span class="built_in">type</span> -a <span class="built_in">echo</span></span><br><span class="line"><span class="comment"># echo is a shell builtin</span></span><br><span class="line"><span class="comment"># echo is /usr/bin/echo</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 禁用内部命令，临时生效</span></span><br><span class="line"><span class="built_in">enable</span> -n <span class="built_in">echo</span>  <span class="comment"># help查看内部命令，echo带有*号</span></span><br><span class="line"><span class="built_in">enable</span> -n		<span class="comment"># 查看禁用的内部命令</span></span><br><span class="line"><span class="built_in">enable</span> <span class="built_in">echo</span>		<span class="comment"># 启用命令</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># hash缓存表，用于保存外部命令的路径，提高效率</span></span><br><span class="line"><span class="comment"># 例，先输入几个命令 hostname  、  who</span></span><br><span class="line"><span class="built_in">hash</span>  <span class="comment"># 查看hash表，输出如下</span></span><br><span class="line"><span class="comment"># hits	command</span></span><br><span class="line"><span class="comment"># 1 	/usr/bin/hostname</span></span><br><span class="line"><span class="comment"># 1		/usr/bin/who</span></span><br><span class="line"><span class="built_in">hash</span> -d hostname <span class="comment"># 删除hash表中保存的hostname命令路径</span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="hash命令常见用法"><a href="#hash命令常见用法" class="headerlink" title="hash命令常见用法"></a>hash命令常见用法</h3><ul>
+<li><code>hash</code>                                    显示hash缓存</li>
+<li><code>hash -l</code>                              显示hash缓存，可作为输入使用</li>
+<li><code>hash -p path name</code>         将命令全路径path起别名为name</li>
+<li><code>hash -t name</code>                    打印缓存中name的路径</li>
+<li><code>hash -d name</code>                     清楚name缓存</li>
+<li><code>hash -r</code>                                清除缓存</li>
+</ul>
+<hr>
+<h3 id="命令别名"><a href="#命令别名" class="headerlink" title="命令别名"></a>命令别名</h3><ul>
+<li><code>alias</code></li>
+<li><code>alias name=&#39;value&#39;</code>    定义别名</li>
+<li><code>unalias name</code>                 取消别名</li>
+<li><code>unalias -a</code>                      取消所有别名</li>
+</ul>
+<p>永久有效，要定义在配置文件中</p>
+<ul>
+<li>对当前用户永久有效： ~/.bashrc</li>
+<li>对所有用户永久有效：/etc/bashrc</li>
+</ul>
+<p>如果别名同原命令同名，要执行原命令，使用</p>
+<ul>
+<li><code>\aliasname</code></li>
+<li><code>&quot;aliasname&quot;</code></li>
+<li><code>&#39;aliasname&#39;</code></li>
+<li><code>command aliasname</code></li>
+<li><code>/path/command  # 只适用于外部命令</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 例如，要执行下面三条命令，很长，设为别名scandisk，三条命令的作用：查看新添加的硬盘</span></span><br><span class="line"><span class="built_in">echo</span> - - - &gt; /sys/class/scsi_host/host0/scan</span><br><span class="line"><span class="built_in">echo</span> - - - &gt; /sys/class/scsi_host/host1/scan</span><br><span class="line"><span class="built_in">echo</span> - - - &gt; /sys/class/scsi_host/host2/scan</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义别名，临时生效</span></span><br><span class="line"><span class="built_in">alias</span> scandisk=<span class="string">&quot;echo - - - &gt; /sys/class/scsi_host/host0/scan;echo - - - &gt; /sys/class/scsi_host/host1/scan;echo - - - &gt; /sys/class/scsi_host/host2/scan&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看别名</span></span><br><span class="line"><span class="built_in">alias</span> scandisk</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除别名</span></span><br><span class="line"><span class="built_in">unalias</span> scandisk</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写入 .bashrc文件，持久生效</span></span><br><span class="line"><span class="comment"># 可以直接在打开文件写入</span></span><br><span class="line"><span class="comment"># 也可以使用下面的命令，示例</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;alias yi=&#x27;yum -y install &#x27;&quot;</span> &gt;&gt; .bashrc</span><br><span class="line"><span class="comment"># 再运行 .bashrc 文件</span></span><br><span class="line">. .bashrc</span><br><span class="line"><span class="built_in">alias</span>  <span class="comment"># 查看yi是否生效，可以直接使用yi下载了，如 yi gcc  下载gcc编译器</span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">COMMAND [OPTIONS...] [ARGUMENTS...]</span><br><span class="line">COMMAND [COMMAND] [COMMAND] ...</span><br></pre></td></tr></table></figure>
+
+<p>选项：用于启用或关闭命令的某个或某些功能</p>
+<ul>
+<li>短选项：UNIX风格选项， -c    例如： -l, -h</li>
+<li>长选项：GNU风格选项，–word  例如： –all,  –human</li>
+<li>BSD风格选项：一个字母，例如：a，使用相对较少</li>
+</ul>
+<p>参数：命令的作用对象，比如：文件名，用户名等</p>
+<p>范例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS8 ~]<span class="comment">#id -u yang</span></span><br><span class="line">1000</span><br><span class="line"></span><br><span class="line">[root@CentOS8 ~]<span class="comment">#ls -a</span></span><br><span class="line">[root@CentOS8 ~]<span class="comment">#ls --all</span></span><br><span class="line"></span><br><span class="line">[root@CentOS8 ~]<span class="comment">#free -h</span></span><br><span class="line">[root@CentOS8 ~]<span class="comment">#free --huamn</span></span><br><span class="line"></span><br><span class="line">[root@CentOS8 ~]<span class="comment">#ps a</span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="文本编辑器"><a href="#文本编辑器" class="headerlink" title="文本编辑器"></a>文本编辑器</h3><ul>
+<li>nano  实现文本的编辑，上手容易，适合初学者</li>
+<li>gedit  图形化界面编辑器</li>
+<li>vi        命令较多</li>
+</ul>
+<hr>
+<h3 id="会话管理"><a href="#会话管理" class="headerlink" title="会话管理"></a>会话管理</h3><p>命令行的典型使用方式是，打开个终端窗口( terminal window,以下简称”窗口”),在里面输入命令。用户与计算机的这种临时的交互，称为一次”会话”( session)<br>会话的个重要特点是，窗口与其中启动的进程是连在一起的。打开窗口，会话开始；关闭窗口，会话结束，会话内部的进程也会随之终止，不管有没有运行完<br>一个典型的例子就是，SSH登录远程计算机，打开个远程窗口执行命令。这时，网络突然断线，再次登录的时候，是找不回上一次执行的命令的。因为上一次SSH会话已经终止了，里面的进程也随之消失了。为了解决这个问题，会话与窗口可以”解绑”：窗口关闭时，会话并不终止，而是继续运行，等到以后需要的时候，再让会话”绑定”其他窗口</p>
+<p>终端复用器软件就是会话与窗口的”解绑”工具，将它们彻底分离。<br>(1)它允许在单个窗口中，同时访问多个会话。这对于同时运行多个命令行程序很有用<br>(2)它可以让新窗口”接入”已经存在的会话。<br>(3)它允许每个会话有多个连接窗口，因此可以多人实时共享会话。<br>(4)它还支持窗口任意的垂直和水平拆分<br>类似的终端复用器还有 Screen,Tmux</p>
+<h4 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 screen</span></span><br><span class="line"><span class="comment"># CentOS7  </span></span><br><span class="line">yum -y install screen</span><br><span class="line"><span class="comment"># CentOS8</span></span><br><span class="line">dnf -y install epel-release</span><br><span class="line">dnf -y install screen</span><br><span class="line"><span class="comment">#Ubuntu</span></span><br><span class="line">apt install screen</span><br></pre></td></tr></table></figure>
+
+<p>screen命令常见用法：</p>
+<ul>
+<li><p>创建新screen会话</p>
+<p><code>screen -S [SESSION]</code></p>
+</li>
+<li><p>加入screen会话</p>
+<p><code>screen -x [SESSION]</code></p>
+</li>
+<li><p>退出并关闭screen会话</p>
+<p><code>exit</code></p>
+</li>
+<li><p>剥离当前screen会话</p>
+<p><code>Ctrl+a,d</code></p>
+</li>
+<li><p>显示所有已经打开的screen会话</p>
+<p><code>screen -ls</code></p>
+</li>
+<li><p>恢复某screen会话</p>
+<p><code>screen -r [SESSION]</code></p>
+</li>
+</ul>
+<h4 id="Tmux"><a href="#Tmux" class="headerlink" title="Tmux"></a>Tmux</h4><p>是一个终端复用器 (terminal multiplexer),类似 screen,但是更易用，也更强大</p>
+<p>Tmux就是会话与窗口的”解绑”工具，将它们彻底分离，功能如下</p>
+<ul>
+<li>它允许在单个窗口中，同时访问多个会话。这对于同时运行多个命令行程序很有用。</li>
+<li>它可以让新窗口接入”已经存在的会话。</li>
+<li>它允许每个会话有多个连接窗口，因此可以多人实时共享会话。</li>
+<li>它还支持窗口任意的垂直和水平拆分</li>
+</ul>
+<p>安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install tmux</span><br></pre></td></tr></table></figure>
+
+<p>启动与退出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tmux</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+
+<p>Tmux窗口有大量的快捷键。所有快捷键都要通过前缀键唤起。默认的前缀键是ctrl+b,即先按下ctrl+b,快捷键才会生效。帮助命令的快捷键是<code>ctrl+b ?</code>然后，按下q键，就可以退出帮助</p>
+<p>新建会话<br>第一个启动的Tmux窗口，编号是0,第二个窗口的编号是1,以此类推。这些窗口对应的会话，就是0号会话、1号会话。使用编号区分会话，不太直观，更好的方法是为会话起名。下面命令新建一个指定名称的会话。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux new -s &lt;session-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>tmux Is 或 Ctrl+b,s可以查看当前所有的Tmux会话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tmux ls</span><br><span class="line">tmux list-session</span><br></pre></td></tr></table></figure>
+
+<p>分离会话<br>在Tmux窗口中，按下Ctrl+b d或者输入 tmux detach命令，就会将当前会话与窗口分离</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux detach</span><br></pre></td></tr></table></figure>
+
+<p>接入会话<br>tmux attach 命令用于重新接入某个已存在的会话。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux attach -t &lt;session-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>范例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux attach -t 0</span><br></pre></td></tr></table></figure>
+
+<p>杀死会话<br>tmux kill-session 命令用于杀死某个会话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x kill-session -t &lt;session-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>切换会话<br>tmux switch 命令用于切换会话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux switch -t &lt;session-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以将窗口分成多个窗格(pane)，每个窗格运行不同的命令</p>
+<p>上下分窗格</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tmux split-window</span><br><span class="line">ctrl+b,&quot;</span><br></pre></td></tr></table></figure>
+
+<p>左右分窗格</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tmux split-window -h</span><br><span class="line">ctrl+b,%</span><br></pre></td></tr></table></figure>
+
+<p>窗格快捷键</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ctr1+b %   	划分左右两个商格</span><br><span class="line">ctr1+b &quot;   	划分上下两个窗格</span><br><span class="line">ctrl+b &lt;arrow key&gt;   光标切换到其他窗格。&lt;arrow key&gt;是指向要切换到的窗格的方向键，比如切换到下方窗格，就按向下的方向键</span><br><span class="line">ctr1+b ;	光标切换到上一个窗格</span><br><span class="line">ctr1+b o 	光标切换到下一个窗格。</span><br><span class="line">ctr1+b &#123;  	当前窗格左移</span><br><span class="line">ctr1+b &#125; 	当前窗格右移</span><br><span class="line">ctr1+b Ctrl+o  	当前窗格上移</span><br><span class="line">ctr1+b A1t+o 	当前窗格下移</span><br><span class="line">ctr1+b x 		关闭当前窗格</span><br><span class="line">ctr1+b ! 		将当前窗格折分为一个独立窗口</span><br><span class="line">ctr1+b z 		当前窗格全屏显示，再使用一次会变回原来大小</span><br><span class="line">ctr1+b ctr1+&lt;arrow key&gt; 	按箭头方向调整窗格大小</span><br><span class="line">Ctr1+b q 		显示窗格编号</span><br></pre></td></tr></table></figure>
+
+<p>列出所有Tmux命令及其参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux list-commands</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="输出信息-echo"><a href="#输出信息-echo" class="headerlink" title="输出信息 echo"></a>输出信息 echo</h3><p>echo基本用法</p>
+<p>echo命令可以将后面跟的字符进行输出<br>功能：显示字符，echo会将输入的字符串送往标准输出。输出的字符串间以空白字符隔开，并在最后加上换行号</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo [-neE][字符串]</span><br></pre></td></tr></table></figure>
+
+<p>选项：</p>
+<ul>
+<li>-E（默认）不支持 \ 解释功能</li>
+<li>-n 不自动换行</li>
+<li>-e 启用 \ 字符的解释功能</li>
+</ul>
+<p>显示变量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$VAR_NAME</span>”   # 用变量值换，弱引用</span></span><br><span class="line"><span class="string">echo &#x27;<span class="variable">$VAR_NAME</span>&#x27;   # 变量不会替换，强引用</span></span><br></pre></td></tr></table></figure>
+
+<p>启用命令选项 -e，若字符串中出现以下字符，则特別加以处理，而不会将它当成一般文字输出</p>
+<ul>
+<li>\a    发出警告声</li>
+<li>\b    退格键</li>
+<li>\c     最后不加上换行符号</li>
+<li>\e     escape，相当于\033</li>
+<li>\n     换行且光标移至行首</li>
+<li>\r      回车，即光标移至行首，但不换行</li>
+<li>\t      插入tab</li>
+<li>\ \       插入 \ 字符</li>
+<li>\0nnn   插入nnn （八进制）所代表的ASCII字符</li>
+<li>\xHH     插入HH（十六进制）所代表的ASCII字符（man 7 ascii）</li>
+</ul>
+<p>echo高级用法</p>
+<p>在终端中，ANSI 定义了用于屏幕显示的 Escape.屏幕控制码</p>
+<p>具有颜色的字符，其格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;033[字符背景色;字体色m字符串\033[0m&quot;</span><br></pre></td></tr></table></figure>
+
+<p>\033[30m …  \033[37m      设置前景色<br>\033[40m …  \033[47m      设置背景色</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 字符背景色苑围：40-47</span></span><br><span class="line">40:黑</span><br><span class="line">41:红</span><br><span class="line">42:绿</span><br><span class="line">43:黄</span><br><span class="line">44:蓝</span><br><span class="line">45:紫</span><br><span class="line">46:深绿</span><br><span class="line">47:白色</span><br><span class="line"></span><br><span class="line"><span class="comment"># 字体颜色：30-37  和字符背景颜色对应</span></span><br></pre></td></tr></table></figure>
+
+<p>加颜色只是以下控制码中的一种，下面是常见的一些 ANSI 控制码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">\033[0m		关闭所有属性</span><br><span class="line">\033[1m		设置高亮度</span><br><span class="line">\033[4m		下划线</span><br><span class="line">\033[5m		闪烁</span><br><span class="line">\033[7m		反显</span><br><span class="line">\033[8m		消隐</span><br><span class="line">\033[nA		光标上移n行</span><br><span class="line">\033[nB		光标下移n行</span><br><span class="line">\033[nC		光标右移n列</span><br><span class="line">\033[nD		光标左移n列</span><br><span class="line">\033[x;yH	设置光标位置x行y列</span><br><span class="line">\033[2J		清屏</span><br><span class="line">\033[K		清除从光标到行尾的内客</span><br><span class="line">\033[s		保存光标位置</span><br><span class="line">\033[u		恢复光标位置</span><br><span class="line">\033[?25l	隐藏光标</span><br><span class="line">\033[?25h	显示光标</span><br><span class="line">\033[2J\033[0;0H 	清屏且将光标置顶</span><br></pre></td></tr></table></figure>
+
+
+
+<p>范例：显示文件的十六进制编码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@yanglinqi ~]<span class="comment"># cat &gt; myfile</span></span><br><span class="line">A</span><br><span class="line">B</span><br><span class="line">C</span><br><span class="line">D</span><br><span class="line">[root@yanglinqi ~]<span class="comment"># hexdump -C myfile</span></span><br><span class="line">00000000  41 0a 42 0a 43 0a 44 0a                           |A.B.C.D.|</span><br><span class="line">00000008</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="字符集和编码"><a href="#字符集和编码" class="headerlink" title="字符集和编码"></a>字符集和编码</h3><p>许多场合下，字符集与编码这两个概念常被混为一谈，但两者是有差別的。字符集与字符集编码是两个不同层面的概念。</p>
+<p>charset是 character set的简写，即字符集，即二进制和字符的对应关系，不关注最终的存储形式</p>
+<p>encoding是 charset encoding的简写，即字符集编码，简称编码，实现如何将字符转化为实际的二进制进行存储或相反，编码决定了空间的使用的大小</p>
+<p>UTF-8是目前互联网上使用最广泛的一种 Unicode编码方式，可变长存储。使用1-4个字节表示一个字符，根据字符的不同变换长度，编码规则如下：</p>
+<blockquote>
+<p>对于单个字节的字符，第一位设为0,后面的7位对应这个字符的 Unicode码。因此，对于英文中的0-127号字符，与ASCI码完全相同。这意味着ASC码的文档可用UTF-8编码打开<br>对于需要使用N个字节来表示的字符(N&gt;1),第一个字节的前N位都设为1,第N+1位设为0,剩余的N-1个字节的前两位都设为10，剩下的二进制位则使用这个字符的 Unicode码来填充</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://unicode.yunser.com/unicode">Unicode 查询 (yunser.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://home.unicode.org/">Unicode – The World Standard for Text and Emoji</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.chi2ko.com/tool/CJK.htm">http://www.chi2ko.com/tool/CJK.htm</a></p>
+<p><a target="_blank" rel="noopener" href="https://javawind.net/tools/native2ascii.jsp?action=transform">https://javawind.net/tools/native2ascii.jsp?action=transform</a></p>
+<p><a target="_blank" rel="noopener" href="http://tool.oschina.net/encode">http://tool.oschina.net/encode</a></p>
+<p><a target="_blank" rel="noopener" href="http://web.chacuo.net/charsetescape">http://web.chacuo.net/charsetescape</a></p>
+<p>Unicode和UTF-8</p>
 <table>
 <thead>
 <tr>
-<th>隔离级别</th>
-<th>丢失修改</th>
-<th>脏读</th>
-<th>不可重复读</th>
-<th>幻读</th>
+<th>Unicode符号范围（十六进制）</th>
+<th>UTF-8編码方式二进制）</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>读未提交</td>
-<td>X</td>
-<td>O</td>
-<td>O</td>
-<td>O</td>
+<td>0000 0000-0000 007F</td>
+<td>0xxxxxxx</td>
 </tr>
 <tr>
-<td>读已提交</td>
-<td>X</td>
-<td>X</td>
-<td>O</td>
-<td>O</td>
+<td>0000 0080-0000 07FF</td>
+<td>110xxxxx 10xxxxxx</td>
 </tr>
 <tr>
-<td>可重复读</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td>O</td>
+<td>0000 0800-0000 FFFF</td>
+<td>1110xxxx 10xxxxxx 10xxxxxx</td>
 </tr>
 <tr>
-<td>可串行化</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
+<td>0001 0000-0010 FFFF</td>
+<td>11110xxx 10xxxxxx 10xxxxxx10xxxxxx</td>
 </tr>
 </tbody></table>
-<pre><code>在 MySQL 命令行的默认设置下，事务都是自动提交的，即执行 SQL 语句后就会马上执行 COMMIT 操作。因此要显式地开启一个事务务须使用命令 BEGIN 或 START TRANSACTION，或者执行命令 SET AUTOCOMMIT=0，用来禁止使用当前会话的自动提交。
-</code></pre>
-<h3 id="事务控制语句："><a href="#事务控制语句：" class="headerlink" title="事务控制语句："></a><code>事务控制语句：</code></h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span> 或 <span class="keyword">START</span> TRANSACTION 显式地开启一个事务；</span><br><span class="line"></span><br><span class="line"><span class="keyword">COMMIT</span> 也可以使用 <span class="keyword">COMMIT</span> WORK，不过二者是等价的。<span class="keyword">COMMIT</span> 会提交事务，并使已对数据库进行的所有修改成为永久性的；</span><br><span class="line"></span><br><span class="line"><span class="keyword">ROLLBACK</span> 也可以使用 <span class="keyword">ROLLBACK</span> WORK，不过二者是等价的。回滚会结束用户的事务，并撤销正在进行的所有未提交的修改；</span><br><span class="line"></span><br><span class="line"><span class="keyword">SAVEPOINT</span> identifier，<span class="keyword">SAVEPOINT</span> 允许在事务中创建一个保存点，一个事务中可以有多个 <span class="keyword">SAVEPOINT</span>；</span><br><span class="line"></span><br><span class="line"><span class="keyword">RELEASE</span> <span class="keyword">SAVEPOINT</span> identifier 删除一个事务的保存点，当没有指定的保存点时，执行该语句会抛出一个异常；</span><br><span class="line"></span><br><span class="line"><span class="keyword">ROLLBACK</span> <span class="keyword">TO</span> identifier 把事务回滚到标记点；</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> TRANSACTION 用来设置事务的隔离级别。InnoDB 存储引擎提供事务的隔离级别有READ UNCOMMITTED、READ COMMITTED、REPEATABLE READ 和 SERIALIZABLE</span><br></pre></td></tr></table></figure>
+<p>范例： Unicode转换为UTF-8</p>
+<blockquote>
+<p>汉”的 Unicode码 0x6C49 (110 110001 001001),需要三个字节存储，格式カ:1110xxxx 10xxxxxx 10xxxxxx，从后向前依次填充对应格式中的x，多出的x用0补，得出UTF-8编码为11100110 10110001 10001001</p>
+<p>“马”的 Unicode码 0x9A6C (1001 101001 101100),需要三个字节存储，格式为：1110xxxx 10xxxxxx 10xxxxxx,从后向前依次填充对应格式中的x，多出的x用0补，得出UTF-8编码为11101001 10101001 10101100</p>
+</blockquote>
+<p>范例：修改LANG变量来实现中文语言提示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$LANG</span> 		<span class="comment"># 查看语言</span></span><br><span class="line">LANG=zh_CN.UTF-8	<span class="comment"># 设置中文</span></span><br><span class="line">LANG=en_US.UTF-8	<span class="comment"># 设置英文，默认</span></span><br></pre></td></tr></table></figure>
 
-<p><code>MYSQL 事务处理主要有两种方法：</code></p>
-<p>1、用 BEGIN, ROLLBACK, COMMIT来实现</p>
+
+
+<hr>
+<h3 id="命令行及括号扩展"><a href="#命令行及括号扩展" class="headerlink" title="命令行及括号扩展"></a>命令行及括号扩展</h3><p>` ` 和 $()</p>
+<p>把一个命令的输出打印给另一个命令的参数，放在``中的一定是有输出信息的命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(COMMAND) 或 `COMMAND`</span><br></pre></td></tr></table></figure>
+
+<p>范例：比较 “ “，’ ‘，``三者区别</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@yanglinqi ~]<span class="comment"># echo &quot;echo $HOSTNAME&quot;</span></span><br><span class="line"><span class="built_in">echo</span> yanglinqi.local</span><br><span class="line">[root@yanglinqi ~]<span class="comment"># echo &#x27;echo $HOSTNAME&#x27;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$HOSTNAME</span></span><br><span class="line">[root@yanglinqi ~]<span class="comment"># echo `echo $HOSTNAME`</span></span><br><span class="line">yanglinqi.local</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结论</span></span><br><span class="line">单引号：强引用，变量和命令都不识别，都当成普通的字符串</span><br><span class="line">双引号：弱引用，不能识别命令，可以识别变量</span><br><span class="line">反向单引号：里面的内容必须是能执行的命令并且有输出信息，变量和命令都识别，并且会将反向单引号的内容当成命令进行执行后，在交给调用反向单引号的命令继续</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">date +%F        <span class="comment"># 显示今天日期 2022-01-28</span></span><br><span class="line">touch 2022-01-28.log	<span class="comment"># 创建 2022-01-28.log文件</span></span><br><span class="line">date `date +%F`.<span class="built_in">log</span>     <span class="comment"># 也是创建 2022-01-28.log文件，先执行``内的命令，使用``输出作为文件名</span></span><br><span class="line">等价于</span><br><span class="line">date $(date +%F).<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+<p>括号扩展：{}</p>
+<p>{}可以实现打印重复字符串的简化形式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;元素1,元素2,元素3&#125;</span><br><span class="line">&#123;元素1..元素2&#125;</span><br></pre></td></tr></table></figure>
+
+<p>范例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> file&#123;1,3,5&#125; <span class="comment"># 结果为：file1 file2 file3</span></span><br><span class="line"><span class="built_in">echo</span> &#123;1..10&#125;</span><br><span class="line"><span class="built_in">echo</span> &#123;a..z&#125;</span><br><span class="line"><span class="built_in">echo</span> &#123;1..10..2&#125;</span><br><span class="line"><span class="built_in">echo</span> &#123;000..20..2&#125;</span><br></pre></td></tr></table></figure>
+
+<p>范例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@yanglinqi ~]<span class="comment"># echo &#123;000..20..2&#125;</span></span><br><span class="line">000 002 004 006 008 010 012 014 016 018 020</span><br><span class="line">[root@yanglinqi ~]<span class="comment"># echo &#123;a..z..2&#125;</span></span><br><span class="line">a c e g i k m o q s u w y</span><br><span class="line">[root@yanglinqi ~]<span class="comment"># echo &#123;A..z&#125;</span></span><br><span class="line">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [  ] ^ _ ` a b c d e f g h i j k l m n o p q r s t u v w x y z</span><br></pre></td></tr></table></figure>
+
+<p>范例：关闭和启用{}的扩展功能</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@yanglinqi ~]<span class="comment"># echo $-</span></span><br><span class="line">himBHs</span><br><span class="line">[root@yanglinqi ~]<span class="comment"># echo &#123;1..10&#125;</span></span><br><span class="line">1 2 3 4 5 6 7 8 9 10</span><br><span class="line">[root@yanglinqi ~]<span class="comment"># set +B</span></span><br><span class="line">[root@yanglinqi ~]<span class="comment"># echo $-</span></span><br><span class="line">himHs</span><br><span class="line">[root@yanglinqi ~]<span class="comment"># echo &#123;1..10&#125;</span></span><br><span class="line">&#123;1..10&#125;</span><br><span class="line">[root@yanglinqi ~]<span class="comment"># set -B</span></span><br><span class="line">[root@yanglinqi ~]<span class="comment"># echo $-</span></span><br><span class="line">himBHs</span><br><span class="line">[root@yanglinqi ~]<span class="comment"># echo &#123;1..10&#125;</span></span><br><span class="line">1 2 3 4 5 6 7 8 9 10</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="tab键补全"><a href="#tab键补全" class="headerlink" title="tab键补全"></a>tab键补全</h3><p>tab键可以实现命令及路径等补全，提高输入效率避免出错</p>
+<p>命令补全</p>
 <ul>
-<li>BEGIN 开始一个事务</li>
-<li>ROLLBACK 事务回滚</li>
-<li>COMMIT 事务确认</li>
+<li>内部命令</li>
+<li>外部命令：bash根据PATH环境变量定义的路径，自左而右在每个路径搜寻以给定命令名命名的文件，第一次找到的命令即为要执行的命令</li>
+<li>命令的子命令补全，需要安装<code>bash-completion</code></li>
 </ul>
-<p>2、直接用 SET 来改变 MySQL 的自动提交模式:</p>
+<p>注意：用户给定的字符串只有一条唯一对应的命令，直接补全，否则，再次tab会给出列表</p>
+<p>范例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@yanglinqi ~]<span class="comment"># nmcli connection 2TAB</span></span><br><span class="line">add      delete   edit     <span class="built_in">help</span>     load     monitor  show     </span><br><span class="line"><span class="built_in">clone</span>    down     <span class="built_in">export</span>   import   modify   reload   up  </span><br></pre></td></tr></table></figure>
+
+<p>路径补全</p>
+<blockquote>
+<p>把用户给出的字符串当做路径开头，并在其指定的上级目录下搜索以指定的字符串开头的文件名</p>
+<p>如果唯一：则直接补全</p>
+<p>否则：再次Tab给出列表</p>
+</blockquote>
+<p>双击Tab键</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">command 2TAB   	所有子命令或文件补全</span><br><span class="line">string2TAB		以string开头命令</span><br><span class="line">/2TAB			显示所有根目录下一级目录，包括隐藏目录</span><br><span class="line">./2TAB			当前目录下子目录，包括隐藏目录</span><br><span class="line">*2TAB			当前目录下子目录，不包括隐藏目录</span><br><span class="line">~2TAB			所有用户列表</span><br><span class="line">$2TAB			所有变量</span><br><span class="line">@2TAB			/etc/hosts记录</span><br><span class="line">=2TAB			相当于ls -A</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="命令行历史-history"><a href="#命令行历史-history" class="headerlink" title="命令行历史 history"></a>命令行历史 history</h3><p>当执行命令后，系统默认会在内存记录执行过的命令</p>
+<p>当用户正常退出时，会将内存的命令历史存放对应历史文件中，默认是<code>~/.bash_ history</code></p>
+<p>登录shell时，会读取命令历史文件中记录下的命令加载到内存中</p>
+<p>登录进shel后新执行的命令只会记录在内存的缓存区中；这些命令会用户正常退出时“追加”至命令历史文件中</p>
+<p>利用命今历史。可以用它来重复执行命令，提高输入效率</p>
+<p>命令： history</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">history</span> [-c] [-d offset] [n]</span><br><span class="line"><span class="built_in">history</span> -anrw [filename]</span><br><span class="line"><span class="built_in">history</span> -ps arg [arg...]</span><br></pre></td></tr></table></figure>
+
+<p>常用选项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-c				清空命令历史</span><br><span class="line">-d offset		删除历史中指定的第offset个命令</span><br><span class="line">n				显示最近的n条历史</span><br><span class="line">-a				追加本次会话新执行的命令历史列表至历史文件</span><br><span class="line">-r 				读历史文件附加到历史列表</span><br><span class="line">-w				保存历史列表到指定的历史文件</span><br><span class="line">-n				读历史文件中未读过的行到历史列表</span><br><span class="line">-p				展开历史参数成多行，但不存在历史列表中</span><br><span class="line">-s				展开历史参数成一行，附加在历史列表后</span><br></pre></td></tr></table></figure>
+
+<p>命令历史相关环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HISTSIZE		命令历史记录的条数</span><br><span class="line">HISTFILE		指定历史文件，默认为~/.bash_history</span><br><span class="line">HISTFILESIZE	命令历史文件记录历史的条数</span><br><span class="line">HISTTIMEFORMAT=&quot;%F %T `whoami`&quot;  显示时间和用户</span><br><span class="line">HISTIGNORE=&quot;str1:str2*:...&quot;      忽略str1命令，str2开头的历史</span><br><span class="line">HISTCONTROL		控制命令历史的记录方式</span><br><span class="line">		ignoredups    默认值，可忽略重复部分，连续且相同为“重复”</span><br><span class="line">		ignorespace   忽略所有以空白开头的命令</span><br><span class="line">		ignoreboth 	  相当于ignoredups，ignorespace的组合</span><br><span class="line">		erasedups     删除重复命令</span><br></pre></td></tr></table></figure>
+
+<p>持久保存变量</p>
+<p>以上变量可以 <code>export 变量名=&quot;值&quot;</code> 形式存放在 <code>/etc/profile</code> 或 <code>~./bash_profile</code></p>
+<p>调用命令行历史</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment"># 重复前一个命令方法</span></span><br><span class="line"> 按上方向键，并回车执行</span><br><span class="line"> 输入 !!  并回车执行</span><br><span class="line"> 输入 !-1 并回车执行</span><br><span class="line"> 按 ctrl+p  并回车执行</span><br><span class="line"> </span><br><span class="line"> !:0 	执行前一条命令（去除参数）</span><br><span class="line"> !n		执行<span class="built_in">history</span>命令输出的历史命令中对应序号n的命令</span><br><span class="line"> !string	重复前一个以<span class="string">&quot;string&quot;</span>开头的命令</span><br><span class="line"> !?string 	重复前一个包含string的命令</span><br><span class="line"> !string:p	仅打印命令历史，不执行</span><br><span class="line"> !$:P		打印输出 !$ （上一条命令的最后一个参数）的内容</span><br><span class="line"> !*:p		打印输出 !* （上一条命令的所有参数）的内容</span><br><span class="line"> ^string	删除上一条命令中的第一个string</span><br><span class="line"> ^string1^string2	将上一条命令中的第一个string1替换成string2</span><br><span class="line"> !:gs/string1/string2	将上一条命令中所有的string1替换成string2</span><br><span class="line"> 使用up (向上) 和down（向下）键来上下浏览从前输入的命令</span><br><span class="line"> ctrl+r  在命令历史中搜索命令</span><br><span class="line"> (reverse-i-search)`<span class="string">&#x27;: </span></span><br><span class="line"><span class="string">ctrl+g	 从历史搜索模式退出</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 要重新调用前一个命令中最后一个参数</span></span><br><span class="line"><span class="string">!$		表示前一个命令中最后一个参数</span></span><br><span class="line"><span class="string">Esc,.	点击Esc键后松开，然后点击 . 键</span></span><br><span class="line"><span class="string">alt+.	按住alt键的同时点击 . 键</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">command !^		利用上一个命令的第一个参数做command的参数</span></span><br><span class="line"><span class="string">command !$  	利用上一个命令的最后一个参数做command的参数</span></span><br><span class="line"><span class="string">command !*		利用上一个命令的全部参数做command的参数</span></span><br><span class="line"><span class="string">command !:n		利用上一个命令的第n个参数做command的参数</span></span><br><span class="line"><span class="string">command !n:^	调用第n条命令的第一个参数</span></span><br><span class="line"><span class="string">command !n:$	调用第n条命令的最后一个参数</span></span><br><span class="line"><span class="string">command !n:m	调用第n条命令的第m个参数</span></span><br><span class="line"><span class="string">command !n:*	调用第n条命令的所有参数</span></span><br><span class="line"><span class="string">command !string:^	从命令历史中搜索以 string 开头的命令，并获取它的第一个参数</span></span><br><span class="line"><span class="string">command !string:$	从命令历史中搜索以 string 开头的命令，并获取它的最后一个参数</span></span><br><span class="line"><span class="string">command !string:n	从命令历史中搜索以 string 开头的命令，并获取它的第n个参数</span></span><br><span class="line"><span class="string">command !string:*	从命令历史中搜索以 string 开头的命令，并获取它的所有参数</span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="bash的快捷键"><a href="#bash的快捷键" class="headerlink" title="bash的快捷键"></a>bash的快捷键</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+l		清屏，相当于c1ear命令</span><br><span class="line">Ctrl+o		执行当前命令，并重新显示本命令</span><br><span class="line">Ctrl+s		阻止屏出输出，锁定</span><br><span class="line">Ctrl+q		允许屏幕输出，解锁</span><br><span class="line">Ctrl+c		终止命令</span><br><span class="line">Ctrl+z		挂起命令</span><br><span class="line">Ctrl+a		光标移到命令行首，相当于Home</span><br><span class="line">Ctrl+e		光标移到命令行尾，相当于End</span><br><span class="line">Ctrl+f		光标向右移动一个字符</span><br><span class="line">Ctrl+b		光标向左移动一个字符</span><br><span class="line">Ctrl+xx		光标在命令行首和光标之间移动</span><br><span class="line">Alt+f		光标向右移动一个单词尾</span><br><span class="line">Alt+b		光标向左移动一个单词首</span><br><span class="line">Ctrl+u		从光标处册除至命令行首</span><br><span class="line">Ctrl+k		从光标处册除至命令行尾</span><br><span class="line">Alt+r		删除当前整行</span><br><span class="line">Ctrl+w		从光标处向左册除至单词首</span><br><span class="line">Alt+d		从光标处向右册除至单词尾</span><br><span class="line">Alt+Backspace	删除左边单词</span><br><span class="line">Ctrl+d		删除光标处的一个字符</span><br><span class="line">Ctrl+h		删除光标前的一个字符</span><br><span class="line">Ctrl+y		将删除的字符粘贴至光标后</span><br><span class="line">Alt+c		从光标处开始向右更改为首字母大写的单词</span><br><span class="line">Alt+u		从光标处开始，将右边一个单词更改为大写</span><br><span class="line">Alt+l		从光标处开始，将右边一个单词更改为小写</span><br><span class="line">Ctrl+t		交换光标处和之前的字符位置</span><br><span class="line">Alt+t		交换光标处和之前的单词位置</span><br><span class="line">Alt+数字n		提示输入指定字符后，重复显示该字符n次</span><br></pre></td></tr></table></figure>
+
+<p>注意：Alt组合快捷键经常和其它软件冲突</p>
+<p>例：xShell   会话的属性 =》终端 =》键盘 =》将和Alt有关的选项全部勾上  </p>
+<hr>
+<h3 id="获取帮助"><a href="#获取帮助" class="headerlink" title="获取帮助"></a>获取帮助</h3><p>多层次的帮助</p>
 <ul>
-<li>SET AUTOCOMMIT=0 禁止自动提交</li>
-<li>SET AUTOCOMMIT=1 开启自动提交</li>
+<li>whatis</li>
+<li>command –help</li>
+<li>man and info</li>
+<li>/usr/share/doc/</li>
+<li>Red Hat documentation、Ubuntu documentation</li>
+<li>软件项目网站</li>
+<li>其他网站</li>
+<li>搜索</li>
 </ul>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a><code>例子</code></h3><p>假设dbem数据库的employee表有如下数据：</p>
-<p><img src="/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/20211217153708.png"></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*以下涉及三个mysql账号登录，可以打开三个终端登录三个账号，也可以使用mysql workbench这个软件*/</span></span><br><span class="line"><span class="comment">/*在root登录情况下*/</span></span><br><span class="line"><span class="comment">/*创建用户clientA*/</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">&#x27;clientA&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*授予操作DBEM数据库的权限*/</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">on</span> DBEM.<span class="operator">*</span> <span class="keyword">to</span> clientA<span class="variable">@localhost</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*使用clientA登录mysql*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*设置clientA的隔离级别为‘读已提交’*/</span></span><br><span class="line"><span class="keyword">set</span> session transaction isolation level read committed;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*取消自动提交事务的功能，改为显示事务提交*/</span></span><br><span class="line"><span class="keyword">set</span> @<span class="variable">@autocommit</span><span class="operator">=</span><span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*查看自动提交事务是否关闭，0关闭，1开启*/</span></span><br><span class="line"><span class="keyword">select</span> @<span class="variable">@autocommit</span>;    </span><br><span class="line"></span><br><span class="line"><span class="comment">/*查看事务等级*/</span></span><br><span class="line"><span class="keyword">select</span> @<span class="variable">@transaction</span>_isolation;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*使用clientA登录mysql，修改数据库dbem的salary表，salary有三个字段(employeeID,income,outcome)*/</span></span><br><span class="line">update dbem.salary <span class="keyword">set</span> income<span class="operator">=</span><span class="number">1000</span> <span class="keyword">where</span> employeeID<span class="operator">=</span><span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*登录clientB，查看salary表，结果(1,1300,0)*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> salary <span class="keyword">where</span> employeeID<span class="operator">=</span><span class="string">&#x27;1&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*clientA提交事务*/</span></span><br><span class="line"><span class="keyword">commit</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*clientB，查看salary表，结果(1,1000,0)*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*若在clientA提交前，clientB也修改salary表会报错*/</span></span><br><span class="line">ERROR <span class="number">1205</span> (HY000): Lock wait timeout exceeded; try restarting transaction</span><br></pre></td></tr></table></figure>
+<h4 id="whatis"><a href="#whatis" class="headerlink" title="whatis"></a>whatis</h4><p>whatis 使用数据库来显示命令的简短描述</p>
+<p>此工具在系统刚安装后，不可立即使用，需要制作数据库后才可使用</p>
+<p>执行下面命令生成数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CentOS 7 版本以后</span></span><br><span class="line">mandb</span><br><span class="line"><span class="comment"># CentOS 6 版本之前</span></span><br><span class="line">makewhatis</span><br></pre></td></tr></table></figure>
+
+<p>范例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS8 ~]<span class="comment"># whatis cal</span></span><br><span class="line">cal (1)              - display a calendar</span><br><span class="line">cal (1p)             - <span class="built_in">print</span> a calendar</span><br><span class="line">命令名 章节			描述</span><br><span class="line">搭配man使用</span><br><span class="line">man 1 cal	 <span class="comment"># 看display a calendar的内容</span></span><br><span class="line">man 1p cal	 <span class="comment"># 看print a calendar的内容</span></span><br><span class="line"></span><br><span class="line">查看man章节划分，man类似一个小手册</span><br><span class="line">[root@CentOS8 ~]<span class="comment"># man man</span></span><br><span class="line">....省略...</span><br><span class="line">下表显示了手册的 章节 号及其包含的手册页类型。</span><br><span class="line"></span><br><span class="line">       1   可执行程序或 shell 命令</span><br><span class="line">       2   系统调用(内核提供的函数)</span><br><span class="line">       3   库调用(程序库中的函数)</span><br><span class="line">       4   特殊文件(通常位于 /dev)</span><br><span class="line">       5   文件格式和规范，如 /etc/passwd</span><br><span class="line">       6   游戏</span><br><span class="line">       7   杂项(包括宏包和规范，如 man(7)，groff(7))</span><br><span class="line">       8   系统管理命令(通常只针对 root 用户)</span><br><span class="line">       9   内核例程 [非标准</span><br><span class="line">...省略...</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p><code>注意：</code>用户的”localhost”，是指该用户只能在本地登录，不能在另外一台机器上远程登录。如果想远程登录的话，将”localhost”改为”%”，表示在任何一台电脑上都可以登录。也可以指定某台机器可以远程登录。</p>
-<p><code>flush privileges;</code>  刷新系统权限表</p>
+
+<h4 id="查看命令的帮助"><a href="#查看命令的帮助" class="headerlink" title="查看命令的帮助"></a>查看命令的帮助</h4><p>内部命令帮助</p>
+<ul>
+<li><code>help COMMAND</code></li>
+<li><code>man bash</code></li>
+</ul>
+<p>外部命令帮助</p>
+<ul>
+<li><code>COMMAND --help</code> 或 <code>COMMAND -h</code></li>
+<li>使用man手册( manual): <code>man COMMAND</code></li>
+<li>信息页： <code>info COMMAND</code></li>
+<li>程序自身的帮助文档： README、 INSTALL、 ChangeLog</li>
+<li>程序官方文档</li>
+<li>相关网站，如：技术论坛</li>
+<li>搜索引擎</li>
+</ul>
+<p>外部命令的 –help 或 -h 选项</p>
+<p>显示用法总结和参数列表，大多数命令使用，但并非所有的</p>
+<p>格式说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[]			表示可选项</span><br><span class="line">CAPS或&lt;&gt;		表示变化的数据</span><br><span class="line">...			表示一个列表</span><br><span class="line">x|y|z		x或y或z</span><br><span class="line">-abc		-a -b -c</span><br><span class="line">&#123;&#125;			分组</span><br></pre></td></tr></table></figure>
+
+<p>用 <code>whatis</code> 确定章节，再用 <code>man</code> 查看想要知道的某部分的详细介绍</p>
+<p>范例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS8 ~]<span class="comment"># whatis passwd</span></span><br><span class="line">openssl-passwd (1ssl) - compute password hashes</span><br><span class="line">passwd (1)           - update user<span class="string">&#x27;s authentication tokens</span></span><br><span class="line"><span class="string">passwd (5)           - password file</span></span><br><span class="line"><span class="string">[root@CentOS8 ~]# man 5 passwd</span></span><br><span class="line"><span class="string">省略...</span></span><br><span class="line"><span class="string">[root@CentOS8 ~]# man 1 passwd</span></span><br><span class="line"><span class="string">省略...</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="man命令"><a href="#man命令" class="headerlink" title="man命令"></a>man命令</h4><p>man提供命令帮助的文件，手册页存放在 /usr/share/man</p>
+<p>几乎每个命令都有man的页面</p>
+<p>中文man需安装包</p>
+<ul>
+<li>man-pages</li>
+<li>man-pages-zh-CN</li>
+</ul>
+<p>man页面分组</p>
+<p>不同类型的帮助称为不同的章节，统称为Linux手册，man 1 man</p>
+<ul>
+<li><p> 1   可执行程序或 shell 命令       </p>
+</li>
+<li><p>2   系统调用(内核提供的函数)</p>
+</li>
+<li><p> 3   库调用(程序库中的函数)      </p>
+</li>
+<li><p>4   特殊文件(通常位于 /dev)</p>
+</li>
+<li><p>5   文件格式和规范，如 /etc/passwd</p>
+</li>
+<li><p>6   游戏</p>
+</li>
+<li><p>7   杂项(包括宏包和规范，如 man(7)，groff(7))</p>
+</li>
+<li><p>8   系统管理命令(通常只针对 root 用户)</p>
+</li>
+<li><p>9   Linux内核API </p>
+</li>
+</ul>
+<p>man命令的配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CentOS 6 之前 man 的配置文件</span></span><br><span class="line">/etc/man.config</span><br><span class="line"><span class="comment"># CentOS 7 之后 man 的配置文件</span></span><br><span class="line">/etc/man_db.conf</span><br><span class="line"><span class="comment"># Ubuntu man 的配置文件</span></span><br><span class="line">/etc/manpath.config</span><br></pre></td></tr></table></figure>
+
+<p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MANPATH /PATH/TO/SOMEWHERE		#指明man文件搜索位置</span><br></pre></td></tr></table></figure>
+
+<p>也可以指定位置下搜索 COMMAND命令的手册页并显示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man -M /PATH/TO/SOMEWHERE COMMAND</span><br></pre></td></tr></table></figure>
+
+<p>查看man手册页</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">man [OPTION...] [SECTION] PAGE...</span><br><span class="line">man [章节] keyword</span><br></pre></td></tr></table></figure>
+
+
+<p>man帮助段落说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">NAME			名称及简要说明</span><br><span class="line">SYNOPSIS		用法格式说明</span><br><span class="line">[]				可选内容</span><br><span class="line">&lt;&gt;				必选内容</span><br><span class="line">a|b				二选一</span><br><span class="line">&#123;&#125;				分组</span><br><span class="line">...				同一内容可出现多次</span><br><span class="line">DESCRIPTION		详细说明</span><br><span class="line">OPTIONS			选项说明</span><br><span class="line">EXAMPLES		示例</span><br><span class="line">FILES				相关文件</span><br><span class="line">AUTHOR				作者</span><br><span class="line">COPYRIGHT			版本信息</span><br><span class="line">REPORTING BUGS 		bug信息</span><br><span class="line">SEE ALSO		其它帮助参考</span><br></pre></td></tr></table></figure>
+
+<p>man 命令的操作方法：使用 less 命令实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">space,^v,^f,^F		向文件尾翻屏</span><br><span class="line">b,^b				向文件首部翻屏</span><br><span class="line">d,^d				向文件尾部翻半屏</span><br><span class="line">u,^u				向文件首部翻半屏</span><br><span class="line">RETURN,^N,e,^E or j or ^J	向文件尾部翻一行</span><br><span class="line">y or ^Y or ^P or k or ^K	向文件首部翻一行</span><br><span class="line">q		退出</span><br><span class="line">#		跳转至第#行</span><br><span class="line">1G		回到文件首部</span><br><span class="line">G		翻至文件尾部</span><br><span class="line">/KEYWORD	以 KEYWORD指定的字符串为关键字，从当前位置向文件尾部搜索：不区分字符大小写</span><br><span class="line">				n:下一个</span><br><span class="line">				N:上一个</span><br><span class="line">?KEYWORD	以 KEYWORD指定的字符串为关键字，从当前位置向文件首部搜索：不区分字符大小写</span><br><span class="line">				n:跟搜索命令同方向，下一个</span><br><span class="line">				N:跟搜索命令反方向</span><br></pre></td></tr></table></figure>
+
+<p>常用选项</p>
+<ul>
+<li><p>列出所有帮助</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man -a keyword</span><br></pre></td></tr></table></figure></li>
+<li><p>搜索man手册</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出所有匹配的页面，使用 whatis 数据库</span></span><br><span class="line">man -k keyword   <span class="comment"># 相当于 whatis</span></span><br></pre></td></tr></table></figure></li>
+<li><p>打印 man 帮助文件路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man -w [章节] keyword</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="info"><a href="#info" class="headerlink" title="info"></a>info</h4><blockquote>
+<p>man常用于命令参考，GNU工具info适合通用文档参考<br>没有参数，列出所有的页面<br>info 页面的结构就像一个网站<br>每一页分为“节点”<br>链接节点之前*</p>
+</blockquote>
+<p>info命令格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info [命令]</span><br></pre></td></tr></table></figure>
+
+<p>导航info页</p>
+<ul>
+<li>方向键，Pgup,PgDn 导航</li>
+<li>Tab键  移动到下一个链接</li>
+<li>d  显示主题目录</li>
+<li>Home     显示主题首部</li>
+<li>Enter   进入选定链接</li>
+<li>n/p/u/l   进入下/前/上一层/最后一个 链接</li>
+<li>5 文字 文本搜索</li>
+<li>q  退出 info</li>
+</ul>
+<p>命令自身提供的官方使用指南</p>
+<p><code>/usr/share/doc</code>目录</p>
+<blockquote>
+<p>多数安装了的软件包的子目录，包括了这些软件的相关原理说明<br>常见文档：README  INSTALL  CHANGES<br>不适合其它地方的文档的位置<br>配置文件范例<br>HTML/PDF/PS  格式的文档<br>授权书详情</p>
+</blockquote>
+<h4 id="系统及第三方应用官方文档"><a href="#系统及第三方应用官方文档" class="headerlink" title="系统及第三方应用官方文档"></a>系统及第三方应用官方文档</h4><p>通过在线文档获取帮助</p>
+<p><a target="_blank" rel="noopener" href="http://www.github.com/">http://www.github.com</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.kernel.org/doc/html/latest/">https://www.kernel.org/doc/html/latest/</a></p>
+<p><a target="_blank" rel="noopener" href="http://httpd.apache.org/">http://httpd.apache.org</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.nginx.org/">http://www.nginx.org</a></p>
+<p><a target="_blank" rel="noopener" href="https://mariadb.com/kb/en">https://mariadb.com/kb/en</a></p>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/">https://dev.mysql.com/doc/</a></p>
+<p><a target="_blank" rel="noopener" href="http://tomcat.apache.org/">http://tomcat.apache.org</a></p>
+<p><a target="_blank" rel="noopener" href="https://jenkins.io/zh/doc/">https://jenkins.io/zh/doc/</a></p>
+<p><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/home/">https://kubernetes.io/docs/home/</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.openstack.org/train/">https://docs.openstack.org/train/</a></p>
+<p><a target="_blank" rel="noopener" href="http://wwwpython.org/">http://wwwpython.org</a></p>
+<p><a target="_blank" rel="noopener" href="http://php.net/">http://php.net</a></p>
 
       
 
@@ -559,7 +823,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		
 		</ul>
@@ -615,7 +879,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yanglinqi107.github.io/2021/12/17/6%E3%80%81%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%92%8C%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yanglinqi107.github.io/2022/01/18/Linux%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -629,18 +893,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/01/04/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          软件设计复习
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/12/11/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">数据查询和视图</div>
+    <a href="/2022/01/16/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">百度文库爬虫之TXT</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -667,7 +922,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E4%B8%BB%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.</span> <span class="toc-text">自主存取控制实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7"><span class="toc-number">1.1.</span> <span class="toc-text">添加用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%94%A8%E6%88%B7"><span class="toc-number">1.2.</span> <span class="toc-text">查看用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-number">1.3.</span> <span class="toc-text">删除用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-number">1.4.</span> <span class="toc-text">修改密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D"><span class="toc-number">1.5.</span> <span class="toc-text">修改用户名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6"><span class="toc-number">1.6.</span> <span class="toc-text">权限控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%88%E4%BA%88%E6%9D%83%E9%99%90"><span class="toc-number">1.6.1.</span> <span class="toc-text">授予权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9D%83%E9%99%90%EF%BC%9A"><span class="toc-number">1.6.2.</span> <span class="toc-text">查看权限：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9E%E6%94%B6%E6%9D%83%E9%99%90"><span class="toc-number">1.6.3.</span> <span class="toc-text">回收权限</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E4%BE%8B%E5%AD%90"><span class="toc-number">1.7.</span> <span class="toc-text">一些例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E4%B8%80%E8%A7%88%E8%A1%A8"><span class="toc-number">1.8.</span> <span class="toc-text">权限一览表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text">并发控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">事务的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ACID%E5%8E%9F%E5%88%99"><span class="toc-number">2.2.</span> <span class="toc-text">ACID原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6%E9%97%AE%E9%A2%98"><span class="toc-number">2.3.</span> <span class="toc-text">并发控制问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E7%BA%A7%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%EF%BC%9A%E5%AE%9A%E4%B9%89%E7%94%A8%E6%88%B7%E4%B9%8B%E9%97%B4%E9%9A%94%E7%A6%BB%E5%92%8C%E4%BA%A4%E4%BA%92%E7%9A%84%E7%A8%8B%E5%BA%A6"><span class="toc-number">2.4.</span> <span class="toc-text">四级隔离级别：定义用户之间隔离和交互的程度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5%EF%BC%9A"><span class="toc-number">2.5.</span> <span class="toc-text">事务控制语句：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">2.6.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-number">3.</span> <span class="toc-text">补充</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">部分基础命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text">远程连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%A1%AC%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="toc-number">3.</span> <span class="toc-text">查看硬件信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4"><span class="toc-number">4.</span> <span class="toc-text">日期和时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E6%9C%BA%E5%92%8C%E9%87%8D%E5%90%AF%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">关机和重启：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="toc-number">6.</span> <span class="toc-text">设置主机名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%E7%AC%A6"><span class="toc-number">7.</span> <span class="toc-text">提示符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E5%88%86%E7%B1%BB"><span class="toc-number">8.</span> <span class="toc-text">命令分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hash%E5%91%BD%E4%BB%A4%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95"><span class="toc-number">9.</span> <span class="toc-text">hash命令常见用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E5%88%AB%E5%90%8D"><span class="toc-number">10.</span> <span class="toc-text">命令别名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="toc-number">11.</span> <span class="toc-text">命令格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">12.</span> <span class="toc-text">文本编辑器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86"><span class="toc-number">13.</span> <span class="toc-text">会话管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#screen"><span class="toc-number">13.1.</span> <span class="toc-text">screen</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tmux"><span class="toc-number">13.2.</span> <span class="toc-text">Tmux</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E4%BF%A1%E6%81%AF-echo"><span class="toc-number">14.</span> <span class="toc-text">输出信息 echo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E7%BC%96%E7%A0%81"><span class="toc-number">15.</span> <span class="toc-text">字符集和编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%8A%E6%8B%AC%E5%8F%B7%E6%89%A9%E5%B1%95"><span class="toc-number">16.</span> <span class="toc-text">命令行及括号扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tab%E9%94%AE%E8%A1%A5%E5%85%A8"><span class="toc-number">17.</span> <span class="toc-text">tab键补全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8E%86%E5%8F%B2-history"><span class="toc-number">18.</span> <span class="toc-text">命令行历史 history</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bash%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">19.</span> <span class="toc-text">bash的快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%B8%AE%E5%8A%A9"><span class="toc-number">20.</span> <span class="toc-text">获取帮助</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#whatis"><span class="toc-number">20.1.</span> <span class="toc-text">whatis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%91%BD%E4%BB%A4%E7%9A%84%E5%B8%AE%E5%8A%A9"><span class="toc-number">20.2.</span> <span class="toc-text">查看命令的帮助</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#man%E5%91%BD%E4%BB%A4"><span class="toc-number">20.3.</span> <span class="toc-text">man命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#info"><span class="toc-number">20.4.</span> <span class="toc-text">info</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%8F%8A%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="toc-number">20.5.</span> <span class="toc-text">系统及第三方应用官方文档</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
