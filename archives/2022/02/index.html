@@ -6,45 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yanglinqi107.github.io">
-  <title>代码优化 | 杨的笔记</title>
+  <title>Archives: 2022/2 | 杨的笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="编译原理    第八部分">
-<meta property="og:type" content="article">
-<meta property="og:title" content="代码优化">
-<meta property="og:url" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/index.html">
+  <meta name="description" content="用于做笔记，对学过的知识总结">
+<meta property="og:type" content="website">
+<meta property="og:title" content="杨的笔记">
+<meta property="og:url" content="http://yanglinqi107.github.io/archives/2022/02/index.html">
 <meta property="og:site_name" content="杨的笔记">
-<meta property="og:description" content="编译原理    第八部分">
+<meta property="og:description" content="用于做笔记，对学过的知识总结">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133404127.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133417988.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133430613.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133648459.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133702331.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133716009.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133735682.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133747933.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133758525.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133808627.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104134903322.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104134922630.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104134947474.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104135005681.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104135023462.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104135052507.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104135144564.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104140038651.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104140057414.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104140116874.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104140500726.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104140517652.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104140747535.png">
-<meta property="og:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104141958647.png">
-<meta property="article:published_time" content="2022-01-04T14:23:34.640Z">
-<meta property="article:modified_time" content="2022-01-28T14:28:22.329Z">
 <meta property="article:author" content="yanglinqi">
-<meta property="article:tag" content="编译原理">
+<meta property="article:tag" content="python,mysql,c&#x2F;c++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133404127.png">
   
     <link rel="alternative" href="/atom.xml" title="杨的笔记" type="application/atom+xml">
   
@@ -192,448 +165,102 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-8、代码优化" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      代码优化
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/02/04/ASCII/" class="archive-article-date">
+  	<time datetime="2022-02-04T08:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-04</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/02/04/ASCII/">ASCII表</a>
     </h1>
   
 
-        
-        <a href="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2022-01-04T14:23:34.640Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>编译原理    第八部分</p>
-<span id="more"></span> 
-
-<h2 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h2><p>所谓优化，实质上是对程序进行各种等价变换，使得从变换后的程序出发，能够生成更有效的目标代码。</p>
-<p>所谓有效，无非从时间和空间两个因素来考虑，即使得变换之后的程序运行速度更快、占用存储空间更少，这两个因素需要均衡考虑</p>
-<p> 目标代码生成是编译的最后一个阶段。目标代码生成器把语法分析后或优化后的中间代码变换成目标代码。</p>
-<p>目标代码（object code）指计算机科学中编译器或汇编器处理源代码后所生成的代码，它一般由机器代码或接近于机器语言的代码组成。</p>
-<p>优化的分类；</p>
-<ul>
-<li>常用的代码优化技术</li>
-<li>局部优化</li>
-<li>循环优化</li>
-<li>目标代码生成技术</li>
-</ul>
-<p>代码优化的分类</p>
-<p>根据代码优化是否涉及具体的计算机来划分，代码优化可分为两大类</p>
-<blockquote>
-<p>一类是与机器有关的优化，这类优化一般在目标代码上进行，需要依赖于具体的机器。具体的有对寄存器优化、多处理机的优化、特殊指令的优化等</p>
-<p>另一类是与机器无关的优化，在中间代码上进行</p>
-</blockquote>
-<p>据代码优化所涉及的程序范围，又可分为局部优化、循环优化和全局优化三个不同的级别</p>
-<blockquote>
-<p>局部优化指的是在只有一个入口、一个出口的基本程序块上进行的优化</p>
-<p>循环优化是对循环中的代码进行的优化，在一个程序运行时，相当多的一部分时间会花在循环上，因此，基于循环的优化非常重要。</p>
-<p>全局优化是在整个程序范围内进行的优化</p>
-</blockquote>
-<p>代码优化的目的是为了产生效率更高的代码。编译程序中的代码优化阶段提供的对代码的各种变换必须遵循一定的原则。</p>
-<ul>
-<li>等价原则。经过优化后不应改变程序运行的结果。</li>
-<li>有效原则。使优化后所产生的目标代码运行时间较短，占用的存储空间较小。</li>
-<li>合算原则。应尽可能以较低的代价取得较好的优化效果。</li>
-</ul>
-<h3 id="常用的代码优化技术"><a href="#常用的代码优化技术" class="headerlink" title="常用的代码优化技术"></a>常用的代码优化技术</h3><h4 id="删除公共子表达式-删除多余运算"><a href="#删除公共子表达式-删除多余运算" class="headerlink" title="删除公共子表达式(删除多余运算)"></a>删除公共子表达式(删除多余运算)</h4><blockquote>
-<p>如果一个表达式E在前面已经计算过，并且在这之后E中变量的值没有改变，则称E为公共子表达式，是指在一个基本程序块内计算结果相同的子表达式。 </p>
-<p>对相同的子表达式只在第一次出现时计算并且仅计算一次，其结果暂存入Ti，而不必重复计算，这样既节约了空间，又节省了时间。这种优化称为删除公共子表达式，也称为删除多余运算</p>
-</blockquote>
-<h4 id="代码外提"><a href="#代码外提" class="headerlink" title="代码外提"></a>代码外提</h4><blockquote>
-<p>代码外提是指将循环中的不变运算提到循环体前面</p>
-<p>处在循环体内的不变运算，不论循环体重复执行多少次都不影响其计算结果，这样的运算只会浪费代码执行时间</p>
-<p>因此将这类运算提到循环体外并不影响程序运行结果，还可加快代码执行速度</p>
-</blockquote>
-<h4 id="强度削弱"><a href="#强度削弱" class="headerlink" title="强度削弱"></a>强度削弱</h4><blockquote>
-<p>强度削弱是指用执行效率较高的操作等价地替换原操作</p>
-<p>对于非算术运算可削弱强度，如尽量使用寄存器，少访问内存（或外存）等</p>
-<p>对中间代码级的运算尽可能降低运算级别</p>
-</blockquote>
-<h4 id="变换循环控制条件-删除归纳变量"><a href="#变换循环控制条件-删除归纳变量" class="headerlink" title="变换循环控制条件(删除归纳变量)"></a>变换循环控制条件(删除归纳变量)</h4><blockquote>
-<p>for循环中，控制变量i的作用域是本循环体。如果在循环体内存在一个变量（或临时变量）T与循环控制变量i保持线性关系，同时在循环的后面不引用i，而删去i又不影响程序结果，则可由T取代i的控制循环次数的作用。从循环中删除i，这种方法称为变换循环控制条件，或者称为删除归纳变量。</p>
-</blockquote>
-<h4 id="合并已知变量"><a href="#合并已知变量" class="headerlink" title="合并已知变量"></a>合并已知变量</h4><blockquote>
-<p>已知量是指常数或在编译时就能确定其值的变量</p>
-<p>合并已知量是指在编译时就将源程序中关于已知量的表达式之值先行算出，不必生成计算该表达式的代码</p>
-</blockquote>
-<h4 id="复写传播"><a href="#复写传播" class="headerlink" title="复写传播"></a>复写传播</h4><blockquote>
-<p>复写传播是指尽量不引用那些在程序中仅仅只传递信息而不改变其值，也不影响其运行结果的变量。</p>
-</blockquote>
-<h4 id="删除无用赋值"><a href="#删除无用赋值" class="headerlink" title="删除无用赋值"></a>删除无用赋值</h4><blockquote>
-<p>变量的最后一次引用到下次引用之前的最近一次赋值期间，可视为无用变量</p>
-<p>在变量的无用期内，对它的任何赋值均可删除。对于那些被赋值后从未被引用的变量，对其进行赋值操作也是无用赋值，可删除</p>
-<p>删除无用赋值语句可以减少程序中的无用的变量，还可以使代码更简洁</p>
-</blockquote>
-<p>示例：</p>
-<blockquote>
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133404127.png" alt="image-20220104133404127" style="zoom:80%;">
-
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133417988.png" alt="image-20220104133417988" style="zoom:80%;">
-
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133430613.png" alt="image-20220104133430613" style="zoom:80%;">
-
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133648459.png" alt="image-20220104133648459" style="zoom:80%;">
-
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133702331.png" alt="image-20220104133702331" style="zoom:80%;">
-
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133716009.png" alt="image-20220104133716009" style="zoom:80%;">
-
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133735682.png" alt="image-20220104133735682" style="zoom:80%;">
-
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133747933.png" alt="image-20220104133747933" style="zoom:80%;">
-
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133758525.png" alt="image-20220104133758525" style="zoom:80%;">
-
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104133808627.png" alt="image-20220104133808627" style="zoom:80%;">
-</blockquote>
-<h3 id="局部优化"><a href="#局部优化" class="headerlink" title="局部优化"></a>局部优化</h3><p>局部优化（local）是指基本块内的优化。 </p>
-<p>对于给定的程序，我们可以把它划分为一系列的基本块。在各个基本块的范围内，分别进行优化。局限在基本块范围内的优化称为基本块内的优化，或者称为局部优化。</p>
-<h4 id="基本块"><a href="#基本块" class="headerlink" title="基本块"></a>基本块</h4><p>所谓基本块，是指程序中一顺序执行的语句序列，其中只有一个入口语句和一个出口语句。执行时只能从其入口语句进入，从其出口语句退出，不存在跳转和分叉汇合的情况。</p>
-<h4 id="基本块的划分"><a href="#基本块的划分" class="headerlink" title="基本块的划分"></a>基本块的划分</h4><p>第一步：确定四元式程序（中间代码）中各个基本块的人口语句</p>
-<blockquote>
-<p>所谓入口语句，严格地说来就是下述语句之一：</p>
-<ul>
-<li><p>程序的第一个语句； </p>
-</li>
-<li><p>能够由条件转移语句或无条件转移语句转移到的目标语句；</p>
-</li>
-<li><p>紧跟在条件转移语句后面的语句。 </p>
-</li>
-</ul>
-</blockquote>
-<p>第二步：对每一入口语句，构造其所属的基本块</p>
-<blockquote>
-<p>下述条件之一：</p>
-<ul>
-<li><p>由该入口语句到下一入口语句(不包括下一入口语句) 之间的所有语句序列组成一个基本块；</p>
-</li>
-<li><p>由该入口语句到一转移语句(包括该转移语句)之间的所有语句序列组成一个基本块；</p>
-</li>
-<li><p>由该入口语句到一停语句(包括该停语句)之间的所有语句序列组成的一个基本块。</p>
-</li>
-</ul>
-</blockquote>
-<p>第三步：凡未被纳入某一基本块的语句，都是程序中控制流程无法达到的语句，因而也是不会被执行到的语句，我们可以把它们删除</p>
-<h4 id="基本块的变换"><a href="#基本块的变换" class="headerlink" title="基本块的变换"></a>基本块的变换</h4><ul>
-<li>删除公共子表达式</li>
-<li>删除无用赋值</li>
-<li>重新命名临时变量</li>
-<li>交换语句次序</li>
-</ul>
-<h4 id="DAG"><a href="#DAG" class="headerlink" title="DAG"></a>DAG</h4><blockquote>
-<p>DAG（Directed Acyclic Graph）即无环有向图，它是有向图中的一种，通常用来对基本块进行优化。</p>
-<p>这种有向图是一种其结点带有下述标记或附加信息的DAG：</p>
-<p>1．图的叶结点(即没有后继的结点)以一标识符(变量名)或常数作为标记，表示该结点代表该变量或常数的值。如果叶结点用来代表某变量A的地址，则用addr(A)作为该结点的标记。通常把叶结点上作为标记的标识符加上下标0，以表示它是该变量的初值。</p>
-<p>2．图的内部结点（即有后继的结点）以一运算符作为标记，表示该节点代表应用该运算符对其后继结点所代表的值进行运算的结果。</p>
-<p>3．图中各个结点可能附加一个或多个标识符，表示这些变量具有该结点所代表的值。</p>
-</blockquote>
-<h4 id="基本块的DAG表示"><a href="#基本块的DAG表示" class="headerlink" title="基本块的DAG表示"></a>基本块的DAG表示</h4><blockquote>
-<p>一个基本块，可用一个DAG来表示。可以利用DAG来描述四元式，如图所示，列出了各种四元式以及相对应的DAG的结点形式。图中为结点编号，结点下面的符号（运算符，标识符或常数）是各结点的标记，各结点右边的标识符是结点的附加标识符。</p>
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104134903322.png" alt="image-20220104134903322" style="zoom:80%;">
-
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104134922630.png" alt="image-20220104134922630" style="zoom:80%;">
-
-<p>​      <img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104134947474.png" alt="image-20220104134947474" style="zoom:80%;"></p>
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104135005681.png" alt="image-20220104135005681" style="zoom:80%;">
-
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104135023462.png" alt="image-20220104135023462" style="zoom:80%;">
-
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104135052507.png" alt="image-20220104135052507" style="zoom:80%;">
-
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104135144564.png" alt="image-20220104135144564" style="zoom:80%;">
-</blockquote>
-<h4 id="基本块的DAG构造算法"><a href="#基本块的DAG构造算法" class="headerlink" title="基本块的DAG构造算法"></a>基本块的DAG构造算法</h4><blockquote>
-<p>假设DAG各结点信息将用某种适当的数据结构来存放。并设有一个标识符（包括常数）A与结点NODE(A)的对应表，即用大写字母――A，B等表示四元式中的变量名或常数。NODE(A)是描述这种对应关系的一个函数，即用NODE(A)表示A在DAG中的相应结点，它的值可以是一个结点的编号n或者无定义。NODE(A)＝n代表DAG中存在一个结点n，A是其上的标记或附加标识符</p>
-</blockquote>
-<h4 id="四元式分类"><a href="#四元式分类" class="headerlink" title="四元式分类"></a>四元式分类</h4><blockquote>
-<p>把各种形式的四元式按其对应结点的后继个数分为四类。其中：</p>
-<p>0型四元式：有0个后继结点，如四元式(0)；</p>
-<p>1型四元式：有1个后继结点，如四元式(1) ；</p>
-<p>2型四元式：有2个后继结点，如四元式(2) 、 (3) 和(4) ；</p>
-<p>3型四元式：有3个后继结点，如四元式(5)</p>
-</blockquote>
-<h4 id="仅含0，1，2型四元式的基本块的DAG构造算法如下："><a href="#仅含0，1，2型四元式的基本块的DAG构造算法如下：" class="headerlink" title="仅含0，1，2型四元式的基本块的DAG构造算法如下："></a>仅含0，1，2型四元式的基本块的DAG构造算法如下：</h4><blockquote>
-<p>初始时，DAG为空。</p>
-<p>对基本块中的每一条四元式，依次执行以下步骤：</p>
-<p>1.如果NODE(B)无定义，则构造一标记为B的叶结点并定义NODE(B)为这个结点；</p>
-<ul>
-<li>如果当前四元式是0型，则记NODE(B)的值为n，转4。</li>
-<li>如果当前四元式是1型，则转2.(1)</li>
-<li>如果当前四元式是2型，则(ⅰ)如果NODE(C)无定义，则构造一标记为C的叶结点并定义NODE(C)为这个结点，(ⅱ)转2.(2)。</li>
-</ul>
-<p>2.</p>
-<ul>
-<li>(1)如果NODE(B)是标记为常数的叶结点，则转2. (3)，否则转3.(1)。</li>
-<li>(2)如果NODE(B)和NODE(C)都是标记为常数的叶结点，则转2.(4)，否则转3.(2)。</li>
-<li>(3)执行op B(即合并已知量)，令得到的新常数为P。如果NODE(B)是处理当前四元式时新构造出来的结点，则删除它。如果NODE(P)无定义，则构造一用P做标记的叶结点n。置NODE(P)=n，转4.。</li>
-<li>(4)执行B op C(即合并已知量)，令得到的新常数为P。如果NODE(B)或NODE(C)是处理当前四元式时新构造出来的结点，则删除它。如果NODE(P)无定义，则构造一用P做标记的叶结点n。置NODE(P)＝n，转4.。</li>
-</ul>
-<p>3.</p>
-<ul>
-<li>(1)检查DAG中是否已有一结点，其唯一后继为NODE(B)，且标记为op(即找公共子表达式)。如果没有，则构造该结点n，否则就把已有的结点作为它的结点并设该结点为n，转4.。</li>
-<li>(2)检查DAG中是否已有一结点，其左后继为NODE(B)，右后继为NODE(C)，且标记为op(即找公共子表达式)。如果没有，则构造该结点n，否则就把已有的结点作为它的结点并设该结点为n。转4.。</li>
-</ul>
-<p>4.</p>
-<p>如果NODE(A)无定义，则把A附加在结点n上并令NODE(A)＝n；否则先把A从NODE(A)结点上的附加标识符集中删除(注意，如果NODE(A)是叶结点，则其标记A不删除)，把A附加到新结点n上并令NODE(A)＝n。转处理下一四元式。</p>
-</blockquote>
-<h4 id="基本块的应用"><a href="#基本块的应用" class="headerlink" title="基本块的应用"></a>基本块的应用</h4><blockquote>
-<p>将四元式表示成相应的DAG后，可以利用DAG来进行优化。</p>
-<p>利用基本块来进行优化的主要思想是：<br>    首先将一个基本块中的每一个四元式依次表示成对应的DAG，再将这些DAG合成对于一个较大的DAG，即为该基本块的DAG。然后按照构造DAG结点的顺序重写四元式序列，就可以得到经过“合并已知量”、“删除无用赋值”、“删除公共子表达式”的等价的基本块，即为优化后的基本块。</p>
-</blockquote>
-<p>示例：</p>
-<blockquote>
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104140038651.png" alt="image-20220104140038651" style="zoom:80%;">
-
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104140057414.png" alt="image-20220104140057414" style="zoom:80%;">
-
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104140116874.png" alt="image-20220104140116874" style="zoom:80%;">
-</blockquote>
-<h3 id="循环优化"><a href="#循环优化" class="headerlink" title="循环优化"></a>循环优化</h3><p>在程序设计语言中，循环是必不可少的控制结构之一。所谓循环，粗略地说，就是程序中那些可能反复执行的代码序列。因为循环中的代码要反复执行，因而为了提高目标代码的效率必须着重考虑循环的代码优化。</p>
-<p>循环优化是指在循环体中进行的专项优化，是提高程序运行效率的主要途径。因为在一个执行n次的循环体内进行一项优化，从运行效率上来说，相当于进行了n项优化。</p>
-<p>为了进行循环优化，首先必须找出程序中的循环，为找出程序中的循环，就需要对程序的控制流程进行分析。我们将使用程序的控制流程图对所讨论的循环给出定义，并介绍怎样从程序的控制流程图中找出程序的循环。</p>
-<p>对循环中的代码段，可以进行代码外提、强度削弱和删除归纳变量等优化。</p>
-<h4 id="程序流图"><a href="#程序流图" class="headerlink" title="程序流图"></a>程序流图</h4><p>一个控制流程图就是具有唯一首结点的有向图。</p>
-<p>所谓首结点，就是从它开始到控制流程图中任何结点都有一条通路的结点。</p>
-<p>一个控制流程图表示成一个三元组G＝(N，E，n0)，其中，N代表图中所有结点集，E代表图中所有有向边集，n0代表首结点。以下把控制流程图简称为流图。</p>
-<p>一个程序可用一个流图来表示。流图中的有限结点集N就是程序的基本块集，流图中的结点就是程序中的基本块。流图的首结点就是包含程序第一个语句的基本块。 </p>
-<p>程序流图中的有向边集E是这样构成的：</p>
-<blockquote>
-<p>假设流图中结点i和结点j分别对应于程序的基本块i和基本块j，则当下述条件1.或2.有一个成立时，从结点i有一有向边引向结点j：</p>
-<p>1.基本块j在程序中的位置紧跟在基本块i之后，并且基本块i的出口语句不是无条件转移语句goto(s)或停语句。</p>
-<p>2．基本块i的出口语句是goto(s)或if…goto(s)，并且(s)是基本块j的入口语句。</p>
-</blockquote>
-<p>示例：</p>
-<blockquote>
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104140500726.png" alt="image-20220104140500726" style="zoom:80%;">
-
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104140517652.png" alt="image-20220104140517652" style="zoom:80%;">
-</blockquote>
-<p>循环的定义</p>
-<blockquote>
-<p>在流图中,称具有下列性质的结点序列为一个循环：</p>
-<ul>
-<li>它们是强连通的。即其中任意两个结点之间，必有一条通路，而且该通路上各结点都属于该结点序列。如果序列只包含一个结点，则必有一有向边从该结点引到其自身。</li>
-<li>它们中间有且只有一个是入口结点。所谓入口结点，是指序列中具有下述性质的结点：从序列外某结点，有一有向边引到它，或者它就是程序流图的首结点。</li>
-</ul>
-<p>循环就是流图中具有唯一入口结点的强连通子图，从循环外要进入循环，必须首先经过循环的入口结点。</p>
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104140747535.png" alt="image-20220104140747535" style="zoom:80%;">
-</blockquote>
-<p>循环的查找 </p>
-<blockquote>
-<p>为了查找循环，需对程序流图中各结点的控制关系进行分析，即利用控制点（dominator）查找循环</p>
-</blockquote>
-<p>循环优化方法</p>
-<ul>
-<li>代码外提</li>
-<li>删除归纳变量</li>
-<li>强度削弱</li>
-</ul>
-<p>代码外提</p>
-<blockquote>
-<p>减少循环中程序代码数目的一个重要办法是代码外提。这种变换把循环不变运算，即运算产生的结果不受循环执行次数影响的表达式，放到循环的前面</p>
-<p>实行代码外提时，在循环的入口结点前面建立一个新结点(基本块)，称之为循环的前置结点。循环的前置结点以循环的入口结点为其唯一后继，原来流图中从循环外引到循环入口结点的有向边，改成引到循环前置结点</p>
-</blockquote>
-<p>强度削弱</p>
-<blockquote>
-<p>强度削弱是指把程序中执行时间较长的运算替换为执行时间较短的运算。例如把循环中的乘法运算用递归加法运算来实现</p>
-</blockquote>
-<p>删除归纳变量</p>
-<blockquote>
-<p>【基本归纳变量】如果循环中对变量I只有唯一的形如 I＝I土C的赋值，且其中C为循环不变量，则称I为循环中的基本归纳变量。</p>
-<p>【归纳变量】如果I是循环中一基本归纳变量， J在循环中的定值总是可以化归为I的同一线性函数，也即 J ＝C1*I土C2，其中C1和C2都是循环不变量，则称J为归纳变量，并称它与I同族。一个基本归纳变量也是一归纳变量</p>
-<p>删除归纳变量是在强度削弱之后进行的</p>
-</blockquote>
-<h2 id="目标代码生成"><a href="#目标代码生成" class="headerlink" title="目标代码生成"></a>目标代码生成</h2><p>代码生成要考虑的主要问题</p>
-<blockquote>
-<ul>
-<li>充分利用寄存器：<br>  在基本块内或在全局内基本块中全局寄存器分配：不把寄存器平均分配给各个变量使用，而是从可用的寄存器中分出几个，固定分配给几个变量单独使用。<br>  标准：以各变量在循环内需要访问主存单元的次数为标准。</li>
-<li>选择计算机指令系统</li>
-<li>选择计算次序</li>
-</ul>
-</blockquote>
-<p>目标代码的三种形式</p>
-<ul>
-<li>地址代真的机器代码</li>
-<li>待装配的机器代码模块</li>
-<li>汇编语言（宏汇编）</li>
-</ul>
-<p>机器指令形式(op source ,destination)</p>
-<blockquote>
-<p>ADD s,d    //d+s ? d<br>SUB  s,d     //d-s ? d<br>MOV s,d     //s ? d</p>
-</blockquote>
-<img src="/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/image-20220104141958647.png" alt="image-20220104141958647" style="zoom:80%;">
-
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">编译原理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ASCII</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yanglinqi107.github.io/2022/01/04/8%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
-  
-    <a href="/2022/01/04/7%E3%80%81%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%BB%84%E7%BB%87/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          存储空间组织
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2022/01/04/2%E3%80%81%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E8%A8%80/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">文法和语言</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/02/02/LeetCode%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2022-02-02T06:42:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-02</time>
+</a>
         </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">代码优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96%E6%8A%80%E6%9C%AF"><span class="toc-number">1.1.</span> <span class="toc-text">常用的代码优化技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%85%AC%E5%85%B1%E5%AD%90%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E5%88%A0%E9%99%A4%E5%A4%9A%E4%BD%99%E8%BF%90%E7%AE%97"><span class="toc-number">1.1.1.</span> <span class="toc-text">删除公共子表达式(删除多余运算)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%A4%96%E6%8F%90"><span class="toc-number">1.1.2.</span> <span class="toc-text">代码外提</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%BA%E5%BA%A6%E5%89%8A%E5%BC%B1"><span class="toc-number">1.1.3.</span> <span class="toc-text">强度削弱</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E6%8D%A2%E5%BE%AA%E7%8E%AF%E6%8E%A7%E5%88%B6%E6%9D%A1%E4%BB%B6-%E5%88%A0%E9%99%A4%E5%BD%92%E7%BA%B3%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.4.</span> <span class="toc-text">变换循环控制条件(删除归纳变量)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%B7%B2%E7%9F%A5%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.5.</span> <span class="toc-text">合并已知变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E5%86%99%E4%BC%A0%E6%92%AD"><span class="toc-number">1.1.6.</span> <span class="toc-text">复写传播</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%97%A0%E7%94%A8%E8%B5%8B%E5%80%BC"><span class="toc-number">1.1.7.</span> <span class="toc-text">删除无用赋值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E4%BC%98%E5%8C%96"><span class="toc-number">1.2.</span> <span class="toc-text">局部优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%9D%97"><span class="toc-number">1.2.1.</span> <span class="toc-text">基本块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%9D%97%E7%9A%84%E5%88%92%E5%88%86"><span class="toc-number">1.2.2.</span> <span class="toc-text">基本块的划分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%9D%97%E7%9A%84%E5%8F%98%E6%8D%A2"><span class="toc-number">1.2.3.</span> <span class="toc-text">基本块的变换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DAG"><span class="toc-number">1.2.4.</span> <span class="toc-text">DAG</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%9D%97%E7%9A%84DAG%E8%A1%A8%E7%A4%BA"><span class="toc-number">1.2.5.</span> <span class="toc-text">基本块的DAG表示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%9D%97%E7%9A%84DAG%E6%9E%84%E9%80%A0%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.6.</span> <span class="toc-text">基本块的DAG构造算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E5%85%83%E5%BC%8F%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.7.</span> <span class="toc-text">四元式分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%85%E5%90%AB0%EF%BC%8C1%EF%BC%8C2%E5%9E%8B%E5%9B%9B%E5%85%83%E5%BC%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%9D%97%E7%9A%84DAG%E6%9E%84%E9%80%A0%E7%AE%97%E6%B3%95%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-number">1.2.8.</span> <span class="toc-text">仅含0，1，2型四元式的基本块的DAG构造算法如下：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%9D%97%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.2.9.</span> <span class="toc-text">基本块的应用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.</span> <span class="toc-text">循环优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E6%B5%81%E5%9B%BE"><span class="toc-number">1.3.1.</span> <span class="toc-text">程序流图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90"><span class="toc-number">2.</span> <span class="toc-text">目标代码生成</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/02/02/LeetCode%E9%A2%98/">LeetCode题</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C/C++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
         </div>
-        
-    </div>
-</aside>
-
-
-
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
   
   
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -656,8 +283,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
