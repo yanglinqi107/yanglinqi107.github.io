@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://yanglinqi107.github.io/2021/12/09/5%E3%80%81C++%E6%8F%90%E9%AB%98%E7%BC%96%E7%A8%8B/1547606785041.png">
 <meta property="og:image" content="http://yanglinqi107.github.io/2021/12/09/5%E3%80%81C++%E6%8F%90%E9%AB%98%E7%BC%96%E7%A8%8B/clip_image002-1547608564071.jpg">
 <meta property="article:published_time" content="2021-12-09T09:57:14.557Z">
-<meta property="article:modified_time" content="2021-12-11T07:43:29.625Z">
+<meta property="article:modified_time" content="2022-02-05T17:26:37.243Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary">
@@ -440,7 +440,6 @@
 <li><p>大多情况下，数据结构和算法都未能有一套标准,导致被迫从事大量重复工作</p>
 </li>
 <li><p>为了建立数据结构和算法的一套标准,诞生了<strong>STL</strong></p>
-<p>​</p>
 </li>
 </ul>
 <h3 id="2-2-STL基本概念"><a href="#2-2-STL基本概念" class="headerlink" title="2.2 STL基本概念"></a>2.2 STL基本概念</h3><ul>
@@ -462,7 +461,7 @@
 <p>STL<strong>容器</strong>就是将运用<strong>最广泛的一些数据结构</strong>实现出来</p>
 <p>常用的数据结构：数组, 链表,树, 栈, 队列, 集合, 映射表 等</p>
 <p>这些容器分为<strong>序列式容器</strong>和<strong>关联式容器</strong>两种:</p>
-<p>​    <strong>序列式容器</strong>:强调值的排序，序列式容器中的每个元素均有固定的位置。<br>    <strong>关联式容器</strong>:二叉树结构，各元素之间没有严格的物理上的顺序关系</p>
+<p>​    <strong>序列式容器</strong>:强调值的排序，序列式容器中的每个元素均有固定的位置。<br>​    <strong>关联式容器</strong>:二叉树结构，各元素之间没有严格的物理上的顺序关系</p>
 <p><strong>算法：</strong>问题之解法也</p>
 <p>有限的步骤，解决逻辑或数学上的问题，这一门学科我们叫做算法(Algorithms)</p>
 <p>算法分为:<strong>质变算法</strong>和<strong>非质变算法</strong>。</p>
@@ -547,7 +546,8 @@
 <p>string管理char*所分配的内存，不用担心复制越界和取值越界等，由类内部进行负责</p>
 <h4 id="3-1-2-string构造函数"><a href="#3-1-2-string构造函数" class="headerlink" title="3.1.2 string构造函数"></a>3.1.2 string构造函数</h4><p>构造函数原型：</p>
 <ul>
-<li><code>string();</code>                          //创建一个空的字符串 例如: string str;<br>   <code>string(const char* s);</code>            //使用字符串s初始化</li>
+<li><code>string();</code>                          //创建一个空的字符串 例如: string str;</li>
+<li><code>string(const char* s);</code>            //使用字符串s初始化</li>
 <li><code>string(const string&amp; str);</code>    //使用一个string对象初始化另一个string对象</li>
 <li><code>string(int n, char c);</code>           //使用n个字符c初始化 </li>
 </ul>
@@ -814,9 +814,7 @@
 </ul>
 <p><strong>函数原型：</strong></p>
 <ul>
-<li><p><code>reserve(int len);</code>//容器预留len个元素长度，预留位置不初始化，元素不可访问。</p>
-<p>​</p>
-</li>
+<li><code>reserve(int len);</code>//容器预留len个元素长度，预留位置不初始化，元素不可访问。</li>
 </ul>
 <p><strong>示例：</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	vector&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//预留空间</span></span><br><span class="line">	v.<span class="built_in">reserve</span>(<span class="number">100000</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span>* p = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span><br><span class="line">		v.<span class="built_in">push_back</span>(i);</span><br><span class="line">		<span class="keyword">if</span> (p != &amp;v[<span class="number">0</span>]) &#123;</span><br><span class="line">			p = &amp;v[<span class="number">0</span>];</span><br><span class="line">			num++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;num:&quot;</span> &lt;&lt; num &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">test01</span>();</span><br><span class="line">    </span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -886,7 +884,6 @@
 </li>
 <li><p><code>deque.resize(num, elem);</code>     //重新指定容器的长度为num,若容器变长，则以elem值填充新位置。</p>
 <p>​                                                     //如果容器变短，则末尾超出容器长度的元素被删除。</p>
-<p>​</p>
 </li>
 </ul>
 <p><strong>示例：</strong></p>
@@ -924,8 +921,6 @@
 <li><p><code>erase(beg,end);</code>             //删除[beg,end)区间的数据，返回下一个数据的位置。</p>
 </li>
 <li><p><code>erase(pos);</code>                    //删除pos位置的数据，返回下一个数据的位置。</p>
-<p>​</p>
-<p>​</p>
 </li>
 </ul>
 <p><strong>示例：</strong></p>
@@ -1700,7 +1695,6 @@
 <p>// 查找相邻重复元素,返回相邻元素的第一个位置的迭代器</p>
 <p>// beg 开始迭代器</p>
 <p>// end 结束迭代器</p>
-<p>​</p>
 </li>
 </ul>
 <p><strong>示例：</strong></p>
@@ -1753,7 +1747,6 @@
 <p>// beg 开始迭代器</p>
 <p>// end 结束迭代器</p>
 <p>// _Pred 谓词</p>
-<p>​</p>
 </li>
 </ul>
 <p><strong>示例：</strong></p>
@@ -1798,7 +1791,6 @@
 <p>// 指定范围内的元素随机调整次序</p>
 <p>// beg 开始迭代器</p>
 <p>// end 结束迭代器</p>
-<p>​</p>
 </li>
 </ul>
 <p><strong>示例：</strong></p>
@@ -1815,7 +1807,6 @@
 <p>// 容器元素合并，并存储到另一容器中</p>
 <p>// 注意: 两个容器必须是<strong>有序的</strong></p>
 <p>// beg1   容器1开始迭代器<br>// end1   容器1结束迭代器<br>// beg2   容器2开始迭代器<br>// end2   容器2结束迭代器<br>// dest    目标容器开始迭代器</p>
-<p>​</p>
 </li>
 </ul>
 <p><strong>示例：</strong></p>
@@ -1832,7 +1823,6 @@
 <p>// 反转指定范围的元素</p>
 <p>// beg 开始迭代器</p>
 <p>// end 结束迭代器</p>
-<p>​</p>
 </li>
 </ul>
 <p><strong>示例：</strong></p>
@@ -1913,7 +1903,6 @@
 <p>// 互换两个容器的元素</p>
 <p>// c1容器1</p>
 <p>// c2容器2</p>
-<p>​</p>
 </li>
 </ul>
 <p><strong>示例：</strong></p>
@@ -1933,7 +1922,6 @@
 <li><p><code>accumulate</code>      // 计算容器元素累计总和</p>
 </li>
 <li><p><code>fill</code>                 // 向容器中添加元素</p>
-<p>​</p>
 </li>
 </ul>
 <h4 id="5-5-1-accumulate"><a href="#5-5-1-accumulate" class="headerlink" title="5.5.1 accumulate"></a>5.5.1 accumulate</h4><p><strong>功能描述：</strong></p>
@@ -1981,7 +1969,6 @@
 <li><p><code>set_union</code>                       // 求两个容器的并集</p>
 </li>
 <li><p><code>set_difference </code>              // 求两个容器的差集</p>
-<p>​</p>
 </li>
 </ul>
 <h4 id="5-6-1-set-intersection"><a href="#5-6-1-set-intersection" class="headerlink" title="5.6.1 set_intersection"></a>5.6.1 set_intersection</h4><p><strong>功能描述：</strong></p>
@@ -2015,7 +2002,6 @@
 <p>// 求两个集合的并集</p>
 <p>// <strong>注意:两个集合必须是有序序列</strong></p>
 <p>// beg1 容器1开始迭代器<br>// end1 容器1结束迭代器<br>// beg2 容器2开始迭代器<br>// end2 容器2结束迭代器<br>// dest 目标容器开始迭代器</p>
-<p>​</p>
 </li>
 </ul>
 <p><strong>示例：</strong></p>
@@ -2037,7 +2023,6 @@
 <p>// 求两个集合的差集</p>
 <p>// <strong>注意:两个集合必须是有序序列</strong></p>
 <p>// beg1 容器1开始迭代器<br>// end1 容器1结束迭代器<br>// beg2 容器2开始迭代器<br>// end2 容器2结束迭代器<br>// dest 目标容器开始迭代器</p>
-<p>​</p>
 </li>
 </ul>
 <p><strong>示例：</strong></p>
