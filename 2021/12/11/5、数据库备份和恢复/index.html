@@ -16,7 +16,7 @@
 <meta property="og:description" content="数据库使用SQL语句备份和恢复，使用客户端sqldump和sqlimport备份和恢复">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-11T09:27:08.000Z">
-<meta property="article:modified_time" content="2021-12-18T13:27:42.810Z">
+<meta property="article:modified_time" content="2022-04-03T09:07:13.269Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
@@ -63,6 +63,8 @@
 				<li><a href="/archives/index.html">归档</a></li>
 	        
 				<li><a href="/tags/Python">python</a></li>
+	        
+				<li><a href="/categories">分类</a></li>
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
@@ -126,6 +128,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -146,13 +150,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 25%"><a href="/archives/index.html">归档</a></li>
+					<li style="width: 20%"><a href="/archives/index.html">归档</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/Python">python</a></li>
+					<li style="width: 20%"><a href="/tags/Python">python</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 20%"><a href="/categories">分类</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -236,12 +242,13 @@
 </ul>
 <p>备份数据库</p>
 <p><font color="##FF0000"> 注： </font><br>备份的文件可以指定路径，不指定路径则默认保存至终端所当前显示的目录下</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysqldump [OPTIONS] <span class="comment">--databases [OPTIONS] DB1 [DB2 DB3...]&gt;filename</span></span><br><span class="line"></span><br><span class="line">OPTIONS：<span class="operator">-</span>h[hostname] <span class="operator">-</span>u[username] <span class="operator">-</span>p[password]</span><br><span class="line"></span><br><span class="line"><span class="comment">/*例*/</span></span><br><span class="line">mysqldump <span class="operator">-</span>hlocalhost <span class="operator">-</span>uroot <span class="operator">-</span>p123456 <span class="comment">--databases DBST&gt;backup_DBST.sql</span></span><br><span class="line"><span class="comment">/*注*/</span></span><br><span class="line"><span class="comment">/*不要加; 不然会报错</span></span><br><span class="line"><span class="comment">mysqldump: Got error: 1049: Unknown database &#x27;dbst;&#x27; when selecting the database*/</span></span><br><span class="line"><span class="comment">/*会有警告：说密码显示出来不安全</span></span><br><span class="line"><span class="comment">mysqldump: [Warning] Using a password on the command line interface can be insecure.*/</span></span><br><span class="line"><span class="comment">/*-p 后面可以先不输入密码，回车后会提示输入密码*/</span></span><br><span class="line"></span><br><span class="line">mysqldump <span class="operator">-</span>uroot <span class="operator">-</span>p123456 <span class="comment">--all-databases&gt;backup_all.sql</span></span><br></pre></td></tr></table></figure>
+<p><font color="#ff0000">这个命令是在cmd上运行，不要登录Mysql运行</font></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mysqldump [OPTIONS] <span class="comment">--databases [OPTIONS] DB1 [DB2 DB3...]&gt;filename</span></span><br><span class="line"></span><br><span class="line">OPTIONS：<span class="operator">-</span>h[hostname] <span class="operator">-</span>u[username] <span class="operator">-</span>p[password]</span><br><span class="line"></span><br><span class="line"><span class="comment">/*例*/</span></span><br><span class="line">mysqldump <span class="operator">-</span>hlocalhost <span class="operator">-</span>uroot <span class="operator">-</span>p123456 <span class="comment">--databases DBST&gt;backup_DBST.sql</span></span><br><span class="line"><span class="comment">/*注*/</span></span><br><span class="line"><span class="comment">/*不要加; 不然会报错</span></span><br><span class="line"><span class="comment">mysqldump: Got error: 1049: Unknown database &#x27;dbst;&#x27; when selecting the database*/</span></span><br><span class="line"><span class="comment">/*会有警告：说密码显示出来不安全</span></span><br><span class="line"><span class="comment">mysqldump: [Warning] Using a password on the command line interface can be insecure.*/</span></span><br><span class="line"><span class="comment">/*-p 后面可以先不输入密码，回车后会提示输入密码*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*路径最好用引号包括，防止空格导致的错误*/</span></span><br><span class="line">mysqldump <span class="operator">-</span>hlocalhost <span class="operator">-</span>uroot <span class="operator">-</span>p <span class="comment">--databases tft&gt;&quot;D:\Program Files\mysql-8.0.27-winx64\data_backup\backup_tft.sql&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*备份所有数据库*/</span></span><br><span class="line">mysqldump <span class="operator">-</span>uroot <span class="operator">-</span>p123456 <span class="comment">--all-databases&gt;backup_all.sql</span></span><br></pre></td></tr></table></figure>
 
 <p>备份表</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*filename尽量设为xxxx.sql这种，可以选择备份哪几张表*/</span></span><br><span class="line">mysqldump [OPTIONS] db_name [<span class="keyword">table</span> <span class="keyword">table</span> ...]<span class="operator">&gt;</span>filename</span><br><span class="line">OPTIONS: <span class="operator">-</span>h[hostname] <span class="operator">-</span>u[username] <span class="operator">-</span>p[password]</span><br><span class="line"></span><br><span class="line"><span class="comment">/*例*/</span></span><br><span class="line">mysqldump <span class="operator">-</span>hlocalhost <span class="operator">-</span>uroot <span class="operator">-</span>p123456 DBST student course<span class="operator">&gt;</span>backup_StudentCourse.sql</span><br><span class="line"><span class="comment">/*注：此处可以不用写密码，而sql文件必须保存到有写权限的路径*/</span></span><br></pre></td></tr></table></figure>
 <p>恢复数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql[OPTIONS] db_name<span class="operator">&lt;</span>filename</span><br><span class="line"></span><br><span class="line"><span class="comment">/*例，对应上例的备份*/</span></span><br><span class="line">mysqldump <span class="operator">-</span>uroot <span class="operator">-</span>p123456 DBST<span class="operator">&lt;</span>backup_DBST.sql</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql[OPTIONS] db_name&lt;filename</span><br><span class="line"></span><br><span class="line">/*例，对应上例的备份*/</span><br><span class="line">mysqldump -uroot -p123456 DBST &lt; backup_DBST.sql</span><br></pre></td></tr></table></figure>
 
 <p>恢复表数据</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*注：这各方法对应的是上文SQL语句备份那里导出的文本文件*/</span></span><br><span class="line"><span class="comment">/*不推荐，限制太多，路径不能有空格、中文，文件名需和表名相同，文件必须是似乎必须是txt文件，字段需用\t分隔，行需用\r\n分隔有很多限制，会遇到各种错误*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*备份表的filename，恢复时需要完整路径*/</span></span><br><span class="line"><span class="comment">/*备份的.sql文件中是保存了表结构和表数据，即创建表和导入数据的sql语句和数据*/</span></span><br><span class="line"><span class="comment">/*使用这语句需要数据库中存在该表，若不存在，需要复制.sql文件中创建表的语句在mysql中创建表，当然也可以手敲*/</span></span><br><span class="line">mysqlimport [OPTIONS] db_name filename</span><br><span class="line"></span><br><span class="line">OPTIONS：</span><br><span class="line"><span class="comment">--d|--delete 在导入文件前清空表格</span></span><br><span class="line"><span class="comment">--replace|--ignore  关键字值相同时替换 | 忽略</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*例*/</span></span><br><span class="line">mysqlimport <span class="operator">-</span>uroot <span class="operator">-</span>p123456 <span class="comment">--replace dbst student.txt</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*------------------------------------------------------------------*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*推荐，此方法对应的是mysqldump备份的.sql，简单，方便*/</span></span><br><span class="line"><span class="comment">/*除了在MySQL中直接使用MySQL语句之外，还可以在本地直接创建 filename.sql，再写入sql语句，在mysql中使用 source filename.sql执行文件中的sql语句*/</span></span><br><span class="line"><span class="comment">/*所以可以直接运行mysqldump备份的.sql文件*/</span></span><br><span class="line">mysql<span class="operator">&gt;</span>source filename.sql</span><br></pre></td></tr></table></figure>
@@ -287,6 +294,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据库//" class="article-tag-list-link color4">数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -360,8 +378,8 @@
     </a>
   
   
-    <a href="/2021/12/09/7%E3%80%81%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">机房预约系统</div>
+    <a href="/2021/12/09/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -521,6 +539,10 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
@@ -533,19 +555,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">MFC</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">复习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,7 +567,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,23 +595,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">-数据结构和算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">QT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color3">数据结构和算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">telnet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
             
             <div class="clearfix"></div>
