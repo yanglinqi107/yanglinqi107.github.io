@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"/node_modules/hexo-generator-searchdb/search.xml"};
+  </script>
+
+  <meta name="description" content="编译原理    第七部分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="存储空间组织">
+<meta property="og:url" content="http://yanglinqi107.github.io/7%E3%80%81%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%BB%84%E7%BB%87/index.html">
+<meta property="og:site_name" content="杨的个人博客">
+<meta property="og:description" content="编译原理    第七部分">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yanglinqi107.github.io/7%E3%80%81%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%BB%84%E7%BB%87/image-20220104121803760.png">
+<meta property="article:published_time" content="2022-04-03T15:15:58.599Z">
+<meta property="article:modified_time" content="2022-04-04T06:12:56.065Z">
+<meta property="article:author" content="yanglinqi">
+<meta property="article:tag" content="编译原理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yanglinqi107.github.io/7%E3%80%81%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%BB%84%E7%BB%87/image-20220104121803760.png">
+
+<link rel="canonical" href="http://yanglinqi107.github.io/7%E3%80%81%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%BB%84%E7%BB%87/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>存储空间组织 | 杨的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">杨的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">碎片化学习令人焦虑，系统化学习使人进步</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">18</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">76</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yanglinqi107.github.io/7%E3%80%81%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%BB%84%E7%BB%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yanglinqi107/Images/res/headpic.jpg">
+      <meta itemprop="name" content="yanglinqi">
+      <meta itemprop="description" content="用于做笔记，对学过的知识总结">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          存储空间组织
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-03 23:15:58" itemprop="dateCreated datePublished" datetime="2022-04-03T23:15:58+08:00">2022-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-04 14:12:56" itemprop="dateModified" datetime="2022-04-04T14:12:56+08:00">2022-04-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">编译原理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>编译原理    第七部分</p>
+<span id="more"></span> 
+
+<h3 id="数据空间"><a href="#数据空间" class="headerlink" title="数据空间"></a>数据空间</h3><p>数据空间包括：用户定义的各种类型的数据对象(变量和常数)所需的存储空间，作为保留中间结果和传递参数的临时工作单元，调用过程时所需的连接单元，以及组织输入/输出所需的缓冲区。</p>
+<p>目标代码所占用空间的大小在编译时能确定。有些数据对象所占用的空间也能在编译时确定，其地址可以编译进目标代码中。而有些数据对象具有可变体积和待分配性质，无法在编译时确定存储空间的位置。</p>
+<p>存储管理复杂程度取决于源语言本身，包括：</p>
+<ul>
+<li><p>允许的数据类型的多少</p>
+</li>
+<li><p>语言中允许的数据项是   </p>
+<ul>
+<li>静态确定</li>
+<li>动态确定</li>
+</ul>
+</li>
+<li><p>程序决定名字的作用域的规则和结构</p>
+<ul>
+<li>段结构</li>
+<li>过程定义不嵌套，只允许过程递归调用                      </li>
+<li>分程序结构 <ul>
+<li>分程序嵌套</li>
+<li>过程定义嵌套</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/7%E3%80%81%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%BB%84%E7%BB%87/image-20220104121803760.png" alt="image-20220104121803760"></p>
+<p>数据空间的三种分配策略</p>
+<p>运行时数据空间的三种分配策略：</p>
+<ul>
+<li>静态存储分配</li>
+<li>动态存储分配    <ul>
+<li>栈式动态存储分配</li>
+<li>堆式动态存储分配</li>
+</ul>
+</li>
+</ul>
+<p>采用哪种分配策略是由源语言的语义决定的。</p>
+<p>静态存储分配</p>
+<blockquote>
+<p>如果在编译时就能确定目标程序运行中所需要的全部数据空间的大小，则编译时就能安排好目标程序的全部数据空间，并能确定每个数据项的单元地址、存储空间，这种分配方法叫做静态存储分配</p>
+</blockquote>
+<p>动态存储分配</p>
+<blockquote>
+<p>如果一个程序设计语言允许递归过程、可变数组或允许用户自由申请和释放空间，那么，就需要采用动态存储管理技术。因为对于这种程序在编译时无法知道它在运行时需要多大的存储空间，它所需要的数据空间的大小需待程序运行时动态地确定。</p>
+</blockquote>
+<p>栈式存储分配</p>
+<blockquote>
+<p>在允许递归调用且每次调用都要重新分配局部变量的语言中，编译程序不能静态地分配活动记录。对于这种语言应该采用栈式存储分配，其分配策略是将整个存储空间设计成一个栈，每当调用一个过程时就将它的活动记录压入栈，在栈顶形成过程工作时的数据区，当过程结束时再将其活动记录弹出栈。</p>
+<p>过程的活动记录AR(Activation Record)，是一段连续的存储区，用以存放过程的一次执行所需要的动态信息</p>
+<p>栈式动态存储分配策略适用于PASCAL，C，ALGOL之类具有递归结构的语言的实现。</p>
+</blockquote>
+<p>简单栈式存储分配</p>
+<blockquote>
+<p>对于没有分程序结构，过程定义不允许嵌套但允许过程递归调用的语言，可以采用一种简单的栈式存储分配策略。</p>
+<p>C语言就是满足上述特点的一种语言，其过程的活动记录一般采用如图所示的结构。</p>
+<p>过程的每一个局部变量或形参在活动记录中的相对地址是确定的，因此可以知道程序运行时，变量和形参在栈上的绝对地址是：绝对地址＝活动记录基地址（SP）十相对地址</p>
+</blockquote>
+<p>堆式存储分配</p>
+<blockquote>
+<p>如果一种程序语言允许数据对象能够自由地分配和释放，那么由于空间的使用不一定按照“先申请后释放”的原则，这时栈式存储分配就不适用了。对于这种语言通常采用堆式存储分配方法。</p>
+<p>堆式存储分配方法的基本思想是：一个程序开始执行时有很大一块存储空间，运行期间如果需要就从里面申请一块存储空间，使用完毕归还。</p>
+<p>堆式存储分配最简单的实现方法是按定长进行分配。初始化时将堆存储空间分成若干个长度相等的块，按邻块的顺序把这些块链成一个链表。每次申请空间时就从链表最前面的未使用结点开始分配，归还时把结点插入链表，归还时最好保证第一个未使用的结点之后没有已分配的块。采用这种方式，编译程序不需要知道分配出去的存储块将存放何种类型的数据，用户可以根据需要使用整个存储块。</p>
+<p>定长块管理实现起来比较方便，但是内存的使用效率偏低，堆式存储分配通常按变长块进行。按这种方法，初始化存储区时没有把空间分段，每次申请时都从空闲区分出满足要求的最小块；归还时，如果新归还的块能和现有的空闲块合并就把它们合成一块。如果有若干个空闲块满足需要时，通常采用以下几种不同的分配策略。</p>
+<ul>
+<li>首次匹配法</li>
+<li>最优匹配法</li>
+<li>最差匹配法</li>
+</ul>
+<p>无论采用哪种分配策略，当找不到合适的空闲区时，就要调用碎片收集程序，将无法使用的碎片连成一块以备使用</p>
+</blockquote>
+<p>临时变量的存储分配</p>
+<blockquote>
+<p>在产生中间代码时，为了暂存中间结果，编译程序会大量引进临时变量名。临时变量都是简单变量，它们的属性非常简单，因此没有登记到符号表内，而只要在它们出现的地方加上类型信息即可</p>
+</blockquote>
+<p>临时变量的分配原则</p>
+<blockquote>
+<p>一般的分配原则是：如果两个临时变量名的作用域不相交，则它们可以分配到同一单元中。</p>
+<p>一个临时变量名自它第一次被赋值的地方起直至它最后一次被引用的地方止，这区间的程序所能到达的全体四元式构成了它的作用域。</p>
+</blockquote>
+<p>活动记录</p>
+<blockquote>
+<p>过程活动记录</p>
+</blockquote>
+<pre><code> 活动记录在运行栈上的分配
+
+活动记录的结构
+
+嵌套过程
+
+Display表的结构和维护
+</code></pre>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag"># 编译原理</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/" rel="prev" title="语法分析实验">
+      <i class="fa fa-chevron-left"></i> 语法分析实验
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/6%E3%80%81%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/" rel="next" title="语义分析和中间代码生成">
+      语义分析和中间代码生成 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%A9%BA%E9%97%B4"><span class="nav-number">1.</span> <span class="nav-text">数据空间</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yanglinqi"
+      src="https://cdn.jsdelivr.net/gh/yanglinqi107/Images/res/headpic.jpg">
+  <p class="site-author-name" itemprop="name">yanglinqi</p>
+  <div class="site-description" itemprop="description">用于做笔记，对学过的知识总结</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanglinqi107" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanglinqi107" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanglinqi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"/node_modules/hexo-generator-searchdb/search.xml"};
+  </script>
+
+  <meta name="description" content="百度文库爬虫之TXT文件，保存为txt文件，对特殊的文件可以处理后保存为html文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="百度文库爬虫之TXT">
+<meta property="og:url" content="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/index.html">
+<meta property="og:site_name" content="杨的个人博客">
+<meta property="og:description" content="百度文库爬虫之TXT文件，保存为txt文件，对特殊的文件可以处理后保存为html文件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116140200284.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116140753775.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116153725378.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116153851910.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116154251168.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116210224061.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116210926464.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116211233492.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116211322921.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116213711462.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116213007883.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116214920584.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116214956311.png">
+<meta property="article:published_time" content="2022-01-16T05:58:00.000Z">
+<meta property="article:modified_time" content="2022-04-04T06:12:56.135Z">
+<meta property="article:author" content="yanglinqi">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="爬虫">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116140200284.png">
+
+<link rel="canonical" href="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>百度文库爬虫之TXT | 杨的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">杨的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">碎片化学习令人焦虑，系统化学习使人进步</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">18</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">76</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yanglinqi107.github.io/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yanglinqi107/Images/res/headpic.jpg">
+      <meta itemprop="name" content="yanglinqi">
+      <meta itemprop="description" content="用于做笔记，对学过的知识总结">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          百度文库爬虫之TXT
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-16 13:58:00" itemprop="dateCreated datePublished" datetime="2022-01-16T13:58:00+08:00">2022-01-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-04 14:12:56" itemprop="dateModified" datetime="2022-04-04T14:12:56+08:00">2022-04-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python%E7%88%AC%E8%99%AB/" itemprop="url" rel="index"><span itemprop="name">Python爬虫</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>百度文库爬虫之TXT文件，保存为txt文件，对特殊的文件可以处理后保存为html文件</p>
+<span id="more"></span>
+
+<p>进入百度文库</p>
+<p><img src="/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116140200284.png" alt="image-20220116140200284"></p>
+<p>查看百度文库的爬虫协议：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://wenku.baidu.com/robots.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<p>使用下面给出的UA标识</p>
+<p><img src="/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116140753775.png" alt="image-20220116140753775"></p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">url = <span class="built_in">input</span>(<span class="string">&quot;请输入TXT文件网址：&quot;</span>)</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>:<span class="string">&quot;Googlebot&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">resp = requests.get(url = url, headers = headers)</span><br><span class="line"></span><br><span class="line">resp.encoding = <span class="string">&quot;gbk&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># print(resp.text)</span></span><br><span class="line"></span><br><span class="line">title = re.findall(<span class="string">r&#x27;&lt;span id=&quot;doc-tittle-0&quot;&gt;(.*?)&lt;/span&gt;&#x27;</span>, resp.text, re.S)[<span class="number">0</span>].strip()</span><br><span class="line"></span><br><span class="line">content = re.findall(<span class="string">r&#x27;&lt;div style=&quot;border:1px solid #C8DBD3;padding:20px;line-height:24px;&quot;&gt;(.*?)&lt;/div&gt;&#x27;</span>, resp.text, re.S)[<span class="number">0</span>].strip()</span><br><span class="line"></span><br><span class="line"><span class="comment"># print(title)</span></span><br><span class="line"><span class="comment"># print(content)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">f&quot;<span class="subst">&#123;title&#125;</span>.txt&quot;</span>, <span class="string">&#x27;w&#x27;</span>, encoding = <span class="string">&quot;utf8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(content)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;title&#125;</span>.txt文件保存成功！&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>上述代码对很多txt百度文库文件是OK的，</p>
+<p>如：<a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/14d86f06dd36a32d7375818a.html">https://wenku.baidu.com/view/14d86f06dd36a32d7375818a.html</a></p>
+<blockquote>
+<p><img src="/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116153725378.png" alt="image-20220116153725378"></p>
+<p><img src="/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116153851910.png" alt="image-20220116153851910"></p>
+</blockquote>
+<p><font color="#ff0000">但是对一些奇奇怪怪的文件就会出问题</font></p>
+<p>如：<a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/9d0ed76fae45b307e87101f69e3143323968f5e4.html">c语言编写网络爬虫 - 百度文库 (baidu.com)</a></p>
+<blockquote>
+<p><img src="/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116154251168.png" alt="image-20220116154251168"></p>
+</blockquote>
+<p>文库中看到的是<code>#include&lt;cspider/spider.h&gt;</code> </p>
+<p>而网页源代码显示地是<code>#include&amp;lt;cspider/spider.h&amp;gt;</code> &amp;lt 和 &amp;gt 在html中 是 &lt;&gt; </p>
+<p>这种TXT文件就会出问题，导致保存至本地的TXT文件是<code>#include&amp;lt;cspider/spider.h&amp;gt;</code>而不是<code>#include&lt;cspider/spider.h&gt;</code></p>
+<p>我的解决方法是保存为HTML文件</p>
+<p>找到页面源代码</p>
+<blockquote>
+<p><img src="/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116210224061.png" alt="image-20220116210224061">》</p>
+</blockquote>
+<p>复制部分文本内容</p>
+<blockquote>
+<p><img src="/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116210926464.png" alt="image-20220116210926464">&gt;</p>
+</blockquote>
+<p>创建一个HTML文件，看是否能成功显示</p>
+<blockquote>
+<p><img src="/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116211233492.png" alt="image-20220116211233492"></p>
+</blockquote>
+<p>显示结果：</p>
+<blockquote>
+<p><img src="/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116211322921.png"></p>
+</blockquote>
+<p>使用HTML文件保存的方法可行。</p>
+<p><strong>代码实现</strong></p>
+<p>第一步：使用<code>selenium</code>获取网页源代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> Chrome</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.chrome.options <span class="keyword">import</span> Options</span><br><span class="line"></span><br><span class="line">option = Options()</span><br><span class="line">option.binary_location=<span class="string">r&#x27;D:\Program Files\Google\Chrome\Application\chrome.exe&#x27;</span></span><br><span class="line">url = <span class="string">&quot;https://wenku.baidu.com/view/9d0ed76fae45b307e87101f69e3143323968f5e4.html&quot;</span></span><br><span class="line">driver = Chrome(options = option)</span><br><span class="line">driver.get(url)</span><br><span class="line">page = driver.page_source   <span class="comment"># 网页源代码</span></span><br><span class="line">driver.close()</span><br><span class="line"><span class="built_in">print</span>(page)</span><br></pre></td></tr></table></figure>
+
+<p>输出的结果（部分）：</p>
+<p><img src="/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116213711462.png" alt="image-20220116213711462"></p>
+<p><img src="/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116213007883.png" alt="image-20220116213007883"></p>
+<p>第二步：使用<code>BeautifulSoup</code>提取内容</p>
+<p><code>&lt;h3 class=&quot;doc-title&quot;&gt;c语言编写网络爬虫&lt;/h3&gt;</code>提取出文件名</p>
+<p>上图中<code>&lt;p class=&quot;p-txt&quot;&gt;文本内容&lt;/p&gt;</code>这类标签为文本内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">soup = BeautifulSoup(page, <span class="string">&quot;lxml&quot;</span>);</span><br><span class="line">title = soup.find(<span class="string">&quot;h3&quot;</span>,attrs=&#123;<span class="string">&quot;class&quot;</span>:<span class="string">&quot;doc-title&quot;</span>&#125;).text</span><br><span class="line"><span class="built_in">print</span>(title)</span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> soup.find_all(<span class="string">&quot;p&quot;</span>, attrs=&#123;<span class="string">&quot;class&quot;</span>:<span class="string">&quot;p-txt&quot;</span>&#125;):</span><br><span class="line">    <span class="built_in">print</span>(p)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>第三步：保存至文件</p>
+<p>最终代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> Chrome</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.chrome.options <span class="keyword">import</span> Options</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="comment"># 改变了谷歌浏览器的位置，需加上这几行</span></span><br><span class="line">option = Options()</span><br><span class="line">option.binary_location=<span class="string">r&#x27;D:\Program Files\Google\Chrome\Application\chrome.exe&#x27;</span></span><br><span class="line">option.add_argument(<span class="string">&quot;--headless&quot;</span>)   <span class="comment"># 让浏览器后台运行，不显示出来</span></span><br><span class="line"><span class="comment"># url = &quot;https://wenku.baidu.com/view/9d0ed76fae45b307e87101f69e3143323968f5e4.html&quot;</span></span><br><span class="line">url = <span class="built_in">input</span>(<span class="string">&quot;请输入TXT文件网址：&quot;</span>)</span><br><span class="line">driver = Chrome(options = option)</span><br><span class="line">driver.get(url)</span><br><span class="line">page = driver.page_source   <span class="comment"># 网页源代码</span></span><br><span class="line">driver.close()</span><br><span class="line"><span class="comment"># print(page)</span></span><br><span class="line"><span class="comment"># charset = re.findall(r&#x27;&lt;meta charset=&quot;(.*?)&quot;&gt;&#x27;, page)[0]</span></span><br><span class="line"><span class="comment"># print(charset)</span></span><br><span class="line">soup = BeautifulSoup(page, <span class="string">&quot;lxml&quot;</span>)</span><br><span class="line">title = soup.find(<span class="string">&quot;h3&quot;</span>,attrs=&#123;<span class="string">&quot;class&quot;</span>:<span class="string">&quot;doc-title&quot;</span>&#125;).text    <span class="comment"># 文件名</span></span><br><span class="line"><span class="comment"># print(title)</span></span><br><span class="line"><span class="comment"># for p in soup.find_all(&quot;p&quot;, attrs=&#123;&quot;class&quot;:&quot;p-txt&quot;&#125;):</span></span><br><span class="line"><span class="comment">#     print(p)      # p的类型是&lt;class &#x27;bs4.element.Tag&#x27;&gt;，写入文件需转换为str</span></span><br><span class="line">html_head = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="string">&lt;html lang=&quot;zh&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;head&gt;</span></span><br><span class="line"><span class="string">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;title&gt;<span class="subst">&#123;title&#125;</span>&lt;/title&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;    </span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">html_tail = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">f&quot;E:\\Python\\爬虫_百度文库\\百度文库\\<span class="subst">&#123;title&#125;</span>.html&quot;</span>,<span class="string">&quot;w&quot;</span>,encoding=<span class="string">&quot;utf8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(html_head)</span><br><span class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> soup.find_all(<span class="string">&quot;p&quot;</span>, attrs=&#123;<span class="string">&quot;class&quot;</span>:<span class="string">&quot;p-txt&quot;</span>&#125;):</span><br><span class="line">        f.write(<span class="string">&quot;   &quot;</span> + <span class="built_in">str</span>(p))</span><br><span class="line">    f.write(html_tail)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;title&#125;</span>.html文件保存完成&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<blockquote>
+<p><img src="/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116214920584.png" alt="image-20220116214920584"></p>
+<p><img src="/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%88%AC%E8%99%AB%E4%B9%8BTXT/image-20220116214956311.png" alt="image-20220116214956311"></p>
+</blockquote>
+<p>最开始的代码和最后的代码可以选择性使用。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag"># 爬虫</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/" rel="prev" title="Python常用模块">
+      <i class="fa fa-chevron-left"></i> Python常用模块
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Linux%E5%9F%BA%E7%A1%80/" rel="next" title="Linux基础">
+      Linux基础 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yanglinqi"
+      src="https://cdn.jsdelivr.net/gh/yanglinqi107/Images/res/headpic.jpg">
+  <p class="site-author-name" itemprop="name">yanglinqi</p>
+  <div class="site-description" itemprop="description">用于做笔记，对学过的知识总结</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanglinqi107" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanglinqi107" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanglinqi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+</body>
+</html>

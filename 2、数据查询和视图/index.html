@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"/node_modules/hexo-generator-searchdb/search.xml"};
+  </script>
+
+  <meta name="description" content="单表查询、分组统计查询和连接查询，视图的创建，删除等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据查询和视图">
+<meta property="og:url" content="http://yanglinqi107.github.io/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/index.html">
+<meta property="og:site_name" content="杨的个人博客">
+<meta property="og:description" content="单表查询、分组统计查询和连接查询，视图的创建，删除等">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yanglinqi107.github.io/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/1639229747848.jpg">
+<meta property="og:image" content="http://yanglinqi107.github.io/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/20211211215820.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/20211211215856.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/20211211235959.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/20211212000030.png">
+<meta property="og:image" content="http://yanglinqi107.github.io/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/2021121200001.png">
+<meta property="article:published_time" content="2021-12-11T09:50:01.000Z">
+<meta property="article:modified_time" content="2022-04-04T06:12:56.050Z">
+<meta property="article:author" content="yanglinqi">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yanglinqi107.github.io/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/1639229747848.jpg">
+
+<link rel="canonical" href="http://yanglinqi107.github.io/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数据查询和视图 | 杨的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">杨的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">碎片化学习令人焦虑，系统化学习使人进步</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">18</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">76</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yanglinqi107.github.io/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yanglinqi107/Images/res/headpic.jpg">
+      <meta itemprop="name" content="yanglinqi">
+      <meta itemprop="description" content="用于做笔记，对学过的知识总结">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据查询和视图
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-12-11 17:50:01" itemprop="dateCreated datePublished" datetime="2021-12-11T17:50:01+08:00">2021-12-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-04 14:12:56" itemprop="dateModified" datetime="2022-04-04T14:12:56+08:00">2022-04-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>单表查询、分组统计查询和连接查询，视图的创建，删除等</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="数据查询"><a href="#数据查询" class="headerlink" title="数据查询"></a>数据查询</h2><p>关系运算</p>
+<ul>
+<li>选择运算(Selection)</li>
+<li>投影运算(Projection)</li>
+<li>连接运算(Join)<ul>
+<li>等值连接</li>
+<li>自然连接</li>
+</ul>
+</li>
+</ul>
+<h3 id="Select-语句，SQL核心，语法格式如下："><a href="#Select-语句，SQL核心，语法格式如下：" class="headerlink" title="Select 语句，SQL核心，语法格式如下："></a>Select 语句，SQL核心，语法格式如下：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> [<span class="keyword">ALL</span> <span class="operator">|</span> <span class="keyword">DISTINCT</span> <span class="operator">|</span> DISTINCTROW ][HIGH_PRIORITY]...</span><br><span class="line">列名表达式 …</span><br><span class="line">[<span class="keyword">FROM</span> table_reference ... ]     <span class="comment">/*FROM子句*/</span></span><br><span class="line">[<span class="keyword">WHERE</span> 条件]                    <span class="comment">/*WHERE子句*/</span></span><br><span class="line">[<span class="keyword">GROUP</span> <span class="keyword">BY</span> &#123;列名<span class="operator">|</span> 表达式 <span class="operator">|</span> position&#125; [<span class="keyword">ASC</span> <span class="operator">|</span> <span class="keyword">DESC</span>], ... [<span class="keyword">WITH</span> <span class="keyword">ROLLUP</span>]]</span><br><span class="line"><span class="comment">/*GROUP BY子句*/</span></span><br><span class="line">[<span class="keyword">HAVING</span> 条件]                   <span class="comment">/*HAVING 子句*/</span></span><br><span class="line">[<span class="keyword">ORDER</span> <span class="keyword">BY</span> &#123;列名 <span class="operator">|</span> 表达式 <span class="operator">|</span> position&#125; [<span class="keyword">ASC</span> <span class="operator">|</span> <span class="keyword">DESC</span>] , ...]</span><br><span class="line"><span class="comment">/*ORDER BY子句*/</span></span><br><span class="line">[LIMIT &#123;[<span class="keyword">offset</span>,] row_count<span class="operator">|</span>row_count <span class="keyword">OFFSET</span> <span class="keyword">offset</span>&#125;];  <span class="comment">/*LIMIT子句*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="聚合函数，通常与GROUP-BY子句一起使用："><a href="#聚合函数，通常与GROUP-BY子句一起使用：" class="headerlink" title="聚合函数，通常与GROUP BY子句一起使用："></a>聚合函数，通常与GROUP BY子句一起使用：</h3><table>
+<thead>
+<tr>
+<th align="left">函 数 名</th>
+<th align="left">说 明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">COUNT</td>
+<td align="left">求组中项数，返回int类型整数</td>
+</tr>
+<tr>
+<td align="left">MAX</td>
+<td align="left">求最大值</td>
+</tr>
+<tr>
+<td align="left">MIN</td>
+<td align="left">求最小值</td>
+</tr>
+<tr>
+<td align="left">SUM</td>
+<td align="left">返回表达式中所有值的和</td>
+</tr>
+<tr>
+<td align="left">AVG</td>
+<td align="left">求组中值的平均值</td>
+</tr>
+<tr>
+<td align="left">STD或STDDEV</td>
+<td align="left">返回给定表达式中所有值的标准差</td>
+</tr>
+<tr>
+<td align="left">VARIANCE</td>
+<td align="left">返回给定表达式中所有值的方差</td>
+</tr>
+<tr>
+<td align="left">GROUP_CONCAT</td>
+<td align="left">返回由属于一组的列值连接组合而成的结果</td>
+</tr>
+<tr>
+<td align="left">BIT_AND</td>
+<td align="left">逻辑或</td>
+</tr>
+<tr>
+<td align="left">BIT_OR</td>
+<td align="left">逻辑与</td>
+</tr>
+<tr>
+<td align="left">BIT_XOR</td>
+<td align="left">逻辑异或</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*下面都是例子例*/</span></span><br><span class="line"><span class="keyword">SELECT</span> name, major, totalcredit <span class="keyword">FROM</span> student;</span><br><span class="line"><span class="comment">/*聚合函数，查询学生总人数*/</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">AS</span> `total student number` <span class="keyword">FROM</span> student;</span><br><span class="line"><span class="comment">/*聚合函数，查询选修101课程的学生的最高分和最低分*/</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">max</span>(<span class="keyword">result</span>), <span class="built_in">min</span>(<span class="keyword">result</span>) <span class="keyword">FROM</span> score <span class="keyword">WHERE</span> coursekey<span class="operator">=</span><span class="string">&#x27;101&#x27;</span>;</span><br><span class="line"><span class="comment">/*聚合函数，查询选修101课程的学生的平均成绩*/</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">avg</span>(<span class="keyword">result</span>) <span class="keyword">FROM</span> score <span class="keyword">WHERE</span> coursekey<span class="operator">=</span><span class="string">&#x27;101&#x27;</span>;</span><br><span class="line"><span class="comment">/*全连接，查找DBST中所有学生选过的课程名和课程号*/</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> course.name, score.coursekey </span><br><span class="line"><span class="keyword">FROM</span> course, score </span><br><span class="line"><span class="keyword">WHERE</span> course.coursekey<span class="operator">=</span>score.coursekey;</span><br><span class="line"><span class="comment">/*JOIN连接，查找选修了206课程且成绩在80分以上的学生姓名及成绩*/</span></span><br><span class="line"><span class="keyword">SELECT</span> name, <span class="keyword">result</span> </span><br><span class="line"><span class="keyword">FROM</span> student </span><br><span class="line"><span class="keyword">JOIN</span> score </span><br><span class="line"><span class="keyword">ON</span> student.studentkey<span class="operator">=</span>score.studentkey </span><br><span class="line"><span class="keyword">WHERE</span> coursekey<span class="operator">=</span><span class="string">&#x27;206&#x27;</span> <span class="keyword">AND</span> <span class="keyword">result</span><span class="operator">&gt;=</span><span class="number">80</span>;</span><br><span class="line"><span class="comment">/*模式匹配，查找所有姓“王”的学生学号、姓名*/</span></span><br><span class="line"><span class="keyword">SELECT</span> studentkey, name <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">&#x27;王%&#x27;</span>;</span><br><span class="line"><span class="comment">/*GROUP BY子句，求DBST中各专业的学生数*/</span></span><br><span class="line"><span class="keyword">SELECT</span> major, <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">AS</span> num_student </span><br><span class="line"><span class="keyword">FROM</span> student </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> major;</span><br><span class="line"><span class="comment">/*HAVING子句，查找平均成绩在85分以上的学生的学号和平均成绩*/</span></span><br><span class="line"><span class="keyword">SELECT</span> studentkey, <span class="built_in">avg</span>(<span class="keyword">result</span>) <span class="keyword">AS</span> avg_result <span class="keyword">FROM</span> score </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> studentkey <span class="keyword">HAVING</span> <span class="built_in">avg</span>(<span class="keyword">result</span>)<span class="operator">&gt;=</span><span class="number">85</span>;</span><br><span class="line"><span class="comment">/*ORDER BY子句，将通信工程专业的学生按出生日期排序*/</span></span><br><span class="line"><span class="keyword">SELECT</span> studentkey, name, major, birth </span><br><span class="line"><span class="keyword">FROM</span> student</span><br><span class="line"><span class="keyword">WHERE</span> major<span class="operator">=</span><span class="string">&#x27;通信工程&#x27;</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> birth;</span><br><span class="line"><span class="comment">/*LIMIT子句，查找student表中从第4位学生开始的5名学生信息*/</span></span><br><span class="line"><span class="keyword">SELECT</span> studentkey, name, major, gender, birth, totalcredit</span><br><span class="line"><span class="keyword">FROM</span> student <span class="keyword">ORDER</span> <span class="keyword">BY</span> studentkey LIMIT <span class="number">3</span>,<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="SQL查询语法要点"><a href="#SQL查询语法要点" class="headerlink" title="SQL查询语法要点"></a>SQL查询语法要点</h3><hr>
+<h4 id="通配符-可以表示所有字段"><a href="#通配符-可以表示所有字段" class="headerlink" title="通配符 * 可以表示所有字段"></a><strong>通配符 * 可以表示所有字段</strong></h4><hr>
+<h4 id="可以使用-数学表达式，列与列之间的运算"><a href="#可以使用-数学表达式，列与列之间的运算" class="headerlink" title="可以使用+ - * / 数学表达式，列与列之间的运算"></a><strong>可以使用+ - * / 数学表达式，列与列之间的运算</strong></h4><hr>
+<h4 id="AS-别名"><a href="#AS-别名" class="headerlink" title="AS 别名"></a><strong>AS 别名</strong></h4><hr>
+<h4 id="ORDER-BY-排序"><a href="#ORDER-BY-排序" class="headerlink" title="ORDER BY 排序"></a><strong>ORDER BY 排序</strong></h4><pre><code>默认升序ASC
+降序  ORDER BY 字段 DESC,字段 DESC;
+</code></pre>
+<hr>
+<h4 id="DISTINCT-去重"><a href="#DISTINCT-去重" class="headerlink" title="DISTINCT 去重"></a><strong>DISTINCT 去重</strong></h4><pre><code>需放在第一个字段名之前，否则报错
+作用于后面跟着的所有字段      
+</code></pre>
+<hr>
+<h4 id="WHERE-条件语句"><a href="#WHERE-条件语句" class="headerlink" title="WHERE + 条件语句"></a><strong>WHERE + 条件语句</strong></h4><table>
+<thead>
+<tr>
+<th align="left"></th>
+<th>符号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">大于</td>
+<td>&gt;</td>
+</tr>
+<tr>
+<td align="left">小于</td>
+<td>&lt;</td>
+</tr>
+<tr>
+<td align="left">等于</td>
+<td>=</td>
+</tr>
+<tr>
+<td align="left">不等于</td>
+<td>!= 或 &lt;&gt;</td>
+</tr>
+<tr>
+<td align="left">大于等于</td>
+<td>&gt;=</td>
+</tr>
+<tr>
+<td align="left">小于等于</td>
+<td>&lt;=</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="多条件连接-AND-OR-NOT"><a href="#多条件连接-AND-OR-NOT" class="headerlink" title="多条件连接 AND  OR  NOT"></a><strong>多条件连接 AND  OR  NOT</strong></h4><p><code>WHERE age&gt;12 AND (gender=&#39;男&#39; OR gender=&#39;女&#39;)</code></p>
+<hr>
+<h4 id="BETWEEN…AND"><a href="#BETWEEN…AND" class="headerlink" title="BETWEEN…AND"></a><strong>BETWEEN…AND</strong></h4><p>范围条件，包括左右边界</p>
+<p><code>WHERE birthday BETWEEN &#39;2001-01-01&#39; AND &#39;2021-12-31&#39;</code></p>
+<hr>
+<h4 id="IN"><a href="#IN" class="headerlink" title="IN"></a><strong>IN</strong></h4><p>满足X或Y或Z   IN(X,Y,Z)</p>
+<p>eg: <code>WHERE province IN(&#39;四川省&#39;,&#39;重庆市&#39;)</code></p>
+<hr>
+<h4 id="NULL-缺失值-空"><a href="#NULL-缺失值-空" class="headerlink" title="NULL  缺失值 空"></a><strong>NULL  缺失值 空</strong></h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WHERE</span> phone_number <span class="operator">=</span> <span class="keyword">NULL</span>; <span class="comment">/*是错的*/</span></span><br><span class="line"><span class="keyword">WHERE</span> phone_number <span class="keyword">IS</span> <span class="keyword">NULL</span>  或  <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="LIKE"><a href="#LIKE" class="headerlink" title="LIKE"></a><strong>LIKE</strong></h4><p>通配符%  零到任意数量个常规字符 </p>
+<p>通配符_  一个常规字符</p>
+<p>eg: <code>WHERE text LIKE &#39;%&lt;img&#39;</code></p>
+<p>eg: <code>WHERE text LIKE &#39;_ary&#39;</code></p>
+<hr>
+<h4 id="五大聚类函数"><a href="#五大聚类函数" class="headerlink" title="五大聚类函数"></a><strong>五大聚类函数</strong></h4><ol>
+<li><p>COUNT() </p>
+<p> COUNT(*)统计所有行数，包括列中是NULL的行和重复的行</p>
+<p> COUNT(X字段)统计X列中不为NULL的行数</p>
+<p> COUNT(DISTINCT X)统计X列中不为NULL的行数，并去重</p>
+</li>
+<li><p>MAX()</p>
+<p> eg: <code>SELECT account_id,MAX(total_price) AS max_price</code></p>
+<p> MAX()找最大的数值或日期值</p>
+<p> MAX()函数忽略列值为NULL的行</p>
+<p> 在MySQL中，可以用于文本列字母排序的最高值</p>
+</li>
+<li><p>MIN()和MAX()类似</p>
+</li>
+<li><p>SUM()<br> 返回指定列值的和</p>
+<p> 必须指定列名如：<code>SUM(total_price)</code></p>
+<p> 忽略列值为NULL的行</p>
+<p> eg: <code>SELECT SUM(total_price)/50000 AS ROI</code></p>
+</li>
+<li><p>AVG()<br> 计算数值列的平均值</p>
+<p> 忽略列值为NULL的行</p>
+<p> eg: <code>SELECT AVG(total_price) AS avg_price</code></p>
+</li>
+</ol>
+<hr>
+<h4 id="GROUP-BY-分组"><a href="#GROUP-BY-分组" class="headerlink" title="GROUP BY   分组"></a><strong>GROUP BY   分组</strong></h4><p><code>GROUP BY account_id;</code> 通过account_id分组</p>
+<hr>
+<h4 id="HAVING-条件语句"><a href="#HAVING-条件语句" class="headerlink" title="HAVING + 条件语句"></a><strong>HAVING + 条件语句</strong></h4><pre><code>对分组设置筛选条件
+HAVING必须在GROUP BY之后使用
+HAVING过滤组，WHERE过滤行
+</code></pre>
+<hr>
+<h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a><strong>子查询</strong></h4><p>子查询就是将一个查询（子查询）的结果作为另一个查询（主查询）的数据来源或判断条件的查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*例*/</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> account_2c</span><br><span class="line"><span class="keyword">WHERE</span> id <span class="keyword">NOT</span> <span class="keyword">IN</span>(</span><br><span class="line"><span class="keyword">SELECT</span> account_id</span><br><span class="line"><span class="keyword">FROM</span> address</span><br><span class="line"><span class="keyword">WHERE</span> city<span class="operator">=</span><span class="string">&#x27;成都市&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>ANY：子查询结果至少存在一个满足</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*例*/</span></span><br><span class="line"><span class="keyword">SELECT</span> name</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> salary <span class="operator">&gt;</span> <span class="keyword">ANY</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> salary</span><br><span class="line">    <span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> department <span class="operator">=</span> <span class="string">&#x27;设计&#x27;</span>);</span><br><span class="line"><span class="comment">/*等价于*/</span></span><br><span class="line"><span class="keyword">SELECT</span> name</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> salary <span class="operator">&gt;</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> <span class="built_in">MIN</span>(salary)</span><br><span class="line">    <span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> department <span class="operator">=</span> <span class="string">&#x27;设计&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>ALL：子查询结果所有均要满足</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*例*/</span></span><br><span class="line"><span class="keyword">SELECT</span> department</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> salary <span class="operator">&gt;</span> <span class="keyword">ALL</span>(</span><br><span class="line"><span class="keyword">SELECT</span> salary</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> department <span class="operator">=</span> <span class="string">&#x27;法务&#x27;</span>);</span><br><span class="line"><span class="comment">/*等价于*/</span></span><br><span class="line"><span class="keyword">SELECT</span> department</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> salary <span class="operator">&gt;</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> <span class="built_in">MAX</span>(salary)</span><br><span class="line">    <span class="keyword">FROM</span> employees</span><br><span class="line">    <span class="keyword">WHERE</span> department <span class="operator">=</span> <span class="string">&#x27;法务&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="内联结（连接）JOIN-ON"><a href="#内联结（连接）JOIN-ON" class="headerlink" title="内联结（连接）JOIN ON"></a><strong>内联结（连接）JOIN ON</strong></h4><p>INNER JOIN 内联结（INNER可省略)</p>
+<p>ON 设定联结键的条件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*例：将商品名与品牌表的数据联结，并筛选出所有的商品编号、商品名、品牌名*/</span></span><br><span class="line"><span class="keyword">SELECT</span> c.id,sku_name,brand_name</span><br><span class="line"><span class="keyword">FROM</span> commodity <span class="keyword">AS</span> c</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> brand <span class="keyword">AS</span> b</span><br><span class="line"><span class="keyword">ON</span> c.brand_id<span class="operator">=</span>b.id;</span><br><span class="line"><span class="comment">/*多表查询列名冲突时，表名限定列名*/</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="外联结（连接）"><a href="#外联结（连接）" class="headerlink" title="外联结（连接）"></a><strong>外联结（连接）</strong></h4><p>左外联结：LEFT JOIN</p>
+<p>右外联结：RIGHT JOIN</p>
+<p><img src="/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/1639229747848.jpg" alt="多表连接查询"></p>
+<hr>
+<h4 id="limit"><a href="#limit" class="headerlink" title="limit"></a><strong>limit</strong></h4><p>limit 位置偏移量,行数;</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> .. .. limit <span class="number">4</span>;   <span class="comment">/*取最后结果的前四行*/</span></span><br><span class="line"><span class="keyword">select</span> .. .. limit <span class="number">5</span>,<span class="number">4</span>; <span class="comment">/*最后结果的去掉前5行，再去4行*/</span>    </span><br></pre></td></tr></table></figure>
+<hr>
+<p>SQL书写顺序</p>
+<p><img src="/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/20211211215820.png" alt="SQL书写顺序"></p>
+<p>SQL执行顺序</p>
+<p><img src="/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/20211211215856.png" alt="SQL执行顺序"></p>
+<p>使用AS关键字时，执行顺序这一点会有体现，尤其注意！</p>
+<hr>
+<p>注：字符串加单引号’’，字段名即列名在特殊情况下用 `` (英文键盘下Tab上面的键)包裹</p>
+<p>注：多个表连接时的格式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> xxx</span><br><span class="line"><span class="keyword">from</span> table_name</span><br><span class="line"><span class="keyword">join</span> table1_name</span><br><span class="line"><span class="keyword">on</span> 条件</span><br><span class="line"><span class="keyword">join</span> table2_name</span><br><span class="line"><span class="keyword">on</span> 条件</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="视图，数据库的外模式"><a href="#视图，数据库的外模式" class="headerlink" title="视图，数据库的外模式"></a>视图，数据库的外模式</h2><p>视图是一个虚拟表，非真实存在</p>
+<p>视图在数据库中作为一个对象存储，视图一经定义以后，就可以像表一样被查询、修<br>改、删除和更新。使用视图有以下优点：</p>
+<p><code>为用户集中数据</code>，简化用户的数据查询和处理。有时用户所需要的数据分散在多个表中，定义视图可将它们集中在一起，从而方便用户的数据查询和处理</p>
+<p><code>屏蔽数据库的复杂性</code>。用户不必了解复杂的数据库中的表结构，并且数据库表的更改也不影响用户对数据库的使用</p>
+<p><code>简化用户权限的管理</code>。只需授予用户使用视图的权限，而不必指定用只能使用表的特定列，也增加了安全性便于数据共享。各用户不必都定义和存储自己所需的数据，可共享数<br>据库的数据，这样同样的数据只需存储一次</p>
+<p><code>可以重新组织数据以便输出到其他应用程序中</code></p>
+<hr>
+<h3 id="不可更新视图"><a href="#不可更新视图" class="headerlink" title="不可更新视图"></a>不可更新视图</h3><p>如果视图包含下述结构中的一种，则视图不可更新：</p>
+<pre><code>（1）聚合函数；（2）DISTINCT关键字；（3）GROUP BY子句；
+（4）ORDER BY子句；（5）HAVING子句；（6）UNION运算符；
+（7）位于选择列表中的子查询；（8）FROM子句中包含多个表；
+（9）SELECT语句中引用了不可更新视图；
+（10）WHERE子句中的子查询，引用FROM子句中的表；
+</code></pre>
+<hr>
+<h3 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [<span class="keyword">OR</span> REPLACE] [ALGORITHM <span class="operator">=</span> &#123;UNDEFINED <span class="operator">|</span> </span><br><span class="line"><span class="keyword">MERGE</span> <span class="operator">|</span> TEMPTABLE&#125;] [DEFINER <span class="operator">=</span> &#123; <span class="keyword">user</span> <span class="operator">|</span> <span class="built_in">CURRENT_USER</span> &#125;] </span><br><span class="line">[<span class="keyword">SQL</span> SECURITY &#123; DEFINER <span class="operator">|</span> INVOKER &#125;]</span><br><span class="line"><span class="keyword">VIEW</span> 视图名 [(列名 ... )]</span><br><span class="line"><span class="keyword">AS</span> <span class="keyword">SELECT</span>语句</span><br><span class="line">[<span class="keyword">WITH</span> [<span class="keyword">CASCADED</span> <span class="operator">|</span> <span class="keyword">LOCAL</span>] <span class="keyword">CHECK</span> OPTION];</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*例1，创建计算机专业学生的成绩视图v_cs，包括学生学号、选修的课程号及成绩，要求对视图的修改符合专业名为“计算机”*/</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> v_cs <span class="keyword">AS</span> </span><br><span class="line"><span class="keyword">SELECT</span> student.studentkey, coursekey, <span class="keyword">result</span> </span><br><span class="line"><span class="keyword">FROM</span> student, score </span><br><span class="line"><span class="keyword">WHERE</span> student.studentkey<span class="operator">=</span>score.studentkey <span class="keyword">AND</span> student.major<span class="operator">=</span><span class="string">&#x27;计算机&#x27;</span> </span><br><span class="line"><span class="keyword">WITH</span> <span class="keyword">CHECK</span> OPTION;</span><br><span class="line"><span class="comment">/*例2，创建DBST数据库上的计算机专业学生平均成绩视图v_cs_avg，包括学号(s_key)和平均成绩(avg_result)*/</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> v_cs_avg(s_key, avg_result) <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> studentkey, <span class="built_in">avg</span>(<span class="keyword">result</span>) </span><br><span class="line"><span class="keyword">FROM</span> v_cs </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> studentkey;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">VIEW</span> [IF <span class="keyword">EXISTS</span>]</span><br><span class="line">view_name [,view_name]...</span><br><span class="line">[RESTRICT <span class="operator">|</span> CASCADE];</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="注意："><a href="#注意：" class="headerlink" title=" 注意："></a><font color="#ff0000"> 注意：</font></h3><p>视图的查询与表查询一样</p>
+<p>可更新视图的更新与表更新一样</p>
+<p>可更新视图简单点理解就是视图数据的来源只能是一张表上的全部或部分数据</p>
+<p>可更新视图更新后，对应视图数据来源的表中的数据也会变化，即上例中v_cs的更新，score也会相应更新（from跟两个表，按理说v_cs不能更新的，但我测试却能更新成功，不知道是mysql的问题，还是说虽然跟着student，score两张表，但由于v_cs的数据来源于score，所以能更新？）</p>
+<p> <img src="/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/20211211235959.png" alt="更新v_cs视图"></p>
+<p> 上图更新v_cs视图成功，但下图就指明 v_cs 是<code>join view</code>，不能删除，但却能更新，奇怪</p>
+<p> <img src="/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/20211212000030.png" alt="删除数据"></p>
+<p>若视图 view1 数据来源于 表1、表2… 则 表1、表2…等表的数据更新会导致 view1 的数据一同更新；若还有视图 view2 的数据来源于 view1 ，则view2 也会跟着变化；<code>即表table的数据更新一定会导致对应视图view的更新，不论是可变或不可变视图，而可变视图的数据更新也会导致对应表数据的更新</code> </p>
+<p>如果视图关联了一个表中的所有字段，而该表中添加了新字段，视图中是否能查询到新字段？<code>不能</code></p>
+<p><img src="/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/2021121200001.png"></p>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/3%E3%80%81%E7%B4%A2%E5%BC%95%E5%92%8C%E5%AE%8C%E6%95%B4%E6%80%A7/" rel="prev" title="索引和完整性">
+      <i class="fa fa-chevron-left"></i> 索引和完整性
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/03%20bs4%E8%A7%A3%E6%9E%90/" rel="next" title="bs4解析">
+      bs4解析 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.</span> <span class="nav-text">数据查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Select-%E8%AF%AD%E5%8F%A5%EF%BC%8CSQL%E6%A0%B8%E5%BF%83%EF%BC%8C%E8%AF%AD%E6%B3%95%E6%A0%BC%E5%BC%8F%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">Select 语句，SQL核心，语法格式如下：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0%EF%BC%8C%E9%80%9A%E5%B8%B8%E4%B8%8EGROUP-BY%E5%AD%90%E5%8F%A5%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">聚合函数，通常与GROUP BY子句一起使用：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL%E6%9F%A5%E8%AF%A2%E8%AF%AD%E6%B3%95%E8%A6%81%E7%82%B9"><span class="nav-number">1.3.</span> <span class="nav-text">SQL查询语法要点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E9%85%8D%E7%AC%A6-%E5%8F%AF%E4%BB%A5%E8%A1%A8%E7%A4%BA%E6%89%80%E6%9C%89%E5%AD%97%E6%AE%B5"><span class="nav-number">1.3.1.</span> <span class="nav-text">通配符 * 可以表示所有字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8-%E6%95%B0%E5%AD%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8C%E5%88%97%E4%B8%8E%E5%88%97%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">1.3.2.</span> <span class="nav-text">可以使用+ - * &#x2F; 数学表达式，列与列之间的运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AS-%E5%88%AB%E5%90%8D"><span class="nav-number">1.3.3.</span> <span class="nav-text">AS 别名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ORDER-BY-%E6%8E%92%E5%BA%8F"><span class="nav-number">1.3.4.</span> <span class="nav-text">ORDER BY 排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DISTINCT-%E5%8E%BB%E9%87%8D"><span class="nav-number">1.3.5.</span> <span class="nav-text">DISTINCT 去重</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WHERE-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.3.6.</span> <span class="nav-text">WHERE + 条件语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E6%9D%A1%E4%BB%B6%E8%BF%9E%E6%8E%A5-AND-OR-NOT"><span class="nav-number">1.3.7.</span> <span class="nav-text">多条件连接 AND  OR  NOT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BETWEEN%E2%80%A6AND"><span class="nav-number">1.3.8.</span> <span class="nav-text">BETWEEN…AND</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IN"><span class="nav-number">1.3.9.</span> <span class="nav-text">IN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NULL-%E7%BC%BA%E5%A4%B1%E5%80%BC-%E7%A9%BA"><span class="nav-number">1.3.10.</span> <span class="nav-text">NULL  缺失值 空</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LIKE"><span class="nav-number">1.3.11.</span> <span class="nav-text">LIKE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%94%E5%A4%A7%E8%81%9A%E7%B1%BB%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.12.</span> <span class="nav-text">五大聚类函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GROUP-BY-%E5%88%86%E7%BB%84"><span class="nav-number">1.3.13.</span> <span class="nav-text">GROUP BY   分组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HAVING-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.3.14.</span> <span class="nav-text">HAVING + 条件语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.3.15.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E8%81%94%E7%BB%93%EF%BC%88%E8%BF%9E%E6%8E%A5%EF%BC%89JOIN-ON"><span class="nav-number">1.3.16.</span> <span class="nav-text">内联结（连接）JOIN ON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%96%E8%81%94%E7%BB%93%EF%BC%88%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="nav-number">1.3.17.</span> <span class="nav-text">外联结（连接）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#limit"><span class="nav-number">1.3.18.</span> <span class="nav-text">limit</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%A4%96%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">视图，数据库的外模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%8F%AF%E6%9B%B4%E6%96%B0%E8%A7%86%E5%9B%BE"><span class="nav-number">2.1.</span> <span class="nav-text">不可更新视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE"><span class="nav-number">2.2.</span> <span class="nav-text">创建视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%A7%86%E5%9B%BE"><span class="nav-number">2.3.</span> <span class="nav-text">删除视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="nav-number">2.4.</span> <span class="nav-text"> 注意：</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yanglinqi"
+      src="https://cdn.jsdelivr.net/gh/yanglinqi107/Images/res/headpic.jpg">
+  <p class="site-author-name" itemprop="name">yanglinqi</p>
+  <div class="site-description" itemprop="description">用于做笔记，对学过的知识总结</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanglinqi107" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanglinqi107" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanglinqi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+</body>
+</html>

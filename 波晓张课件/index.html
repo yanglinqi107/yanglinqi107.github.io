@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"/node_modules/hexo-generator-searchdb/search.xml"};
+  </script>
+
+  <meta name="description" content="学自路飞学城">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬虫基础简介">
+<meta property="og:url" content="http://yanglinqi107.github.io/%E6%B3%A2%E6%99%93%E5%BC%A0%E8%AF%BE%E4%BB%B6/index.html">
+<meta property="og:site_name" content="杨的个人博客">
+<meta property="og:description" content="学自路飞学城">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-03T15:14:48.110Z">
+<meta property="article:modified_time" content="2022-04-03T14:59:29.968Z">
+<meta property="article:author" content="yanglinqi">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yanglinqi107.github.io/%E6%B3%A2%E6%99%93%E5%BC%A0%E8%AF%BE%E4%BB%B6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>爬虫基础简介 | 杨的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">杨的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">碎片化学习令人焦虑，系统化学习使人进步</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">18</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">76</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yanglinqi107.github.io/%E6%B3%A2%E6%99%93%E5%BC%A0%E8%AF%BE%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yanglinqi107/Images/res/headpic.jpg">
+      <meta itemprop="name" content="yanglinqi">
+      <meta itemprop="description" content="用于做笔记，对学过的知识总结">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          爬虫基础简介
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-03 23:14:48 / 修改时间：22:59:29" itemprop="dateCreated datePublished" datetime="2022-04-03T23:14:48+08:00">2022-04-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python%E7%88%AC%E8%99%AB/" itemprop="url" rel="index"><span itemprop="name">Python爬虫</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>学自路飞学城</p>
+<span id="more"></span>
+
+<h3 id="爬虫基础简介"><a href="#爬虫基础简介" class="headerlink" title="爬虫基础简介"></a>爬虫基础简介</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">前戏：</span><br><span class="line">    1.你是否在夜深人静的时候，想看一些会让你更睡不着的图片却苦于没有资源...</span><br><span class="line">    2.你是否在节假日出行高峰的时候，想快速抢购火车票成功...</span><br><span class="line">    3.你是否在网上购物的时候，想快速且精准的定位到口碑质量最好的商品...</span><br><span class="line"></span><br><span class="line">什么是爬虫：</span><br><span class="line">    - 通过编写程序，模拟浏览器上网，然后让其去互联网上抓取数据的过程。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">爬虫的价值：</span><br><span class="line">    - 实际应用</span><br><span class="line">    - 就业</span><br><span class="line"></span><br><span class="line">爬虫究竟是合法还是违法的？</span><br><span class="line">- 在法律中是不被禁止</span><br><span class="line">- 具有违法风险</span><br><span class="line">- 善意爬虫  恶意爬虫</span><br><span class="line"></span><br><span class="line">爬虫带来的风险可以体现在如下2方面：</span><br><span class="line">    - 爬虫干扰了被访问网站的正常运营</span><br><span class="line">    - 爬虫抓取了收到法律保护的特定类型的数据或信息</span><br><span class="line"></span><br><span class="line">如何在使用编写爬虫的过程中避免进入局子的厄运呢？</span><br><span class="line">    - 时常的优化自己的程序，避免干扰被访问网站的正常运行</span><br><span class="line">    - 在使用，传播爬取到的数据时，审查抓取到的内容，如果发现了涉及到用户隐私商业机密等敏感内容需要及时停止爬取或传播</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">爬虫在使用场景中的分类</span><br><span class="line">    - 通用爬虫：</span><br><span class="line">        抓取系统重要组成部分。抓取的是一整张页面数据。</span><br><span class="line">    - 聚焦爬虫：</span><br><span class="line">        是建立在通用爬虫的基础之上。抓取的是页面中特定的局部内容。</span><br><span class="line">    - 增量式爬虫：</span><br><span class="line">        检测网站中数据更新的情况。只会抓取网站中最新更新出来的数据。</span><br><span class="line"></span><br><span class="line">爬虫的矛与盾</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">反爬机制</span><br><span class="line">    门户网站，可以通过制定相应的策略或者技术手段，防止爬虫程序进行网站数据的爬取。</span><br><span class="line"></span><br><span class="line">反反爬策略</span><br><span class="line">    爬虫程序可以通过制定相关的策略或者技术手段，破解门户网站中具备的反爬机制，从而可以获取门户网站中相关的数据。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">robots.txt协议：</span><br><span class="line">    君子协议。规定了网站中哪些数据可以被爬虫爬取哪些数据不可以被爬取。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http协议</span><br><span class="line">    - 概念：就是服务器和客户端进行数据交互的一种形式。</span><br><span class="line">常用请求头信息</span><br><span class="line">    - User-Agent：请求载体的身份标识</span><br><span class="line">    - Connection：请求完毕后，是断开连接还是保持连接</span><br><span class="line"></span><br><span class="line">常用响应头信息</span><br><span class="line">    - Content-Type：服务器响应回客户端的数据类型</span><br><span class="line"></span><br><span class="line">https协议：</span><br><span class="line">    - 安全的超文本传输协议</span><br><span class="line"></span><br><span class="line">加密方式</span><br><span class="line">    - 对称秘钥加密</span><br><span class="line">    - 非对称秘钥加密</span><br><span class="line">    - 证书秘钥加密</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="requests模块基础"><a href="#requests模块基础" class="headerlink" title="requests模块基础"></a>requests模块基础</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">requests模块</span><br><span class="line">    - urllib模块</span><br><span class="line">    - requests模块</span><br><span class="line"></span><br><span class="line">requests模块：python中原生的一款基于网络请求的模块，功能非常强大，简单便捷，效率极高。</span><br><span class="line">作用：模拟浏览器发请求。</span><br><span class="line"></span><br><span class="line">如何使用：（requests模块的编码流程）</span><br><span class="line">    - 指定url</span><br><span class="line">        - UA伪装</span><br><span class="line">        - 请求参数的处理</span><br><span class="line">    - 发起请求</span><br><span class="line">    - 获取响应数据</span><br><span class="line">    - 持久化存储</span><br><span class="line"></span><br><span class="line">环境安装：</span><br><span class="line">    pip install requests</span><br><span class="line"></span><br><span class="line">实战编码：</span><br><span class="line">    - 需求：爬取搜狗首页的页面数据</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">实战巩固</span><br><span class="line">    - 需求：爬取搜狗指定词条对应的搜索结果页面（简易网页采集器）</span><br><span class="line">        - UA检测</span><br><span class="line">        - UA伪装</span><br><span class="line">    - 需求：破解百度翻译</span><br><span class="line">        - post请求（携带了参数）</span><br><span class="line">        - 响应数据是一组json数据</span><br><span class="line">    - 需求：爬取豆瓣电影分类排行榜 https://movie.douban.com/中的电影详情数据</span><br><span class="line"></span><br><span class="line">    - 作业：爬取肯德基餐厅查询http://www.kfc.com.cn/kfccda/index.aspx中指定地点的餐厅数据</span><br><span class="line"></span><br><span class="line">    - 需求：爬取国家药品监督管理总局中基于中华人民共和国化妆品生产许可证相关数据</span><br><span class="line">                http://125.35.6.84:81/xk/</span><br><span class="line">        - 动态加载数据</span><br><span class="line">        - 首页中对应的企业信息数据是通过ajax动态请求到的。</span><br><span class="line"></span><br><span class="line">        http://125.35.6.84:81/xk/itownet/portal/dzpz.jsp?id=e6c1aa332b274282b04659a6ea30430a</span><br><span class="line">        http://125.35.6.84:81/xk/itownet/portal/dzpz.jsp?id=f63f61fe04684c46a016a45eac8754fe</span><br><span class="line">        - 通过对详情页url的观察发现：</span><br><span class="line">            - url的域名都是一样的，只有携带的参数（id）不一样</span><br><span class="line">            - id值可以从首页对应的ajax请求到的json串中获取</span><br><span class="line">            - 域名和id值拼接处一个完整的企业对应的详情页的url</span><br><span class="line">        - 详情页的企业详情数据也是动态加载出来的</span><br><span class="line">            - http://125.35.6.84:81/xk/itownet/portalAction.do?method=getXkzsById</span><br><span class="line">            - http://125.35.6.84:81/xk/itownet/portalAction.do?method=getXkzsById</span><br><span class="line">            - 观察后发现：</span><br><span class="line">                - 所有的post请求的url都是一样的，只有参数id值是不同。</span><br><span class="line">                - 如果我们可以批量获取多家企业的id后，就可以将id和url形成一个完整的详情页对应详情数据的ajax请求的url</span><br><span class="line"></span><br><span class="line">数据解析：</span><br><span class="line">    聚焦爬虫</span><br><span class="line">    正则</span><br><span class="line">    bs4</span><br><span class="line">    xpath</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="数据解析"><a href="#数据解析" class="headerlink" title="数据解析"></a>数据解析</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">聚焦爬虫:爬取页面中指定的页面内容。</span><br><span class="line">    - 编码流程：</span><br><span class="line">        - 指定url</span><br><span class="line">        - 发起请求</span><br><span class="line">        - 获取响应数据</span><br><span class="line">        - 数据解析</span><br><span class="line">        - 持久化存储</span><br><span class="line"></span><br><span class="line">数据解析分类：</span><br><span class="line">    - 正则</span><br><span class="line">    - bs4</span><br><span class="line">    - xpath（***）</span><br><span class="line"></span><br><span class="line">数据解析原理概述：</span><br><span class="line">    - 解析的局部的文本内容都会在标签之间或者标签对应的属性中进行存储</span><br><span class="line">    - 1.进行指定标签的定位</span><br><span class="line">    - 2.标签或者标签对应的属性中存储的数据值进行提取（解析）</span><br><span class="line"></span><br><span class="line">正则解析：</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;thumb&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;a href=&quot;/article/121721100&quot; target=&quot;_blank&quot;&gt;</span><br><span class="line">&lt;img src=&quot;//pic.qiushibaike.com/system/pictures/12172/121721100/medium/DNXDX9TZ8SDU6OK2.jpg&quot; alt=&quot;指引我有前进的方向&quot;&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">ex = &#x27;&lt;div class=&quot;thumb&quot;&gt;.*?&lt;img src=&quot;(.*?)&quot; alt.*?&lt;/div&gt;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">bs4进行数据解析</span><br><span class="line">    - 数据解析的原理：</span><br><span class="line">        - 1.标签定位</span><br><span class="line">        - 2.提取标签、标签属性中存储的数据值</span><br><span class="line">    - bs4数据解析的原理：</span><br><span class="line">        - 1.实例化一个BeautifulSoup对象，并且将页面源码数据加载到该对象中</span><br><span class="line">        - 2.通过调用BeautifulSoup对象中相关的属性或者方法进行标签定位和数据提取</span><br><span class="line">    - 环境安装：</span><br><span class="line">        - pip install bs4</span><br><span class="line">        - pip install lxml</span><br><span class="line">    - 如何实例化BeautifulSoup对象：</span><br><span class="line">        - from bs4 import BeautifulSoup</span><br><span class="line">        - 对象的实例化：</span><br><span class="line">            - 1.将本地的html文档中的数据加载到该对象中</span><br><span class="line">                    fp = open(&#x27;./test.html&#x27;,&#x27;r&#x27;,encoding=&#x27;utf-8&#x27;)</span><br><span class="line">                    soup = BeautifulSoup(fp,&#x27;lxml&#x27;)</span><br><span class="line">            - 2.将互联网上获取的页面源码加载到该对象中</span><br><span class="line">                    page_text = response.text</span><br><span class="line">                    soup = BeatifulSoup(page_text,&#x27;lxml&#x27;)</span><br><span class="line">        - 提供的用于数据解析的方法和属性：</span><br><span class="line">            - soup.tagName:返回的是文档中第一次出现的tagName对应的标签</span><br><span class="line">            - soup.find():</span><br><span class="line">                - find(&#x27;tagName&#x27;):等同于soup.div</span><br><span class="line">                - 属性定位：</span><br><span class="line">                    -soup.find(&#x27;div&#x27;,class_/id/attr=&#x27;song&#x27;)</span><br><span class="line">            - soup.find_all(&#x27;tagName&#x27;):返回符合要求的所有标签（列表）</span><br><span class="line">        - select：</span><br><span class="line">            - select(&#x27;某种选择器（id，class，标签...选择器）&#x27;),返回的是一个列表。</span><br><span class="line">            - 层级选择器：</span><br><span class="line">                - soup.select(&#x27;.tang &gt; ul &gt; li &gt; a&#x27;)：&gt;表示的是一个层级</span><br><span class="line">                - oup.select(&#x27;.tang &gt; ul a&#x27;)：空格表示的多个层级</span><br><span class="line">        - 获取标签之间的文本数据：</span><br><span class="line">            - soup.a.text/string/get_text()</span><br><span class="line">            - text/get_text():可以获取某一个标签中所有的文本内容</span><br><span class="line">            - string：只可以获取该标签下面直系的文本内容</span><br><span class="line">        - 获取标签中属性值：</span><br><span class="line">            - soup.a[&#x27;href&#x27;]</span><br><span class="line"></span><br><span class="line">xpath解析：最常用且最便捷高效的一种解析方式。通用性。</span><br><span class="line"></span><br><span class="line">    - xpath解析原理：</span><br><span class="line">        - 1.实例化一个etree的对象，且需要将被解析的页面源码数据加载到该对象中。</span><br><span class="line">        - 2.调用etree对象中的xpath方法结合着xpath表达式实现标签的定位和内容的捕获。</span><br><span class="line">    - 环境的安装：</span><br><span class="line">        - pip install lxml</span><br><span class="line">    - 如何实例化一个etree对象:from lxml import etree</span><br><span class="line">        - 1.将本地的html文档中的源码数据加载到etree对象中：</span><br><span class="line">            etree.parse(filePath)</span><br><span class="line">        - 2.可以将从互联网上获取的源码数据加载到该对象中</span><br><span class="line">            etree.HTML(&#x27;page_text&#x27;)</span><br><span class="line">        - xpath(&#x27;xpath表达式&#x27;)</span><br><span class="line">    - xpath表达式:</span><br><span class="line">        - /:表示的是从根节点开始定位。表示的是一个层级。</span><br><span class="line">        - //:表示的是多个层级。可以表示从任意位置开始定位。</span><br><span class="line">        - 属性定位：//div[@class=&#x27;song&#x27;] tag[@attrName=&quot;attrValue&quot;]</span><br><span class="line">        - 索引定位：//div[@class=&quot;song&quot;]/p[3] 索引是从1开始的。</span><br><span class="line">        - 取文本：</span><br><span class="line">            - /text() 获取的是标签中直系的文本内容</span><br><span class="line">            - //text() 标签中非直系的文本内容（所有的文本内容）</span><br><span class="line">        - 取属性：</span><br><span class="line">            /@attrName     ==&gt;img/src</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">作业：</span><br><span class="line">    爬取站长素材中免费简历模板</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">验证码识别</span><br><span class="line"></span><br><span class="line">验证码和爬虫之间的爱恨情仇？</span><br><span class="line">反爬机制：验证码.识别验证码图片中的数据，用于模拟登陆操作。</span><br><span class="line"></span><br><span class="line">识别验证码的操作：</span><br><span class="line">    - 人工肉眼识别。（不推荐）</span><br><span class="line">    - 第三方自动识别（推荐）</span><br><span class="line">        - 云打码：http://www.yundama.com/demo.html</span><br><span class="line">云打码的使用流程：</span><br><span class="line">    - 注册：普通和开发者用户</span><br><span class="line">    - 登录：</span><br><span class="line">        - 普通用户的登录：查询该用户是否还有剩余的题分</span><br><span class="line">        - 开发者用户的登录：</span><br><span class="line">            - 创建一个软件：我的软件-》添加新软件-》录入软件名称-》提交（软件id和秘钥）</span><br><span class="line">            - 下载示例代码：开发文档-》点此下载：云打码接口DLL-》PythonHTTP示例下载</span><br><span class="line">实战：识别古诗文网登录页面中的验证码。</span><br><span class="line">使用打码平台识别验证码的编码流程：</span><br><span class="line">    - 将验证码图片进行本地下载</span><br><span class="line">    - 调用平台提供的示例代码进行图片数据识别</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="requests模块高级"><a href="#requests模块高级" class="headerlink" title="requests模块高级"></a>requests模块高级</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">模拟登录：</span><br><span class="line">    - 爬取基于某些用户的用户信息。</span><br><span class="line">需求：对人人网进行模拟登录。</span><br><span class="line">    - 点击登录按钮之后会发起一个post请求</span><br><span class="line">    - post请求中会携带登录之前录入的相关的登录信息（用户名，密码，验证码......）</span><br><span class="line">    - 验证码：每次请求都会变化</span><br><span class="line"></span><br><span class="line">需求：爬取当前用户的相关的用户信息（个人主页中显示的用户信息）</span><br><span class="line"></span><br><span class="line">http/https协议特性：无状态。</span><br><span class="line">没有请求到对应页面数据的原因：</span><br><span class="line">    发起的第二次基于个人主页页面请求的时候，服务器端并不知道该此请求是基于登录状态下的请求。</span><br><span class="line">cookie：用来让服务器端记录客户端的相关状态。</span><br><span class="line">    - 手动处理：通过抓包工具获取cookie值，将该值封装到headers中。（不建议）</span><br><span class="line">    - 自动处理：</span><br><span class="line">        - cookie值的来源是哪里？</span><br><span class="line">            - 模拟登录post请求后，由服务器端创建。</span><br><span class="line">        session会话对象：</span><br><span class="line">            - 作用：</span><br><span class="line">                1.可以进行请求的发送。</span><br><span class="line">                2.如果请求过程中产生了cookie，则该cookie会被自动存储/携带在该session对象中。</span><br><span class="line">        - 创建一个session对象：session = requests.Session()</span><br><span class="line">        - 使用session对象进行模拟登录post请求的发送（cookie就会被存储在session中）</span><br><span class="line">        - session对象对个人主页对应的get请求进行发送（携带了cookie）</span><br><span class="line"></span><br><span class="line">代理：破解封IP这种反爬机制。</span><br><span class="line">什么是代理：</span><br><span class="line">    - 代理服务器。</span><br><span class="line">代理的作用：</span><br><span class="line">    - 突破自身IP访问的限制。</span><br><span class="line">    - 隐藏自身真实IP</span><br><span class="line">代理相关的网站：</span><br><span class="line">    - 快代理</span><br><span class="line">    - 西祠代理</span><br><span class="line">    - www.goubanjia.com</span><br><span class="line">代理ip的类型：</span><br><span class="line">    - http：应用到http协议对应的url中</span><br><span class="line">    - https：应用到https协议对应的url中</span><br><span class="line"></span><br><span class="line">代理ip的匿名度：</span><br><span class="line">    - 透明：服务器知道该次请求使用了代理，也知道请求对应的真实ip</span><br><span class="line">    - 匿名：知道使用了代理，不知道真实ip</span><br><span class="line">    - 高匿：不知道使用了代理，更不知道真实的ip</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="高性能异步爬虫"><a href="#高性能异步爬虫" class="headerlink" title="高性能异步爬虫"></a>高性能异步爬虫</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">高性能异步爬虫</span><br><span class="line">目的：在爬虫中使用异步实现高性能的数据爬取操作。</span><br><span class="line"></span><br><span class="line">异步爬虫的方式：</span><br><span class="line">    - 1.多线程，多进程（不建议）：</span><br><span class="line">        好处：可以为相关阻塞的操作单独开启线程或者进程，阻塞操作就可以异步执行。</span><br><span class="line">        弊端：无法无限制的开启多线程或者多进程。</span><br><span class="line">    - 2.线程池、进程池（适当的使用）：</span><br><span class="line">        好处：我们可以降低系统对进程或者线程创建和销毁的一个频率，从而很好的降低系统的开销。</span><br><span class="line">        弊端：池中线程或进程的数量是有上限。</span><br><span class="line"></span><br><span class="line">- 3.单线程+异步协程（推荐）：</span><br><span class="line">    event_loop：事件循环，相当于一个无限循环，我们可以把一些函数注册到这个事件循环上，</span><br><span class="line">    当满足某些条件的时候，函数就会被循环执行。</span><br><span class="line"></span><br><span class="line">    coroutine：协程对象，我们可以将协程对象注册到事件循环中，它会被事件循环调用。</span><br><span class="line">    我们可以使用 async 关键字来定义一个方法，这个方法在调用时不会立即被执行，而是返回</span><br><span class="line">    一个协程对象。</span><br><span class="line"></span><br><span class="line">    task：任务，它是对协程对象的进一步封装，包含了任务的各个状态。</span><br><span class="line"></span><br><span class="line">    future：代表将来执行或还没有执行的任务，实际上和 task 没有本质区别。</span><br><span class="line"></span><br><span class="line">    async 定义一个协程.</span><br><span class="line"></span><br><span class="line">    await 用来挂起阻塞方法的执行。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="动态数据加载处理"><a href="#动态数据加载处理" class="headerlink" title="动态数据加载处理"></a>动态数据加载处理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">selenium模块的基本使用</span><br><span class="line"></span><br><span class="line">问题：selenium模块和爬虫之间具有怎样的关联？</span><br><span class="line">    - 便捷的获取网站中动态加载的数据</span><br><span class="line">    - 便捷实现模拟登录</span><br><span class="line">什么是selenium模块？</span><br><span class="line">    - 基于浏览器自动化的一个模块。</span><br><span class="line"></span><br><span class="line">selenium使用流程：</span><br><span class="line">    - 环境安装：pip install selenium</span><br><span class="line">    - 下载一个浏览器的驱动程序（谷歌浏览器）</span><br><span class="line">        - 下载路径：http://chromedriver.storage.googleapis.com/index.html</span><br><span class="line">        - 驱动程序和浏览器的映射关系：http://blog.csdn.net/huilan_same/article/details/51896672</span><br><span class="line">    - 实例化一个浏览器对象</span><br><span class="line">    - 编写基于浏览器自动化的操作代码</span><br><span class="line">        - 发起请求：get(url)</span><br><span class="line">        - 标签定位：find系列的方法</span><br><span class="line">        - 标签交互：send_keys(&#x27;xxx&#x27;)</span><br><span class="line">        - 执行js程序：excute_script(&#x27;jsCode&#x27;)</span><br><span class="line">        - 前进，后退：back(),forward()</span><br><span class="line">        - 关闭浏览器：quit()</span><br><span class="line"></span><br><span class="line">    - selenium处理iframe</span><br><span class="line">        - 如果定位的标签存在于iframe标签之中，则必须使用switch_to.frame(id)</span><br><span class="line">        - 动作链（拖动）：from selenium.webdriver import ActionChains</span><br><span class="line">            - 实例化一个动作链对象：action = ActionChains(bro)</span><br><span class="line">            - click_and_hold（div）：长按且点击操作</span><br><span class="line">            - move_by_offset(x,y)</span><br><span class="line">            - perform()让动作链立即执行</span><br><span class="line">            - action.release()释放动作链对象</span><br><span class="line"></span><br><span class="line">12306模拟登录</span><br><span class="line">    - 超级鹰：http://www.chaojiying.com/about.html</span><br><span class="line">        - 注册：普通用户</span><br><span class="line">        - 登录：普通用户</span><br><span class="line">            - 题分查询：充值</span><br><span class="line">            - 创建一个软件（id）</span><br><span class="line">            - 下载示例代码</span><br><span class="line"></span><br><span class="line">    - 12306模拟登录编码流程：</span><br><span class="line">        - 使用selenium打开登录页面</span><br><span class="line">        - 对当前selenium打开的这张页面进行截图</span><br><span class="line">        - 对当前图片局部区域（验证码图片）进行裁剪</span><br><span class="line">            - 好处：将验证码图片和模拟登录进行一一对应。</span><br><span class="line">        - 使用超级鹰识别验证码图片（坐标）</span><br><span class="line">        - 使用动作链根据坐标实现点击操作</span><br><span class="line">        - 录入用户名密码，点击登录按钮实现登录</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="scrapy框架"><a href="#scrapy框架" class="headerlink" title="scrapy框架"></a>scrapy框架</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br></pre></td><td class="code"><pre><span class="line">scrapy框架</span><br><span class="line"></span><br><span class="line">- 什么是框架？</span><br><span class="line">    - 就是一个集成了很多功能并且具有很强通用性的一个项目模板。</span><br><span class="line"></span><br><span class="line">- 如何学习框架？</span><br><span class="line">    - 专门学习框架封装的各种功能的详细用法。</span><br><span class="line"></span><br><span class="line">- 什么是scrapy？</span><br><span class="line">    - 爬虫中封装好的一个明星框架。功能：高性能的持久化存储，异步的数据下载，高性能的数据解析，分布式</span><br><span class="line"></span><br><span class="line">- scrapy框架的基本使用</span><br><span class="line">    - 环境的安装：</span><br><span class="line">        - mac or linux：pip install scrapy</span><br><span class="line">        - windows:</span><br><span class="line">            - pip install wheel</span><br><span class="line">            - 下载twisted，下载地址为http://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted</span><br><span class="line">            - 安装twisted：pip install Twisted‑17.1.0‑cp36‑cp36m‑win_amd64.whl</span><br><span class="line">            - pip install pywin32</span><br><span class="line">            - pip install scrapy</span><br><span class="line">            测试：在终端里录入scrapy指令，没有报错即表示安装成功！</span><br><span class="line">    - 创建一个工程：scrapy startproject xxxPro</span><br><span class="line">    - cd xxxPro</span><br><span class="line">    - 在spiders子目录中创建一个爬虫文件</span><br><span class="line">        - scrapy genspider spiderName www.xxx.com</span><br><span class="line">    - 执行工程：</span><br><span class="line">        - scrapy crawl spiderName</span><br><span class="line"></span><br><span class="line">- scrapy数据解析</span><br><span class="line"></span><br><span class="line">- scrapy持久化存储</span><br><span class="line">    - 基于终端指令：</span><br><span class="line">        - 要求：只可以将parse方法的返回值存储到本地的文本文件中</span><br><span class="line">        - 注意：持久化存储对应的文本文件的类型只可以为：&#x27;json&#x27;, &#x27;jsonlines&#x27;, &#x27;jl&#x27;, &#x27;csv&#x27;, &#x27;xml&#x27;, &#x27;marshal&#x27;, &#x27;pickle</span><br><span class="line">        - 指令：scrapy crawl xxx -o filePath</span><br><span class="line">        - 好处：简介高效便捷</span><br><span class="line">        - 缺点：局限性比较强（数据只可以存储到指定后缀的文本文件中）</span><br><span class="line"></span><br><span class="line">    - 基于管道：</span><br><span class="line">        - 编码流程：</span><br><span class="line">            - 数据解析</span><br><span class="line">            - 在item类中定义相关的属性</span><br><span class="line">            - 将解析的数据封装存储到item类型的对象</span><br><span class="line">            - 将item类型的对象提交给管道进行持久化存储的操作</span><br><span class="line">            - 在管道类的process_item中要将其接受到的item对象中存储的数据进行持久化存储操作</span><br><span class="line">            - 在配置文件中开启管道</span><br><span class="line">        - 好处：</span><br><span class="line">            - 通用性强。</span><br><span class="line"></span><br><span class="line">    - 面试题：将爬取到的数据一份存储到本地一份存储到数据库，如何实现？</span><br><span class="line">        - 管道文件中一个管道类对应的是将数据存储到一种平台</span><br><span class="line">        - 爬虫文件提交的item只会给管道文件中第一个被执行的管道类接受</span><br><span class="line">        - process_item中的return item表示将item传递给下一个即将被执行的管道类</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- 基于Spider的全站数据爬取</span><br><span class="line">    - 就是将网站中某板块下的全部页码对应的页面数据进行爬取</span><br><span class="line">    - 需求：爬取校花网中的照片的名称</span><br><span class="line">    - 实现方式：</span><br><span class="line">        - 将所有页面的url添加到start_urls列表（不推荐）</span><br><span class="line">        - 自行手动进行请求发送（推荐）</span><br><span class="line">            - 手动请求发送：</span><br><span class="line">                - yield scrapy.Request(url,callback):callback专门用做于数据解析</span><br><span class="line"></span><br><span class="line">- 五大核心组件</span><br><span class="line">    引擎(Scrapy)</span><br><span class="line">        用来处理整个系统的数据流处理, 触发事务(框架核心)</span><br><span class="line">    调度器(Scheduler)</span><br><span class="line">        用来接受引擎发过来的请求, 压入队列中, 并在引擎再次请求的时候返回. 可以想像成一个URL（抓取网页的网址或者说是链接）的优先队列, 由它来决定下一个要抓取的网址是什么, 同时去除重复的网址</span><br><span class="line">    下载器(Downloader)</span><br><span class="line">        用于下载网页内容, 并将网页内容返回给蜘蛛(Scrapy下载器是建立在twisted这个高效的异步模型上的)</span><br><span class="line">    爬虫(Spiders)</span><br><span class="line">        爬虫是主要干活的, 用于从特定的网页中提取自己需要的信息, 即所谓的实体(Item)。用户也可以从中提取出链接,让Scrapy继续抓取下一个页面</span><br><span class="line">    项目管道(Pipeline)</span><br><span class="line">        负责处理爬虫从网页中抽取的实体，主要的功能是持久化实体、验证实体的有效性、清除不需要的信息。当页面被爬虫解析后，将被发送到项目管道，并经过几个特定的次序处理数据。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- 请求传参</span><br><span class="line">    - 使用场景：如果爬取解析的数据不在同一张页面中。（深度爬取）</span><br><span class="line">    - 需求：爬取boss的岗位名称，岗位描述</span><br><span class="line"></span><br><span class="line">- 图片数据爬取之ImagesPipeline</span><br><span class="line">    - 基于scrapy爬取字符串类型的数据和爬取图片类型的数据区别？</span><br><span class="line">        - 字符串：只需要基于xpath进行解析且提交管道进行持久化存储</span><br><span class="line">        - 图片：xpath解析出图片src的属性值。单独的对图片地址发起请求获取图片二进制类型的数据</span><br><span class="line"></span><br><span class="line">    - ImagesPipeline：</span><br><span class="line">        - 只需要将img的src的属性值进行解析，提交到管道，管道就会对图片的src进行请求发送获取图片的二进制类型的数据，且还会帮我们进行持久化存储。</span><br><span class="line">    - 需求：爬取站长素材中的高清图片</span><br><span class="line">    - 使用流程：</span><br><span class="line">        - 数据解析（图片的地址）</span><br><span class="line">        - 将存储图片地址的item提交到制定的管道类</span><br><span class="line">        - 在管道文件中自定制一个基于ImagesPipeLine的一个管道类</span><br><span class="line">            - get_media_request</span><br><span class="line">            - file_path</span><br><span class="line">            - item_completed</span><br><span class="line">        - 在配置文件中：</span><br><span class="line">            - 指定图片存储的目录：IMAGES_STORE = &#x27;./imgs_bobo&#x27;</span><br><span class="line">            - 指定开启的管道：自定制的管道类</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- 中间件</span><br><span class="line">    - 下载中间件</span><br><span class="line">        - 位置：引擎和下载器之间</span><br><span class="line">        - 作用：批量拦截到整个工程中所有的请求和响应</span><br><span class="line">        - 拦截请求：</span><br><span class="line">            - UA伪装:process_request</span><br><span class="line">            - 代理IP:process_exception:return request</span><br><span class="line"></span><br><span class="line">        - 拦截响应：</span><br><span class="line">            - 篡改响应数据，响应对象</span><br><span class="line">            - 需求：爬取网易新闻中的新闻数据（标题和内容）</span><br><span class="line">                - 1.通过网易新闻的首页解析出五大板块对应的详情页的url（没有动态加载）</span><br><span class="line">                - 2.每一个板块对应的新闻标题都是动态加载出来的（动态加载）</span><br><span class="line">                - 3.通过解析出每一条新闻详情页的url获取详情页的页面源码，解析出新闻内容</span><br><span class="line"></span><br><span class="line">- CrawlSpider:类，Spider的一个子类</span><br><span class="line">    - 全站数据爬取的方式</span><br><span class="line">        - 基于Spider：手动请求</span><br><span class="line">        - 基于CrawlSpider</span><br><span class="line">    - CrawlSpider的使用：</span><br><span class="line">        - 创建一个工程</span><br><span class="line">        - cd XXX</span><br><span class="line">        - 创建爬虫文件（CrawlSpider）：</span><br><span class="line">            - scrapy genspider -t crawl xxx www.xxxx.com</span><br><span class="line">            - 链接提取器：</span><br><span class="line">                - 作用：根据指定的规则（allow）进行指定链接的提取</span><br><span class="line">            - 规则解析器：</span><br><span class="line">                - 作用：将链接提取器提取到的链接进行指定规则（callback）的解析</span><br><span class="line">        #需求：爬取sun网站中的编号，新闻标题，新闻内容，标号</span><br><span class="line">            - 分析：爬取的数据没有在同一张页面中。</span><br><span class="line">            - 1.可以使用链接提取器提取所有的页码链接</span><br><span class="line">            - 2.让链接提取器提取所有的新闻详情页的链接</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- 分布式爬虫</span><br><span class="line">    - 概念：我们需要搭建一个分布式的机群，让其对一组资源进行分布联合爬取。</span><br><span class="line">    - 作用：提升爬取数据的效率</span><br><span class="line"></span><br><span class="line">    - 如何实现分布式？</span><br><span class="line">        - 安装一个scrapy-redis的组件</span><br><span class="line">        - 原生的scarapy是不可以实现分布式爬虫，必须要让scrapy结合着scrapy-redis组件一起实现分布式爬虫。</span><br><span class="line">        - 为什么原生的scrapy不可以实现分布式？</span><br><span class="line">            - 调度器不可以被分布式机群共享</span><br><span class="line">            - 管道不可以被分布式机群共享</span><br><span class="line">        - scrapy-redis组件作用：</span><br><span class="line">            - 可以给原生的scrapy框架提供可以被共享的管道和调度器</span><br><span class="line">        - 实现流程</span><br><span class="line">            - 创建一个工程</span><br><span class="line">            - 创建一个基于CrawlSpider的爬虫文件</span><br><span class="line">            - 修改当前的爬虫文件：</span><br><span class="line">                - 导包：from scrapy_redis.spiders import RedisCrawlSpider</span><br><span class="line">                - 将start_urls和allowed_domains进行注释</span><br><span class="line">                - 添加一个新属性：redis_key = &#x27;sun&#x27; 可以被共享的调度器队列的名称</span><br><span class="line">                - 编写数据解析相关的操作</span><br><span class="line">                - 将当前爬虫类的父类修改成RedisCrawlSpider</span><br><span class="line">            - 修改配置文件settings</span><br><span class="line">                - 指定使用可以被共享的管道：</span><br><span class="line">                    ITEM_PIPELINES = &#123;</span><br><span class="line">                        &#x27;scrapy_redis.pipelines.RedisPipeline&#x27;: 400</span><br><span class="line">                    &#125;</span><br><span class="line">                - 指定调度器：</span><br><span class="line">                    # 增加了一个去重容器类的配置, 作用使用Redis的set集合来存储请求的指纹数据, 从而实现请求去重的持久化</span><br><span class="line">                    DUPEFILTER_CLASS = &quot;scrapy_redis.dupefilter.RFPDupeFilter&quot;</span><br><span class="line">                    # 使用scrapy-redis组件自己的调度器</span><br><span class="line">                    SCHEDULER = &quot;scrapy_redis.scheduler.Scheduler&quot;</span><br><span class="line">                    # 配置调度器是否要持久化, 也就是当爬虫结束了, 要不要清空Redis中请求队列和去重指纹的set。如果是True, 就表示要持久化存储, 就不清空数据, 否则清空数据</span><br><span class="line">                    SCHEDULER_PERSIST = True</span><br><span class="line">                - 指定redis服务器：</span><br><span class="line"></span><br><span class="line">            - redis相关操作配置：</span><br><span class="line">                - 配置redis的配置文件：</span><br><span class="line">                    - linux或者mac：redis.conf</span><br><span class="line">                    - windows:redis.windows.conf</span><br><span class="line">                    - 代开配置文件修改：</span><br><span class="line">                        - 将bind 127.0.0.1进行删除</span><br><span class="line">                        - 关闭保护模式：protected-mode yes改为no</span><br><span class="line">                - 结合着配置文件开启redis服务</span><br><span class="line">                    - redis-server 配置文件</span><br><span class="line">                - 启动客户端：</span><br><span class="line">                    - redis-cli</span><br><span class="line">            - 执行工程：</span><br><span class="line">                - scrapy runspider xxx.py</span><br><span class="line">            - 向调度器的队列中放入一个起始的url：</span><br><span class="line">                - 调度器的队列在redis的客户端中</span><br><span class="line">                    - lpush xxx www.xxx.com</span><br><span class="line">            - 爬取到的数据存储在了redis的proName:items这个数据结构中</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="增量式爬虫"><a href="#增量式爬虫" class="headerlink" title="增量式爬虫"></a>增量式爬虫</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">增量式爬虫</span><br><span class="line">    - 概念：监测网站数据更新的情况，只会爬取网站最新更新出来的数据。</span><br><span class="line">    - 分析：</span><br><span class="line">        - 指定一个起始url</span><br><span class="line">        - 基于CrawlSpider获取其他页码链接</span><br><span class="line">        - 基于Rule将其他页码链接进行请求</span><br><span class="line">        - 从每一个页码对应的页面源码中解析出每一个电影详情页的URL</span><br><span class="line"></span><br><span class="line">        - 核心：检测电影详情页的url之前有没有请求过</span><br><span class="line">            - 将爬取过的电影详情页的url存储</span><br><span class="line">                - 存储到redis的set数据结构</span><br><span class="line"></span><br><span class="line">        - 对详情页的url发起请求，然后解析出电影的名称和简介</span><br><span class="line">        - 进行持久化存储</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/00%20%E7%88%AC%E8%99%AB%E6%A6%82%E8%BF%B0/" rel="prev" title="爬虫概述">
+      <i class="fa fa-chevron-left"></i> 爬虫概述
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/08%20selenium%E6%A8%A1%E5%9D%97/" rel="next" title="线程和进程">
+      线程和进程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">爬虫基础简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#requests%E6%A8%A1%E5%9D%97%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">requests模块基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%A7%A3%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">数据解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">验证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#requests%E6%A8%A1%E5%9D%97%E9%AB%98%E7%BA%A7"><span class="nav-number">5.</span> <span class="nav-text">requests模块高级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E6%80%A7%E8%83%BD%E5%BC%82%E6%AD%A5%E7%88%AC%E8%99%AB"><span class="nav-number">6.</span> <span class="nav-text">高性能异步爬虫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%A4%84%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">动态数据加载处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scrapy%E6%A1%86%E6%9E%B6"><span class="nav-number">8.</span> <span class="nav-text">scrapy框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E9%87%8F%E5%BC%8F%E7%88%AC%E8%99%AB"><span class="nav-number">9.</span> <span class="nav-text">增量式爬虫</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yanglinqi"
+      src="https://cdn.jsdelivr.net/gh/yanglinqi107/Images/res/headpic.jpg">
+  <p class="site-author-name" itemprop="name">yanglinqi</p>
+  <div class="site-description" itemprop="description">用于做笔记，对学过的知识总结</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanglinqi107" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanglinqi107" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanglinqi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+</body>
+</html>
