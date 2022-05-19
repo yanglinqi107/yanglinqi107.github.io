@@ -249,7 +249,7 @@
 
 <p><code>re   Regular Expression</code></p>
 <p>反斜杠不仅可以把特殊符号变成普通符号,还可以把善通符号变成特殊符号。例如“n”只是一个善通的字母,但是“n”代表换行符；*  在正则中是通配符，* 就是普通的 *</p>
-<p><font color="#ff0000">findall</font></p>
+<p><font color=#ff0000>findall</font></p>
 <p>Python的正则表达式模块包含一个findall方法，它能够以列表的形式返回所有满足要求的字符串。</p>
 <p>findall的函数原型为：</p>
 <p><code>re.findall(pattern, string, flags=0)</code></p>
@@ -257,7 +257,7 @@
 <p>findall的结果是一个列表，包含了所有的匹配到的结果。如果没有匹配到结果，就会返回空列表</p>
 <p>如果包含多个<code> (.*? )</code>，返回的仍然是一个列表，但是列表里面的元素变为了元组</p>
 <p>flags参数。这个参数是可以省略的。当不省略的时候，具有一些辅助功能，例如忽略大小写、忽略换行符等。使用<code>re.S</code>作为flag来忽略换行符</p>
-<p><font color="#ff0000">search</font></p>
+<p><font color=#ff0000>search</font></p>
 <p>search()的用法和findall()的用法一样，但是search()只会返回第1个满足要求的字符串。一旦找到符合要求的内容，它就会停止查找。对于从超级大的文本里面只找第1个数据特别有用，可以大大提高程序的运行效率。</p>
 <p>search()的函数原型为：</p>
 <p><code>re.search(pattern, string, flags=0)</code></p>

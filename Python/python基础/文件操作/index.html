@@ -365,7 +365,7 @@
 <td align="center">读写，二进制格式，文件不存在则新建，存在则追加内容</td>
 </tr>
 </tbody></table>
-<p><font color="#ff000">总结：r模式和w模式，打开文件，指针都在文件头，而a模式则在文件尾；w模式和a模式都能在文件不存在时新建文件</font></p>
+<p><font color=#ff000>总结：r模式和w模式，打开文件，指针都在文件头，而a模式则在文件尾；w模式和a模式都能在文件不存在时新建文件</font></p>
 <p>open()的详细格式为：</p>
 <p><code>open(file,  mode=&quot;r&quot;,  buffering=None, encoding=None, errors=None, newline=None, closefd=True, opener=None)</code></p>
 <p>参数说明：</p>
@@ -383,7 +383,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;course.csv&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.DictReader(f)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">    	<span class="built_in">print</span>(row)</span><br></pre></td></tr></table></figure>
 
 <p>for循环得到的row是OrderedDict（有序字典），可以直接像普通字典那样使用</p>
-<p><font color="#ff0000">特别注意：</font></p>
+<p><font color=#ff0000>特别注意：</font></p>
 <p>读取文本内容的代码必须放在缩进内部进行，否则会导致报错。</p>
 <p>这是因为f变量里面的值是一个生成器，生成器只有在被使用（更准确的说法是被迭代）的时候才会去读文本内容。但是退出with的缩进以后，文件就被Python关闭了，这个时候当然什么都读不了</p>
 <p>列表推导式可以绕过这个限制</p>

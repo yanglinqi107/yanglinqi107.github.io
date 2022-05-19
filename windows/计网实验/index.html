@@ -289,7 +289,7 @@
 </ul>
 <p><img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502155137078.png" alt="image-20220502155137078"></p>
 <h4 id="NETSH"><a href="#NETSH" class="headerlink" title="NETSH"></a>NETSH</h4><p><code>netsh i i show in</code>查看<strong>Idx</strong></p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502174110707.png" alt="image-20220502174110707" style="zoom:67%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502174110707.png" alt="image-20220502174110707" style="zoom:67%;" />
 
 <p><strong>添加静态ARP表项</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh -c &quot;i i&quot; add neighbors 21 &quot;192.168.1.100&quot; &quot;00-0a-35-00-01-23&quot;</span><br></pre></td></tr></table></figure>
@@ -332,29 +332,29 @@
 <h4 id="扩充"><a href="#扩充" class="headerlink" title="扩充"></a>扩充</h4><p><strong>编程模拟ping命令实现</strong> </p>
 <p>可以基于Socket网络编程，很多的编程语言都有Socket包或函数来供网络编程者调用。（Socket又称“套接字”，应用程序通常通过“套接字”向网络发出请求或者应答网络请求。）</p>
 <h3 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h3><p>**<code>ipconfig</code>**查看ip地址</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502163643024.png" alt="image-20220502163643024" style="zoom:67%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502163643024.png" alt="image-20220502163643024" style="zoom:67%;" />
 
 
 
 <p><strong>arp</strong>查看arp表</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502165824953.png" alt="image-20220502165824953" style="zoom:67%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502165824953.png" alt="image-20220502165824953" style="zoom:67%;" />
 
 
 
 
 
 <p>**<code>arp -d *</code>**删除arp表</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502170847316.png" alt="image-20220502165824953" style="zoom:67%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502170847316.png" alt="image-20220502165824953" style="zoom:67%;" />
 
 
 
 <p><strong>ping</strong> 同网段下的ip：192.168.43.232</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502171240854.png" alt="image-20220502171240854" style="zoom:67%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502171240854.png" alt="image-20220502171240854" style="zoom:67%;" />
 
 
 
 <p>查看<strong>arp</strong>表</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502171447262.png" alt="image-20220502171240854" style="zoom:67%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502171447262.png" alt="image-20220502171240854" style="zoom:67%;" />
 
 
 
@@ -362,40 +362,40 @@
 <ul>
 <li><code>ping 192.168.43.31</code>正常</li>
 </ul>
-<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220507230848046.png" alt="image-20220507230848046" style="zoom: 80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220507230848046.png" alt="image-20220507230848046" style="zoom: 80%;" />
 
 <ul>
 <li>删除<code>arp</code>表中的内容</li>
 </ul>
-<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220507231500587.png" alt="image-20220507231500587" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220507231500587.png" alt="image-20220507231500587" style="zoom:80%;" />
 
 <ul>
 <li>增加<code>192.168.43.31</code>对应错误的Mac地址</li>
 </ul>
-<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220507231418092.png" alt="image-20220507231418092" style="zoom: 67%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220507231418092.png" alt="image-20220507231418092" style="zoom: 67%;" />
 
 <ul>
 <li>发送数据失败</li>
 </ul>
-<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220507231625354.png" alt="image-20220507231625354" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220507231625354.png" alt="image-20220507231625354" style="zoom:80%;" />
 
 <ul>
 <li>将arp中添加的错误项删除</li>
 </ul>
-<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220507231922379.png" alt="image-20220507231922379" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220507231922379.png" alt="image-20220507231922379" style="zoom:80%;" />
 
 <ul>
 <li>再次ping通</li>
 </ul>
-<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220507231951645.png" alt="image-20220507231951645" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220507231951645.png" alt="image-20220507231951645" style="zoom:80%;" />
 
 <p><code>tracert</code>连接<code>www.163.com</code></p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502210819690.png" alt="image-20220502210819690" style="zoom:67%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502210819690.png" alt="image-20220502210819690" style="zoom:67%;" />
 
 
 
 <p><code>nslookup</code>查询<code>www.baidu.com</code>域名信息</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502211653960.png" alt="image-20220502211653960" style="zoom:67%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Win-img/image-20220502211653960.png" alt="image-20220502211653960" style="zoom:67%;" />
 
 
 

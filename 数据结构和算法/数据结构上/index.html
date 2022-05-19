@@ -363,7 +363,7 @@
 <h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><p>线性表的链式存储。</p>
 <p><strong>单向链表</strong></p>
 <p>头指针，尾指针，空指针，数据域，指针域，空表，带表头节点的单向链表</p>
-<p><font color="#ff000">注意：头指针可能包含数据，也可能置空。类似于数组的第0位可能不用，也可能存数据</font></p>
+<p><font color=#ff000>注意：头指针可能包含数据，也可能置空。类似于数组的第0位可能不用，也可能存数据</font></p>
 <p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171848751.png" alt="image-20220220153401793"></p>
 <p><strong>单向循环链表</strong></p>
 <p>只有尾指针，尾指针就是头指针</p>
@@ -392,7 +392,7 @@
 <p><strong>链式队列</strong>——非顺序存储</p>
 <p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171852396.png" alt="image-20220220192406216"></p>
 <h2 id="串"><a href="#串" class="headerlink" title="串"></a>串</h2><p>串的逻辑结构和线性表极为相似，区别仅在于串的数据对象约束为<strong>字符集</strong>。</p>
-<p>但是串的基本操作和线性表却有很大差别。<font color="#ff000">在线性表的基本操作中，大多以“单个元素”作为操作对象</font>。如：在线性表中查找某个元素、求取某个元素、在某个位置上插入一个元素和删除一个元素等；而<font color="#ff000">在串的基本操作中，通常以“串的整体”作为操作对象</font>，如：在串中查找某个子串、求取一个子串、在串的某个位置上插入一个子串以及删除一个子串等。</p>
+<p>但是串的基本操作和线性表却有很大差别。<font color=#ff000>在线性表的基本操作中，大多以“单个元素”作为操作对象</font>。如：在线性表中查找某个元素、求取某个元素、在某个位置上插入一个元素和删除一个元素等；而<font color=#ff000>在串的基本操作中，通常以“串的整体”作为操作对象</font>，如：在串中查找某个子串、求取一个子串、在串的某个位置上插入一个子串以及删除一个子串等。</p>
 <h3 id="串的基本概念"><a href="#串的基本概念" class="headerlink" title="串的基本概念"></a>串的基本概念</h3><p>**串(string)**也称字符串，是由零个或多个字符组成的有限序列。一般记为$S$ = “$a_1a_2…a_n$”。</p>
 <ul>
 <li>$S$是串的名字</li>
@@ -423,7 +423,7 @@
 <p><strong>定长顺序存储</strong>：按照预定义的大小，为每个定义的串变量分配一个固定长度的存储区，通常用定长字符数组来实现。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSTRLEN 1000		<span class="comment">// 定义最长串长1000</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> <span class="built_in">string</span>[MAXSTRLEN]; <span class="comment">// 存放字符</span></span><br><span class="line">    <span class="keyword">int</span> length;				<span class="comment">// 串的实际长度</span></span><br><span class="line">&#125;SqString;</span><br></pre></td></tr></table></figure>
 
-<p><font color="#00f">注意：隐式存储：在串值后面加一个不计入串长的结東标记字符，如C语言中的”0”。此时串长为隐含值，不便于实现涉及串长的操作</font></p>
+<p><font color=#00f>注意：隐式存储：在串值后面加一个不计入串长的结東标记字符，如C语言中的”0”。此时串长为隐含值，不便于实现涉及串长的操作</font></p>
 <hr>
 <p><strong>堆结构</strong></p>
 <p><strong>堆分配存储</strong>：仍以一组地址连续的存储单元存放串值，但存储空间是在程序执行过程中动态分配而得。</p>
@@ -474,12 +474,12 @@
 <p><strong>示例</strong>：主串 $S=$ “$ababcabcacbab$” ，模式串$T=$ “$abcac$” 。</p>
 <p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171853468.png" alt="image-20220220215002839"></p>
 <p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171853639.png" alt="image-20220220215715609"></p>
-<p><font color="#00f">问题一：某趟在 $S_i$ 和 $T_j$ “失配”时，模式串”向右滑动”的可行距离有多远，即下一步 $S_i$ 应该与模式串中的哪个字符比较？</font></p>
+<p><font color=#00f>问题一：某趟在 $S_i$ 和 $T_j$ “失配”时，模式串”向右滑动”的可行距离有多远，即下一步 $S_i$ 应该与模式串中的哪个字符比较？</font></p>
 <p>设模式串最远滑动到第 $k$ 个字符，此时要满足：（下面字符串下标从1开始，在程序中一般下标一般是0开始）</p>
 <p>$T_1$ ~ $T_{k-1}$ $=$ $S_{i-k+1}$ ~ $S_{i-1}$   和    $T_{j-k+1}$ ~ $T_{j-1}$ $=$ $S_{i-k+1}$ ~ $S_{i-1}$ </p>
 <p>联立得：$T_1$ ~ $T_{k-1}$ $=$ $T_{j-k+1}$ ~ $T_{j-1}$  $k=max{k|1&lt;k&lt;j且T_1…T_{k-1}=T_{j-k+1}…T_{j-1}}$</p>
 <p>即：模式中的前$k-1$个字符（最大真前缀）与模式中$T_j$字符前面的$k-1$个字符（最大真后缀）相等时，模式$T$就可以向右”滑动”至使$T_k$和$S_i$对准，继续向右进行比较即可。</p>
-<p><font color="#00f">问题二：求$k$值?</font></p>
+<p><font color=#00f>问题二：求$k$值?</font></p>
 <ol>
 <li><p>$k$和$j$存在函数关系，模式串中的每一个$T_j$都对应一个$k$值，由当前失配位置$j$,可以计算出滑动位置$k$;</p>
 </li>
@@ -619,7 +619,7 @@
 </li>
 </ul>
 <p><strong>对角矩阵</strong>：若一个$n$阶方阵$A$满足其所有的非零元素集中在以主对角线为中心的带状区域中，则称其为$n$阶对角矩阵。其主对角线上、下方各有$b$条非零元素构成的次对角线，称$b$为矩阵半带宽，$(2b+1)$为矩阵的带宽。</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171853381.png" alt="image-20220221151234876" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171853381.png" alt="image-20220221151234876" style="zoom:80%;" />
 
 <ul>
 <li><p><strong>三对角矩阵</strong>：当$b=1$时</p>
@@ -637,7 +637,7 @@
 
 
 
-<p><strong>十字链表</strong>：每个非零元用一个结点表示，结点中除了<font color="#00f">表示非零元所在的行、列和值的三元组$(i,j,e)$</font>外，增加<font color="#00f">两个指针域</font>。<font color="#00f">行指针域(right)</font>：用来指向本行中下一个非零元素；<font color="#00f">列指针域(down)</font>：用来指向本列中下一个非零元素。稀疏矩阵中同一行的非零元通过向右的 right指针链接成了一个线性链表。同一列的非零元也通过down指针链接成了ー个线性链表。每个非零元既是第$i$行链表中的一个结点，又是第$j$列链表中的一个结点，相当于处在一个十字交叉路口，故称这样的存储结构为十字链表。</p>
+<p><strong>十字链表</strong>：每个非零元用一个结点表示，结点中除了<font color=#00f>表示非零元所在的行、列和值的三元组$(i,j,e)$</font>外，增加<font color=#00f>两个指针域</font>。<font color=#00f>行指针域(right)</font>：用来指向本行中下一个非零元素；<font color=#00f>列指针域(down)</font>：用来指向本列中下一个非零元素。稀疏矩阵中同一行的非零元通过向右的 right指针链接成了一个线性链表。同一列的非零元也通过down指针链接成了ー个线性链表。每个非零元既是第$i$行链表中的一个结点，又是第$j$列链表中的一个结点，相当于处在一个十字交叉路口，故称这样的存储结构为十字链表。</p>
 <p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171855916.png" alt="image-20220221154547201"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">OLNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> i, j;	<span class="comment">// 该非0元素的行和列下标</span></span><br><span class="line">    ElemType e;	<span class="comment">// 同上面的自定义，就是int型</span></span><br><span class="line">    stuct OLNode *right, *down;	<span class="comment">// 非0元素所在行表和列表的后继</span></span><br><span class="line">&#125;OLNode, *OLink;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    OLink *rhead, *chead;	<span class="comment">// 行和列链表头指针向量</span></span><br><span class="line">    <span class="keyword">int</span> mu, nu, tu;	<span class="comment">// 稀疏矩阵的行数、列数、非0元个数</span></span><br><span class="line">&#125;CrossList;</span><br></pre></td></tr></table></figure>
 
@@ -708,21 +708,21 @@
 </ul>
 <p><strong>森林</strong>是$m(m&gt;=0)$棵互不相交的树的集合。</p>
 <h3 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h3><p>双亲数组存储表示</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171901556.png" alt="image-20220222145320646" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171901556.png" alt="image-20220222145320646" style="zoom:80%;" />
 
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> n0 30</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> dataType char</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">element</span> &#123;</span></span><br><span class="line">    dataType data;</span><br><span class="line">    <span class="keyword">int</span> parent;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tree</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">element</span> <span class="title">t</span>[<span class="title">n0</span>+1];</span></span><br><span class="line">    <span class="keyword">int</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 <p>孩子链表存储表示</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171901916.png" alt="image-20220222150000605" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171901916.png" alt="image-20220222150000605" style="zoom:80%;" />
 
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> n 30</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> dataType char</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> sub;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span>* <span class="title">next</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">element</span> &#123;</span></span><br><span class="line">    dataType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span>* <span class="title">children</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tree</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">element</span> <span class="title">t</span>[<span class="title">n</span> + 1];</span></span><br><span class="line">    <span class="keyword">int</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 <p>孩子——兄弟链存储表示</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171902798.png" alt="image-20220222152052142" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171902798.png" alt="image-20220222152052142" style="zoom:80%;" />
 
 
 
@@ -755,12 +755,12 @@
 <p><strong>顺序存储</strong>：用数组，按完全二叉树的顺序存储；对于一般的二叉树，在二叉树中补上虚拟结点使其成为完全二叉树。注意数组空出第0位。</p>
 <p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171902143.png" alt="image-20220221222838480"></p>
 <p><strong>二叉链存储</strong>：每个结点包括数据域和指针域。数据域存储结点的数据，指针域有两个分别指向左孩子和右孩子的指针。</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171903316.png" alt="image-20220221223915686" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171903316.png" alt="image-20220221223915686" style="zoom:80%;" />
 
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">btnode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    dataType data;	<span class="comment">// 用户定义的数据类型</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">btnode</span> *<span class="title">lchild</span>, *<span class="title">rchild</span>;</span></span><br><span class="line">&#125;BTnode, *BiTree;</span><br></pre></td></tr></table></figure>
 
 <p><strong>静态二叉链</strong></p>
-<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171903708.png" alt="image-20220221225133876" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171903708.png" alt="image-20220221225133876" style="zoom:80%;" />
 
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sbtnode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    dataType data;		<span class="comment">//数值字段</span></span><br><span class="line">    <span class="keyword">int</span> llink, rlink;	<span class="comment">//指针字段</span></span><br><span class="line">&#125;tree[n + <span class="number">1</span>];	<span class="comment">// n：二叉树的结点个数，不能这样直接创建数组tree[n+1]</span></span><br></pre></td></tr></table></figure>
 
@@ -773,7 +773,7 @@
 <p><strong>后序遍历</strong>：左子树——&gt;右子树——&gt;根</p>
 <p><strong>层次遍历</strong>：按层次，每层从左到右遍历</p>
 <p>示例：</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171903117.png" alt="image-20220221230924269" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171903117.png" alt="image-20220221230924269" style="zoom:80%;" />
 
 <p>注：已知二叉树的先序遍历和中序遍历，则该二叉树能唯一确定</p>
 <h3 id="遍历算法实现"><a href="#遍历算法实现" class="headerlink" title="遍历算法实现"></a><strong>遍历算法实现</strong></h3><p><strong>层次遍历</strong>伪代码</p>
@@ -851,7 +851,7 @@
 <p><strong>前缀码</strong>：对每一个字符规定一个0,1串作为其代码，并要求任一字符的代码都不是其它字符代码的前缀，这种编码称为前缀码。</p>
 <p>二叉树C的Huffman编码是：$E:0,U:100,D:101,L:110,C:1110,Z:111100,K:111101,F:11111$ </p>
 <h3 id="树、森林转换二叉树"><a href="#树、森林转换二叉树" class="headerlink" title="树、森林转换二叉树"></a>树、森林转换二叉树</h3><p><strong>树转换成二叉树</strong></p>
-<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171909051.png" alt="image-20220222153139457">
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171909051.png" alt="image-20220222153139457"  />
 
 <p><strong>森林转换成二叉树</strong></p>
 <p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171910072.png" alt="image-20220222154146235"></p>
@@ -867,7 +867,7 @@
 <p><strong>边</strong>：两个顶点之间的关系。</p>
 <ul>
 <li>对于无向图，图中的顶点偶对（边）是无序的</li>
-<li>而对于有向图，图中的顶点偶对（弧）是有序的<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171910780.png" alt="image-20220222215421328" style="zoom: 67%;"></li>
+<li>而对于有向图，图中的顶点偶对（弧）是有序的<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171910780.png" alt="image-20220222215421328" style="zoom: 67%;" /></li>
 </ul>
 <p><strong>完全图</strong>：有$n(n-1)/2$条边的无向图，即每个结点之间都有且只有一条边。</p>
 <p><strong>有向完全图</strong>：有$n(n-1)$条边的有向图。</p>
@@ -876,7 +876,7 @@
 <p><strong>权</strong>：与图的边相关的数值。</p>
 <p><strong>网</strong>：带权的图。</p>
 <p><strong>子图</strong>：设两个图$G＝(V, E)$和$G’=(V’,E’)$，如果$V’\subseteq V$且$E’\subseteq  E$，则称$G’$为$G$的子图。</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171910228.png" alt="image-20220222222143650" style="zoom:67%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171910228.png" alt="image-20220222222143650" style="zoom:67%;" />
 
 <p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171910510.png" alt="image-20220222220552674"></p>
 <p><strong>邻接点</strong>：</p>
@@ -953,7 +953,7 @@
 <p><strong>生成树林</strong>：从非连通图中任意一个顶点出发，或者从非强连通图中任意一个非根顶点出发，都不可能沿着边<br>访问到图中的所有顶点。</p>
 <p><strong>最小生成树</strong>：生成树中边的权值（代价）之和最小的树。</p>
 <p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171913802.png" alt="image-20220228110032759"></p>
-<h4 id="Kruscal算法"><a href="#Kruscal算法" class="headerlink" title="Kruscal算法"></a><strong>Kruscal算法</strong></h4><p>基本思想：设$T=(U,TE)$是$G=(V,E)$的最小生成树，$U$的初值等于$V$，$TE$的初值为空集。将图中的<font color="#ff0000">边按权值从小到大的顺序依次选取</font>，若选取的边使生成树$T$不形成回路，则把它并入$TE$中，保留作为$T$的一条边；若选取的边使生成树T形成回路，则将其舍去。如此进行下去，直到$TE$中包含有$n-1$条边为止。</p>
+<h4 id="Kruscal算法"><a href="#Kruscal算法" class="headerlink" title="Kruscal算法"></a><strong>Kruscal算法</strong></h4><p>基本思想：设$T=(U,TE)$是$G=(V,E)$的最小生成树，$U$的初值等于$V$，$TE$的初值为空集。将图中的<font color=#ff0000>边按权值从小到大的顺序依次选取</font>，若选取的边使生成树$T$不形成回路，则把它并入$TE$中，保留作为$T$的一条边；若选取的边使生成树T形成回路，则将其舍去。如此进行下去，直到$TE$中包含有$n-1$条边为止。</p>
 <p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171914006.png" alt="image-20220228111700867"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">T = &#123;V, E&#125;;</span><br><span class="line"><span class="keyword">while</span>(T的边数 &lt; n - <span class="number">1</span>) &#123;</span><br><span class="line">    在E中选择代价最小的边(u, v);</span><br><span class="line">    并置 E = E - (u, v);</span><br><span class="line">    <span class="keyword">if</span>(不构成回路) &#123;</span><br><span class="line">        T = T + &#123;u, v&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1071,7 +1071,7 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/C++%E6%97%B6%E9%97%B4/" rel="prev" title="C++ 日期和时间">
+    <a href="/C++/C++%E6%97%B6%E9%97%B4/" rel="prev" title="C++ 日期和时间">
       <i class="fa fa-chevron-left"></i> C++ 日期和时间
     </a></div>
       <div class="post-nav-item">

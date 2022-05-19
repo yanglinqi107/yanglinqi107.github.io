@@ -345,7 +345,7 @@
 <p><strong>进程控制块的逻辑组织结构</strong></p>
 <p><img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220408153746262.png" alt="image-20220408153746262"></p>
 <p>使用<code>pstree</code>查看当前进程的树形图</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220408153845177.png" alt="image-20220408153845177" style="zoom: 80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220408153845177.png" alt="image-20220408153845177" style="zoom: 80%;" />
 
 
 
@@ -358,7 +358,7 @@
 <li>执行成功返回当前进程的ID，失败返回-1（错误原因存储在errorno中）</li>
 </ul>
 <h3 id="用户和用户组"><a href="#用户和用户组" class="headerlink" title="用户和用户组"></a>用户和用户组</h3><p><strong>与进程相关联的用户ID包含以下类型</strong>：</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220408154918504.png" alt="image-20220408154918504" style="zoom: 50%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220408154918504.png" alt="image-20220408154918504" style="zoom: 50%;" />
 
 <p><strong>真实用户与有效用户的关系</strong>：</p>
 <ul>
@@ -370,7 +370,7 @@
 <p>示例：<code>passwd</code>命令程序就设置了设置用户ID位</p>
 <p><img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220408155713660.png" alt="image-20220408155713660"></p>
 <p>使用<code>chmod</code>对可执行文件修改设置用户ID位</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220408160016081.png" alt="image-20220408160016081" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220408160016081.png" alt="image-20220408160016081" style="zoom:80%;" />
 
 <hr>
 <p><strong>获取真实用户和真实用户组</strong></p>
@@ -472,14 +472,14 @@
 <p><strong>示例：<code>atexit</code></strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//atexit_text.c</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;func1 is called\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;func2 is called\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func3</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;func3 is called\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	atexit(func1);</span><br><span class="line">	atexit(func2);</span><br><span class="line">	atexit(func3);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;process exit\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220408175512633.png" alt="image-20220408175512633" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220408175512633.png" alt="image-20220408175512633" style="zoom:80%;" />
 
 <p><strong>示例：<code>on_exit</code></strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//on_exit_text.c</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> i, j ,k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">(<span class="keyword">int</span> status, <span class="keyword">void</span> *arg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;func1 exit status is %d\n&quot;</span>, status);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;func1 arg is %d\n&quot;</span>, *((<span class="keyword">int</span>*)arg));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">(<span class="keyword">int</span> status, <span class="keyword">void</span> *arg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;func2 exit status is %d\n&quot;</span>, status);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;func2 arg is %d\n&quot;</span>, *((<span class="keyword">int</span>*)arg));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func3</span><span class="params">(<span class="keyword">int</span> status, <span class="keyword">void</span> *arg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;func3 exit status is %d\n&quot;</span>, status);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;func3 arg is %d\n&quot;</span>, *((<span class="keyword">int</span>*)arg));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> *argc, <span class="keyword">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	i = <span class="number">3</span>;</span><br><span class="line">	on_exit(func1, (<span class="keyword">void</span>*)&amp;i);</span><br><span class="line">	j = <span class="number">4</span>;</span><br><span class="line">	on_exit(func2, (<span class="keyword">void</span>*)&amp;j);</span><br><span class="line">	k = <span class="number">5</span>;</span><br><span class="line">	on_exit(func3, (<span class="keyword">void</span>*)&amp;k);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 改成1的话，下面输出的 status值就为1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220408191339232.png" alt="image-20220408191339232"></p>
 <h2 id="进程环境"><a href="#进程环境" class="headerlink" title="进程环境"></a>进程环境</h2><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>1、内核空间  2、内存空间</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220408210223114.png" alt="image-20220408210223114" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220408210223114.png" alt="image-20220408210223114" style="zoom:80%;" />
 
 
 
@@ -505,7 +505,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//myecho.C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; argc; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Argument %d is %s\n&quot;</span>, i, argv[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220408212001229.png" alt="image-20220408212001229"></p>
-<p><font color="#ff0000">注意：</font>命令名也传入<code>main</code>中，占 0 位</p>
+<p><font color=#ff0000>注意：</font>命令名也传入<code>main</code>中，占 0 位</p>
 <h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p><strong>环境变量表</strong></p>
 <p><img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220408212220015.png" alt="image-20220408212220015"></p>
 <ul>
@@ -580,8 +580,8 @@
 <p>Linux系统中进程0（PID=0）是由内核创建，其他所有进程都是由父进程调用<code>fork</code>函数所创建的</p>
 <p>Linux系统中进程0在创建子进程（PID=1，<code>init</code>进程）后，进程0就转为交换进程或空闲进程</p>
 <p>进程1（init进程）是系统中其他所有进程的共同祖先</p>
-<p><img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409105538106.png" alt="image-20220409105538106" style="zoom: 67%;"><img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409105638271.png" alt="image-20220409105638271"></p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409105638271.png" alt="image-20220409105538106" style="zoom: 67%;">
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409105538106.png" alt="image-20220409105538106" style="zoom: 67%;" /><img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409105638271.png" alt="image-20220409105638271"></p>
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409105638271.png" alt="image-20220409105538106" style="zoom: 67%;" />
 
 
 
@@ -601,7 +601,7 @@
 <p><strong>示例：</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">pid_t</span> pid;</span><br><span class="line">	pid = fork();</span><br><span class="line">	<span class="keyword">if</span>(pid == <span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;fork error\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(pid == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;the returned value is %d\n&quot;</span>, pid);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;in child process!!\n&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;My PID is %d\n&quot;</span>, getpid());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;the returned value is %d\n&quot;</span>, pid);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;in father process!!\n&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;My PID is %d\n&quot;</span>, getpid());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409110646792.png" alt="image-20220409110646792" style="zoom: 80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409110646792.png" alt="image-20220409110646792" style="zoom: 80%;" />
 
 
 
@@ -618,7 +618,7 @@
 </ul>
 </li>
 </ul>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409111016348.png" alt="image-20220409111016348" style="zoom:67%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409111016348.png" alt="image-20220409111016348" style="zoom:67%;" />
 
 
 
@@ -639,7 +639,7 @@
 <li>子进程的 <code>tms_utime</code>, <code>tms_stime</code>,<code>tms_cutime</code>,<code>tms_ustime</code>值被设置为 0</li>
 </ul>
 <p><strong>父子进程共享文件</strong></p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409111207007.png" alt="image-20220409111207007" style="zoom:67%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409111207007.png" alt="image-20220409111207007" style="zoom:67%;" />
 
 <p>父子进程对共享文件的常见处理方式：</p>
 <ul>
@@ -756,7 +756,7 @@
 <p>exec系列函数替换了当前进程（执行该函数的进程）的<strong>正文段、数据段、堆和栈</strong>（来源于加载的可执行文件）</p>
 <p>执行exec系列函数后从加载可执行文件的main函数开始重新执行</p>
 <p>exec系列函数并不创建新进程，所以在调用exec系列函数后其进程ID并未改变，已经打开的文件描述符不变</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409121804687.png" alt="image-20220409121804687" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409121804687.png" alt="image-20220409121804687" style="zoom:80%;" />
 
 
 
@@ -966,7 +966,7 @@
 <li><strong>同步</strong>：协调彼此运行的步调，保证协同运行的各个任务具有正确的执行次序</li>
 <li><strong>通信</strong>：数据共享，彼此间传递数据或信息，以协同完成某项工作</li>
 </ul>
-<h3 id="线程数据共享"><a href="#线程数据共享" class="headerlink" title="线程数据共享"></a>线程数据共享</h3><img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409153932168.png" alt="image-20220409153932168" style="zoom:67%;">
+<h3 id="线程数据共享"><a href="#线程数据共享" class="headerlink" title="线程数据共享"></a>线程数据共享</h3><img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409153932168.png" alt="image-20220409153932168" style="zoom:67%;" />
 
 
 
@@ -983,7 +983,7 @@
 <li><p>将寄存器中的值写回内存单元</p>
 </li>
 </ol>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409154622468.png" alt="image-20220409154622468" style="zoom:67%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409154622468.png" alt="image-20220409154622468" style="zoom:67%;" />
 
 <p>解决方法：互斥量</p>
 <h3 id="互斥量"><a href="#互斥量" class="headerlink" title="互斥量"></a>互斥量</h3><p><strong>临界资源</strong>：在一段时间内只允许一个任务（线程或进程）访问的资源。诸任务间应采取互斥方式，实<br>现对资源的共享</p>
@@ -1051,7 +1051,7 @@
 <ul>
 <li>两个或多个任务为了合作完成同一个工作，在执行速度或某个确定的时序点上必须相互协调，即一个任务的执行必须依赖另一个任务的执行情况</li>
 </ul>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409160816138.png" alt="image-20220409160816138" style="zoom:50%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409160816138.png" alt="image-20220409160816138" style="zoom:50%;" />
 
 <p>程序设计中存在这样的情况：多个线程都要访问临界资源又要相互合作（线程间<strong>同时存在互斥关系和同步关系</strong>）</p>
 <p>线程A先执行某操作（例如对全局变量x的修改）后，线程B才能（根据变量x的值判断）执行另一操作<br>（可能是对全局变量x的修改），该如何实现？</p>
@@ -1297,7 +1297,7 @@
 <p>在IPC操作中通信各方需要通过ID来指示操作的IPC对象，需要有机制让通信各方获取获取IPC对象的ID</p>
 <ul>
 <li>创建IPC对象的进程通过创建IPC对象函数的返回值可获取ID值</li>
-<li><font color="#ff0000">未创建IPC对象的进程如何获取IPC对象的ID值并使用该对象呢？</font></li>
+<li><font color=#ff0000>未创建IPC对象的进程如何获取IPC对象的ID值并使用该对象呢？</font></li>
 </ul>
 <p>IPC机制的ID值为<strong>动态分配</strong>，无法提前约定，不能跨进程传递</p>
 <p>多个进程提前<strong>约定使用相同的key值</strong>做为参数来创建IPC对象或打开已经创建的IPC对象</p>
@@ -1356,7 +1356,7 @@
 <li>消息队列能够克服管道或命名管道机制的一些缺点，例如实时性差等</li>
 </ul>
 <p><strong>消息队列结构</strong>：</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409203702015.png" alt="image-20220409203702015" style="zoom: 67%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220409203702015.png" alt="image-20220409203702015" style="zoom: 67%;" />
 
 
 
@@ -1446,7 +1446,7 @@
 <h3 id="信号量集"><a href="#信号量集" class="headerlink" title="信号量集"></a>信号量集</h3><p> <strong>任务资源共享情况</strong></p>
 <p>临界资源：在一段时间内只允许一个任务访问的资源。诸任务间应采取互斥方式，实现对资源的共享</p>
 <p>共享资源：允许多个任务同时访问同一种资源的多个实例</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220410122956953.png" alt="image-20220410122956953" style="zoom:50%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220410122956953.png" alt="image-20220410122956953" style="zoom:50%;" />
 
 <p><strong>信号量</strong></p>
 <p>信号量一般分为<strong>三种类型</strong>：</p>
@@ -1475,18 +1475,18 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">++s.count; <span class="comment">//表示释放一个资源</span></span><br><span class="line"><span class="keyword">if</span>(s.count &lt;= <span class="number">0</span>) <span class="comment">//表示有进程处于阻塞状态</span></span><br><span class="line">&#123;</span><br><span class="line">    从等待队列s.<span class="built_in">queue</span>中取出一个进程p;</span><br><span class="line">    进程P进入就绪队列;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p><strong>互斥信号量状态图</strong></p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220410124204976.png" alt="image-20220410124204976" style="zoom: 50%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220410124204976.png" alt="image-20220410124204976" style="zoom: 50%;" />
 
 <p><strong>计数信号量状态图</strong></p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220410124244462.png" alt="image-20220410124244462" style="zoom:50%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220410124244462.png" alt="image-20220410124244462" style="zoom:50%;" />
 
 <p><strong>二值信号量状态图</strong></p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220410124311260.png" alt="image-20220410124311260" style="zoom:50%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220410124311260.png" alt="image-20220410124311260" style="zoom:50%;" />
 
 
 
 <p><strong>信号量集结构</strong></p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220410124618074.png" alt="image-20220410124618074" style="zoom:50%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220410124618074.png" alt="image-20220410124618074" style="zoom:50%;" />
 
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">semid_ds</span>      </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ipc_perm</span> <span class="title">sem_perm</span>;</span>    </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sem</span> *<span class="title">sem_base</span>;</span>   <span class="comment">/* 指向信号量数组的指针 */</span>       </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sem_queue</span> *<span class="title">sem_pending</span>;</span>                     </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sem_queue</span> **<span class="title">sem_pending_last</span>;</span>    </span><br><span class="line">    <span class="class"><span class="keyword">struct</span>  <span class="title">sem_undo</span> *<span class="title">undo</span>;</span>    </span><br><span class="line">    <span class="keyword">time_t</span> sem_otime; <span class="comment">/* 最后一次操作的时间 */</span></span><br><span class="line">	<span class="keyword">time_t</span> sem_ctime; <span class="comment">/* 最后一次改变此结构的时间 */</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">short</span> sem_nsems; <span class="comment">/* 集合中信号量个数*/</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -1609,7 +1609,7 @@ struct seminfo *__buf;  /* Buffer for IPC_INFO */
 <li>最快的进程间通信方式</li>
 <li>本身不具有互斥访问机制</li>
 </ul>
-<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220410144858118.png" alt="image-20220410144858118" style="zoom: 40%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Linux-img/image-20220410144858118.png" alt="image-20220410144858118" style="zoom: 40%;" />
 
 <p><strong>共享内存的操作</strong></p>
 <p>头文件：</p>

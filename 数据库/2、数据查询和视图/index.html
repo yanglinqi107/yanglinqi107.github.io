@@ -468,7 +468,7 @@ HAVING过滤组，WHERE过滤行
 <h3 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">VIEW</span> [IF <span class="keyword">EXISTS</span>]</span><br><span class="line">view_name [,view_name]...</span><br><span class="line">[RESTRICT <span class="operator">|</span> CASCADE];</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h3 id="注意："><a href="#注意：" class="headerlink" title=" 注意："></a><font color="#ff0000"> 注意：</font></h3><p>视图的查询与表查询一样</p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title=" 注意："></a><font color=#ff0000> 注意：</font></h3><p>视图的查询与表查询一样</p>
 <p>可更新视图的更新与表更新一样</p>
 <p>可更新视图简单点理解就是视图数据的来源只能是一张表上的全部或部分数据</p>
 <p>可更新视图更新后，对应视图数据来源的表中的数据也会变化，即上例中v_cs的更新，score也会相应更新（from跟两个表，按理说v_cs不能更新的，但我测试却能更新成功，不知道是mysql的问题，还是说虽然跟着student，score两张表，但由于v_cs的数据来源于score，所以能更新？）</p>

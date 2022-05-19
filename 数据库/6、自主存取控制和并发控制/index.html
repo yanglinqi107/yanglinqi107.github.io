@@ -261,7 +261,7 @@
 
 <p><img src="https://github.com/yanglinqi107/images/raw/master/DB-img/20211217090736.png"></p>
 <h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><p>使用<code>DROP USER</code>命令删除用户，语法格式如下：</p>
-<p><font color="#FF0000">注：</font>只有用户当前数据库全局权限的用户才能使用<code>DROP</code>命令</p>
+<p><font color=#FF0000>注：</font>只有用户当前数据库全局权限的用户才能使用<code>DROP</code>命令</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> 用户; </span><br><span class="line"><span class="comment">/*用户形式  用户名@主机  例：yanglinqi@localhost  用户吗是区分大小写的*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*例*/</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">user</span> yanglinqi<span class="variable">@localhost</span>;</span><br></pre></td></tr></table></figure>
 
 
@@ -283,9 +283,9 @@
 
 <h3 id="权限控制"><a href="#权限控制" class="headerlink" title="权限控制"></a>权限控制</h3><h4 id="授予权限"><a href="#授予权限" class="headerlink" title="授予权限"></a>授予权限</h4><p>可授予用户列权限、表权限、数据库权限、用户权限等，语法格式如下：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> priv_type <span class="keyword">ON</span> [object_type] &#123;表名<span class="operator">|</span>数据库名&#125; <span class="keyword">TO</span> 用户</span><br><span class="line">[IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;密码&#x27;</span>][<span class="keyword">WITH</span> <span class="keyword">grant</span> option];</span><br></pre></td></tr></table></figure>
-<p><font color="#ff0000">说明：</font></p>
+<p><font color=#ff0000>说明：</font></p>
 <p><code>object_type=TABLE|FUNCTION|PROCEDURE</code></p>
-<p><font color="#ff0000">注：</font>若指定密码，则原密码将会被覆盖，如果权限授予一个不存在的用户，则MySQL会自动创建这个用户，但必须为该用户指定密码。</p>
+<p><font color=#ff0000>注：</font>若指定密码，则原密码将会被覆盖，如果权限授予一个不存在的用户，则MySQL会自动创建这个用户，但必须为该用户指定密码。</p>
 <p><code>pri_type</code></p>
 <p>列权限、表权限、数据库权限、用户权限参照<code>权限一览表</code></p>
 <p>如果要授予所有权限，则用<code>ALL</code>或者<code>ALL PRIVILEGES</code>表示。</p>
@@ -299,7 +299,7 @@
 <h4 id="回收权限"><a href="#回收权限" class="headerlink" title="回收权限"></a>回收权限</h4><p>使用REVOKE命令可以回收授予的权限，语法格式如下：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> priv_type <span class="keyword">ON</span> &#123;表名<span class="operator">|</span>数据库名&#125; <span class="keyword">FROM</span> 用户;</span><br><span class="line">或 </span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">ALL</span> PRIVILEDGES,<span class="keyword">GRANT</span> OPTION <span class="keyword">FROM</span> 用户;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*例*/</span></span><br><span class="line"><span class="keyword">revoke</span> <span class="keyword">select</span> <span class="keyword">ON</span> student <span class="keyword">from</span> ALEX<span class="variable">@LOCALHOST</span>;</span><br></pre></td></tr></table></figure>
 
-<p><font color="#ff0000">注：</font>只有拥有当前数据库全局CREATE或者UPDATE权限的用户才能使用REVOKE命令。</p>
+<p><font color=#ff0000>注：</font>只有拥有当前数据库全局CREATE或者UPDATE权限的用户才能使用REVOKE命令。</p>
 <h3 id="一些例子"><a href="#一些例子" class="headerlink" title="一些例子"></a>一些例子</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*创建user_1用户*/</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> user_1<span class="variable">@localhost</span> identified <span class="keyword">by</span> <span class="string">&#x27;1234&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*修改user_1用户密码 1234 成 123456*/</span></span><br><span class="line"><span class="keyword">set</span> password <span class="keyword">for</span> user_1<span class="variable">@localhost</span><span class="operator">=</span><span class="string">&#x27;123456&#x27;</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">/*修改user_1用户名为user_2*/</span></span><br><span class="line">update mysql.user <span class="keyword">set</span> <span class="keyword">user</span><span class="operator">=</span>user_2 <span class="keyword">where</span> <span class="keyword">user</span><span class="operator">=</span><span class="string">&#x27;user_1&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*授予用户对DBEM数据库中employee表的查询、插入、修改、删除等操作*/</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span>,<span class="keyword">insert</span>,update,<span class="keyword">drop</span> <span class="keyword">on</span> dbem.employee <span class="keyword">to</span> user_1<span class="variable">@localhost</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*授予用户user_1对DBEM数据库中employee表的查询、插入、修改、删除权限，并允许其将权限授予给其他用户*/</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span>,<span class="keyword">insert</span>,update,<span class="keyword">drop</span> <span class="keyword">on</span> dbem.employee <span class="keyword">to</span> user_1<span class="variable">@localhost</span> <span class="keyword">with</span> <span class="keyword">grant</span> option;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*回收user_1用户查询数据库dbem的employee表的权限*/</span></span><br><span class="line"><span class="keyword">revoke</span> <span class="keyword">select</span> <span class="keyword">on</span> dbem.employee <span class="keyword">from</span> user_1<span class="variable">@localhost</span>;</span><br></pre></td></tr></table></figure>
 
 <h3 id="权限一览表"><a href="#权限一览表" class="headerlink" title="权限一览表"></a>权限一览表</h3><table>
@@ -522,7 +522,7 @@
 <li><p>可串行化(serializable)：用户之间一个接一个执行事务，避免所有并发控制问题，最大限度的隔离，三级封锁协议</p>
 </li>
 </ul>
-<p><font color="#ff0000">注：</font>MySQL默认为repeatable read隔离级别</p>
+<p><font color=#ff0000>注：</font>MySQL默认为repeatable read隔离级别</p>
 <table>
 <thead>
 <tr>

@@ -295,17 +295,17 @@
 <p>【终结符号】若干基本符号，是组成句子的最基本符号。例如：张三，是，学生。</p>
 <p>【产生式】一组产生句子的规则：P→α 或 P ::＝α</p>
 <p>【开始符号】语言中的句子只能从它开始推导。 ＜句子＞是开始符号，是语言的目标，而其它语法成分只是构造语言目标时的中间变量。</p>
-<h4 id="文法定义"><a href="#文法定义" class="headerlink" title="文法定义"></a>文法定义</h4><p><font color="#ff0000">文法定义</font>为四元组 $G＝(V_N，V_T，P，S )$。其中：</p>
+<h4 id="文法定义"><a href="#文法定义" class="headerlink" title="文法定义"></a>文法定义</h4><p><font color=#ff0000>文法定义</font>为四元组 $G＝(V_N，V_T，P，S )$。其中：</p>
 <p>$V_N$为非终结符号(或语法实体，或变量)集；</p>
 <p>$V_T$为终结符号集；$ V_N ∩ V_T = \emptyset$，通常用$V$表示$V_N ∪ V_T$，称为文法$G$的字母表；</p>
 <p>$P$为产生式或规则$（α→β或α∷=β）$的集合， 其中$α∈V^+$，且 $α$ 中至少要包含一个非终结符，$β∈V^*$</p>
 <p>$S$是识别符号或开始符号，它是一个非终结符，至少要在一条产生式中作为左部出现。</p>
 <h4 id="产生式"><a href="#产生式" class="headerlink" title="产生式"></a>产生式</h4><p>规则，也称重写规则、产生式或生成式，是形如：<br>         $$ α→β  或  α∷=β$$<br>   的$(α，β)$有序对，其中$α$是字汇表$V$的正闭包$V^+$中的一个符号$(即α∈V^+)$， $β$中至少要包含一个非终结符，是$V^*$中的一个符号$(即β∈V^*)$。<br>α称为产生式的左部，β称作产生式的右部（候选式）</p>
-<h4 id="文法的多种写法"><a href="#文法的多种写法" class="headerlink" title="文法的多种写法"></a>文法的多种写法</h4><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172313467.png" alt="image-20220102161207938" style="zoom:80%;">
+<h4 id="文法的多种写法"><a href="#文法的多种写法" class="headerlink" title="文法的多种写法"></a>文法的多种写法</h4><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172313467.png" alt="image-20220102161207938" style="zoom:80%;" />
 
 
 
-<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172313468.png" alt="image-20220102161237577" style="zoom: 67%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172313468.png" alt="image-20220102161237577" style="zoom: 67%;" />
 
 <h4 id="记号"><a href="#记号" class="headerlink" title="记号"></a>记号</h4><p>元符号：$\rightarrow \ ::= \ | $</p>
 <p>习惯表示：  大写字母：非终结符      小写字母：终结符</p>
@@ -323,7 +323,7 @@
 <p>即 $L(G)={α|S \stackrel {<em>}{\Rightarrow}  α，$ 其中S为文法的开始符号，且$α∈V_T^</em>$}</p>
 <p>【文法等价】若$L(G1)=L(G2)$ ，则称文法$G1和G2$是等价的。</p>
 <p>注意：属于$V_T^*$的符号串，不一定属于$L(G)$,即$L(G)$是$V_T^*$的子集，故$L(G)$是定义于字母表$V_T$上的。</p>
-<p><font color="#ff0000">文法与语言的关系不是一对一的关系</font></p>
+<p><font color=#ff0000>文法与语言的关系不是一对一的关系</font></p>
 <h3 id="由文法推导出语言"><a href="#由文法推导出语言" class="headerlink" title="由文法推导出语言"></a>由文法推导出语言</h3><p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172313469.png" alt="image-20220102170506838"></p>
 <h3 id="文法与语言的分类"><a href="#文法与语言的分类" class="headerlink" title="文法与语言的分类"></a>文法与语言的分类</h3><h4 id="0型文法（短语文法）"><a href="#0型文法（短语文法）" class="headerlink" title="0型文法（短语文法）"></a>0型文法（短语文法）</h4><p>$产生式α→β中α∈ (V_N∪V_T)^+,且至少含有一个非终结符，而β∈(V_N∪V_T)^*。$</p>
 <p>0型文法对应的语言称为0型语言。​</p>

@@ -314,12 +314,12 @@
 <p>$G_1[S]:$ $S→aAB \ A→bA|c \ B→dBe|de$</p>
 <p>输入串$abbcde$的最左推导：$S \Rightarrow aAB \Rightarrow abAB \Rightarrow abbAB \Rightarrow abbcB \Rightarrow abbcde$ 是该文法$G_1$的句子</p>
 <p>语法树：</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136414.png" alt="image-20220103122426610" style="zoom:67%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136414.png" alt="image-20220103122426610" style="zoom:67%;" />
 
 <p>穷举的试探方法  效率低、代价高</p>
 </blockquote>
 <h3 id="确定的自顶向下分析法"><a href="#确定的自顶向下分析法" class="headerlink" title="确定的自顶向下分析法"></a>确定的自顶向下分析法</h3><p>先要解决从文法的开始符号出发，如何根据当前的输入符号(单词符号)唯一地确定选用哪个产生式替换相应非终结符往下推导，或构造一棵相应的语法树。 </p>
-<p><font color="#ff0000">由于相同左部产生式，需要计算首终结符号集</font></p>
+<p><font color=#ff0000>由于相同左部产生式，需要计算首终结符号集</font></p>
 <p><strong>首终结符号集（开始符号集）</strong></p>
 <blockquote>
 <p>设$G＝( V_N, V_T, P, S)$是上下文无关文法，$α$是由非终结符与终结符组成的任意符号串，用$FIRST(α)$表示$α$的首终结符集，则$FIRST(α)＝{a|α\Rightarrow aβ, a∈V_T,α,β∈(V_N∪V_T)^*}$<br>若$α＝ε$，则规定$FIRST(α)＝\emptyset $ (空集)</p>
@@ -370,7 +370,7 @@
 <td>推导成功</td>
 </tr>
 </tbody></table>
-<p><font color="#ff0000">由于空产生式 如：$A\rightarrow ε$，需要计算首终结符号集</font></p>
+<p><font color=#ff0000>由于空产生式 如：$A\rightarrow ε$，需要计算首终结符号集</font></p>
 <p><strong>后随符号集</strong></p>
 <blockquote>
 <p>设$G＝( V_N, V_T , P, S)$是上下文无关文法，$A$是$G$中的非终结符，用$FOLLOW(A)$表示$A$的后随符号集，则有：$FOLLOW(A)＝{a|S \stackrel{*}{\Rightarrow} …Aa…，a∈V_T}$<br>特别地，若有$S\Rightarrow …A$,则规定$＃∈FOLLOW(A)$。</p>
@@ -655,10 +655,10 @@
 <p>示例1：文法$G_2[S]：$$S→AB \ A→bB \ A→Aa \ B→a \ B→Sb$</p>
 <p>求句型$baSb$的全部短语、直接短语、句柄</p>
 <blockquote>
-<p>句型baSb的短语：ba，a，Sb，baSb。<br>直接短语：a，Sb<br>句柄：a<br><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136416.png" alt="image-20220103172105186" style="zoom:67%;"></p>
+<p>句型baSb的短语：ba，a，Sb，baSb。<br>直接短语：a，Sb<br>句柄：a<br><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136416.png" alt="image-20220103172105186" style="zoom:67%;" /></p>
 </blockquote>
 <p>示例2：</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136417.png" alt="image-20220103215816904" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136417.png" alt="image-20220103215816904" style="zoom:80%;" />
 
 <p>在任何自底向上的分析法中，语法分析器的设计必须解决下面两个问题：</p>
 <ul>
@@ -695,7 +695,7 @@
 </blockquote>
 <blockquote>
 <p>示例：设有文法$G_z：$ $Z → bMb \ M→a︱( L  \ L→Ma)$</p>
-<p>优先关系矩阵<br><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136419.png" alt="image20220103174011935" style="zoom:80%;"></p>
+<p>优先关系矩阵<br><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136419.png" alt="image20220103174011935" style="zoom:80%;" /></p>
 </blockquote>
 <p>构造优先矩阵</p>
 <blockquote>
@@ -710,11 +710,11 @@
 <p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136421.png" alt="image-20220103214226514"></p>
 <p>$FIRSTVT(P) = {a | P \stackrel{+}{\Rightarrow} a… 或 P\stackrel{+}{\Rightarrow} Qa…}$</p>
 <p>$LASTVT(P) = {a|P\stackrel{+}{\Rightarrow} … a 或P\stackrel{+}{\Rightarrow} …aQ}$</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136422.png" alt="image-20220103215056775" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136422.png" alt="image-20220103215056775" style="zoom:80%;" />
 
-<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136423.png" alt="image-20220103215130179" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136423.png" alt="image-20220103215130179" style="zoom:80%;" />
 
-<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136424.png" alt="image-20220103220043967" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136424.png" alt="image-20220103220043967" style="zoom:80%;" />
 
 
 
@@ -736,7 +736,7 @@
 <p>LR(1)分析法中的1表示只需向前查看一个输入符</p>
 </blockquote>
 <p>基本原理：把每个句柄的识别过程划分为若干状态，利用DFA来识别</p>
-<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136427.png" alt="image-20220103221924644" style="zoom:80%;">
+<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136427.png" alt="image-20220103221924644" style="zoom:80%;" />
 
 <p>分析栈：存放“状态”和移进、归约的文法符号。</p>
 <p>分析表：分为两个子表。</p>
