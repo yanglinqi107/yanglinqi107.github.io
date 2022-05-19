@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<meta name="referrer" content="no-referrer">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"/node_modules/hexo-generator-searchdb/search.xml"};
+  </script>
+
+  <meta name="description" content="编译原理    第六部分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="语义分析和中间代码生成">
+<meta property="og:url" content="http://yanglinqi107.github.io/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/6%E3%80%81%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/index.html">
+<meta property="og:site_name" content="杨的个人博客">
+<meta property="og:description" content="编译原理    第六部分">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172314424.png">
+<meta property="article:published_time" content="2022-05-17T14:55:41.816Z">
+<meta property="article:modified_time" content="2022-05-18T06:00:02.396Z">
+<meta property="article:author" content="yanglinqi">
+<meta property="article:tag" content="编译原理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172314424.png">
+
+<link rel="canonical" href="http://yanglinqi107.github.io/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/6%E3%80%81%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>语义分析和中间代码生成 | 杨的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">杨的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">碎片化学习令人焦虑，系统化学习使人进步</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">88</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yanglinqi107.github.io/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/6%E3%80%81%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headpic.jpg">
+      <meta itemprop="name" content="yanglinqi">
+      <meta itemprop="description" content="用于做笔记，对学过的知识总结">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          语义分析和中间代码生成
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-17 22:55:41" itemprop="dateCreated datePublished" datetime="2022-05-17T22:55:41+08:00">2022-05-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-18 14:00:02" itemprop="dateModified" datetime="2022-05-18T14:00:02+08:00">2022-05-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">编译原理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>编译原理    第六部分</p>
+<span id="more"></span> 
+
+<h3 id="符号表"><a href="#符号表" class="headerlink" title="符号表"></a>符号表</h3><p>一张符号表的每一项（或称入口）包含两大栏（或称区段、字域），即名字栏和信息栏。</p>
+<p>信息栏包含许多子栏和标志位，用来记录相应名字和种种不同属性，由于查填符号表一般是通过匹配名字来实现的，因此，名字栏也称主栏。主栏的内容称为关键字（key word）</p>
+<p>在整个编译期间，对于符号表的操作大致可归纳为五类：</p>
+<blockquote>
+<p>对给定名字，查询名字是否已在表中；</p>
+<p>往表中填入一个新的名字；</p>
+<p>对给定名字，访问它的某些信息；</p>
+<p>对给定名字，填写或更新它的某些信息；</p>
+<p>删除一个或一组无用的项。</p>
+<p>不同种类的表格所涉及的操作往往也是不同的。上述五个方面只是一些基本的共同操作。</p>
+</blockquote>
+<p>符号属性(信息）</p>
+<blockquote>
+<p>符号名 </p>
+<p>符号的类型 </p>
+<p>符号的存储类别 </p>
+<p>符号的作用域及可视性 </p>
+<p>符号变量的存储分配信息 </p>
+<p>符号的其它属性 ：</p>
+<ul>
+<li>数组内情向量 </li>
+<li>记录结构型的成员信息</li>
+<li>函数及过程的形参 </li>
+</ul>
+</blockquote>
+<p>符号表的组织</p>
+<blockquote>
+<p>由于处理对象的作用和作用域可以有多种，所以符号表也有多种组织方式。</p>
+<p>按照处理对象的特点，符号表的组织方式一般可以分为直接方式和间接方式</p>
+<p>符号表按照标识符的种属进行组织：根据符号属性相似程度分类组织成若干张表，每张表中记录的符号都有比较多的相同属性</p>
+</blockquote>
+<p>符号表项的组织传统上采用三种构造方法。即 线性法，二分法 及 散列法。</p>
+<p>线性组织</p>
+<blockquote>
+<p>这种方法规定符号表中表项按它的符号被扫描到的先后顺序建立</p>
+</blockquote>
+<p>排序组织及二分法</p>
+<blockquote>
+<p>排序组织的符号表，就是在符号表中的表项按其符号的字符代码串的值的大小排列．</p>
+<p>关于排序表的表项建立及符号查找，通常采用“二分法”．</p>
+</blockquote>
+<p>散列组织</p>
+<blockquote>
+<p>散列法又称为杂凑法或Hash法．散列法的基本思想是：设置一个足够大的空间M，构造一个散列函数Hash(Ki)，函数值的取值范围在0~M-1之间．这样查找Ki时，Hash(Ki)就决定了Ki在M中的位置．由此可见，构造Hash函数是散列法的关键问题．</p>
+<p>构造Hash函数的方法，如，可以设M为素数，将Hash(Ki)定义为Ki/M的余数．</p>
+</blockquote>
+<h3 id="中间代码"><a href="#中间代码" class="headerlink" title="中间代码"></a>中间代码</h3><p>翻译为中间语言的好处：</p>
+<ul>
+<li>便于进行与机器无关的代码优化；</li>
+<li>使编译程序改变目标机更容易；</li>
+<li>使编译程序的结构在逻辑上更为简单明确，以中间语言为界面，编译前端和后端的接口更清晰。</li>
+</ul>
+<p>编译程序所使用的中间代码有多种形式。常见的有逆波兰式、三元式和树形、四元式表示。</p>
+<p>逆波兰式</p>
+<blockquote>
+<p>这种表示法将运算对象写在前面，把运算符号写在后面，比如把a+b写成ab+，把a*b写成ab*，用这种表示法表示的表达式也称做后缀表达式</p>
+</blockquote>
+<p>三元式</p>
+<blockquote>
+<p>每个三元式由三个部分组成，分别是：</p>
+<p>(算符op，第一运算对象ARG1，第二运算对象ARG2)</p>
+<p>运算对象可能是源程序中的变量，也可能是某个三元式的结果，用三元式的编号表示。</p>
+<p>对于一目算符op，只需选用一个运算对象，不妨规定只用ARG1。至于多目算符，可用若干个相继的三元式表示。</p>
+</blockquote>
+<p>树形表示</p>
+<blockquote>
+<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172314424.png" alt="image-20220104120110825" style="zoom:67%;">
+</blockquote>
+<p>四元式</p>
+<blockquote>
+<p>四元式是一种比较普遍采用的中间代码形式。</p>
+<p>四元式的四个组成成分是：</p>
+<ul>
+<li>算符op</li>
+<li>第一运算对象ARG1</li>
+<li>第二运算对象ARG2</li>
+<li>运算结果RESULT</li>
+</ul>
+<p>运算对象和运算结果有时指用户自己定义的变量，有时指编译程序引进的临时变量。</p>
+<p>四元式形式： (op ,arg1,arg2,result) </p>
+<p>【例如】a=b * c+d*e的四元式为：</p>
+<p>（1）（*，　b，　c，　T1）</p>
+<p>（2）（*，　d，　e，　T2）</p>
+<p>（3）（+，   T1， T2，    T3）</p>
+<p>（4）（=，   T3， －，     a）</p>
+<p>四元式表示很类似于三地址指令，确实，有时把这类中间表示称为“三地址代码”，因为这种表示可看作一种虚拟三地址机的通用汇编码，即这种虚拟机的每条“指令”包含操作符和三个地址，两个是为运算对象的，一个是为结果的。这种表示对于代码优化和目标代码生成都较有利</p>
+</blockquote>
+<p>简单赋值语句的翻译</p>
+<blockquote>
+<p>语义过程GEN表示产生一个四元式，并且填入四元式表中。</p>
+<p>语义过程Newtemp表示生成一个临时变量，每调用一次，生成一新的临时变量。</p>
+<p>语义变量E.place，表示存放E值的变量名在符号表的登录项或一整数码（若此变量是一个临时变量）。</p>
+<p>语义变量Entry(id)回送标识符id在符号表中的入口地址。</p>
+</blockquote>
+<p>布尔表达式的翻译</p>
+<blockquote>
+<p>程序设计语言中的布尔表达式有两个作用</p>
+<p>一是计算逻辑值</p>
+<p>二是用做改变控制流语句中的条件表达式，如在if-then，if-then-else，或是while-do语句中那样</p>
+<p>计算布尔表达式的值有两种办法</p>
+<p>第一种办法，如同计算算术表达式一样，计算出各部分的真假值，最后计算出整个表达式的值</p>
+<p>第二种办法，采取某种优化措施，只计算部分表达式</p>
+</blockquote>
+<p>拉链</p>
+<blockquote>
+<p>为了记录需回填地址的四元式，常采用一种“拉链”的办法。</p>
+<p>把需回填E.TC的四元式拉成一条链子，把需回填E.FC的四元式拉成一条链子，分别称做”真”链和”假”链。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag"># 编译原理</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/5%E3%80%81%E8%AF%AD%E4%B9%89%E8%AE%A1%E7%AE%97%E5%92%8C%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95/" rel="prev" title="语义计算和属性文法">
+      <i class="fa fa-chevron-left"></i> 语义计算和属性文法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/7%E3%80%81%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%BB%84%E7%BB%87/" rel="next" title="存储空间组织">
+      存储空间组织 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%A6%E5%8F%B7%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">符号表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">中间代码</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yanglinqi"
+      src="/images/headpic.jpg">
+  <p class="site-author-name" itemprop="name">yanglinqi</p>
+  <div class="site-description" itemprop="description">用于做笔记，对学过的知识总结</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanglinqi107" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanglinqi107" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanglinqi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+</body>
+</html>

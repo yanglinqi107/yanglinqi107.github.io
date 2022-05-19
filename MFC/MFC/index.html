@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<meta name="referrer" content="no-referrer">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"/node_modules/hexo-generator-searchdb/search.xml"};
+  </script>
+
+  <meta name="description" content="MFC的简单使用，学习自黑马程序员&amp;传智教育">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MFC使用">
+<meta property="og:url" content="http://yanglinqi107.github.io/MFC/MFC/index.html">
+<meta property="og:site_name" content="杨的个人博客">
+<meta property="og:description" content="MFC的简单使用，学习自黑马程序员&amp;传智教育">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-17T14:55:41.172Z">
+<meta property="article:modified_time" content="2022-04-24T07:33:23.079Z">
+<meta property="article:author" content="yanglinqi">
+<meta property="article:tag" content="MFC">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yanglinqi107.github.io/MFC/MFC/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>MFC使用 | 杨的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">杨的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">碎片化学习令人焦虑，系统化学习使人进步</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">88</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yanglinqi107.github.io/MFC/MFC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headpic.jpg">
+      <meta itemprop="name" content="yanglinqi">
+      <meta itemprop="description" content="用于做笔记，对学过的知识总结">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MFC使用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-17 22:55:41" itemprop="dateCreated datePublished" datetime="2022-05-17T22:55:41+08:00">2022-05-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-24 15:33:23" itemprop="dateModified" datetime="2022-04-24T15:33:23+08:00">2022-04-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MFC/" itemprop="url" rel="index"><span itemprop="name">MFC</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>MFC的简单使用，学习自黑马程序员&amp;传智教育</p>
+<span id="more"></span>
+
+
+
+<p><code>Afx</code>开头的函数都是全局函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置窗体不可被拖大</span></span><br><span class="line"><span class="built_in">ModifyStyle</span>(WS_THICKFRAME, <span class="number">0</span>, SWP_FRAMECHANGED | SWP_DRAWFRAME);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="创建简单窗口"><a href="#创建简单窗口" class="headerlink" title="创建简单窗口"></a>创建简单窗口</h3><p>创建项目-》Win32或Windows桌面应用程序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;afxwin.h&gt;</span>  <span class="comment">//mfc头文件</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApp</span> :</span> <span class="keyword">public</span> CWinApp   <span class="comment">//CWinApp应用程序类</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//程序入口</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> BOOL <span class="title">InitInstance</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyFrame</span> :</span> <span class="keyword">public</span> CFrameWnd   <span class="comment">//窗口框架类</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">MyFrame</span>();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mfc.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">MyApp app;	<span class="comment">//全局应用程序变量，有且仅有一个</span></span><br><span class="line"></span><br><span class="line"><span class="function">BOOL <span class="title">MyApp::InitInstance</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	MyFrame* frame = <span class="keyword">new</span> MyFrame;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//显示和更新</span></span><br><span class="line">	frame-&gt;<span class="built_in">ShowWindow</span>(SW_SHOWNORMAL);</span><br><span class="line">	frame-&gt;<span class="built_in">UpdateWindow</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">//保存指向应用程序的主窗口的指针</span></span><br><span class="line">    <span class="comment">//m_pMainWnd是CWinThread的数据成员，CWinApp是CWinThread的子类</span></span><br><span class="line">	m_pMainWnd = frame;		</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MyFrame::<span class="built_in">MyFrame</span>()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">Create</span>(<span class="literal">NULL</span>, <span class="built_in">TEXT</span>(<span class="string">&quot;mfc&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>项目-》配置属性-》高级-》MFC使用改成在共享DLL中使用MFC</p>
+<h3 id="消息映射"><a href="#消息映射" class="headerlink" title="消息映射"></a>消息映射</h3><p>消息映射机制</p>
+<ul>
+<li>声明宏 写在<code>.h</code>中类中  <code>DECLARE_MESSAGE_MAP</code> </li>
+<li>分界宏 写在.cpp中 <ul>
+<li><code>BEGIN_MESSAGE_MAP( theClass, baseClass )</code> </li>
+<li><code>END_MESSAGE_MAP( )</code> </li>
+</ul>
+</li>
+<li>消息宏：写在 分界宏 中间<ul>
+<li>鼠标左键按下 <code>ON_WM_LBUTTONDOWN()</code> </li>
+<li>键盘 <code>ON_WM_CHAR()</code> </li>
+<li>绘图 <code>ON_WM_PAINT()</code> </li>
+</ul>
+</li>
+<li>函数原型 声明写到 <code>.h</code>中 （<code>afx_msg</code> 没有作用，是一个标识）<ul>
+<li>鼠标左键按下 <code>afx_msg void OnLButtonDown(UINT, CPoint);</code> </li>
+<li>键盘 <code>afx_msg void OnChar(UINT, UINT, UINT);</code></li>
+<li>绘图 <code>afx_msg void OnPaint();</code> </li>
+</ul>
+</li>
+<li>函数实现写到 <code>.cpp</code> 中</li>
+</ul>
+<h3 id="char-和CString"><a href="#char-和CString" class="headerlink" title="char*和CString"></a>char*和CString</h3><p><code>char* -&gt; CString</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span>* p3 = <span class="string">&quot;ccc&quot;</span>;</span><br><span class="line">CString str = <span class="built_in">CString</span>(p3);</span><br></pre></td></tr></table></figure>
+
+<p><code>CString -&gt; char*</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">CString <span class="title">str</span><span class="params">(_T<span class="string">&quot;ABC&quot;</span>)</span></span>;</span><br><span class="line">CStringA tmp;</span><br><span class="line">tmp = str;</span><br><span class="line"><span class="keyword">char</span>* p = tmp.<span class="built_in">GetBuffer</span>();</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Windows字符集"><a href="#Windows字符集" class="headerlink" title="Windows字符集"></a>Windows字符集</h3><p>1）多字节（8位的ANSI字符集）：1个字符对应1个字节</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> sz[] = <span class="string">&quot;ABCDEFG&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> *psz = <span class="string">&quot;ABCDEFG&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> len = <span class="built_in">strlen</span>(sz);</span><br></pre></td></tr></table></figure>
+
+<p>2）宽字节（16位Unicode字符集）：ANSI字符集的超集，支持中文，日文等</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在字符串前加字母L表示将ANSI字符集转换成Unicode字符集</span></span><br><span class="line"><span class="keyword">wchar_t</span> wsz[] = <span class="string">L&quot;ABCDEFG&quot;</span>;</span><br><span class="line"><span class="keyword">wchar_t</span> *pwsz[] = <span class="string">L&quot;ABCDEFG&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> len = <span class="built_in">wcslen</span>(wsz); <span class="comment">//获取宽字节字符串的长度</span></span><br></pre></td></tr></table></figure>
+
+<p>3）<strong>TEXT</strong> (_T)宏</p>
+<p>MFC中的TEXT宏可以自动适应字符类型，如果定义了预处理器程序符号_UNICODE，那么编译器将使用Unicode字符，如果没用定义该预处理器程序符号，那么编译器将使用ANSI字符。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">MessageBox</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;鼠标左键&quot;</span>));</span><br><span class="line"><span class="built_in">MessageBox</span>(_T(<span class="string">&quot;鼠标左键&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>4）<strong>TCHAR</strong>类型</p>
+<p>如果定义了_UNICODE符号TCHAR将变为wchar_t类型。如果没用定义_UNICODE符号，TCHAR将变为普通古老的char类型。</p>
+<p>模态对话框</p>
+<p><code>dlg.DoModal</code></p>
+<p>非模态对话框</p>
+<p><code>dlg.Create(IDD_SHOW);</code> 先创建窗口</p>
+<p><code>dlg.ShowWindow(SW_SHOWNORMAL);</code> 再显示窗口</p>
+<p>添加变量 以STATIC结尾的ID不可以添加变量，要先修改ID</p>
+<p>设置内容 <code>SetWindowTextW()</code></p>
+<p>获取内容 <code>GetWindowTextW()</code> </p>
+<p>禁用按钮 <code>EnableWindow(FALSE)</code></p>
+<p>获取大小 <code>GetWindowRect(Rect)</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置静态控件窗口风格为位图居中显示</span></span><br><span class="line">m_pic.<span class="built_in">ModifyStyle</span>(<span class="number">0xf</span>, SS_BITMAP | SS_CENTERIMAGE);</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过路径获取bitmap句柄</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> HBMP(filepath,width,height) (HBITMAP)LoadImage(AfxGetInstanceHandle(),filepath,IMAGE_BITMAP,width,height,LR_LOADFROMFILE|LR_CREATEDIBSECTION)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//宽高设置 按照图片大小设置</span></span><br><span class="line">CRect rect;</span><br><span class="line">m_pic.<span class="built_in">GetWindowRect</span>(rect);</span><br><span class="line"></span><br><span class="line"><span class="comment">//静态控件设置bitmap</span></span><br><span class="line">m_pic.<span class="built_in">SetBitmap</span>(<span class="built_in">HBMP</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;./1.bmp&quot;</span>), rect.<span class="built_in">Width</span>(), rect.<span class="built_in">Height</span>()));</span><br></pre></td></tr></table></figure>
+
+
+
+<p>编辑框 <code>Edit Control</code></p>
+<ul>
+<li>属性<ul>
+<li><code>mutiline</code> 多行</li>
+<li><code>want return</code> 想要返回</li>
+<li>滚动条 水平 垂直</li>
+</ul>
+</li>
+<li>默认小bug，点击回车就关闭对话框<ul>
+<li>重写对话框的<code>OnOK</code> 把 <code>CDialog::OnOK()</code>注释掉</li>
+</ul>
+</li>
+</ul>
+<p>添加变量时 选择<code>value值</code></p>
+<ul>
+<li><code>UpdateData(FALSE);</code> 将value同步到控件中</li>
+<li><code>UpdateData(TRUE);</code> 将控件的值同步到变量value中</li>
+</ul>
+<p>下拉框 <code>Combo Box</code></p>
+<ul>
+<li>属性中数据data   <code>;</code>分割</li>
+<li>默认排序 <code>sort</code>  ，设置false不排序</li>
+<li>类型默认<code>DropDown</code>可编辑  ， 设置<code>DropList</code>下拉列表不可编辑</li>
+<li>添加 <code>AddString</code></li>
+<li>删除 <code>DeleteString</code></li>
+<li>插入 <code>InsertString</code></li>
+<li>设置默认选项 <code>SetCurSel</code></li>
+<li>获取当前索引 <code>GetCurSel</code></li>
+<li>根据索引获取内容 <code>GetLBText</code> </li>
+<li>控件事件 <code>CBN_SELCHANGE</code> <code>OnCbnSelchangexxx</code> </li>
+</ul>
+<p><code>CListCtrl</code>   list Control 列表控件</p>
+<ul>
+<li>属性 <code>view</code>  选择报表模式 <code>Report</code></li>
+<li>添加表头 <code>InsertColumn</code></li>
+<li>添加正文 从0开始索引</li>
+<li>添加第0行0列 <code>InsertItem(0, CString)</code></li>
+<li>添加第0行其它列 <code>setItemText(0, 列号, CString)</code></li>
+<li>设置风格 整行选中 网格显示<ul>
+<li><code>m_list.SetExtendedStyle(m_list.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);</code></li>
+</ul>
+</li>
+</ul>
+<p><code>CTreeCtrl</code>树控件</p>
+<ul>
+<li>设置属性  行在根处、具有行、具有按钮</li>
+<li>设置图片集合<ul>
+<li><code>SetImageList(CImageList *, TVSIL_NORMAL);</code> </li>
+</ul>
+</li>
+<li>添加节点 <code>InsertItem(节点名称, 显示图片, 选中后显示的图, 父节点);</code></li>
+<li>设置默认节点 <code>SelectItem</code></li>
+<li>节点切换 触发事件<ul>
+<li><code>TVN_SELCHANGED</code> <code>OnTvnSelchangedTree1</code> </li>
+<li>获取当前项 <code>GetSelectItem</code></li>
+<li>获取内容 <code>GetItemText(item);</code> </li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MFC/" rel="tag"># MFC</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/03Linux%E7%BC%96%E7%A8%8B%E5%AE%9E%E9%AA%8C/" rel="prev" title="Linux编程实验">
+      <i class="fa fa-chevron-left"></i> Linux编程实验
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/MFC/Win32API/" rel="next" title="C创建窗口">
+      C创建窗口 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%AE%80%E5%8D%95%E7%AA%97%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">创建简单窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E6%98%A0%E5%B0%84"><span class="nav-number">2.</span> <span class="nav-text">消息映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#char-%E5%92%8CCString"><span class="nav-number">3.</span> <span class="nav-text">char*和CString</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="nav-number">4.</span> <span class="nav-text">Windows字符集</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yanglinqi"
+      src="/images/headpic.jpg">
+  <p class="site-author-name" itemprop="name">yanglinqi</p>
+  <div class="site-description" itemprop="description">用于做笔记，对学过的知识总结</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanglinqi107" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanglinqi107" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanglinqi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+</body>
+</html>

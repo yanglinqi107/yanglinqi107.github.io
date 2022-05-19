@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<meta name="referrer" content="no-referrer">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"/node_modules/hexo-generator-searchdb/search.xml"};
+  </script>
+
+  <meta name="description" content="传输层和网络层">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络">
+<meta property="og:url" content="http://yanglinqi107.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2/index.html">
+<meta property="og:site_name" content="杨的个人博客">
+<meta property="og:description" content="传输层和网络层">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171726793.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171726885.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171726270.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171726380.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171726960.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171726516.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171726263.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171726813.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171727282.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171727636.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171727364.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171727512.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171727542.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171727112.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171727927.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171727710.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171727158.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171727333.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171728811.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171728831.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171728154.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171728764.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171728013.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171728100.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171728355.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171728250.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171728504.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171729320.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171729501.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171729198.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171730336.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171730818.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171730973.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171730506.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171731046.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171731414.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171731560.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171731127.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171732721.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171732549.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171732730.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171732625.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171732384.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171732387.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171733430.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171733408.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171733502.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171733565.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171733442.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171734882.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171734070.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171734838.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171734764.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171734226.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171734209.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171734387.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171734053.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171734300.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171735619.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171735087.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171736875.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171736387.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171736320.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171736656.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171736993.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171736676.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171736363.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171736618.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171736540.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171737634.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171737950.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171737985.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171737984.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171737936.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171737443.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171737302.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171737461.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171738020.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171738532.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171738578.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171738356.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171738189.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171738257.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171738885.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171738737.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171739445.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171739310.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171739847.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171741437.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171741544.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171741974.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171741786.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171741002.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171741115.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171742286.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171742326.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171742423.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171742521.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171742314.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171742198.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171742954.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171742121.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171742731.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171742454.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171743594.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171743272.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171743371.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205172243781.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171743942.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171744220.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171744393.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171744880.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171745725.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171745993.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171745107.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171745953.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171745198.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171745267.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171745518.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171745810.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171745224.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171746644.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171746903.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171746415.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171746130.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171746046.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171746230.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171747597.png">
+<meta property="article:published_time" content="2022-05-17T14:55:52.480Z">
+<meta property="article:modified_time" content="2022-05-18T06:00:02.381Z">
+<meta property="article:author" content="yanglinqi">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171726793.png">
+
+<link rel="canonical" href="http://yanglinqi107.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>计算机网络 | 杨的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">杨的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">碎片化学习令人焦虑，系统化学习使人进步</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">88</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yanglinqi107.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headpic.jpg">
+      <meta itemprop="name" content="yanglinqi">
+      <meta itemprop="description" content="用于做笔记，对学过的知识总结">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-17 22:55:52" itemprop="dateCreated datePublished" datetime="2022-05-17T22:55:52+08:00">2022-05-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-18 14:00:02" itemprop="dateModified" datetime="2022-05-18T14:00:02+08:00">2022-05-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>传输层和网络层</p>
+<span id="more"></span>
+
+<h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><h3 id="传输层协议"><a href="#传输层协议" class="headerlink" title="传输层协议"></a>传输层协议</h3><p>传输层协议为运行在<strong>不同Host上的进程</strong>提供了一种<strong>逻辑通信机制</strong></p>
+<p>端系统运行传输层协议</p>
+<ul>
+<li>发送方：将应用递交的消息分成一个或多个的Segment，并向下传给网络层。</li>
+<li>接收方：将接收到的segment组装成消息，并向上交给应用层。</li>
+</ul>
+<p>传输层可以为应用提供多种协议</p>
+<ul>
+<li>Internet上的TCP</li>
+<li>Internet上的UDP</li>
+</ul>
+<p><strong>传输层VS网络层</strong>：</p>
+<ul>
+<li>网络层：提供<strong>主机之间</strong>的逻辑通信机制</li>
+<li>传输层：提供<strong>应用进程</strong>（一个主机上可能运行多个进程）之间的逻辑通信机制<ul>
+<li>位于网络层之上</li>
+<li>依赖于网络层服务</li>
+<li>对网络层服务进行（可能的）增强</li>
+</ul>
+</li>
+</ul>
+<p><strong>Internet传输层协议：</strong></p>
+<ol>
+<li>可靠、按序的交付服务(TCP)</li>
+</ol>
+<ul>
+<li>拥塞控制</li>
+<li>流量控制</li>
+<li>连接建立</li>
+</ul>
+<ol start="2">
+<li>不可靠的交付服务(UDP)：基于“尽力而为(Best-effort)”的网络层，没有做（可靠性方面的）扩展</li>
+</ol>
+<p>注意：两种服务均不保证<strong>延迟</strong>和<strong>带宽</strong></p>
+<h3 id="多路复用-分用"><a href="#多路复用-分用" class="headerlink" title="多路复用/分用"></a>多路复用/分用</h3><p>如果某层的一个协议对应直接上层的多个协议/实体，则需要复用/分用。</p>
+<p>接收端进行多路分用：传输层依据头部信息将收到的Segment交给正确的Socket，即不同的进程</p>
+<p>发送端进行多路复用：从多个Socket接收数据，为每块数据封装上头部信息，生成Segment、交给网络层</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171726793.png" alt="image-20220318164207910"></p>
+<p><strong>分用：</strong></p>
+<p>主机接收到IP数据报(datagram)</p>
+<ul>
+<li>每个数据报携带源IP地址、目的IP地址。</li>
+<li>每个数据报携带一个传输层的段(Segment）。</li>
+<li>每个段携带源端口号和目的端口号</li>
+</ul>
+<p>主机收到Segment之后，<strong>传输层协议提取IP地址和端口号信息</strong>，将Segment导向相应的Socket</p>
+<ul>
+<li>TCP做更多处理</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171726885.png" alt="image-20220318164418620" style="zoom: 50%;">
+
+<p><strong>无连接分用</strong>：</p>
+<p>利用端口号创建Socket：</p>
+<p><code>DatagramSocket mySocket1 = new DatagramSocket(9911);</code></p>
+<p><code>DatagramSocket mySocket2 = new DatagramSocket(9922);</code></p>
+<p>UDP的Socket用二元组标识：（目的IP地址，目的端口号）</p>
+<p>主机收到UDP段后</p>
+<ul>
+<li>检查段中的目的端口号</li>
+<li>将UDP段导向绑定在该端口号的Socket</li>
+</ul>
+<p>来自不同源IP地址和/或源端口号的IP数据包被<strong>导向同一个Socket</strong></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171726270.png" alt="image-20220318164712311"></p>
+<p><strong>面向连接的分用</strong>：</p>
+<p>TCP的Socket用四元组标识：（源IP地址，源端口号，目的IP地址，目的端口号）</p>
+<p>接收端利用所有的四个值将Segment<strong>导向合适的Socket</strong></p>
+<p>服务器可能同时支持多个TCP Socket，每个Socket用自己的四元组标识</p>
+<p>Web服务器为每个客户端开不同的Socket</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171726380.png" alt="image-20220318165035952"></p>
+<h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3><p><strong>UDP：User Datagram Protocol [RFC 768]</strong></p>
+<p>基于Internet IP协议，在其之上增加了功能：</p>
+<ul>
+<li>复用/分用</li>
+<li>简单的错误校验</li>
+</ul>
+<p>但“Best effort”服务，UDP段可能的问题：</p>
+<ul>
+<li>丢失</li>
+<li>非按序到达</li>
+</ul>
+<p>无连接：</p>
+<ul>
+<li>UDP发送方和接收方之间不需要握手</li>
+<li>每个UDP段的处理独立于其他段</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>无需建立连接 (减少延迟)</li>
+<li>实现简单：无需维护连接状态</li>
+<li>头部开销少</li>
+<li>没有拥塞控制: 应用可更好地控制发送时间和速率</li>
+</ul>
+<p>应用：</p>
+<ul>
+<li>流媒体应用：容忍丢失，速率敏感</li>
+<li>DNS</li>
+<li>SNMP</li>
+</ul>
+<p>如何在UDP上实现可靠数据传输？</p>
+<ul>
+<li>在<strong>应用层</strong>增加可靠性机制</li>
+<li>应用特定的错误恢复机制</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171726960.png" alt="image-20220318170708634" style="zoom:50%;">
+
+<p><strong>UDP校验</strong>：<code>checksum</code></p>
+<p>目的：检测UDP段在传输中是否发生错误（如位翻转）</p>
+<p>发送方：</p>
+<ul>
+<li>将段的内容视为16-bit整数</li>
+<li>校验和计算：计算所有整数的和，进位加在和的后面，将得到的值按位求反，得到校验和</li>
+<li>发送方将校验和放入校验和字段</li>
+</ul>
+<p>接收方：</p>
+<ul>
+<li>计算所收到段的校验和</li>
+<li>将其与校验和字段进行对比<ul>
+<li>不相等：检测出错误</li>
+<li>相等：没有检测出错误（但可能有错误）</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171726516.png" alt="image-20220318171109661"></p>
+<h3 id="可靠数据传输协议"><a href="#可靠数据传输协议" class="headerlink" title="可靠数据传输协议"></a>可靠数据传输协议</h3><p>可靠数据传输协议</p>
+<p>可靠？不错、不丢、不乱</p>
+<p>可靠数据传输协议对应用层、传输层、链路层都很重要</p>
+<p>信道的不可靠特性决定了可靠数据传输协议（rdt）的复杂性</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171726263.png" alt="image-20220319105106620"></p>
+<p>渐进地设计可靠数据传输协议的发送方和接收方</p>
+<p>只考虑<strong>单向数据传输</strong>，但<strong>控制信息双向流动</strong></p>
+<p>利用<strong>状态机</strong>(Finite State Machine, FSM)刻画传输协议</p>
+<hr>
+<p><strong>Rdt 1.0</strong>：<strong>可靠信道上的可靠数据传输</strong></p>
+<p>底层信道完全可靠</p>
+<ul>
+<li>不会发生错误(bit error)</li>
+<li>不会丢弃分组</li>
+</ul>
+<p>发送方和接收方的FSM独立</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171726813.png" alt="image-20220319105300121"></p>
+<hr>
+<p><strong>Rdt 2.0</strong>：<strong>产生位错误（bit error）的信道</strong></p>
+<p>底层信道可能翻转分组中的位(bit)，利用<strong>校验和</strong>检测位错误</p>
+<p>恢复错误？</p>
+<ul>
+<li><strong>确认机制（Acknowledgements, ACK）</strong>：接收方显式地告知发送方分组已正确接收</li>
+<li><strong>NAK</strong>：接收方显式地告知发送方分组有错误</li>
+<li>发送方收到NAK后，重传分组</li>
+</ul>
+<p>基于这种重传机制的rdt协议称为<strong>ARQ（Automatic Repeat reQuest）协议</strong></p>
+<p>Rdt 2.0中引入的新机制</p>
+<ul>
+<li>差错检测</li>
+<li>接收方反馈<strong>控制消息</strong>：ACK / NAK</li>
+<li>重传</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171727282.png" alt="image-20220319111204076"></p>
+<p>无错误场景</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171727636.png" alt="image-20220319111235883" style="zoom:50%;">
+
+<p>有错误场景</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171727364.png" alt="image-20220319111257454" style="zoom: 50%;">
+
+<hr>
+<p><strong>Rdt 2.1</strong>：<strong>应对ACK/NCK破坏</strong></p>
+<p>如果ACK/NAK消息发生错误/被破坏(corrupted)会怎么办？</p>
+<ul>
+<li>为ACK/NAK增加校验和，检错并纠错</li>
+<li>发送方收到被破坏ACK/NAK时不知道接收方发生了什么，添加额外的控制消息</li>
+<li>如果ACK/NAK坏掉，发送方重传，但不能简单的重传：产生重复分组</li>
+</ul>
+<p>如何解决重复分组问题？</p>
+<ul>
+<li><strong>序列号（Sequence number）</strong>：发送方给每个分组增加序列号0,1</li>
+<li>接收方丢弃重复分组</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171727512.png" alt="image-20220319113233739"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171727542.png" alt="image-20220319114238991"></p>
+<hr>
+<p><strong>Rdt 2.2</strong>：<strong>无NAK消息协议</strong></p>
+<p>与rdt 2.1功能相同，但是只使用ACK</p>
+<p>接收方通过ACK告知最后一个被正确接收的分组</p>
+<p>在ACK消息中<strong>显式地加入被确认分组的序列号</strong></p>
+<p>发送方收到重复ACK之后，采取与收到NAK消息相同的动作，重传当前分组</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171727112.png" alt="image-20220319114536081"></p>
+<p><strong>Rdt 3.0</strong>：<strong>信道错误+分组丢失</strong></p>
+<p>校验和 + 序列号 + ACK + 重传 + 定时器</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171727927.png" alt="image-20220319120343309"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171727710.png" alt="image-20220319120412582"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171727158.png" alt="image-20220319120438369"></p>
+<p>Rdt 3.0能够正确工作，但<strong>性能很差</strong></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171727333.png" alt="image-20220319120611641"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171728811.png" alt="image-20220319120630804"></p>
+<h3 id="流水线协议"><a href="#流水线协议" class="headerlink" title="流水线协议"></a>流水线协议</h3><p>流水线机制：提高资源利用率</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171728831.png" alt="image-20220319121606680"></p>
+<p><strong>流水线协议</strong></p>
+<p>允许发送方在收到ACK之前连续发送多个分组</p>
+<ul>
+<li>更大的序列号范围</li>
+<li>发送方和/或接收方需要更大的存储空间以缓存分组</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171728154.png" alt="image-20220319121756537"></p>
+<h3 id="滑动窗口协议"><a href="#滑动窗口协议" class="headerlink" title="滑动窗口协议"></a>滑动窗口协议</h3><p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171728764.png" alt="image-20220319121822739"></p>
+<p><strong>滑动窗口协议：Sliding-window protocol</strong></p>
+<p>窗口</p>
+<ul>
+<li>允许使用的序列号范围</li>
+<li>窗口尺寸为N：最多有N个等待确认的消息</li>
+</ul>
+<p>滑动窗口：随着协议的运行，窗口在序列号空间内向前滑动</p>
+<p>滑动窗口协议：<strong>GBN</strong>，<strong>SR</strong></p>
+<h4 id="GBN（Go-Back-N）协议"><a href="#GBN（Go-Back-N）协议" class="headerlink" title="GBN（Go-Back-N）协议"></a>GBN（Go-Back-N）协议</h4><p>分组头部包含k-bit序列号</p>
+<p>窗口尺寸为N，最多允许N个分组未确认</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171728013.png" alt="image-20220319140614628"></p>
+<p>ACK(n)：确认到序列号n(包含n)的分组均已被正确接收</p>
+<ul>
+<li>可能收到重复ACK</li>
+</ul>
+<p>为空中的分组设置计时器(timer)</p>
+<p>超时Timeout(n)事件: 重传序列号大于等于n，还未收到ACK的所有分组</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171728100.png" alt="image-20220319140722746" style="zoom:67%;">
+
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171728355.png" alt="image-20220319140852282"></p>
+<p>ACK机制: 发送拥有最高序列号的、已被正确接收的分组的ACK</p>
+<ul>
+<li>可能产生重复ACK</li>
+<li>只需要记住唯一的expectedseqnum</li>
+</ul>
+<p>乱序到达的分组：</p>
+<ul>
+<li>直接丢弃，接收方没有缓存</li>
+<li>重新确认序列号最大的、按序到达的分组</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171728250.png" alt="image-20220319141114940" style="zoom:67%;">
+
+<p>问：数据链路层采用后退N帧（GBN）协议，发送方已经发送了编号为0～7的帧。当计时器超时时，若发送方只收到0、2、3号帧的确认，则发送方需要重发的帧数是多少？分别是那几个帧？</p>
+<p>解：根据GBN协议工作原理，GBN协议的确认是累积确认，所以此时发送端需要重发的帧数是4个，依次分别是4、5、6、7号帧</p>
+<h4 id="SR（Selective-Repeat）协议"><a href="#SR（Selective-Repeat）协议" class="headerlink" title="SR（Selective Repeat）协议"></a>SR（Selective Repeat）协议</h4><p>接收方对每个分组单独进行确认</p>
+<ul>
+<li>设置缓存机制，缓存乱序到达的分组</li>
+</ul>
+<p>发送方只重传那些没收到ACK的分组</p>
+<ul>
+<li>为每个分组设置定时器</li>
+</ul>
+<p>发送方窗口</p>
+<ul>
+<li>N个连续的序列号</li>
+<li>限制已发送且未确认的分组</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171728504.png" alt="image-20220319142648853" style="zoom: 50%;">
+
+
+
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171729320.png" alt="image-20220319142720949.png" style="zoom: 67%;">
+
+
+
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171729501.png" alt="image-20220319142858779.png" style="zoom: 67%;">
+
+<p>问题：</p>
+<p>序列号: 0, 1, 2, 3    窗口尺寸：3  序列号空间大小与窗口尺寸需满足$N_S+N_R&lt;=2$</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171729198.png" alt="image-20220319143133938" style="zoom:67%;">
+
+
+
+<h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><p>TCP概述：RFCs-793, 1122, 1323, 2018, 2581</p>
+<p><strong>点对点</strong>：一个发送方，一个接收方</p>
+<p><strong>可靠的、按序的字节流</strong></p>
+<p><strong>流水线机制</strong>：TCP<strong>拥塞控制</strong>和<strong>流量控制机制</strong>，设置窗口尺寸</p>
+<p><strong>发送方/接收方缓存</strong></p>
+<p><strong>全双工（full-duplex）</strong>：同一连接中能够传输双向数据流</p>
+<p><strong>面向连接</strong>：</p>
+<ul>
+<li>通信双方在发送数据之前必须建立连接。</li>
+<li>连接状态只在连接的两端中维护，在沿途节点中并不维护状态。</li>
+<li>TCP连接包括：两台主机上的缓存、连接状态变量、socket等</li>
+</ul>
+<p><strong>TCP段结构</strong></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171730336.png" alt="image-20220326145544972"></p>
+<p><strong>序列号：</strong></p>
+<ul>
+<li>序列号指的是segment中第一个字节的编号，而不是segment的编号</li>
+<li>建立TCP连接时，双方随机选择序列号</li>
+</ul>
+<p><strong>ACKs：</strong></p>
+<ul>
+<li>希望接收到的下一个字节的序列号</li>
+<li>累计确认：该序列号之前的所有字节均已被正确接收到</li>
+</ul>
+<p>Q：接收方如何处理乱序到达的Segment？</p>
+<p>A：TCP规范中没有规定，由TCP的实现者做出决策</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171730818.png" alt="image-20220326145919461" style="zoom:67%;">
+
+
+
+<h3 id="TCP可靠数据传输"><a href="#TCP可靠数据传输" class="headerlink" title="TCP可靠数据传输"></a>TCP可靠数据传输</h3><p>TCP在IP层提供的不可靠服务基础上实现可靠数据传输服务</p>
+<ul>
+<li>流水线机制</li>
+<li>累积确认</li>
+<li>TCP使用单一重传定时器</li>
+<li>触发重传的事件<ul>
+<li>超时</li>
+<li>收到重复ACK</li>
+</ul>
+</li>
+<li>渐进式<ul>
+<li>暂不考虑重复ACK</li>
+<li>暂不考虑流量控制</li>
+<li>暂不考虑拥塞控制</li>
+</ul>
+</li>
+</ul>
+<p><font color="#ff0000">问题</font>：如何设置定时器的超时时间?</p>
+<ul>
+<li>大于RTT，但是RTT是变化的</li>
+<li>过短：不必要的重传</li>
+<li>过长：对段丢失时间反应慢</li>
+</ul>
+<p><font color="#ff0000">问题</font>：如何估计RTT？</p>
+<p>SampleRTT：测量从段发出去到收到ACK的时间（忽略重传）</p>
+<p>SampleRTT变化：测量多个SampleRTT，求平均值，形成RTT的估计值<strong>EstimatedRTT</strong></p>
+<ul>
+<li>指数加权移动平均，典型值：0.125</li>
+<li>EstimatedRTT = (1-$\alpha $) * EstimatedRTT + $\alpha $ * SampleRTT</li>
+</ul>
+<p>EstimatedRTT + “安全边界”</p>
+<p>EstimatedRTT变化大 -&gt; 较大边界</p>
+<p>测量RTT的变化值：SampleRTT与EstimatedRTT的差值</p>
+<ul>
+<li>DevRTT = (1- $\beta $) * DevRTT + $\beta $ *| SampleRTT - EstimatedRTT |</li>
+<li>典型值 $\beta $ = 0.25</li>
+</ul>
+<p>定时器超时时间的设置：TimeoutInterval = EstimatedRTT + 4*DevRTT</p>
+<p><strong>TCP发送方：</strong></p>
+<ul>
+<li>创建Segment</li>
+<li>序列号是Segment第一个字节的编号</li>
+<li>开启计时器</li>
+<li>设置超时时间：TimeOutInterval</li>
+</ul>
+<p>超时</p>
+<ul>
+<li>重传引起超时的Segment</li>
+<li>重启定时器</li>
+</ul>
+<p>收到ACK</p>
+<ul>
+<li>如果确认此前未确认的Segment<ul>
+<li>更新SendBase</li>
+<li>如果窗口中还有未被确认的分组，重新启动定时器</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">NextSeqNum = InitialSeqNum</span><br><span class="line">SendBase = InitialSeqNum</span><br><span class="line"></span><br><span class="line">loop (forever) &#123;</span><br><span class="line">	switch(event)</span><br><span class="line">	&#123;</span><br><span class="line">        event: data received from application above </span><br><span class="line">            create TCP segment with sequence number NextSeqNum </span><br><span class="line">            if (timer currently not running)</span><br><span class="line">            start timer</span><br><span class="line">            pass segment to IP </span><br><span class="line">            NextSeqNum = NextSeqNum + length(data)</span><br><span class="line">            </span><br><span class="line">        event: timer timeout</span><br><span class="line">            retransmit not-yet-acknowledged segment with </span><br><span class="line">            smallest sequence number</span><br><span class="line">            start timer</span><br><span class="line">            </span><br><span class="line">        event: ACK received, with ACK field value of y </span><br><span class="line">            if (y &gt; SendBase) &#123; </span><br><span class="line">                SendBase = y</span><br><span class="line">            	if (there are currently not-yet-acknowledged segments)</span><br><span class="line">            		start timer </span><br><span class="line">            &#125;</span><br><span class="line">	&#125; </span><br><span class="line">&#125; /* end of loop forever */</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>TCP重传</strong>：</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171730973.png" alt="image-20220326155201327" style="zoom:67%;">
+
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171730506.png" alt="image-20220326155229641" style="zoom:67%;">
+
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171731046.png" alt="image-20220326155246050" style="zoom:67%;">
+
+
+
+<p><strong>TCP ACK生成</strong>：RFC 1122, RFC 2581</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171731414.png" alt="image-20220326155448425"></p>
+<p><strong>快速重传机制</strong>：</p>
+<p>TCP的实现中，如果发生超时，超时时间间隔将重新设置，即将超时时间间隔加倍，<strong>导致其很大</strong>，重发丢失的分组之前要等待很长时间</p>
+<p>通过重复ACK检测分组丢失</p>
+<ul>
+<li>Sender会背靠背地发送多个分组</li>
+<li>如果某个分组丢失，可能会引发多个重复的ACK</li>
+</ul>
+<p>如果sender收到对同一数据的3个ACK，则假定该数据之后的段已经丢失</p>
+<p>快速重传：在定时器超时之前即进行重传</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171731560.png" alt="image-20220326155723396"></p>
+<h3 id="TCP流量控制"><a href="#TCP流量控制" class="headerlink" title="TCP流量控制"></a>TCP流量控制</h3><p>接收方为TCP连接分配buffer，上层应用可能处理buffer中数据的速度较慢</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171731127.png" alt="image-20220326160838639"></p>
+<p>速度匹配机制</p>
+<p>(假定TCP receiver丢弃乱序的segments)</p>
+<p>Buffer中的可用空间(spare room) = RcvWindow = RcvBuffer - [ LastByteRcvd - LastByteRead ]</p>
+<p>Receiver通过在Segment 的头部字段将RcvWindow 告诉Sender</p>
+<p>Sender限制自己已经发送的但还未收到ACK的数据不超过接收方的空闲RcvWindow尺寸</p>
+<p>Q：Receiver告知Sender RcvWindow=0，会出现什么情况？</p>
+<p>A：Sender不发送新的segment，就无法再收到RcvWindow，所以即使RcvWindow=0，Sender也要发送微小的Segment来获取RcvWindow。</p>
+<h3 id="TCP连接管理"><a href="#TCP连接管理" class="headerlink" title="TCP连接管理"></a>TCP连接管理</h3><p><strong>建立连接</strong> </p>
+<p>TCP sender和receiver在传输数据前需要建立连接。</p>
+<p>初始化TCP变量</p>
+<ul>
+<li>Seq. #</li>
+<li>Buffer和流量控制信息</li>
+</ul>
+<p>Client：连接发起者 <code>Socket clientSocket = new Socket(&quot;hostname&quot;,&quot;port number&quot;);</code></p>
+<p>Server: 等待客户连接请求 <code>Socket connectionSocket = wwelcomeSocket.accept();</code></p>
+<p><font color="#ff0000"><strong>三次握手</strong>：Three way handshake</font></p>
+<p>Step 1: client host sends TCP SYN segment to server</p>
+<ul>
+<li>specifies initial seq #</li>
+<li>no data</li>
+</ul>
+<p>Step 2: server host receives SYN, replies with SYN+ACK segment</p>
+<ul>
+<li>server allocates buffers</li>
+<li>specifies server initial seq. #</li>
+</ul>
+<p>Step 3: client receives SYN+ACK, replies with ACK segment, which may contain data</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171732721.png" alt="image-20220326170903713" style="zoom:67%;">
+
+
+
+<p><font color="#ff0000"><strong>四次挥手：</strong></font>服务器和客户端都可以关闭连接</p>
+<p>这里以客户端申请关闭连接为例：<code>client closes socket: clientSocket.close();</code></p>
+<p>Step 1: client向server发送TCP FIN 控制segment</p>
+<p>Step 2: server 收到FIN, 回复ACK. 关闭连接, 发送FIN. </p>
+<p>Step 3: client 收到FIN, 回复ACK. </p>
+<ul>
+<li>进入“等待” –如果收到FIN，会重新发送ACK</li>
+</ul>
+<p>Step 4: server收到ACK. 连接关闭</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171732549.png" alt="image-20220326171814463" style="zoom:67%;">
+
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171732730.png" alt="image-20220326172126754"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171732625.png" alt="image-20220326172352139"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lengxiao1993/article/details/82771768"> TCP 为什么三次握手而不是两次握手（正解版）_萧萧九宸的博客-CSDN博客_tcp为什么是三次握手不是两次握手</a></p>
+<h3 id="拥塞控制原理"><a href="#拥塞控制原理" class="headerlink" title="拥塞控制原理"></a>拥塞控制原理</h3><p>拥塞（Congestion）</p>
+<p>非正式定义：“太多发送主机发送了太多数据或者发送速度太快，以至于网络无法处理”</p>
+<p>表现：</p>
+<ul>
+<li>分组丢失（路由器缓存溢出）</li>
+<li>分组延迟过大（在路由器缓存中排队）</li>
+</ul>
+<p>和流量控制的区别：流量控制只是单个端到端连接因缓存等原因要控制发送速率，拥塞控制是对多个TCP连接进行控制，尽力避免过长的延迟和堵塞。</p>
+<p><strong>拥塞的成因和代价：场景1</strong>：不会丢失分组，但排队延迟会无限大</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171732384.png" alt="image-20220327140613457"></p>
+<p><strong>拥塞的成因和代价：场景2</strong>：分组丢失重发</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171732387.png" alt="image-20220327140731524"></p>
+<ul>
+<li>情况a：Sender能够通过某种机制获知路由器buffer信息，有空闲才发$\lambda_{in} = \lambda_{out}$ (goodput)</li>
+<li>情况b：丢失后才重发 $\lambda^\prime_{in}  &gt; \lambda_{out}$ </li>
+<li>情况c：分组丢失和定时器超时后都重发， $\lambda^\prime_{in} $变得更大</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171733430.png" alt="image-20220327141001860"></p>
+<p>拥塞的代价：</p>
+<ul>
+<li>对给定的”goodput”，要做更多的工作(重传)</li>
+<li>造成资源的浪费</li>
+</ul>
+<p><strong>拥塞的成因和代价：场景3</strong></p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171733408.png" alt="image-20220327141907437" style="zoom:80%;">
+
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171733502.png" alt="image-20220327142216863" style="zoom: 67%;">
+
+<p>拥塞的另一个代价：当分组被drop时，任何用于该分组的“上游”传输能力全都被浪费掉</p>
+<h3 id="拥塞控制方法"><a href="#拥塞控制方法" class="headerlink" title="拥塞控制方法"></a>拥塞控制方法</h3><p>端到端拥塞控制：</p>
+<ul>
+<li>网络层不需要显式的提供支持</li>
+<li>端系统通过观察loss，delay等网络行为判断是否发生拥塞</li>
+<li>TCP采取这种方法</li>
+</ul>
+<p>网络辅助的拥塞控制：</p>
+<ul>
+<li>路由器向发送方显式地反馈网络拥塞信息</li>
+<li>简单的拥塞指示(1bit)：SNA, DECbit, TCP/IP ECN, ATM</li>
+<li>指示发送方应该采取何种速率</li>
+</ul>
+<p><strong>ATM ABR拥塞控制</strong></p>
+<p>ABR：available bit rate</p>
+<p>弹性服务：调整发送速率</p>
+<ul>
+<li>如果发送方路径“underloaded”，使用可用带宽</li>
+<li>如果发送方路径拥塞，将发送速率降到<strong>最低保障速率</strong></li>
+</ul>
+<p>RM(resource management)  cells：由发送方发送</p>
+<ul>
+<li>交换机设置RM cell位(网络辅助)<ul>
+<li>NI bit: rate不许增长</li>
+<li>CI bit: 拥塞指示</li>
+</ul>
+</li>
+<li>RM cell由接收方返回给发送方</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171733565.png" alt="image-20220327143747281" style="zoom:67%;">
+
+<p>在RM cell中有显式的速率(ER)字段：两个字节</p>
+<ul>
+<li>拥塞的交换机可以将ER置为更低的值</li>
+<li>发送方获知路径所能支持的最小速率</li>
+</ul>
+<p>数据cell中的EFCI位: 拥塞的交换机将其设为1</p>
+<ul>
+<li>如果RM cell前面的data cell的EFCI位被设为1，那么发送方在返回的RM cell中置CI位</li>
+</ul>
+<h3 id="TCP拥塞控制"><a href="#TCP拥塞控制" class="headerlink" title="TCP拥塞控制"></a>TCP拥塞控制</h3><p>Sender限制发送速率：LastByteSent - LastByteAcked &lt;= CongWin</p>
+<p>rate ≈ CongWin / RTT （Bytes/sec）</p>
+<p>CongWin: </p>
+<ul>
+<li>动态调整以改变发送速率</li>
+<li>反映所感知到的网络拥塞</li>
+</ul>
+<p>Q：如何感知网络拥塞？</p>
+<p>A：Loss事件 = timeout或3个重复ACK，发生loss事件后，发送方降低速率</p>
+<p>Q：合理地调整发送速率？</p>
+<ul>
+<li>加性增—乘性减: AIMD</li>
+<li>慢启动: SS</li>
+</ul>
+<p><strong>加性增—乘性减: AIMD</strong>：</p>
+<p>原理：逐渐增加发送速率，谨慎探测可用带宽，直到发生loss</p>
+<p>方法: AIMD</p>
+<ul>
+<li><p>Additive Increase：每个RTT将CongWin增大一个MSS（最大报文段长度）——拥塞避免</p>
+</li>
+<li><p>Multiplicative Decrease：发生loss后将CongWin减半</p>
+</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171733442.png" alt="image-20220327144400295"></p>
+<p><strong>TCP慢启动: SS：</strong></p>
+<p>TCP连接建立时，CongWin=1</p>
+<p>可用带宽可能远远高于初始速率：希望快速增长</p>
+<ul>
+<li>例：MSS=500 byte，RTT=200msec，初始速率=20k bps</li>
+</ul>
+<p>原理：当连接开始时，指数性增长</p>
+<p>Slowstart algorithm：</p>
+<blockquote>
+<p>initialize：Congwin = 1<br>for(each segment ACKed)<br>    Congwin++<br>until(loss event OR CongWin &gt; threshold)</p>
+</blockquote>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171734882.png" alt="image-20220327145103343" style="zoom:67%;">
+
+<p>Q：何时应该指数性增长切换为线性增长(拥塞避免)? </p>
+<p>A：当CongWin达到Loss事件前值的1/2时。</p>
+<p>实现方法：Loss事件发生时, Threshold被设为Loss事件前CongWin值的1/2。</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171734070.png" alt="image-20220327145352485" style="zoom: 80%;">
+
+<p><strong>Loss事件的处理</strong>：</p>
+<p>3个重复ACKs：CongWin切到一半，然后线性增长</p>
+<p>Timeout事件：CongWin直接设为1个MSS，然后指数增长，达到threshold后, 再线性增长</p>
+<p>why：3个重复ACKs表示网络还能够传输一些 segments，timeout事件表明拥塞更为严重</p>
+<p><strong>总结：</strong></p>
+<blockquote>
+<p>When CongWin is below Threshold, sender in slow-start phase, window grows exponentially.</p>
+<p>When CongWin is above Threshold, sender is in congestion-avoidance phase, window grows linearly.</p>
+<p>When a triple duplicate ACK occurs, Threshold set to CongWin/2 and CongWin set to Threshold.</p>
+<p>When timeout occurs, Threshold set to CongWin/2 and CongWin is set to 1 MSS</p>
+</blockquote>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171734838.png" alt="image-20220327145837826"></p>
+<p><strong>TCP拥塞控制算法</strong>：</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171734764.png" alt="image-20220327150105408" style="zoom: 67%;">
+
+
+
+<h3 id="TCP性能分析"><a href="#TCP性能分析" class="headerlink" title="TCP性能分析"></a>TCP性能分析</h3><p>TCP throughput：吞吐率</p>
+<p>给定拥塞窗口大小和RTT，TCP的平均吞吐率是多少？（忽略掉Slow start）</p>
+<ul>
+<li>假定发生超时时CongWin的大小为W，吞吐率是W/RTT</li>
+<li>超时后，CongWin=W/2，吞吐率是W/2RTT</li>
+<li>平均吞吐率为：0.75W/RTT</li>
+</ul>
+<p>例：每个Segment有1500个byte, RTT是100ms，希望获得10Gbps的吞吐率</p>
+<blockquote>
+<p>throughput = W*MSS*8/RTT，则W=throughput*RTT/(MSS*8)</p>
+<p>throughput=10Gbps，则W=83,333，窗口大小为83,333</p>
+</blockquote>
+<p>吞吐率与丢包率(loss rate, L)的关系</p>
+<blockquote>
+<p>CongWin从W/2增加至W时出现第一个丢包，那么一共发送的分组数为</p>
+<p>W/2+(W/2+1)+(W/2+2)+….+W = 3W$^2$/8+3W/4</p>
+<p>W很大时，3W$^2$/8&gt;&gt;3W/4，因此L ≈ 8/(3W$^2$)</p>
+<p>L = 2$\times$10$^{-10}$ </p>
+</blockquote>
+<p>高速网络下需要设计新的TCP</p>
+<p><strong>TCP的公平性：</strong></p>
+<p>如果K个TCP Session共享相同的瓶颈带宽R，那么每个Session的平均速率为<strong>R/K</strong></p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171734226.png" alt="image-20220327151609464" style="zoom:80%;">
+
+<p>公平性与UDP：</p>
+<ul>
+<li>多媒体应用通常不使用TCP，以免被拥塞控制机制限制速率</li>
+<li>使用UDP：以恒定速率发送，能够容忍丢失</li>
+<li>产生了不公平</li>
+</ul>
+<p>公平性与并发TCP连接：</p>
+<ul>
+<li>某些应用会打开多个并发连接，如Web浏览器</li>
+<li>产生公平性问题</li>
+</ul>
+<p>例子：链路速率为R，已有9个连接</p>
+<ul>
+<li>新来的应用请求1个TCP，获得R/10的速率</li>
+<li>新来的应用请求11个TCP，获得 <strong>&gt;R/2</strong> 的速率</li>
+</ul>
+<h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><h3 id="网络层服务"><a href="#网络层服务" class="headerlink" title="网络层服务"></a>网络层服务</h3><p>从发送主机向接收主机传送数据段（segment）</p>
+<p>发送主机：将<strong>数据段</strong>封装到<strong>数据报</strong>（datagram）中</p>
+<p>接收主机：向传输层交付<strong>数据段</strong>（segment）</p>
+<p>每个主机和路由器都运行网络层协议</p>
+<p>路由器检验所有穿越它的IP数据报的头部域，决策如何处理IP数据报</p>
+<p>网络层核心功能 - <strong>转发与路由</strong>：</p>
+<ul>
+<li><strong>转发</strong>(forwarding): 将分组从路由器的输入端口转移到合适的输出端口</li>
+<li><strong>路由</strong>(routing): 确定分组从源到目的经过的路径<ul>
+<li>路由算法（routing algorithms）</li>
+</ul>
+</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171734209.png" alt="image-20220402171252775" style="zoom: 67%;">
+
+<p>网络层核心功能-<strong>连接建立</strong>：</p>
+<p>数据分组传输之前两端主机需要首先建立<strong>虚拟/逻辑连接</strong></p>
+<ul>
+<li>网络设备（如路由器）参与连接的建立</li>
+</ul>
+<p>网络层连接与传输层连接的对比:</p>
+<ul>
+<li>网络层连接: 两个主机之间 (路径上的路由器等网络设备参与其中)</li>
+<li>传输层连接: 两个应用进程之间（对中间网络设备透明）</li>
+</ul>
+<p>网络层<strong>服务模型</strong>：</p>
+<p>CBR VBR ABR UBR</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171734387.png" alt="image-20220402171647690"></p>
+<p><strong>无连接服务</strong>(connection-less service):  如 <strong>数据报网络</strong>(datagram network )</p>
+<ul>
+<li>不事先为系列分组的传输确定传输路径</li>
+<li>每个分组独立确定传输路径</li>
+<li>不同分组可能传输路径不同</li>
+</ul>
+<p><strong>连接服务</strong>(connection service):  如 <strong>虚电路网络</strong>(virtual-circuit network，<strong>VC</strong>)</p>
+<ul>
+<li>首先为系列分组的传输确定从源到目的经过的路径(建立连接)</li>
+<li>然后沿该路径（连接）传输系列分组</li>
+<li>系列分组传输路径相同</li>
+<li>传输结束后拆除连接</li>
+</ul>
+<p>数据报(datagram)网络与虚电路(virtual-circuit)网络是典型两类<strong>分组交换</strong>网络</p>
+<p>数据报网络提供网络层<strong>无连接</strong>服务</p>
+<p>虚电路网络提供网络层<strong>连接</strong>服务</p>
+<p>类似于传输层的无连接服务（UDP）和面向连接服务（TCP），但是网络层服务：</p>
+<ul>
+<li>主机到主机服务</li>
+<li>网络核心实现</li>
+</ul>
+<h3 id="虚电路网络"><a href="#虚电路网络" class="headerlink" title="虚电路网络"></a>虚电路网络</h3><p><strong>虚电路</strong>Virtual circuits：一条从源主机到目的主机，类似于电路的路径(逻辑连接)</p>
+<ul>
+<li>每个分组的传输利用链路的全部带宽</li>
+<li>源到目的路径经过的网络层设备共同完成虚电路功能</li>
+</ul>
+<p>通信过程：呼叫建立(call setup)→数据传输→拆除呼叫</p>
+<p>每个分组携带<strong>虚电路标识（VCID）</strong>，而不是目的主机地址</p>
+<p>虚电路经过的每个网络设备（如路由器），维护每条经过它的虚电路连接状态</p>
+<p>链路、网络设备资源(如带宽、缓存等)可以面向VC进行预分配</p>
+<ul>
+<li>预分配资源=可预期服务性能，如ATM的电路仿真（CBR）</li>
+</ul>
+<p>每条虚电路包括:</p>
+<ol>
+<li>从源主机到目的主机的<strong>一条路径</strong></li>
+<li><strong>虚电路号（VCID）</strong>， 沿路每段链路一个编号</li>
+<li>沿路每个网络层设备（如路由器），<strong>利用转发表记录经过的每条虚电路</strong></li>
+</ol>
+<p>沿某条虚电路传输的分组，携带对应虚电路的VCID，而不是目的地址</p>
+<p>同一条VC ，在每段链路上的VCID通常不同</p>
+<ul>
+<li>路由器转发分组时依据转发表改写/替换虚电路号</li>
+</ul>
+<p><strong>VC转发表</strong></p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171734053.png" alt="image-20220402190846253" style="zoom:80%;">
+
+<p><strong>虚电路信令协议</strong>（signaling protocols）</p>
+<ul>
+<li>用于VC的建立、维护与拆除，路径选择</li>
+<li>应用于虚电路网络，如ATM、帧中继(frame-relay)网络等</li>
+<li>目前的Internet不采用</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171734300.png" alt="image-20220402190958518" style="zoom:80%;">
+
+
+
+<h3 id="数据报网络"><a href="#数据报网络" class="headerlink" title="数据报网络"></a>数据报网络</h3><ul>
+<li>网络层无连接</li>
+<li>每个分组携带目的地址</li>
+<li>路由器根据分组的目的地址转发分组<ul>
+<li>基于<strong>路由协议/算法</strong>构建转发表</li>
+<li>检索转发表</li>
+<li>每个分组独立选路</li>
+</ul>
+</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171735619.png" alt="image-20220402191155194" style="zoom:80%;">
+
+<p><strong>数据报转发表</strong></p>
+<ul>
+<li>路由算法(协议)确定通过网络的端到端路径</li>
+<li>转发表确定在本路由器如何转发分组</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171735087.png" alt="image-20220402191358969" style="zoom:67%;">
+
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171736875.png" style="zoom:80%;">
+
+<p><strong>最长前缀匹配优先</strong></p>
+<ul>
+<li>在检索转发表时，优先选择与分组目的地址匹配前缀最长的入口（entry）</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171736387.png" alt="image-20220402191728755" style="zoom:80%;">
+
+
+
+<h3 id="数据报网络和VC网络"><a href="#数据报网络和VC网络" class="headerlink" title="数据报网络和VC网络"></a>数据报网络和VC网络</h3><ol>
+<li>Internet (数据报网络)</li>
+</ol>
+<ul>
+<li>计算机之间的数据交换：“弹性”服务，没有严格时间需求</li>
+<li>链路类型众多<ul>
+<li>特点、性能各异</li>
+<li>统一服务困难</li>
+</ul>
+</li>
+<li>“智能”端系统 (计算机)<ul>
+<li>可以自适应、性能控制、</li>
+<li>差错恢复</li>
+</ul>
+</li>
+<li><strong>简化网络，复杂“边缘”</strong></li>
+</ul>
+<ol start="2">
+<li>ATM (VC网络)</li>
+</ol>
+<ul>
+<li>电话网络演化而来</li>
+<li>核心业务是实时对话<ul>
+<li>严格的时间、可靠性需求</li>
+<li>需要有保障的服务</li>
+</ul>
+</li>
+<li>“哑(dumb)” 端系统（非智能）<ul>
+<li>电话机</li>
+<li>传真机</li>
+</ul>
+</li>
+<li><strong>简化“边缘”，复杂网络</strong></li>
+</ul>
+<h3 id="IPv4协议"><a href="#IPv4协议" class="headerlink" title="IPv4协议"></a>IPv4协议</h3><h4 id="IP数据报"><a href="#IP数据报" class="headerlink" title="IP数据报"></a>IP数据报</h4><p>IP协议 和 ICMP协议</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171736320.png" alt="image-20220403122420134"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171736656.png" alt="image-20220403122715270"></p>
+<ul>
+<li><strong>版本号</strong>字段占4位：IP协议的版本号<ul>
+<li>E.g. 4→IPv4，6 → IPv6</li>
+</ul>
+</li>
+<li><strong>首部长度</strong>字段占4位：IP分组首部长度<ul>
+<li><strong>以4字节为单位</strong></li>
+<li>E.g. 5→IP首部长度为20(5×4)字节</li>
+</ul>
+</li>
+<li><strong>服务类型</strong>(TOS)字段占8位：指示期望获得哪种类型的服务<ul>
+<li>1998 年这个字段改名为<strong>区分服务</strong></li>
+<li>只有在网络提供区分服务(DiffServ)时使用</li>
+<li><strong>一般情况下不使用</strong>，通常IP分组的该字段(第2字节)的值为00H</li>
+</ul>
+</li>
+<li><strong>总长度</strong>字段占16位：IP分组的总字节数(首部+数据)<ul>
+<li>最大IP分组的总长度：<strong>65535B</strong>，$2^{16} - 1$ </li>
+<li>最小的IP分组首部：20B</li>
+<li>IP分组可以封装的最大数据：65535-20=65515B</li>
+</ul>
+</li>
+<li><strong>生存时间</strong>（TTL）字段占8位：IP分组在网络中可以通过的路由器数（或跳步数）<ul>
+<li>路由器转发一次分组，TTL减1</li>
+<li>如果TTL=0，路由器则丢弃该IP分组</li>
+</ul>
+</li>
+<li><strong>协议</strong>字段占8位：指示IP分组封装的是哪个协议的数据包<ul>
+<li>实现复用/分解</li>
+<li>E.g. 6为TCP，表示封装的为TCP段；17为UDP，表示封装的是UDP数据报</li>
+</ul>
+</li>
+<li><strong>首部校验和</strong>字段占16位：实现对IP分组首部的差错检测<ul>
+<li> 计算校验和时，该字段<strong>置全0</strong></li>
+<li> 采用反码算数运算求和，和的反码作为首部校验和字段</li>
+<li> 逐跳计算、逐跳校验</li>
+</ul>
+</li>
+<li><strong>源IP地址</strong>、<strong>目的IP地址</strong>字段各占32位：分别标识发送分组的源主机/路由器(网络接口)和接收分组的目的主机/路由器（网络接口）的IP地址</li>
+<li><strong>选项</strong>字段占长度可变，范围在<strong>1~40B</strong>之间：携带安全、源选路径、时间戳和路由记录等内容<ul>
+<li>实际上很少被使用</li>
+</ul>
+</li>
+<li><strong>填充</strong>字段占长度可变，范围在0~3B之间：目的是补齐整个首部，符合32位对齐，即保证首部长度是4字节的倍数</li>
+</ul>
+<h4 id="IP分片和重组"><a href="#IP分片和重组" class="headerlink" title="IP分片和重组"></a>IP分片和重组</h4><p><strong>最大传输单元（MTU）</strong>：链路层数据帧可封装数据的上限，不同链路的MTU不同</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171736993.png" alt="image-20220403123714353" style="zoom:67%;">
+
+<p>大IP分组向较小MTU链路转发时，可以被<strong>分片（fragmented）</strong></p>
+<ul>
+<li>1个IP分组分为多片IP分组</li>
+<li>IP分片到达<strong>目的主机</strong>后进行<strong>重组（reassembled）</strong></li>
+</ul>
+<p>IP首部的相关字段用于标识分片以及确定分片的相对顺序</p>
+<ul>
+<li>总长度、标识、标志位和片偏移</li>
+</ul>
+<p><strong>标识</strong>字段占16位：标识一个IP分组</p>
+<ul>
+<li>IP协议利用一个计数器，每产生IP分组计数器加1，作为该IP分组的标识</li>
+</ul>
+<p><strong>标志位</strong>字段占3位：</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171736676.png" alt="image-20220403124252095" style="zoom:67%;">
+
+<ul>
+<li>DF（Don’t Fragment）<ul>
+<li>DF = 1：禁止分片</li>
+<li>DF = 0：运行分片</li>
+</ul>
+</li>
+<li>MF（More Fragment）<ul>
+<li>MF = 1：非最后一片</li>
+<li>MF = 0：最后一片（或未分片）</li>
+</ul>
+</li>
+<li>保留</li>
+</ul>
+<p><strong>片偏移</strong>字段占13位：一个IP分组分片封装原IP分组数据的相对偏移量</p>
+<ul>
+<li>片偏移字段以8字节为单位</li>
+</ul>
+<p><strong>IP分片过程</strong>：</p>
+<p>假设原IP分组总长度为$L$，待转发链路的MTU为$M$，若$L&gt;M$，且DF=0，则可以/需要分片</p>
+<p>分片时每个分片的标识复制原IP分组的标识</p>
+<p>通常分片时，除最后一个分片，其他分片均分为MTU允许的最大分片</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171736363.png" alt="image-20220403124731993" style="zoom: 67%;">
+
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171736618.png" alt="image-20220403124756906"></p>
+<h4 id="IP编址"><a href="#IP编址" class="headerlink" title="IP编址"></a>IP编址</h4><p>IP编址（addressing）</p>
+<p>IP分组：源地址(SA)-从哪儿来，目的地址(DA)-到哪儿去</p>
+<p><strong>接口（interface）</strong>：主机/路由器与物理链路的连接</p>
+<ul>
+<li>实现网络层功能</li>
+<li>路由器通常有多个接口</li>
+<li>主机通常只有一个或两个接口 (e.g.，有线的以太网接口，无线的802.11接口)</li>
+</ul>
+<p>IP地址：32比特(IPv4)编号标识主机、路由器的接口</p>
+<p>IP地址与每个接口关联，怎样分配IP地址呢？</p>
+<hr>
+<p><strong>IP子网（Subnets）</strong></p>
+<p>IP地址：<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171736540.png" alt="image-20220403125315361" style="zoom: 50%;"></p>
+<ul>
+<li><strong>网络号</strong>(NetID) – 高位比特</li>
+<li><strong>主机号</strong>(HostID) – 低位比特</li>
+</ul>
+<p><strong>IP子网：</strong></p>
+<ul>
+<li>IP地址具有相同网络号的设备接口</li>
+<li>不跨越路由器（第三及以上层网络设备）可以彼此物理联通的接口</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171737634.png" alt="image-20220403125410127" style="zoom: 67%;">
+
+<h4 id="有类IP地址"><a href="#有类IP地址" class="headerlink" title="有类IP地址"></a>有类IP地址</h4><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171737950.png" alt="image-20220403125523662" style="zoom:67%;">
+
+<p><strong>特殊IP地址</strong>：</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171737985.png" alt="image-20220403125627821" style="zoom:80%;">
+
+<p><strong>私有（Private）IP地址</strong>：</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171737984.png" alt="image-20220403125721527" style="zoom: 50%;">
+
+
+
+<h4 id="子网划分"><a href="#子网划分" class="headerlink" title="子网划分"></a>子网划分</h4><p><strong>子网划分</strong>：IP子网更小范围网络</p>
+<p>IP地址：<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171737936.png" alt="image-20220403132341344" style="zoom: 50%;"></p>
+<ul>
+<li>网络号(NetID) – 高位比特</li>
+<li>子网号(SubID) – 原网络主机号部分比特</li>
+<li>主机号(HostID) – 低位比特</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171737443.png" alt="image-20220403132500817" style="zoom:50%;">
+
+<h4 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h4><p><strong>子网掩码</strong>：确定是否划分了子网，利用多少位划分子网</p>
+<ul>
+<li>形如IP地址：32位，<strong>点分十进制形式</strong></li>
+<li>取值：NetID、SubID位全取1，HostID位全取0</li>
+</ul>
+<p>例如：</p>
+<ul>
+<li>A网的默认子网掩码为：255.0.0.0</li>
+<li>B网的默认子网掩码为：255.255.0.0</li>
+<li>C网的默认子网掩码为：255.255.255.0</li>
+<li>借用3比特划分子网的B网的子网掩码为：255.255.224.0</li>
+</ul>
+<p>子网地址+子网掩码→准确确定子网大小</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171737302.png" alt="image-20220403132824548" style="zoom: 50%;">
+
+<p><strong>子网掩码的应用</strong>：</p>
+<p>将IP分组的目的IP地址与子网掩码<strong>按位与</strong>运算，提取子网地址</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171737461.png" alt="image-20220403133321774" style="zoom:67%;">
+
+<p>一个C类网络划分子网举例：</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171738020.png" alt="image-20220403133427244"></p>
+<p>子网划分会造成边界部分的IP的浪费，但提高了网络性能</p>
+<h3 id="CIDR"><a href="#CIDR" class="headerlink" title="CIDR"></a>CIDR</h3><p><strong>无类域间路由</strong>（CIDR: Classless InterDomain Routing）</p>
+<ul>
+<li>消除传统的 A 类、B 类和 C 类地址界限<ul>
+<li>NetID+SubID→Network Prefix (Prefix)可以任意长度 </li>
+</ul>
+</li>
+<li>融合子网地址与子网掩码，方便子网划分<ul>
+<li>无类地址格式：a.b.c.d/x，其中x为前缀长度</li>
+</ul>
+</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171738532.png" alt="image-20220405110724372" style="zoom:67%;">
+
+<ul>
+<li>提高IPv4 地址空间分配效率</li>
+<li>提高路由效率<ul>
+<li>将多个子网聚合为一个较大的子网</li>
+<li>构造超网（supernetting）</li>
+</ul>
+</li>
+</ul>
+<h3 id="路由聚合"><a href="#路由聚合" class="headerlink" title="路由聚合"></a>路由聚合</h3><p>路由聚合（route aggregation）</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171738578.png" alt="image-20220405111010617" style="zoom:67%;">
+
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171738356.png" alt="image-20220405111010617" style="zoom:67%;">
+
+<p>层级编址使得路由信息通告更高效：</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171738189.png" alt="image-20220405111357220" style="zoom:67%;">
+
+<p>选用更具体的路由：<strong>最长前缀匹配优先</strong></p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171738257.png" alt="image-20220405111424865" style="zoom:80%;">
+
+
+
+<h3 id="DHCP协议"><a href="#DHCP协议" class="headerlink" title="DHCP协议"></a>DHCP协议</h3><p><strong>动态主机配置协议</strong>-DHCP: Dynamic Host Configuration Protocol（应用层协议）</p>
+<p>一个主机如何获得IP地址？</p>
+<ul>
+<li>硬编码<ul>
+<li>静态配置</li>
+</ul>
+</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171738885.png" alt="image-20220405111729769" style="zoom:80%;">
+
+<ul>
+<li><strong>动态主机配置协议</strong>-DHCP: Dynamic Host Configuration Protocol（应用层协议）<ul>
+<li>从服务器动态获取：<ul>
+<li>IP地址</li>
+<li>子网掩码</li>
+<li>默认网关地址</li>
+<li>DNS服务器名称与IP地址</li>
+</ul>
+</li>
+<li>“即插即用”</li>
+<li>允许地址重用</li>
+<li>支持在用地址续租</li>
+<li>支持移动用户加入网络</li>
+</ul>
+</li>
+</ul>
+<p><strong>获取IP过程</strong>：</p>
+<ul>
+<li>主机广播 “DHCP discover”(发现报文)</li>
+<li>DHCP服务器利用 “DHCP offer” (提供报文) 进行响应</li>
+<li>主机请求IP地址: “DHCP request” (请求报文) </li>
+<li>DHCP服务器分配IP地址: “DHCP ack” (确认报文)</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171738737.png" alt="image-20220405112036816" style="zoom:80%;">
+
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171739445.png" alt="image-20220405112036816" style="zoom:80%;">
+
+<p><strong>DHCP工作过程示例</strong></p>
+<p>DHCP协议在<strong>应用层</strong>实现</p>
+<ul>
+<li>请求报文封装到UDP数据报中</li>
+<li>IP广播</li>
+<li>链路层广播(e.g. 以太网广播)</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171739310.png" alt="image-20220405112315950" style="zoom:67%;">
+
+<p>DHCP服务器构造ACK报文：包括分配给客户的IP地址、子网掩码、默认网关、DNS服务器地址</p>
+<h3 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h3><p><strong>网络地址转换</strong>NAT</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171739847.png" alt="image-20220405112741222" style="zoom:67%;">
+
+<p><strong>动机</strong>:</p>
+<ul>
+<li>只需/能从ISP申请一个IP地址，IPv4地址耗尽</li>
+<li>本地网络设备IP地址的变更，无需通告外界网络</li>
+<li>变更ISP时，无需修改内部网络设备IP地址</li>
+<li>内部网络设备对外界网络不可见，即不可直接寻址(安全)</li>
+</ul>
+<p><strong>实现</strong>：</p>
+<ul>
+<li>替换：利用(NAT IP地址，新端口号)替换每个外出IP数据报的(源IP地址,源端口号)</li>
+<li>记录：将每对(NAT IP地址, 新端口号) 与(源IP地址, 源端口号)的替换信息存储到NAT转换表中</li>
+<li>替换：根据NAT转换表，利用(源IP地址, 源端口号)替换每个进入内网IP数据报的(目的IP地址，目的端口号)，即(NAT IP地址, 新端口号)</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171741437.png" alt="image-20220405113130042"></p>
+<p>16-bit端口号字段：可以同时支持60,000多并行连接</p>
+<p><strong>NAT主要争议</strong>：</p>
+<ul>
+<li>路由器应该只处理第3层功能</li>
+<li>违背端到端通信原则<ul>
+<li>应用开发者必须考虑到NAT的存在，e.g., P2P应用</li>
+</ul>
+</li>
+<li>地址短缺问题应该由IPv6来解决</li>
+</ul>
+<hr>
+<p><strong>NAT穿透问题</strong></p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171741544.png" alt="image-20220405113349242" style="zoom:67%;">
+
+<p>客户期望连接内网地址为10.0.0.1的服务器</p>
+<ul>
+<li>客户不能直接利用地址10.0.0.1直接访问服务器</li>
+<li>对外唯一可见的地址是NAT地址: 138.76.29.7</li>
+</ul>
+<p><strong>解决方案1</strong>: 静态配置NAT，将特定端口的连接请求转发给服务器</p>
+<ul>
+<li>e.g., (138.76.29.7, 2500) 总是转发给(10.0.0.1, 25000)</li>
+</ul>
+<p><strong>解决方案2</strong>：利用UPnP（Universal Plug and Play） 互联网网关设备协议IGD （Internet Gateway Device） 自动配置：</p>
+<ul>
+<li>学习到NAT公共IP地址（138.76.29.7）</li>
+<li>在NAT转换表中，增删端口映射</li>
+</ul>
+<p><strong>解决方案3</strong>：中继（如Skype）</p>
+<ul>
+<li>NAT内部的客户与中继服务器建立连接</li>
+<li>外部客户也与中继服务器建立连接</li>
+<li>中继服务器桥接两个连接的分组</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171741974.png" alt="image-20220405113747283" style="zoom: 80%;">
+
+<h3 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h3><p><strong>互联网控制报文协议</strong>ICMP</p>
+<p>互联网控制报文协议 ICMP (Internet Control Message Protocol)支持主机或路由器：</p>
+<ul>
+<li>差错(或异常)报告</li>
+<li>网络探询</li>
+</ul>
+<p><strong>两类ICMP报文</strong>：</p>
+<ul>
+<li>差错报告报文(5种)<ul>
+<li>目的不可达</li>
+<li>源抑制(Source Quench) </li>
+<li>超时/超期</li>
+<li>参数问题</li>
+<li>重定向 (Redirect) </li>
+</ul>
+</li>
+<li>网络探询报文(2组)<ul>
+<li>回声(Echo)请求与应答报文(Reply)</li>
+<li>时间戳请求与应答报文</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">类型(Type)</th>
+<th align="center">编码(Code)</th>
+<th align="center">description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">回声应答 (ping)</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">目的网络不可达</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">目的主机不可达</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">目的协议不可达</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">目的端口不可达</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">目的网络未知</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">7</td>
+<td align="center">目的主机未知</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">源抑制(拥塞控制-未用)</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">回声请求(ping)</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">0</td>
+<td align="center">路由通告</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">0</td>
+<td align="center">路由发现</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">0</td>
+<td align="center">TTL超期</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">0</td>
+<td align="center">IP首部错误</td>
+</tr>
+</tbody></table>
+<p><strong>例外情况</strong>：</p>
+<p>几种不发送 ICMP差错报告报文的特殊情况：</p>
+<ul>
+<li>对ICMP差错报告报文不再发送 ICMP差错报告报文</li>
+<li>除第1个IP数据报分片外，对所有后续分片均不发送ICMP差错报告报文</li>
+<li>对所有<strong>多播IP数据报</strong>均不发送 ICMP差错报告报文</li>
+<li>对具有特殊地址（如127.0.0.0 或 0.0.0.0）的IP数据报不发送ICMP 差错报告报文</li>
+</ul>
+<p>几种 ICMP 报文已不再使用</p>
+<ul>
+<li>信息请求与应答报文</li>
+<li>子网掩码请求和应答报文</li>
+<li>路由器询问和通告报文</li>
+</ul>
+<p><strong>ICMP报文的格式</strong>：</p>
+<ul>
+<li><p>ICMP报文封装到IP数据报中传输</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171741786.png" alt="image-20220405115054551" style="zoom:67%;"></li>
+<li><p>ICMP差错报告报文数据封装</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171741002.png" alt="image-20220405115150895" style="zoom:67%;"></li>
+</ul>
+<hr>
+<p><strong>ICMP的应用举例</strong>：<code>Traceroute</code></p>
+<p>获取到目的IP的路由路线</p>
+<ol>
+<li>源主机向目的主机发送一系列UDP数据报</li>
+</ol>
+<ul>
+<li>第1组IP数据报TTL =1</li>
+<li>第2组IP数据报TTL=2, etc.</li>
+<li>目的端口号为不可能使用的端口号</li>
+</ul>
+<ol start="2">
+<li>当第n组数据报(TTL=n)到达第n个路由器时：</li>
+</ol>
+<ul>
+<li>路由器丢弃数据报</li>
+<li>向源主机发送ICMP报文(type=11, code=0)</li>
+<li>ICMP报文携带路由器名称和IP地址信息</li>
+</ul>
+<ol start="3">
+<li><p>当ICMP报文返回到源主机时，记录RTT</p>
+</li>
+<li><p><strong>停止准则</strong>：</p>
+</li>
+</ol>
+<ul>
+<li>UDP数据报最终到达目的主机，目的主机返回“目的端口不可达”ICMP报文 (type=3, code=3)，源主机停止</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171741115.png" alt="image-20220405115637768"></p>
+<h3 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h3><p>最初动机：32位IPv4地址空间已分配殆尽 </p>
+<p>其他动机：改进首部格式</p>
+<ul>
+<li>快速处理/转发数据报</li>
+<li>支持QoS</li>
+</ul>
+<p><strong>IPv6数据报格式</strong>：</p>
+<ul>
+<li>固定长度的40字节基本首部</li>
+<li>不允许分片</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171742286.png" alt="image-20220405115831483"></p>
+<hr>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171742326.png" alt="image-20220405115858331"></p>
+<ul>
+<li>优先级(priority)：标识数据报的优先级</li>
+<li>流标签(flow Label)：标识同一“流”中的数据报</li>
+<li>下一个首部(next header)：标识下一个选项首部或上层协议首部(如TCP首部)</li>
+</ul>
+<p><strong>和IPv4相比其他改变</strong>：</p>
+<p>校验和（checksum）：彻底移除，以减少每跳处理时间</p>
+<p>选项（options）：允许，但是从基本首部移出，定义多个选项首部，通过“下一个首部”字段指示</p>
+<p>ICMPv6：新版ICMP</p>
+<ul>
+<li>附加报文类型，e.g. “Packet Too Big”</li>
+<li>多播组管理功能</li>
+</ul>
+<hr>
+<p><strong>IPv6地址表示形式</strong>：</p>
+<ul>
+<li>一般形式：1080:0:FF:0:8:800:200C:417A  <ul>
+<li>共128位，8x16的形式，: 隔开，用16进制数表示</li>
+</ul>
+</li>
+<li>压缩形式：FF01:0:0:0:0:0:0:43<ul>
+<li>压缩→FF01::43   （ :: 表示多个0，但只能使用一次）</li>
+</ul>
+</li>
+<li><strong>IPv4-嵌入形式</strong>：0:0:0:0:0:FFFF:13.1.68.3或 ::FFFF:13.1.68.3</li>
+<li><strong>地址前缀</strong>：2002:43c:476b::/48（注: IPv6不再使用掩码）</li>
+<li>URLs：http://[3FFE::1:800:200C:417A]:8000</li>
+</ul>
+<hr>
+<p><strong>IPv6基本地址类型</strong>：</p>
+<p>单播（unicast）：一对一通信</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171742423.png" alt="image-20220405120939297" style="zoom:50%;">
+
+<p>多播（multicast）：一对多通信</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171742521.png" alt="image-20220405121019807" style="zoom:50%;">
+
+<p>任意播（anycast）：一对一组之一（最近一个）通信</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171742314.png" alt="image-20220405121151084" style="zoom:50%;">
+
+<hr>
+<p><strong>IPv4向IPv6过渡</strong></p>
+<p>不可能在某个时刻所有路由器同时被更新为IPv6</p>
+<p>不会有 “标志性的日期”</p>
+<p>Q：IPv4和IPv6路由器共存的网络如何运行？</p>
+<p>A：隧道（tunneling）</p>
+<p><strong>隧道</strong>（tunneling）：IPv6数据报作为IPv4数据报的载荷进行封装，穿越IPv4网络</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171742198.png" alt="image-20220405121348943" style="zoom:67%;">
+
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171742954.png" alt="image-20220405121412840" style="zoom:67%;">
+
+
+
+<h3 id="路由算法"><a href="#路由算法" class="headerlink" title="路由算法"></a>路由算法</h3><p>**路由算法(协议)**确定去往目的网络的最佳路径</p>
+<p><strong>转发表</strong>确定在本路由器如何转发分组</p>
+<p><strong>网络抽象：图</strong></p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171742121.png" alt="image-20220425223001911" style="zoom: 80%;">
+
+<p>图: $G = (N, E)$</p>
+<ul>
+<li>$N =$ 路由器集合$= { u, v, w, x, y, z }$</li>
+<li>$E =$ 链路集合 $={ (u,v), (u,x), (v,x), (v,w), (x,w), (x,y), (w,y), (w,z), (y,z) }$</li>
+<li>附注: 图的抽象在网络领域应用很广泛<ul>
+<li>E.g.:P2P，其中，N是 peers集合，而E是TCP连接集合</li>
+</ul>
+</li>
+<li>**费用(Costs)**：带宽的倒数、拥塞程度等，eg：$c(w, z) = 5$ </li>
+</ul>
+<p>Q：关键问题: 源到目的（如u到z）的最小费用路径是什么？</p>
+<p>A：<strong>路由算法: 寻找最小费用路径的算法</strong></p>
+<h4 id="路由算法分类"><a href="#路由算法分类" class="headerlink" title="路由算法分类"></a>路由算法分类</h4><p><strong>静态路由 和 动态路由</strong></p>
+<p>静态路由：手工配置、路由更新慢、优先级高</p>
+<p>动态路由：路由更新快、定期更新、及时响应链路费用或网络拓扑变化</p>
+<p><strong>全局信息 和 分散信息</strong></p>
+<p>全局信息：所有路由器掌握完整的网络拓扑和链路费用信息。如：链路状态(LS)路由算法</p>
+<p>分散(decentralized)信息：路由器只掌握物理相连的邻居以及链路费用邻居间信息交换、运算的迭代过程。如：距离向量(DV)路由算法</p>
+<h4 id="链路状态路由算法"><a href="#链路状态路由算法" class="headerlink" title="链路状态路由算法"></a>链路状态路由算法</h4><p><strong>Dijkstra 算法</strong>：</p>
+<ul>
+<li>所有结点(路由器)掌握网络拓扑和链路费用<ul>
+<li>通过“链路状态广播”</li>
+<li>所有结点拥有相同信息</li>
+</ul>
+</li>
+<li>计算从一个结点(“源”)到达所有其他结点的最短路径<ul>
+<li>获得该结点的转发表</li>
+</ul>
+</li>
+<li>迭代: k次迭代后，得到到达k个目的结点的最短路径</li>
+</ul>
+<p>$c(x,y)$: 结点x到结点y链路费用；如果x和y不直接相连，则$=∞$</p>
+<p>$D(v)$: 从源到目的v的当前路径费用值</p>
+<p>$p(v)$: 沿从源到v的当前路径，v的前序结点</p>
+<p>$N’$: 已经找到最小费用路径的结点集合</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171742731.png" alt="image-20220425224453534" style="zoom:80%;">
+
+<p>示例：</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171742454.png" alt="image-20220425224607402"></p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171743594.png" alt="image-20220425224617198" style="zoom:60%;">
+
+<p>算法复杂性: n个结点</p>
+<ul>
+<li>每次迭代: 需要检测所有不在集合N’中的结点w</li>
+<li>n(n+1)/2次比较: $O(n^2)$</li>
+<li>更高效的实现: $O(nlogn)$</li>
+</ul>
+<p><strong>问题：存在震荡(oscillations)可能</strong></p>
+<p>e.g. 假设链路费用是该链路承载的通信量:</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171743272.png" alt="image-20220425224854559"></p>
+<h4 id="距离向量路由算法"><a href="#距离向量路由算法" class="headerlink" title="距离向量路由算法"></a>距离向量路由算法</h4><p><strong>Bellman-Ford方程(动态规划)</strong></p>
+<p>令：$d_x(y)$:=从x到y最短路径的费用（距离）则：</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171743371.png" alt="image-20220425225703688" style="zoom:67%;">
+
+<p>示例：</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205172243781.png" alt="image-20220425225826227" style="zoom:80%;">
+
+<p>显然: dv(z) = 5, dx(z) = 3, dw(z) = 3</p>
+<p>du(z) = min { c(u,v) + dv(z), c(u,x) + dx(z), c(u,w) + dw(z) } = 4</p>
+<p>重点：<strong>结点获得最短路径的下一跳, 该信息用于转发表中</strong>！</p>
+<p>Dx(y) = 从结点x到结点y的最小费用估计</p>
+<ul>
+<li>x维护距离向量(DV): $Dx = [Dx(y): y \in N ]$</li>
+</ul>
+<p>结点x:</p>
+<ul>
+<li>已知到达每个邻居的费用: c(x,v)</li>
+<li>维护其所有邻居的距离向量: $Dv = [Dv(y): y \in N ]$</li>
+</ul>
+<p>核心思想: </p>
+<ul>
+<li>每个结点不定时地将其自身的DV估计发送给其邻居</li>
+<li>当x接收到邻居的新的DV估计时，即依据B-F更新其自身的距离向量估计：<ul>
+<li>Dx(y) ← minv{c(x,v) + Dv(y)} for each node y $\in$ N</li>
+</ul>
+</li>
+<li>Dx(y)将最终收敛于实际的最小费用 dx(y)</li>
+</ul>
+<p>特点：</p>
+<p><strong>异步迭代</strong>：引发每次局部迭代的因素</p>
+<ul>
+<li>局部链路费用改变</li>
+<li>来自邻居的DV更新</li>
+</ul>
+<p><strong>分布式</strong>：每个结点只当DV变化时才通告给邻居，邻居在必要时（其DV更新<br>后发生改变）再通告它们的邻居</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171743942.png" alt="image-20220425230819766" style="zoom:67%;">
+
+<p>示例：</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171744220.png" alt="image-20220426143320850"></p>
+<p><strong>链路费用变化</strong>：</p>
+<ul>
+<li>结点检测本地链路费用变化</li>
+<li>更新路由信息，重新计算距离向量</li>
+<li>如果DV改变，通告所有邻居</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171744393.png" alt="image-20220426143505345"></p>
+<ul>
+<li>t0 : y检测到链路费用改变 ，更新DV，通告其邻居.</li>
+<li>t1 : z收到y的DV更新，更新其距离向量表，计算到达x的最新最小费用，更新其DV，并发送给其所有邻居.</li>
+<li>t2 : y收到z的DV更新，更新其距离向量表，重新计算y的DV，未发生改变，不再向z发送DV</li>
+</ul>
+<p><strong>无穷计数问题</strong>：</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171744880.png" alt="image-20220426143820658"></p>
+<p>解决方法一：<strong>毒性逆转(poisoned reverse)</strong></p>
+<p>如果一个结点(e.g. Z)到达某目的(e.g.X)的最小费用路径是通过某个邻居(e.g.Y)，则通告给该邻居结点到达该目的的距离为无穷大</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171745725.png" alt="image-20220426144237066"></p>
+<p>解决方法二：<strong>定义最大度量(maximum metric)</strong></p>
+<p>定义一个最大的有效费用值，如15跳步，16跳步表示$∞$</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171745993.png" alt="image-20220426144356247"></p>
+<h4 id="层次路由"><a href="#层次路由" class="headerlink" title="层次路由"></a>层次路由</h4><p>层次路由准确的说是一种<strong>路由策略</strong></p>
+<p>将任意规模网络抽象为一个图计算路由-过于理想化</p>
+<p><strong>网络规模</strong>：考虑6亿目的结点的网络，路由表几乎无法存储！路由计算过程的信息（e.g. 链路状态分组、DV）交换量巨大，会淹没链路！</p>
+<p><strong>管理自治</strong>：每个网络的管理可能都期望自主控制其网内的路由。互联网(internet) = 网络之网络(network of networks)</p>
+<p>聚合路由器为一个区域：<strong>自治系统AS(autonomous systems)</strong></p>
+<p>同一AS内的路由器运行相同的路由协议(算法)</p>
+<ul>
+<li>自治系统内部路由协议(“intra-AS” routing protocol)</li>
+<li>不同自治系统内的路由器可以运行不同的AS内部路由协议</li>
+</ul>
+<p>互连的AS：</p>
+<p><strong>转发表</strong>由AS内部路由算法与AS间路由算法共同配置</p>
+<ul>
+<li>AS内部路由算法设置AS内部目的网络路由入口(entries)</li>
+<li>AS内部路由算法与AS间路由算法共同设置AS外部目的网络路由入口</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171745107.png" alt="image-20220426150527052"></p>
+<p><strong>自治系统间(Inter-AS)路由</strong></p>
+<p>假设AS1内某路由器收到一个目的地址在AS1之外的数据报：路由器应该将该数据<br>报转发给哪个网关路由器呢？</p>
+<p>AS1必须:</p>
+<ol>
+<li>学习到哪些目的网络可以通过AS2到达，哪些可以通过AS3到达</li>
+<li>将这些网络可达性信息传播给AS1内部路由器</li>
+</ol>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171745953.png" alt="image-20220426151303106"></p>
+<p>假设AS1学习到(通过AS间路由协议)：子网x可以通过AS3 (网关 1c)到达，但不能通过AS2到达，AS间路由协议向所有内部路由器传播该可达性信息</p>
+<p>路由器1d：利用AS内部路由信息，确定其到达1c的最小费用路径接口I，在转发表中增加入口：(x, I)</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171745198.png" alt="image-20220426150714783" style="zoom:80%;">
+
+<p>假设AS1通过AS间路由协议学习到：子网x通过AS3和AS2均可到达</p>
+<p>为了配置转发表，路由器1d必须确定应该将去往子网x的数据报转发给哪个网关？这个任务也是由AS间路由协议完成!</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171745267.png" alt="image-20220426150714783" style="zoom:80%;">
+
+
+
+<p><strong>热土豆路由</strong>: 将分组发送给<strong>最近</strong>的网关路由器.</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171745518.png" alt="image-20220426151410644"></p>
+<h3 id="路由协议"><a href="#路由协议" class="headerlink" title="路由协议"></a>路由协议</h3><p>Internet采用<strong>层次路由</strong></p>
+<p><strong>AS内部路由协议</strong>也称为<strong>内部网络协议IGP(interior gateway protocols)</strong></p>
+<p>最常见的AS内部路由协议:</p>
+<ul>
+<li>路由信息协议：<strong>RIP(Routing Information Protocol)</strong></li>
+<li>开放最短路径优先：<strong>OSPF(Open Shortest Path First)</strong></li>
+<li>内部网关路由协议：**IGRP(Interior Gateway Routing Protocol)**，是Cisco私有协议</li>
+</ul>
+<p>Internet <strong>AS间路由协议</strong>：<strong>BGP</strong></p>
+<h4 id="RIP协议"><a href="#RIP协议" class="headerlink" title="RIP协议"></a>RIP协议</h4><p>采用<strong>距离向量路由算法</strong></p>
+<ul>
+<li>距离度量：跳步数 (max = 15 hops), 每条链路1个跳步</li>
+<li>每隔30秒，邻居之间交换一次DV，成为通告(advertisement)</li>
+<li>每次通告：最多25个目的子网(IP地址形式)</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171745810.png" alt="image-20220426222513886"></p>
+<p>示例：</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171745224.png" alt="image-20220426222626501" style="zoom:50%;">
+
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171746644.png" alt="image-20220426222626501" style="zoom:50%;">
+
+<p><strong>链路失效、恢复</strong>：</p>
+<p>如果<strong>180秒</strong>没有收到通告→邻居/链路失效</p>
+<ul>
+<li>经过该邻居的路由不可用，重新计算路由</li>
+<li>向邻居发送新的通告</li>
+<li>邻居再依次向外发送通告（如果转发表改变）</li>
+<li>链路失效信息能否快速传播到全网？可能发生无穷计数问题</li>
+<li><strong>毒性逆转技术</strong>用于预防<strong>乒乓(ping-pong)环路</strong>(另外：无穷大距离 = 16 hops)</li>
+</ul>
+<p><strong>RIP路由表的处理</strong>：</p>
+<p>RIP路由表是利用一个称作<strong>route-d (daemon)<strong>的</strong>应用层进程</strong>进行管理（应用进程实现）</p>
+<p>通告报文周期性地通过UDP数据报发送</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171746903.png" alt="image-20220426223056788"></p>
+<h4 id="OSPF协议"><a href="#OSPF协议" class="headerlink" title="OSPF协议"></a>OSPF协议</h4><p>OSPF：Open Shortest Path First</p>
+<p>“开放”: 公众可用</p>
+<p>采用链路状态路由算法</p>
+<ul>
+<li>LS分组扩散（通告）</li>
+<li>每个路由器构造完整的网络(AS)拓扑图</li>
+<li>利用Dijkstra算法计算路由</li>
+</ul>
+<p>OSPF通告中每个入口对应一个邻居</p>
+<p>OSPF通告在整个AS范围泛洪，OSPF报文直接封装到IP数据报中</p>
+<p>与OSPF极其相似的一个路由协议：<strong>IS-IS路由协议</strong></p>
+<p>**OSPF优点(RIP不具备)**：</p>
+<ol>
+<li><strong>安全(security)</strong>: 所有OSPF报文可以被认证(预防恶意入侵) </li>
+<li>允许使用<strong>多条</strong>相同费用的路径 (RIP只能选一条)</li>
+<li>对于每条链路，可以针对不同的<strong>TOS</strong>设置多个不同的费用度量 (e.g., 卫星链路可以针对“尽力”(best effort) ToS设置“低”费用；针对实时ToS设置“高”费用)</li>
+<li>集成单播路由与多播路由: 多播OSPF协议(MOSPF) 与OSPF利用相同的网络拓扑数据</li>
+<li>OSPF支持对<strong>大规模AS分层(hierarchical)</strong></li>
+</ol>
+<p><strong>分层的OSPF</strong>：</p>
+<p><strong>两级分层：局部区(Area)，主干区(Backbone)</strong></p>
+<ul>
+<li>链路状态通告只限于区内</li>
+<li>每个路由器掌握所在区的详细拓扑</li>
+<li>只知道去往其他区网络的“方向” (最短路径)</li>
+</ul>
+<p><strong>内部路由器IR（Internal Routers）</strong></p>
+<p><strong>区边界路由器(Area Border Routers)</strong>: “汇总”到达所在区网络的距离，通告给其他区边界路由器</p>
+<p><strong>主干路由器(Backbone Routers)</strong>: 在主干区内运行OSPF路由算法</p>
+<p>**AS边界路由器(AS boundary routers)**：连接其他AS</p>
+<p>参考：RFC 2328</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171746415.png" alt="image-20220426223854734" style="zoom:67%;">
+
+<h4 id="BGP协议"><a href="#BGP协议" class="headerlink" title="BGP协议"></a>BGP协议</h4><p><strong>边界网关协议BGP (Border Gateway Protocol)</strong>: 事实上的标准<strong>域间</strong>路由协议，是将Internet “粘合”为一个整体的关键</p>
+<p>BGP为每个AS提供了一种手段:</p>
+<ul>
+<li><strong>eBGP</strong>: 从<strong>邻居AS</strong>获取子网可达性信息.</li>
+<li><strong>iBGP</strong>: 向所有<strong>AS内部</strong>路由器传播子网可达性信息.</li>
+<li>基于可达性信息与策略，确定到达其他网络的 “好”路径</li>
+</ul>
+<p>容许子网向Internet其余部分通告它的存在</p>
+<p>**BGP会话(session)**：两个BGP路由器 (“Peers”)交换BGP报文</p>
+<ul>
+<li>通告去往不同目的<strong>前缀</strong>（prefix）的<strong>路径</strong> (“路径向量(path vector)”协议）</li>
+<li>报文交换基于半永久的<strong>TCP连接</strong></li>
+</ul>
+<p><strong>BGP报文类型：</strong></p>
+<ul>
+<li><strong>OPEN</strong>: 与peer建立TCP连接，并认证发送方</li>
+<li><strong>UPDATE</strong>: 通告新路径 (或撤销原路径)</li>
+<li><strong>KEEPALIVE</strong>: 在无UPDATE时，保活连接；也用于对OPEN请求的确认</li>
+<li><strong>NOTIFICATION</strong>: 报告先前报文的差错；也被用于关闭连接报文交换基于半永久的TCP连接</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171746130.png" alt="image-20220426225538395"></p>
+<p>当AS3通告一个前缀给AS1时:</p>
+<ul>
+<li>AS3<strong>承诺</strong>可以将数据报<strong>转发</strong>给该子网</li>
+<li>AS3在通告中会<strong>聚合</strong>网络前缀</li>
+</ul>
+<p><strong>分发路径信息：</strong></p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171746046.png" alt="image-20220426225657651" style="zoom: 67%;">
+
+<p>在3a与1c之间，AS3利用<strong>eBGP</strong>会话向AS1发送前缀可达性信息.</p>
+<p>1c则可以利用<strong>iBGP</strong>向AS1内的所有路由器分发新的前缀可达性信息</p>
+<p>1b可以（也可能不）进一步通过1b-到-2a的eBGP会话，向AS2通告新的可达性信息</p>
+<p>当路由器获得新的前缀可达性时，即在其转发表中增加关于该前缀的入口（路由项）</p>
+<p><strong>路径属性与BGP路由（route）</strong>：</p>
+<p>通告的前缀信息包括BGP属性：前缀+属性= “路由”</p>
+<p>两个重要属性:</p>
+<ul>
+<li><strong>AS-PATH(AS路径)</strong>: 包含前缀通告所经过的AS序列：如AS 67, AS 17 </li>
+<li><strong>NEXT-HOP(下一跳)</strong>: 开始一个AS-PATH的路由器接口，指向下一跳AS. <ul>
+<li>可能从当前AS到下一跳AS存在多条链路</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171746230.png" alt="image-20220426230010969"></p>
+<p><strong>BGP路由选择</strong>：</p>
+<p>网关路由器收到路由通告后，利用其**输入策略(import policy)**决策接受/拒绝该路由，基于策略(policy-based) 路由</p>
+<p>路由器可能获知到达某目的AS的多条路由，基于以下准则选择：</p>
+<ol>
+<li>本地偏好(preference)值属性: <strong>策略决策(policy decision)</strong></li>
+<li><strong>最短</strong>AS-PATH </li>
+<li><strong>最近</strong>NEXT-HOP路由器: <strong>热土豆路由</strong>(hot potato routing)</li>
+<li>附加准则</li>
+</ol>
+<p>示例：</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171747597.png" alt="image-20220426230413613"></p>
+<p>A,B,C是<strong>提供商网络/AS(provider network/AS)</strong></p>
+<p>X,W,Y是<strong>客户网络(customer network/AS)</strong></p>
+<p>W,Y是<strong>桩网络(stub network/AS)</strong>: 只与一个其他AS相连</p>
+<p>X是<strong>双宿网络(dual-homed network/AS)</strong>: 连接两个其他AS（大于2个则为<strong>多宿网络</strong>）</p>
+<p>X不期望经过他路由B到C的流量，因此，X不会向B通告任何一条到达C的路由</p>
+<blockquote>
+<p>A向B通告一条路径：AW</p>
+<p>B向X通告路径：BAW</p>
+<p>B是否应该向C通告路径BAW呢？绝不! B路由CBAW的流量没有任何“收益”，因为W和C均不是B的客户。</p>
+<p>B期望强制C通过A向W路由流量，B期望只路由去往/来自其客户的流量！</p>
+</blockquote>
+<p>为什么采用不同的AS内与AS间路由协议？三方面 （inter-AS 域间，intra-AS 域内）</p>
+<p><strong>策略(policy)</strong>:</p>
+<ul>
+<li>inter-AS: 期望能够管理控制流量如何被路由，谁路由经过其网络等. </li>
+<li>intra-AS: 单一管理，无需策略</li>
+</ul>
+<p><strong>决策规模(scale)</strong>:</p>
+<ul>
+<li>层次路由节省路由表大小，减少路由更新流量</li>
+<li>适应大规模互联网</li>
+</ul>
+<p><strong>性能(performance)</strong>: </p>
+<ul>
+<li>intra-AS: 侧重性能</li>
+<li>inter-AS: 策略主导</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C1/" rel="prev" title="计算机网络概述">
+      <i class="fa fa-chevron-left"></i> 计算机网络概述
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C3/" rel="next" title="计算机网络">
+      计算机网络 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="nav-number">1.</span> <span class="nav-text">传输层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.1.</span> <span class="nav-text">传输层协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8-%E5%88%86%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">多路复用&#x2F;分用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP"><span class="nav-number">1.3.</span> <span class="nav-text">UDP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.4.</span> <span class="nav-text">可靠数据传输协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.5.</span> <span class="nav-text">流水线协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.6.</span> <span class="nav-text">滑动窗口协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GBN%EF%BC%88Go-Back-N%EF%BC%89%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.6.1.</span> <span class="nav-text">GBN（Go-Back-N）协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SR%EF%BC%88Selective-Repeat%EF%BC%89%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.6.2.</span> <span class="nav-text">SR（Selective Repeat）协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP"><span class="nav-number">1.7.</span> <span class="nav-text">TCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93"><span class="nav-number">1.8.</span> <span class="nav-text">TCP可靠数据传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="nav-number">1.9.</span> <span class="nav-text">TCP流量控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86"><span class="nav-number">1.10.</span> <span class="nav-text">TCP连接管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86"><span class="nav-number">1.11.</span> <span class="nav-text">拥塞控制原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E6%96%B9%E6%B3%95"><span class="nav-number">1.12.</span> <span class="nav-text">拥塞控制方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="nav-number">1.13.</span> <span class="nav-text">TCP拥塞控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="nav-number">1.14.</span> <span class="nav-text">TCP性能分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-number">2.</span> <span class="nav-text">网络层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.1.</span> <span class="nav-text">网络层服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E7%94%B5%E8%B7%AF%E7%BD%91%E7%BB%9C"><span class="nav-number">2.2.</span> <span class="nav-text">虚电路网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%A5%E7%BD%91%E7%BB%9C"><span class="nav-number">2.3.</span> <span class="nav-text">数据报网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%A5%E7%BD%91%E7%BB%9C%E5%92%8CVC%E7%BD%91%E7%BB%9C"><span class="nav-number">2.4.</span> <span class="nav-text">数据报网络和VC网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPv4%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.5.</span> <span class="nav-text">IPv4协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IP%E6%95%B0%E6%8D%AE%E6%8A%A5"><span class="nav-number">2.5.1.</span> <span class="nav-text">IP数据报</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP%E5%88%86%E7%89%87%E5%92%8C%E9%87%8D%E7%BB%84"><span class="nav-number">2.5.2.</span> <span class="nav-text">IP分片和重组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP%E7%BC%96%E5%9D%80"><span class="nav-number">2.5.3.</span> <span class="nav-text">IP编址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E7%B1%BBIP%E5%9C%B0%E5%9D%80"><span class="nav-number">2.5.4.</span> <span class="nav-text">有类IP地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86"><span class="nav-number">2.5.5.</span> <span class="nav-text">子网划分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81"><span class="nav-number">2.5.6.</span> <span class="nav-text">子网掩码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CIDR"><span class="nav-number">2.6.</span> <span class="nav-text">CIDR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E8%81%9A%E5%90%88"><span class="nav-number">2.7.</span> <span class="nav-text">路由聚合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DHCP%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.8.</span> <span class="nav-text">DHCP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NAT"><span class="nav-number">2.9.</span> <span class="nav-text">NAT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ICMP"><span class="nav-number">2.10.</span> <span class="nav-text">ICMP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPv6"><span class="nav-number">2.11.</span> <span class="nav-text">IPv6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95"><span class="nav-number">2.12.</span> <span class="nav-text">路由算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB"><span class="nav-number">2.12.1.</span> <span class="nav-text">路由算法分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%B7%AF%E7%8A%B6%E6%80%81%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95"><span class="nav-number">2.12.2.</span> <span class="nav-text">链路状态路由算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%9D%E7%A6%BB%E5%90%91%E9%87%8F%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95"><span class="nav-number">2.12.3.</span> <span class="nav-text">距离向量路由算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%82%E6%AC%A1%E8%B7%AF%E7%94%B1"><span class="nav-number">2.12.4.</span> <span class="nav-text">层次路由</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.13.</span> <span class="nav-text">路由协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RIP%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.13.1.</span> <span class="nav-text">RIP协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OSPF%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.13.2.</span> <span class="nav-text">OSPF协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BGP%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.13.3.</span> <span class="nav-text">BGP协议</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yanglinqi"
+      src="/images/headpic.jpg">
+  <p class="site-author-name" itemprop="name">yanglinqi</p>
+  <div class="site-description" itemprop="description">用于做笔记，对学过的知识总结</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanglinqi107" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanglinqi107" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanglinqi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+</body>
+</html>

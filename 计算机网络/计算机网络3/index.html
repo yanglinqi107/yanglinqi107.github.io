@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<meta name="referrer" content="no-referrer">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"/node_modules/hexo-generator-searchdb/search.xml"};
+  </script>
+
+  <meta name="description" content="数据链路层">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络">
+<meta property="og:url" content="http://yanglinqi107.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C3/index.html">
+<meta property="og:site_name" content="杨的个人博客">
+<meta property="og:description" content="数据链路层">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171836435.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171836637.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171836009.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171836720.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171836185.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171836241.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171836304.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205172245445.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171836963.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171837804.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171837171.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171837341.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171837187.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171837791.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171838872.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171838352.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171838670.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171838462.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171838916.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171838920.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171839611.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171839604.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171839441.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171839348.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171839094.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171839180.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171839880.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171839410.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171839680.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171839734.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171840882.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171840144.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171840921.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171840158.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171840734.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171840629.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171841482.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171841908.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171841064.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171841364.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171841235.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171841363.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171841362.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171841019.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171841155.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171842786.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171842062.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171842826.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171842859.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171842443.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171842983.png">
+<meta property="article:published_time" content="2022-05-17T14:55:52.483Z">
+<meta property="article:modified_time" content="2022-05-18T06:00:02.376Z">
+<meta property="article:author" content="yanglinqi">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/yanglinqi107/images/raw/master/res/202205171836435.png">
+
+<link rel="canonical" href="http://yanglinqi107.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>计算机网络 | 杨的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">杨的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">碎片化学习令人焦虑，系统化学习使人进步</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">88</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yanglinqi107.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headpic.jpg">
+      <meta itemprop="name" content="yanglinqi">
+      <meta itemprop="description" content="用于做笔记，对学过的知识总结">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-17 22:55:52" itemprop="dateCreated datePublished" datetime="2022-05-17T22:55:52+08:00">2022-05-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-18 14:00:02" itemprop="dateModified" datetime="2022-05-18T14:00:02+08:00">2022-05-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>数据链路层</p>
+<span id="more"></span>
+
+
+
+<h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><p>主机和路由器：<strong>结点(nodes)</strong></p>
+<p>连接相邻结点的通信信道：<strong>链路(links)</strong></p>
+<ul>
+<li>有线链路(wired links)</li>
+<li>无线链路(wireless links)</li>
+<li>局域网(LANs)</li>
+</ul>
+<p>链路层(第2层)数据分组：**帧(frame)**，封装网络层数据报</p>
+<p><strong>数据链路层</strong>负责通过一条链路从一个节点向另一个物理链路直接相连的相邻结点传送数据报</p>
+<p><strong>组帧（framing）</strong>：封装数据报构成数据帧，加首部和尾部，帧同步</p>
+<p>**链路接入(link access)**：</p>
+<ul>
+<li>如果是共享介质，需要解决信道接入(channel access)</li>
+<li>帧首部中的“MAC”地址，用于标识帧的源和目的，不同于IP地址！</li>
+</ul>
+<p><strong>相邻结点间可靠交付</strong></p>
+<ul>
+<li>在低误码率的有线链路上很少采用 (如光纤，某些双绞线等)</li>
+<li>无线链路：误码率高，需要可靠交付</li>
+</ul>
+<p><strong>流量控制(flow control)</strong> ：协调(pacing)相邻的发送结点和接收</p>
+<p>**差错检测(error detection)**：</p>
+<ul>
+<li>信号衰减和噪声会引起差错. </li>
+<li>接收端检测到差错: 通知发送端重传或者直接丢弃帧</li>
+</ul>
+<p>**差错纠正(error correction)**：接收端直接纠正比特差错</p>
+<p><strong>全双工和半双工通信控制</strong>：</p>
+<ul>
+<li><strong>全双工</strong>：链路两端结点<strong>同时</strong>双向传输</li>
+<li><strong>半双工</strong>：链路两端结点<strong>交替</strong>双向传输</li>
+</ul>
+<h3 id="链路层的实现"><a href="#链路层的实现" class="headerlink" title="链路层的实现"></a>链路层的实现</h3><p>每个主机或路由器接口</p>
+<p>链路层在“适配器”(即网络接口卡-NIC)中实现 或者在一个芯片上实现</p>
+<ul>
+<li>以太网网卡，802.11网卡；以太网芯片组等实现链路层和物理层</li>
+</ul>
+<p>链接主机的系统总线</p>
+<p>由硬件、软件与固件组成</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171836435.png" alt="image-20220427223341100" style="zoom:67%;">
+
+<p><strong>网卡间通信</strong>：</p>
+<p>发送端：</p>
+<ul>
+<li>将数据报封装成帧</li>
+<li>增加差错检测比特，实现可靠数据传输和流量控制等</li>
+</ul>
+<p>接收端：</p>
+<ul>
+<li>检测差错，实现可靠数据传输和流量控制等</li>
+<li>提取数据报，交付上层协议实体</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171836637.png" alt="image-20220427223745691"></p>
+<h3 id="差错检测"><a href="#差错检测" class="headerlink" title="差错检测"></a>差错检测</h3><p><strong>差错编码</strong>基本原理：D→DR，其中R为差错检测与纠正比特（冗余比特）</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171836009.png" alt="image-20220427224312361" style="zoom:67%;">
+
+
+
+
+
+<p><strong>差错编码的检错能力</strong></p>
+<p>差错编码可分为<strong>检错码</strong>与<strong>纠错码</strong></p>
+<p>对于<strong>检错码</strong>，如果编码集的<strong>汉明距离</strong>ds=r+1，则该差错编码可以检测r位的差错</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171836720.png" alt="image-20220427224451035"></p>
+<blockquote>
+<p>例如，编码集 {0000,0101,1010,1111} 的汉明距离ds=2，可以100%检测1比特差错</p>
+</blockquote>
+<p>对于<strong>纠错码</strong>，如果编码集的汉明距离ds=2r+1，则该差错编码可以纠正r位的差错</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171836185.png" alt="image-20220427224542195"></p>
+<blockquote>
+<p>例如，编码集 {000000,010101,101010,111111} 的汉明距离ds=3，可以纠正1比特差错，如100010纠正为101010（距离最近）</p>
+</blockquote>
+<p><strong>奇偶校验码</strong>：</p>
+<p>1比特校验位：检测奇数位差错</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171836241.png" alt="image-20220427224657771"></p>
+<p>二维奇偶校验：</p>
+<ul>
+<li>检测奇数位差错、部分偶数位差错</li>
+<li>纠正同一行/列的奇数位错</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171836304.png" alt="image-20220427224739332" style="zoom:80%;">
+
+
+
+<p>**Internet校验和(Checksum)**：</p>
+<p>发送端:</p>
+<ul>
+<li>将“数据”(校验内容)划分为16位的二进制“整数”序列</li>
+<li>求和(sum)：补码求和(最高位进位的“1”，返回最低位继续加）</li>
+<li>校验和(Checksum)：sum的反码</li>
+<li>放入分组(UDP、TCP、IP)的校验和字段</li>
+</ul>
+<p>接收端：</p>
+<ul>
+<li>与发送端相同算法计算</li>
+<li>计算得到的”checksum”：<ul>
+<li>为16位全0（或sum为16位全1）：无错</li>
+<li>否则：有错</li>
+</ul>
+</li>
+</ul>
+<p><strong>循环冗余校验码（CRC）</strong></p>
+<p>检错能力更强大的差错编码</p>
+<ul>
+<li>将数据比特D，视为一个二进制数</li>
+<li>选择一个r+1位的比特模式 (生成比特模式)，G</li>
+<li>目标：选择r位的CRC比特R，满足：<ul>
+<li>&lt;D,R&gt;刚好可以被G整除(模2) </li>
+<li>接收端检错：利用G除&lt;D,R&gt;，余式全0，无错；否则，有错！</li>
+<li>可以检测所有突发长度小于r+1位差错。</li>
+</ul>
+</li>
+<li>广泛应用于实际网络 (以太网，802.11 WiFi，ATM)</li>
+</ul>
+<p>期望：D·$2^r$ XOR R = nG   （XOR 异或，D·$2^r$相当于左移r位）</p>
+<p>相当于：D·$2^r$ = nG XOR R</p>
+<p>相当于：如果利用G去除D·$2^r$，则余式即为R：</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205172245445.png" alt="image-20220427225736695" style="zoom: 80%;">
+
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171836963.png" alt="image-20220427225736695" style="zoom: 70%;">
+
+
+
+<h3 id="MAC协议"><a href="#MAC协议" class="headerlink" title="MAC协议"></a>MAC协议</h3><p><strong>多路访问控制协议</strong></p>
+<p>两类“链路”：</p>
+<ul>
+<li><strong>点对点链路</strong>，如：拨号接入的<strong>PPP协议</strong>；以太网交换机与主机间的点对点链路；</li>
+<li>**广播链路 (共享介质)**：早期的总线以太网；HFC的上行链路；802.11无线局域网</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171837804.png" alt="image-20220427230410208"></p>
+<ul>
+<li>单一共享广播信道：没有问题</li>
+<li>两个或者两个以上结点同时传输：干扰(interference) <ul>
+<li>**冲突(collision)**：结点同时接收到两个或者多个信号→接收失败！</li>
+</ul>
+</li>
+</ul>
+<p><strong>多路访问控制协议(multiple access control protocol)</strong></p>
+<ul>
+<li>采用分布式算法决定结点如何共享信道，即决策结点何时可以传输数据</li>
+<li>必须基于信道本身，通信信道共享协调信息！无带外信道用于协调</li>
+</ul>
+<p><strong>理想MAC协议</strong>：</p>
+<p>给定：速率为R bps的广播信道</p>
+<p>期望：</p>
+<ol>
+<li>当只有一个结点希望传输数据时，它可以以速率 R发送.</li>
+<li>当有M个结点期望发送数据时，每个节点平均发送数据的平均速率是R/M</li>
+<li>完全分散控制：无需特定结点协调；无需时钟、时隙同步</li>
+<li>简单</li>
+</ol>
+<p><strong>MAC协议分类：</strong>三大类：</p>
+<ul>
+<li><strong>信道划分(channel partitioning)MAC协议</strong><ul>
+<li>多路复用技术：TDMA、FDMA、CDMA、WDMA等</li>
+</ul>
+</li>
+<li><strong>随机访问(random access)MAC协议</strong><ul>
+<li>信道不划分，允许冲突</li>
+<li>采用冲突“恢复”机制</li>
+</ul>
+</li>
+<li><strong>轮转(“taking turns”)MAC协议</strong><ul>
+<li>结点轮流使用信道</li>
+</ul>
+</li>
+</ul>
+<h4 id="信道划分MAC协议"><a href="#信道划分MAC协议" class="headerlink" title="信道划分MAC协议"></a>信道划分MAC协议</h4><p><strong>TDMA：time division multiple access 时分多址</strong></p>
+<ul>
+<li>“周期性”接入信道</li>
+<li>每个站点在每个周期，占用固定长度的时隙(e.g.长度=分组传输时间)</li>
+<li>未用则时隙空闲(idle) </li>
+</ul>
+<p>例如：6-站点LAN，1,3,4传输分组，2,5,6空闲</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171837171.png" alt="image-20220427231024184"></p>
+<p><strong>FDMA: frequency division multiple access  频分多址</strong></p>
+<ul>
+<li>信道频谱划分为若干频带(frequency bands)</li>
+<li>每个站点分配一个固定的频带</li>
+<li>无传输则频带空闲</li>
+</ul>
+<p>例如: 6站点LAN, 1,3,4频带传输数据, 2,5,6频带空闲</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171837341.png" alt="image-20220427231135234"></p>
+<h4 id="随机访问MAC协议"><a href="#随机访问MAC协议" class="headerlink" title="随机访问MAC协议"></a>随机访问MAC协议</h4><p>当结点要发送分组时：</p>
+<ul>
+<li>利用信道全部数据速率R发送分组</li>
+<li>没有事先的结点间协调</li>
+</ul>
+<p>两个或多个结点同时传输：“冲突”</p>
+<p>随机访问MAC协议需要定义: </p>
+<ul>
+<li>如何检测冲突</li>
+<li>如何从冲突中恢复 (e.g., 通过延迟重传)</li>
+<li>典型的随机访问MAC协议：<ul>
+<li><strong>时隙(sloted)ALOHA</strong></li>
+<li><strong>ALOHA</strong></li>
+<li><strong>CSMA</strong>、<strong>CSMA/CD</strong>、<strong>CSMA/CA</strong></li>
+</ul>
+</li>
+</ul>
+<h5 id="时隙ALOHA协议"><a href="#时隙ALOHA协议" class="headerlink" title="时隙ALOHA协议"></a>时隙ALOHA协议</h5><p>假定：</p>
+<blockquote>
+<p>所有帧大小相同</p>
+<p>时间被划分为等长的时隙(每个时隙可以传输1个帧)</p>
+<p>结点只能在时隙开始时刻发送帧</p>
+<p>结点间时钟同步</p>
+<p>如果2个或2个以上结点在同一时隙发送帧，结点即检测到冲突</p>
+</blockquote>
+<p>运行:</p>
+<blockquote>
+<p>当结点有新的帧时，在下一个时隙(slot)发送</p>
+<p>如果无冲突：该结点可以在下一个时隙继续发送新的帧</p>
+<p>如果冲突：该结点在下一个时隙以概率p重传该帧，直至成功</p>
+</blockquote>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171837187.png" alt="image-20220427231559368"></p>
+<p>优点:</p>
+<blockquote>
+<p>单个结点活动时，可以连续以信道全部速率传输数据</p>
+<p>高度分散化：只需同步时隙</p>
+<p>简单</p>
+</blockquote>
+<p>缺点:</p>
+<blockquote>
+<p>冲突，浪费时隙</p>
+<p>空闲时隙</p>
+<p>结点也许能以远小于分组传输时间检测到冲突</p>
+<p>时钟同步</p>
+</blockquote>
+<p><strong>效率(efficiency)</strong>: 长期运行时，成功发送帧的时隙所占比例 (很多结点，有很多帧待发送)</p>
+<p>假设: N个结点有很多帧待传输，每个结点在每个时隙均以概率p发送数据；对于给定的一个结点，在一个时隙将帧发送成功的概率= $p(1-p)^{N-1}$；对于任意结点成功发送帧的概率=$ Np(1-p)^{N-1}$ </p>
+<p><strong>最大效率</strong>: 求得使$ Np(1-p)^{N-1}$ 最大的p*，对于很多结点，求当$ Np(1-p)^{N-1}$ N趋近无穷时的极限，可得：最大效率= 1/e = 0.37。最好情况下信道被成功利用的时间仅占37%！</p>
+<h5 id="ALOHA协议"><a href="#ALOHA协议" class="headerlink" title="ALOHA协议"></a>ALOHA协议</h5><p>非时隙(纯)Aloha：更加简单，无需同步</p>
+<p>当有新的帧生成时，立即发送</p>
+<p>冲突可能性增大，如下图在t0时刻发送帧，会与在[t0-1, t0+1]期间其他结点发送的帧冲突</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171837791.png" alt="image-20220427232205493"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171838872.png" alt="image-20220427232231776"></p>
+<h5 id="CSMA协议"><a href="#CSMA协议" class="headerlink" title="CSMA协议"></a>CSMA协议</h5><p><strong>载波监听多路访问协议CSMA (carrier sense multiple access)</strong></p>
+<p>发送帧之前，监听信道(载波)：</p>
+<ul>
+<li>信道空闲：发送完整帧</li>
+<li>信道忙：推迟发送（三种类型）<ul>
+<li>1-坚持CSMA</li>
+<li>非坚持CSMA</li>
+<li>P-坚持CSMA</li>
+</ul>
+</li>
+<li>冲突可能仍然发生：信号传播延迟，若继续发送冲突帧，则浪费信道资源</li>
+</ul>
+<h5 id="CSMA-CD协议"><a href="#CSMA-CD协议" class="headerlink" title="CSMA/CD协议"></a>CSMA/CD协议</h5><p>CSMA/CD: CSMA with Collision Detection</p>
+<ul>
+<li>短时间内可以检测到冲突</li>
+<li>冲突后传输中止，减少信道浪费</li>
+</ul>
+<p>冲突检测:</p>
+<ul>
+<li>有线局域网易于实现：测量信号强度，比较发射信号与接收信号</li>
+<li>无线局域网很难实现：接收信号强度淹没在本地发射信号强度下</li>
+<li>“边发边听，不发不听”</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171838352.png" alt="image-20220428115445553" style="zoom:67%;">
+
+
+
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171838670.png" alt="image-20220428115636385"></p>
+<p>网络带宽：R bps</p>
+<p>数据帧最小长度：Lmin (bits)</p>
+<p>信号传播速度：V (m/s)</p>
+<p>L / R ≥ 2dmax / V  = 》  Lmin / R = 2dmax / V  = 》 Lmin / R = RTTmax</p>
+<p>例题：在一个采用CSMA/CD协议的网络中，传输介质是一根完整的电缆，传输速率为1 Gbps，电缆中的信号传播速度是200000 km/s。若最小数据帧长度减少800比特，则最远的两个站点之间的距离至少需要（D）</p>
+<p>A.增加160 m          B.增加80 m          C.减少160 m              D.减少80 m</p>
+<p>解：根据CSMA/CD协议工作原理，有Lmin/R=2*dmax/V，则dmax=(V/2R)*Lmin，于是<br>Δdmax =(V/2R)*Δ Lmin，将V=200000 km/s, R=1 Gbps, ΔLmin =-800bit，代入得：<br>Δdmax =(200000*10^3 / (2*10^9))*(-800) = -80 m</p>
+<p><strong>CSMA/CD效率</strong></p>
+<p>$T_{prop}$ = LAN中2个结点间的最大传播延迟</p>
+<p>$t_{trans}$ = 最长帧传输延迟</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171838462.png" alt="image-20220428120439320" style="zoom:50%;">
+
+<p>$t_{prop}$ 趋近于0或者$t_{trans}$ 趋近于$∞$时，效率趋近于1，远优于ALOHA，并且简单、分散。</p>
+<h4 id="轮转访问MAC协议"><a href="#轮转访问MAC协议" class="headerlink" title="轮转访问MAC协议"></a>轮转访问MAC协议</h4><p>信道划分MAC协议：</p>
+<ul>
+<li>网络负载重时，共享信道效率高，且公平</li>
+<li>网络负载轻时，共享信道效率低！</li>
+</ul>
+<p>随机访问MAC协议：</p>
+<ul>
+<li>网络负载轻时，共享信道效率高，单个结点可以利用信道的全部带宽</li>
+<li>网络负载重时，产生冲突开销</li>
+</ul>
+<p>轮转访问MAC协议：综合两者的优点！，网络负载重或轻，效率都居中</p>
+<p>**轮询(polling)**：主结点轮流“邀请”从属结点发送数据</p>
+<ul>
+<li>典型应用：“哑(dumb)” 从属设备</li>
+</ul>
+<p><strong>问题</strong>：</p>
+<ul>
+<li>轮询开销</li>
+<li>等待延迟</li>
+<li>单点故障</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171838916.png" alt="image-20220428120858176" style="zoom:67%;">
+
+<p><strong>令牌传递(token passing)<strong>：控制令牌依次从一个结点传递到下一个结点，令牌是一个</strong>特殊帧</strong></p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171838920.png" alt="image-20220428121003382" style="zoom:70%;">
+
+
+
+<h4 id="MAC协议小结"><a href="#MAC协议小结" class="headerlink" title="MAC协议小结"></a>MAC协议小结</h4><p><strong>信道划分MAC协议</strong>：时间、频带、码片划分</p>
+<ul>
+<li>TDMA、FDMA、CDMA</li>
+</ul>
+<p><strong>随机访问MAC协议</strong>：</p>
+<ul>
+<li>ALOHA, S-ALOHA, CSMA, CSMA/CD</li>
+<li>CSMA/CD应用于以太网</li>
+<li>CSMA/CA应用802.11无线局域网</li>
+</ul>
+<p><strong>轮转访问MAC协议</strong>：</p>
+<ul>
+<li>主结点轮询；令牌传递</li>
+<li>蓝牙、FDDI、令牌环网</li>
+</ul>
+<h2 id="局域网LAN"><a href="#局域网LAN" class="headerlink" title="局域网LAN"></a>局域网LAN</h2><h3 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h3><p>32位IP地址：<strong>网络层地址</strong></p>
+<ul>
+<li>接口的网络层地址</li>
+<li>用于标识网络层(第3层)分组，支持分组转发</li>
+</ul>
+<p>MAC地址（或称LAN地址,物理地址,以太网地址）：<strong>数据链路层地址</strong></p>
+<ul>
+<li>作用：用于局域网内标识一个帧从哪个接口发出，到达哪个物理相连的其他接口</li>
+<li>48位MAC地址（用于大部分LANs），固化在网卡的ROM中，有时也可以软件设置</li>
+<li>e.g.: 1A-2F-BB-76-09-AD</li>
+</ul>
+<p>局域网中的每块网卡都有一个唯一的MAC地址</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171839611.png" alt="image-20220428140522474" style="zoom:67%;">
+
+<p>MAC地址由IEEE统一管理与分配</p>
+<p>网卡生产商购买MAC地址空间(前24比特)</p>
+<p>类比：</p>
+<ul>
+<li>MAC地址：身份证号</li>
+<li>IP地址：邮政地址</li>
+</ul>
+<p>MAC地址是“平面”地址：可“携带”，可以从一个LAN移到另一个LAN</p>
+<p>IP地址是层次地址：不可“携带”，IP地址依赖于结点连接到哪个子网</p>
+<h3 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h3><p>ARP协议：<strong>地址解析协议</strong></p>
+<p>问题: （在同一个LAN内）如何在已知目的接口的IP地址前提下确定其MAC地址？</p>
+<p><strong>ARP表</strong>：LAN中的每个IP结点(主机、路由器)维护一个表，存储某些LAN结点的<strong>IP/MAC地址映射关系</strong>：&lt; IP地址; MAC地址; TTL&gt;</p>
+<ul>
+<li>TTL (Time To Live)：经过这个时间以后该映射关系会被遗弃(典型值为20min)</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171839604.png" alt="image-20220428141125638" style="zoom:67%;">
+
+<p>示例：</p>
+<p>A想要给同一局域网内的B发送数据报，B的MAC地址不在 A的ARP 表中.</p>
+<p>A广播ARP查询分组，其中包含B的IP地址</p>
+<ul>
+<li><p>目的MAC地址 = FF-FF-FF-FF-FF-FF</p>
+</li>
+<li><p>LAN中所有结点都会接收ARP查询</p>
+</li>
+</ul>
+<p>B接收ARP查询分组，IP地址匹配成功，向A应答B的MAC 地址，利用单播帧向A发送应答</p>
+<p>A在其ARP表中，缓存B的IP-MAC地址对，直至超时，超时后，再次刷新</p>
+<p>ARP是“即插即用”协议：结点自主创建ARP表，无需干预</p>
+<p><strong>寻址</strong>: 从一个LAN路由至另一个LAN</p>
+<p>通信过程: A通过路由器R向B发送数据报</p>
+<ul>
+<li>关注寻址：IP地址(数据报中)和MAC地址(帧中)</li>
+<li>假设A知道B的IP地址（用户输入域名或ip）</li>
+<li>假设A知道第一跳路由器R (左)接口IP地址（子网掩码）</li>
+<li>假设A知道第一跳路由器R (左)接口MAC地址（ARP协议）</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171839441.png" alt="image-20220428142514089"></p>
+<p>示例：</p>
+<p>step 1：</p>
+<p>A构造IP数据报，其中源IP地址是A的IP地址，目的IP地址是B的IP地址</p>
+<p>A构造链路层帧，其中源MAC地址是A的MAC地址，目的MAC地址是R(左)接口的MAC地址，封装A到B的IP数据报</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171839348.png" alt="image-20220428142943951"></p>
+<p>step 2：</p>
+<p>帧从A发送至R</p>
+<p>R接收帧，提取IP数据报，传递给上层IP协议</p>
+<p>step 3：</p>
+<p>R转发IP数据报（源和目的IP地址不变！）</p>
+<p>R创建链路层帧，其中源MAC地址是R(右)接口的MAC地址，目的MAC地址是B的MAC地址，封装A到B的IP数据报</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171839094.png" alt="image-20220428143223925"></p>
+<h3 id="以太网ETHERNET"><a href="#以太网ETHERNET" class="headerlink" title="以太网ETHERNET"></a>以太网ETHERNET</h3><p>统治地位”的有线LAN技术: </p>
+<p>造价低廉(NIC不足￥100.00)</p>
+<p>应用最广泛的LAN技术</p>
+<p>比令牌局域网和ATM等，简单、便宜</p>
+<p>满足网络速率需求：10 Mbps – 10 Gbps</p>
+<p><strong>物理拓扑</strong></p>
+<p>**总线(bus)**：上世纪90年代中期前流行</p>
+<ul>
+<li>所有结点在同一冲突域(collision domain) (可能彼此冲突)</li>
+</ul>
+<p>**星型(star)**：目前主流网络拓扑</p>
+<ul>
+<li>中心<strong>交换机(switch)</strong> </li>
+<li>每个结点一个单独冲突域(结点间彼此不冲突)</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171839180.png" alt="image-20220428151736959"></p>
+<p><strong>以太网：不可靠、无连接服务</strong></p>
+<p><strong>无连接(connectionless)</strong>: 发送帧的网卡与接收帧的网卡间没有“握手”过程</p>
+<p><strong>不可靠(unreliable)</strong>: 接收网卡不向发送网卡进行确认，差错帧直接丢弃，丢弃帧中的数据恢复依靠高层协议 (e.g., TCP)，否则，发生数据丢失</p>
+<p>以太网的MAC协议：<strong>采用二进制指数退避算法的CSMA/CD</strong></p>
+<p><strong>以太网CSMA/CD算法</strong></p>
+<ul>
+<li>NIC从网络层接收数据报，创建数据帧。</li>
+<li>监听信道：<ul>
+<li>如果NIC监听到信道空闲，则开始发送帧；</li>
+<li>如果NIC监听到信道忙，则一直等待到信道空闲，然后发送帧。</li>
+</ul>
+</li>
+<li>NIC发送完整个帧，而没有检测到其他结点的数据发送，则NIC确认帧发送成功！</li>
+<li>如果NIC检测到其他结点传输数据，则中止发送，并发送堵塞信号 (jam signal)</li>
+<li>中止发送后，NIC进入二进制指数退避：<ul>
+<li>第m次连续冲突后：取n = Min(m, 10)<ul>
+<li>NIC 从{0,1,2, …, 2^n-1}中随机选择一个数K</li>
+<li>NIC等待K·512比特的传输延迟时间，再返回第2步监听信道</li>
+</ul>
+</li>
+<li>连续冲突次数越多，平均等待时间越长，若冲突16次则不再尝试</li>
+</ul>
+</li>
+</ul>
+<p><strong>以太网帧结构</strong></p>
+<p>发送端网卡将IP数据报(或其他网络层协议分组)封装到以太网帧中：</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171839880.png" alt="image-20220428154430428"></p>
+<p>**前导码(Preamble)(8B)**：</p>
+<ul>
+<li>7个字节的10101010，第8字节为10101011</li>
+<li>用于发送端与接收端的时钟同步</li>
+</ul>
+<p>**目的MAC地址、源MAC地址(各6B)**：dest address、source address</p>
+<ul>
+<li>如果网卡的MAC地址与收到的帧的目的MAC地址匹配，或者帧的目的MAC地址为**广播地址(FF-FF-FF-FF-FF-FF)**，则网卡接收该帧，并将其封装的网络层分组交给相应的网络层协议。</li>
+<li>否则，网卡丢弃(不接收)该帧。</li>
+</ul>
+<p>**类型(Type)(2B)**：指示帧中封装的是哪种高层协议的分组(如，IP数据报、Novell IPX数据报、AppleTalk数据报等)</p>
+<p>**数据(Data)(46-1500B)**：指上层协议载荷。</p>
+<ul>
+<li>R=10Mbps，RTTmax=512μs，Lmin / R = RTTmax</li>
+<li>Lmin=512bits=64B，Datamin=Lmin-18=46B</li>
+</ul>
+<p><strong>CRC(4B)：循环冗余校验码</strong>，丢弃差错帧</p>
+<p>许多<strong>不同的以太网标准</strong>：</p>
+<ul>
+<li><strong>相同的MAC协议和帧格式</strong></li>
+<li><strong>不同速率</strong>：2 Mbps, 10 Mbps, 100 Mbps, 1Gbps, 10G bps</li>
+<li><strong>不同物理介质</strong>: 光纤, 线缆</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171839410.png" alt="image-20220428155059354"></p>
+<h3 id="交换机switch"><a href="#交换机switch" class="headerlink" title="交换机switch"></a>交换机switch</h3><p><strong>链路层设备</strong></p>
+<ul>
+<li>存储-转发以太网帧</li>
+<li>检验到达帧的目的MAC地址，<strong>选择性(selectively)</strong> 向一个或多个输出链路转发帧</li>
+<li>利用CSMA/CD访问链路，发送帧</li>
+</ul>
+<p>**透明(transparent)**：主机感知不到交换机的存在</p>
+<p><strong>即插即用(plug-and-play)</strong></p>
+<p>**自学习(self-learning)**：交换机无需配置</p>
+<p><strong>交换机: 多端口间同时传输</strong></p>
+<p>主机利用<strong>独享(dedicated)链路</strong>直接连接交换机</p>
+<p>交换机缓存帧</p>
+<p>交换机在每段链路上利用CSMA/CD收发帧，但无冲突，且可以全双工</p>
+<p>每段链路一个独立的冲突域</p>
+<p>交换（switching）: A-A’与B-B’的传输可以同时进行，没有冲突</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171839680.png" alt="image-20220428163308257" style="zoom:67%;">
+
+
+
+<p><strong>交换机转发表：交换表</strong></p>
+<p>Q: 交换机怎么知道A’可以通过接口4到达，而B’可以通过接口5到达?</p>
+<p>A: 每个交换机有一个交换表(switch table)，每个入口(entry)：(主机的MAC地址, 到达主机的接<br>口, 时间戳）</p>
+<p><strong>交换机：自学习</strong></p>
+<p>Q：交换表入口信息如何创建和维护的那？</p>
+<p>A：交换机通过<strong>自学习</strong>，获知到达主机的接口信息</p>
+<ul>
+<li>当收到帧时，交换机“学习”到发送帧的主机（通过帧的源MAC地址），位于收到该帧的接口所连接的LAN网段</li>
+<li>将发送主机MAC地址/接口信息记录到交换表中</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171839734.png" alt="image-20220428163857341" style="zoom:80%;">
+
+
+
+<p><strong>交换机：帧过滤/转发</strong></p>
+<p>当交换机收到帧:</p>
+<ol>
+<li>记录帧的源MAC地址与输入链路接口</li>
+<li>利用目的MAC地址检索交换表</li>
+<li>if 在交换表中检索到与目的MAC地址匹配的入口(entry)<br>then {<br>if 目的主机位于收到帧的网段  then 丢弃帧<br>else 将帧转发到该入口指向的接口<br> }<br> else 泛洪(flood) /* 向除收到该帧的接口之外的所有接口转发*/ </li>
+</ol>
+<p><strong>交换机互联</strong></p>
+<p>交换机可以互联：可以自学习</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171840882.png" alt="image-20220428165758568"></p>
+<p><strong>组织机构(Institutional)网络</strong>：</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171840144.png" alt="image-20220428165859085"></p>
+<h3 id="交换机VS路由器"><a href="#交换机VS路由器" class="headerlink" title="交换机VS路由器"></a>交换机VS路由器</h3><p>两者均为<strong>存储-转发</strong>设备: </p>
+<p>路由器：网络层设备 (检测网络层分组首部)</p>
+<p>交换机：链路层设备（检测链路层帧的首部）</p>
+<p>二者均使用<strong>转发表</strong>：</p>
+<ul>
+<li>路由器: 利用路由算法(路由协议)计算(设置), 依据IP地址</li>
+<li>交换机: 利用自学习、泛洪构建转发表, 依据MAC地址</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171840921.png" alt="image-20220428170458233" style="zoom:50%;">
+
+<h3 id="网络设备对比"><a href="#网络设备对比" class="headerlink" title="网络设备对比"></a>网络设备对比</h3><p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171840158.png" alt="image-20220428170551262"></p>
+<h3 id="虚拟局域网-VLAN"><a href="#虚拟局域网-VLAN" class="headerlink" title="虚拟局域网(VLAN)"></a>虚拟局域网(VLAN)</h3><p>VLANs提出的动机：</p>
+<ol>
+<li>CS用户迁移到EE，但是希望连接至CS交换机，怎么办？</li>
+<li>单一广播域：所有第2层广播流量(ARP, DHCP, 未知目的MAC地址位置)必须穿越整个LAN，安全/隐私、效率问题</li>
+</ol>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171840734.png" alt="image-20220428173836689" style="zoom:67%;">
+
+<p>**虚拟局域网(VirtualLocal Area Network)**：对局域网进行划分。支持VLAN划分的交换机，可以在一个物理LAN架构上配置、定义多个VLAN</p>
+<ul>
+<li>对每个VLAN设置一个ip进行管理（是VLAN的ip，而不是支持VLAN的交换机的端口的ip</li>
+</ul>
+<p><strong>基于端口的VLAN</strong>：分组交换机端口 (通过交换机管理软件)，单一的物理交换机</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171840629.png" alt="image-20220428174115395" style="zoom:67%;">
+
+<ul>
+<li><strong>流量隔离(traffic isolation)<strong>：去往/来自端口1-8的帧只到达端口1-8，</strong>也可以基于MAC地址定义VLAN, 而不是交换端口</strong></li>
+<li><strong>动态成员</strong>: 端口可以动态分配给不同VLAN</li>
+<li><strong>在VLAN间转发</strong>：通过路由(就像在独立的交换机之间)</li>
+</ul>
+<p>实践中，厂家会将交换机与路由器集成在一起</p>
+<p><strong>跨越多交换机的VLAN</strong>：</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171841482.png" alt="image-20220428174508985"></p>
+<p><strong>多线缆连接</strong>：每个线缆连接一个VLAN</p>
+<ul>
+<li>划分过多的VLAN会需要很多线缆，且会占用很多端口，不经济</li>
+</ul>
+<p><strong>中继端口(trunk port)</strong>: 在跨越多个物理交换机定义的VLAN承载帧</p>
+<ul>
+<li>为多VLAN转发802.1帧容易产生歧义 (必须携带VLAN ID信息)</li>
+<li>802.1q协议为经过中继端口转发的帧增加/去除额外的首部域</li>
+</ul>
+<p><strong>802.1Q VLAN帧格式</strong>：</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171841908.png" alt="image-20220428183336013" style="zoom:80%;">
+
+
+
+<h3 id="PPP协议"><a href="#PPP协议" class="headerlink" title="PPP协议"></a>PPP协议</h3><p><strong>点对点数据链路控制</strong>：一个发送端，一个接收端，一条链路，比广播链路容易</p>
+<ul>
+<li>无需介质访问控制(Media Access Control)</li>
+<li>无需明确的MAC寻址</li>
+<li>e.g., 拨号链路, ISDN链路</li>
+</ul>
+<p>常见的点对点数据链路控制协议：</p>
+<ul>
+<li><strong>HDLC（High Level Data Link Control）</strong></li>
+<li><strong>PPP（Point-to-Point Protocol）</strong></li>
+</ul>
+<p><strong>PPP设计需求[RFC 1557]</strong></p>
+<p><strong>组帧</strong>：将网络层数据报封装到数据链路层帧中</p>
+<ul>
+<li>可以同时承载任何网络层协议分组(不仅IP数据报)</li>
+<li>可以向上层实现分用（多路分解）</li>
+</ul>
+<p><strong>比特透明传输</strong>：数据域必须支持承载任何比特模式</p>
+<p><strong>差错检测</strong>：(无纠正)</p>
+<p><strong>连接活性（connection liveness）检测</strong>：检测、并向网络层通知链路失效</p>
+<p><strong>网络层地址协商</strong>：端结点可以学习/配置彼此网络地址</p>
+<p>无需支持的功能：</p>
+<ul>
+<li>无需差错纠正/恢复</li>
+<li>无需流量控制</li>
+<li>不存在乱序交付</li>
+<li>无需支持多点链路</li>
+</ul>
+<p><strong>差错恢复、流量控制等由高层协议处理！</strong></p>
+<p><strong>PPP数据帧</strong></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171841064.png" alt="image-20220428225530218"></p>
+<ul>
+<li><strong>标志（Flag）</strong>：定界符(delimiter)</li>
+<li><strong>地址（Address）</strong>：无效(仅仅是一个选项)，点对点不需要</li>
+<li><strong>控制（Control）</strong>：无效；未来可能的多种控制域</li>
+<li><strong>协议（Protocol）</strong>: 上层协议 (如：PPP-LCP，IP，IPCP等) </li>
+<li><strong>信息（info）</strong>：上层协议分组数据</li>
+<li><strong>校验（check）</strong>：CRC校验，用于差错检测</li>
+</ul>
+<p><strong>字节填充（Byte Stuffing）</strong></p>
+<p>“数据透明传输”需求: 数据域必须允许包含标志模式&lt;01111110&gt;</p>
+<p>Q: 如何判断该作为数据接收，还是作为标志处理？</p>
+<p>发送端：在数据中的&lt;01111110&gt;和&lt;01111101&gt;字节前添加额外的字&lt;01111101&gt; (“填充(stuffs)”)</p>
+<p>接收端：</p>
+<ul>
+<li>单个字节&lt;01111101&gt;表示一个填充字节；</li>
+<li>连续两个字节&lt;01111101&gt;，丢弃第1个，第2个作为数据接收；</li>
+<li>单个字节&lt;01111110&gt;: 标志字节</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171841364.png" alt="image-20220428230213889" style="zoom:80%;">
+
+
+
+<p><strong>PPP数据控制协议</strong></p>
+<p>在交换网络层数据之前，PPP数据链路两端必须：</p>
+<ul>
+<li><strong>配置PPP链路</strong><ul>
+<li>最大帧长</li>
+<li>身份认证(authentication)</li>
+<li>…..</li>
+</ul>
+</li>
+<li><strong>学习/配置网络层信息</strong><ul>
+<li>如：对于IP协议: 通过交换IPCP协议 (IP Control Protocol ) 报文 (IP分组首部的“上层协议”字段取值: 8021)，完成IP地址等相关信息配置</li>
+</ul>
+</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171841235.png" alt="image-20220428230908252" style="zoom:80%;">
+
+
+
+<h3 id="无线局域网"><a href="#无线局域网" class="headerlink" title="无线局域网"></a>无线局域网</h3><p><strong>IEEE 802.11无线局域网</strong>：</p>
+<ul>
+<li><strong>802.11b</strong><ul>
+<li>2.4-2.5GHz免费频段(unlicensed spectrum)</li>
+<li>最高速率：11 Mbps</li>
+<li>物理层采用直接序列扩频(DSSS)技术</li>
+<li>所有主机使用相同的码片序列</li>
+</ul>
+</li>
+<li><strong>802.11a</strong><ul>
+<li>5-6 GHz频段</li>
+<li>最高速率：54 Mbps</li>
+</ul>
+</li>
+<li><strong>802.11g</strong><ul>
+<li>2.4-2.5 GHz频段</li>
+<li>最高速率：54 Mbps</li>
+</ul>
+</li>
+<li><strong>802.11n</strong>：多天线(MIMO)<ul>
+<li>2.4-2.5 GHz频段</li>
+<li>最高速率：600 Mbps</li>
+</ul>
+</li>
+</ul>
+<p>以上均使用<strong>CSMA/CA多路访问控制协议</strong>，均有<strong>基础设施(基站)网络模式</strong>和<strong>特定网(自组网)网络模式</strong></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171841363.png" alt="image-20220429164708561"></p>
+<p><strong>IEEE 802.11体系结构</strong></p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171841362.png" alt="image-20220429164809470" style="zoom:60%;">
+
+<p>无线主机与基站通信：<strong>基站(base station)</strong> 也称<strong>访问点(access point-AP)</strong></p>
+<p><strong>基本服务集BSS(Basic Service Set)</strong> ，也称为单元(cell)</p>
+<p>基础设施网络模式：无线主机 和 基站AP</p>
+<p>自组网(ad hoc)模式：只有主机</p>
+<p><strong>802.11：信道与AP关联</strong></p>
+<p><strong>802.11b</strong>：2.4GHz-2.485GHz频谱划分为11个不同频率的信道，每个AP选择一个频率(信道)</p>
+<ul>
+<li>存在干扰可能: 相邻的AP可能选择相同的信道</li>
+</ul>
+<p>主机：必须与某个AP关联(associate)</p>
+<ul>
+<li>扫描信道，监听包含AP名称(服务集标识符-SSID )和MAC地址的信标(beacon)帧</li>
+<li>选择一个AP进行关联</li>
+<li>可能需要进行身份认证</li>
+<li>典型情形：运行DHCP获取IP地址等信息</li>
+</ul>
+<p><strong>802.11AP关联：被动扫描与主动扫描</strong></p>
+<p><strong>被动扫描（scanning）</strong>： </p>
+<ul>
+<li>各AP发送信标帧</li>
+<li>主机(H1)向选择的AP发送关联请求帧</li>
+<li>AP向主机(H1)发送关联响应帧</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171841019.png" alt="image-20220429165422275" style="zoom:67%;">
+
+<p><strong>主动扫描</strong>：</p>
+<ul>
+<li>主机(H1)主动广播探测请求帧(Probe Request Frame)</li>
+<li>AP发送探测响应帧(Probe Response Frame)</li>
+<li>主机(H1)向选择的AP发送关联请求帧</li>
+<li>AP向主机(H1)发送关联响应帧</li>
+</ul>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171841155.png" alt="image-20220429165439371" style="zoom:67%;">
+
+
+
+<p><strong>802.11：多路访问控制</strong></p>
+<p>避免冲突：多个结点同时传输</p>
+<p>802.11：CSMA – 发送数据前监听信道，避免与正在进行传输的其他结点冲突</p>
+<p>802.11：不能像CSMA/CD那样，边发送、边检测冲突！</p>
+<ul>
+<li>无线信道很难实现</li>
+<li>无法侦听到所有可能的冲突：隐藏站、信号衰落</li>
+<li>目标：避免冲突（void collisions）- <strong>CSMA/CA（collision avoidance）</strong></li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171842786.png" alt="image-20220429170226072"></p>
+<p><strong>IEEE 802.11 MAC协议: CSMA/CA</strong></p>
+<p><strong>802.11 sender</strong></p>
+<blockquote>
+<p>if 监听到信道空闲了DIFS时间 then 发送整个帧(无同时检测冲突，即CD)</p>
+<p>if 监听到信道忙 then 开始随机退避计时，当信道空闲时，计时器倒计时，计时器超时则发送帧</p>
+<p>if 没有收到ACK (默认发送失败）then  增加随机退避间隔时间，重复第2步</p>
+</blockquote>
+<p>802.11 receiver</p>
+<blockquote>
+<p>if 正确接收帧 then 延迟SIFS时间后，向发送端发送ACK(由于存在隐藏站问题) </p>
+</blockquote>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171842062.png" alt="image-20220429170647245" style="zoom:67%;">
+
+
+
+<p><strong>IEEE 802.11 MAC协议：CSMA/CA</strong></p>
+<p>基本思想：允许发送端“预约”(reserve)信道，而不是随机发送数据帧，从而避免长数据帧的冲突</p>
+<ul>
+<li>发送端首先利用CSMA向BS发送一个很短的<strong>RTS（request-to-send）帧</strong>，RTS帧仍然可能彼此冲突 （但RTS帧很短）</li>
+<li>BS广播一个<strong>CTS（clear-to-send）帧</strong>作为对RTS的响应</li>
+<li>CTS帧可以被所有结点接收<ul>
+<li>消除隐藏站影响</li>
+<li>发送端可以发送数据帧</li>
+<li>其他结点推迟发送</li>
+</ul>
+</li>
+</ul>
+<p>利用很小的预约帧彻底避免了数据帧冲突</p>
+<p><strong>冲突避免(CA): RTS-CTS交换</strong></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171842826.png" alt="image-20220429171210621"></p>
+<p><strong>IEEE 802.11 MAC帧</strong></p>
+<img src="https://github.com/yanglinqi107/images/raw/master/res/202205171842859.png" alt="image-20220429172441277" style="zoom:80%;">
+
+<p>802.11数据帧有4个地址字段：地址 4 用于自组网络</p>
+<p>地址1~地址3：</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171842443.png" alt="image-20220429172542066"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/res/202205171842983.png" alt="image-20220429172608374"></p>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2/" rel="prev" title="计算机网络">
+      <i class="fa fa-chevron-left"></i> 计算机网络
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/%E4%BF%AE%E6%94%B9status/" rel="next" title="修改status">
+      修改status <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-number">1.</span> <span class="nav-text">数据链路层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.1.</span> <span class="nav-text">术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E8%B7%AF%E5%B1%82%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.2.</span> <span class="nav-text">链路层的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B"><span class="nav-number">1.3.</span> <span class="nav-text">差错检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.4.</span> <span class="nav-text">MAC协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%A1%E9%81%93%E5%88%92%E5%88%86MAC%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.4.1.</span> <span class="nav-text">信道划分MAC协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AEMAC%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.4.2.</span> <span class="nav-text">随机访问MAC协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%97%B6%E9%9A%99ALOHA%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">时隙ALOHA协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ALOHA%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">ALOHA协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CSMA%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">CSMA协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CSMA-CD%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.4.2.4.</span> <span class="nav-text">CSMA&#x2F;CD协议</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AE%E8%BD%AC%E8%AE%BF%E9%97%AEMAC%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.4.3.</span> <span class="nav-text">轮转访问MAC协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MAC%E5%8D%8F%E8%AE%AE%E5%B0%8F%E7%BB%93"><span class="nav-number">1.4.4.</span> <span class="nav-text">MAC协议小结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%80%E5%9F%9F%E7%BD%91LAN"><span class="nav-number">2.</span> <span class="nav-text">局域网LAN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC%E5%9C%B0%E5%9D%80"><span class="nav-number">2.1.</span> <span class="nav-text">MAC地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.2.</span> <span class="nav-text">ARP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91ETHERNET"><span class="nav-number">2.3.</span> <span class="nav-text">以太网ETHERNET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BAswitch"><span class="nav-number">2.4.</span> <span class="nav-text">交换机switch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BAVS%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="nav-number">2.5.</span> <span class="nav-text">交换机VS路由器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%AF%B9%E6%AF%94"><span class="nav-number">2.6.</span> <span class="nav-text">网络设备对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91-VLAN"><span class="nav-number">2.7.</span> <span class="nav-text">虚拟局域网(VLAN)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PPP%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.8.</span> <span class="nav-text">PPP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="nav-number">2.9.</span> <span class="nav-text">无线局域网</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yanglinqi"
+      src="/images/headpic.jpg">
+  <p class="site-author-name" itemprop="name">yanglinqi</p>
+  <div class="site-description" itemprop="description">用于做笔记，对学过的知识总结</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanglinqi107" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanglinqi107" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanglinqi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+</body>
+</html>

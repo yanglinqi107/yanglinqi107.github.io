@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<meta name="referrer" content="no-referrer">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"/node_modules/hexo-generator-searchdb/search.xml"};
+  </script>
+
+  <meta name="description" content="编译原理    第四部分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="语法分析">
+<meta property="og:url" content="http://yanglinqi107.github.io/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/4%E3%80%81%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="杨的个人博客">
+<meta property="og:description" content="编译原理    第四部分">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136413.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136414.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136416.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136417.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136418.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136419.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136420.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136421.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136422.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136423.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136424.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136425.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136426.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136427.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136428.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136429.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136430.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136432.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136433.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136434.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136435.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136436.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136437.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136438.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136439.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136440.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136441.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136442.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136443.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136444.png">
+<meta property="article:published_time" content="2022-05-17T14:55:41.808Z">
+<meta property="article:modified_time" content="2022-05-18T06:00:02.400Z">
+<meta property="article:author" content="yanglinqi">
+<meta property="article:tag" content="编译原理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136413.png">
+
+<link rel="canonical" href="http://yanglinqi107.github.io/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/4%E3%80%81%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>语法分析 | 杨的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">杨的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">碎片化学习令人焦虑，系统化学习使人进步</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">88</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yanglinqi107.github.io/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/4%E3%80%81%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headpic.jpg">
+      <meta itemprop="name" content="yanglinqi">
+      <meta itemprop="description" content="用于做笔记，对学过的知识总结">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          语法分析
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-17 22:55:41" itemprop="dateCreated datePublished" datetime="2022-05-17T22:55:41+08:00">2022-05-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-18 14:00:02" itemprop="dateModified" datetime="2022-05-18T14:00:02+08:00">2022-05-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">编译原理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>编译原理    第四部分</p>
+<span id="more"></span> 
+
+<h2 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h2><p>语法分析的任务：按照文法，从源程序符号串中识别出各类语法成分，同时进行语法检查，为语义分析和代码生成做准备。</p>
+<p>语法分析程序的定义：执行语法分析任务的程序称为语法分析程序，也称为==语法分析器==，它是编译程序的主要部分之一。</p>
+<p>分析器的输入：单词符号</p>
+<p>分析器的输出</p>
+<ul>
+<li>分析树</li>
+<li>出错处理:定位、续编译</li>
+</ul>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136413.png" alt="image-20220103141353344"></p>
+<h3 id="语法分析方法"><a href="#语法分析方法" class="headerlink" title="语法分析方法"></a>语法分析方法</h3><ul>
+<li>自顶向下 (top-down)<ul>
+<li>不确定法-回溯</li>
+<li>确定法<ul>
+<li>递归子程序</li>
+<li>预测分析(LL)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>自底向上 (bottom-up)<ul>
+<li>算符优先</li>
+<li>LR(0)、SLR(1) 、LR(1)、LALR(1) </li>
+</ul>
+</li>
+</ul>
+<h2 id="自顶向下"><a href="#自顶向下" class="headerlink" title="自顶向下"></a>自顶向下</h2><h3 id="自顶向下分析法"><a href="#自顶向下分析法" class="headerlink" title="自顶向下分析法"></a>自顶向下分析法</h3><blockquote>
+<p>从文法开始符号为树根进行推导，试图自上而下地为期望的终结符串构造一棵语法树</p>
+<p>每一步推导是对当前句型中剩余的某个非终结符进行扩展，即用该非终结符的一个产生式的右部替换该非终结符（最左推导）</p>
+<p>如果每一步选择产生式来匹配的时候都能够每选必中，则这种方法称为==确定的分析方法==；否则在选择产生式时面临多种可能，不知道选择哪一个产生式合适，就是==不确定的分析方法==</p>
+<p>如果不存在任何一个可以产生出所期望的终结符串的推导，则表明存在语法错误</p>
+</blockquote>
+<p>不确定分析方法示例：</p>
+<blockquote>
+<p>$G_1[S]:$ $S→aAB \ A→bA|c \ B→dBe|de$</p>
+<p>输入串$abbcde$的最左推导：$S \Rightarrow aAB \Rightarrow abAB \Rightarrow abbAB \Rightarrow abbcB \Rightarrow abbcde$ 是该文法$G_1$的句子</p>
+<p>语法树：</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136414.png" alt="image-20220103122426610" style="zoom:67%;">
+
+<p>穷举的试探方法  效率低、代价高</p>
+</blockquote>
+<h3 id="确定的自顶向下分析法"><a href="#确定的自顶向下分析法" class="headerlink" title="确定的自顶向下分析法"></a>确定的自顶向下分析法</h3><p>先要解决从文法的开始符号出发，如何根据当前的输入符号(单词符号)唯一地确定选用哪个产生式替换相应非终结符往下推导，或构造一棵相应的语法树。 </p>
+<p><font color="#ff0000">由于相同左部产生式，需要计算首终结符号集</font></p>
+<p><strong>首终结符号集（开始符号集）</strong></p>
+<blockquote>
+<p>设$G＝( V_N, V_T, P, S)$是上下文无关文法，$α$是由非终结符与终结符组成的任意符号串，用$FIRST(α)$表示$α$的首终结符集，则$FIRST(α)＝{a|α\Rightarrow aβ, a∈V_T,α,β∈(V_N∪V_T)^*}$<br>若$α＝ε$，则规定$FIRST(α)＝\emptyset $ (空集)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>最左推导过程</th>
+<th>所选产生式</th>
+<th>输入串</th>
+<th>(当前要替换的非终结符,输入符)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>S</td>
+<td></td>
+<td>aca#</td>
+<td>(S,a)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>aAB</td>
+<td>S→aAB</td>
+<td>aca#</td>
+<td>(A,c)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>acAB</td>
+<td>A→cA</td>
+<td>aca#</td>
+<td>(A,a)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>acεB</td>
+<td>A→ε</td>
+<td>aca#</td>
+<td>(B,a)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>aca</td>
+<td>B→a</td>
+<td>aca#</td>
+<td>推导成功</td>
+</tr>
+</tbody></table>
+<p><font color="#ff0000">由于空产生式 如：$A\rightarrow ε$，需要计算首终结符号集</font></p>
+<p><strong>后随符号集</strong></p>
+<blockquote>
+<p>设$G＝( V_N, V_T , P, S)$是上下文无关文法，$A$是$G$中的非终结符，用$FOLLOW(A)$表示$A$的后随符号集，则有：$FOLLOW(A)＝{a|S \stackrel{*}{\Rightarrow} …Aa…，a∈V_T}$<br>特别地，若有$S\Rightarrow …A$,则规定$＃∈FOLLOW(A)$。</p>
+</blockquote>
+<p>换句话说，$FOLLOW(A)$是指在$G$的各个句型中位于$A$后面的那些终结符或‘＃’。用‘＃’作为输入串的结束符，或称为句子括号，如：＃输入串＃</p>
+<p><strong>可选集</strong></p>
+<blockquote>
+<p>给定上下文无关文法的产生式$A→α，A∈V_N,α∈V^*$,则定义：</p>
+<ul>
+<li>如果$α \not\stackrel{*}{\Rightarrow} ε$, 则$SELECT(A→α)= FIRST(α)$；</li>
+<li>如果$α\stackrel{*}{\Rightarrow} ε$，则$SELECT(A→α)=FIRST(α)∪FOLLOW(A)$；</li>
+<li>特别地，如果$α＝ε$，则$SELECT(A→ε)=FOLLOW(A)$。</li>
+</ul>
+<p>可选集的含义如下：在自顶向下分析过程中，如果当前要替换的最左非终结符为$A$，面临输入符为$a∈SELECT(A→α)$时，则可以选择产生式$A→α$来匹配。因此，只要文法$G$的某一个非终结符$A$的各个可选集互不相交，则语法分析程序就可以根据当前输入符和$A$的可选集来唯一正确的选择$A$的某个产生式去匹配。</p>
+</blockquote>
+<h3 id="LL-1-文法"><a href="#LL-1-文法" class="headerlink" title="LL(1)文法"></a>LL(1)文法</h3><ul>
+<li>第一个“L”, 代表从左（Left）向右扫描单词</li>
+<li>第二个“L”,代表产生的是最左（Leftmost）推导</li>
+<li>“1”代表向前查看（lookahead）一个单词</li>
+</ul>
+<p>定义：</p>
+<blockquote>
+<p>一个上下文无关文法是LL(1)文法的充分必要条件是==关于同一非终结符的各个产生式的可选集互不相交==。</p>
+<p>类似地，也可以有LL(k)文法，也就是需要向前查看K个符号才能够确定选择哪个产生式。通常采用K=1，个别情况采用K=2。</p>
+</blockquote>
+<p>特点</p>
+<ul>
+<li><p>无二义性的</p>
+</li>
+<li><p>不含左递归</p>
+</li>
+<li><p>无公共左因子</p>
+</li>
+</ul>
+<h3 id="递归文法"><a href="#递归文法" class="headerlink" title="递归文法"></a>递归文法</h3><p>递归文法是指对文法中任一非终结符$A$，若存在一个推导序列，在推出的符号串中又出现了该非终结符本身，即$A\stackrel{+}{\Rightarrow}…A…$，则该文法是递归的。</p>
+<p>若文法中对任一非终结符$A$有推导$A\stackrel{+}{\Rightarrow}A…$，则称该文法是左递归的。</p>
+<p>若文法中对任一非终结符$A$有推导$A\stackrel{+}{\Rightarrow}…A$，则称该文法是右递归的。</p>
+<p>左递归又可以分为直接左递归和间接左递归</p>
+<ul>
+<li>直接左递归：若文法中的某一产生式形如$A→Aα，α∈V*$，则称该文法是直接左递归的。</li>
+<li>间接左递归：若文法中存在某一非终结符$A$，使得$A\stackrel{+}{\Rightarrow}A…$至少需要两步推导，则称该文法是间接左递归的。</li>
+</ul>
+<h3 id="非LL-1-文法到LL-1-文法的等价变换"><a href="#非LL-1-文法到LL-1-文法的等价变换" class="headerlink" title="非LL(1)文法到LL(1)文法的等价变换"></a>非LL(1)文法到LL(1)文法的等价变换</h3><h4 id="1、消除左递归"><a href="#1、消除左递归" class="headerlink" title="1、消除左递归"></a>1、消除左递归</h4><p>当一个文法是左递归文法时，采用自顶向下分析法会使分析过程进人无穷循环之中。</p>
+<p><strong>消除直接左递归</strong>：只需将产生式进行改写，使之不含左递归。为此需要引进一个新的非终结符，把含有左递归的产生式改写成右递归的产生式。</p>
+<blockquote>
+<p>一般情况</p>
+<p>$A→Aα_1 |Aα_2 |…|Aα_{n-1} |Aα_n|β_1 |β_2 |…|β_{m-1} |β_m $</p>
+<p>$α_i、β_j∈V^*，i=1,…,n，j=1,…,m$，且$β_j$不以$A$开头​</p>
+<p>消除直接左递归：引入一个新的非终结符$A^′$</p>
+<p>$A →β_1A^′|β_2A^′|…|β_{m-1}A^′|β_mA^′ \ A^′→α_1A^′|α_2A^′|…|α_n{-1}A^′|α_nA^′|ε$</p>
+</blockquote>
+<p>消除间接左递归</p>
+<ul>
+<li>采用代入法把间接左递归变成直接左递归</li>
+<li>直接改写文法</li>
+</ul>
+<h4 id="2、消除回溯：提取左公因子"><a href="#2、消除回溯：提取左公因子" class="headerlink" title="2、消除回溯：提取左公因子"></a>2、消除回溯：提取左公因子</h4><blockquote>
+<p>在自顶向下分析过程中，当某个非终结符$A$对应多个候选式时，如果其中有几个候选式的左端第一符号相同，那么就会使得语法分析程序无法根据当前要替换的非终结符和当前输人符唯一地决定选用哪个候选式来替换$A$，只能采用试探的办法，任选某个候选式去试探一次。如果不能导致最终正确地匹配，只得再换另一个候选式去试探，从而引起回溯。</p>
+</blockquote>
+<blockquote>
+<p>一般情况</p>
+<p>若A的产生式为：$A→αβ_1|αβ_2|…|αβ_k$</p>
+<p>经过提取公共左因子α，原产生式变为：  </p>
+<p>$A→αA^′ \ A^′→β_1|β_2|…|β_k $ </p>
+<p>如果$β_m、β_n$…（其中$1≤m、n≤k$）中仍然含有公共左因子，则可反复提取它们的共同左因子，直到每个新引入的非终结符的产生式再无公共左因子为止。</p>
+</blockquote>
+<p>注意：不含左递归和左公因子的文法不一定是LL(1)文法</p>
+<p>3、计算$SELECT$集，判断产生式左部相同的$SELECT$的交集是否为空</p>
+<h3 id="确定的自顶向下分析方法"><a href="#确定的自顶向下分析方法" class="headerlink" title="确定的自顶向下分析方法"></a>确定的自顶向下分析方法</h3><p>特征——根据下一个输入符号为当前要处理的非终结符选择产生式</p>
+<p>要求——文法是LL(1)文法</p>
+<p>语法分析方法：</p>
+<ul>
+<li>递归下降分析法</li>
+<li>预测分析法</li>
+</ul>
+<h4 id="递归下降分析法"><a href="#递归下降分析法" class="headerlink" title="递归下降分析法"></a>递归下降分析法</h4><p>递归子程序法是比较简单直观易于构造的一种语法分析方法。</p>
+<p>实现思想：文法中每个非终结符对应一个递归过程(子程序)，每个过程的功能是识别由该非终结符推出的串，当某非终结符的产生式有多个候选式时能够按LL(1)形式可唯一地确定选择某个候选式进行推导。</p>
+<h4 id="预测分析法"><a href="#预测分析法" class="headerlink" title="预测分析法"></a>预测分析法</h4><p>预测分析法用一个分析栈存放当前要替换的非终结符的某个候选式的符号串（倒放在栈内），当非终结符呈现在栈顶时，它就是当前非终结符；此外，还使用一张矩阵形式的==预测分析表==，它是根据可选集构造的，它的入口指出了某非终结符和某终结符匹配时所应选择的候选式和语义动作。预测分析程序的总控程序就是利用栈顶符号和当前输人符号对输人串进行预测分析，而预测的信息则存放在预测分析表的相应入口里。</p>
+<p>预测分析表的构造算法是：</p>
+<ul>
+<li>对每个终结符$a∈SELECT（A→α）$，把$A→α$填入$M[A，a]$中；把所有无定义的$M[A，a]$均填上“出错标志”。 </li>
+<li>把所有无定义的$M[A，a]$均填上“出错标志”。 </li>
+</ul>
+<p>上述算法可应用于任何文法$G$以构造它的分析表$M$。但对于某些文法，有些$M[A，a]$中可能有若干个产生式，或者说有些$M[A，a]$可能是多重定义的。</p>
+<p>一个文法$G$的预测分析表$M$不含多重定义入口，当且仅当该文法是$LL(1)$文法。</p>
+<p>示例：$E → TE^′ \<br>E^′ →十TE^′|ε    \<br>T → FT^′    \<br>T^′ → *FT^′|ε    \<br>F → i |(E) $</p>
+<p>预测分析表</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>i</strong></th>
+<th><strong>+</strong></th>
+<th>*****</th>
+<th><strong>(</strong></th>
+<th><strong>)</strong></th>
+<th><strong>#</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>E</strong></td>
+<td><strong>E</strong> <strong>→</strong> <strong>TE’</strong></td>
+<td></td>
+<td></td>
+<td>**E→TE’ **</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>E’</strong></td>
+<td></td>
+<td><strong>E’→+TE’</strong></td>
+<td></td>
+<td></td>
+<td><strong>E’→ε</strong></td>
+<td><strong>E’→ε</strong></td>
+</tr>
+<tr>
+<td><strong>T</strong></td>
+<td><strong>T→FT ‘</strong></td>
+<td></td>
+<td></td>
+<td><strong>T→FT ‘</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>T ‘</strong></td>
+<td></td>
+<td><strong>T ‘→ε</strong></td>
+<td><strong>T ‘→*FT ‘</strong></td>
+<td></td>
+<td><strong>T ‘→ε</strong></td>
+<td><strong>T ‘→ε</strong></td>
+</tr>
+<tr>
+<td><strong>F</strong></td>
+<td><strong>F</strong> <strong>→</strong> <strong>i</strong></td>
+<td></td>
+<td></td>
+<td><strong>F→(E)</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>分析过程  输入串 i+i</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>分析栈</th>
+<th>(栈顶符,输入符)</th>
+<th>剩余输入串</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>#E</td>
+<td>( E,i)查表E → TE’</td>
+<td>i+i#</td>
+</tr>
+<tr>
+<td>2</td>
+<td>#E’T</td>
+<td>(T,i)查表T→ FT’</td>
+<td>i+i#</td>
+</tr>
+<tr>
+<td>3</td>
+<td>#E’T’F</td>
+<td>( F,i)查表F →i</td>
+<td>i+i#</td>
+</tr>
+<tr>
+<td>4</td>
+<td>#E’T’i</td>
+<td>( i,i) 匹配</td>
+<td>+i#</td>
+</tr>
+<tr>
+<td>5</td>
+<td># E’T’</td>
+<td>( T ‘,+)查表T ‘ → $\varepsilon $</td>
+<td>+i#</td>
+</tr>
+<tr>
+<td>6</td>
+<td>#E’</td>
+<td>( E’, +)查表E ‘ →+TE’</td>
+<td>+i#</td>
+</tr>
+<tr>
+<td>7</td>
+<td>#E’T+</td>
+<td>( +,+)匹配</td>
+<td>i#</td>
+</tr>
+<tr>
+<td>8</td>
+<td># E’T</td>
+<td>( T,i)查表T → FT’</td>
+<td>i#</td>
+</tr>
+<tr>
+<td>9</td>
+<td>#E’T’F</td>
+<td>( F,i)查表F → i</td>
+<td>i#</td>
+</tr>
+<tr>
+<td>10</td>
+<td>#E’T’i</td>
+<td>( i,i )匹配</td>
+<td>#</td>
+</tr>
+<tr>
+<td>11</td>
+<td>#E’T’</td>
+<td>( T’,  #)查表T’  → $\varepsilon $</td>
+<td>#</td>
+</tr>
+<tr>
+<td>12</td>
+<td>#E’</td>
+<td>( E’,  #)查表E’  → $\varepsilon $</td>
+<td>#</td>
+</tr>
+<tr>
+<td>13</td>
+<td>#</td>
+<td>(  #,  #)  成功接收</td>
+<td>#</td>
+</tr>
+</tbody></table>
+<h2 id="自底向上"><a href="#自底向上" class="headerlink" title="自底向上"></a>自底向上</h2><blockquote>
+<p>自底向上语法分析的基本思想是从左向右扫描输入串，一边将输入符移进分析栈内，一边检查位于栈顶的一串符号是否与某个产生式的右部相同，若发现相同，就把栈顶的这串符号替换为相应产生式的左部的非终结符（这种替换就称为==归约==）；若不相同，则继续移进输入符。并继续判断。重复这一过程直到输入串已到达串尾，而栈内恰好为==给定文法的开始符号==（假定未发现错误）时为止。此时表明分析成功，也就确认输入串是文法的句子。这种分析方法也称为==移进-归约分析法==。</p>
+</blockquote>
+<p>可归约串</p>
+<blockquote>
+<p>可归约串：即每次归约的那串符号（是各个产生式的右部），称为==句柄==。</p>
+<p>自底向上语法分析的关键：在自底向上语法分析的过程中，最关键的问题就是如何识别句柄</p>
+</blockquote>
+<p>规范规约</p>
+<blockquote>
+<p>规范推导：即最右推导</p>
+<p>规范归约：规范推导的逆过程。</p>
+<p>规范句型：由最右推导推导出的句型</p>
+</blockquote>
+<p>分析过程的不确定性</p>
+<blockquote>
+<p>两种动作： 移进   归约</p>
+</blockquote>
+<p>若在自底向上的分析过程中，语法分析程序每次只面临一种动作选择，要么移进，要么归约，则这个分析过程就是确定的，不会产生错误归约。</p>
+<p>若在某一步的分析中，既可移进又可归约或者同时可选择两种归约动作，则语法分析程序的动作就是不确定的。</p>
+<p>存在的问题</p>
+<ul>
+<li>移进_归约冲突</li>
+<li>归约_归约冲突</li>
+</ul>
+<h3 id="句柄，短语，最左素短语"><a href="#句柄，短语，最左素短语" class="headerlink" title="句柄，短语，最左素短语"></a>句柄，短语，最左素短语</h3><p>【短语】若$S\stackrel{*}{\Rightarrow} αAδ$且$A\stackrel{+}{\Rightarrow} β$，则称$β$是相对于非终结符$A$的句型$αβδ$的短语。</p>
+<p>【直接短语】若$S\stackrel{*}{\Rightarrow}αAδ$且$A→β$，则称$β$是相对于非终结符$A$的句型$αβδ$的直接短语(也称为简单短语)。</p>
+<ul>
+<li>直接短语是某个产生式右部的符号串</li>
+</ul>
+<p>【句柄】位于句型最左边的直接短语称为该句型的句柄。</p>
+<p>利用语法树求短语、直接短语、句柄</p>
+<blockquote>
+<p>子树：由语法树中的某一个结点连同其所有下层的后代结点组成的部分。</p>
+<p>简单子树：只有单层分支（即父子两代）的子树。</p>
+<p>短语：每棵子树的各端末节点从左向右排列形成一个短语。</p>
+<p>直接短语：每棵父子两代的子树（即简单子树）的各端末节点从左向右排列形成一个直接短语。</p>
+<p>句柄：位于语法树最左边的父子两代的子树的各端末节点从左向右排列形成句柄。 </p>
+</blockquote>
+<p>注意：短语、简单短语是相对于句型而言，一个句型可能有多个短语、简单短语，句柄只能有一个。</p>
+<p>【素短语】有以下3个特征；</p>
+<ul>
+<li>它首先是一个短语，</li>
+<li>它至少含一个终结符号，</li>
+<li>除自身外，不再包含其他素短语。 </li>
+</ul>
+<p>【最左素短语】 (LPP_leftmost Prime Phrase)：位于句型最左边的素短语。</p>
+<p>示例1：文法$G_2[S]：$$S→AB \ A→bB \ A→Aa \ B→a \ B→Sb$</p>
+<p>求句型$baSb$的全部短语、直接短语、句柄</p>
+<blockquote>
+<p>句型baSb的短语：ba，a，Sb，baSb。<br>直接短语：a，Sb<br>句柄：a<br><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136416.png" alt="image-20220103172105186" style="zoom:67%;"></p>
+</blockquote>
+<p>示例2：</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136417.png" alt="image-20220103215816904" style="zoom:80%;">
+
+<p>在任何自底向上的分析法中，语法分析器的设计必须解决下面两个问题：</p>
+<ul>
+<li>如何保证所找到的直接短语（即某个产生式右部的符号串）是最左的。</li>
+<li>如何确定句柄在句型中的开始位置和结束位置，从而可以抽取它。</li>
+</ul>
+<p>解决最左性</p>
+<blockquote>
+<p>分析器自左向右地逐个读入输入串，使用分析栈存放读入的符号，并同时检查栈顶是否形成直接短语。任何时刻，栈内符号串和剩余输入串都形成一个规范句型，并且栈内符号串构成句型的左部。因此，一旦栈顶部形成直接短语，它必定是最左直接短语，即句柄。</p>
+</blockquote>
+<p>确定句柄的起始位置</p>
+<blockquote>
+<p>对于第二个问题的不同解决方法产生了不同类型的文法</p>
+</blockquote>
+<p>  优先法：利用归约的先与后来识别句柄。有简单优先分析法，算符优先分析法。 </p>
+<p>  状态法：用状态的概念来描述不同时刻下所形成的那部分句柄。例如对于产生式：$A→aBC$，对应4种不同的识别状态：$A → ·aBC，A → a·BC，A → aB·C，A → aBC· $  ，基于此种思想的有LR分析法。</p>
+<h3 id="简单优先方法"><a href="#简单优先方法" class="headerlink" title="简单优先方法"></a>简单优先方法</h3><p>简单优先方法是一种简单直观，广为使用的自底向上的分析方法。这种方法特别有利于分析表达式。</p>
+<p>简单优先方法就是根据算术运算的计算原理（运算符之间的优先顺序）而设计的一种语法分析方法。</p>
+<p>基本思想</p>
+<blockquote>
+<p>首先规定文法符号之间的优先关系，然后再利用这种关系，通过比较句型中两个相邻的符号之间的优先关系来确定句型的“句柄”并进行归约</p>
+</blockquote>
+<p>相邻关系</p>
+<blockquote>
+<p>设$S_i$和$S_j$是文法$G$的任意两个符号，那么它们在句型中可相邻出现的充要条件是必须满足下列条件之一</p>
+<p>1、有形如 $U→… S_iS_j…$的产生式</p>
+<p>2、有形如 $U→…S_i W…$的产生式，且有$ W \stackrel{+}{\Rightarrow}  S_j…$</p>
+<p>3、有形如 $U→…VS_j…$的产生式，且有$ V \stackrel{+}{\Rightarrow} …Si $</p>
+<p>4、有形如 $U→…VW…$的产生式，且有 $V\stackrel{+}{\Rightarrow} …S_i$和$W \stackrel{+}{\Rightarrow} S_j…$</p>
+</blockquote>
+<p>优先关系矩阵</p>
+<blockquote>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136418.png" alt="image-20220103173650414"></p>
+</blockquote>
+<blockquote>
+<p>示例：设有文法$G_z：$ $Z → bMb \ M→a︱( L  \ L→Ma)$</p>
+<p>优先关系矩阵<br><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136419.png" alt="image20220103174011935" style="zoom:80%;"></p>
+</blockquote>
+<p>构造优先矩阵</p>
+<blockquote>
+<p>STEP 1 : 对每个非终极符$W$求下面两种集合</p>
+<p>$HEAD(W)={S|W\stackrel{+}{\Rightarrow}S…, \quad S\in(V_N,V_T) }$</p>
+<p>$LAST(W)={S|W\stackrel{+}{\Rightarrow}…S, \quad S\in(V_N,V_T) }$</p>
+<p>STEP 2 : 对每个符号对$S_i,S_j$填写优先关系矩阵元素(其中$W,V∈V_N$)</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136420.png" alt="image20220103175513071"></p>
+</blockquote>
+<h3 id="算符优先分析法"><a href="#算符优先分析法" class="headerlink" title="算符优先分析法"></a>算符优先分析法</h3><p>简单直观，特别便于手工实现。只考虑终结符之间的关系</p>
+<p>【算符文法】对于上下文有关文法$G$，如果它的每个产生式的右部没有两个非终结符直接相邻，即没有$P →…QR…（Q、R∈VN ）$形式的产生式，则$G$是一个算符文法 (operator grammar)。</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136421.png" alt="image-20220103214226514"></p>
+<p>$FIRSTVT(P) = {a | P \stackrel{+}{\Rightarrow} a… 或 P\stackrel{+}{\Rightarrow} Qa…}$</p>
+<p>$LASTVT(P) = {a|P\stackrel{+}{\Rightarrow} … a 或P\stackrel{+}{\Rightarrow} …aQ}$</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136422.png" alt="image-20220103215056775" style="zoom:80%;">
+
+<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136423.png" alt="image-20220103215130179" style="zoom:80%;">
+
+<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136424.png" alt="image-20220103220043967" style="zoom:80%;">
+
+
+
+<p>示例：算术表达式文法$G _4[E]：$ $E→E +T | T \   T→T ^* F | F  \   F→i |（E）$</p>
+<blockquote>
+<p>算符优先矩阵</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136425.png" alt="image-20220103220725638"></p>
+<p>输入串 $i+i ^* i$ 的分析过程</p>
+<p>规定 # &lt; 所有的文法符号 &gt;＃</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136426.png" alt="image-20220103220442091"></p>
+</blockquote>
+<h3 id="LR分析法"><a href="#LR分析法" class="headerlink" title="LR分析法"></a>LR分析法</h3><p>LR分析法的归约过程是规范推导的逆过程，所以LR分析过程是一种规范归约过程，每一步归约的都是真正的句柄。</p>
+<p>LR(k)分析法的含义是：</p>
+<blockquote>
+<p>L：表示自底向上分析过程中是从左到右扫描输入串</p>
+<p>R：表示在分析过程中采用最右推导底逆过程</p>
+<p>K：表示需要向前查看k个输入符号</p>
+<p>LR(0)分析法中的0表示不需向前查看输入符</p>
+<p>LR(1)分析法中的1表示只需向前查看一个输入符</p>
+</blockquote>
+<p>基本原理：把每个句柄的识别过程划分为若干状态，利用DFA来识别</p>
+<img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136427.png" alt="image-20220103221924644" style="zoom:80%;">
+
+<p>分析栈：存放“状态”和移进、归约的文法符号。</p>
+<p>分析表：分为两个子表。</p>
+<ul>
+<li><p>动作表：指出DFA每个状态下应采取的动作：移进、归约、接收或报错。</p>
+</li>
+<li><p>状态转向表：指出DFA的转向状态，即分析栈应转换到的下一个状态（栈顶的新状态）。</p>
+</li>
+</ul>
+<p>总控程序：依据分析表驱动语法分析的进程</p>
+<p>【规范句型的活前缀】规范句型的一个前缀，如果它不含句柄后的任何符号，则称它是该规范句型的一个活前缀。</p>
+<p>活前缀示例：</p>
+<blockquote>
+<p>$G[S]$为：$S → v I : T \ I → I , i \ I → i \ T → r$</p>
+<p>句子 v i，i：r 的规范推导：$S \Rightarrow v I : T \Rightarrow v I : r \Rightarrow v I，i : r \Rightarrow v i，i：r$</p>
+<p>句子 v i，i：r 的前缀有：ε, v ，v i ，v i , ，v i , i ，……​</p>
+<p>句子 v i，i：r 的活前缀有：ε, v ，v i </p>
+<p>句型 v I，i：r 的前缀有：ε, v ，v I ，v I, ，v I,i ， v I,i :， ……</p>
+<p>句型 v I ，i：r 的活前缀有：ε, v ，v I ，v I, ， v I , i </p>
+</blockquote>
+<p>活前缀和句柄之间有三种关系</p>
+<blockquote>
+<p>活前缀不含有句柄的任何符号</p>
+<p>活前缀只包含句柄的部分符号</p>
+<p>活前缀包含句柄的全部符号</p>
+</blockquote>
+<p>$A→ \cdot β$ 刻划没有句柄的任何符号在栈顶，此时期望$A→β$的右部所推出的符号串</p>
+<p>$A→β_1\cdot β_2$  刻划$A→β_1β_2$的右部子串$β_1$已出现在栈顶，期待从输入串中看到$β_2$推出的符号</p>
+<p>$A→β\cdot $ 刻划产生式$A→β$的右部$β$已出现在栈顶</p>
+<h3 id="LR-0"><a href="#LR-0" class="headerlink" title="LR(0)"></a>LR(0)</h3><p>在文法G中每个产生式的右部适当位置添加一个圆点构成LR(0)项目。 </p>
+<p>例如产生式：$A→aBC$，有4个LR(0)项目：$A →\cdot aBC，A →a \cdot BC，A →aB \cdot C，A →aBC \cdot$ </p>
+<p>一个产生式的项目个数是其右部符号的长度加1。</p>
+<p>每个项目的含义与圆点的位置有关，</p>
+<ul>
+<li>圆点的左部：表示分析过程的某时刻用该产生式归约时句柄已识别过的部分；</li>
+<li>圆点的右部：表示待识别的部分。 </li>
+</ul>
+<p>注意：空产生式$A→ε$仅有LR(0)项目$A→ \cdot $</p>
+<p>LR(0)项目的分类</p>
+<blockquote>
+<p>移进项目，形如 $A→\alpha \cdot a \beta $，a是终结符, $\alpha ,\beta \in V^* $表示下一步要从输入串中移进一个终结符</p>
+<p>待约项目，形如 $A→\alpha \cdot B \beta $，表示等待栈顶归约出所需的非终结符来</p>
+<p>初始项目，形如$S’→ \cdot S$ ，表示开始识别一个句子。</p>
+<p>归约项目，形如 $A→\alpha \cdot $，表示句柄已识别完毕，应该归约的项目</p>
+<p>接收项目，形如 $S’→S \cdot $ ，表示整个句子已识别完毕</p>
+</blockquote>
+<blockquote>
+<p>【后继项目】表示同属于一个产生式的项目，但是圆点的位置仅相差一个文法符号，则称后者为前者的后继项目</p>
+<p>例如：项目 $S → v \cdot I : T$ 是 $S → \cdot v I : T$的后继项目</p>
+<p>$A→ε$的LR(0)项目只有$A→ \cdot $ ，是归约项目</p>
+</blockquote>
+<p>第一步：文法拓广  </p>
+<blockquote>
+<p>为保证开始符号仅出现在一个产生式的左边，即使得接收项目唯一</p>
+</blockquote>
+<p>第二步：构造识别活前缀的DFA</p>
+<blockquote>
+<p>第一种方法是求出文法的所有产生式的LR(0)项目，每个项目都为NFA的一个状态，按一定规则构造识别活前缀的NFA，再确定化为DFA</p>
+<p>第二种方法是把拓广文法的第一个项目${S^′→ \cdot S}$作为初态集的核，通过求核的闭包和转换函数，求出LR(0)项目集规范族，再由转换函数建立状态之间的连接关系得到识别活前缀的DFA</p>
+</blockquote>
+<p>寻找等价项目</p>
+<p>LR(0)项目集的闭包$CLOSURE(I)$</p>
+<p>GO函数——状态转换函数</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136428.png" alt="image-20220104105013841"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136429.png" alt="image-20220104105118772"></p>
+<p>LR(0)项目集规范族</p>
+<h3 id="LR-0-文法"><a href="#LR-0-文法" class="headerlink" title="LR(0)文法"></a>LR(0)文法</h3><p>若某拓广文法的识别规范句型活前缀的DFA的每个状态中，既不存在移进-归约冲突，也不存在归约-归约冲突，则称此文法为LR(0)文法。</p>
+<p>LR(0)分析表</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136430.png" alt="image-20220104105349350"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136432.png" alt="image-20220104105532122"></p>
+<p>凡不能用上述方法填入的分析表的元素，均应填上“报错标志”。即用空白表示错误标志。</p>
+<p>根据这种方法构造的LR(0)分析表不含多重定义时，称这样的分析表为LR(0)分析表，能用LR(0)分析表的分析器称为LR(0)分析器，能构造LR(0)分析表的文法称为LR(0)文法</p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136433.png" alt="image-20220104105705093"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136434.png" alt="image-20220104105921179"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136435.png" alt="image-20220104110034534"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136436.png" alt="image-20220104110045336"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136437.png" alt="image-20220104110057453"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136438.png" alt="image-20220104110117611"></p>
+<h3 id="SLR-1-分析法"><a href="#SLR-1-分析法" class="headerlink" title="SLR(1)分析法"></a>SLR(1)分析法</h3><p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136439.png" alt="image-20220104110736516"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136440.png" alt="image-20220104111110013"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136441.png" alt="image-20220104111335048"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136442.png" alt="image-20220104111404632"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136443.png" alt="image-20220104111636060"></p>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/Compile-img/202205172136444.png" alt="image-20220104112452441"></p>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag"># 编译原理</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/3%E3%80%81%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/" rel="prev" title="词法分析">
+      <i class="fa fa-chevron-left"></i> 词法分析
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/5%E3%80%81%E8%AF%AD%E4%B9%89%E8%AE%A1%E7%AE%97%E5%92%8C%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95/" rel="next" title="语义计算和属性文法">
+      语义计算和属性文法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">语法分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">语法分析方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B"><span class="nav-number">2.</span> <span class="nav-text">自顶向下</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E5%88%86%E6%9E%90%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">自顶向下分析法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E7%9A%84%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E5%88%86%E6%9E%90%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">确定的自顶向下分析法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LL-1-%E6%96%87%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">LL(1)文法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E6%96%87%E6%B3%95"><span class="nav-number">2.4.</span> <span class="nav-text">递归文法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9ELL-1-%E6%96%87%E6%B3%95%E5%88%B0LL-1-%E6%96%87%E6%B3%95%E7%9A%84%E7%AD%89%E4%BB%B7%E5%8F%98%E6%8D%A2"><span class="nav-number">2.5.</span> <span class="nav-text">非LL(1)文法到LL(1)文法的等价变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%B6%88%E9%99%A4%E5%B7%A6%E9%80%92%E5%BD%92"><span class="nav-number">2.5.1.</span> <span class="nav-text">1、消除左递归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%B6%88%E9%99%A4%E5%9B%9E%E6%BA%AF%EF%BC%9A%E6%8F%90%E5%8F%96%E5%B7%A6%E5%85%AC%E5%9B%A0%E5%AD%90"><span class="nav-number">2.5.2.</span> <span class="nav-text">2、消除回溯：提取左公因子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E7%9A%84%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95"><span class="nav-number">2.6.</span> <span class="nav-text">确定的自顶向下分析方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E5%88%86%E6%9E%90%E6%B3%95"><span class="nav-number">2.6.1.</span> <span class="nav-text">递归下降分析法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90%E6%B3%95"><span class="nav-number">2.6.2.</span> <span class="nav-text">预测分析法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A"><span class="nav-number">3.</span> <span class="nav-text">自底向上</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%A5%E6%9F%84%EF%BC%8C%E7%9F%AD%E8%AF%AD%EF%BC%8C%E6%9C%80%E5%B7%A6%E7%B4%A0%E7%9F%AD%E8%AF%AD"><span class="nav-number">3.1.</span> <span class="nav-text">句柄，短语，最左素短语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BC%98%E5%85%88%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">简单优先方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E5%88%86%E6%9E%90%E6%B3%95"><span class="nav-number">3.3.</span> <span class="nav-text">算符优先分析法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LR%E5%88%86%E6%9E%90%E6%B3%95"><span class="nav-number">3.4.</span> <span class="nav-text">LR分析法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LR-0"><span class="nav-number">3.5.</span> <span class="nav-text">LR(0)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LR-0-%E6%96%87%E6%B3%95"><span class="nav-number">3.6.</span> <span class="nav-text">LR(0)文法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SLR-1-%E5%88%86%E6%9E%90%E6%B3%95"><span class="nav-number">3.7.</span> <span class="nav-text">SLR(1)分析法</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yanglinqi"
+      src="/images/headpic.jpg">
+  <p class="site-author-name" itemprop="name">yanglinqi</p>
+  <div class="site-description" itemprop="description">用于做笔记，对学过的知识总结</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanglinqi107" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanglinqi107" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanglinqi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+</body>
+</html>

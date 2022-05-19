@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<meta name="referrer" content="no-referrer">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"/node_modules/hexo-generator-searchdb/search.xml"};
+  </script>
+
+  <meta name="description" content="AI基础学习之线性代数的学习，学习自华为iLearnX网站">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性代数实验">
+<meta property="og:url" content="http://yanglinqi107.github.io/AI/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%AE%9E%E9%AA%8C/index.html">
+<meta property="og:site_name" content="杨的个人博客">
+<meta property="og:description" content="AI基础学习之线性代数的学习，学习自华为iLearnX网站">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/AI-img/Figure_1.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/AI-img/Figure_2.png">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/AI-img/lena_gray.png#pic_left">
+<meta property="og:image" content="https://github.com/yanglinqi107/images/raw/master/AI-img/lena_gray2.png#pic_right">
+<meta property="article:published_time" content="2022-05-17T14:55:54.457Z">
+<meta property="article:modified_time" content="2022-05-18T06:00:02.446Z">
+<meta property="article:author" content="yanglinqi">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/yanglinqi107/images/raw/master/AI-img/Figure_1.png">
+
+<link rel="canonical" href="http://yanglinqi107.github.io/AI/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%AE%9E%E9%AA%8C/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>线性代数实验 | 杨的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">杨的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">碎片化学习令人焦虑，系统化学习使人进步</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">88</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yanglinqi107.github.io/AI/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%AE%9E%E9%AA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headpic.jpg">
+      <meta itemprop="name" content="yanglinqi">
+      <meta itemprop="description" content="用于做笔记，对学过的知识总结">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          线性代数实验
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-17 22:55:54" itemprop="dateCreated datePublished" datetime="2022-05-17T22:55:54+08:00">2022-05-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-18 14:00:02" itemprop="dateModified" datetime="2022-05-18T14:00:02+08:00">2022-05-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>AI基础学习之线性代数的学习，学习自华为iLearnX网站</p>
+<span id="more"></span>
+
+<h3 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h3><p>numpy是款基于 Python的数值处理模块，在处理矩阵数据方面有很大的功能与优势。</p>
+<p>因为线性代数的主要内容就是对矩阵的处理，所以本章节主要的内容都是基于 numpy进行展<br>开，另外也会涉及到方程组求解，所会用到<strong>数学科学库scipy</strong>.</p>
+<ul>
+<li>导入相应库</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> scipy <span class="keyword">as</span> sp</span><br></pre></td></tr></table></figure>
+
+<h3 id="reshape运算"><a href="#reshape运算" class="headerlink" title="reshape运算"></a>reshape运算</h3><p>在数学中并没有reshape运算，但是在 numpy运算库中是一个非常常用的运算，用来改变一个张量的维度数和个维度的大小，例如一个10x10的图片在保存时直接保存为一个包含100个元素的序列，在读取后就可以使用 reshape将其从1x100变换为10x10。示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成一个包含整数0-11的向量</span></span><br><span class="line">x= np.arange(<span class="number">12</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="comment"># 结果输出：</span></span><br><span class="line"><span class="comment"># [0 1 2 3 4 5 6 6 8 9 10 11]</span></span><br><span class="line"><span class="comment"># 查看数组大小</span></span><br><span class="line"><span class="built_in">print</span>(x.shape)</span><br><span class="line"><span class="comment"># 结果输出：</span></span><br><span class="line"><span class="comment"># (12,)</span></span><br><span class="line"><span class="comment"># 将x转换成二维矩阵，其中矩阵的第一个维度为1</span></span><br><span class="line">x=x.reshape(<span class="number">1</span>,<span class="number">12</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="comment"># 结果输出：</span></span><br><span class="line"><span class="comment"># (12,)</span></span><br><span class="line"><span class="comment"># 查看数组大小</span></span><br><span class="line"><span class="built_in">print</span>(x.shape)</span><br><span class="line"><span class="comment"># 结果输出：</span></span><br><span class="line"><span class="comment"># （1,12）</span></span><br><span class="line"><span class="comment"># 将x转换为3x4的矩阵</span></span><br><span class="line">x = x.reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="comment"># 结果输出：</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">[[ 0  1  2  3]</span></span><br><span class="line"><span class="string"> [ 4  5  6  7]</span></span><br><span class="line"><span class="string"> [ 8  9 10 11]]</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="转置实现"><a href="#转置实现" class="headerlink" title="转置实现"></a>转置实现</h3><p>向量和矩阵的转置是交换行列顺序，而三维及以上张量的转置就需要指定转换的维度。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成3x4的矩阵并转置</span></span><br><span class="line">A = np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(A)</span><br><span class="line"><span class="comment"># 结果输出</span></span><br><span class="line"><span class="comment"># [[ 0  1  2  3]</span></span><br><span class="line"><span class="comment">#  [ 4  5  6  7]</span></span><br><span class="line"><span class="comment">#  [ 8  9 10 11]]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(A.T)</span><br><span class="line"><span class="comment"># 结果输出：</span></span><br><span class="line"><span class="comment"># [[ 0  4  8]</span></span><br><span class="line"><span class="comment">#  [ 1  5  9]</span></span><br><span class="line"><span class="comment">#  [ 2  6 10]</span></span><br><span class="line"><span class="comment">#  [ 3  7 11]]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="矩阵乘法实现"><a href="#矩阵乘法实现" class="headerlink" title="矩阵乘法实现"></a>矩阵乘法实现</h3><p>矩阵乘法：记两个矩阵分别为A和B，两个矩阵能够相乘的条件为第一个矩阵的列数等于第二个矩阵的行数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">A = np.arange(<span class="number">6</span>).reshape(<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line">B = np.arange(<span class="number">6</span>).reshape(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(A)</span><br><span class="line"><span class="comment"># 结果输出：</span></span><br><span class="line"><span class="comment"># [[0 1]</span></span><br><span class="line"><span class="comment">#  [2 3]</span></span><br><span class="line"><span class="comment">#  [4 5]]</span></span><br><span class="line"><span class="built_in">print</span>(B)</span><br><span class="line"><span class="comment"># 结果输出：</span></span><br><span class="line"><span class="comment"># [[0 1 2]</span></span><br><span class="line"><span class="comment">#  [3 4 5]]</span></span><br><span class="line"><span class="comment"># 矩阵相乘</span></span><br><span class="line">C = np.matmul(A,B)</span><br><span class="line"><span class="built_in">print</span>(C)</span><br><span class="line"><span class="comment"># 结果输出：</span></span><br><span class="line"><span class="comment"># [[ 3  4  5]</span></span><br><span class="line"><span class="comment">#  [ 9 14 19]</span></span><br><span class="line"><span class="comment">#  [15 24 33]]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="矩阵对应运算"><a href="#矩阵对应运算" class="headerlink" title="矩阵对应运算"></a>矩阵对应运算</h3><p>元素对应运算：针对形状相同矩阵的运算统称，包括元素对应相乘，相加等，即对两个矩阵相同位置的元素进行加减乘除的运算。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建矩阵</span></span><br><span class="line">A = np.arange(<span class="number">6</span>).reshape(<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line">B = np.arange(<span class="number">6</span>,<span class="number">12</span>).reshape(<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 矩阵相乘</span></span><br><span class="line"><span class="built_in">print</span>(A*B)</span><br><span class="line"><span class="comment"># 结果输出：</span></span><br><span class="line"><span class="comment"># [[ 0  7]</span></span><br><span class="line"><span class="comment">#  [16 27]</span></span><br><span class="line"><span class="comment">#  [40 55]]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 矩阵相加</span></span><br><span class="line"><span class="built_in">print</span>(A+A)</span><br><span class="line"><span class="comment"># 结果输出</span></span><br><span class="line"><span class="comment"># [[ 0  2]</span></span><br><span class="line"><span class="comment">#  [ 4  6]</span></span><br><span class="line"><span class="comment">#  [ 8 10]]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="逆矩阵实现"><a href="#逆矩阵实现" class="headerlink" title="逆矩阵实现"></a>逆矩阵实现</h3><p>只有方阵($n\times n$)才有逆矩阵，逆矩阵的实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">A = np.arange(<span class="number">4</span>).reshape(<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(A)</span><br><span class="line"><span class="comment"># 结果输出：</span></span><br><span class="line"><span class="comment"># [[0 1]</span></span><br><span class="line"><span class="comment">#  [2 3]]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 求逆矩阵</span></span><br><span class="line">B = np.linalg.inv(A)</span><br><span class="line"><span class="built_in">print</span>(B)</span><br><span class="line"><span class="comment"># 结果输出：</span></span><br><span class="line"><span class="comment"># [[-1.5  0.5]</span></span><br><span class="line"><span class="comment">#  [ 1.   0. ]]</span></span><br><span class="line"><span class="comment"># 验证AB=I_n</span></span><br><span class="line"><span class="built_in">print</span>(np.matmul(A,B))</span><br><span class="line"><span class="comment"># 结果输出：</span></span><br><span class="line"><span class="comment"># [[1. 0.]</span></span><br><span class="line"><span class="comment">#  [0. 1.]]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="特征值与特征向量"><a href="#特征值与特征向量" class="headerlink" title="特征值与特征向量"></a>特征值与特征向量</h3><p>求矩阵的特征值与特征向量并实现可视化</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入相应的库</span></span><br><span class="line"><span class="keyword">from</span> scipy.linalg <span class="keyword">import</span> eig</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成一个2x2的矩阵</span></span><br><span class="line">A = [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">2</span>, <span class="number">1</span>]]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 求A的特征值(evals)和特征向量(evecs)</span></span><br><span class="line">evals, evecs = eig(A)</span><br><span class="line">evecs = evecs[:, <span class="number">0</span>], evecs[:, <span class="number">1</span>]</span><br><span class="line"><span class="comment"># print(evals, evecs)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.subplots() 返回一个Figure实例flg 和一个AxesSubplot实例ax。</span></span><br><span class="line"><span class="comment"># flg代表整个图像，ax代表坐标轴和画的图，作图：</span></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line"><span class="comment"># 让坐标轴经过原点：</span></span><br><span class="line"><span class="keyword">for</span> spine <span class="keyword">in</span> [<span class="string">&#x27;left&#x27;</span>, <span class="string">&#x27;bottom&#x27;</span>]:  <span class="comment"># 让在左下角的坐标轴经过原点</span></span><br><span class="line">    ax.spines[spine].set_position(<span class="string">&#x27;zero&#x27;</span>)</span><br><span class="line"><span class="comment"># 画出网格：</span></span><br><span class="line">ax.grid(alpha=<span class="number">0.4</span>)</span><br><span class="line"><span class="comment"># 设置坐标轴的范围</span></span><br><span class="line">xmin, xmax = -<span class="number">3</span>, <span class="number">3</span></span><br><span class="line">ymin, ymax = -<span class="number">3</span>, <span class="number">3</span></span><br><span class="line">ax.<span class="built_in">set</span>(xlim=(xmin, xmax), ylim=(ymin, ymax))</span><br><span class="line"><span class="comment"># 画出特征向量，用一个箭头指向要注释的地方，再写上一段画的行为，叫做annotate。</span></span><br><span class="line"><span class="comment"># text是输入内容；xy:箭头指向；xytext:文字所处的位置；arrowprops通过表明箭头的风格或种类：</span></span><br><span class="line"><span class="keyword">for</span> v <span class="keyword">in</span> evecs:</span><br><span class="line">    ax.annotate(text=<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">                xy=v,</span><br><span class="line">                xytext=(<span class="number">0</span>, <span class="number">0</span>),</span><br><span class="line">                arrowprops=<span class="built_in">dict</span>(facecolor=<span class="string">&#x27;blue&#x27;</span>,</span><br><span class="line">                                shrink=<span class="number">0</span>,</span><br><span class="line">                                alpha=<span class="number">0.6</span>,</span><br><span class="line">                                width=<span class="number">0.5</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画出特征空间：</span></span><br><span class="line">x = np.linspace(xmin, xmax, <span class="number">3</span>)  <span class="comment"># 在指定的间隔内返回均匀间隔的数字</span></span><br><span class="line"><span class="keyword">for</span> v <span class="keyword">in</span> evecs:</span><br><span class="line">    a = v[<span class="number">1</span>] / v[<span class="number">0</span>]  <span class="comment"># 沿特征向量方向的单位向量</span></span><br><span class="line">    ax.plot(x, a * x, <span class="string">&#x27;r-&#x27;</span>, lw=<span class="number">0.4</span>)  <span class="comment"># 参数lw表示图像的粗细</span></span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 结果如图：</span></span><br><span class="line"><span class="comment"># 蓝箭头是向量的特征向量，红色直线表示特征空间</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/AI-img/Figure_1.png"></p>
+<h3 id="求行列式"><a href="#求行列式" class="headerlink" title="求行列式"></a>求行列式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">E = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], </span><br><span class="line">     [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],</span><br><span class="line">     [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]]</span><br><span class="line"><span class="built_in">print</span>(np.linalg.det(E))</span><br><span class="line"><span class="comment"># 结果输出：</span></span><br><span class="line"><span class="comment"># 0.0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="奇异值分解实现"><a href="#奇异值分解实现" class="headerlink" title="奇异值分解实现"></a>奇异值分解实现</h3><p>例：通过标题的关键词对海量的文章分类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">title_1 = [<span class="string">&#x27;dad&#x27;</span>,<span class="string">&#x27;dad&#x27;</span>,<span class="string">&#x27;stock&#x27;</span>]</span><br><span class="line">title_2 = [<span class="string">&#x27;books&#x27;</span>,<span class="string">&#x27;books&#x27;</span>,<span class="string">&#x27;value&#x27;</span>,<span class="string">&#x27;estate&#x27;</span>]</span><br><span class="line">title_3 = [<span class="string">&#x27;books&#x27;</span>,<span class="string">&#x27;decomposition&#x27;</span>]</span><br><span class="line">title_4 = [<span class="string">&#x27;stock&#x27;</span>]</span><br><span class="line">title_5 = [<span class="string">&#x27;dad&#x27;</span>]</span><br><span class="line">title_6 = [<span class="string">&#x27;value&#x27;</span>,<span class="string">&#x27;singular&#x27;</span>,<span class="string">&#x27;decomposition&#x27;</span>]</span><br><span class="line">title_7 = [<span class="string">&#x27;dad&#x27;</span>,<span class="string">&quot;singular&quot;</span>]</span><br><span class="line">title_8 = [<span class="string">&#x27;singular&#x27;</span>,<span class="string">&#x27;estate&#x27;</span>,<span class="string">&#x27;decomposition&#x27;</span>]</span><br><span class="line"></span><br><span class="line">words = [<span class="string">&#x27;books&#x27;</span>,<span class="string">&#x27;dad&#x27;</span>,<span class="string">&#x27;stock&#x27;</span>,<span class="string">&#x27;value&#x27;</span>,<span class="string">&#x27;singular&#x27;</span>,<span class="string">&#x27;estate&#x27;</span>,<span class="string">&#x27;decomposition&#x27;</span>]</span><br><span class="line"><span class="comment"># 设已知8个标题，7个关键字，记录每个关键字出现的次数，得矩阵X，</span></span><br><span class="line"><span class="comment"># X中每一行表示一个标题，每一列表示一个关键字，</span></span><br><span class="line"><span class="comment"># 矩阵中的每个元素表示一个关键字在一个标题中出现的次数</span></span><br><span class="line">X=np.array([[<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],[<span class="number">2</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>],[<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]])</span><br><span class="line"><span class="comment"># 进行奇异值分解</span></span><br><span class="line">U,s,Vh = np.linalg.svd(X)</span><br><span class="line"><span class="comment"># 输出左奇异矩阵U及其shape:</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;U=&#x27;</span>,U)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;U.shape&#x27;</span>,U.shape)</span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># U= [[-1.87135757e-01 -7.93624528e-01  2.45011855e-01 -2.05404352e-01</span></span><br><span class="line"><span class="comment">#   -7.77156117e-16 -4.95330978e-15 -2.57394431e-01 -4.08248290e-01]</span></span><br><span class="line"><span class="comment">#  [-6.92896814e-01  2.88368077e-01  5.67788037e-01  2.22142537e-01</span></span><br><span class="line"><span class="comment">#    2.54000254e-01  5.20956571e-15 -2.21623012e-02  0.00000000e+00]</span></span><br><span class="line"><span class="comment">#  [-3.53233681e-01  1.22606651e-01  3.49203461e-02 -4.51735990e-01</span></span><br><span class="line"><span class="comment">#   -7.62000762e-01 -1.04191314e-14  2.72513448e-01  5.55111512e-17]</span></span><br><span class="line"><span class="comment">#  [-2.61369658e-02 -1.33189110e-01  7.51079037e-02 -6.44727454e-01</span></span><br><span class="line"><span class="comment">#    5.08000508e-01 -1.58761893e-14  3.68146235e-01  4.08248290e-01]</span></span><br><span class="line"><span class="comment">#  [-8.04993957e-02 -3.30217709e-01  8.49519758e-02  2.19661551e-01</span></span><br><span class="line"><span class="comment">#   -2.54000254e-01  5.29989065e-15 -3.12770333e-01  8.16496581e-01]</span></span><br><span class="line"><span class="comment">#  [-3.95029694e-01  1.56123876e-02 -5.28290830e-01 -6.82340484e-02</span></span><br><span class="line"><span class="comment">#    1.27000127e-01 -7.07106781e-01 -2.09360158e-01  1.38777878e-16]</span></span><br><span class="line"><span class="comment">#  [-2.02089013e-01 -3.80395849e-01 -2.12899198e-01  4.80790894e-01</span></span><br><span class="line"><span class="comment">#    8.88178420e-16  1.15928216e-14  7.33466480e-01  1.66533454e-16]</span></span><br><span class="line"><span class="comment">#  [-3.95029694e-01  1.56123876e-02 -5.28290830e-01 -6.82340484e-02</span></span><br><span class="line"><span class="comment">#    1.27000127e-01  7.07106781e-01 -2.09360158e-01 -2.49800181e-16]]</span></span><br><span class="line"><span class="comment"># U.shape (8, 8)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出奇异矩阵及其shape:</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;s=&#x27;</span>,s)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;s.shape&#x27;</span>,s.shape)</span><br><span class="line"><span class="comment"># 结果结果：</span></span><br><span class="line"><span class="comment"># 按每个奇异值——对应一个左奇异向量和一个右奇异向量从大到小排列</span></span><br><span class="line"><span class="comment"># s= [2.85653844 2.63792139 2.06449303 1.14829917 1.         1.</span></span><br><span class="line"><span class="comment">#  0.54848559]</span></span><br><span class="line"><span class="comment"># s.shape (7,)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出右奇异矩阵Vh及其shape:</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Vh=&#x27;</span>,Vh)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Vh.shape&#x27;</span>,Vh.shape)</span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># Vh= [[-6.08788345e-01 -2.29949618e-01 -7.46612474e-02 -3.80854846e-01</span></span><br><span class="line"><span class="comment">#   -3.47325416e-01 -3.80854846e-01 -4.00237243e-01]</span></span><br><span class="line"><span class="comment">#  [ 2.65111314e-01 -8.71088358e-01 -3.51342402e-01  1.15234846e-01</span></span><br><span class="line"><span class="comment">#   -1.32365989e-01  1.15234846e-01  5.83153945e-02]</span></span><br><span class="line"><span class="comment">#  [ 5.66965547e-01  1.75382762e-01  1.55059743e-01  1.91316736e-02</span></span><br><span class="line"><span class="comment">#   -6.14911671e-01  1.91316736e-02 -4.94872736e-01]</span></span><br><span class="line"><span class="comment">#  [-6.48865369e-03  2.52237176e-01 -7.40339999e-01  1.34031699e-01</span></span><br><span class="line"><span class="comment">#    2.99854608e-01  1.34031699e-01 -5.12239408e-01]</span></span><br><span class="line"><span class="comment">#  [-2.54000254e-01 -2.54000254e-01  5.08000508e-01  3.81000381e-01</span></span><br><span class="line"><span class="comment">#    2.54000254e-01  3.81000381e-01 -5.08000508e-01]</span></span><br><span class="line"><span class="comment">#  [ 0.00000000e+00  7.25520445e-15 -2.07821168e-14 -7.07106781e-01</span></span><br><span class="line"><span class="comment">#    8.03741866e-15  7.07106781e-01 -1.37929454e-14]</span></span><br><span class="line"><span class="comment">#  [ 4.16034348e-01 -1.71550021e-01  2.01922906e-01 -4.22112199e-01</span></span><br><span class="line"><span class="comment">#    5.73845817e-01 -4.22112199e-01 -2.66564648e-01]]</span></span><br><span class="line"><span class="comment"># Vh.shape (7, 7)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 规定坐标轴的范围</span></span><br><span class="line">plt.axis([-<span class="number">0.8</span>,<span class="number">0.8</span>,-<span class="number">0.8</span>,<span class="number">0.8</span>])</span><br><span class="line"><span class="comment"># 原每个关键字由1*8的向量表示，先降维成1*2的向量以便进行可视化</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(words)):</span><br><span class="line">    plt.text(U[i,<span class="number">0</span>],U[i,<span class="number">1</span>],words[i])</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 图像如下：</span></span><br><span class="line"><span class="comment"># 图解：将到2维可视化后，我们可以将关键词聚类，如 singular, value和 decomposition三个词距离比较近可以被划分为一组，而 stock和 estate经常同时出现。</span></span><br><span class="line"><span class="comment"># 在得到了词的向量表示后，我们就可以根据选取一种向量距离（例如：欧式距离、曼哈顿距离等）计算的方式来计算词间的相似度从而可以再根据一些策略（例如：词对相似度的和、均值 等）得到文章标题之间的相似度；</span></span><br><span class="line"><span class="comment"># 之后我们就可以通过文章标题的相似度来近似表示文章内容的相似度从而完成对文章的聚类。</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/AI-img/Figure_2.png"></p>
+<h3 id="奇异值分解应用-图像压缩"><a href="#奇异值分解应用-图像压缩" class="headerlink" title="奇异值分解应用-图像压缩"></a>奇异值分解应用-图像压缩</h3><pre><code>一副灰度图像可以看作一个矩阵，对这样矩阵进行奇异值分解，奇异值矩阵的奇异值是按照从大到小的顺序排列的。对应奇异值大的奇异向量所保存的信息量越大，而奇异值大小一般都衰减得比较快。因比前K个奇异值及其对应的奇异向量就包含了图像的大部分信息。所以前K项奇异值及其奇异向量来组成的图像可以达到基本和原图一样的清晰度，但是数据量却大大减少了。这样就可以达到图像数据压缩的效果。
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取并保存灰度图像</span></span><br><span class="line">img = imread(<span class="string">&#x27;E:\\Python\\sources\\lena.png&#x27;</span>)[:,:,<span class="number">0</span>]</span><br><span class="line">plt.gray()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画出灰度图</span></span><br><span class="line">plt.figure(<span class="number">1</span>)</span><br><span class="line">plt.imshow(img) <span class="comment"># 负责处理图片不会显示</span></span><br><span class="line">plt.savefig(<span class="string">&#x27;./lena_gray&#x27;</span>)</span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"><span class="comment"># 输出结果：图片1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取并打印图像的长宽</span></span><br><span class="line">m,n = img.shape</span><br><span class="line"><span class="built_in">print</span>(np.shape(img))</span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># (457, 563)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对图像矩阵进行奇异值分解</span></span><br><span class="line">U,sigma,V = np.linalg.svd(img)</span><br><span class="line"><span class="comment"># 打印奇异值大小</span></span><br><span class="line"><span class="built_in">print</span>(np.shape(sigma))</span><br><span class="line"><span class="comment"># 输出结果</span></span><br><span class="line"><span class="comment"># (457,)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将奇异值整理成一个对角矩阵</span></span><br><span class="line">sigma = resize(sigma,[m,<span class="number">1</span>])*eye(m,n)</span><br><span class="line"><span class="comment"># 取前K个奇异值及其奇异向量用于压缩图像</span></span><br><span class="line">k = <span class="number">100</span></span><br><span class="line"><span class="comment"># 用前K个奇异值及其奇异向量构造新图像</span></span><br><span class="line">img1 = np.dot(U[:,<span class="number">0</span>:k],np.dot(sigma[<span class="number">0</span>:k,<span class="number">0</span>:k],V[<span class="number">0</span>:k,:]))</span><br><span class="line">plt.figure(<span class="number">2</span>)</span><br><span class="line"><span class="comment"># 打印压缩后的效果图：图片2</span></span><br><span class="line">plt.imshow(img1)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/yanglinqi107/images/raw/master/AI-img/lena_gray.png#pic_left" title="图1"><br><img src="https://github.com/yanglinqi107/images/raw/master/AI-img/lena_gray2.png#pic_right" title="图2"></p>
+<h3 id="线性方程组求解"><a href="#线性方程组求解" class="headerlink" title="线性方程组求解"></a>线性方程组求解</h3><p>求解线性方程组比较简单，只需要用到一个函数<code>(scipy.linglg.solve)</code>就可以了。<br>案例引入：有三种价格未知的水果，苹果、香蕉、葡萄。已知，李雷购买10斤苹果、2斤香蕉、5斤葡萄花费了10元，韩梅梅购买4斤苹果、4斤香蕉、2斤葡萄花费了8元，汤姆购买2斤苹果、2斤香蕉、2斤葡萄花费了5元；问，苹果、香蕉、葡萄分别多少钱一斤？</p>
+<p>根据已知条件，可以构建如下多元方程组，其中$x_1、x_2、x_3$分别是苹果、香蕉、葡萄的价格，目的是求解$x_1、x_2、x_3$的值.</p>
+<p>$10x_1+2x_2+5x_3=10<br>\4x_1+4x_2+2x_3=8\<br>2x_1+2x_2+2x_3=5$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy.linalg <span class="keyword">import</span> solve</span><br><span class="line"></span><br><span class="line">a = np.array([[<span class="number">10</span>,<span class="number">2</span>,<span class="number">5</span>],[<span class="number">4</span>,<span class="number">4</span>,<span class="number">2</span>],[<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>]])</span><br><span class="line">b = np.array([<span class="number">10</span>,<span class="number">8</span>,<span class="number">5</span>])</span><br><span class="line">x = solve(a,b)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果输出：</span></span><br><span class="line"><span class="comment"># [0.25 1.25 1.  ]</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/AI/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="prev" title="深度学习">
+      <i class="fa fa-chevron-left"></i> 深度学习
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#numpy"><span class="nav-number">1.</span> <span class="nav-text">numpy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reshape%E8%BF%90%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">reshape运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E7%BD%AE%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">转置实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.</span> <span class="nav-text">矩阵乘法实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E5%AF%B9%E5%BA%94%E8%BF%90%E7%AE%97"><span class="nav-number">5.</span> <span class="nav-text">矩阵对应运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%86%E7%9F%A9%E9%98%B5%E5%AE%9E%E7%8E%B0"><span class="nav-number">6.</span> <span class="nav-text">逆矩阵实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E5%80%BC%E4%B8%8E%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F"><span class="nav-number">7.</span> <span class="nav-text">特征值与特征向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E8%A1%8C%E5%88%97%E5%BC%8F"><span class="nav-number">8.</span> <span class="nav-text">求行列式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E5%AE%9E%E7%8E%B0"><span class="nav-number">9.</span> <span class="nav-text">奇异值分解实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E5%BA%94%E7%94%A8-%E5%9B%BE%E5%83%8F%E5%8E%8B%E7%BC%A9"><span class="nav-number">10.</span> <span class="nav-text">奇异值分解应用-图像压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E6%B1%82%E8%A7%A3"><span class="nav-number">11.</span> <span class="nav-text">线性方程组求解</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yanglinqi"
+      src="/images/headpic.jpg">
+  <p class="site-author-name" itemprop="name">yanglinqi</p>
+  <div class="site-description" itemprop="description">用于做笔记，对学过的知识总结</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanglinqi107" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanglinqi107" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanglinqi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+</body>
+</html>
