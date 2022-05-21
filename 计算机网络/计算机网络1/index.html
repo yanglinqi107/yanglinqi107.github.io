@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习自哈尔滨工业大学，应用层">
@@ -347,7 +347,6 @@
       
         <p>学习自哈尔滨工业大学，应用层</p>
 <span id="more"></span>
-
 <p><strong>bit</strong>  比特 或 位  1b</p>
 <p><strong>Byte</strong> 字节 1B   </p>
 <p>1B = 8b   一个字节等于8位</p>
@@ -377,8 +376,7 @@
 <li>通信链路：光纤，无线电，卫星。。。</li>
 <li>分组交换：路由器（routers）、交换机（switches）</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171658138.png" alt="image-20220315112033308" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171658138.png" alt="image-20220315112033308" style="zoom:80%;" /></p>
 <p><strong>服务方面：</strong></p>
 <ul>
 <li>为网络应用提供通信服务的通信基础设施</li>
@@ -472,8 +470,7 @@
 <p>特点：独占资源</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171700764.png" alt="image-20220315141048929"></p>
 <p>电路交换网络如何共享中继线？— <strong>多路复用（Multiplexing）</strong></p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171700112.png" alt="image-20220315141151364" style="zoom: 67%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171700112.png" alt="image-20220315141151364" style="zoom: 67%;" /></p>
 <p><strong>2、报文交换（message switching）</strong></p>
 <p><strong>报文</strong>：源（应用）发送的<strong>信息整体</strong>。比如：一个文件</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171700002.png" alt="image-20220315150305484"></p>
@@ -481,11 +478,9 @@
 <p><strong>分组</strong>：报文分拆出来的一系列相对较小的数据包</p>
 <p>分组交换需要报文的<strong>拆分</strong>与<strong>重组</strong>，可能还会增加一个头部信息</p>
 <p>产生<strong>额外开销</strong></p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171701268.png" alt="image-20220315150619783" style="zoom:67%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171701268.png" alt="image-20220315150619783" style="zoom:67%;" /></p>
 <p>分组交换：<strong>统计多路复用</strong>（Statistical Multiplexing）</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171701680.png" alt="image-20220315151053772" style="zoom:67%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171701680.png" alt="image-20220315151053772" style="zoom:67%;" /></p>
 <p><strong>存储-转发（store-and-forward）</strong></p>
 <p><strong>报文交换</strong>与<strong>分组交换</strong>均采用<strong>存储-转发</strong>交换方式</p>
 <p>区别：</p>
@@ -511,8 +506,7 @@
 <p>报文：M bits，链路带宽（数据传输速率）：R bps，分组长度（大小）：L bits</p>
 <p>跳步数：h，路由器数：n = h - 1</p>
 <p>$T = M / R + (h-1)L/R = M/R+nL/R$ </p>
-<h3 id="分组交换VS电路交换"><a href="#分组交换VS电路交换" class="headerlink" title="分组交换VS电路交换"></a>分组交换VS电路交换</h3><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171701242.png" alt="image-20220315161335265" style="zoom: 67%;" />
-
+<h3 id="分组交换VS电路交换"><a href="#分组交换VS电路交换" class="headerlink" title="分组交换VS电路交换"></a>分组交换VS电路交换</h3><p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171701242.png" alt="image-20220315161335265" style="zoom: 67%;" /></p>
 <p><strong>分组交换</strong>适用于<strong>突发</strong>数据传输网络</p>
 <ul>
 <li>资源充分共享</li>
@@ -538,10 +532,7 @@
 <p><strong>1、频分多路复用（frequency division multiplexing-FDM）</strong></p>
 <p>频分多路复用的各用户占用不同的带宽资源（请注意，这里的“带宽”是频率带宽（单位：Hz）而不是数据的发送速率）</p>
 <p>用户在分配到一定的频带后，在通信过程中自始至终都占用这个频带</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171701115.png" alt="image-20220315143022398" style="zoom:80%;" />
-
-
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171701115.png" alt="image-20220315143022398" style="zoom:80%;" /></p>
 <p><strong>2、时分多路复用（time division multiplexing-TDM）</strong></p>
 <p>时分复用则是将时间划分为一段段等长的时分复用帧（TDM 帧），每个用户在每个 TDM 帧中占用固定序号的时隙</p>
 <p>每用户所占用的时隙是周期性出现（其周期就是TDM 帧的长度）</p>
@@ -562,8 +553,7 @@
 </li>
 </ul>
 <p>各用户码片序列相互<strong>正交（orthogonal）</strong></p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171702149.png" alt="image-20220315143808203" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171702149.png" alt="image-20220315143808203" style="zoom:80%;" /></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171702596.png" alt="image-20220315143842829"></p>
 <h2 id="网络性能"><a href="#网络性能" class="headerlink" title="网络性能"></a>网络性能</h2><h3 id="速率和带宽"><a href="#速率和带宽" class="headerlink" title="速率和带宽"></a>速率和带宽</h3><p><strong>速率</strong>即<strong>数据率（data rate）</strong>或称<strong>数据传输速率</strong>或<strong>比特率（bit rate）</strong></p>
 <ul>
@@ -584,8 +574,7 @@
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171702066.png" alt="image-20220315164944721"></p>
 <p><strong>四种分组延迟：</strong></p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171702024.png" alt="image-20220315165237933" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171702024.png" alt="image-20220315165237933" style="zoom:80%;" /></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171702898.png" alt="image-20220315165257197"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171703334.png" alt="image-20220315165455268"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171703444.png" alt="image-20220315165935244"></p>
@@ -622,7 +611,8 @@
 </ul>
 <p>有利于标准化</p>
 <p>不利之处：分层较多会导致效率变低，不同层之间存在信息冗余</p>
-<p><font color=#ff000>注：透明在这里表示不可见的，类似于玻璃透明，所以看不见，很奇怪但就是这样</font> </p>
+<font color=#ff000>注：透明在这里表示不可见的，类似于玻璃透明，所以看不见，很奇怪但就是这样</font> 
+
 <hr>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171704210.png" alt="image-20220315191237205"></p>
 <p><strong>实体（entity）</strong>表示任何可发送或接收信息的硬件或软件进程</p>
@@ -668,15 +658,12 @@
 </li>
 <li><p><strong>比特编码</strong></p>
 </li>
-<li><p><strong>数据率</strong></p>
-</li>
-<li><p><strong>比特同步</strong></p>
-<ul>
+<li><strong>数据率</strong></li>
+<li><strong>比特同步</strong><ul>
 <li>时钟同步</li>
 </ul>
 </li>
-<li><p><strong>传输模式</strong></p>
-<ul>
+<li><strong>传输模式</strong><ul>
 <li>半工（Simplex）</li>
 <li>半双工（half-duplex）</li>
 <li>全双工（full-duplex）</li>
@@ -811,8 +798,7 @@
 <li>优点：高度可伸缩</li>
 <li>缺点：难于管理</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171706071.png" alt="image-20220316143252371" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171706071.png" alt="image-20220316143252371" style="zoom:80%;" /></p>
 <h4 id="混合结构"><a href="#混合结构" class="headerlink" title="混合结构"></a>混合结构</h4><p>将C/S结构和P2P结构混合使用，成功示例：Napster</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171706243.png" alt="image-20220316143528551"></p>
 <h3 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h3><p>进程间通信是网络应用的基础</p>
@@ -834,8 +820,7 @@
 <li>传输协议的选择</li>
 <li>参数的设置</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171706888.png" alt="image-20220316145350232" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171706888.png" alt="image-20220316145350232" style="zoom:80%;" /></p>
 <h4 id="寻址进程"><a href="#寻址进程" class="headerlink" title="寻址进程"></a>寻址进程</h4><p>不同主机上的进程间通信，那么每个进程必须拥有<strong>标识符</strong></p>
 <p>寻址主机？——<strong>IP地址</strong>，但一个主机可能同时有多个进程需要通信，所以还要端口号</p>
 <p>进程标识符：<strong>IP地址+端口号</strong>，如 192.168.0.100:499225</p>
@@ -879,10 +864,7 @@
 </ul>
 </li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171706074.png" alt="image-20220316150321771" style="zoom:80%;" />
-
-
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171706074.png" alt="image-20220316150321771" style="zoom:80%;" /></p>
 <h4 id="对传输服务的需求"><a href="#对传输服务的需求" class="headerlink" title="对传输服务的需求"></a>对传输服务的需求</h4><ul>
 <li><strong>数据丢失（data loss）/ 可靠性（reliability）</strong><ul>
 <li>某些网络应用能够容忍一定的数据丢失：网络电话</li>
@@ -907,7 +889,9 @@
 <li><strong>流量控制</strong>：发送方不会发送速度过快，超过接收方的处理能力</li>
 <li><strong>拥塞控制</strong>：当网络负载过重时能够限制发送方的发送速度</li>
 <li><font color=#ff0000>不提供时间/延迟保障</font></li>
-<li><font color=#ff0000>不提供最小带宽保障</font></li>
+<li><font color=#ff0000>不提供最小带宽保障</font>
+
+</li>
 </ul>
 <p><strong>2、UDP服务</strong></p>
 <ul>
@@ -974,8 +958,7 @@
 <li>响应消息中所含的文件/对象传输时间</li>
 <li>Total=2RTT +文件发送时间</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171707966.png" alt="image-20220316163746401" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171707966.png" alt="image-20220316163746401" style="zoom:80%;" /></p>
 <p>非持久性连接的问题：</p>
 <ul>
 <li>每个对象需要2个RTT</li>
@@ -985,7 +968,7 @@
 <p>2、<strong>持久性连接（Persistent HTTP）</strong></p>
 <ul>
 <li>每个TCP连接允许传输多个对象</li>
-<li> HTTP 1.1版本默认使用持久性连接</li>
+<li>HTTP 1.1版本默认使用持久性连接</li>
 </ul>
 <p>持久性连接：</p>
 <ul>
@@ -1057,8 +1040,7 @@
 </li>
 <li><strong>缓存既充当客户端，也充当服务器</strong></li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171707971.png" alt="image-20220316190301600" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171707971.png" alt="image-20220316190301600" style="zoom:80%;" /></p>
 <p><strong>示例：</strong></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171707370.png" alt="image-20220316190502668"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171707509.png" alt="image-20220316190522231"></p>
@@ -1069,12 +1051,7 @@
 <li>缓存：在HTTP请求消息中声明所持有版本的日期 <code>If-modified-since: &lt;date&gt;</code> </li>
 <li>服务器：如果缓存的版本是最新的，则响应消息中不包含对象 <code>HTTP/1.0 304 Not Modified</code> </li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171708478.png" alt="image-20220316190954469" style="zoom:80%;" />
-
-
-
-
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171708478.png" alt="image-20220316190954469" style="zoom:80%;" /></p>
 <h3 id="Email应用"><a href="#Email应用" class="headerlink" title="Email应用"></a>Email应用</h3><p>Email应用的构成组件</p>
 <ul>
 <li>邮件客户端(user agent)</li>
@@ -1098,8 +1075,7 @@
 <li>客户端：发送消息的服务器</li>
 <li>服务器：接收消息的服务器</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171708724.png" alt="image-20220317111304481" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171708724.png" alt="image-20220317111304481" style="zoom:80%;" /></p>
 <h4 id="SMTP协议"><a href="#SMTP协议" class="headerlink" title="SMTP协议"></a>SMTP协议</h4><p><strong>RFC 2821</strong></p>
 <ul>
 <li>使用TCP进行email消息的可靠传输，使用持久性连接</li>
@@ -1119,7 +1095,6 @@
 <li>SMTP服务器利用CRLF.CRLF确定消息的结束</li>
 </ul>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 交互示例 s-server c-client</span></span><br><span class="line">S: 220 hamburger.edu </span><br><span class="line">C: HELO crepes.fr </span><br><span class="line">S: 250 Hello crepes.fr, pleased to meet you </span><br><span class="line">C: MAIL FROM: &lt;alice@crepes.fr&gt; </span><br><span class="line">S: 250 alice@crepes.fr... Sender ok </span><br><span class="line">C: RCPT TO: &lt;bob@hamburger.edu&gt; </span><br><span class="line">S: 250 bob@hamburger.edu ... Recipient ok </span><br><span class="line">C: DATA </span><br><span class="line">S: 354 Enter mail, end with <span class="string">&quot;.&quot;</span> on a line by itself </span><br><span class="line">C: Do you like ketchup? </span><br><span class="line">C: How about pickles? </span><br><span class="line">C: . </span><br><span class="line">S: 250 Message accepted <span class="keyword">for</span> delivery </span><br><span class="line">C: QUIT </span><br><span class="line">S: 221 hamburger.edu closing connection</span><br></pre></td></tr></table></figure>
-
 <p><strong>使用telnet与SMTP交互</strong></p>
 <ul>
 <li><code>telnet servername 25</code></li>
@@ -1180,7 +1155,7 @@
 <p>Internet上主机/路由器的识别</p>
 <ul>
 <li>IP地址 192.168.0.1</li>
-<li>域名：<a target="_blank" rel="noopener" href="http://www.hit.edu.cn/">www.hit.edu.cn</a></li>
+<li>域名：www.hit.edu.cn</li>
 <li>IP和域名之间存在映射关系，域名的优点是容易记</li>
 </ul>
 <p>域名解析系统DNS：</p>
@@ -1208,11 +1183,11 @@
 </ul>
 <h4 id="DNS结构"><a href="#DNS结构" class="headerlink" title="DNS结构"></a>DNS结构</h4><p>分布式层次式数据库</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171708129.png" alt="image-20220317141357368"></p>
-<p>示例：客户端想要查询<a target="_blank" rel="noopener" href="http://www.amazon.com的ip/">www.amazon.com的IP</a></p>
+<p>示例：客户端想要查询www.amazon.com的IP</p>
 <ul>
 <li>客户端查询根服务器，找到com域名解析服务器</li>
 <li>客户端查询com域名解析服务器，找到amazon.com域名解析服务器</li>
-<li>客户端查询amazon.com域名解析服务器，获得<a target="_blank" rel="noopener" href="http://www.amazon.com的ip地址/">www.amazon.com的IP地址</a></li>
+<li>客户端查询amazon.com域名解析服务器，获得www.amazon.com的IP地址</li>
 </ul>
 <h4 id="域名服务器类型"><a href="#域名服务器类型" class="headerlink" title="域名服务器类型"></a>域名服务器类型</h4><p><strong>DNS根域名服务器</strong>：</p>
 <ul>
@@ -1246,14 +1221,12 @@
 <ul>
 <li>被查询服务器返回域名解析服务器的名字</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171709774.png" alt="image-20220317142150214" style="zoom:70%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171709774.png" alt="image-20220317142150214" style="zoom:70%;" /></p>
 <p>2、<strong>递归查询</strong></p>
 <ul>
 <li>将域名解析的任务交给所联系的服务器</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171709145.png" alt="image-20220317142243953" style="zoom:67%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171709145.png" alt="image-20220317142243953" style="zoom:67%;" /></p>
 <h4 id="DNS缓存"><a href="#DNS缓存" class="headerlink" title="DNS缓存"></a>DNS缓存</h4><p><strong>DNS记录缓存和更新</strong>：</p>
 <p>只要域名解析服务器获得域名—IP映射，即<strong>缓存</strong>这一映射</p>
 <ul>
@@ -1278,7 +1251,7 @@
 </ul>
 </li>
 <li>Type=CNAME<ul>
-<li>Name: 某一真实域名的别名<a target="_blank" rel="noopener" href="http://www.ibm.com——servereast.backup2.ibm.com/">www.ibm.com——servereast.backup2.ibm.com</a></li>
+<li>Name: 某一真实域名的别名www.ibm.com——servereast.backup2.ibm.com</li>
 <li>Value: 真实域名</li>
 </ul>
 </li>
@@ -1369,8 +1342,7 @@
 <li>Alice查找“Hey Jude”</li>
 <li>Alice从Bob处请求文件</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171710706.png" alt="image-20220317155719586" style="zoom:67%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171710706.png" alt="image-20220317155719586" style="zoom:67%;" /></p>
 <p>问题：</p>
 <ul>
 <li>单点失效问题</li>
@@ -1391,8 +1363,7 @@
 <p>查询消息通过已有的TCP连接发送</p>
 <p>节点转发查询消息</p>
 <p>如果查询命中，则利用反向路径发回查询节点</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171710110.png" alt="image-20220317160239975" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171710110.png" alt="image-20220317160239975" style="zoom:80%;" /></p>
 <h4 id="层次式覆盖网络"><a href="#层次式覆盖网络" class="headerlink" title="层次式覆盖网络"></a>层次式覆盖网络</h4><ul>
 <li>介于集中式索引和洪泛查询之间的方法</li>
 <li>每个节点或者是一个超级节点，或者被分配一个超级节点<ul>
@@ -1402,8 +1373,7 @@
 </li>
 <li>超级节点负责跟踪子节点的内容</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171710302.png" alt="image-20220317160506839" style="zoom:67%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171710302.png" alt="image-20220317160506839" style="zoom:67%;" /></p>
 <p>应用案例：Skype</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171710190.png" alt="image-20220317160549951"></p>
 <h3 id="Socket编程"><a href="#Socket编程" class="headerlink" title="Socket编程"></a>Socket编程</h3><p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171710048.png" alt="image-20220317162738876"></p>
@@ -1439,10 +1409,8 @@
 <p><strong>地址结构：</strong></p>
 <p>已定义结构sockaddr_in:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    u_char sin_len; 	<span class="comment">/*地址长度 */</span></span><br><span class="line">    u_char sin_family; 	<span class="comment">/*地址族(TCP/IP：AF_INET) */</span></span><br><span class="line">    u_short sin_port;	<span class="comment">/*端口号 */</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">in_addr</span> <span class="title">sin_addr</span>;</span>	<span class="comment">/*IP地址 */</span></span><br><span class="line">    <span class="keyword">char</span> sin_zero[<span class="number">8</span>]; 			<span class="comment">/*未用(置0) */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>使用TCP/IP协议簇的网络应用程序声明端点地址变量时，使用结构sockaddr_in</p>
-<h4 id="Socket-API函数"><a href="#Socket-API函数" class="headerlink" title="Socket API函数"></a>Socket API函数</h4><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171711074.png" alt="image-20220317172333758" style="zoom:50%;" />
-
+<h4 id="Socket-API函数"><a href="#Socket-API函数" class="headerlink" title="Socket API函数"></a>Socket API函数</h4><p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171711074.png" alt="image-20220317172333758" style="zoom:50%;" /></p>
 <p><strong>1</strong>、<strong>WSAStartup</strong>：<code>int WSAStartup(WORD wVersionRequested, LPWSADATA lpWSAData);</code></p>
 <p>使用Socket的应用程序在使用Socket之前必须首先调用WSAStartup函数</p>
 <ul>
@@ -1454,8 +1422,7 @@
 </ul>
 <p>例：使用2.1版本的WinSock的程序代码段</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wVersionRequested = <span class="built_in">MAKEWORD</span>( <span class="number">2</span>, <span class="number">1</span> ); </span><br><span class="line">err = <span class="built_in">WSAStartup</span>( wVersionRequested, &amp;wsaData ); </span><br></pre></td></tr></table></figure>
-
-<p><strong>2</strong>、<strong>WSACleanup</strong>：<code>int WSACleanup (void); </code></p>
+<p><strong>2</strong>、<strong>WSACleanup</strong>：<code>int WSACleanup (void);</code></p>
 <p>应用程序在完成对请求的Socket库的使用， 最后要调用WSACleanup函数，解除与Socket库的绑定，释放Socket库所占用的系统资源</p>
 <p><strong>3</strong>、<strong>socket</strong>：<code>sd = socket(protofamily,type,proto);</code><br>创建套接字，操作系统返回套接字描述符（sd）</p>
 <ul>
@@ -1468,14 +1435,13 @@
 </ul>
 <p>例：创建一个流套接字的代码段</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">protoent</span> *<span class="title">p</span>;</span> </span><br><span class="line">p=<span class="built_in">getprotobyname</span>(<span class="string">&quot;tcp&quot;</span>); </span><br><span class="line">SOCKET sd=<span class="built_in">socket</span>(PF_INET,SOCK_STREAM,p-&gt;p_proto); </span><br></pre></td></tr></table></figure>
-
 <p>Socket面向TCP/IP的服务类型：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171711636.png" alt="image-20220317173148158"></p>
 <ul>
 <li>TCP：可靠、面向连接、字节流传输、点对点</li>
 <li>UDP：不可靠、无连接、数据报传输</li>
 </ul>
-<p><strong>4</strong>、<strong>closesocket</strong>：<code>int closesocket(SOCKET sd); </code></p>
+<p><strong>4</strong>、<strong>closesocket</strong>：<code>int closesocket(SOCKET sd);</code></p>
 <p>关闭一个描述符为sd的套接字</p>
 <p>如果多个进程共享一个套接字，调用closesocket，将套接字引用计数减1，减至0才关闭</p>
 <p>一个进程中的多线程对一个套接字的使用无计数。即如果进程中的一个线程调用closesocket将一个套接字关闭，该进程中的其他线程也将不能访问该套接字</p>
@@ -1555,35 +1521,22 @@
 <p>函数<code>inet_addr()</code> 实现点分十进制IP地址到32位IP地址转换</p>
 <p>函数<code>gethostbyname()</code>实现域名到32位IP地址转换，返回一个指向结构<code>hostent</code>的指针</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">hostent</span> &#123;</span> </span><br><span class="line">    <span class="keyword">char</span> FAR* h_name; 			<span class="comment">/*official host name */</span> </span><br><span class="line">    <span class="keyword">char</span> FAR* FAR* h_aliases; 	<span class="comment">/*other aliases */</span> </span><br><span class="line">    <span class="keyword">short</span> h_addrtype; 			<span class="comment">/*address type */</span> </span><br><span class="line">    <span class="keyword">short</span> h_lengty; 			<span class="comment">/*address length */</span> </span><br><span class="line">    <span class="keyword">char</span> FAR* FAR* h_addr_list; <span class="comment">/*list of address */</span> </span><br><span class="line">&#125;; </span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> h_addr h_addr_list[0] </span></span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="解析端口号"><a href="#解析端口号" class="headerlink" title="解析端口号"></a>解析端口号</h4><p>客户端还可能使用服务名（如HTTP）标识服务器端口，需要将服务名转换为熟知端口号</p>
 <p>函数<code>getservbyname( )</code>，返回一个指向结构<code>servent</code>的指针</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">servent</span> &#123;</span> </span><br><span class="line">    <span class="keyword">char</span> FAR* s_name; 			<span class="comment">/*official service name */</span> </span><br><span class="line">    <span class="keyword">char</span> FAR* FAR* s_aliases; 	<span class="comment">/*other aliases */</span> </span><br><span class="line">    <span class="keyword">short</span> s_port; 				<span class="comment">/*port for this service */</span> </span><br><span class="line">    <span class="keyword">char</span> FAR* s_proto; 			<span class="comment">/*protocol to use */</span> </span><br><span class="line">&#125;; </span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="解析协议号"><a href="#解析协议号" class="headerlink" title="解析协议号"></a>解析协议号</h4><p>客户端可能使用协议名（如:TCP）指定协议，需要将协议名转换为协议号（如：6）</p>
 <p>函数<code>getprotobyname()</code> 实现协议名到协议号的转换，返回一个指向结构<code>protoent</code>的指针</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">protoent</span> &#123;</span> </span><br><span class="line">    <span class="keyword">char</span> FAR* p_name; 			<span class="comment">/*official protocol name */</span> </span><br><span class="line">    <span class="keyword">char</span> FAR* FAR* p_aliases; 	<span class="comment">/*list of aliases allowed */</span> </span><br><span class="line">    <span class="keyword">short</span> p_proto; 				<span class="comment">/*official protocol number*/</span> </span><br><span class="line">&#125;; </span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="客户端软件流程"><a href="#客户端软件流程" class="headerlink" title="客户端软件流程"></a>客户端软件流程</h4><p><strong>TCP</strong>：</p>
 <ol>
 <li><p>确定服务器IP地址与端口号</p>
 </li>
 <li><p>创建套接字</p>
 </li>
-<li><p>分配本地端点地址（IP地址+端口号）</p>
-</li>
-<li><p>连接服务器（套接字）</p>
-</li>
-<li><p>遵循应用层协议进行通信</p>
-</li>
-<li><p>关闭/释放连接</p>
-</li>
+<li>分配本地端点地址（IP地址+端口号）</li>
+<li>连接服务器（套接字）</li>
+<li>遵循应用层协议进行通信</li>
+<li>关闭/释放连接</li>
 </ol>
 <p><strong>UDP</strong>：</p>
 <ol>
@@ -1838,6 +1791,8 @@
 
 
 
+
+  
 
   
 

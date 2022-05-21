@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学自路飞学城樵夫">
@@ -249,7 +249,6 @@
       
         <p>学自路飞学城樵夫</p>
 <span id="more"></span>
-
 <h3 id="爬虫概述"><a href="#爬虫概述" class="headerlink" title="爬虫概述"></a>爬虫概述</h3><p>爬虫分为善意的爬虫和恶意的爬虫</p>
 <ul>
 <li><p>善意的爬虫, 不破坏被爬取的?站的资源(正常访问, 一般频率不高, 不窃取用户隐私)</p>
@@ -266,9 +265,6 @@
 <p>如：查看B站<code>https://www.bilibili.com/</code>  的爬虫协议  <code>https://www.bilibili.com/robots.txt</code></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Python-img//image-20220118155704342.png" alt="image-20220118155704342"></p>
 <h3 id="爬虫程序样例"><a href="#爬虫程序样例" class="headerlink" title="爬虫程序样例"></a>爬虫程序样例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen	<span class="comment"># 一般爬虫不直接使用这个库了</span></span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://www.baidu.com&quot;</span></span><br><span class="line">resp = urlopen(url)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;mybaidu.html&quot;</span>, mode=<span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(resp.read().decode(<span class="string">&quot;utf-8&quot;</span>))  <span class="comment"># 读取到网页的页面源代码</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;over!&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
 <p>网络数据请求过程</p>
 <ul>
 <li>C/S        Client     客户端     Server服务器端<ul>
@@ -285,41 +281,44 @@
 </ul>
 <p>爬虫带来的风险可以体现在如下2方面：</p>
 <ul>
-<li>爬虫干扰了被访问网站的正常运营</li>
+<li>爬虫干扰了被访问网站的正常运营<ul>
 <li>爬虫抓取了收到法律保护的特定类型的数</li>
+</ul>
+</li>
 </ul>
 <p>如何在使用编写爬虫的过程中避免进入局子的厄远</p>
 <ul>
-<li>时常的优化自己的程序，避免干扰被访问</li>
+<li>时常的优化自己的程序，避免干扰被访问<ul>
 <li>在使用，传播爬取到的数据时，审查抓取到的内容，如果发现了涉及到用户隐私商业机密等敏感内容需要及时停止爬取或传播</li>
 </ul>
-<p>爬虫在使用场景中的分类<br>    - 通用爬虫：<br>        - 抓取系统重要组成部分</p>
-<ul>
+</li>
+</ul>
+<p>爬虫在使用场景中的分类</p>
+<pre><code>- 通用爬虫：
+    - 抓取系统重要组成部分
+</code></pre><ul>
 <li>聚焦爬虫：</li>
 <li>增量式爬虫：</li>
 </ul>
 <p>模拟登录：</p>
 <pre><code>- 基于某些用户的用户信息。
-</code></pre>
-<p>需求：对人人网进行模拟登录。</p>
+</code></pre><p>需求：对人人网进行模拟登录。</p>
 <pre><code>- 点击登录按钮之后会发起一个post请求
 - post请求中会携带登录之前录入的相关的登录信息(用户名，密码，验证码，，,,,,)
-</code></pre>
-<ul>
+</code></pre><ul>
 <li>验证码：每次请求都会变化</li>
 </ul>
 <p>http:/httpst协议特性：无状态</p>
 <p>没有请求到对应页面数据的原因：</p>
 <pre><code>- 发起第二次请求的时候，服务器端并不知道该此请求是基于登录状态下的请求。
-</code></pre>
-<p>cookie:用来让服务器端记录客户端的相关状态</p>
+</code></pre><p>cookie:用来让服务器端记录客户端的相关状态</p>
 <pre><code>- 手动处理：通过抓包工具获取 cookie值，将该值封装到 headers中。（不建议）
 
 - 自动处理：
         - cookie值的来源是哪里？
-    
+
     - 模拟登录post请求后，由服务器端创建
-    
+
 - session会话对象：
 
   - 作用：
@@ -331,8 +330,7 @@
 - 创建一个session对象： `session=requests.Session()`
 
   使用session对象进行模拟登录post请求的发送( cookie就会被存储在 session中)
-</code></pre>
-<p>代理：破解封IP这种反爬机制<br>什么是代理：</p>
+</code></pre><p>代理：破解封IP这种反爬机制<br>什么是代理：</p>
 <ul>
 <li>代理服务器</li>
 </ul>
@@ -345,7 +343,7 @@
 <ul>
 <li>快代理</li>
 <li>西祠代理</li>
-<li><a target="_blank" rel="noopener" href="http://www.goubanjia.com/">www.goubanjia.com</a></li>
+<li>www.goubanjia.com</li>
 </ul>
 <p>代理IP的类型：</p>
 <ul>
@@ -366,13 +364,11 @@
 </li>
 <li><p>线程池，进程池（适当使用）<br>  好处：可以降低系统对进程或者线程创建和销毁的频率，从而降低系统的开销<br>  弊端：池中线程或进程的数量是有上限</p>
 </li>
-<li><p>单线程+异步协程（推荐）<br>  <code>event_loop</code>: 事件循环，相当于一个无限循环，我们可以把一些函数注册到这个事件循环上当满足某些条件的时候，函数就会被循环执行</p>
-</li>
+<li>单线程+异步协程（推荐）<br>  <code>event_loop</code>: 事件循环，相当于一个无限循环，我们可以把一些函数注册到这个事件循环上当满足某些条件的时候，函数就会被循环执行</li>
 </ul>
 <p><code>coroutine</code>: 协程对象，我们可以将协程对象注册到事件循环中，它会被事件循环调用我们可以使用async关量字来定义一个方法，这个方法在调用时不会立即被执行，而是返回一个协程对象</p>
 <pre><code>`task `任务，它是对协程对象的进一步封装，包含了任务的各个状态
-</code></pre>
-<p><code>future </code>代表将来执行或还没有执行的任务，实际上和task没有本质区别<br>    <code>async </code>定义一个协程<br>    <code>await </code>用来挂起阻塞方法的执行</p>
+</code></pre><p><code>future</code>代表将来执行或还没有执行的任务，实际上和task没有本质区别<br>    <code>async</code>定义一个协程<br>    <code>await</code>用来挂起阻塞方法的执行</p>
 <p><code>selenium</code>模块的基本使用</p>
 <p>问题： selenium模块和爬虫之间具有怎样的关联？</p>
 <ul>
@@ -381,8 +377,7 @@
 </ul>
 <p>什么是 selenium模块？</p>
 <pre><code>- 基于浏览器自动化的一个模块
-</code></pre>
-<p>selenium使用流程：</p>
+</code></pre><p>selenium使用流程：</p>
 <ul>
 <li>环境安装：<code>pip install selenium</code></li>
 <li>下载浏览器驱动程序</li>
@@ -408,8 +403,8 @@
 </li>
 </ul>
 </li>
-<li>无头浏览器<br>  option = Options()<br>  option.add_argument(‘–headless’)<br>  option.add_argument(‘–disable-gpu’)</li>
-<li>规避检测（在抓包工具的控制台输入window.navigator.webdriver）<br>option.addgument(‘–disable-blink-features=AutomationControlled’)</li>
+<li>无头浏览器<br>  option = Options()<br>  option.add_argument(‘—headless’)<br>  option.add_argument(‘—disable-gpu’)</li>
+<li>规避检测（在抓包工具的控制台输入window.navigator.webdriver）<br>option.addgument(‘—disable-blink-features=AutomationControlled’)</li>
 </ul>
 
     </div>
@@ -614,6 +609,8 @@
 
 
 
+
+  
 
   
 

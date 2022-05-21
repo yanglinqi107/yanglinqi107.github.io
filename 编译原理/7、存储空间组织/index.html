@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="编译原理    第七部分">
@@ -249,15 +249,12 @@
       
         <p>编译原理    第七部分</p>
 <span id="more"></span> 
-
 <h3 id="数据空间"><a href="#数据空间" class="headerlink" title="数据空间"></a>数据空间</h3><p>数据空间包括：用户定义的各种类型的数据对象(变量和常数)所需的存储空间，作为保留中间结果和传递参数的临时工作单元，调用过程时所需的连接单元，以及组织输入/输出所需的缓冲区。</p>
 <p>目标代码所占用空间的大小在编译时能确定。有些数据对象所占用的空间也能在编译时确定，其地址可以编译进目标代码中。而有些数据对象具有可变体积和待分配性质，无法在编译时确定存储空间的位置。</p>
 <p>存储管理复杂程度取决于源语言本身，包括：</p>
 <ul>
-<li><p>允许的数据类型的多少</p>
-</li>
-<li><p>语言中允许的数据项是   </p>
-<ul>
+<li>允许的数据类型的多少</li>
+<li>语言中允许的数据项是   <ul>
 <li>静态确定</li>
 <li>动态确定</li>
 </ul>
@@ -340,7 +337,6 @@
 
 Display表的结构和维护
 </code></pre>
-
     </div>
 
     
@@ -543,6 +539,8 @@ Display表的结构和维护
 
 
 
+
+  
 
   
 

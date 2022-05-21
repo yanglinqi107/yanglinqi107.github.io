@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="查找，内部排序，外排序，Trie结构，红黑树，伸展树">
@@ -333,12 +333,11 @@
       
         <p>查找，内部排序，外排序，Trie结构，红黑树，伸展树</p>
 <span id="more"></span>
-
 <h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p><strong>查找表</strong>是由同一类型的数据元素（或记录）构成的集合。</p>
 <p><strong>关键字</strong>：记录中某一数据项的值。</p>
 <p><strong>主关键字</strong>：能唯一确定一个元素的关键字（如学号、商品号）。</p>
 <p><strong>查找</strong>：根据给定的关键字，在查找表中确定一个其关键字等于给定值的数据元素（记录）的过程</p>
-<p>**平均查找长度(ASL)**：查找一个结点所作的平均比较次数（ASL是衡量一个查找算法优劣的主要标准）</p>
+<p><strong>平均查找长度(ASL)</strong>：查找一个结点所作的平均比较次数（ASL是衡量一个查找算法优劣的主要标准）</p>
 <h3 id="静态表的查找"><a href="#静态表的查找" class="headerlink" title="静态表的查找"></a>静态表的查找</h3><p>静态表——以顺序结构存储的表(顺序表)</p>
 <p>在表上所作的操作—— 查询某个数据元素是否在查找表中</p>
 <h4 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h4><p>算法思想：</p>
@@ -353,7 +352,6 @@
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171917722.png" alt="image-20220302111152734"></p>
 <p><strong>监视哨的作用</strong>：作为越界（即已查完）的检测条件省去在循环中每次均要判定是否越界，从而节省比较的时间。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    keytype key;</span><br><span class="line">    datatype info;</span><br><span class="line">&#125;sstable;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(elemtype r[], <span class="keyword">int</span> n, keytype k)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//在n个结点的顺序表r[1]..r[n]中查找关键字 k</span></span><br><span class="line">	<span class="keyword">int</span> i = n; <span class="comment">// 从表尾开始向前查找</span></span><br><span class="line">    r[<span class="number">0</span>].key = k;	<span class="comment">//设置监视哨</span></span><br><span class="line">    <span class="keyword">while</span>(r[i].key != k) i--;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">    <span class="comment">//若r[i].key==k , 则返回i （i≠0） , 否则返回0(未找到）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>算法分析</strong></p>
 <ul>
 <li>查找成功的平均查找长度（在等概率的前提下）$ASL=(1+2+……+n)/n =(n+1)/2$ </li>
@@ -369,9 +367,6 @@
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171918530.png" alt="image-20220302113132985"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171918576.png" alt="image-20220302113310417"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Search_bin</span><span class="params">(elemtype r[], <span class="keyword">int</span> n, keytype k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//  r[1]..r[n] 是按key排序的n个元素，在表中查找 k</span></span><br><span class="line">    i = <span class="number">1</span>; j = n;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= j) &#123;</span><br><span class="line">        mid = (i + j) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(k == r[mid].key) <span class="keyword">return</span> mid;	<span class="comment">//查找成功</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(k &lt; r[mid].key) j = mid - <span class="number">1</span>;	<span class="comment">//在左半部分继续查找</span></span><br><span class="line">        <span class="keyword">else</span> i = mid + <span class="number">1</span>;	<span class="comment">//在右半部分继续查找</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;	<span class="comment">//k不在该有序表中</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <p><strong>二分查找判定树</strong></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171918605.png" alt="image-20220302114323609"></p>
 <p>折半查找算法的执行时间为$O(log_2n)$，比顺序查找速度快。</p>
@@ -407,11 +402,9 @@
 </ul>
 <p>结点结构：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">bnode</span> &#123;</span></span><br><span class="line">    keytype key;</span><br><span class="line">    datatype data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">bnode</span> *<span class="title">lchild</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">bnode</span> *<span class="title">rchild</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">bnode</span> <span class="title">bstnode</span>;</span></span><br></pre></td></tr></table></figure>
-
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171919254.png" alt="image-20220302120937056"></p>
 <p>算法伪代码：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">bstnode *<span class="title">bstsearch</span><span class="params">(bstnode *t, keytype k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//  t:指向根结点, k:待查找关键字</span></span><br><span class="line">    <span class="keyword">if</span>(t == <span class="literal">NULL</span> || t-&gt;key == K) <span class="keyword">return</span> t;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(t-&gt;key &gt; k) <span class="keyword">return</span> bstsearch(t-&gt;lchild, k); <span class="comment">// 在左子树上查找</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> bstsearch(t-&gt;rchild, k); <span class="comment">// 在右子树上查找</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>二叉排序树的插入</p>
 <ul>
 <li>若二叉树为空。则生成根结点。</li>
@@ -425,13 +418,17 @@
 <p>二叉排序树的删除</p>
 <ul>
 <li><p>删除叶子结点：直接删除。如删除24</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171919682.png" alt="image-20220302122725653" style="zoom:67%;" /></li>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171919682.png" alt="image-20220302122725653" style="zoom:67%;" /></p>
+</li>
 <li><p>删除子树的根结点：若被删结点的左儿子为空或者右儿子为空。如删除100</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171919052.png" alt="image-20220302122932730" style="zoom:67%;" /></li>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171919052.png" alt="image-20220302122932730" style="zoom:67%;" /></p>
+</li>
 <li><p>删除子树的根结点且被删结点的左子树和右子树均不空。如删除12</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171920180.png" alt="image-20220302141220666" style="zoom:67%;" /></li>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171920180.png" alt="image-20220302141220666" style="zoom:67%;" /></p>
+</li>
 <li><p>一般情况</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171920402.png" alt="image-20220302141922103" style="zoom:80%;" /></li>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171920402.png" alt="image-20220302141922103" style="zoom:80%;" /></p>
+</li>
 </ul>
 <h4 id="平衡二叉树AVL"><a href="#平衡二叉树AVL" class="headerlink" title="平衡二叉树AVL"></a>平衡二叉树AVL</h4><p><strong>平衡二叉树(Balanced Binary Tree)又称AVL树</strong>。它或是空树，或是具有下列性质的二叉排序树。</p>
 <ul>
@@ -440,7 +437,7 @@
 <p><strong>平衡因子(Balance Factor)</strong></p>
 <ul>
 <li>左子树的深度 - 右子树的深度</li>
-<li> 即平衡二叉树中每一结点的平衡因子为：0，1，-1。</li>
+<li>即平衡二叉树中每一结点的平衡因子为：0，1，-1。</li>
 </ul>
 <p>平衡二叉树的查找</p>
 <ul>
@@ -494,7 +491,6 @@
 </ul>
 <p><strong>B-树查找算法伪代码</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">result <span class="title">srch_mbtree</span><span class="params">(mblink t; keytype k)</span> <span class="comment">//在B-树中查找k</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	p=t; q=<span class="literal">NULL</span>; i=<span class="number">0</span>;  <span class="comment">//初始化</span></span><br><span class="line">    <span class="keyword">while</span>(p) &#123;</span><br><span class="line">        i = Search(p, k);</span><br><span class="line">        <span class="comment">//在p-&gt;key[1...n]中查找</span></span><br><span class="line">        <span class="comment">//直至p-&gt;key[i] &lt;= k &lt; p-&gt;key[i+1] 止, 0&lt;=i&lt;=n</span></span><br><span class="line">		<span class="keyword">if</span>( i &gt; <span class="number">0</span> &amp;&amp; p-&gt;key[i] = k ) <span class="keyword">return</span> (p, i, <span class="number">1</span>);	<span class="comment">//查找成功</span></span><br><span class="line">        <span class="keyword">else</span> &#123; q = p; p = p-&gt;ptr[i]; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (q, i, <span class="number">0</span>);	<span class="comment">//查找不成功，返回插入位置信息</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>B-树的插入</strong></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171923065.png" alt="image-20220302155419209"></p>
 <p>问题：若插入一元素时，使得某一结点&gt;m叉？例如插入60</p>
@@ -522,7 +518,7 @@
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171925558.png" alt="image-20220302172909868"></p>
 <p><strong>冲突</strong></p>
 <p>若对于不同的键值$k1$和$k2$，且$k1\neq k2$，但$h(k1)=h(k2)$，即具有相同的散列地址，这种现象称为<strong>冲突</strong>。称 $k1$、$k2$称为同义词</p>
-<p>例：$key={3,15,20,24}$，$m=5$（表长），$hash(k)=k%5$<br>则：$hash(15)=hash(20)=0$ 产生冲突。</p>
+<p>例：$key=\{3,15,20,24\}$，$m=5$（表长），$hash(k)=k%5$<br>则：$hash(15)=hash(20)=0$ 产生冲突。</p>
 <p><strong>表长m的选取</strong></p>
 <p>参考：$n / m≈ 3 / 4$  </p>
 <ul>
@@ -564,7 +560,7 @@
 <p>采用何种构造哈希函数的方法取决于关键字集合的情况(包括关键字的范围和形)，总的原则是使产生冲突的可能性降到尽可能<br>的小。</p>
 <h4 id="冲突处理"><a href="#冲突处理" class="headerlink" title="冲突处理"></a>冲突处理</h4><p>1、<strong>链地址法</strong></p>
 <p>将具有相同散列地址的记录都存储在同一个线性链表中。</p>
-<p>例：以${14,1,68,27,55,23,11,10,19,20,79,84}$构造hash表。<br>分析： $n=12\quad n/m=3/4$ ,  所以 $m=16$ ,  则 $p=13 \quad hash(key)=key % 13$</p>
+<p>例：以$\{14,1,68,27,55,23,11,10,19,20,79,84\}$构造hash表。<br>分析： $n=12\quad n/m=3/4$ ,  所以 $m=16$ ,  则 $p=13 \quad hash(key)=key % 13$</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171926460.png" alt="image-20220303095239166"></p>
 <p>2、<strong>开放定址法</strong></p>
 <p>当冲突发生时，使用某种方法在散列表中形成一个探查序列，沿着此序列逐个地址去探查，直到找到一个开放的地址（空位置），将发生冲突的键值放到该地址中。$H_i=(H(key)+d_i)%m$</p>
@@ -581,12 +577,11 @@
 <p>2.2 <strong>二次探测法</strong></p>
 <p>对给定的关键值 $k$，若地址$d$ (即$h(k)=d$)的单元发生冲突，则探查下述地址单元：$d+1,d-1,d+4,d-4,d+9,d-9,…$</p>
 <p>设增量函数为 $d(i)=1^2,-1^2,2^2,-2^2,……,k^2,-k^2\quad (k&lt;=m/2)$ </p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171926146.png" alt="image-20220303101203785" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171926146.png" alt="image-20220303101203785" style="zoom:80%;" /></p>
 <p>2.3 <strong>伪随机探测法</strong></p>
 <p>2.4  <strong>再散列探测法</strong></p>
 <p>设$m$为表长，当 $h1(k1)=h2(k2)=d$ 时，</p>
-<p>使探查序列为： $(d+h2(k))%m \ (d+2h2(k))%m \ (d+3h2(k))%m \ …… $</p>
+<p>使探查序列为： $(d+h2(k))%m \\ (d+2h2(k))%m \\ (d+3h2(k))%m \\ …… $</p>
 <p>$h2$的选取方法为：</p>
 <ul>
 <li>若$m$为素数：$h2(k)=k%(m-2)+1$</li>
@@ -594,10 +589,7 @@
 </ul>
 <p>3、<strong>公共溢出区法</strong></p>
 <p>将关键字相同（即具有相同散列地址）的记录都存储在同一个溢出区中。</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171927293.png" alt="image-20220303104613276" style="zoom:80%;" />
-
-
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171927293.png" alt="image-20220303104613276" style="zoom:80%;" /></p>
 <h4 id="hash表的查找"><a href="#hash表的查找" class="headerlink" title="hash表的查找"></a>hash表的查找</h4><p>查找过程和造表过程一致。</p>
 <p>假设采用开放定址处理冲突，则查找过程为:</p>
 <p>对于给定值$K$, 计算哈希地址 $j = H(K)$</p>
@@ -611,18 +603,12 @@
 </ul>
 <p><strong>用线性探测法解决冲突</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> hashsize = &#123;<span class="number">997</span>, ...&#125; 	<span class="comment">// 哈希表容量递增表，一个合适的素数序列</span></span><br><span class="line"><span class="keyword">typedef</span> struct &#123;</span><br><span class="line">    ElemType *elem;	<span class="comment">//数据元素存储基址，动态分配数组</span></span><br><span class="line">    <span class="keyword">int</span> count;		<span class="comment">//当前数据元素个数</span></span><br><span class="line">    <span class="keyword">int</span> sizeindex;	<span class="comment">//hashsize[sizeindex]为当前容量</span></span><br><span class="line">&#125;HashTable;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SUCCESS 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> UNSUCCESS 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DUPLICATE -1</span></span><br><span class="line"></span><br><span class="line"><span class="function">Status <span class="title">SearchHash</span><span class="params">(HashTable H, KeyType k, <span class="keyword">int</span> &amp;p, <span class="keyword">int</span> &amp;c)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    j = Hash(k);</span><br><span class="line">    <span class="keyword">while</span>(shtable[j] != nullrecd &amp;&amp; shtable[j].key != k) j = (j + <span class="number">1</span>) % m;</span><br><span class="line">    <span class="keyword">if</span>(shtable[j] == nullrecd) <span class="keyword">return</span> nulladr;	<span class="comment">//未找到</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(shtable[j].key == k) <span class="keyword">return</span> j;		<span class="comment">//查找成功</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>用链地址法解决冲突</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">j = Hash(k);</span><br><span class="line">p = shtable[j];</span><br><span class="line"><span class="keyword">while</span>(p &amp;&amp; p-&gt;key != k) p = p-&gt;next;</span><br><span class="line"><span class="keyword">if</span>(!p) <span class="keyword">return</span> <span class="literal">NULL</span>;		<span class="comment">//未找到</span></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(p-&gt;key == k) <span class="keyword">return</span> p;	<span class="comment">//查找成功</span></span><br></pre></td></tr></table></figure>
-
-
-
 <p><strong>决定哈希表查找的ASL的因素：</strong></p>
 <ul>
-<li><p>选用的哈希函数;</p>
-</li>
-<li><p>选用的处理冲突的方法;</p>
-</li>
+<li>选用的哈希函数;</li>
+<li>选用的处理冲突的方法;</li>
 <li><p>哈希表饱和的程度，装载因子$α=n/m$ 值的大小。</p>
 </li>
 <li><p>一般情况下，可以认为选用的哈希函数是“均匀”的，则在讨论ASL时，可以不考虑它的因素。</p>
@@ -643,10 +629,10 @@
 <li>随机探测再散列、二次探测再散列 $S_{nr}\approx \frac{1}{1-\alpha}$ </li>
 </ul>
 <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="概念及分类"><a href="#概念及分类" class="headerlink" title="概念及分类"></a>概念及分类</h3><p><strong>排序</strong>：将一组任意顺序的数据，重新排列成按关键字有序的序列。</p>
-<p> 一般情况下，假设含$n$个记录的序列为：${R_1, R_2,…,R_n}$ </p>
-<p>其相应的关键字序列为：${K_1,K_2,…,K_n}$    </p>
+<p> 一般情况下，假设含$n$个记录的序列为：$\{R_1, R_2,…,R_n\}$ </p>
+<p>其相应的关键字序列为：$\{K_1,K_2,…,K_n\}$    </p>
 <p>关键字相互之间可以进行比较，即存在关系：$K_{p1}≤K_{p2}≤…≤K_{pn}$（其中$p1, p2, ……, pn$ 为$1,2,……,n$的一种排列）</p>
-<p>将${R_1,R_2,…,R_n}$ 中的记录重新排列为 ${R_{p1}, R_{p2}, …R_{pn}}$的操作称为排序。</p>
+<p>将$\{R_1,R_2,…,R_n\}$ 中的记录重新排列为 $\{R_{p1}, R_{p2}, …R_{pn}\}$的操作称为排序。</p>
 <p>分类：</p>
 <ul>
 <li><strong>内部排序</strong>：待排序记录存放在计算机随机存储器中进行的排序过程<ul>
@@ -675,16 +661,12 @@
 <p><strong>稳定性</strong>：若记录序列中的任意两个记录 $Rx、Ry$ 的关键字 $Kx = Ky$ ；如果在排序之前和排序之后，它们的相对位置保持不变，则这种排序方法是<strong>稳定</strong>的，否则是<strong>不稳定</strong>的</p>
 <p><strong>存储结构</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#define MAXSIZE 10000	//一个用作示例的最大长度</span><br><span class="line">typedef int KeyType;	//	定义关键字类型为整数类型</span><br><span class="line">typedef struct &#123;</span><br><span class="line">	KeyType key;</span><br><span class="line">	InfoType otherinfo;	//其它数据项</span><br><span class="line">&#125;RecordType;</span><br><span class="line">typedef struct &#123;	</span><br><span class="line">	RecordType r[MAXSIZE + 1];	//r[0]闲置或作监视哨</span><br><span class="line">	int length;					//顺序表长度</span><br><span class="line">&#125;SqList;</span><br></pre></td></tr></table></figure>
-
-
-
 <h2 id="内部排序"><a href="#内部排序" class="headerlink" title="内部排序"></a>内部排序</h2><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><h4 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h4><p><strong>排序策略</strong>：基于有序插入</p>
 <p>在有序表的恰当处插入一个新元素，并保持该有序表的有序性。也即，当第$i$个元素插入时，第$1$到第$i-1$个元素已按关键字排序</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171927781.png" alt="image-20220303115514137"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171933337.png" alt="image-20220303115955840"></p>
 <p><strong>算法实现</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">()</span> </span>&#123;<span class="comment">//对记录序列r[1]..r[n]作直接插入排序</span></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">2</span>; i &lt;= n; ++i) &#123; <span class="comment">//从第二个元素开始比较</span></span><br><span class="line">        r[<span class="number">0</span>] = r[i];		<span class="comment">//r[0]为监视哨</span></span><br><span class="line">        j = i - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(r[<span class="number">0</span>].key &lt; r[j].key) &#123;</span><br><span class="line">            r[j + <span class="number">1</span>] = r[j]; --j;	<span class="comment">//记录后移，边移动边找插入位置</span></span><br><span class="line">        &#125;</span><br><span class="line">        r[j + <span class="number">1</span>] = r[<span class="number">0</span>];	<span class="comment">//插入到正确位置</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>算法分析</strong></p>
 <p>时间复杂度：$T(n)=O(n^2)$ </p>
 <p>空间复杂度：$S(n)=O(1)$ </p>
@@ -695,7 +677,6 @@
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171934986.png" alt="image-20220303121549613"></p>
 <p><strong>算法设计</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Shellsort</span><span class="params">()</span> </span>&#123;  <span class="comment">// 对记录序列r[1]..r[n]作shell排序,增量是 d </span></span><br><span class="line">	d = n / <span class="number">2</span>;		<span class="comment">// 取d = n / 2; d = d / 2; 分组排序</span></span><br><span class="line">    <span class="keyword">while</span>(d &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span>(i = d + <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            r[<span class="number">0</span>] = r[i]; j = i - d;	<span class="comment">//r[0]是暂存单元</span></span><br><span class="line">            <span class="keyword">while</span>(j &gt; <span class="number">0</span> &amp;&amp; r[<span class="number">0</span>].key &lt; r[j].key) &#123;</span><br><span class="line">                r[j + d] = r[j]; </span><br><span class="line">                j = i - d;</span><br><span class="line">            &#125;	<span class="comment">////记录后移，查找插入位置</span></span><br><span class="line">            r[j + d] = r[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        d = d / <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>算法分析</strong></p>
 <p>时间复杂度：$T(n)=O(nlog2n)$ </p>
 <p>空间复杂度：$S(n)=O(1)$ </p>
@@ -704,10 +685,8 @@
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171934885.png" alt="image-20220304095532892"></p>
 <p><strong>排序算法</strong>：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 对r[1]..r[n] 进行冒泡排序</span></span><br><span class="line">    <span class="comment">// 策略：从上至下逐个进行两两比较</span></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">1</span>; j &lt;= n - i; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span>(r[j].key &gt; r[j + <span class="number">1.</span>key]) &#123;</span><br><span class="line">                r[<span class="number">0</span>] = r[j + <span class="number">1</span>]; r[j + <span class="number">1</span>] = r[j]; r[j] = r[<span class="number">0</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>算法改进</strong>：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 对r[1]..r[n] 进行冒泡排序，策略：从上至下逐个进行两两比较</span></span><br><span class="line">    <span class="keyword">int</span> swap = <span class="number">1</span>; </span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n &amp;&amp; swap; ++i) &#123; <span class="comment">// 进行n-1趟冒泡排序 或 某趟无交换止</span></span><br><span class="line">        swap = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">1</span>; j &lt;= n - i; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span>(r[j].key &gt; r[j + <span class="number">1.</span>key]) &#123;</span><br><span class="line">                r[<span class="number">0</span>] = r[j + <span class="number">1</span>]; r[j + <span class="number">1</span>] = r[j]; r[j] = r[<span class="number">0</span>];</span><br><span class="line">                swap = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>算法分析</strong>：</p>
 <p>时间复杂度分析：$T(n)=O(n^2)$</p>
 <p>空间复杂度分析：$S(n)=O(1)$</p>
@@ -716,7 +695,6 @@
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171935199.png" alt="image-20220303163804332"></p>
 <p><strong>算法实现</strong>：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一趟快速排序</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Partition</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 对r[i]..r[j]中的记录进行一趟排序，将它们分成两部分</span></span><br><span class="line">    <span class="comment">// 使：[…这部分的值&lt;=x…] x […这部分的值&gt;=x…]</span></span><br><span class="line">    r[<span class="number">0</span>] = r[i]; x = r[i].key;	<span class="comment">//用子表的第一个记录作为界点记录</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt; j) &#123;	 <span class="comment">// 从表的两端交替地向中间扫描</span></span><br><span class="line">        <span class="keyword">while</span>(r[j].key &gt; x &amp;&amp; i &lt; j) --j;</span><br><span class="line">        r[i] = r[j];	<span class="comment">// 将比界点记录小的记录交换到低端</span></span><br><span class="line">        <span class="keyword">while</span>(r[i].key &lt; x &amp;&amp; i &lt; j) ++i;</span><br><span class="line">        r[j] = r[i];	<span class="comment">// 将比界点记录大的记录交换到高端</span></span><br><span class="line">    &#125;</span><br><span class="line">    r[i] = r[<span class="number">0</span>];	</span><br><span class="line">    <span class="keyword">return</span> i;		<span class="comment">//返回界点所在位置</span></span><br><span class="line">&#125;<span class="comment">//Partition</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//快速排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 对记录序列r[low]..r[high]进行快速排序</span></span><br><span class="line">    <span class="keyword">if</span>(low &gt;= high) <span class="keyword">return</span>;	<span class="comment">// 长度小于1</span></span><br><span class="line">    <span class="keyword">int</span> mid = Partition(low, high);</span><br><span class="line">    QuickSort(low, mid - <span class="number">1</span>);</span><br><span class="line">    QuickSort(mid + <span class="number">1</span>, high);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>算法分析</strong></p>
 <p>时间复杂度：$T(n)=O(log_2n)$ </p>
 <p>空间复杂度：$S(n)=O(log_2n)$ </p>
@@ -726,18 +704,16 @@
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171935282.png" alt="image-20220304100054253"></p>
 <p><strong>算法实现</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SelectSort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//对记录序列r[1]..r[n]进行简单选择排序</span></span><br><span class="line">    <span class="keyword">int</span> i, j, k;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n<span class="number">-1</span>; ++i) &#123;	<span class="comment">//进行n-1趟</span></span><br><span class="line">     	k = i;</span><br><span class="line">        <span class="keyword">for</span>(j = i + <span class="number">1</span>; j &lt;= n; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span>(r[j] &lt; r[k]) k = j; <span class="comment">// 保持r[k]的关键字最小</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i != k) &#123;</span><br><span class="line">            r[<span class="number">0</span>] = r[i]; r[i] = r[k]; r[k] = r[<span class="number">0</span>]; <span class="comment">//在待排序的数据中选择最小值，并存入r[i]处</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>算法分析</strong></p>
 <p>时间分析：$T(n)=O(n^2)$</p>
 <p>空间分析：$S(n)=O(1)$</p>
 <p>稳定性：不稳定</p>
 <p>适用范围：1）$n$较小时，2）在$n$个待排序的数据中选择前$k(k&lt;&lt;n)$个最小值时</p>
-<h4 id="树形排序"><a href="#树形排序" class="headerlink" title="树形排序"></a>树形排序</h4><p><strong>树形选择排序(Tree Selection Sort)<strong>又称</strong>锦标赛排序(Tournament Sort)</strong></p>
+<h4 id="树形排序"><a href="#树形排序" class="headerlink" title="树形排序"></a>树形排序</h4><p><strong>树形选择排序(Tree Selection Sort)</strong>又称<strong>锦标赛排序(Tournament Sort)</strong></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171935573.png" alt="image-20220304102306909"></p>
-<h4 id="堆排序-Heap-Sort"><a href="#堆排序-Heap-Sort" class="headerlink" title="堆排序(Heap Sort)"></a>堆排序(Heap Sort)</h4><p><strong>堆的定义</strong>：$n$个元素的序列${k_1,k_2,…k_n}$，满足： $$\begin{cases} k_i &gt;= k_{2i} \ k_i &gt;=k_{2i+1} \end{cases} 或 \begin{cases} k_i &lt;= k_{2i} \ k_i &lt;=k_{2i+1} \end{cases}$$ </p>
+<h4 id="堆排序-Heap-Sort"><a href="#堆排序-Heap-Sort" class="headerlink" title="堆排序(Heap Sort)"></a>堆排序(Heap Sort)</h4><p><strong>堆的定义</strong>：$n$个元素的序列$\{k_1,k_2,…k_n\}$，满足： <script type="math/tex">\begin{cases} k_i >= k_{2i} \\ k_i >=k_{2i+1} \end{cases} 或 \begin{cases} k_i <= k_{2i} \\ k_i <=k_{2i+1} \end{cases}</script> </p>
 <p>堆是一个完全二叉树。</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171935891.png" alt="image-20220304104438730" style="zoom: 67%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171935891.png" alt="image-20220304104438730" style="zoom: 67%;" /></p>
 <p><strong>堆排序</strong>：输出堆顶的最小值（最大值）后，将剩下的$n-1$个元素序列重新建成一个堆，得到次小值（次大值）。反复执行，得到一个有序序列。</p>
 <p><strong>构造堆</strong>：按堆的定义将$r[1]…r[n]$调整为堆</p>
 <p>$r[n]$与$r[1]$互换，将$r[1]…r[n-1]$调整为堆。再将$r[n-1]$与$r[1]$互换，将$r[1]…r[n-2]$调整为堆。……，直至排序完成。</p>
@@ -751,7 +727,6 @@
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171936006.png" alt="image-20220304123234392"></p>
 <p><strong>算法实现</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sift</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> m)</span> </span>&#123;  <span class="comment">//堆的调整，也是建堆</span></span><br><span class="line">    <span class="comment">//把以 t 为根的完全二叉树r[i]..r[m]调整成一个堆 </span></span><br><span class="line"> 	<span class="comment">//初值：i的左右子树均是堆</span></span><br><span class="line">    <span class="keyword">int</span> j = i * <span class="number">2</span>;	<span class="comment">//j指向左孩子</span></span><br><span class="line">    r[<span class="number">0</span>] = r[i];	<span class="comment">//将r[i]暂存在r[0]中</span></span><br><span class="line">    <span class="keyword">while</span>(j &lt;= m) &#123;</span><br><span class="line">        <span class="keyword">if</span>(j &lt; m &amp;&amp; r[j].key &lt; r[j + <span class="number">1</span>].key) ++j; <span class="comment">//左孩子与右孩子进行比较，找较大孩子，确定筛选方向</span></span><br><span class="line">        <span class="keyword">if</span>(r[<span class="number">0</span>].key &lt; r[j].key) &#123;</span><br><span class="line">            r[i] = r[j]; i = j; j = <span class="number">2</span> * i;	<span class="comment">// 继续筛选</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> j = m + <span class="number">1</span>;	<span class="comment">//筛选完毕</span></span><br><span class="line">        r[i] = r[<span class="number">0</span>];</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">heapsort</span><span class="params">()</span> </span>&#123;	<span class="comment">//将r[1]...r[n]进行堆排序</span></span><br><span class="line">    <span class="keyword">for</span>(j = n / <span class="number">2</span>; j &gt;= <span class="number">1</span>; --j) sift(j, n);	<span class="comment">//建堆，得最大值r[1]</span></span><br><span class="line">    <span class="keyword">for</span>(j = n; j &gt;= <span class="number">2</span>; --j) &#123;</span><br><span class="line">        r[<span class="number">0</span>] = r[<span class="number">1</span>]; r[<span class="number">1</span>] = r[j]; r[j] = r[<span class="number">0</span>];</span><br><span class="line">        <span class="comment">//堆顶（根）结点与最后结点的值对换</span></span><br><span class="line">        sift(<span class="number">1</span>, j - <span class="number">1</span>);	<span class="comment">//调整堆</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>算法分析</strong></p>
 <p>时间分析：$T(n)=O (nlog2n)$</p>
 <p>空间分析：$S(n)=O(1)$</p>
@@ -759,11 +734,9 @@
 <p>适用范围：1）$n$较大。2）选取前$k(K&lt;&lt;n)$个最小（大）元素时</p>
 <h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p><strong>归并排序（Merging Sort）</strong>就是将两个或两个以上的有序表合并成一个有序表的过程。将两个有序表合并成一个有序表的过程称为<strong>2-路归并</strong>，2-路归并最为简单和常用。</p>
 <p><strong>排序示例：</strong> </p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171936821.png" alt="image-20220304141031376" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171936821.png" alt="image-20220304141031376" style="zoom:80%;" /></p>
 <p><strong>二路归并算法</strong>：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span><span class="params">(RedType R[], RedType T[], <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 将两个有序表R[low]..R[mid]和R[mid+1]..r[high]归并为一个新的有序表T[low]..r[high]</span></span><br><span class="line">    i = low; j = mid + <span class="number">1</span>; k = low;	<span class="comment">//初值i,j,k为指示器</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= high) &#123;</span><br><span class="line">        <span class="keyword">if</span>(R[i].key &lt;= R[j].key) T[k++] = R[i++];</span><br><span class="line">        <span class="keyword">else</span> T[k++] = R[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid) T[k++] = R[i++];	<span class="comment">//将剩余的R[i]..R[mid]放入T中</span></span><br><span class="line">    <span class="keyword">while</span>(j &lt;= high) T[k++] = R[i++];	<span class="comment">//将剩余的R[j]..R[high]放入T中</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(RedType R[], RedType &amp;T[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//R[low]..R[high]归并排序后放入T[low]..T[high]中</span></span><br><span class="line">    <span class="keyword">if</span>(low &lt; high) &#123;</span><br><span class="line">        mid = (low + high) / <span class="number">2</span>;		<span class="comment">//将当前序列一分为二，分裂点mid</span></span><br><span class="line">        mergeSort(R, S, low, mid);		<span class="comment">//对子序列R[low..mid]递归归并排序</span></span><br><span class="line">        mergeSort(R, S, mid + <span class="number">1</span>, high);	<span class="comment">//对子序列R[mid+1..high]递归归并排序</span></span><br><span class="line">        Merge(R, T, low, mid, high);	<span class="comment">//将S[low..mid]和S[mid+1..high]归并到T[low..high]</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>算法分析</strong></p>
 <p>时间复杂度：$T(n)=O(nlog_2n)$ </p>
 <p>空间复杂度：$S(n) = O(n)$ </p>
@@ -771,8 +744,8 @@
 <p>适用范围：$n$较大时</p>
 <h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p><strong>基数排序（Radix Sorting）</strong>是一种借助多关键字排序的思想对单逻辑关键字进行排序的方法。</p>
 <p><strong>多关键字的排序</strong></p>
-<p>假设$n$个记录的序列${R_1,R_2,…R_n}$，且每个记录$R_i$含有$d$个关键字$(K_i^0,K_i^1,…,K_i^{d-1})$</p>
-<p>序列${R_1,R_2,…R_n}$对关键字$(K_i^0,K_i^1,…,K_i^{d-1})$有序：对于序列中任意两个记录$R_i$和$R_j(1&lt;=i&lt;j&lt;=n)$满足：$$(K_i^0,K_i^1,…,K_i^{d-1}) &lt; (K_j^0,K_j^1,…,K_j^{d-1})$$其中$K^0$称为最主位关键字，$K^{d-1}$称为最次位关键字。</p>
+<p>假设$n$个记录的序列$\{R_1,R_2,…R_n\}$，且每个记录$R_i$含有$d$个关键字$(K_i^0,K_i^1,…,K_i^{d-1})$</p>
+<p>序列$\{R_1,R_2,…R_n\}$对关键字$(K_i^0,K_i^1,…,K_i^{d-1})$有序：对于序列中任意两个记录$R_i$和$R_j(1&lt;=i&lt;j&lt;=n)$满足：<script type="math/tex">(K_i^0,K_i^1,...,K_i^{d-1}) < (K_j^0,K_j^1,...,K_j^{d-1})</script>其中$K^0$称为最主位关键字，$K^{d-1}$称为最次位关键字。</p>
 <p>法一：<strong>最高位优先法（Most Significant Digit first）MSD</strong></p>
 <ul>
 <li>对最主位关键字$K^0$排序，将序列分成若干个子序列，每个子序列中的记录有相同的$K^0$值</li>
@@ -796,15 +769,14 @@
 </ul>
 <p><strong>存储结构</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY_NUM	10</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> key[KEY_NUM];	<span class="comment">//d: 关键字的位数</span></span><br><span class="line">    infoType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <p><strong>算法实现</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">distribute</span><span class="params">(struct node *head, <span class="keyword">int</span> i, )</span> </span>&#123;</span><br><span class="line">    <span class="comment">//分配算法，考察每一个元素的第i个关键字，并放入相应的队列中</span></span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; KEY_NUM; ++j) f[j] = <span class="literal">NULL</span>;	<span class="comment">//队列初始化，f保存每个子序列的头</span></span><br><span class="line">    p = head-&gt;next;	<span class="comment">//头指针不存储数据</span></span><br><span class="line">    <span class="keyword">while</span>(p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        j = p-&gt;key[i];	<span class="comment">//考察p所指结点的第i位</span></span><br><span class="line">        <span class="keyword">if</span>(f[j] == <span class="literal">NULL</span>) f[j] = p;</span><br><span class="line">        <span class="keyword">else</span> r[j]-&gt;next = p;</span><br><span class="line">        r[j] = p;		<span class="comment">//r记录每个子序列的尾</span></span><br><span class="line">        p = p-&gt;next;	<span class="comment">//p后移</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">collect</span><span class="params">(struct node &amp;head)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//收集算法：从队列0到队列9进行收集</span></span><br><span class="line">    j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(f[j] == <span class="literal">NULL</span>) ++j;	<span class="comment">//找第一个非空队列</span></span><br><span class="line">    head-&gt;next = f[j]; t = r[j]; <span class="comment">//head:收集后链表的头指针，t:尾指针</span></span><br><span class="line">    <span class="keyword">while</span>(j &lt; <span class="number">9</span>) &#123;</span><br><span class="line">        j++;</span><br><span class="line">        <span class="keyword">if</span>(f[j] != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            t-&gt;next = f[j];</span><br><span class="line">            t = r[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    t-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">radixSort</span><span class="params">(struct node *head)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//基数排序：从低位开始</span></span><br><span class="line">    <span class="function">create <span class="title">link_list</span><span class="params">(head)</span></span>;	<span class="comment">//建立链表，head:头指针</span></span><br><span class="line">    <span class="keyword">for</span>(i = KEY_NUM - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;	<span class="comment">//进行KEY_NUM趟分配和收集</span></span><br><span class="line">    	distribute(head, i);</span><br><span class="line">        collect(head);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>算法分析</strong></p>
 <p>时间复杂度：$T(n)=O(d(n+rd))=O(n)$ 关键码$d$位，对 rd 个队列收集</p>
 <p>空间复杂度：$S(n)=O(n+2rd)$ </p>
 <p>稳定性：稳定</p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><table>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>排序方法</th>
@@ -814,7 +786,8 @@
 <th>稳定性</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>直接插入排序</td>
 <td>$O(n^2)$</td>
 <td>$O(n^2)$</td>
@@ -863,17 +836,19 @@
 <td>$O(rd)$</td>
 <td>Y</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171941465.png" alt="image-20220306113737759"></p>
 <h2 id="外部排序"><a href="#外部排序" class="headerlink" title="外部排序"></a>外部排序</h2><h3 id="内存和外存"><a href="#内存和外存" class="headerlink" title="内存和外存"></a>内存和外存</h3><p>计算机存储器主要有两种：</p>
 <ul>
-<li>**主存储器 ( primary memory 或者 main memory ，简称“内存”，或者“主存”) **<ul>
+<li><strong>主存储器 ( primary memory 或者 main memory ，简称“内存”，或者“主存”) </strong><ul>
 <li><strong>随机访问存储器 ( Random Access Memory, 即 RAM )</strong></li>
 <li><strong>高速缓存 ( cache )</strong></li>
-<li>**视频存储器 ( video memory ) **</li>
+<li><strong>视频存储器 ( video memory ) </strong></li>
 </ul>
 </li>
-<li>**外存储器 ( peripheral storage 或者 secondary storage，简称“外存”，或“辅存”) **<ul>
+<li><strong>外存储器 ( peripheral storage 或者 secondary storage，简称“外存”，或“辅存”) </strong><ul>
 <li><strong>硬盘 (几百$G$ - 几百$T$， $10^{12B} $)</strong></li>
 <li><strong>磁带 (几个$P$， $10^{15}B$ )</strong></li>
 <li><strong>磁盘</strong></li>
@@ -908,9 +883,8 @@
 <li>$Googol$ 是 10 的 100 次方</li>
 </ul>
 <h3 id="磁带"><a href="#磁带" class="headerlink" title="磁带"></a>磁带</h3><p>磁带大约1/2英寸宽，绕在一个卷盘上。使用时，将磁带盘放在磁带机上，驱动器控制磁带盘转动，带动磁带向前移动。通过读/写头就可以读出磁带上的信息或把信息写入磁带中。</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171942714.jpg" style="zoom: 15%;" />
-
-<p>磁带不是连续转动的设备，而是一种启停设备（启停时间约5毫秒）。由于读写信息应在旋转稳定时进行，而磁带从静止转态启动后，需经历加速阶段；读/写结束后，需经历减速阶段。因此，在磁带上相邻两个字符组（记录）之间要留有一空白区，叫做**间隙IRG(Inter Record Gap)**。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171942714.jpg" style="zoom: 15%;" /></p>
+<p>磁带不是连续转动的设备，而是一种启停设备（启停时间约5毫秒）。由于读写信息应在旋转稳定时进行，而磁带从静止转态启动后，需经历加速阶段；读/写结束后，需经历减速阶段。因此，在磁带上相邻两个字符组（记录）之间要留有一空白区，叫做<strong>间隙IRG(Inter Record Gap)</strong>。</p>
 <p>为有效利用磁带，常常用组成块的长度的方法来减少 $IRG$ 的个数。在每次写信息时，不是按用户给出的字符组记入磁带，而是将若干个字符组合并成一块后一次写入磁带。字符组间没有了 $IRG$ ，变成块间的间隙 $IBG$ (Inter Block Gap) 。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171943649.png" alt="image-20220305150014325"></p>
 <p>成块的好处和限制：</p>
@@ -919,8 +893,7 @@
 </li>
 <li><p>减少 I/O 操作</p>
 </li>
-<li><p>物理块不能太大，通常 1K~8K 字节。太大容易出错，内存开辟的缓冲区也越大。</p>
-</li>
+<li>物理块不能太大，通常 1K~8K 字节。太大容易出错，内存开辟的缓冲区也越大。</li>
 </ul>
 <p>磁带上读取一块信息所需时间由两部分组成：$T_{I/O}=t_a+n\times t_w$  </p>
 <ul>
@@ -951,8 +924,8 @@
 </ul>
 <p>读写信息所需时间：$T_{I/O}=t_{seek}+t_{la}+n\times t_{wm}$ </p>
 <ul>
-<li>$t_{seek}$ **寻查时间(seek time)**：读/写头定位的时间</li>
-<li>$t_{la}$ **等待时间(latency time)**：等待信息块的初始位置旋转到读写头下的时间</li>
+<li>$t_{seek}$ <strong>寻查时间(seek time)</strong>：读/写头定位的时间</li>
+<li>$t_{la}$ <strong>等待时间(latency time)</strong>：等待信息块的初始位置旋转到读写头下的时间</li>
 <li>$t_{wm}$ <strong>传输时间(transmission time)</strong></li>
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171943567.png" alt="image-20220305141308482"></p>
@@ -965,7 +938,7 @@
 <p>示例：<strong>2-路平衡归并</strong></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171943937.png" alt="image-20220305163752665"></p>
 <p>在内存中将两个有序段归并成一个有序段很简单。但是，在外部排序中实现两两归并时，要进行外存的读／写，因为不可能将两个有序段及归并结果段同时存放在内存中的缘故。假设在上例中毎个物理块可以容纳200个记录，则每一趟归并需进行50次“读”和50次“写”,4趟归并加上内部排序时所需进行的读／写使得在外排中总共需进行500次的读 / 写。</p>
-<p>一般情况下，$外部排序所需总的时间＝$$内部排序（产生初始归并段）所需的时间 (m\times t_{IS})+ \ 外存信息读写的时间 (d\times t_{IO})+ \ 内部归并所需的时间 (s\times ut_{mg})$</p>
+<p>一般情况下，$外部排序所需总的时间＝$$内部排序（产生初始归并段）所需的时间 (m\times t_{IS})+ \\ 外存信息读写的时间 (d\times t_{IO})+ \\ 内部归并所需的时间 (s\times ut_{mg})$</p>
 <ul>
 <li>$t_{IS}$ 是为得到一个初始归并段进行内部排序所需时间的均值</li>
 <li>$t_{IO}$ 是进行一次外存读／写时间的均值</li>
@@ -975,16 +948,16 @@
 <li>$d$ 为总的读／写次数</li>
 </ul>
 <p>由此，上例10000个记录利用2﹣路归并进行外排所需总的时间为：$10\times t_{IS}+500\times t_{IO}+4\times 10000t_{mg}$  </p>
-<p>$t_{IO}$ 取决于所用的外存设备，比 $t_{mg}$ 大得多。**提高外排效率主要是减少外存信息读写的次数 $d$ 。 **</p>
+<p>$t_{IO}$ 取决于所用的外存设备，比 $t_{mg}$ 大得多。<strong>提高外排效率主要是减少外存信息读写的次数 $d$ 。 </strong></p>
 <p>若对上例采取<strong>5-路平衡归并</strong>，仅需两趟归并，外排时总的读写次数便减至 $2\times 100+100=300$ ，比2-路平衡归并少了200次读写。</p>
 <p>一般情况下：对 $m$ 个起始归并段进行 <strong>k-路平衡归并</strong> 时，归并趟数：$s=$ int $(log_km)$  即 $log_km$向下取整</p>
 <h3 id="多路平衡归并"><a href="#多路平衡归并" class="headerlink" title="多路平衡归并"></a>多路平衡归并</h3><p>增加 $k$ 可以减少 $s$ ，从而减少外存读／写的次数。但单纯增加 $k$ 将导致增加内部归并的时间 $ut_{mg}$ 。</p>
 <p>在2﹣路归并中，令 $u$ 个记录分布在两个归并段上。每得到归并后的一个记录，仅需一次比较即可，则得到含 $u$ 个记录的归并段需进行 $u-1$ <font color=#ff000>（不应该是 $u$ 次比较吗）</font>次比较。</p>
 <p>再看 k﹣路归并。令 $u$ 个记录分布在 E 个归并段上，显然，归并后的第一个记录应是 $k$ 个归并段中关键字最小的记录，即应从毎个归并段的第一个记录的相互比较中选出最小者，这需要进行 $k-1$次比较。同理，每得到归并后的有序段中的一个记录，都要进行  $k-1$ 用次比较。显然，为得到含 $u$ 个记录的归并段需进行 $(u -1)(k-1)$ 次比较。由此，对 $n$ 个记录的文件进行外排时，在内部归并过程中进行的总的比较次数为 $s(k-1)(n-1)$ 。</p>
 <p>假设所得初始归并段为 $m$ 个，则内部归并过程中进行比较的总的次数为<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171944624.png" alt="image-20220305180603563" style="zoom: 50%;" /></p>
-<p>内部归并时间亦随 $k$ 的增长而增长。这将抵消由于增大 $k$ 而减少外存信息读写时间所得效益。然而，若在进行 k﹣路归并时用 **败者树( Tree of Loser )**，则可使在 $k$ 个记录中选出关键字最小的记录时仅需进行 $[log_2k]$ 次比较。</p>
-<p>**败者树( Tree of Loser )**：类似于堆排序里面的完全二叉树，只不过败者树非叶子结点保存的是子孙比较中的败者。</p>
-<p>**胜者树( Tree of Winner )**：和败者树相反</p>
+<p>内部归并时间亦随 $k$ 的增长而增长。这将抵消由于增大 $k$ 而减少外存信息读写时间所得效益。然而，若在进行 k﹣路归并时用 <strong>败者树( Tree of Loser )</strong>，则可使在 $k$ 个记录中选出关键字最小的记录时仅需进行 $[log_2k]$ 次比较。</p>
+<p><strong>败者树( Tree of Loser )</strong>：类似于堆排序里面的完全二叉树，只不过败者树非叶子结点保存的是子孙比较中的败者。</p>
+<p><strong>胜者树( Tree of Winner )</strong>：和败者树相反</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171944838.png" alt="image-20220305181301909"></p>
 <p>$k$ 值的选择并非越大越好，如何选择合适的 $k$ 是一个需要综合考虑的问题。</p>
 <p><strong>算法实现</strong></p>
@@ -992,9 +965,6 @@
 <p><code>Adjust</code>描述在从败者树选得最小关键字的记录之后，如何从叶到根调整败者树选得下一个最小关键字。</p>
 <p><code>CreateLoserTree</code>初建败者树的过程。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> LoserTree[k];	<span class="comment">//败者树是完全二叉树且不含叶子，可采用顺序存储结构</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    KeyType key;</span><br><span class="line">&#125;ExNode, External[k + <span class="number">1</span>];	<span class="comment">//外结点，只存放待归并记录的关键字</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">K_Merge</span><span class="params">(LoserTree &amp;ls, External &amp;b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//利用败者树 ls 将编号从 0 到 k-1 的 k 个输入归并段中的记录归并到输出归并段</span></span><br><span class="line">    <span class="comment">//b[0]至b[k-1]为败者树上的k个叶子结点，分别存放k个输入归并段中当前记录的关键字</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; K; ++i) input(b[i].key);	<span class="comment">//分别从k个输入归并段读入该段当前第一个记录的关键字到外接点</span></span><br><span class="line">    CreateLoserTree(ls);	<span class="comment">//建败者树ls，选得最小关键字为 b[ls[0]].key</span></span><br><span class="line">    <span class="keyword">while</span>(b[ls[<span class="number">0</span>]].key != MAXKEY) &#123;</span><br><span class="line">        q = ls[<span class="number">0</span>];	<span class="comment">//q指示当前最小关键字所在归并段</span></span><br><span class="line">        output(q);	<span class="comment">//将编号为q的归并段中当前（关键字为b[q].key）的记录写至输出归并段</span></span><br><span class="line">        input(b[q].key, q);	<span class="comment">//从编号为q的输入归并段读入下一个记录的关键字</span></span><br><span class="line">        Adjust(ls, q);		<span class="comment">//调整败者树，选择新的最小关键字</span></span><br><span class="line">    &#125;</span><br><span class="line">    output(ls[<span class="number">0</span>]);	<span class="comment">//将含最大关键字MAXKEY的记录写至输出归并段</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Adjust</span><span class="params">(LoserTree &amp;ls, <span class="keyword">int</span> s)</span> </span>&#123;	</span><br><span class="line">    <span class="comment">//沿从叶子结点b[s]到根结点ls[0]的路径调整败者树</span></span><br><span class="line">    t = (s + k) / <span class="number">2</span>;	<span class="comment">//ls[t]是b[s]的双亲结点</span></span><br><span class="line">    <span class="keyword">while</span>(t &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b[s].key &gt; b[ls[t]].key) s&lt;--&gt;ls[t];      <span class="comment">//s指向新的胜者                           </span></span><br><span class="line">        t = t / <span class="number">2</span>;                                                                    </span><br><span class="line">    &#125;</span><br><span class="line">    ls[<span class="number">0</span>] = s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateLoserTree</span><span class="params">(LoserTree &amp;ls)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 已知b[0]到b[k-1]为完全二叉树ls的叶子结点存有k个关键字，沿叶子到根的k条路径将ls调整成败者树</span></span><br><span class="line">    b[k].key = MINKEY;	<span class="comment">//设MINKEY为关键字可能的最小值</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; k; ++i) ls[i] = k;	<span class="comment">//设置ls中“败者”的初值</span></span><br><span class="line">    <span class="keyword">for</span>(i = k - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) Adjust(ls, i);	<span class="comment">//依次从b[k-1]...b[0]出发调整败者</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="置换-选择排序"><a href="#置换-选择排序" class="headerlink" title="置换-选择排序"></a>置换-选择排序</h3><p>归并的趟数和 $k$ 成反比，也和 $m$ 成正比。因此，减少 $m$ 是减少 $s$ 的另一条途径。</p>
 <p>$m$ 是外部文件经过内部排序之后得到的初始归并段的个数，显然，$m=ceil(n/l)$(向上取整)，其中 $n$ 为外部文件中的记录数，$l$ 为初始归并段中的记录数。但这依赖于进行内部排序时可用内存工作区的大小，则 $m$ 也随其而限定。若要减小 $m$，即增加 $l$，就必须探索新的排序方法。</p>
 <p><strong>置换-选择排序（Replacement-Selection Sorting）</strong>是在树形选择排序的基础上得来的，它的特点是：在整个排序（得到所有初始归并段）的过程中，选择最小（或最大）关键字和输入、输出交叉或平行进行。</p>
@@ -1028,11 +998,10 @@
 <p>（1）内存工作区中的记录作为败者树的外部结点，而败者树中根结点的双亲结点指示工作区中关键字最小的记录。</p>
 <p>（2）为了便于选出MINIMAX记录，为每个记录附设一个所在归并段的序号，在进行关键字的比较时，先比较段号，段号小者为胜者；段号相同的则关键字小的为胜者。</p>
 <p>（3）败者树的建立可从设工作区中所有记录的段号均为 $0$ 开始，然后从$FI$逐个输入$w$个记录到工作区时，自上而下调整败者树。由于这些记录的段号为 $1$，则它们对于 $0$ 段的记录而言均为败者，从而逐个填充到败者树的各结点中去。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171944651.jpeg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171944651.jpeg" alt=""></p>
 <p><strong>算法实现</strong>：</p>
 <p><code>Replacd_selection</code>是置换﹣选择排序的简单描述，其中，求得一个初始归并段的过程如算法11.5所述。算法11.6和算法<br>11.7分别描述了置换﹣选择排序中的败者树的调整和初建的过程</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span>  <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">   RedType rec;                 <span class="comment">//记录</span></span><br><span class="line">   KeyType key;                 <span class="comment">//从记录中抽取的关键字</span></span><br><span class="line">   <span class="keyword">int</span> rnum;                    <span class="comment">//所属归并段的段号</span></span><br><span class="line">&#125;RcdNode,WorkArea[w];           <span class="comment">//内存工作区，容量为w</span></span><br><span class="line">WorkArea wa;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Construct_Loser</span><span class="params">(LoserTree &amp;ls, WorkArea &amp;wa)</span> </span>&#123; <span class="comment">//初建败者树</span></span><br><span class="line">    <span class="comment">//输入w个记录到内存工作区wa，建立败者树ls，选出关键字最小的记录并由s指示其在wa中的位置</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; w; ++i) &#123;</span><br><span class="line">        wa[i].rnum = wa[i].key = ls[i] = <span class="number">0</span>;	<span class="comment">//工作区初始化</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = w - <span class="number">1</span>; i &gt; <span class="number">0</span>; --i) &#123;</span><br><span class="line">        freed(&amp;wa[i].rec, <span class="keyword">sizeof</span>(RcdType), <span class="number">1</span>, fi);	<span class="comment">//输入一个记录</span></span><br><span class="line">        wa[i].key = wa[i].rec.key;					<span class="comment">//保存该记录的关键字</span></span><br><span class="line">        wa[i].rnum = <span class="number">1</span>;								<span class="comment">//其段号为 1 </span></span><br><span class="line">        Select_MiniMax(ls, wa, i);					<span class="comment">//调整败者</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="function">yu</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Select_MiniMax</span><span class="params">(LoserTree &amp;ls, WorkArea wa, <span class="keyword">int</span> q)</span> </span>&#123;	<span class="comment">//选出MINIMAX</span></span><br><span class="line">    <span class="comment">//从wa[q]起到败者树的根比较选择MINIMAX记录，并由q指示它所在的归并段</span></span><br><span class="line">    t = (w + q) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span>(p = ls[t]; t &gt; <span class="number">0</span>; t = t / <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(wa[p].rnum &lt; wa[q].rnum || (wa[p].rnum == wa[q].rnum &amp;&amp; wa[p].key &lt; wa[q].key)) &#123;</span><br><span class="line">            q &lt;--&gt; ls[t];	<span class="comment">//q指向新的胜利者</span></span><br><span class="line">        &#125;</span><br><span class="line">        ls[<span class="number">0</span>] = q;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Replacd_selection</span><span class="params">(LoserTree &amp;ls, WorkArea &amp;wa, FILE *fi, FILE *fo)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//在败者树ls和内存工作区wa上用置换-选择排序求初始归并段，fi为输入文件（只读文件）指针</span></span><br><span class="line">    <span class="comment">//fo为输出文件（只写文件指针）</span></span><br><span class="line">    Construct_Loser(ls, wa);	<span class="comment">//创建败者树</span></span><br><span class="line">    rc = rmax = <span class="number">1</span>;	<span class="comment">//rc指示当前生成的初始归并段的段号，rmax指示wa中关键字所属初始归并段的最大段号</span></span><br><span class="line">    <span class="keyword">while</span>(rc &lt;= rmax) &#123; <span class="comment">// rc = rmax + 1 表示输入文件的置换-选择排序已完成</span></span><br><span class="line">    	get_run(ls, wa); <span class="comment">//求得一个初始归并段</span></span><br><span class="line">        fwrite(&amp;RUNEND_SYMBOL, <span class="keyword">sizeof</span>(struct RcdNode), <span class="number">1</span>, fo);	<span class="comment">//将段结束标志写入输出文件</span></span><br><span class="line">        rc = wa[ls[<span class="number">0</span>]].rnum;	<span class="comment">//设置下一段的段号</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_run</span><span class="params">(LoserTree &amp;ls, WorkArea &amp;wa)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//求得一个初始归并段，fi为输入文件指针，fo为输出文件指针</span></span><br><span class="line">    <span class="keyword">while</span>(wa[ls[<span class="number">0</span>]].rnum == rc) &#123; 	<span class="comment">//选得的MINIMAX记录属当前段时</span></span><br><span class="line">        q = ls[<span class="number">0</span>];			<span class="comment">//q指示MINIMAX记录在wa中的位置</span></span><br><span class="line">        minimax = wa[q].key;	</span><br><span class="line">        fwrite(&amp;wa[q].rec, <span class="keyword">sizeof</span>(RcdType), <span class="number">1</span>, fo); 	<span class="comment">//将刚选好的MINIMAX记录写入输出文件</span></span><br><span class="line">        <span class="keyword">if</span>(feof(fi)) &#123;	<span class="comment">//输入文件结束，虚设记录（属rmax+1段）</span></span><br><span class="line">            wa[q].rnum = rmax + <span class="number">1</span>;</span><br><span class="line">            wa[q].key = MAXKEY;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;			<span class="comment">//输出文件非空时</span></span><br><span class="line">            fread(&amp;wa[q].rec, <span class="keyword">sizeof</span>(RcdType), <span class="number">1</span>, fi);	<span class="comment">//从输入文件读入下一记录</span></span><br><span class="line">            wa[q].key = wa[q].rec.key;	<span class="comment">//提取关键字</span></span><br><span class="line">            <span class="keyword">if</span>(wa[q].key &lt; minimax) &#123;	<span class="comment">//新读入的记录属下一段</span></span><br><span class="line">                rmax = rc + <span class="number">1</span>;</span><br><span class="line">                wa[q].rnum = rmax;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> wa[q].rnum = rc;	<span class="comment">//新读入的记录属当前段</span></span><br><span class="line">        &#125;</span><br><span class="line">        Select_MiniMax(ls, wa, q);	<span class="comment">//选出新的MINIMAX记录</span></span><br><span class="line">    &#125;<span class="comment">//while</span></span><br><span class="line">&#125;<span class="comment">//get_run</span></span><br></pre></td></tr></table></figure>
-
 <p>置换-选择排序所得初始归并段的长度不等。且可证明，当输入文件中记录的关键字为随机数时，所得初始归并段的平均长度为内存工作区大小 $w$ 的两倍。</p>
 <p>假设一台扫雪机在环形路上等速进行扫雪，又下雪的速度也是均衡的（即每小时落到地面上的雪量相等），雪均匀地落在扫雪机的前、后路面上，边下雪边扫雪。显然，在某个时刻之后，整个系统达到平衡状态，路面上的积雪总量不变。且在任何时刻，整个路面上的积雪都形成一个均匀的斜面，紧靠扫雪机前端的积雪最厚，其深度为$h$，而在扫雪机刚扫过的路面上的积雪深度为零。若将环形路伸展开来，路面积雪状态如图所示。假设此刻路面积雪的总体积为$w$，环形路一圈的长度为$l$，由于扫雪机在任何时刻扫走的雪的深度为$h$，则扫雪机在环形路上走一圈扫掉的积雪体积为$lh$即$2w$。<br><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171944825.jpeg" style="zoom: 33%;" /></p>
 <h3 id="最佳归并树"><a href="#最佳归并树" class="headerlink" title="最佳归并树"></a>最佳归并树</h3><p>假设由置换-选择得到9个初始归并段，其长度（即记录数）依次为9，30，12，18，3，17，2，6，24。现作3-路平衡归并，其归并树（表示归并过程的图）如图(b)所示，图中每个圆圈表示一个初始归并段，圆圈中数字表示归并段的长度。假设每个记录占一个物理块，则两趟归并所需对外存进行读/写次数为 $(9+30+12+18+3+17+2+6+24)×2×2=484$。若将初始归并段的长度看成是归并树中叶子结点的权，则此3叉树的带权路径长度的两倍恰为484。<strong>若对长度不等的$m$个初始归并段，构造一棵哈夫曼树作为归并树，便可使在进行外部归并时所需对外存进行读/写次数达最少</strong>。对上述9个初始归并段可构造一棵如图(a)所示的归并树，按此树进行归并，仅需对外存进行446次读/写，这棵归并树便称做<strong>最佳归并树</strong>。</p>
@@ -1088,7 +1057,7 @@
 <li>调整结点 x、父结点、祖父结点的位置</li>
 <li>把 x 移到树结构中的更高层</li>
 </ul>
-<p>**单旋转 (single rotation) **</p>
+<p><strong>单旋转 (single rotation) </strong></p>
 <p>x 是根结点的直接子结点时</p>
 <ul>
 <li>把结点 x 与它的父结点交换位置</li>
@@ -1096,7 +1065,7 @@
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171948789.png" alt="image-20220306151223735"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/res/202205171949370.png" alt="image-20220306153407987"></p>
-<p>**双旋转 (double rotation) **</p>
+<p><strong>双旋转 (double rotation) </strong></p>
 <p>双旋转涉及到</p>
 <ul>
 <li>结点 x</li>
@@ -1156,8 +1125,7 @@
 <p><strong>红黑树的插入</strong></p>
 <p>先调用 BST 的插入算法</p>
 <ul>
-<li><p>把新记录着色为红色</p>
-</li>
+<li>把新记录着色为红色</li>
 <li><p>若父结点是黑色，则算法结束</p>
 </li>
 <li><p>否则，双红调整</p>
@@ -1410,6 +1378,8 @@
 
 
 
+
+  
 
   
 

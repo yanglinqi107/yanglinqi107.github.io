@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="mysql修改以下编码和全局变量的方法 Server characterset:    utf8mb4Db     characterset:    utf8mb4Client characterset:    utf8mb4Conn.  characterset:    utf8mb4">
@@ -248,25 +248,14 @@
         <p>mysql修改以下编码和全局变量的方法</p>
 <p>Server characterset:    utf8mb4<br>Db     characterset:    utf8mb4<br>Client characterset:    utf8mb4<br>Conn.  characterset:    utf8mb4</p>
 <span id="more"></span>
-
-
-
 <p>查看状态</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; status;</span><br></pre></td></tr></table></figure>
-
 <p>或</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/*查看所有变量，不推荐，会跑一段时间*/</span><br><span class="line">mysql&gt; show [global] variables;</span><br><span class="line">/*查看想要的变量*/</span><br><span class="line">mysql&gt; show [global] variables like &quot;&quot;;</span><br><span class="line"></span><br><span class="line">/*例：查看编码的设置状态*/</span><br><span class="line">mysql&gt; show variables like &#x27;%character%&#x27;;</span><br></pre></td></tr></table></figure>
-
-
-
 <p>修改</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; set character_set_client=utf8;</span><br></pre></td></tr></table></figure>
-
 <p>也可以在mysql安装目录下的<code>mysql.ini</code>中添加：若没有mysql.ini，可以直接创一个</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在[mysqld]段中添加或修改max_connections值：max_connections=512</span><br></pre></td></tr></table></figure>
-
-
-
 
     </div>
 
@@ -469,6 +458,8 @@
 
 
 
+
+  
 
   
 

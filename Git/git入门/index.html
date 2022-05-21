@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习自菜鸟教程https:&#x2F;&#x2F;www.runoob.com&#x2F;git&#x2F;git-tutorial.html，有修改 其它学习链接：http:&#x2F;&#x2F;marklodato.github.io&#x2F;visual-git-guide&#x2F;index-zh-cn.html">
@@ -277,16 +277,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>学习自菜鸟教程<a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-tutorial.html%EF%BC%8C%E6%9C%89%E4%BF%AE%E6%94%B9">https://www.runoob.com/git/git-tutorial.html，有修改</a></p>
+        <p>学习自菜鸟教程<a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-tutorial.html，有修改">https://www.runoob.com/git/git-tutorial.html，有修改</a></p>
 <p>其它学习链接：<a target="_blank" rel="noopener" href="http://marklodato.github.io/visual-git-guide/index-zh-cn.html">http://marklodato.github.io/visual-git-guide/index-zh-cn.html</a></p>
 <span id="more"></span>
-
 <h3 id="git安装"><a href="#git安装" class="headerlink" title="git安装"></a>git安装</h3><p>Git 各平台安装包下载地址为：<a target="_blank" rel="noopener" href="http://git-scm.com/downloads">http://git-scm.com/downloads</a></p>
 <p><code>Ubuntu</code></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install git</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h3><p>Git 提供了一个叫做 git config 的工具，专门用来配置或读取相应的工作环境变量。</p>
 <p>这些环境变量，决定了 Git 在各个环节的具体工作方式和行为。这些变量可以存放在以下三个不同的地方：</p>
 <ul>
@@ -298,29 +294,22 @@
 <p>此外，Git 还会尝试找寻 /etc/gitconfig 文件，只不过看当初 Git 装在什么目录，就以此作为根目录来定位。</p>
 <h3 id="用户信息"><a href="#用户信息" class="headerlink" title="用户信息"></a>用户信息</h3><p>配置个人的用户名称和电子邮件地址：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">&quot;runoob&quot;</span></span><br><span class="line">$ git config --global user.email <span class="built_in">test</span>@runoob.com</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><code>user.name github的用户名</code></li>
 <li><code>user.email github的注册邮箱</code> </li>
 </ul>
-<p>如果用了 <strong>–global</strong> 选项，那么更改的配置文件就是位于你用户主目录下的那个，以后你所有的项目都会默认使用这里配置的用户信息。</p>
-<p>如果要在某个特定的项目中使用其他名字或者电邮，只要去掉 –global 选项重新配置即可，新的设定保存在当前项目的 .git/config 文件里。</p>
+<p>如果用了 <strong>—global</strong> 选项，那么更改的配置文件就是位于你用户主目录下的那个，以后你所有的项目都会默认使用这里配置的用户信息。</p>
+<p>如果要在某个特定的项目中使用其他名字或者电邮，只要去掉 —global 选项重新配置即可，新的设定保存在当前项目的 .git/config 文件里。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328155821836.png" alt="image-20220328155821836"></p>
-<h3 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h3><p>要检查已有的配置信息，可以使用 git config –list 命令：</p>
+<h3 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h3><p>要检查已有的配置信息，可以使用 git config —list 命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git config --list</span><br><span class="line">http.postbuffer=2M</span><br><span class="line">user.name=runoob</span><br><span class="line">user.email=test@runoob.com</span><br></pre></td></tr></table></figure>
-
 <p>有时候会看到重复的变量名，那就说明它们来自不同的配置文件（比如 /etc/gitconfig 和 ~/.gitconfig），不过最终 Git 实际采用的是最后一个。</p>
 <p>这些配置我们也可以在 <strong>~/.gitconfig</strong> 或 <strong>/etc/gitconfig</strong> 看到，如下所示：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.gitconfig </span><br></pre></td></tr></table></figure>
-
 <p>显示内容如下所示：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[http]</span><br><span class="line">    postBuffer = 2M</span><br><span class="line">[user]</span><br><span class="line">    name = runoob</span><br><span class="line">    email = test@runoob.com</span><br></pre></td></tr></table></figure>
-
 <p>也可以直接查阅某个环境变量的设定，只要把特定的名字跟在后面即可，像这样：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name</span><br><span class="line">runoob</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="工作区、index、HEAD"><a href="#工作区、index、HEAD" class="headerlink" title="工作区、index、HEAD"></a>工作区、index、HEAD</h3><ul>
 <li><strong>工作区Work Space：</strong>就是你在电脑里能看到的目录。</li>
 <li><strong>暂存区：</strong>英文叫 stage 或 index。一般存放在 <strong>.git</strong> 目录下的 index 文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。</li>
@@ -334,39 +323,33 @@
 <li>当对工作区修改（或新增）的文件执行 <strong>git add</strong> 命令时，暂存区的目录树被更新，同时工作区修改（或新增）的文件内容被写入到对象库中的一个新的对象中，而该对象的ID被记录在暂存区的文件索引中。</li>
 <li>当执行提交操作（git commit）时，暂存区的目录树写到版本库（对象库）中，master 分支会做相应的更新。即 master 指向的目录树就是提交时暂存区的目录树。</li>
 <li>当执行 <strong>git reset HEAD</strong> 命令时，暂存区的目录树会被重写，被 master 分支指向的目录树所替换，但是工作区不受影响。</li>
-<li>当执行 **git rm –cached ** 命令时，会直接从暂存区删除文件，工作区则不做出改变。</li>
-<li>当执行 <strong>git checkout .</strong> 或者 **git checkout – ** 命令时，会用暂存区全部或指定的文件替换工作区的文件。这个操作很危险，会清除工作区中未添加到暂存区中的改动。</li>
-<li>当执行 <strong>git checkout HEAD .</strong> 或者 **git checkout HEAD ** 命令时，会用 HEAD 指向的 master 分支中的全部或者部分文件替换暂存区和以及工作区中的文件。这个命令也是极具危险性的，因为不但会清除工作区中未提交的改动，也会清除暂存区中未提交的改动。</li>
+<li>当执行 <strong>git rm —cached </strong> 命令时，会直接从暂存区删除文件，工作区则不做出改变。</li>
+<li>当执行 <strong>git checkout .</strong> 或者 <strong>git checkout — </strong> 命令时，会用暂存区全部或指定的文件替换工作区的文件。这个操作很危险，会清除工作区中未添加到暂存区中的改动。</li>
+<li>当执行 <strong>git checkout HEAD .</strong> 或者 <strong>git checkout HEAD </strong> 命令时，会用 HEAD 指向的 master 分支中的全部或者部分文件替换暂存区和以及工作区中的文件。这个命令也是极具危险性的，因为不但会清除工作区中未提交的改动，也会清除暂存区中未提交的改动。</li>
 </ul>
 <h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><p>使用当前目录作为 Git 仓库，我们只需使它初始化。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-
 <p>该命令执行完后会在当前目录生成一个 <code>.git</code> 目录（是隐藏文件夹）。</p>
 <p>使用我们指定目录作为Git仓库。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init newrepo</span><br></pre></td></tr></table></figure>
-
 <p>初始化后，会在 newrepo 目录下会出现一个名为 .git 的目录，所有 Git 需要的数据和资源都存放在这个目录中。</p>
 <h3 id="添加和提交"><a href="#添加和提交" class="headerlink" title="添加和提交"></a>添加和提交</h3><p>如果当前目录下有几个文件想要纳入版本控制，需要先用 <code>git add</code> 命令告诉 Git 开始对这些文件进行跟踪，然后提交：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add *.c</span><br><span class="line">$ git add README</span><br><span class="line">$ git commit -m <span class="string">&#x27;初始化项目版本&#x27;</span></span><br></pre></td></tr></table></figure>
-
 <p>以上命令将目录下以 .c 结尾及 README 文件提交到仓库中。</p>
 <p><code>git add *</code> 把当前目录的所有文件和文件夹都添加到暂存区</p>
-<p><strong>注：</strong> 在 Linux 系统中，commit 信息使用单引号 **’**，Windows 系统，commit 信息使用双引号 **”**。所以在 git bash 中 <strong>git commit -m ‘提交说明’</strong> 这样是可以的，在 Windows 命令行中就要使用双引号 **git commit -m “提交说明”**。</p>
+<p><strong>注：</strong> 在 Linux 系统中，commit 信息使用单引号 <strong>‘</strong>，Windows 系统，commit 信息使用双引号 <strong>“</strong>。所以在 git bash 中 <strong>git commit -m ‘提交说明’</strong> 这样是可以的，在 Windows 命令行中就要使用双引号 <strong>git commit -m “提交说明”</strong>。</p>
 <h3 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a>git clone</h3><p><strong>克隆远端仓库</strong></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> &lt;repo&gt;</span><br><span class="line">git <span class="built_in">clone</span> &lt;repo&gt; &lt;directory&gt;</span><br></pre></td></tr></table></figure>
-
 <p><strong>参数说明：</strong></p>
 <ul>
-<li>**repo:**Git 仓库，可以是远端仓库，也可以是本地仓库</li>
-<li>**directory:**本地目录，目录可以不为空（最好是空目录），目录不存在会创建</li>
+<li><strong>repo:</strong>Git 仓库，可以是远端仓库，也可以是本地仓库</li>
+<li><strong>directory:</strong>本地目录，目录可以不为空（最好是空目录），目录不存在会创建</li>
 </ul>
 <p><strong>示例：</strong></p>
 <p>1、克隆远端仓库到<code>mytest</code>目录</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@github.com:yanglinqi107/LifeGame.git mytest </span><br></pre></td></tr></table></figure>
-
 <p>2、克隆克隆远端仓库到当前目录</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/yanglinqi107/LifeGame.git</span><br></pre></td></tr></table></figure>
-
 <p><strong>克隆本地仓库</strong>：同样是上面的命令<code>git clone &lt;repo&gt; &lt;directory&gt;</code></p>
 <p>例：要将<code>E:\code</code>里面的所有文件克隆到另一个目录<code>mytest</code>中</p>
 <p>法一：直接将<code>E:\code</code>里面的内容手动复制过去</p>
@@ -389,7 +372,6 @@
 </ul>
 <p>一个简单的操作步骤：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git init    </span><br><span class="line">$ git add .    </span><br><span class="line">$ git commit  </span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>git init - 初始化仓库。</li>
 <li>git add . - 添加文件到暂存区。</li>
@@ -397,168 +379,163 @@
 </ul>
 <h4 id="提交与修改"><a href="#提交与修改" class="headerlink" title="提交与修改"></a>提交与修改</h4><p>Git 的工作就是创建和保存你的项目的快照及与之后的快照进行对比。</p>
 <p>下表列出了有关创建与提交你的项目的快照的命令：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left">命令</th>
-<th align="left">说明</th>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left"><code>git add</code></td>
-<td align="left">添加文件到暂存区</td>
+<tbody>
+<tr>
+<td style="text-align:left"><code>git add</code></td>
+<td style="text-align:left">添加文件到暂存区</td>
 </tr>
 <tr>
-<td align="left"><code>git status</code></td>
-<td align="left">查看仓库当前的状态，显示有变更的文件。</td>
+<td style="text-align:left"><code>git status</code></td>
+<td style="text-align:left">查看仓库当前的状态，显示有变更的文件。</td>
 </tr>
 <tr>
-<td align="left"><code>git diff</code></td>
-<td align="left">比较文件的不同，即暂存区和工作区的差异。</td>
+<td style="text-align:left"><code>git diff</code></td>
+<td style="text-align:left">比较文件的不同，即暂存区和工作区的差异。</td>
 </tr>
 <tr>
-<td align="left"><code>git commit</code></td>
-<td align="left">提交暂存区到本地仓库。</td>
+<td style="text-align:left"><code>git commit</code></td>
+<td style="text-align:left">提交暂存区到本地仓库。</td>
 </tr>
 <tr>
-<td align="left"><code>git reset</code></td>
-<td align="left">回退版本。</td>
+<td style="text-align:left"><code>git reset</code></td>
+<td style="text-align:left">回退版本。</td>
 </tr>
 <tr>
-<td align="left"><code>git rm</code></td>
-<td align="left">删除工作区文件。</td>
+<td style="text-align:left"><code>git rm</code></td>
+<td style="text-align:left">删除工作区文件。</td>
 </tr>
 <tr>
-<td align="left"><code>git mv</code></td>
-<td align="left">移动或重命名工作区文件。</td>
+<td style="text-align:left"><code>git mv</code></td>
+<td style="text-align:left">移动或重命名工作区文件。</td>
 </tr>
-</tbody></table>
-<h4 id="提交日志"><a href="#提交日志" class="headerlink" title="提交日志"></a>提交日志</h4><table>
+</tbody>
+</table>
+</div>
+<h4 id="提交日志"><a href="#提交日志" class="headerlink" title="提交日志"></a>提交日志</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">命令</th>
-<th align="left">说明</th>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left"><code>git log</code></td>
-<td align="left">查看历史提交记录</td>
+<tbody>
+<tr>
+<td style="text-align:left"><code>git log</code></td>
+<td style="text-align:left">查看历史提交记录</td>
 </tr>
 <tr>
-<td align="left"><code>git blame </code></td>
-<td align="left">以列表形式查看指定文件的历史修改记录</td>
+<td style="text-align:left"><code>git blame</code></td>
+<td style="text-align:left">以列表形式查看指定文件的历史修改记录</td>
 </tr>
-</tbody></table>
-<h4 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h4><table>
+</tbody>
+</table>
+</div>
+<h4 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">命令</th>
-<th align="left">说明</th>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left"><code>git remote</code></td>
-<td align="left">远程仓库操作</td>
+<tbody>
+<tr>
+<td style="text-align:left"><code>git remote</code></td>
+<td style="text-align:left">远程仓库操作</td>
 </tr>
 <tr>
-<td align="left"><code>git fetch</code></td>
-<td align="left">从远程获取代码库</td>
+<td style="text-align:left"><code>git fetch</code></td>
+<td style="text-align:left">从远程获取代码库</td>
 </tr>
 <tr>
-<td align="left"><code>git pull</code></td>
-<td align="left">下载远程代码并合并</td>
+<td style="text-align:left"><code>git pull</code></td>
+<td style="text-align:left">下载远程代码并合并</td>
 </tr>
 <tr>
-<td align="left"><code>git push</code></td>
-<td align="left">上传远程代码并合并</td>
+<td style="text-align:left"><code>git push</code></td>
+<td style="text-align:left">上传远程代码并合并</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h4 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h4><p>添加一个或多个文件到暂存区：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add [file1] [file2] ...</span><br></pre></td></tr></table></figure>
-
 <p>添加指定目录到暂存区，包括子目录：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add [dir]</span><br></pre></td></tr></table></figure>
-
 <p>添加当前目录下的所有文件到暂存区：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-
 <p>可以使用<code>git status</code>或<code>git status -s</code>查看状态</p>
 <h4 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ touch 测试5.txt</span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ touch 测试6.txt</span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ git add .</span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ git status -s</span><br><span class="line">A  <span class="string">&quot;\346\265\213\350\257\2255.txt&quot;</span>  <span class="comment"># 这是乱码，看最后的5和6</span></span><br><span class="line">A  <span class="string">&quot;\346\265\213\350\257\2256.txt&quot;</span></span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">&quot;git restore --staged &lt;file&gt;...&quot;</span> to unstage)</span><br><span class="line">        new file:   <span class="string">&quot;\346\265\213\350\257\2255.txt&quot;</span></span><br><span class="line">        new file:   <span class="string">&quot;\346\265\213\350\257\2256.txt&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ vi 测试6.txt   <span class="comment"># 修改 测试6.txt 文件，也可以外部修改</span></span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ git status -s</span><br><span class="line">A  <span class="string">&quot;\346\265\213\350\257\2255.txt&quot;</span></span><br><span class="line">AM <span class="string">&quot;\346\265\213\350\257\2256.txt&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p><strong>AM</strong> 状态的意思是这个文件在我们将它添加到缓存之后又有改动。改动后我们再执行 <strong>git add .</strong> 命令将其添加到缓存中。</p>
 <h4 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h4><p>git diff 命令比较文件的不同，即比较文件在暂存区和工作区的差异。</p>
 <p>git diff 命令显示已写入暂存区和已经被修改但尚未写入暂存区文件的区别。</p>
 <p>git diff 有两个主要的应用场景。</p>
 <ul>
 <li>尚未缓存的改动（工作区和暂存区）：<strong>git diff</strong></li>
-<li>查看已缓存的改动（暂存区和版本库）： <strong>git diff –cached</strong></li>
+<li>查看已缓存的改动（暂存区和版本库）： <strong>git diff —cached</strong></li>
 <li>查看已缓存的与未缓存的所有改动：<strong>git diff HEAD</strong></li>
-<li>显示摘要而非整个 diff：<strong>git diff –stat</strong></li>
+<li>显示摘要而非整个 diff：<strong>git diff —stat</strong></li>
 </ul>
 <p><strong>显示暂存区和工作区的差异:</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff [file]</span><br></pre></td></tr></table></figure>
-
 <p><strong>示例：</strong>在<code>测试6.txt</code>文件中追加内容，并和暂存区的<code>测试6.txt</code>比较</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ vi 测试6.txt   </span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ git diff 测试6.txt</span><br><span class="line">warning: LF will be replaced by CRLF <span class="keyword">in</span> 测试6.txt.</span><br><span class="line">The file will have its original line endings <span class="keyword">in</span> your working directory</span><br><span class="line">diff --git a/测试6.txt b/测试6.txt</span><br><span class="line">index e69de29..ecb7222 100644</span><br><span class="line">--- a/测试6.txt</span><br><span class="line">+++ b/测试6.txt</span><br><span class="line">@@ -0,0 +1,2 @@</span><br><span class="line">+这是测试</span><br><span class="line">+git diff 测试</span><br></pre></td></tr></table></figure>
-
 <p><strong>显示暂存区和上一次提交(commit)的差异:</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git diff --cached [file]</span><br><span class="line">或</span><br><span class="line">$ git diff --staged [file]</span><br></pre></td></tr></table></figure>
-
 <p><strong>示例：</strong>将修改后的<code>测试6.txt</code>检入暂存区，并和HEAD的<code>测试6.txt</code>比较</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ git add .</span><br><span class="line">warning: LF will be replaced by CRLF <span class="keyword">in</span> 测试6.txt.</span><br><span class="line">The file will have its original line endings <span class="keyword">in</span> your working directory</span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ git diff --cached</span><br><span class="line">diff --git a/测试5.txt b/测试5.txt</span><br><span class="line">new file mode 100644</span><br><span class="line">index 0000000..e69de29</span><br><span class="line">diff --git a/测试6.txt b/测试6.txt</span><br><span class="line">new file mode 100644</span><br><span class="line">index 0000000..265e175</span><br><span class="line">--- /dev/null</span><br><span class="line">+++ b/测试6.txt</span><br><span class="line">@@ -0,0 +1,2 @@</span><br><span class="line">+这是测试</span><br><span class="line">+git diff --cached 测试</span><br></pre></td></tr></table></figure>
-
 <p><strong>显示两次提交之间的差异:</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff [first-branch]...[second-branch]</span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h4><p>git commit 命令将暂存区内容添加到本地仓库中。</p>
 <p>提交暂存区到本地仓库中:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m [message]</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><code>message</code>现在是必要的，可以写一些备注信息，如<code>git commit -m &quot;这是依次测试&quot;</code> </li>
 </ul>
 <p>提交暂存区的指定文件到仓库区：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit [file1] [file2] ... -m [message]</span><br></pre></td></tr></table></figure>
-
 <p><strong>-a</strong> 参数设置修改文件后不需要执行 git add 命令，直接来提交</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -a</span><br></pre></td></tr></table></figure>
-
 <p>暂存区的文件全部提交后，使用<code>git status</code>查看显示<code>working tree clean</code> </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
-
 <p><strong>设置提交代码时的用户信息</strong>：</p>
 <p>开始前我们需要先设置提交的用户信息，包括用户名和邮箱：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &#x27;runoob&#x27;</span><br><span class="line">$ git config --global user.email test@runoob.com</span><br></pre></td></tr></table></figure>
-
 <ul>
-<li><font color=#ff0000>如果去掉 –global 参数只对当前仓库有效</font></li>
+<li><font color=#ff0000>如果去掉 --global 参数只对当前仓库有效</font>
+
+
+
+</li>
 </ul>
 <h4 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h4><p><code>git rese</code>t 命令用于回退版本，可以指定退回某一次提交的版本。</p>
 <p><code>git reset</code> 命令语法格式如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset [--soft | --mixed | --hard] [HEAD]</span><br></pre></td></tr></table></figure>
-
-<p>1、**–mixed** 为默认，可以不用带该参数，用于重置暂存区的文件与上一次的提交(commit)保持一致，<strong>工作区文件内容保持不变</strong>。</p>
+<p>1、<strong>—mixed</strong> 为默认，可以不用带该参数，用于重置暂存区的文件与上一次的提交(commit)保持一致，<strong>工作区文件内容保持不变</strong>。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset [HEAD] </span><br></pre></td></tr></table></figure>
+<font color=#ff0000>注意：直接使用`git reset HEAD`或`git reset`**版本库并不会回退**</font>
 
-<p><font color=#ff0000>注意：直接使用<code>git reset HEAD</code>或<code>git reset</code><strong>版本库并不会回退</strong></font></p>
 <p>实例：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD^            <span class="comment"># 回退所有内容到上一个版本  </span></span><br><span class="line">$ git reset HEAD^ hello.php  <span class="comment"># 回退 hello.php 文件的版本到上一个版本  </span></span><br><span class="line">$ git reset 052e             <span class="comment"># 回退到指定版本</span></span><br></pre></td></tr></table></figure>
-
-<p>2、**–soft** 参数用于<strong>回退到某个版本</strong>：</p>
+<p>2、<strong>—soft</strong> 参数用于<strong>回退到某个版本</strong>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft HEAD</span><br></pre></td></tr></table></figure>
-
 <p>实例：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --soft HEAD~3 <span class="comment"># 回退上上上一个版本</span></span><br></pre></td></tr></table></figure>
-
-<p>3、**–hard** 参数<strong>撤销工作区中所有未提交的修改内容，将暂存区与工作区都回到上一次版本</strong>，并删除之前的所有信息提交：</p>
+<p>3、<strong>—hard</strong> 参数<strong>撤销工作区中所有未提交的修改内容，将暂存区与工作区都回到上一次版本</strong>，并删除之前的所有信息提交：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD</span><br></pre></td></tr></table></figure>
-
 <p>实例：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git reset –hard HEAD~3  <span class="comment"># 回退上上上一个版本  </span></span><br><span class="line">$ git reset –hard bae128  <span class="comment"># 回退到某个版本回退点之前的所有信息。 </span></span><br><span class="line">$ git reset --hard origin/master    <span class="comment"># 将本地的状态回退到和远程的一样</span></span><br></pre></td></tr></table></figure>
+<font color=#ff0000>**注意：**谨慎使用 –hard 参数，它会删除回退点之前的所有信息</font>
 
-<p><font color=#ff0000><strong>注意：</strong>谨慎使用 –hard 参数，它会删除回退点之前的所有信息</font></p>
 <p>4、<strong>HEAD 说明：</strong></p>
 <ul>
 <li>HEAD 表示当前版本</li>
@@ -589,148 +566,116 @@
 <h4 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h4><p>git rm 命令用于删除文件</p>
 <p>1、如果工作目录有文件<code>A</code>添加到<strong>暂存区</strong>（没有add的话直接手动删除），再<strong>手工删除</strong>文件<code>A</code>的话，运行 <strong>git status</strong> 时就会在 <strong>Changes not staged for commit</strong> 的提示，但是我测试<code>commit</code>是成功的</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328140517067.png" alt="image-20220328140517067"></p>
-<p>2、**<code>git rm &lt;file&gt;</code>** 将文件从暂存区和工作区中删除</p>
+<p>2、<strong><code>git rm &lt;file&gt;</code></strong> 将文件从暂存区和工作区中删除</p>
 <p>如果文件<code>A</code>在暂存区后，<code>A</code>修改过且再<code>git add</code>更新暂存区，需要使用<code>git rm -f A</code>来删除工作区和暂存区的文件<code>A</code></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328141440592.png" alt="image-20220328141440592"></p>
-<p>3、如果想把文件从暂存区域移除，但仍然希望保留在当前工作目录中，换句话说，仅是从跟踪清单中删除，使用 <strong>–cached</strong> 选项即可：</p>
+<p>3、如果想把文件从暂存区域移除，但仍然希望保留在当前工作目录中，换句话说，仅是从跟踪清单中删除，使用 <strong>—cached</strong> 选项即可：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached &lt;file&gt;</span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="git-mv"><a href="#git-mv" class="headerlink" title="git mv"></a>git mv</h4><p>git mv 命令用于移动或重命名一个文件、目录或软连接。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv [file] [newfile]</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>注：源文件<code>file</code>必须add到版本控制中才能使用<code>git mv</code> </li>
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328143028516.png" alt="image-20220328143028516"></p>
 <p>如果新文件名已经存在，但还是要重命名它，可以使用 <strong>-f</strong> 参数：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv -f [file] [newfile]  <span class="comment"># file同样要add到暂存区</span></span><br></pre></td></tr></table></figure>
-
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328143955435.png" alt="image-20220328143955435"></p>
 <h4 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h4><p><code>git log</code>：查看历史提交记录</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328144805666.png" alt="image-20220328144805666" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328144805666.png" alt="image-20220328144805666" style="zoom:80%;" /></p>
 <p><strong><code>--oneline</code></strong> 选项来查看历史记录的简洁的版本</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328144906544.png" alt="image-20220328144906544"></p>
 <p><strong><code>--graph</code></strong> 选项，查看历史中什么时候出现了分支、合并</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328145011081.png" alt="image-20220328145011081" style="zoom: 80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328145011081.png" alt="image-20220328145011081" style="zoom: 80%;" /></p>
 <p><strong><code>--reverse</code></strong> 参数来逆向显示所有日志</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328145108643.png" alt="image-20220328145108643" style="zoom:80%;" />
-
-
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328145108643.png" alt="image-20220328145108643" style="zoom:80%;" /></p>
 <ul>
-<li><p>如果只想查找指定用户的提交日志可以使用命令：**<code>git log --author</code> **， 例如，比方说我们要找 Git 源码中 Linus 提交的部分：</p>
+<li><p>如果只想查找指定用户的提交日志可以使用命令：<strong><code>git log --author</code> </strong>， 例如，比方说我们要找 Git 源码中 Linus 提交的部分：</p>
 </li>
-<li><p>```<br>$ git log –author=Linus –oneline -5<br>81b50f3 Move ‘builtin-*’ into a ‘builtin/‘ subdirectory<br>3bb7256 make “index-pack” a built-in<br>377d027 make “git pack-redundant” a built-in<br>b532581 make “git unpack-file” a built-in<br>112dd51 make “mktag” a built-in</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 如果你要指定日期，可以执行几个选项：`--since` 和 `--before`，但是你也可以用 `--until` 和 `--after`。</span><br><span class="line"></span><br><span class="line">- 例如，如果我要看 Git 项目中三周前且在四月十八日之后的所有提交，我可以执行这个（我还用了 `--no-merges`选项以隐藏合并提交）：</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  $ git log --oneline --before=&#123;3.weeks.ago&#125; --after=&#123;2010-04-18&#125; --no-merges</span><br><span class="line">  5469e2d Git 1.7.1-rc2</span><br><span class="line">  d43427d Documentation/remote-helpers: Fix typos and improve language</span><br><span class="line">  272a36b Fixup: Second argument may be any arbitrary string</span><br><span class="line">  b6c8d2d Documentation/remote-helpers: Add invocation section</span><br><span class="line">  5ce4f4e Documentation/urls: Rewrite to accomodate transport::address</span><br><span class="line">  00b84e9 Documentation/remote-helpers: Rewrite description</span><br><span class="line">  03aa87e Documentation: Describe other situations where -z affects git diff</span><br><span class="line">  77bc694 rebase-interactive: silence warning when no commits rewritten</span><br><span class="line">  636db2c t3301: add tests to use --format=&quot;%N&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>```<br>$ git log —author=Linus —oneline -5<br>81b50f3 Move ‘builtin-*’ into a ‘builtin/‘ subdirectory<br>3bb7256 make “index-pack” a built-in<br>377d027 make “git pack-redundant” a built-in<br>b532581 make “git unpack-file” a built-in<br>112dd51 make “mktag” a built-in</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 如果你要指定日期，可以执行几个选项：`--since` 和 `--before`，但是你也可以用 `--until` 和 `--after`。</span><br><span class="line"></span><br><span class="line">- 例如，如果我要看 Git 项目中三周前且在四月十八日之后的所有提交，我可以执行这个（我还用了 `--no-merges`选项以隐藏合并提交）：</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  $ git log --oneline --before=&#123;3.weeks.ago&#125; --after=&#123;2010-04-18&#125; --no-merges</span><br><span class="line">  5469e2d Git 1.7.1-rc2</span><br><span class="line">  d43427d Documentation/remote-helpers: Fix typos and improve language</span><br><span class="line">  272a36b Fixup: Second argument may be any arbitrary string</span><br><span class="line">  b6c8d2d Documentation/remote-helpers: Add invocation section</span><br><span class="line">  5ce4f4e Documentation/urls: Rewrite to accomodate transport::address</span><br><span class="line">  00b84e9 Documentation/remote-helpers: Rewrite description</span><br><span class="line">  03aa87e Documentation: Describe other situations where -z affects git diff</span><br><span class="line">  77bc694 rebase-interactive: silence warning when no commits rewritten</span><br><span class="line">  636db2c t3301: add tests to use --format=&quot;%N&quot;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <ul>
 <li><h3 id="git-blame"><a href="#git-blame" class="headerlink" title="git blame"></a>git blame</h3></li>
 <li><p>如果要查看指定文件的修改记录可以使用 git blame 命令，格式如下：</p>
 </li>
 <li><p>```<br>git blame <file></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- git blame 命令是以列表形式显示修改记录，如下实例：</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  $ git blame README </span><br><span class="line">  ^d2097aa (tianqixin 2020-08-25 14:59:25 +0800 1) # Runoob Git 测试</span><br><span class="line">  db9315b0 (runoob    2020-08-25 16:00:23 +0800 2) # 菜鸟教程 </span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- git blame 命令是以列表形式显示修改记录，如下实例：</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  $ git blame README </span><br><span class="line">  ^d2097aa (tianqixin 2020-08-25 14:59:25 +0800 1) # Runoob Git 测试</span><br><span class="line">  db9315b0 (runoob    2020-08-25 16:00:23 +0800 2) # 菜鸟教程 </span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h4 id="git-remote"><a href="#git-remote" class="headerlink" title="git remote"></a>git remote</h4><p>显示所有远程仓库：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br><span class="line">或</span><br><span class="line">git remote</span><br></pre></td></tr></table></figure>
-
 <p>添加远程版本库：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com yourname/yourRepo</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><code>origin</code>为远程地址的别名</li>
 </ul>
 <p>显示某个远程仓库的信息：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote show [remote]</span><br><span class="line"></span><br><span class="line">eg:</span><br><span class="line">git remote show https://github.com/tianqixin/runoob-git-test</span><br><span class="line">git remote show origin</span><br></pre></td></tr></table></figure>
-
 <p>删除和远程仓库的连接：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rm repo_name</span><br></pre></td></tr></table></figure>
-
 <p>修改仓库别名：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rename old_name new_name</span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h4><p><strong>git pull</strong> 命令用于从远程获取代码并合并本地的版本。</p>
 <p><strong>git pull</strong> 其实就是 <strong>git fetch</strong> 和 <strong>git merge FETCH_HEAD</strong> 的简写。 命令格式如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
-
 <p><strong>实例</strong>：</p>
 <p>将远程主机 origin 的 master 分支拉取过来，与本地的 brantest 分支合并。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master:brantest</span><br></pre></td></tr></table></figure>
-
 <p>如果远程分支是与当前分支合并，则冒号后面的部分可以省略。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
-
 <p>上面命令表示，取回 origin/master 分支，再与本地的 brantest 分支合并。</p>
 <h4 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h4><p><strong>git push</strong> 命用于从将本地的分支版本上传到远程并合并。</p>
 <p>命令格式如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span><br></pre></td></tr></table></figure>
-
 <p>如果本地分支名与远程分支名相同，则可以省略冒号：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push &lt;远程主机名&gt; &lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如果本地版本与远程版本有差异，但又要强制推送可以使用 –force 参数：</p>
+<p>如果本地版本与远程版本有差异，但又要强制推送可以使用 —force 参数：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --force origin master</span><br></pre></td></tr></table></figure>
-
-<p>删除远程仓库的分支：使用 –delete 参数，以下命令表示删除 origin 主机的 master 分支：</p>
+<p>删除远程仓库的分支：使用 —delete 参数，以下命令表示删除 origin 主机的 master 分支：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete master</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>如果github仓库只有<code>master</code>分支，删除不了</li>
 </ul>
 <h3 id="git分支管理"><a href="#git分支管理" class="headerlink" title="git分支管理"></a>git分支管理</h3><p><strong>管理的是仓库本地分支</strong></p>
 <p>1、<strong>创建分支命令：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch branch_name</span><br></pre></td></tr></table></figure>
-
 <p>2、<strong>切换分支命令:</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout branchname</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>当你切换分支的时候，Git 会用该分支的最后提交的快照替换你的工作目录的内容， 所以多个分支<strong>不需要多个目录</strong>。</li>
 <li>当前分支下文件有修改但没<code>commit</code>时，切换分支会失败，除了创建新分支切换</li>
 </ul>
 <p>3、<strong>合并分支命令:</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge </span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>可以多次合并到统一分支， 也可以选择在合并之后直接删除被并入的分支</li>
 </ul>
 <p>4、<strong>列出分支：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
-
 <p><strong>创建分支实例：</strong></p>
 <p>手动创建一个分支<code>testing</code> </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch testing</span><br><span class="line">$ git branch</span><br><span class="line">* master</span><br><span class="line">  testing</span><br></pre></td></tr></table></figure>
-
 <p>如你所见，我们创建了一个分支，在该分支上移除了一些文件 test.txt，并添加了 runoob.php 文件，然后切换回我们的主分支，删除的 test.txt 文件又回来了，且新增加的 runoob.php 不存在主分支中。</p>
 <p>使用分支将工作切分开来，从而让我们能够在不同开发环境中做事，并来回切换。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ ls</span><br><span class="line">README</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;runoob.com&#x27;</span> &gt; test.txt</span><br><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">&#x27;add test.txt&#x27;</span></span><br><span class="line">[master 3e92c19] add test.txt</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br><span class="line"> create mode 100644 test.txt</span><br><span class="line">$ ls</span><br><span class="line">README        test.txt</span><br><span class="line">$ git checkout testing</span><br><span class="line">Switched to branch <span class="string">&#x27;testing&#x27;</span></span><br><span class="line">$ ls</span><br><span class="line">README</span><br></pre></td></tr></table></figure>
-
 <p>当我们切换到 <strong>testing</strong> 分支的时候，我们添加的新文件 test.txt 被移除了。切换回 <strong>master</strong> 分支的时候，它们又重新出现了。</p>
-<p><font color=#ff0000><strong>注意：分支关系测试（不仅仅是这样，有点问题）</strong></font></p>
+<font color=#ff0000>**注意：分支关系测试（不仅仅是这样，有点问题）**</font>
+
 <ul>
 <li>若在分支<code>A</code>创建分支<code>B</code>，则相当于将分支<code>A</code>复制了一份成分支<code>B</code>，即分支<code>A</code>和<code>B</code>的HEAD一样。</li>
 <li>所有分支共享<strong>工作区</strong>和<strong>暂存区</strong>，但当某个工作区的文件<code>f1</code>添加到分支<code>A</code>中后，其它分支就看不到该文件了</li>
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328192446225.png" alt="image-20220328192446225"></p>
 <p><strong>实操：</strong></p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328193248453.png" alt="image-20220328193248453" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328193946293.png" alt="image-20220328193946293" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328194338923.png" alt="image-20220328194338923" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328193248453.png" alt="image-20220328193248453" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328193946293.png" alt="image-20220328193946293" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328194338923.png" alt="image-20220328194338923" style="zoom:80%;" /></p>
 <p>5、<strong>创建新分支并切换</strong> <code>git checkout -b branch_name</code></p>
 <p>6、<strong>删除分支</strong>：在<code>A</code>分支下不能删除<code>A</code>分支，必须先切换到其它分支</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git branch -d branch_name</span><br><span class="line">或</span><br><span class="line">git branch -D branch_name</span><br></pre></td></tr></table></figure>
-
 <p>7、<strong>分支合并</strong>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge branch_name</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>不能合并没有历史关系的分支 <code>fatal: refusing to merge unrelated histories</code></li>
 </ul>
@@ -741,42 +686,24 @@
 <li>2）修改后要<code>add</code>和<code>commit</code></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ vi test2_t.txt   <span class="comment"># 修改test2_t.txt文件</span></span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ git checkout test2 <span class="comment"># 切换已存在的分支test2报错，提示修改的内容未commit</span></span><br><span class="line">error: Your <span class="built_in">local</span> changes to the following files would be overwritten by checkout:</span><br><span class="line">        test2_t.txt</span><br><span class="line">Please commit your changes or stash them before you switch branches.</span><br><span class="line">Aborting</span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ git checkout -b test3  <span class="comment"># 新建分支test3并切换，没有问题</span></span><br><span class="line">Switched to a new branch <span class="string">&#x27;test3&#x27;</span></span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (test3)</span><br><span class="line">$ cat test2_t.txt  <span class="comment"># 查看test2_t.txt的内容</span></span><br><span class="line">这是master下的修改</span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (test3)</span><br><span class="line">$ git commit -am <span class="string">&quot;test3&quot;</span>   <span class="comment"># 将test2_t.txt提交到test3分支中</span></span><br><span class="line">warning: LF will be replaced by CRLF <span class="keyword">in</span> test2_t.txt.</span><br><span class="line">The file will have its original line endings <span class="keyword">in</span> your working directory</span><br><span class="line">[test3 077c5d7] test3</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (test3)</span><br><span class="line">$ git checkout master    <span class="comment"># 切换回master分支</span></span><br><span class="line">Switched to branch <span class="string">&#x27;master&#x27;</span></span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ ls                   <span class="comment"># 目录下test2_t.txt还存在，？</span></span><br><span class="line">test1.txt  test10.txt  test2.txt  test2_t.txt  test3.txt</span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ cat test2_t.txt          <span class="comment"># 但test2_t.txt回到修改前</span></span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ vi test2_t.txt，         <span class="comment"># 修改test2_t.txt，   这是master下第2次修改</span></span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ git commit -am <span class="string">&quot;master&quot;</span>         <span class="comment"># 将test2_t.txt提交到master分支中</span></span><br><span class="line">warning: LF will be replaced by CRLF <span class="keyword">in</span> test2_t.txt.</span><br><span class="line">The file will have its original line endings <span class="keyword">in</span> your working directory</span><br><span class="line">[master 43b7ee7] master</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ git merge test3       <span class="comment"># 合并test3分支，发生冲突</span></span><br><span class="line">Auto-merging test2_t.txt</span><br><span class="line">CONFLICT (content): Merge conflict <span class="keyword">in</span> test2_t.txt</span><br><span class="line">Automatic merge failed; fix conflicts and <span class="keyword">then</span> commit the result.</span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master|MERGING)</span><br><span class="line">$ cat test2_t.txt                <span class="comment"># 查看test2_t.txt文件</span></span><br><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; <span class="string">HEAD</span></span><br><span class="line"><span class="string">这是master下第2次修改</span></span><br><span class="line"><span class="string">=======</span></span><br><span class="line"><span class="string">这是master下的修改</span></span><br><span class="line"><span class="string">&gt;&gt;&gt;&gt;&gt;&gt;&gt; test3</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">MLZ107@YangLinQi MINGW64 /e/git (master|MERGING)</span></span><br><span class="line"><span class="string">$ vi test2_t.txt             # 需要手动去修改</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">MLZ107@YangLinQi MINGW64 /e/git (master|MERGING)</span></span><br><span class="line"><span class="string">$ cat test2_t.txt            # 例子就随便改改</span></span><br><span class="line"><span class="string">这是master下第2次修改</span></span><br><span class="line"><span class="string">这是master下的修改</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">最后再add和commit</span></span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="git-标签"><a href="#git-标签" class="headerlink" title="git 标签"></a>git 标签</h3><p>如果你达到一个重要的阶段，并希望永远记住那个特别的提交快照，你可以使用 git tag 给它打上标签。</p>
 <p><strong>添加标签</strong></p>
 <p>比如说，我们想为我们的 runoob 项目发布一个”1.0”版本。 我们可以用 git tag -a v1.0 命令给最新一次提交打上（HEAD）”v1.0”的标签。</p>
 <p><strong>-a</strong> 选项意为”创建一个带注解的标签”。 不用 -a 选项也可以执行的，但它不会记录这标签是啥时候打的，谁打的，也不会让你添加个标签的注解。 我推荐一直创建带注解的标签。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag -a v1.0 </span><br></pre></td></tr></table></figure>
-
 <p>当你执行 git tag -a 命令时，Git 会打开你的编辑器，让你写一句标签注解，就像你给提交写注解一样。</p>
 <p>使用<code>git log --oneline --decorate --graph</code>命令查看，可以看到标签</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ git <span class="built_in">log</span> --oneline --decorate --graph</span><br><span class="line">*   6098fd1 (HEAD -&gt; master, tag: v1.0) Merge branch <span class="string">&#x27;test3&#x27;</span></span><br><span class="line">|\</span><br><span class="line">| * 077c5d7 (test3) test3</span><br><span class="line">* | 43b7ee7 master</span><br><span class="line">|/</span><br><span class="line">* dca4fd6 test2_t.txt</span><br><span class="line">* b3d9b43 (origin/test2, origin/master, test2) Update test1.txt</span><br><span class="line">* 4c190bd Update test1.txt</span><br><span class="line">* 0f31cba 删除提交测试</span><br><span class="line">* 2c81853 第3次commit</span><br><span class="line">* c16838a 第1次commit</span><br></pre></td></tr></table></figure>
-
 <p><strong>追加标签</strong>：如果我们忘了给某个提交打标签，又将它发布了，我们可以给它追加标签。</p>
 <p>例如，我们要给上例<code>dca4fd6</code>追加标签</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ git tag -a v0.9 dca4fd6</span><br><span class="line"></span><br><span class="line">MLZ107@YangLinQi MINGW64 /e/git (master)</span><br><span class="line">$ git <span class="built_in">log</span> --decorate --graph --oneline</span><br><span class="line">*   6098fd1 (HEAD -&gt; master, tag: v1.0) Merge branch <span class="string">&#x27;test3&#x27;</span></span><br><span class="line">|\</span><br><span class="line">| * 077c5d7 (test3) test3</span><br><span class="line">* | 43b7ee7 master</span><br><span class="line">|/</span><br><span class="line">* dca4fd6 (tag: v0.9) test2_t.txt</span><br><span class="line">* b3d9b43 (origin/test2, origin/master, test2) Update test1.txt</span><br><span class="line">* 4c190bd Update test1.txt</span><br><span class="line">* 0f31cba 删除提交测试</span><br><span class="line">* 2c81853 第3次commit</span><br><span class="line">* c16838a 第1次commit</span><br></pre></td></tr></table></figure>
-
 <p><strong>查看所有标签</strong>：<code>git tag</code></p>
 <p><strong>删除便签：</strong><code>git tag -d v1.0</code></p>
 <p><strong>查看此版本所修改的内容：</strong><code>git show v1.0</code> </p>
 <p><strong>指定标签信息命令：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -a &lt;tagname&gt; -m &quot;runoob.com标签&quot;</span><br></pre></td></tr></table></figure>
-
 <p><strong>PGP签名标签命令：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -s &lt;tagname&gt; -m &quot;runoob.com标签&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
 <h3 id="git-status出现乱码"><a href="#git-status出现乱码" class="headerlink" title="git status出现乱码"></a>git status出现乱码</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012145252/article/details/81775362">git status 显示中文和解决中文乱码_铁乐与猫的博客-CSDN博客_git status 中文乱码</a></p>
 <p><a target="_blank" rel="noopener" href="https://mounui.com/186.html">git status中文文件名乱码 | 木凡博客 (mounui.com)</a></p>
 <h3 id="git帮助"><a href="#git帮助" class="headerlink" title="git帮助"></a>git帮助</h3><p><code>D:xxxx\Git\mingw64\share\doc\git-doc</code> 在<code>git</code>安装路径下有html类型的帮助文档</p>
@@ -785,19 +712,16 @@
 <h3 id="Git和Github"><a href="#Git和Github" class="headerlink" title="Git和Github"></a>Git和Github</h3><p>由于你的本地 Git 仓库和 GitHub 仓库之间的传输是通过SSH加密的，所以我们需要配置验证信息：</p>
 <p>在本地创建<code>SSH Key</code>；</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;your_email@youremail.com&quot;</span></span><br></pre></td></tr></table></figure>
-
 <p>后面的<code>your_email@youremail.com</code>改为你在github上注册的邮箱，之后会要求确认路径和输入密码，我们这<strong>使用默认的一路回车就行</strong>。成功的话会在<code>~/</code>下生成<code>.ssh</code>文件夹，进去，打开<code>id_rsa.pub</code>，复制里面的<code>key</code>。（Windows路径：<code>C:\用户\自己的用户名\.ssh\</code>）</p>
 <p>回到github上，进入 <code>Settings</code>（账户配置），左边选择<code>SSH and GPG keys</code>，右边：<code>New SSH key</code>，title随便填，粘贴在你电脑上生成的key。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328153809005.png" alt="image-20220328153809005"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328153927384.png" alt="image-20220328153927384"></p>
 <p>为了验证是否成功，在<code>git bash</code>下输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
 <p>如果是第一次的会提示是否<code>continue</code>，输入<code>yes</code>就会看到：<code>You&#39;ve successfully authenticated, but GitHub does not provide shell access</code> 。这就表示已成功连上github。</p>
 <p>接下来我们要做的就是把本地仓库传到github上去，在此之前还需要设置<code>username</code>和<code>email</code>，因为<code>github</code>每次<code>commit</code>都会记录他们。</p>
 <p>进入要上传的仓库，右键<code>git bash</code>，添加远程地址：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin git@github.com:yourName/yourRepo.git</span><br></pre></td></tr></table></figure>
-
 <p>后面的<code>yourName</code>和<code>yourRepo</code>表示你在github的用户名和刚才新建的仓库，加完之后进入<code>.git</code>，打开<code>config</code>，这里会多出一个remote “origin”内容，这就是刚才添加的远程地址，也可以直接修改config来配置远程地址。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220328160158267.png" alt="image-20220328160158267"></p>
 <p>然后的一般流程就是</p>
@@ -808,21 +732,17 @@
 </ul>
 <h3 id="查看当前的远程库"><a href="#查看当前的远程库" class="headerlink" title="查看当前的远程库"></a>查看当前的远程库</h3><p>要查看当前配置有哪些远程仓库，可以用命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure>
-
 <p><strong>实例</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git remote</span><br><span class="line">origin</span><br><span class="line">$ git remote -v</span><br><span class="line">origin  git@github.com:yanglinqi107/<span class="built_in">test</span> (fetch)</span><br><span class="line">origin  git@github.com:yanglinqi107/<span class="built_in">test</span> (push)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>执行时加上 -v 参数，你还可以看到每个别名的实际链接地址</li>
 </ul>
 <h3 id="提取远程仓库"><a href="#提取远程仓库" class="headerlink" title="提取远程仓库"></a>提取远程仓库</h3><p>Git 有两个命令用来提取远程仓库的更新。</p>
 <p>1、从远程仓库下载新分支与数据：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch [alias]</span><br></pre></td></tr></table></figure>
-
 <p>该命令执行完后需要执行 git merge 远程分支到你所在的分支。</p>
 <p>2、从远端仓库提取数据并尝试合并到当前分支：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge [alias]/[branch]</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>该命令就是在执行 <strong>git fetch</strong> 之后紧接着执行 <strong>git merge</strong> 远程分支到你所在的任意分支</li>
 </ul>
@@ -836,12 +756,8 @@
 </ul>
 <h3 id="删除远程仓库"><a href="#删除远程仓库" class="headerlink" title="删除远程仓库"></a>删除远程仓库</h3><p>删除远程仓库你可以使用命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rm [别名]</span><br></pre></td></tr></table></figure>
-
 <p><strong>实例</strong>：<code>github</code>上的仓库并不会被删除</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin    git@github.com:tianqixin/runoob-git-test.git (fetch)</span><br><span class="line">origin    git@github.com:tianqixin/runoob-git-test.git (push)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加仓库 origin2</span></span><br><span class="line">$ git remote add origin2 git@github.com:tianqixin/runoob-git-test.git</span><br><span class="line"></span><br><span class="line">$ git remote -v</span><br><span class="line">origin    git@github.com:tianqixin/runoob-git-test.git (fetch)</span><br><span class="line">origin    git@github.com:tianqixin/runoob-git-test.git (push)</span><br><span class="line">origin2    git@github.com:tianqixin/runoob-git-test.git (fetch)</span><br><span class="line">origin2    git@github.com:tianqixin/runoob-git-test.git (push)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除仓库 origin2</span></span><br><span class="line">$ git remote rm origin2</span><br><span class="line">$ git remote -v</span><br><span class="line">origin    git@github.com:tianqixin/runoob-git-test.git (fetch)</span><br><span class="line">origin    git@github.com:tianqixin/runoob-git-test.git (push)</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="Git和Gitee"><a href="#Git和Gitee" class="headerlink" title="Git和Gitee"></a>Git和Gitee</h3><p>国内访问 Github 速度比较慢，使用国内的 Git 托管服务———<a target="_blank" rel="noopener" href="https://github.com/?utm_source=remote_blog_cnjc">Gitee（gitee.com）</a>。</p>
 <p><strong>1、我们先在 <a target="_blank" rel="noopener" href="https://github.com/?utm_source=remote_blog_cnjc">Gitee</a> 上注册账号并登录后，然后上传自己的 SSH 公钥</strong></p>
 <p>设置-》SSH公钥-》将之前生成的SSH公钥<code>~/.ssh/id_rsa.pub</code>粘贴上去</p>
@@ -850,83 +766,60 @@
 <p><strong>4、将本地仓库和远程库连接</strong></p>
 <ul>
 <li><p>在本地库上使用命令 <strong>git remote add</strong> 把它和 Gitee 的远程库关联：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@gitee.com:imnoob/runoob-test.git</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@gitee.com:imnoob/runoob-test.git</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>在使用命令 <code>git remote add</code> 时报错 <code>fatal: remote origin already exists.</code></p>
 </li>
-<li><p>说明本地库已经关联了一个名叫 origin 的远程库，可以先用 <code>git remote -v</code> 查看远程库信息</p>
-</li>
-<li><p>可以先删除已有的远程库连接 <code>git remote rm origin</code> </p>
-</li>
+<li>说明本地库已经关联了一个名叫 origin 的远程库，可以先用 <code>git remote -v</code> 查看远程库信息</li>
+<li>可以先删除已有的远程库连接 <code>git remote rm origin</code> </li>
 </ul>
 <p><strong>5、进行推送文件测试</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">touch README.md</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span></span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="关联多个远程库"><a href="#关联多个远程库" class="headerlink" title="关联多个远程库"></a>关联多个远程库</h3><p>Q：一个本地库能不能既关联 GitHub，又关联 Gitee 呢？</p>
 <p>A：可以，因为 git 本身是分布式版本控制系统</p>
 <p>使用多个远程库时，git 给远程库起的默认名称是 <code>origin</code>，如果有多个远程库，我们需要用<strong>不同的名称来标识不同的远程库</strong>。</p>
 <p>1、关联 GitHub 的远程库：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add github git@github.com:tianqixin/runoob-git-test.git</span><br></pre></td></tr></table></figure>
-
 <ul>
-<li>注意，远程库的名称叫 <code>github</code>，不叫 <code>origin </code>了</li>
+<li>注意，远程库的名称叫 <code>github</code>，不叫 <code>origin</code>了</li>
 </ul>
 <p>2、关联 Gitee 的远程库：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add gitee git@gitee.com:imnoob/runoob-test.git</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>远程库的名称叫 <code>gitee</code>，不叫 <code>origin</code></li>
 </ul>
 <p>3、验证是否连接成功</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br><span class="line">ssh -T git@gitee.com</span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
 <p><strong>推送：</strong></p>
 <p>推送到 GitHub，使用命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push github master</span><br></pre></td></tr></table></figure>
-
 <p>推送到 Gitee，使用命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push gitee master</span><br></pre></td></tr></table></figure>
-
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220329113937775.png" alt="image-20220329113937775"></p>
 <h3 id="Git服务器搭建"><a href="#Git服务器搭建" class="headerlink" title="Git服务器搭建"></a>Git服务器搭建</h3><p>菜鸟教程Git服务器搭建<a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-server.html">https://www.runoob.com/git/git-server.html</a></p>
 <p>前置条件：一台服务器，没有服务器在电脑上用虚拟机安装Centos或Ubuntu来试一下</p>
 <p>1、在Centos安装git，然后创建一个git用户组和用户，用来运行git服务：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel</span><br><span class="line">$ yum install git</span><br><span class="line"></span><br><span class="line">$ groupadd git  <span class="comment"># 创建用户组git</span></span><br><span class="line">$ useradd git -g git   <span class="comment"># Ubuntu： useradd -m git </span></span><br></pre></td></tr></table></figure>
-
 <p>2、创建证书登录</p>
 <p>收集所有需要登录的用户的公钥，公钥位于<code>id_rsa.pub</code>文件中，把我们的公钥导入到<code>/home/git/.ssh/authorized_keys</code>文件里，一行一个。</p>
 <p>如果没有该文件创建它：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /home/git/ </span><br><span class="line">$ mkdir .ssh             <span class="comment"># 创建.ssh文件夹，linux中 . 开头的文件夹是隐藏文件</span></span><br><span class="line">$ chmod 755 .ssh          <span class="comment"># 赋予权限 rwxr-xr-x</span></span><br><span class="line">$ touch .ssh/authorized_keys       <span class="comment"># 创建文件</span></span><br><span class="line">$ chmod 644 .ssh/authorized_keys    <span class="comment"># 赋予权限</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>示例</strong>：</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220329145611237.png" alt="image-20220329145611237" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220329145908985.png" alt="image-20220329145908985" style="zoom:80%;" />
-
-
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220329145611237.png" alt="image-20220329145611237" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220329145908985.png" alt="image-20220329145908985" style="zoom:80%;" /></p>
 <p>3、初始化Git仓库</p>
 <p>首先我们选定一个目录作为Git仓库，假定是<code>/home/gitrepo/runoob.git</code>，在<code>/home/gitrepo</code>目录下输入命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /home        </span><br><span class="line">$ mkdir gitrepo        <span class="comment"># 创建gitrepo文件夹</span></span><br><span class="line">$ chown git:git gitrepo/    <span class="comment"># 设置 gitrepo 的 属主 为用户组git的用户git</span></span><br><span class="line">$ <span class="built_in">cd</span> gitrepo              </span><br><span class="line">$ git init --bare runoob.git   <span class="comment"># 创建一个裸库 runoob.git</span></span><br><span class="line">Initialized empty Git repository <span class="keyword">in</span> /home/gitrepo/runoob.git/</span><br></pre></td></tr></table></figure>
-
 <p>服务器上的Git仓库通常都以.git结尾。然后，把仓库所属用户改为git：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chown -R git:git runoob.git</span><br></pre></td></tr></table></figure>
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220329142903738.png" alt="image-20220329142903738" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220329142903738.png" alt="image-20220329142903738" style="zoom:80%;" /></p>
 <p>4、克隆仓库</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@192.168.45.4:/home/gitrepo/runoob.git</span><br><span class="line">Cloning into <span class="string">&#x27;runoob&#x27;</span>...</span><br><span class="line">warning: You appear to have cloned an empty repository.</span><br><span class="line">Checking connectivity... <span class="keyword">done</span>.</span><br></pre></td></tr></table></figure>
-
 <p><code>192.168.45.4</code> 为 Git 所在服务器 ip ，你需要将其修改为你自己的 Git 服务 ip。这样我们的 Git 服务器安装就完成。</p>
 <p><strong>示例：</strong></p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220329150319147.png" alt="image-20220329150319147" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220329150319147.png" alt="image-20220329150319147" style="zoom:80%;" /></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220329150745566.png" alt="image-20220329150745566"></p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220329152319559.png" alt="image-20220329152319559" style="zoom:80%;" />
-
-
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/git-img/image-20220329152319559.png" alt="image-20220329152319559" style="zoom:80%;" /></p>
 <p>注：使用 <code>--bare</code> 参数初始化的仓库，我们一般称之为裸仓库， 因为这样创建的仓库并不包含 工作区 ， 也就是说，我们并不能在这个目录下执行我们一般使用的 Git 命令。<a target="_blank" rel="noopener" href="https://www.cnblogs.com/irockcode/p/8761954.html">https://www.cnblogs.com/irockcode/p/8761954.html</a></p>
 <h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p>1、<code>Connection closed by ::1 port 22</code></p>
 <p>重新生成密钥或<strong>网络问题</strong>，因为国内访问Github可能很慢</p>
@@ -1137,6 +1030,8 @@
 
 
 
+
+  
 
   
 

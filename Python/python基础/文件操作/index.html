@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="Python对文件的操作">
@@ -247,19 +247,15 @@
       
         <p>Python对文件的操作</p>
 <span id="more"></span>
-
 <h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><p>文件对象操作</p>
-<p><code>open()</code>函数用于打开文件对象，<code>open(file,mode) </code>  </p>
+<p><code>open()</code>函数用于打开文件对象，<code>open(file,mode)</code>  </p>
 <p>file必需，文件路径，mode可选，文件打开模式。</p>
-<p>有 <code> r、rb、r+、rb+、w、wb、wb、w+、wb+、a、ab、a+、ab+</code></p>
+<p>有 <code>r、rb、r+、rb+、w、wb、wb、w+、wb+、a、ab、a+、ab+</code></p>
 <p>Python在处理文本对象时可采取字节模式和字符模式</p>
 <p>文件对象像序列一样可遍历，因此程序完全可以使用for循环来遍历文件内容。也可使用<code>list(fp)</code>方法或<code>fp.readlines()</code>方法将文件内容存放到列表中。</p>
-<p>with语句适用于对资源进行访问的场合，确保不管使用过程中是否发生异常都会执行必要的清理操作，释放资源。比如文件使用后自动关闭、线程锁的自动获取和释放等。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&#x27;d:/abc.txt&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">	<span class="keyword">for</span> line <span class="keyword">in</span> fp:</span><br><span class="line">        <span class="built_in">print</span>(line)</span><br></pre></td></tr></table></figure>
-
-
-
+<p>with语句适用于对资源进行访问的场合，确保不管使用过程中是否发生异常都会执行必要的清理操作，释放资源。比如文件使用后自动关闭、线程锁的自动获取和释放等。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&#x27;d:/abc.txt&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">	<span class="keyword">for</span> line <span class="keyword">in</span> fp:</span><br><span class="line">        <span class="built_in">print</span>(line)</span><br></pre></td></tr></table></figure></p>
 <p>文件对象的<code>字节模式/b模式</code>（UTF-8编码为例）</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -269,7 +265,8 @@
 <th>指针操作</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>ASCII字节</td>
 <td>返回bytes/字节类型的ASCII</td>
 <td>写入bytes类型字节<br>例如：b”This is ASCII”</td>
@@ -277,12 +274,15 @@
 </tr>
 <tr>
 <td>中文字符串</td>
-<td>返回bytes/字节类型的乱码<br>例如：\xe4\xbd\xa0，三组为一个中文，需解码显示<br>例如：’\xe4\xbd\xa0&#39;.decode(‘utf8’)</td>
+<td>返回bytes/字节类型的乱码<br>例如：\xe4\xbd\xa0，三组为一个中文，需解码显示<br>例如：’\xe4\xbd\xa0\’.decode(‘utf8’)</td>
 <td>把字符串编码后才可写操作<br>例如：’内容’.encode(‘utf-8’)</td>
 <td>使用seek每次设置3的倍数的字节</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>文本对象的字本模式</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -292,7 +292,8 @@
 <th>指针操作</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>ASCII字节</td>
 <td>返回可查看的字符串</td>
 <td>写入字符串</td>
@@ -304,69 +305,73 @@
 <td>写入字符串</td>
 <td>使用seek每次设置3的倍数的字节</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>文件对象的主要方法</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">读</span><br><span class="line"></span><br><span class="line">fp.read(size)	size可选，读取文件中size个字符的内容，若size为负或不存在，读取全部内容；当文件大小是当前机器内容的两倍是，出错；若到了文件末尾，会显示空字符串</span><br><span class="line"></span><br><span class="line">fp.readline()	读取文件中单独一行。返回的每行结尾会自动夹换行符<span class="string">&#x27;\n&#x27;</span>，如果到了文件末尾，返回空字符串</span><br><span class="line"></span><br><span class="line">fp.readlines()	返回文件的所有行</span><br><span class="line"></span><br><span class="line">写</span><br><span class="line"></span><br><span class="line">fp.write(string)	将string写入文件中，返回值为写入的字符数</span><br><span class="line"></span><br><span class="line">其他方法</span><br><span class="line"></span><br><span class="line">fp.tell()	返回指针在文件中的位置，从文件开头开始计算的字符数</span><br><span class="line"></span><br><span class="line">fp.seek(offset, from_what)	改变指针在文件中的位置，from_what=<span class="number">0</span>或<span class="number">1</span>或<span class="number">2</span>，<span class="number">0</span>：文件开头 <span class="number">1</span>：当前位置 <span class="number">2</span>：文件结尾 </span><br><span class="line">							seek(x,<span class="number">0</span>) 从文件首字符移动x个字符</span><br><span class="line">    						seek(x,<span class="number">1</span>) 从当前位置往后移动x个字符</span><br><span class="line">        					seek(-x,<span class="number">2</span>) 从文件的结尾往前移动x个字符</span><br><span class="line">            </span><br><span class="line">fp.close() 关闭文件</span><br></pre></td></tr></table></figure>
-
-
-
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">mode参数</th>
-<th align="center">含义描述</th>
+<th style="text-align:center">mode参数</th>
+<th style="text-align:center">含义描述</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">r</td>
-<td align="center">只读</td>
+<tbody>
+<tr>
+<td style="text-align:center">r</td>
+<td style="text-align:center">只读</td>
 </tr>
 <tr>
-<td align="center">rb</td>
-<td align="center">只读</td>
+<td style="text-align:center">rb</td>
+<td style="text-align:center">只读</td>
 </tr>
 <tr>
-<td align="center">r+</td>
-<td align="center">只读，二进制格式</td>
+<td style="text-align:center">r+</td>
+<td style="text-align:center">只读，二进制格式</td>
 </tr>
 <tr>
-<td align="center">rb+</td>
-<td align="center">读写，二进制格式</td>
+<td style="text-align:center">rb+</td>
+<td style="text-align:center">读写，二进制格式</td>
 </tr>
 <tr>
-<td align="center">w</td>
-<td align="center">写，文件不存在则新建，存在则删除原有内容</td>
+<td style="text-align:center">w</td>
+<td style="text-align:center">写，文件不存在则新建，存在则删除原有内容</td>
 </tr>
 <tr>
-<td align="center">wb</td>
-<td align="center">写，二进制格式，文件不存在则新建，存在则删除原有内容</td>
+<td style="text-align:center">wb</td>
+<td style="text-align:center">写，二进制格式，文件不存在则新建，存在则删除原有内容</td>
 </tr>
 <tr>
-<td align="center">w+</td>
-<td align="center">读写，文件不存在则新建，存在则删除原有内容</td>
+<td style="text-align:center">w+</td>
+<td style="text-align:center">读写，文件不存在则新建，存在则删除原有内容</td>
 </tr>
 <tr>
-<td align="center">wb+</td>
-<td align="center">读写，二进制格式，文件不存在则新建，存在则删除原有内容</td>
+<td style="text-align:center">wb+</td>
+<td style="text-align:center">读写，二进制格式，文件不存在则新建，存在则删除原有内容</td>
 </tr>
 <tr>
-<td align="center">a</td>
-<td align="center">追加，文件不存在则新建，存在则追加内容</td>
+<td style="text-align:center">a</td>
+<td style="text-align:center">追加，文件不存在则新建，存在则追加内容</td>
 </tr>
 <tr>
-<td align="center">ab</td>
-<td align="center">追加，二进制格式，文件不存在则新建，存在则追加内容</td>
+<td style="text-align:center">ab</td>
+<td style="text-align:center">追加，二进制格式，文件不存在则新建，存在则追加内容</td>
 </tr>
 <tr>
-<td align="center">a+</td>
-<td align="center">读写，文件不存在则新建，存在则追加内容</td>
+<td style="text-align:center">a+</td>
+<td style="text-align:center">读写，文件不存在则新建，存在则追加内容</td>
 </tr>
 <tr>
-<td align="center">ab+</td>
-<td align="center">读写，二进制格式，文件不存在则新建，存在则追加内容</td>
+<td style="text-align:center">ab+</td>
+<td style="text-align:center">读写，二进制格式，文件不存在则新建，存在则追加内容</td>
 </tr>
-</tbody></table>
-<p><font color=#ff000>总结：r模式和w模式，打开文件，指针都在文件头，而a模式则在文件尾；w模式和a模式都能在文件不存在时新建文件</font></p>
+</tbody>
+</table>
+</div>
+<font color=#ff000>总结：r模式和w模式，打开文件，指针都在文件头，而a模式则在文件尾；w模式和a模式都能在文件不存在时新建文件</font>
+
 <p>open()的详细格式为：</p>
 <p><code>open(file,  mode=&quot;r&quot;,  buffering=None, encoding=None, errors=None, newline=None, closefd=True, opener=None)</code></p>
 <p>参数说明：</p>
@@ -382,15 +387,13 @@
 <p><code>import csv</code></p>
 <p>由于CSV文件本质上是一个文本文件，所以需要先以文本文件的方式打开，再将文件对象传递给CSV模块：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;course.csv&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.DictReader(f)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">    	<span class="built_in">print</span>(row)</span><br></pre></td></tr></table></figure>
-
 <p>for循环得到的row是OrderedDict（有序字典），可以直接像普通字典那样使用</p>
-<p><font color=#ff0000>特别注意：</font></p>
+<font color=#ff0000>特别注意：</font>
+
 <p>读取文本内容的代码必须放在缩进内部进行，否则会导致报错。</p>
 <p>这是因为f变量里面的值是一个生成器，生成器只有在被使用（更准确的说法是被迭代）的时候才会去读文本内容。但是退出with的缩进以后，文件就被Python关闭了，这个时候当然什么都读不了</p>
 <p>列表推导式可以绕过这个限制</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;course.csv&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = [x <span class="keyword">for</span> x <span class="keyword">in</span> csv.DictReader(f)]</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br></pre></td></tr></table></figure>
-
-
 <h3 id="写CSV文件"><a href="#写CSV文件" class="headerlink" title="写CSV文件"></a>写CSV文件</h3><p>Python可以把一个字典写成CSV文件，或者把一个包含字典的列表写成CSV文件。</p>
 <p>Python写CSV文件比读CSV文件稍微复杂一点，因为要指定列名。</p>
 <p>列名要和字典的Key一一对应。</p>
@@ -605,6 +608,8 @@
 
 
 
+
+  
 
   
 

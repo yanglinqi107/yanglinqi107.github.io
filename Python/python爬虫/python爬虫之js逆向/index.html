@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="js常见加密算法">
@@ -250,7 +250,6 @@
       
         <p>js常见加密算法</p>
 <span id="more"></span>
-
 <p>爬虫的js加密处理+js算法改写分析</p>
 <p>js中常见的加密算法剖析</p>
 <ul>
@@ -326,8 +325,7 @@
 <li>如果要求高使用AES</li>
 </ul>
 </li>
-<li><p>DES和AES切换只需要修改 CryptoJS.AES &lt;=&gt; CryptoJS.DES</p>
-</li>
+<li>DES和AES切换只需要修改 CryptoJS.AES &lt;=&gt; CryptoJS.DES</li>
 </ul>
 </li>
 <li><p>使用DES/AES进行数据交互时要求双方都拥有相同的私匙</p>
@@ -342,7 +340,7 @@
 <p>​    Key、Data、Mode, padding</p>
 <ul>
 <li>Key为7个字节共56位，是DES算法的工作密钥；</li>
-<li> Data为8个字节64位，是要被加密或被解密的数据；</li>
+<li>Data为8个字节64位，是要被加密或被解密的数据；</li>
 <li>Mode为DES的工作方式。</li>
 <li>padding为填充模式，如果加密后密文长度如果达不到指定整数倍（8个字节、16个字节），填充对应字符，padding的赋值固定为CryptoJS.pad.Pkcs7即可</li>
 </ul>
@@ -388,7 +386,7 @@
 <ul>
 <li><p>Base64是一种用64个字符来表示任意二进制数据的方法。base64是一种编码方式而不是加密算法。只是看上去像是加密而已。</p>
 </li>
-<li><p>Base64使用A–Z,a–z,0–9,+,/这64个字符实现对数据进行加密。</p>
+<li><p>Base64使用A—Z,a—z,0—9,+,/这64个字符实现对数据进行加密。</p>
 </li>
 <li><p>关键字       <code>Base64()</code></p>
 </li>
@@ -424,12 +422,12 @@
 <li><p>每个客户端的对称秘钥相同，浏览器能拿到对称秘钥，那么黑客也可以拿到，所以，数据加密也就没有意义了</p>
 </li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Python-img//image20211127174405.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Python-img//image20211127174405.png" alt=""></p>
 <p>3.动态对称秘钥和非对称秘钥</p>
 <ul>
 <li>为了解决对称秘钥动态性以及让客户端和服务端安全的获取对称秘钥，可以引入非对称秘钥机制。</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Python-img//image20211127175123.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Python-img//image20211127175123.png" alt=""></p>
 <p>js调试工具</p>
 <ul>
 <li>发条js调试工具</li>
@@ -671,6 +669,8 @@
 
 
 
+
+  
 
   
 

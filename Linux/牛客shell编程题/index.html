@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="牛客上的shell编程题">
@@ -248,21 +248,13 @@
       
         <p>牛客上的shell编程题</p>
 <span id="more"></span>
-
-<h3 id="输出第5行的内容"><a href="#输出第5行的内容" class="headerlink" title="输出第5行的内容"></a>输出第5行的内容</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/1d5978c6136d4252904757b4fa0c9296?tpId=195&rp=1&ru=/exam/oj&qru=/exam/oj&sourceUrl=/exam/oj?tab=SHELL%E7%AF%87&topicId=195&page=1&difficulty=&judgeStatus=&tags=&title=&gioEnter=menu">输出第5行的内容_牛客题霸_牛客网 (nowcoder.com)</a></p>
+<h3 id="输出第5行的内容"><a href="#输出第5行的内容" class="headerlink" title="输出第5行的内容"></a>输出第5行的内容</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/1d5978c6136d4252904757b4fa0c9296?tpId=195&amp;rp=1&amp;ru=%2Fexam%2Foj&amp;qru=%2Fexam%2Foj&amp;sourceUrl=%2Fexam%2Foj%3Ftab%3DSHELL%E7%AF%87%26topicId%3D195%26page%3D1&amp;difficulty=&amp;judgeStatus=&amp;tags=&amp;title=&amp;gioEnter=menu">输出第5行的内容_牛客题霸_牛客网 (nowcoder.com)</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">lines=0</span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> line</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">let</span> <span class="string">&quot;lines++&quot;</span>  <span class="comment"># 可以改成 ((lines++))  速度变快了，但内存增多了</span></span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$lines</span> == 5 ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$line</span></span><br><span class="line">        <span class="built_in">break</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span> &lt; nowcoder.txt</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -n 5 nowcoder.txt | tail -n 1</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -n <span class="string">&#x27;5,5p&#x27;</span> nowcoder.txt</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="统计所有进程占用内存大小的和"><a href="#统计所有进程占用内存大小的和" class="headerlink" title="统计所有进程占用内存大小的和"></a>统计所有进程占用内存大小的和</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/fb24140bac154e5b99e44e0cee45dcaf?tpId=195&rp=1&ru=/exam/oj&qru=/exam/oj&sourceUrl=/exam/oj?tab=SHELL%E7%AF%87&topicId=195&page=1&difficulty=&judgeStatus=&tags=&title=&gioEnter=menu">统计所有进程占用内存大小的和_牛客题霸_牛客网 (nowcoder.com)</a></p>
+<h3 id="统计所有进程占用内存大小的和"><a href="#统计所有进程占用内存大小的和" class="headerlink" title="统计所有进程占用内存大小的和"></a>统计所有进程占用内存大小的和</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/fb24140bac154e5b99e44e0cee45dcaf?tpId=195&amp;rp=1&amp;ru=%2Fexam%2Foj&amp;qru=%2Fexam%2Foj&amp;sourceUrl=%2Fexam%2Foj%3Ftab%3DSHELL%E7%AF%87%26topicId%3D195%26page%3D1&amp;difficulty=&amp;judgeStatus=&amp;tags=&amp;title=&amp;gioEnter=menu">统计所有进程占用内存大小的和_牛客题霸_牛客网 (nowcoder.com)</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">mem=0</span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> -a line  </span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    ((mem += line[5]))</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$&#123;line[5]&#125;</span></span><br><span class="line"><span class="keyword">done</span> &lt; nowcoder.txt</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$mem</span></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># read -a array_name 读入数组array_name，从下标0开始</span></span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -466,6 +458,8 @@
 
 
 
+
+  
 
   
 

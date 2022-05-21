@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="requests，bs4，XPath">
@@ -247,38 +247,32 @@
       
         <p>requests，bs4，XPath</p>
 <span id="more"></span>
-
 <h2 id="Python的第三方库"><a href="#Python的第三方库" class="headerlink" title="Python的第三方库"></a>Python的第三方库</h2><p>在Python开发的过程中，常常需要将一些功能比较通用的代码抽离出来作为一个单独的模块，从而被多个工程调用。这种公共的模块称为Python的库（Library, Lib）。Python在发布时会自带一些由官方开发的常用的库，例如正则表达式“re”、时间“time”等。这些库称为“官方库”。而由非官方发布的库，则称为“第三方库”。</p>
 <p>Python之所以如此强大，正是由于它拥有非常多的第三方库。使用第三方库，可以轻易实现各种各样的功能。以获取网页内容为例，Python其实自带了两个模块，分别是urllib和urllib2。使用这两个模块也可以获取网页内容。但是这两个模块使用起来非常麻烦。而requests这个第三方库，让获取网页内容变得极其简单。</p>
-<p><font color=#FF0000>注意：</font></p>
+<font color=#FF0000>注意：</font>
+
 <p><code>开发者自己写的.py文件的名字绝对不能和Python自带的模块或者已经安装的第三方库的名字相同，否则会产生问题</code>。例如本章内容涉及requests和正则表达式，那么读者在测试代码的时候绝对不能自行创建名为“requests.py”或者“re.py”的文件。一旦创建，代码必定报错。</p>
 <h3 id="requests"><a href="#requests" class="headerlink" title="requests"></a><strong>requests</strong></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">html = requests.get(<span class="string">&#x27;网址&#x27;</span>)  </span><br><span class="line">html_bytes = html.content   <span class="comment">#使用.content这个属性来显示bytes型网页的源代码</span></span><br><span class="line">html_str = html_bytes.decode() <span class="comment">#将bytes型的网页源代码解码为字符串型的源代码</span></span><br><span class="line">html_json = html.json()</span><br><span class="line">html_text = html.text</span><br></pre></td></tr></table></figure>
-
 <p>之所以需要把bytes型的数据解码为字符串型的数据，是因为在bytes型的数据类型下，中文是无法正常显示的。</p>
 <p>这个“解码”对应的英文为“decode”，因而我们需要使用.decode()这个方法。</p>
 <p>这个方法的参数可以省略。在省略的时候，默认使用UTF-8编码格式来把bytes型解码为字符串型的源代码。</p>
 <p>可能有一些中文网页，它的编码格式本身不是UTF-8，这就需要在括号里面写明目标编码格式的名字。</p>
-<h3 id="XPath"><a href="#XPath" class="headerlink" title="XPath"></a><strong>XPath</strong></h3><p>XPath（XML Path）是一种查询语言，它能在XML（Extensible MarkupLanguage，可扩展标记语言）和HTML的树状结构中寻找结点。</br><br>安装一个第三方库：lxml</p>
+<h3 id="XPath"><a href="#XPath" class="headerlink" title="XPath"></a><strong>XPath</strong></h3><p>XPath（XML Path）是一种查询语言，它能在XML（Extensible MarkupLanguage，可扩展标记语言）和HTML的树状结构中寻找结点。&lt;/br&gt;<br>安装一个第三方库：lxml</p>
 <p>如果直接使用上面的命令来安装，10个人里面有7个人都会出问题。</p>
 <p>因为lxml的底层是使用C语言实现的，所以计算机上面需要安装Virtual C++运行库。</p>
 <p>但是即便安装好了Virtual C++运行库，还是有可能出问题。</p>
-<p>所以需要换一种办法。请用浏览器打开：<a target="_blank" rel="noopener" href="http://www.lfd.uci.edu/%EF%BD%9Egohlke/pythonlibs/#lxml">http://www.lfd.uci.edu/～gohlke/pythonlibs/#lxml</a> 根据自己计算机的Python版本下载对应的whl包。</p>
+<p>所以需要换一种办法。请用浏览器打开：<a target="_blank" rel="noopener" href="http://www.lfd.uci.edu/～gohlke/pythonlibs/#lxml">http://www.lfd.uci.edu/～gohlke/pythonlibs/#lxml</a> 根据自己计算机的Python版本下载对应的whl包。</p>
 <p>例如对于64位的Python3.6，可以下载lxml-3.7.3-cp36-cp36m-win_amd64.whl。</p>
 <p>下载完成以后，在存放这个whl包的文件夹中打开CMD，并执行以下代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install lxml-3.7.3-cp36-cp36m-vin_amd64.whl</span><br></pre></td></tr></table></figure>
-
 <p>使用这种方法，若还未成功</p>
 <p>把lxml-3.7.3-cp36-cp36m-win_amd64.whl这个文件的扩展名由.whl改为.zip，使用WinRAR或者7-Zip等解压缩工具来解压这个文件。</p>
-<p>解压以后，会得到两个文件夹</br><br>把它们复制到Python安装文件夹下面Lib\site-packages文件夹中即可</br><br>打开Python的交互环境，输入<code>import lxml</code>，如果不报错，就表示安装成功</p>
+<p>解压以后，会得到两个文件夹&lt;/br&gt;<br>把它们复制到Python安装文件夹下面Lib\site-packages文件夹中即可&lt;/br&gt;<br>打开Python的交互环境，输入<code>import lxml</code>，如果不报错，就表示安装成功</p>
 <h3 id="BeautifulSoup4"><a href="#BeautifulSoup4" class="headerlink" title="BeautifulSoup4"></a><strong>BeautifulSoup4</strong></h3><p>Beautiful Soup4（BS4）是Python的一个第三方库，用来从HTML和XML中提取数据。</p>
 <p>Beautiful Soup4在某些方面比XPath易懂，但是不如XPath简洁，而且由于它是使用Python开发的，因此速度比XPath慢。</p>
-<p>使用pip安装Beautiful Soup4：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install beautifulsoup4</span><br></pre></td></tr></table></figure>
-<p>打开python开发环境，输入</p>
+<p>使用pip安装Beautiful Soup4：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install beautifulsoup4</span><br></pre></td></tr></table></figure><br>打开python开发环境，输入</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br></pre></td></tr></table></figure>
-
-<p>解析源代码生成BeautifulSoup对象，使用以下代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">soup = BeautifulSoup(网页源代码,<span class="string">&#x27;解析器&#x27;</span>)</span><br><span class="line"><span class="comment"># 这里的“解析器”，可以使用html.parser：</span></span><br><span class="line">soup = BeautifulSoup(source, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line"><span class="comment"># 如果安装了lxml，还可以使用 lxml：</span></span><br><span class="line">soup = BeautifulSoup(source, <span class="string">&#x27;lxml&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>解析源代码生成BeautifulSoup对象，使用以下代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">soup = BeautifulSoup(网页源代码,<span class="string">&#x27;解析器&#x27;</span>)</span><br><span class="line"><span class="comment"># 这里的“解析器”，可以使用html.parser：</span></span><br><span class="line">soup = BeautifulSoup(source, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line"><span class="comment"># 如果安装了lxml，还可以使用 lxml：</span></span><br><span class="line">soup = BeautifulSoup(source, <span class="string">&#x27;lxml&#x27;</span>)</span><br></pre></td></tr></table></figure></p>
 
     </div>
 
@@ -482,6 +476,8 @@
 
 
 
+
+  
 
   
 

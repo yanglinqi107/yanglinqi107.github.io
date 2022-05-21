@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="编译原理    第六部分">
@@ -249,7 +249,6 @@
       
         <p>编译原理    第六部分</p>
 <span id="more"></span> 
-
 <h3 id="符号表"><a href="#符号表" class="headerlink" title="符号表"></a>符号表</h3><p>一张符号表的每一项（或称入口）包含两大栏（或称区段、字域），即名字栏和信息栏。</p>
 <p>信息栏包含许多子栏和标志位，用来记录相应名字和种种不同属性，由于查填符号表一般是通过匹配名字来实现的，因此，名字栏也称主栏。主栏的内容称为关键字（key word）</p>
 <p>在整个编译期间，对于符号表的操作大致可归纳为五类：</p>
@@ -316,7 +315,7 @@
 </blockquote>
 <p>树形表示</p>
 <blockquote>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172314424.png" alt="image-20220104120110825" style="zoom:67%;" />
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172314424.png" alt="image-20220104120110825" style="zoom:67%;" /></p>
 </blockquote>
 <p>四元式</p>
 <blockquote>
@@ -561,6 +560,8 @@
 
 
 
+
+  
 
   
 

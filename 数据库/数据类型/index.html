@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="原文链接：MySQL中数据类型介绍 - myxlp - 博客园 (cnblogs.com)">
@@ -247,21 +247,22 @@
       
         <p>原文链接：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/-xlp/p/8617760.html">MySQL中数据类型介绍 - myxlp - 博客园 (cnblogs.com)</a> </p>
 <span id="more"></span>
-
 <h2 id="MYSQL中数据类型介绍"><a href="#MYSQL中数据类型介绍" class="headerlink" title="MYSQL中数据类型介绍"></a><strong>MYSQL中数据类型介绍</strong></h2><h3 id="一、MySQL的数据类型"><a href="#一、MySQL的数据类型" class="headerlink" title="一、MySQL的数据类型"></a><strong>一、MySQL的数据类型</strong></h3><p>主要包括以下五大类：</p>
 <p>整数类型：<code>BIT、BOOL、TINY INT、SMALL INT、MEDIUM INT、 INT、 BIG INT</code></p>
 <p>浮点数类型：<code>FLOAT、DOUBLE、DECIMAL</code></p>
 <p>字符串类型：<code>CHAR、VARCHAR、TINY TEXT、TEXT、MEDIUM TEXT、LONGTEXT、TINY BLOB、BLOB、MEDIUM BLOB、LONG BLOB</code></p>
 <p>日期类型：<code>Date、DateTime、TimeStamp、Time、Year</code></p>
 <p>其他数据类型：<code>BINARY、VARBINARY、ENUM、SET、Geometry、Point、MultiPoint、LineString、MultiLineString、Polygon、GeometryCollection</code>等</p>
-<h4 id="1、整型"><a href="#1、整型" class="headerlink" title="1、整型"></a>1、整型</h4><table>
+<h4 id="1、整型"><a href="#1、整型" class="headerlink" title="1、整型"></a>1、整型</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>MySQL数据类型</th>
 <th>含义（有符号）</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>tinyint(m)</td>
 <td>1个字节 范围(-128~127)</td>
 </tr>
@@ -281,17 +282,21 @@
 <td>bigint(m)</td>
 <td>8个字节 范围(+-9.22*10的18次方)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>取值范围如果加了unsigned，则最大值翻倍，如tinyint unsigned的取值范围为(0~256)。</p>
 <p> int(m)里的m是表示SELECT查询结果集中的显示宽度，并不影响实际的取值范围，没有影响到显示的宽度，不知道这个m有什么用。</p>
-<h4 id="2、浮点型-float和double"><a href="#2、浮点型-float和double" class="headerlink" title="2、浮点型(float和double)"></a>2、浮点型(float和double)</h4><table>
+<h4 id="2、浮点型-float和double"><a href="#2、浮点型-float和double" class="headerlink" title="2、浮点型(float和double)"></a>2、浮点型(float和double)</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>MySQL数据类型</th>
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>float(m,d)</td>
 <td>单精度浮点型  8位精度(4字节)   m总个数，d小数位</td>
 </tr>
@@ -299,18 +304,22 @@
 <td>double(m,d)</td>
 <td>双精度浮点型  16位精度(8字节)   m总个数，d小数位</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>设一个字段定义为float(6,3)，如果插入一个数123.45678,实际数据库里存的是123.457，但总个数还以实际为准，即6位。整数部分最大是3位，如果插入数12.123456，存储的是12.1234，如果插入12.12，存储的是12.1200.</p>
 <h4 id="3、定点数"><a href="#3、定点数" class="headerlink" title="3、定点数"></a>3、定点数</h4><p>浮点型在数据库中存放的是近似值，而定点类型在数据库中存放的是精确值。 </p>
 <p>decimal(m,d) 参数m&lt;65 是总个数，d&lt;30且 d&lt;m 是小数位。</p>
-<h4 id="4、字符串-char-varchar-text"><a href="#4、字符串-char-varchar-text" class="headerlink" title="4、字符串(char, varchar, text)"></a>4、字符串(char, varchar, text)</h4><table>
+<h4 id="4、字符串-char-varchar-text"><a href="#4、字符串-char-varchar-text" class="headerlink" title="4、字符串(char, varchar, text)"></a>4、字符串(char, varchar, text)</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>MySQL数据类型</th>
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>char(n)</td>
 <td>固定长度，最多255个字符</td>
 </tr>
@@ -334,7 +343,9 @@
 <td>longtext</td>
 <td>可变长度，最多2的32次方-1个字符</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>char和varchar：</p>
 <p>1.char(n) 若存入字符数小于n，则以空格补于其后，查询之时再将空格去掉。所以char类型存储的字符串末尾不能有空格，varchar不限于此。 </p>
 <p>2.char(n) 固定长度，char(4)不管是存入几个字符，都将占用4个字节，varchar是存入的实际字符数+1个字节（n&lt;=255）或2个字节(n&gt;255)，所以varchar(4),存入3个字符将占用4个字节。 </p>
@@ -346,14 +357,16 @@
 <h4 id="5-二进制数据-Blob"><a href="#5-二进制数据-Blob" class="headerlink" title="5.二进制数据(Blob)"></a>5.二进制数据(Blob)</h4><p>1.BLOB和text存储方式不同，TEXT以文本方式存储，英文存储区分大小写，而Blob是以二进制方式存储，不分大小写。</p>
 <p>2.BLOB存储的数据只能整体读出。 </p>
 <p>3.TEXT可以指定字符集，BLOB不用指定字符集。</p>
-<h4 id="6-日期时间类型"><a href="#6-日期时间类型" class="headerlink" title="6.日期时间类型"></a>6.日期时间类型</h4><table>
+<h4 id="6-日期时间类型"><a href="#6-日期时间类型" class="headerlink" title="6.日期时间类型"></a>6.日期时间类型</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>MySQL数据类型</th>
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>date</td>
 <td>日期 ‘2008-12-2’</td>
 </tr>
@@ -369,16 +382,20 @@
 <td>timestamp</td>
 <td>自动存储记录修改时间</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>若定义一个字段为timestamp，这个字段里的时间数据会随其他字段修改的时候自动刷新，所以这个数据类型的字段可以存放这条记录最后被修改的时间。</p>
-<h4 id="数据类型的属性"><a href="#数据类型的属性" class="headerlink" title="数据类型的属性"></a>数据类型的属性</h4><table>
+<h4 id="数据类型的属性"><a href="#数据类型的属性" class="headerlink" title="数据类型的属性"></a>数据类型的属性</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>MySQL关键字</th>
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>NULL</td>
 <td>数据列可包含NULL值</td>
 </tr>
@@ -406,8 +423,11 @@
 <td>CHARACTER SET name</td>
 <td>指定一个字符集</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="二、MYSQL数据类型的长度和范围"><a href="#二、MYSQL数据类型的长度和范围" class="headerlink" title="二、MYSQL数据类型的长度和范围"></a><strong>二、MYSQL数据类型的长度和范围</strong></h3><p>各数据类型及字节长度一览表：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -416,7 +436,8 @@
 <th>范围或用法</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>Bit</td>
 <td>1</td>
 <td>无符号[0,255]，有符号[-128,127]，天缘博客备注：BIT和BOOL布尔型都占用1字节</td>
@@ -594,9 +615,10 @@
 <tr>
 <td>GeometryCollection</td>
 <td></td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="三、使用建议"><a href="#三、使用建议" class="headerlink" title="三、使用建议"></a><strong>三、使用建议</strong></h3><p>1、在指定数据类型的时候一般是采用从小原则，比如能用TINY INT的最好就不用INT，能用FLOAT类型的就不用DOUBLE类型，这样会对MYSQL在运行效率上提高很大，尤其是大数据量测试条件下。</p>
 <p>2、不需要把数据表设计的太过复杂，功能模块上区分或许对于后期的维护更为方便，慎重出现大杂烩数据表</p>
 <p>3、数据表和字段的起名字也是一门学问</p>
@@ -614,6 +636,7 @@
 <p>下面说一下固定长度数据列与可变长度的数据列。</p>
 <h3 id="char与varchar"><a href="#char与varchar" class="headerlink" title="char与varchar"></a><strong>char与varchar</strong></h3><p>CHAR和VARCHAR类型类似，但它们保存和检索的方式不同。它们的最大长度和是否尾部空格被保留等方面也不同。在存储或检索过程中不进行大小写转换。</p>
 <p>下面的表显示了将各种字符串值保存到CHAR(4)和VARCHAR(4)列后的结果，说明了CHAR和VARCHAR之间的差别：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -624,7 +647,8 @@
 <th>存储需求</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>‘’</td>
 <td>‘  ‘</td>
 <td>4个字节</td>
@@ -652,13 +676,12 @@
 <td>‘abcd’</td>
 <td>5个字节</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>请注意上表中最后一行的值只适用不使用严格模式时；如果MySQL运行在严格模式，超过列长度不的值不保存，并且会出现错误。</p>
 <p>从CHAR(4)和VARCHAR(4)列检索的值并不总是相同，因为检索时从CHAR列删除了尾部的空格。通过下面的例子说明该差别：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE vc (v VARCHAR(4), c CHAR(4));</span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO vc VALUES (&#x27;ab &#x27;, &#x27;ab &#x27;);</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT CONCAT(v, &#x27;+&#x27;), CONCAT(c, &#x27;+&#x27;) FROM vc;</span><br><span class="line">+----------------+----------------+</span><br><span class="line">| CONCAT(v, &#x27;+&#x27;) | CONCAT(c, &#x27;+&#x27;) |</span><br><span class="line">+----------------+----------------+</span><br><span class="line">| ab +     | ab+      |</span><br><span class="line">+----------------+----------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="text和blob"><a href="#text和blob" class="headerlink" title="text和blob"></a><strong>text和blob</strong></h3><p>在使用text和blob字段类型时要注意以下几点，以便更好的发挥数据库的性能。</p>
 <p>①BLOB和TEXT值也会引起自己的一些问题，特别是执行了大量的删除或更新操作的时候。删除这种值会在数据表中留下很大的”空洞”，以后填入这些”空洞”的记录可能长度不同,为了提高性能,建议定期使用 OPTIMIZE TABLE 功能对这类表进行碎片整理.</p>
 <p>②使用合成的（synthetic）索引。合成的索引列在某些时候是有用的。一种办法是根据其它的列的内容建立一个散列值，并把这个值存储在单独的数据列中。接下来你就可以通过检索散列值找到数据行了。但是，我们要注意这种技术只能用于精确匹配的查询（散列值对于类似&lt;或&gt;=等范围搜索操作符 是没有用处的）。我们可以使用MD5()函数生成散列值，也可以使用SHA1()或CRC32()，或者使用自己的应用程序逻辑来计算散列值。请记住数值型散列值可以很高效率地存储。同样，如果散列算法生成的字符串带有尾部空格，就不要把它们存储在CHAR或VARCHAR列中，它们会受到尾部空格去除的影响。合成的散列索引对于那些BLOB或TEXT数据列特别有用。用散列标识符值查找的速度比搜索BLOB列本身的速度快很多。</p>
@@ -666,8 +689,6 @@
 <p>④把BLOB或TEXT列分离到单独的表中。在某些环境中，如果把这些数据列移动到第二张数据表中，可以让你把原数据表中 的数据列转换为固定长度的数据行格式，那么它就是有意义的。这会减少主表中的碎片，使你得到固定长度数据行的性能优势。它还使你在主数据表上运行 SELECT *查询的时候不会通过网络传输大量的BLOB或TEXT值。</p>
 <h3 id="浮点数与定点数"><a href="#浮点数与定点数" class="headerlink" title="浮点数与定点数"></a><strong>浮点数与定点数</strong></h3><p>为了能够引起大家的重视，在介绍浮点数与定点数以前先让大家看一个例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE test (c1 float(10,2),c2 decimal(10,2));</span><br><span class="line">Query OK, 0 rows affected (0.29 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into test values(131072.32,131072.32);</span><br><span class="line">Query OK, 1 row affected (0.07 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from test;</span><br><span class="line">+-----------+-----------+</span><br><span class="line">| c1    | c2    |</span><br><span class="line">+-----------+-----------+</span><br><span class="line">| 131072.31 | 131072.32 |</span><br><span class="line">+-----------+-----------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-
 <p>从上面的例子中我们看到c1列的值由131072.32变成了131072.31，这就是浮点数的不精确性造成的。</p>
 <p>在mysql中float、double（或real）是浮点数，decimal（或numberic）是定点数。</p>
 <p>浮点数相对于定点数的优点是在长度一定的情况下，浮点数能够表示更大的数据范围；它的缺点是会引起精度问题。在今后关于浮点数和定点数的应用中，大家要记住以下几点：</p>
@@ -882,6 +903,8 @@
 
 
 
+
+  
 
   
 

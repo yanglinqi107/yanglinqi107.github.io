@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="数据库大作业我负责的内容">
@@ -255,18 +255,14 @@
       
         <p>数据库大作业我负责的内容</p>
 <span id="more"></span>
-
 <h2 id="数据来源"><a href="#数据来源" class="headerlink" title="数据来源"></a>数据来源</h2><p>英雄联盟云顶之弈英雄数据，将英雄的详细数据作为此次实验所展示的信息</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/DB-img/image-20211229205302299.png" alt="image-20211229205302299" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/DB-img/image-20211229205359200.png" alt="image-20211229205359200" style="zoom:80%;" />
-
-
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/DB-img/image-20211229205302299.png" alt="image-20211229205302299" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/DB-img/image-20211229205359200.png" alt="image-20211229205359200" style="zoom:80%;" /></p>
 <h2 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h2><p>分析数据构造相应的的表</p>
 <p>Cards数据库，依次保存英雄的 ==称号，图片，头像，技能名称，技能图片，技能类型，技能描述，英雄价格，英雄ID==</p>
 <p>其中英雄ID是主码</p>
-<h2 id="Cards"><a href="#Cards" class="headerlink" title="Cards"></a>Cards</h2><table>
+<h2 id="Cards"><a href="#Cards" class="headerlink" title="Cards"></a>Cards</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>name<string></th>
@@ -280,7 +276,8 @@
 <th>id<int></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>卡牌大师 崔斯特</td>
 <td></td>
 <td></td>
@@ -311,18 +308,21 @@
 <td></td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>Fetters表存有英雄所拥有的羁绊信息，==一个英雄可以拥有多个羁绊，是一对多的关系，单独用一张表将其存起来==</p>
-<h2 id="Fetters-羁绊"><a href="#Fetters-羁绊" class="headerlink" title="Fetters(羁绊)"></a>Fetters(羁绊)</h2><table>
+<h2 id="Fetters-羁绊"><a href="#Fetters-羁绊" class="headerlink" title="Fetters(羁绊)"></a>Fetters(羁绊)</h2><div class="table-container">
+<table>
 <thead>
 <tr>
-<th>id&lt;int&gt;</th>
-<th>fname&lt;string&gt;</th>
+<th>id\<int></th>
+<th>fname\<string></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>4</td>
 <td>辛迪加</td>
 </tr>
@@ -338,9 +338,12 @@
 <td>91</td>
 <td>刺客</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>Fetter 表存有羁绊的详细内容，依次是==羁绊名称，羁绊图标，羁绊描述，羁绊在不同情况下的描述==。</p>
-<h2 id="Fetter"><a href="#Fetter" class="headerlink" title="Fetter"></a>Fetter</h2><table>
+<h2 id="Fetter"><a href="#Fetter" class="headerlink" title="Fetter"></a>Fetter</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>fname<string></th>
@@ -349,15 +352,19 @@
 <th>level<string></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>帝国</td>
 <td></td>
 <td>在战斗环节开始时，上一回合造成了最多伤害的【帝国】英雄会变为【帝国统领】。【帝国统领】造成额外伤害。当【帝国统领】阵亡时，当前战斗环节中造成了最多伤害的【帝国】英雄会变为新的【帝国统领】。</td>
 <td>3:” 75%额外伤害”$5:” 125%额外伤害，并且其他【帝国】英雄们造成75%额外伤害”</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>Properties表存有英雄的各类属性信息，依次存有英雄的==ID，生命，护甲，魔抗，物攻，攻速，暴击率，攻击距离，初始法力值，法力值==等信息</p>
-<h2 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h2><table>
+<h2 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>数据项</th>
@@ -365,7 +372,8 @@
 <th>主码</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>id</td>
 <td>int</td>
 <td>Y</td>
@@ -413,11 +421,13 @@
 <tr>
 <td>mana</td>
 <td>VARCHAR(20)</td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>Users表存有用户的==ID，密码，类型==，类型是管理员和普通用户</p>
-<h2 id="Users"><a href="#Users" class="headerlink" title="Users"></a>Users</h2><table>
+<h2 id="Users"><a href="#Users" class="headerlink" title="Users"></a>Users</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>id</th>
@@ -425,7 +435,8 @@
 <th>privilege</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>root</td>
 <td>string</td>
 <td>2</td>
@@ -440,35 +451,24 @@
 <td>123456</td>
 <td>1</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/DB-img/image-20211230115426092.png" alt="image-20211230115426092"></p>
 <h2 id="表的创建"><a href="#表的创建" class="headerlink" title="表的创建"></a>表的创建</h2><p>将==Cards，Fetters，Properties==三张表通过英雄ID创建==表级参照完整性约束==，作用：删除英雄数据时，只需要根据ID删除Cards的数据，Fetters和Properties会自动删除相应ID的数据</p>
 <h3 id="创建Cards"><a href="#创建Cards" class="headerlink" title="创建Cards"></a>创建Cards</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create table Cards</span><br><span class="line">(</span><br><span class="line">name varchar(40),</span><br><span class="line">img varchar(100),</span><br><span class="line">icon varchar(100),</span><br><span class="line">skill_name varchar(20),</span><br><span class="line">skill_img varchar(100),</span><br><span class="line">skill_type varchar(10),</span><br><span class="line">skill_desc varchar(500),</span><br><span class="line">price tinyint,</span><br><span class="line">id int primary key not null</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
 <h3 id="创建Fetters"><a href="#创建Fetters" class="headerlink" title="创建Fetters"></a>创建Fetters</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create table fetters</span><br><span class="line">(</span><br><span class="line">id int,</span><br><span class="line">fname varchar(18),</span><br><span class="line">foreign key(id)</span><br><span class="line">references cards(id)</span><br><span class="line">on delete cascade</span><br><span class="line">on update cascade</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
 <h3 id="创建Fetter"><a href="#创建Fetter" class="headerlink" title="创建Fetter"></a>创建Fetter</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> fetter</span><br><span class="line">(</span><br><span class="line">fname <span class="type">varchar</span>(<span class="number">18</span>) <span class="keyword">primary</span> key,</span><br><span class="line">icon <span class="type">varchar</span>(<span class="number">100</span>),</span><br><span class="line">descr <span class="type">varchar</span>(<span class="number">500</span>),</span><br><span class="line">level <span class="type">varchar</span>(<span class="number">1000</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
 <h3 id="创建Properties"><a href="#创建Properties" class="headerlink" title="创建Properties"></a>创建Properties</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> properties</span><br><span class="line">(</span><br><span class="line">id <span class="type">int</span> <span class="keyword">primary</span> key,</span><br><span class="line">health <span class="type">varchar</span>(<span class="number">20</span>),</span><br><span class="line">armor <span class="type">varchar</span>(<span class="number">20</span>),</span><br><span class="line">magic_resist <span class="type">varchar</span>(<span class="number">20</span>),</span><br><span class="line">material_attack <span class="type">varchar</span>(<span class="number">20</span>),</span><br><span class="line">attack_speed <span class="type">varchar</span>(<span class="number">20</span>),</span><br><span class="line">critical_strike_rate <span class="type">varchar</span>(<span class="number">20</span>),</span><br><span class="line">attack_distance <span class="type">varchar</span>(<span class="number">20</span>),</span><br><span class="line">initial_mana <span class="type">varchar</span>(<span class="number">20</span>),</span><br><span class="line">mana <span class="type">varchar</span>(<span class="number">20</span>),</span><br><span class="line"><span class="keyword">foreign</span> key(id)</span><br><span class="line"><span class="keyword">references</span> cards(id)</span><br><span class="line"><span class="keyword">on</span> <span class="keyword">delete</span> cascade</span><br><span class="line"><span class="keyword">on</span> update cascade</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
 <h3 id="创建Users"><a href="#创建Users" class="headerlink" title="创建Users"></a>创建Users</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table users</span><br><span class="line">(</span><br><span class="line">id varchar(20),</span><br><span class="line">pwd varchar(20),</span><br><span class="line">privilege int    </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
 <p>==存储过程==</p>
 <p>创建添加用户的存储过程，后端调用<code>procedure adduser</code>并传入参数，<code>adduser</code>会判断<code>user</code>表中用户名是否存在，若存在，置输出参数<code>result</code>值为0；若不存在，将用户数据插入Users表中，并返回<code>result</code>为1；</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">delimiter $$</span><br><span class="line">create procedure addUser(in name varchar(20),in pwd varchar(20),in privilege int,out result int)</span><br><span class="line">begin</span><br><span class="line">declare e varchar(20);</span><br><span class="line">set e=&#x27;&#x27;;</span><br><span class="line">set result=1;</span><br><span class="line">select user_id into e</span><br><span class="line">from users</span><br><span class="line">where id=name;</span><br><span class="line">if e=name then</span><br><span class="line">set result=0;</span><br><span class="line">else insert into users values(name,pwd,privilege);</span><br><span class="line">end if;</span><br><span class="line">end$$</span><br><span class="line">delimiter ;</span><br></pre></td></tr></table></figure>
-
-
-
 <h2 id="数据爬取"><a href="#数据爬取" class="headerlink" title="数据爬取"></a>数据爬取</h2><p>使用python爬取数据并存入数据库</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/DB-img/image-20211229215916131.png" alt="image-20211229215916131" style="zoom: 80%;" />
-
-
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/DB-img/image-20211229215916131.png" alt="image-20211229215916131" style="zoom: 80%;" /></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/DB-img/image-20211229215957252.png" alt="image-20211229215957252"></p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/DB-img/image-20211229220055562.png" alt="image-20211229220055562" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/DB-img/image-20211229220132910.png" alt="image-20211229220132910" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/DB-img/image-20211229220055562.png" alt="image-20211229220055562" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/DB-img/image-20211229220132910.png" alt="image-20211229220132910" style="zoom:80%;" /></p>
 
     </div>
 
@@ -672,6 +672,8 @@
 
 
 
+
+  
 
   
 

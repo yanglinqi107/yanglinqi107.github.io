@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="编译原理    第二部分 文法，推导&#x2F;归约； 句型，句子，语言； 文法的类型，正规文法，上下文无关文法，文法等价； 语法树与二义性">
@@ -255,7 +255,6 @@
 <p>文法的类型，正规文法，上下文无关文法，文法等价；</p>
 <p>语法树与二义性</p>
 <span id="more"></span> 
-
 <h3 id="程序设计语言的描述"><a href="#程序设计语言的描述" class="headerlink" title="程序设计语言的描述"></a>程序设计语言的描述</h3><ul>
 <li>语法(Syntax):涉及语言的构成规律，即程序的结构或形式；</li>
 <li>语义(Semantics): 指语言所代表的含义；</li>
@@ -273,9 +272,9 @@
 <p>【积】设A、B为两个符号串集合，其乘积A·B是x∈A且y∈B的所有符号串xy构成的集合。记为AB或A·B。即AB＝｛xy | x∈A，y∈B｝。特别地有：｛ε｝A＝A｛ε｝＝A</p>
 <p>注意：ε，｛ε｝，$\emptyset$ 三者之间的区别</p>
 <p>【集合的方幂】设A为符号串集合，则串集合A的幂运算<br>递归定义如下：$ A^0＝｛ε｝, $ $A^n ＝AA ……AA ＝A^{n－1}A ＝AA^{n－1} （n＞0）$</p>
-<p>【闭包】设A为符号串集合，则串集合A的闭包表示为$A^*$，定义为：$$A^*＝A^0∪A^1∪…… ∪ A^k ∪ ……$$</p>
-<p>【正闭包】串集合A的正闭包表示为$A^+$，定义为：$$A^＋＝A^1∪A^2∪…… ∪ A^k ∪ ……$$</p>
-<p>具有以下性质：$$A^<em>＝A^0∪A^＋ , A^＋＝AA^</em>＝A^*A$$</p>
+<p>【闭包】设A为符号串集合，则串集合A的闭包表示为$A^<em>$，定义为：$$A^</em>＝A^0∪A^1∪…… ∪ A^k ∪ ……$$</p>
+<p>【正闭包】串集合A的正闭包表示为$A^+$，定义为：<script type="math/tex">A^＋＝A^1∪A^2∪…… ∪ A^k ∪ ……</script></p>
+<p>具有以下性质：<script type="math/tex">A^*＝A^0∪A^＋ , A^＋＝AA^*＝A^*A</script></p>
 <p>==形式语言==是一个字母表上按某种规则构成的所有符号串的集合。</p>
 <ul>
 <li><p>字母表∑， $∑^*$包含由∑上符号构成的所有符号串</p>
@@ -296,35 +295,73 @@
 <p>【终结符号】若干基本符号，是组成句子的最基本符号。例如：张三，是，学生。</p>
 <p>【产生式】一组产生句子的规则：P→α 或 P ::＝α</p>
 <p>【开始符号】语言中的句子只能从它开始推导。 ＜句子＞是开始符号，是语言的目标，而其它语法成分只是构造语言目标时的中间变量。</p>
-<h4 id="文法定义"><a href="#文法定义" class="headerlink" title="文法定义"></a>文法定义</h4><p><font color=#ff0000>文法定义</font>为四元组 $G＝(V_N，V_T，P，S )$。其中：</p>
-<p>$V_N$为非终结符号(或语法实体，或变量)集；</p>
-<p>$V_T$为终结符号集；$ V_N ∩ V_T = \emptyset$，通常用$V$表示$V_N ∪ V_T$，称为文法$G$的字母表；</p>
-<p>$P$为产生式或规则$（α→β或α∷=β）$的集合， 其中$α∈V^+$，且 $α$ 中至少要包含一个非终结符，$β∈V^*$</p>
-<p>$S$是识别符号或开始符号，它是一个非终结符，至少要在一条产生式中作为左部出现。</p>
-<h4 id="产生式"><a href="#产生式" class="headerlink" title="产生式"></a>产生式</h4><p>规则，也称重写规则、产生式或生成式，是形如：<br>         $$ α→β  或  α∷=β$$<br>   的$(α，β)$有序对，其中$α$是字汇表$V$的正闭包$V^+$中的一个符号$(即α∈V^+)$， $β$中至少要包含一个非终结符，是$V^*$中的一个符号$(即β∈V^*)$。<br>α称为产生式的左部，β称作产生式的右部（候选式）</p>
-<h4 id="文法的多种写法"><a href="#文法的多种写法" class="headerlink" title="文法的多种写法"></a>文法的多种写法</h4><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172313467.png" alt="image-20220102161207938" style="zoom:80%;" />
+<h4 id="文法定义"><a href="#文法定义" class="headerlink" title="文法定义"></a>文法定义</h4><font color=#ff0000>文法定义</font>为四元组 $G＝(V_N，V_T，P，S )$。其中：
+
+$V_N$为非终结符号(或语法实体，或变量)集；
+
+$V_T$为终结符号集；$ V_N ∩ V_T = \emptyset$，通常用$V$表示$V_N ∪ V_T$，称为文法$G$的字母表；
+
+$P$为产生式或规则$（α→β或α∷=β）$的集合， 其中$α∈V^+$，且 $α$ 中至少要包含一个非终结符，$β∈V^*$
+
+$S$是识别符号或开始符号，它是一个非终结符，至少要在一条产生式中作为左部出现。
+
+#### 产生式
+
+规则，也称重写规则、产生式或生成式，是形如：
+         $$ α→β  或  α∷=β$$
+   的$(α，β)$有序对，其中$α$是字汇表$V$的正闭包$V^+$中的一个符号$(即α∈V^+)$， $β$中至少要包含一个非终结符，是$V^*$中的一个符号$(即β∈V^*)$。
+α称为产生式的左部，β称作产生式的右部（候选式）
+
+#### 文法的多种写法
+
+<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172313467.png" alt="image-20220102161207938" style="zoom:80%;" />
 
 
 
 <img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172313468.png" alt="image-20220102161237577" style="zoom: 67%;" />
 
-<h4 id="记号"><a href="#记号" class="headerlink" title="记号"></a>记号</h4><p>元符号：$\rightarrow \ ::= \ | $</p>
-<p>习惯表示：  大写字母：非终结符      小写字母：终结符</p>
-<h3 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h3><p>直接推导 $\Rightarrow$  给定文法$G=（V_N，V_T，P，S）$，如果$α→β$是文法$G$的产生式，若有$v,w$满足：$v=γαδ,w= γβδ$, 其中 $γ∈V^*,δ∈V^* $, 则称$v$直接推导到$w$,记作 $v \Rightarrow w$, 也称$w$直接归约到$v$</p>
-<p>多步推导</p>
-<p>$\stackrel{+}{\Rightarrow}$  若存在$v\Rightarrow w_0 \Rightarrow w_1 \Rightarrow … \Rightarrow w_n=w,(n&gt;0)$则记为$v \stackrel{+}{\Rightarrow} w$，$v$推导出$w$，或$w$归约到$v$</p>
-<p>$\stackrel{<em>}{\Rightarrow}$  若有$v \stackrel{+}{\Rightarrow} w$，或v=w，则记为$v \stackrel{</em>}{\Rightarrow} w $</p>
-<p>【最左推导】如果在推导每一步过程中总是考虑对句型中最左的非终结符进行替换，则称这种推导为最左推导。</p>
-<p>【最右推导】如果在推导每一步过程中总是考虑对句型中最右的非终结符进行替换，则称这种推导为最右推导。</p>
-<p>【规范推导】即最右推导。</p>
-<p>【规范句型】由规范推导推导出的句型。</p>
-<h3 id="句型和句子"><a href="#句型和句子" class="headerlink" title="句型和句子"></a>句型和句子</h3><p>【句型】若$S\stackrel{*}{\Rightarrow} α $，则称$α$是文法$G$的句型。</p>
-<p>【句子】若$S\stackrel{<em>}{\Rightarrow} α $，且$α∈V_T^</em>$，则称$α$是文法$G$的句子。(即仅含终结符的句型称为句子)</p>
-<h3 id="语言的形式定义"><a href="#语言的形式定义" class="headerlink" title="语言的形式定义"></a>语言的形式定义</h3><p>文法$G$所描述的全部句子的集合称为语言，记为$L(G)$。</p>
-<p>即 $L(G)={α|S \stackrel {<em>}{\Rightarrow}  α，$ 其中S为文法的开始符号，且$α∈V_T^</em>$}</p>
-<p>【文法等价】若$L(G1)=L(G2)$ ，则称文法$G1和G2$是等价的。</p>
-<p>注意：属于$V_T^*$的符号串，不一定属于$L(G)$,即$L(G)$是$V_T^*$的子集，故$L(G)$是定义于字母表$V_T$上的。</p>
-<p><font color=#ff0000>文法与语言的关系不是一对一的关系</font></p>
+#### 记号
+
+元符号：$\rightarrow \\ ::= \\ | $
+
+习惯表示：  大写字母：非终结符      小写字母：终结符
+
+### 推导
+
+直接推导 $\Rightarrow$  给定文法$G=（V_N，V_T，P，S）$，如果$α→β$是文法$G$的产生式，若有$v,w$满足：$v=γαδ,w= γβδ$, 其中 $γ∈V^*,δ∈V^* $, 则称$v$直接推导到$w$,记作 $v \Rightarrow w$, 也称$w$直接归约到$v$
+
+多步推导
+
+$\stackrel{+}{\Rightarrow}$  若存在$v\Rightarrow w_0 \Rightarrow w_1 \Rightarrow ... \Rightarrow w_n=w,(n>0)$则记为$v \stackrel{+}{\Rightarrow} w$，$v$推导出$w$，或$w$归约到$v$
+
+$\stackrel{*}{\Rightarrow}$  若有$v \stackrel{+}{\Rightarrow} w$，或v=w，则记为$v \stackrel{*}{\Rightarrow} w $
+
+【最左推导】如果在推导每一步过程中总是考虑对句型中最左的非终结符进行替换，则称这种推导为最左推导。
+
+【最右推导】如果在推导每一步过程中总是考虑对句型中最右的非终结符进行替换，则称这种推导为最右推导。
+
+【规范推导】即最右推导。
+
+【规范句型】由规范推导推导出的句型。
+
+### 句型和句子
+
+【句型】若$S\stackrel{*}{\Rightarrow} α $，则称$α$是文法$G$的句型。
+
+【句子】若$S\stackrel{*}{\Rightarrow} α $，且$α∈V_T^*$，则称$α$是文法$G$的句子。(即仅含终结符的句型称为句子)
+
+### 语言的形式定义
+
+文法$G$所描述的全部句子的集合称为语言，记为$L(G)$。
+
+即 $L(G)=\{α|S \stackrel {*}{\Rightarrow}  α，$ 其中S为文法的开始符号，且$α∈V_T^*$}
+
+【文法等价】若$L(G1)=L(G2)$ ，则称文法$G1和G2$是等价的。
+
+注意：属于$V_T^*$的符号串，不一定属于$L(G)$,即$L(G)$是$V_T^*$的子集，故$L(G)$是定义于字母表$V_T$上的。
+
+<font color=#ff0000>文法与语言的关系不是一对一的关系</font>
+
 <h3 id="由文法推导出语言"><a href="#由文法推导出语言" class="headerlink" title="由文法推导出语言"></a>由文法推导出语言</h3><p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172313469.png" alt="image-20220102170506838"></p>
 <h3 id="文法与语言的分类"><a href="#文法与语言的分类" class="headerlink" title="文法与语言的分类"></a>文法与语言的分类</h3><h4 id="0型文法（短语文法）"><a href="#0型文法（短语文法）" class="headerlink" title="0型文法（短语文法）"></a>0型文法（短语文法）</h4><p>$产生式α→β中α∈ (V_N∪V_T)^+,且至少含有一个非终结符，而β∈(V_N∪V_T)^*。$</p>
 <p>0型文法对应的语言称为0型语言。​</p>
@@ -443,7 +480,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%9A%84%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">程序设计语言的描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%9A%84%E5%BD%A2%E5%BC%8F%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">程序设计语言的形式描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80"><span class="nav-number">3.</span> <span class="nav-text">形式语言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%A6%E5%8F%B7%E5%92%8C%E7%AC%A6%E5%8F%B7%E4%B8%B2"><span class="nav-number">3.1.</span> <span class="nav-text">符号和符号串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%A6%E5%8F%B7%E4%B8%B2%E5%92%8C%E7%AC%A6%E5%8F%B7%E4%B8%B2%E9%9B%86%E5%90%88%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">3.2.</span> <span class="nav-text">符号串和符号串集合的运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%9D%A5%E6%8F%8F%E8%BF%B0%E4%B8%80%E7%A7%8D%E8%AF%AD%E8%A8%80"><span class="nav-number">3.3.</span> <span class="nav-text">如何来描述一种语言</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%B3%95%E7%9A%84%E5%BD%A2%E5%BC%8F%E5%AE%9A%E4%B9%89"><span class="nav-number">4.</span> <span class="nav-text">文法的形式定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E6%B3%95%E5%AE%9A%E4%B9%89"><span class="nav-number">4.1.</span> <span class="nav-text">文法定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A7%E7%94%9F%E5%BC%8F"><span class="nav-number">4.2.</span> <span class="nav-text">产生式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E6%B3%95%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%86%99%E6%B3%95"><span class="nav-number">4.3.</span> <span class="nav-text">文法的多种写法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%B0%E5%8F%B7"><span class="nav-number">4.4.</span> <span class="nav-text">记号</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E5%AF%BC"><span class="nav-number">5.</span> <span class="nav-text">推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%A5%E5%9E%8B%E5%92%8C%E5%8F%A5%E5%AD%90"><span class="nav-number">6.</span> <span class="nav-text">句型和句子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E7%9A%84%E5%BD%A2%E5%BC%8F%E5%AE%9A%E4%B9%89"><span class="nav-number">7.</span> <span class="nav-text">语言的形式定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B1%E6%96%87%E6%B3%95%E6%8E%A8%E5%AF%BC%E5%87%BA%E8%AF%AD%E8%A8%80"><span class="nav-number">8.</span> <span class="nav-text">由文法推导出语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%B3%95%E4%B8%8E%E8%AF%AD%E8%A8%80%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">9.</span> <span class="nav-text">文法与语言的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#0%E5%9E%8B%E6%96%87%E6%B3%95%EF%BC%88%E7%9F%AD%E8%AF%AD%E6%96%87%E6%B3%95%EF%BC%89"><span class="nav-number">9.1.</span> <span class="nav-text">0型文法（短语文法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E5%9E%8B%E6%96%87%E6%B3%95%EF%BC%88%E4%B8%8A%E4%B8%8B%E6%96%87%E6%9C%89%E5%85%B3%E6%96%87%E6%B3%95%EF%BC%89"><span class="nav-number">9.2.</span> <span class="nav-text">1型文法（上下文有关文法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E5%9E%8B%E6%96%87%E6%B3%95%EF%BC%88%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%EF%BC%89"><span class="nav-number">9.3.</span> <span class="nav-text">2型文法（上下文无关文法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E5%9E%8B%E6%96%87%E6%B3%95%EF%BC%88%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95%EF%BC%89"><span class="nav-number">9.4.</span> <span class="nav-text">3型文法（正规文法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E6%96%87%E6%B3%95%E4%B9%8B%E9%97%B4%E6%98%AF%E9%80%90%E7%BA%A7%E5%8C%85%E5%90%AB%E7%9A%84"><span class="nav-number">9.5.</span> <span class="nav-text">四种文法之间是逐级包含的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E6%A0%91"><span class="nav-number">10.</span> <span class="nav-text">语法树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%B3%95%E7%9A%84%E4%BA%8C%E4%B9%89%E6%80%A7"><span class="nav-number">11.</span> <span class="nav-text">文法的二义性</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%9A%84%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">程序设计语言的描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%9A%84%E5%BD%A2%E5%BC%8F%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">程序设计语言的形式描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80"><span class="nav-number">3.</span> <span class="nav-text">形式语言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%A6%E5%8F%B7%E5%92%8C%E7%AC%A6%E5%8F%B7%E4%B8%B2"><span class="nav-number">3.1.</span> <span class="nav-text">符号和符号串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%A6%E5%8F%B7%E4%B8%B2%E5%92%8C%E7%AC%A6%E5%8F%B7%E4%B8%B2%E9%9B%86%E5%90%88%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">3.2.</span> <span class="nav-text">符号串和符号串集合的运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%9D%A5%E6%8F%8F%E8%BF%B0%E4%B8%80%E7%A7%8D%E8%AF%AD%E8%A8%80"><span class="nav-number">3.3.</span> <span class="nav-text">如何来描述一种语言</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%B3%95%E7%9A%84%E5%BD%A2%E5%BC%8F%E5%AE%9A%E4%B9%89"><span class="nav-number">4.</span> <span class="nav-text">文法的形式定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E6%B3%95%E5%AE%9A%E4%B9%89"><span class="nav-number">4.1.</span> <span class="nav-text">文法定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B1%E6%96%87%E6%B3%95%E6%8E%A8%E5%AF%BC%E5%87%BA%E8%AF%AD%E8%A8%80"><span class="nav-number">5.</span> <span class="nav-text">由文法推导出语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%B3%95%E4%B8%8E%E8%AF%AD%E8%A8%80%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">6.</span> <span class="nav-text">文法与语言的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#0%E5%9E%8B%E6%96%87%E6%B3%95%EF%BC%88%E7%9F%AD%E8%AF%AD%E6%96%87%E6%B3%95%EF%BC%89"><span class="nav-number">6.1.</span> <span class="nav-text">0型文法（短语文法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E5%9E%8B%E6%96%87%E6%B3%95%EF%BC%88%E4%B8%8A%E4%B8%8B%E6%96%87%E6%9C%89%E5%85%B3%E6%96%87%E6%B3%95%EF%BC%89"><span class="nav-number">6.2.</span> <span class="nav-text">1型文法（上下文有关文法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E5%9E%8B%E6%96%87%E6%B3%95%EF%BC%88%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%EF%BC%89"><span class="nav-number">6.3.</span> <span class="nav-text">2型文法（上下文无关文法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E5%9E%8B%E6%96%87%E6%B3%95%EF%BC%88%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95%EF%BC%89"><span class="nav-number">6.4.</span> <span class="nav-text">3型文法（正规文法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E6%96%87%E6%B3%95%E4%B9%8B%E9%97%B4%E6%98%AF%E9%80%90%E7%BA%A7%E5%8C%85%E5%90%AB%E7%9A%84"><span class="nav-number">6.5.</span> <span class="nav-text">四种文法之间是逐级包含的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E6%A0%91"><span class="nav-number">7.</span> <span class="nav-text">语法树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%B3%95%E7%9A%84%E4%BA%8C%E4%B9%89%E6%80%A7"><span class="nav-number">8.</span> <span class="nav-text">文法的二义性</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -563,6 +600,8 @@
 
 
 
+
+  
 
   
 

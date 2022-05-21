@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="scrapy框架的使用">
@@ -247,11 +247,9 @@
       
         <p>scrapy框架的使用</p>
 <span id="more"></span>
-
 <h3 id="scrapy框架"><a href="#scrapy框架" class="headerlink" title="scrapy框架"></a>scrapy框架</h3><ul>
 <li>什么是框架？<pre><code>  - 集成了很多功能，并且具有很强通用性的一个项目模板
-</code></pre>
-</li>
+</code></pre></li>
 <li>如何学习框架？<ul>
 <li>专门学习框架封装的各种功能的详细用法</li>
 </ul>
@@ -270,17 +268,17 @@
 <li><code>pip install scrapy</code></li>
 <li>测试：在终端里录入scrapy指令，没有报错即表示安装成功！</li>
 </ul>
-<h3 id="scrapy框架基本使用"><a href="#scrapy框架基本使用" class="headerlink" title="scrapy框架基本使用"></a>scrapy框架基本使用</h3><h4 id="创建一个工程："><a href="#创建一个工程：" class="headerlink" title="创建一个工程："></a>创建一个工程：</h4><p><code> scrapy startproject xxxPro</code></p>
+<h3 id="scrapy框架基本使用"><a href="#scrapy框架基本使用" class="headerlink" title="scrapy框架基本使用"></a>scrapy框架基本使用</h3><h4 id="创建一个工程："><a href="#创建一个工程：" class="headerlink" title="创建一个工程："></a>创建一个工程：</h4><p><code>scrapy startproject xxxPro</code></p>
 <ul>
 <li><p>在spiders子目录中创建一个爬虫文件</p>
 <ul>
-<li><p>scrapy genspider 文件名 <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
+<li><p>scrapy genspider 文件名 www.xxx.com</p>
 </li>
 <li><p>执行工程</p>
 <ul>
 <li>修改<code>settings.py</code>文件中 <code>ROBOTSTXT_OBEY = False</code></li>
 <li>scrapy crawl 文件名</li>
-<li>scrapy crawl 文件名 –nolog  # 不在打印日志信息（若有错，不会打印错误信息）</li>
+<li>scrapy crawl 文件名 —nolog  # 不在打印日志信息（若有错，不会打印错误信息）</li>
 <li>在settings.py文件添加 LOG_LEVEL = ‘ERROR’    # 打印错误信息</li>
 </ul>
 </li>
@@ -385,7 +383,7 @@
 </li>
 <li>CrawlSpider的使用<ul>
 <li>创建工程  scrapy startproject xxxPro</li>
-<li>创建爬虫文件 scrapy genspider -t crawl 文件名 <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></li>
+<li>创建爬虫文件 scrapy genspider -t crawl 文件名 www.xxx.com</li>
 <li>链接提取器LinkExtractor：根据指定规则（allow=r’正则表达式’）进行链接的提取</li>
 <li>规则解析器Rule：将链接提取器提取到的链接进行指定规则（callback）的解析提取<ul>
 <li>follow = True：可以将链接提取器 继续作用到 链接提取器提取到的链接所对应的页面中</li>
@@ -397,8 +395,10 @@
 <h4 id="分布式爬虫"><a href="#分布式爬虫" class="headerlink" title="分布式爬虫"></a>分布式爬虫</h4><ul>
 <li>概念：需要搭建一个分布式的机群，让其对一组资源进行分布式联合爬取</li>
 <li>作用：提升爬取数据的效率    </li>
-<li>如何实现分布式<ul>
-<li>安装scrapy-redis组件<ul>
+<li><p>如何实现分布式</p>
+<ul>
+<li><p>安装scrapy-redis组件</p>
+<ul>
 <li>给原生的scrapy提供共享的调度器和机群</li>
 </ul>
 </li>
@@ -407,7 +407,8 @@
 <li>管道不可以被分布式机群共享</li>
 </ul>
 </li>
-<li>实现流程<ul>
+<li><p>实现流程</p>
+<ul>
 <li>创建工程</li>
 <li>创建一个基于CrawlSpider的爬虫文件</li>
 <li>修改创建的爬虫文件：<ul>
@@ -418,12 +419,16 @@
 <li>将当前爬虫类的父类更改为RedisCrawlSpider</li>
 </ul>
 </li>
-<li>修改配置文件settings<ul>
-<li>指定使用可以被共享的管道  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">	&#x27;scrapy_redis.pipelines.RedisPipeline&#x27;:400</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>修改配置文件settings</p>
+<ul>
+<li><p>指定使用可以被共享的管道</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">	&#x27;scrapy_redis.pipelines.RedisPipeline&#x27;:400</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li>指定被共享的调度器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 增加了一个去重容器类的配置，作用使用 Redist的set集合来存储请求的指纹数据，从而实现请求去重的持久化存储</span></span><br><span class="line">DUPEFILTER_CLASS = <span class="string">&quot;scrapy_redis.dupefilter.RFPDupeFilter&quot;</span></span><br><span class="line"><span class="comment"># 使用crapy-redis组件自己的调度器</span></span><br><span class="line">SCHEDULER = <span class="string">&quot;scrapy_redis.scheduler.Scheduler&quot;</span></span><br><span class="line"><span class="comment"># 配置调度器是否要持久化，也就是当爬虫结東了，要不要清空Redis中请求队列和去重指纹的set。</span></span><br><span class="line">SCHEDULER_PERSIST = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<li><p>指定被共享的调度器</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 增加了一个去重容器类的配置，作用使用 Redist的set集合来存储请求的指纹数据，从而实现请求去重的持久化存储</span></span><br><span class="line">DUPEFILTER_CLASS = <span class="string">&quot;scrapy_redis.dupefilter.RFPDupeFilter&quot;</span></span><br><span class="line"><span class="comment"># 使用crapy-redis组件自己的调度器</span></span><br><span class="line">SCHEDULER = <span class="string">&quot;scrapy_redis.scheduler.Scheduler&quot;</span></span><br><span class="line"><span class="comment"># 配置调度器是否要持久化，也就是当爬虫结東了，要不要清空Redis中请求队列和去重指纹的set。</span></span><br><span class="line">SCHEDULER_PERSIST = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
 </li>
-<li>配置redis服务器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">REDIS_HOST = <span class="string">&#x27;127.0.0.1&#x27;</span>	redis服务器的IP地址</span><br><span class="line">REDIS_PORT = <span class="number">6379</span>	</span><br><span class="line">REDIS_ENCODING = <span class="string">&#x27;UTF-8&#x27;</span></span><br><span class="line">REDIS_PARAMS = &#123;<span class="string">&#x27;password&#x27;</span>:<span class="string">&#x27;xxxxxx&#x27;</span>&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>配置redis服务器</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">REDIS_HOST = <span class="string">&#x27;127.0.0.1&#x27;</span>	redis服务器的IP地址</span><br><span class="line">REDIS_PORT = <span class="number">6379</span>	</span><br><span class="line">REDIS_ENCODING = <span class="string">&#x27;UTF-8&#x27;</span></span><br><span class="line">REDIS_PARAMS = &#123;<span class="string">&#x27;password&#x27;</span>:<span class="string">&#x27;xxxxxx&#x27;</span>&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li>redis相关操作配置<ul>
@@ -658,6 +663,8 @@
 
 
 
+
+  
 
   
 

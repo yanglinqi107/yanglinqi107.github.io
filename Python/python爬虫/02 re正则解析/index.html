@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="re正则解析，用于提取字符串">
@@ -247,18 +247,19 @@
       
         <p>re正则解析，用于提取字符串</p>
 <span id="more"></span>
-
 <p><code>re   Regular Expression</code></p>
-<p>反斜杠不仅可以把特殊符号变成普通符号,还可以把善通符号变成特殊符号。例如“n”只是一个善通的字母,但是“n”代表换行符；*  在正则中是通配符，* 就是普通的 *</p>
-<p><font color=#ff0000>findall</font></p>
+<p>反斜杠不仅可以把特殊符号变成普通符号,还可以把善通符号变成特殊符号。例如“n”只是一个善通的字母,但是“n”代表换行符；<em>  在正则中是通配符，\</em> 就是普通的 *</p>
+<font color=#ff0000>findall</font>
+
 <p>Python的正则表达式模块包含一个findall方法，它能够以列表的形式返回所有满足要求的字符串。</p>
 <p>findall的函数原型为：</p>
 <p><code>re.findall(pattern, string, flags=0)</code></p>
 <p>pattern表示正则表达式，string表示原来的字符串，flags表示一些特殊功能的标志。</p>
 <p>findall的结果是一个列表，包含了所有的匹配到的结果。如果没有匹配到结果，就会返回空列表</p>
-<p>如果包含多个<code> (.*? )</code>，返回的仍然是一个列表，但是列表里面的元素变为了元组</p>
+<p>如果包含多个<code>(.*? )</code>，返回的仍然是一个列表，但是列表里面的元素变为了元组</p>
 <p>flags参数。这个参数是可以省略的。当不省略的时候，具有一些辅助功能，例如忽略大小写、忽略换行符等。使用<code>re.S</code>作为flag来忽略换行符</p>
-<p><font color=#ff0000>search</font></p>
+<font color=#ff0000>search</font>
+
 <p>search()的用法和findall()的用法一样，但是search()只会返回第1个满足要求的字符串。一旦找到符合要求的内容，它就会停止查找。对于从超级大的文本里面只找第1个数据特别有用，可以大大提高程序的运行效率。</p>
 <p>search()的函数原型为：</p>
 <p><code>re.search(pattern, string, flags=0)</code></p>
@@ -270,17 +271,11 @@
 <p>正则的语法: 使用元字符进行排列组合用来匹配字符串 在线测试正则表达式<a target="_blank" rel="noopener" href="https://tool.oschina.net/regex/">https://tool.oschina.net/regex/</a></p>
 <p>元字符: 具有固定含义的特殊符号 常用元字符：（下面的<code>[]</code>和<code>&#123;&#125;</code>在使用时注意转义问题）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.			匹配 除换行以外的任意字符</span><br><span class="line">\w			匹配 字母、数字、下划线</span><br><span class="line">\W			匹配 非字母或数字或下划线，\w取反</span><br><span class="line">\s			匹配 任意的空白符，包括空格、制表符、换页符等等。等价于[ \f \n \r \t \v ]</span><br><span class="line">\S			匹配 非空白符，\s补集</span><br><span class="line">\d			匹配 数字</span><br><span class="line">\D			匹配 非数字</span><br><span class="line">\n			匹配 一个换行符</span><br><span class="line">\t			匹配 一个制表符</span><br><span class="line"></span><br><span class="line">^			匹配 字符串的开始</span><br><span class="line">$			匹配 字符串的结尾</span><br><span class="line">a|b			匹配 字符a或字符b</span><br><span class="line">()			匹配 括号内的表达式，表示一个组</span><br><span class="line">[]			匹配 字符组中的字符</span><br><span class="line">[^...]		匹配除了字符组中的字符的所有字符</span><br></pre></td></tr></table></figure>
-
 <p>量词: 控制前面的元字符出现的次数</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">*			 重复&gt;=<span class="number">0</span>次</span><br><span class="line">+			 重复&gt;=<span class="number">1</span>次</span><br><span class="line">?			 重复<span class="number">0</span>或<span class="number">1</span>次</span><br><span class="line">&#123;n&#125;			 重复n次</span><br><span class="line">&#123;n,&#125;		 重复&gt;=n次</span><br><span class="line">&#123;n,m&#125;		 重复n到m次</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.*			贪婪匹配</span><br><span class="line">.*?			惰性匹配（爬虫用的很多）</span><br></pre></td></tr></table></figure>
-
-
-
 <p>示例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="comment"># findall:  匹配字符串中所有的符合正则的内容，返回list</span></span><br><span class="line">lst = re.findall(<span class="string">r&quot;\d+&quot;</span>, <span class="string">&quot;我的电话号是:10086, 我女朋友的电话是:10010&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br><span class="line"></span><br><span class="line"><span class="comment"># finditer: 匹配字符串中所有的内容[返回的是迭代器], 从迭代器中拿到内容需要.group()</span></span><br><span class="line">it = re.finditer(<span class="string">r&quot;\d+&quot;</span>, <span class="string">&quot;我的电话号是:10086, 我女朋友的电话是:10010&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> it:</span><br><span class="line">    <span class="built_in">print</span>(i.group())</span><br><span class="line"></span><br><span class="line"><span class="comment"># search, 找到一个结果就返回, 返回的结果是match对象. 拿数据需要.group()</span></span><br><span class="line">s = re.search(<span class="string">r&quot;\d+&quot;</span>, <span class="string">&quot;我的电话号是:10086, 我女朋友的电话是:10010&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(s.group())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># match是从头开始匹配</span></span><br><span class="line">s = re.match(<span class="string">r&quot;\d+&quot;</span>, <span class="string">&quot;10086, 我女朋友的电话是:10010&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(s.group())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 预加载正则表达式 compile()</span></span><br><span class="line">obj = re.<span class="built_in">compile</span>(<span class="string">r&quot;\d+&quot;</span>)</span><br><span class="line"></span><br><span class="line">ret = obj.finditer(<span class="string">&quot;我的电话号是:10086, 我女朋友的电话是:10010&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> it <span class="keyword">in</span> ret:</span><br><span class="line">    <span class="built_in">print</span>(it.group())</span><br><span class="line"></span><br><span class="line">ret = obj.findall(<span class="string">&quot;呵呵哒, 我就不信你不换我1000000000&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(ret)</span><br><span class="line"></span><br><span class="line">s = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&lt;div class=&#x27;jay&#x27;&gt;&lt;span id=&#x27;1&#x27;&gt;郭麒麟&lt;/span&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;div class=&#x27;jj&#x27;&gt;&lt;span id=&#x27;2&#x27;&gt;宋铁&lt;/span&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;div class=&#x27;jolin&#x27;&gt;&lt;span id=&#x27;3&#x27;&gt;大聪明&lt;/span&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;div class=&#x27;sylar&#x27;&gt;&lt;span id=&#x27;4&#x27;&gt;范思哲&lt;/span&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;div class=&#x27;tory&#x27;&gt;&lt;span id=&#x27;5&#x27;&gt;胡说八道&lt;/span&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># (?P&lt;分组名字&gt;正则) 可以单独从正则匹配的内容中进一步提取内容</span></span><br><span class="line">obj = re.<span class="built_in">compile</span>(<span class="string">r&quot;&lt;div class=&#x27;.*?&#x27;&gt;&lt;span id=&#x27;(?P&lt;id&gt;\d+)&#x27;&gt;(?P&lt;wahaha&gt;.*?)&lt;/span&gt;&lt;/div&gt;&quot;</span>, re.S)  <span class="comment"># re.S: 让.能匹配换行符</span></span><br><span class="line"></span><br><span class="line">result = obj.finditer(s)</span><br><span class="line"><span class="keyword">for</span> it <span class="keyword">in</span> result:</span><br><span class="line">    <span class="built_in">print</span>(it.group(<span class="string">&quot;wahaha&quot;</span>))</span><br><span class="line">    <span class="built_in">print</span>(it.group(<span class="string">&quot;id&quot;</span>))</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -483,6 +478,8 @@
 
 
 
+
+  
 
   
 

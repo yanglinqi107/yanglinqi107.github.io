@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="编译原理    第八部分">
@@ -272,7 +272,6 @@
       
         <p>编译原理    第八部分</p>
 <span id="more"></span> 
-
 <h2 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h2><p>所谓优化，实质上是对程序进行各种等价变换，使得从变换后的程序出发，能够生成更有效的目标代码。</p>
 <p>所谓有效，无非从时间和空间两个因素来考虑，即使得变换之后的程序运行速度更快、占用存储空间更少，这两个因素需要均衡考虑</p>
 <p> 目标代码生成是编译的最后一个阶段。目标代码生成器把语法分析后或优化后的中间代码变换成目标代码。</p>
@@ -333,25 +332,16 @@
 </blockquote>
 <p>示例：</p>
 <blockquote>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143757.png" alt="image-20220104133404127" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143758.png" alt="image-20220104133417988" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143759.png" alt="image-20220104133430613" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143760.png" alt="image-20220104133648459" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143761.png" alt="image-20220104133702331" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143763.png" alt="image-20220104133716009" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143764.png" alt="image-20220104133735682" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143765.png" alt="image-20220104133747933" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143766.png" alt="image-20220104133758525" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143767.png" alt="image-20220104133808627" style="zoom:80%;" />
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143757.png" alt="image-20220104133404127" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143758.png" alt="image-20220104133417988" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143759.png" alt="image-20220104133430613" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143760.png" alt="image-20220104133648459" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143761.png" alt="image-20220104133702331" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143763.png" alt="image-20220104133716009" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143764.png" alt="image-20220104133735682" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143765.png" alt="image-20220104133747933" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143766.png" alt="image-20220104133758525" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143767.png" alt="image-20220104133808627" style="zoom:80%;" /></p>
 </blockquote>
 <h3 id="局部优化"><a href="#局部优化" class="headerlink" title="局部优化"></a>局部优化</h3><p>局部优化（local）是指基本块内的优化。 </p>
 <p>对于给定的程序，我们可以把它划分为一系列的基本块。在各个基本块的范围内，分别进行优化。局限在基本块范围内的优化称为基本块内的优化，或者称为局部优化。</p>
@@ -396,18 +386,13 @@
 </blockquote>
 <h4 id="基本块的DAG表示"><a href="#基本块的DAG表示" class="headerlink" title="基本块的DAG表示"></a>基本块的DAG表示</h4><blockquote>
 <p>一个基本块，可用一个DAG来表示。可以利用DAG来描述四元式，如图所示，列出了各种四元式以及相对应的DAG的结点形式。图中为结点编号，结点下面的符号（运算符，标识符或常数）是各结点的标记，各结点右边的标识符是结点的附加标识符。</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143768.png" alt="image-20220104134903322" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143769.png" alt="image-20220104134922630" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143768.png" alt="image-20220104134903322" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143769.png" alt="image-20220104134922630" style="zoom:80%;" /></p>
 <p>​      <img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143770.png" alt="image-20220104134947474" style="zoom:80%;" /></p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143771.png" alt="image-20220104135005681" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143772.png" alt="image-20220104135023462" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143773.png" alt="image-20220104135052507" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143774.png" alt="image-20220104135144564" style="zoom:80%;" />
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143771.png" alt="image-20220104135005681" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143772.png" alt="image-20220104135023462" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143773.png" alt="image-20220104135052507" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143774.png" alt="image-20220104135144564" style="zoom:80%;" /></p>
 </blockquote>
 <h4 id="基本块的DAG构造算法"><a href="#基本块的DAG构造算法" class="headerlink" title="基本块的DAG构造算法"></a>基本块的DAG构造算法</h4><blockquote>
 <p>假设DAG各结点信息将用某种适当的数据结构来存放。并设有一个标识符（包括常数）A与结点NODE(A)的对应表，即用大写字母――A，B等表示四元式中的变量名或常数。NODE(A)是描述这种对应关系的一个函数，即用NODE(A)表示A在DAG中的相应结点，它的值可以是一个结点的编号n或者无定义。NODE(A)＝n代表DAG中存在一个结点n，A是其上的标记或附加标识符</p>
@@ -449,11 +434,9 @@
 </blockquote>
 <p>示例：</p>
 <blockquote>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143775.png" alt="image-20220104140038651" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143776.png" alt="image-20220104140057414" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143777.png" alt="image-20220104140116874" style="zoom:80%;" />
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143775.png" alt="image-20220104140038651" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143776.png" alt="image-20220104140057414" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143777.png" alt="image-20220104140116874" style="zoom:80%;" /></p>
 </blockquote>
 <h3 id="循环优化"><a href="#循环优化" class="headerlink" title="循环优化"></a>循环优化</h3><p>在程序设计语言中，循环是必不可少的控制结构之一。所谓循环，粗略地说，就是程序中那些可能反复执行的代码序列。因为循环中的代码要反复执行，因而为了提高目标代码的效率必须着重考虑循环的代码优化。</p>
 <p>循环优化是指在循环体中进行的专项优化，是提高程序运行效率的主要途径。因为在一个执行n次的循环体内进行一项优化，从运行效率上来说，相当于进行了n项优化。</p>
@@ -471,9 +454,8 @@
 </blockquote>
 <p>示例：</p>
 <blockquote>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143778.png" alt="image-20220104140500726" style="zoom:80%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143779.png" alt="image-20220104140517652" style="zoom:80%;" />
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143778.png" alt="image-20220104140500726" style="zoom:80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143779.png" alt="image-20220104140517652" style="zoom:80%;" /></p>
 </blockquote>
 <p>循环的定义</p>
 <blockquote>
@@ -483,7 +465,7 @@
 <li>它们中间有且只有一个是入口结点。所谓入口结点，是指序列中具有下述性质的结点：从序列外某结点，有一有向边引到它，或者它就是程序流图的首结点。</li>
 </ul>
 <p>循环就是流图中具有唯一入口结点的强连通子图，从循环外要进入循环，必须首先经过循环的入口结点。</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143780.png" alt="image-20220104140747535" style="zoom:80%;" />
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143780.png" alt="image-20220104140747535" style="zoom:80%;" /></p>
 </blockquote>
 <p>循环的查找 </p>
 <blockquote>
@@ -528,8 +510,7 @@
 <blockquote>
 <p>ADD s,d    //d+s ? d<br>SUB  s,d     //d-s ? d<br>MOV s,d     //s ? d</p>
 </blockquote>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143781.png" alt="image-20220104141958647" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172143781.png" alt="image-20220104141958647" style="zoom:80%;" /></p>
 
     </div>
 
@@ -733,6 +714,8 @@
 
 
 
+
+  
 
   
 

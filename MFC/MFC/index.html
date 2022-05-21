@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="MFC的简单使用，学习自黑马程序员&amp;传智教育">
@@ -247,21 +247,11 @@
       
         <p>MFC的简单使用，学习自黑马程序员&amp;传智教育</p>
 <span id="more"></span>
-
-
-
 <p><code>Afx</code>开头的函数都是全局函数</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置窗体不可被拖大</span></span><br><span class="line"><span class="built_in">ModifyStyle</span>(WS_THICKFRAME, <span class="number">0</span>, SWP_FRAMECHANGED | SWP_DRAWFRAME);</span><br></pre></td></tr></table></figure>
-
-
-
-
-
 <h3 id="创建简单窗口"><a href="#创建简单窗口" class="headerlink" title="创建简单窗口"></a>创建简单窗口</h3><p>创建项目-》Win32或Windows桌面应用程序</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;afxwin.h&gt;</span>  <span class="comment">//mfc头文件</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApp</span> :</span> <span class="keyword">public</span> CWinApp   <span class="comment">//CWinApp应用程序类</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//程序入口</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> BOOL <span class="title">InitInstance</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyFrame</span> :</span> <span class="keyword">public</span> CFrameWnd   <span class="comment">//窗口框架类</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">MyFrame</span>();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mfc.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">MyApp app;	<span class="comment">//全局应用程序变量，有且仅有一个</span></span><br><span class="line"></span><br><span class="line"><span class="function">BOOL <span class="title">MyApp::InitInstance</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	MyFrame* frame = <span class="keyword">new</span> MyFrame;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//显示和更新</span></span><br><span class="line">	frame-&gt;<span class="built_in">ShowWindow</span>(SW_SHOWNORMAL);</span><br><span class="line">	frame-&gt;<span class="built_in">UpdateWindow</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">//保存指向应用程序的主窗口的指针</span></span><br><span class="line">    <span class="comment">//m_pMainWnd是CWinThread的数据成员，CWinApp是CWinThread的子类</span></span><br><span class="line">	m_pMainWnd = frame;		</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MyFrame::<span class="built_in">MyFrame</span>()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">Create</span>(<span class="literal">NULL</span>, <span class="built_in">TEXT</span>(<span class="string">&quot;mfc&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>项目-》配置属性-》高级-》MFC使用改成在共享DLL中使用MFC</p>
 <h3 id="消息映射"><a href="#消息映射" class="headerlink" title="消息映射"></a>消息映射</h3><p>消息映射机制</p>
 <ul>
@@ -287,22 +277,15 @@
 </ul>
 <h3 id="char-和CString"><a href="#char-和CString" class="headerlink" title="char*和CString"></a>char*和CString</h3><p><code>char* -&gt; CString</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span>* p3 = <span class="string">&quot;ccc&quot;</span>;</span><br><span class="line">CString str = <span class="built_in">CString</span>(p3);</span><br></pre></td></tr></table></figure>
-
 <p><code>CString -&gt; char*</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">CString <span class="title">str</span><span class="params">(_T<span class="string">&quot;ABC&quot;</span>)</span></span>;</span><br><span class="line">CStringA tmp;</span><br><span class="line">tmp = str;</span><br><span class="line"><span class="keyword">char</span>* p = tmp.<span class="built_in">GetBuffer</span>();</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="Windows字符集"><a href="#Windows字符集" class="headerlink" title="Windows字符集"></a>Windows字符集</h3><p>1）多字节（8位的ANSI字符集）：1个字符对应1个字节</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> sz[] = <span class="string">&quot;ABCDEFG&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> *psz = <span class="string">&quot;ABCDEFG&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> len = <span class="built_in">strlen</span>(sz);</span><br></pre></td></tr></table></figure>
-
 <p>2）宽字节（16位Unicode字符集）：ANSI字符集的超集，支持中文，日文等</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在字符串前加字母L表示将ANSI字符集转换成Unicode字符集</span></span><br><span class="line"><span class="keyword">wchar_t</span> wsz[] = <span class="string">L&quot;ABCDEFG&quot;</span>;</span><br><span class="line"><span class="keyword">wchar_t</span> *pwsz[] = <span class="string">L&quot;ABCDEFG&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> len = <span class="built_in">wcslen</span>(wsz); <span class="comment">//获取宽字节字符串的长度</span></span><br></pre></td></tr></table></figure>
-
 <p>3）<strong>TEXT</strong> (_T)宏</p>
 <p>MFC中的TEXT宏可以自动适应字符类型，如果定义了预处理器程序符号_UNICODE，那么编译器将使用Unicode字符，如果没用定义该预处理器程序符号，那么编译器将使用ANSI字符。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">MessageBox</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;鼠标左键&quot;</span>));</span><br><span class="line"><span class="built_in">MessageBox</span>(_T(<span class="string">&quot;鼠标左键&quot;</span>));</span><br></pre></td></tr></table></figure>
-
 <p>4）<strong>TCHAR</strong>类型</p>
 <p>如果定义了_UNICODE符号TCHAR将变为wchar_t类型。如果没用定义_UNICODE符号，TCHAR将变为普通古老的char类型。</p>
 <p>模态对话框</p>
@@ -316,9 +299,6 @@
 <p>禁用按钮 <code>EnableWindow(FALSE)</code></p>
 <p>获取大小 <code>GetWindowRect(Rect)</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置静态控件窗口风格为位图居中显示</span></span><br><span class="line">m_pic.<span class="built_in">ModifyStyle</span>(<span class="number">0xf</span>, SS_BITMAP | SS_CENTERIMAGE);</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过路径获取bitmap句柄</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> HBMP(filepath,width,height) (HBITMAP)LoadImage(AfxGetInstanceHandle(),filepath,IMAGE_BITMAP,width,height,LR_LOADFROMFILE|LR_CREATEDIBSECTION)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//宽高设置 按照图片大小设置</span></span><br><span class="line">CRect rect;</span><br><span class="line">m_pic.<span class="built_in">GetWindowRect</span>(rect);</span><br><span class="line"></span><br><span class="line"><span class="comment">//静态控件设置bitmap</span></span><br><span class="line">m_pic.<span class="built_in">SetBitmap</span>(<span class="built_in">HBMP</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;./1.bmp&quot;</span>), rect.<span class="built_in">Width</span>(), rect.<span class="built_in">Height</span>()));</span><br></pre></td></tr></table></figure>
-
-
-
 <p>编辑框 <code>Edit Control</code></p>
 <ul>
 <li>属性<ul>
@@ -581,6 +561,8 @@
 
 
 
+
+  
 
   
 

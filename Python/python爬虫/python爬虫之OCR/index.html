@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="OCR的方法">
@@ -251,31 +251,25 @@
       
         <p>OCR的方法</p>
 <span id="more"></span>
-
 <h2 id="1、EasyOCR"><a href="#1、EasyOCR" class="headerlink" title="1、EasyOCR"></a>1、EasyOCR</h2><p>Python中有一个不错的OCR库-EasyOCR，在GitHub已有9700star。它可以在python中调用，用来识别图像中的文字，并输出为文本。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/JaidedAI/EasyOCR">https://github.com/JaidedAI/EasyOCR</a></p>
 <p>EasyOCR支持超过80种语言的识别，包括英语、中文（简繁）、阿拉伯文、日文等，并且该库在不断更新中，未来会支持更多的语言。</p>
 <h3 id="安装EasyOCR"><a href="#安装EasyOCR" class="headerlink" title="安装EasyOCR"></a>安装EasyOCR</h3><p>安装过程比较简单，使用pip或者conda安装。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install easyocr -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
-
-<p>如果用的PyPl源，安装起来可能会耽误些时间，建议大家用清华源安装，几十秒就能安装好。<br><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Python-img//ocr000001.png"></p>
+<p>如果用的PyPl源，安装起来可能会耽误些时间，建议大家用清华源安装，几十秒就能安装好。<br><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Python-img//ocr000001.png" alt=""></p>
 <p>使用方法<br>EasyOCR的用法非常简单，分为三步:</p>
 <ol>
 <li>创建识别对象；</li>
 <li>读取并识别图像；</li>
 <li>导出文本。</li>
 </ol>
-<p>实例<br><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Python-img//ocr000002.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入easyocr</span></span><br><span class="line"><span class="keyword">import</span> easyocr</span><br><span class="line"><span class="comment"># 创建reader对象</span></span><br><span class="line">reader = easyocr.Reader([<span class="string">&#x27;ch_sim&#x27;</span>,<span class="string">&#x27;en&#x27;</span>]) </span><br><span class="line"><span class="comment"># 读取图像</span></span><br><span class="line">result = reader.readtext(<span class="string">&#x27;test.jpg&#x27;</span>)</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
-<p>结果<br><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Python-img//ocr000003.png"></p>
+<p>实例<br><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Python-img//ocr000002.png" alt=""><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入easyocr</span></span><br><span class="line"><span class="keyword">import</span> easyocr</span><br><span class="line"><span class="comment"># 创建reader对象</span></span><br><span class="line">reader = easyocr.Reader([<span class="string">&#x27;ch_sim&#x27;</span>,<span class="string">&#x27;en&#x27;</span>]) </span><br><span class="line"><span class="comment"># 读取图像</span></span><br><span class="line">result = reader.readtext(<span class="string">&#x27;test.jpg&#x27;</span>)</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure><br>结果<br><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Python-img//ocr000003.png" alt=""></p>
 <p>识别的结果包含在元组里，元组由三部分组成：边框坐标、文本、识别概率。</p>
 <h3 id="关于语言"><a href="#关于语言" class="headerlink" title="关于语言"></a>关于语言</h3><p>这段代码有一段参数<code>[&#39;ch_sim&#39;,&#39;en&#39;]</code>，这是要识别的语言列表，因为路牌里有中文和英文，所以列表里添加了ch_sim（简体中文）、en（英文）。</p>
 <p>可以一次传递多种语言，但并非所有语言都可以一起使用。英语与每种语言兼容，共享公共字符的语言通常相互兼容。</p>
 <p>前文我们给出了EasyOCR支持的语言列表，并附有参数代号。<br>关于图像文件：</p>
 <p>上面传入了相对路径’test.jpg’，还可以传递OpenCV图像对象（numpy数组）、图像字节文件、图像URL。</p>
-<p>抽取文字部分</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> result:</span><br><span class="line">    word = i[<span class="number">1</span>]</span><br><span class="line">    <span class="built_in">print</span>(word)</span><br></pre></td></tr></table></figure>
-
+<p>抽取文字部分<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> result:</span><br><span class="line">    word = i[<span class="number">1</span>]</span><br><span class="line">    <span class="built_in">print</span>(word)</span><br></pre></td></tr></table></figure></p>
 <hr>
 <h2 id="Tesseract-OCR"><a href="#Tesseract-OCR" class="headerlink" title="Tesseract-OCR"></a>Tesseract-OCR</h2><p>1、下载并安装<a target="_blank" rel="noopener" href="https://digi.bib.uni-mannheim.de/tesseract/">Tesseract-OCR</a>软件，安装完成之后需要配置环境变量，配置完成之后通过CMD命令行验证是否配置成功，执行<code>tesseract -v</code>命令查看相应版本    </p>
 <p>默认情况下Tesseract-OCR是不能识别中文的，需要加载相应的中文语言包，简体<a target="_blank" rel="noopener" href="https://github.com/tesseractocr/tessdata/blob/master/chi_sim.traineddata">中文语言包</a>叫chi_sim.traineddata下载下来之后需要放置到${TESSERACT_HOME}/tessdata目录下，同时把语言包目录路径配置到环境变量当中</p>
@@ -489,6 +483,8 @@
 
 
 
+
+  
 
   
 

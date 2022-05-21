@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="编译原理 第一部分">
@@ -252,22 +252,20 @@
       
         <p>编译原理 第一部分</p>
 <span id="more"></span> 
-
 <h2 id="翻译程序（Translator）"><a href="#翻译程序（Translator）" class="headerlink" title="翻译程序（Translator）"></a>翻译程序（Translator）</h2><p>将源程序译成逻辑上等价的目标程序的程序。翻译程序有二种工作方式：编译和解释</p>
 <h3 id="解释方式-Interpret"><a href="#解释方式-Interpret" class="headerlink" title="解释方式 ( Interpret )"></a>解释方式 ( Interpret )</h3><p>以源程序作为输入，输入一句解释执行一句，不产生完整的目标程序，相应的翻译程序称为解释程序(Interpreter) </p>
- <img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312890.png" alt="image-20220102142837260" style="zoom:80%;" />
-
+<p> <img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312890.png" alt="image-20220102142837260" style="zoom:80%;" /></p>
 <p>解释方式主要特点是：用户程序是消极的。用户程序运行时，控制点在解释程序，即用户程序的执行离不开解释程序。</p>
 <h3 id="编译方式-Compile"><a href="#编译方式-Compile" class="headerlink" title="编译方式 ( Compile )"></a>编译方式 ( Compile )</h3><p>将源程序全部译为目标程序，该目标程序可在操作系统环境下直接执行，相应的翻译程序称为编译程序(Compiler) </p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312891.png" alt="image-20220102143329383" style="zoom: 80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312891.png" alt="image-20220102143329383" style="zoom: 80%;" /></p>
 <ul>
 <li>编辑程序的工作结果是ASCII码形式的源程序。</li>
 <li>编译程序以ASCII码形式的源程序为输入，它的工作结果是二进制形式的目标程序，但并未包括用户程序中所使用的系统函数的目标代码。从整体上来看，程序是不完整的，程序中的部分地址尚未确定（例系统函数的调用）。</li>
 <li>将二进制形式的用户程序和系统函数目标代码连接成一个程序，对未确定的地址进行定位。</li>
-<li>由操作系统将用户程序装入内存后运行。程序在运行过程中读入数据，经处理加工后输出计算结果。</li>
+<li><p>由操作系统将用户程序装入内存后运行。程序在运行过程中读入数据，经处理加工后输出计算结果。</p>
+<p>编译方式主要特点是：用户程序是积极的。用户程序执行时，控制点在用户程序自身。除操作系统外，程序运行无需其它支撑软件。</p>
+</li>
 </ul>
-<p> 编译方式主要特点是：用户程序是积极的。用户程序执行时，控制点在用户程序自身。除操作系统外，程序运行无需其它支撑软件。</p>
 <h3 id="二种翻译方式比较"><a href="#二种翻译方式比较" class="headerlink" title="二种翻译方式比较"></a>二种翻译方式比较</h3><p> 解释方式和编译方式的主要区别是：目标代码的执行方式不同，基本原理和方法没有本质上的区别。<br>1）解释方式的优点</p>
 <ul>
 <li><p>提供一种直接的交互调试功能，容易获得较好的动态调试效果。</p>
@@ -291,8 +289,7 @@
 <h3 id="编译程序与解释程序的异同"><a href="#编译程序与解释程序的异同" class="headerlink" title="编译程序与解释程序的异同"></a>编译程序与解释程序的异同</h3><p>高级语言有两种翻译途径：==编译与解释==。</p>
 <p>它们的主要区别在于==是否产生目标程序==。</p>
 <p>解释程序不产生目标程序，而是边解释边执行源程序本身，是一种“会话型”语言。（如python）</p>
-<h3 id="高级语言程序的处理过程"><a href="#高级语言程序的处理过程" class="headerlink" title="高级语言程序的处理过程"></a>高级语言程序的处理过程</h3><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312892.png" alt="image-20220102144639527" style="zoom:80%;" />
-
+<h3 id="高级语言程序的处理过程"><a href="#高级语言程序的处理过程" class="headerlink" title="高级语言程序的处理过程"></a>高级语言程序的处理过程</h3><p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312892.png" alt="image-20220102144639527" style="zoom:80%;" /></p>
 <h3 id="编译程序的5个阶段"><a href="#编译程序的5个阶段" class="headerlink" title="编译程序的5个阶段"></a>编译程序的5个阶段</h3><p>1、词法分析</p>
 <blockquote>
 <p>任务：从左至右读字符流的源程序，识别(拼)单词。<br>【单词】单词是具有独立意义的最小语法单位。<br>多数程序语言中，单词符号一般包括 —各类型的常数、保留字、标识符、运算符、界符等等。<br>识别原则：词法规则<br>描述工具：正规式<br>                  正规文法<br>                  有穷自动机FA<br>自动生成工具：LEX</p>
@@ -327,27 +324,30 @@
 </li>
 </ul>
 <p>符号表是由若干记录组成的数据结构，每个标识符在表中有一条记录，每条记录有多个域，每个域记载标识符的一个属性。例如下面一条记录说明标识符aaa是整型变量及分配的内存地址</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
 <th>标识符名</th>
 <th>标识符类型</th>
 <th>类型</th>
-<th align="center">地址</th>
+<th style="text-align:center">地址</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>aaa</td>
 <td>1（表示变量）</td>
 <td>1（表示整型）</td>
-<td align="center">0001</td>
+<td style="text-align:center">0001</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>标识符的各种属性是在编译的不同阶段填入符号表的。词法分析阶段只能分析出标识符名，语法分析阶段只能判断标识符在语句中出现是否合法，只有到了语义分析阶段，才能将标识符的各种属性填入符号表并使用这些属性生成中间代码。 </p>
 <h3 id="出错处理"><a href="#出错处理" class="headerlink" title="出错处理"></a>出错处理</h3><p>出错处理程序的任务包括 检查错误、报告出错信息、排错、恢复编译工作。</p>
 <h3 id="编译程序的组成"><a href="#编译程序的组成" class="headerlink" title="编译程序的组成"></a>编译程序的组成</h3><p>词法分析程序、语法分析程序、语义分析程序、中间代码生成程序、代码优化程序、目标代码生成程序、表格管理程序和出错处理程序</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312893.png" alt="image-20220102150408304" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312893.png" alt="image-20220102150408304" style="zoom:80%;" /></p>
 <h3 id="遍（pass）"><a href="#遍（pass）" class="headerlink" title="遍（pass）"></a>遍（pass）</h3><p>【遍】就是对源程序或源程序的中间结果从头到尾扫描一次，并作有关的加工处理，生成新的中间结果或目标程序。<br>Turbo C是一遍完成编译，以及预处理和后续处理。<br>两遍编译：</p>
 <ul>
 <li>1.进行词法分析、语法分析、语义分析，生成中间代码作为文件保留，以及符号表文件。</li>
@@ -359,13 +359,15 @@
 </ul>
 <h3 id="编译程序涉及的三种语言"><a href="#编译程序涉及的三种语言" class="headerlink" title="编译程序涉及的三种语言"></a>编译程序涉及的三种语言</h3><p>【源语言】要深刻理解源语言(如 FORTRAN、Pascal或 C)结构(语法)和含义(语义)；<br>【目标语言】最终的目标语言还是机器语言，则必须搞清楚硬件的系统结构和操作系统的功能；<br>【宿主语言】编写编译程序的语言。自编译程序：宿主语言是源语言。例如PASCAL</p>
 <h3 id="编译程序的生成"><a href="#编译程序的生成" class="headerlink" title="编译程序的生成"></a>编译程序的生成</h3><ul>
-<li>手工<ul>
+<li><p>手工</p>
+<ul>
 <li>机器语言</li>
 <li>汇编</li>
 <li>系统程序设计语言，自编译，移植，交叉编译等方式</li>
 </ul>
 </li>
-<li>自动构造工具：lex  yacc</li>
+<li><p>自动构造工具：lex  yacc</p>
+</li>
 </ul>
 
     </div>
@@ -570,6 +572,8 @@
 
 
 
+
+  
 
   
 

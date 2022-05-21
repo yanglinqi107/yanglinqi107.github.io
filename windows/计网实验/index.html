@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="计算机网络综合实验">
@@ -265,7 +265,6 @@
       
         <p>计算机网络综合实验</p>
 <span id="more"></span>
-
 <h2 id="实验一-网络实验命令"><a href="#实验一-网络实验命令" class="headerlink" title="实验一 网络实验命令"></a>实验一 网络实验命令</h2><h3 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h3><p><strong>常见网络命令</strong> </p>
 <p>使用<strong>Ping, Ipconfig, Arp, Tracert，Nslookup</strong>等常用网络命令验证或接发网络信息</p>
 <h4 id="IPCONFIG"><a href="#IPCONFIG" class="headerlink" title="IPCONFIG"></a>IPCONFIG</h4><ul>
@@ -276,7 +275,7 @@
 </ul>
 <h4 id="ARP"><a href="#ARP" class="headerlink" title="ARP"></a>ARP</h4><ul>
 <li>ARP缓存中包含一个或多个表，它们用于存储IP地址及其经过解析的MAC地址</li>
-<li>ARP命令用于查询本机ARP缓存中IP地址–&gt;MAC地址的对应关系、 添加或删除静态对应关系等</li>
+<li>ARP命令用于查询本机ARP缓存中IP地址—&gt;MAC地址的对应关系、 添加或删除静态对应关系等</li>
 <li><code>ARP -s inet_addr eth_addr [if_addr]</code> 添加主机，并将网络地址跟物理地址永久对应 <ul>
 <li><code>Inet_add</code>r 代表指定的IP地址</li>
 <li><code>eth_addr</code> 物理地址</li>
@@ -290,22 +289,15 @@
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502155137078.png" alt="image-20220502155137078"></p>
 <h4 id="NETSH"><a href="#NETSH" class="headerlink" title="NETSH"></a>NETSH</h4><p><code>netsh i i show in</code>查看<strong>Idx</strong></p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502174110707.png" alt="image-20220502174110707" style="zoom:67%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502174110707.png" alt="image-20220502174110707" style="zoom:67%;" /></p>
 <p><strong>添加静态ARP表项</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh -c &quot;i i&quot; add neighbors 21 &quot;192.168.1.100&quot; &quot;00-0a-35-00-01-23&quot;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>在WLAN的ARP表中添加IP192.168.1.100及其对应的Mac地址00-0a-35-00-01-23</li>
 <li>21为WLAN对应的Idx值</li>
 </ul>
 <p><strong>删除ARP表项</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh -c &quot;i i&quot; del neighbors 21</span><br></pre></td></tr></table></figure>
-
-
-
-
-
 <h4 id="PING"><a href="#PING" class="headerlink" title="PING"></a>PING</h4><ul>
 <li>PING (Packet Internet Groper)是用于测试网络连接量的程序。Ping发送一个即因特网信报控制协议，回声请求消息给目的地并报告是否收到所希望的ICMPecho（ICMP回声应答）。</li>
 <li>Ping是用来检查网络是否通畅或者网络连接速度的命令</li>
@@ -317,7 +309,7 @@
 <li><code>-n</code> count发送count指定的ECHO数据包数。默认值为4 。</li>
 </ul>
 <h4 id="TRACERT"><a href="#TRACERT" class="headerlink" title="TRACERT"></a>TRACERT</h4><ul>
-<li>Tracert命令用IP生存时间 (TTL) 字段和**<code>ICMP</code>**错误消息来确定从一个主机到网络上其他主机的路由。</li>
+<li>Tracert命令用IP生存时间 (TTL) 字段和<strong><code>ICMP</code></strong>错误消息来确定从一个主机到网络上其他主机的路由。</li>
 <li><code>tracert [-d] [-h maximum_hops] [-j computer-list] [-w timeout] target_name</code></li>
 </ul>
 <h4 id="NSLOOKUP"><a href="#NSLOOKUP" class="headerlink" title="NSLOOKUP"></a>NSLOOKUP</h4><ul>
@@ -332,76 +324,45 @@
 <p>多尝试几次<code>ping www.163.com</code>操作，比较得到的IP地址。如果两次不一样，考虑原因在哪里？针对不同IP地址，执行<code>tracert ip_address</code>命令，分析输出结果是否有差异？</p>
 <h4 id="扩充"><a href="#扩充" class="headerlink" title="扩充"></a>扩充</h4><p><strong>编程模拟ping命令实现</strong> </p>
 <p>可以基于Socket网络编程，很多的编程语言都有Socket包或函数来供网络编程者调用。（Socket又称“套接字”，应用程序通常通过“套接字”向网络发出请求或者应答网络请求。）</p>
-<h3 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h3><p>**<code>ipconfig</code>**查看ip地址</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502163643024.png" alt="image-20220502163643024" style="zoom:67%;" />
-
-
-
+<h3 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h3><p><strong><code>ipconfig</code></strong>查看ip地址</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502163643024.png" alt="image-20220502163643024" style="zoom:67%;" /></p>
 <p><strong>arp</strong>查看arp表</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502165824953.png" alt="image-20220502165824953" style="zoom:67%;" />
-
-
-
-
-
-<p>**<code>arp -d *</code>**删除arp表</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502170847316.png" alt="image-20220502165824953" style="zoom:67%;" />
-
-
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502165824953.png" alt="image-20220502165824953" style="zoom:67%;" /></p>
+<p><strong><code>arp -d *</code></strong>删除arp表</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502170847316.png" alt="image-20220502165824953" style="zoom:67%;" /></p>
 <p><strong>ping</strong> 同网段下的ip：192.168.43.232</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502171240854.png" alt="image-20220502171240854" style="zoom:67%;" />
-
-
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502171240854.png" alt="image-20220502171240854" style="zoom:67%;" /></p>
 <p>查看<strong>arp</strong>表</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502171447262.png" alt="image-20220502171240854" style="zoom:67%;" />
-
-
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502171447262.png" alt="image-20220502171240854" style="zoom:67%;" /></p>
 <p>修改arp表中192.168.43.31对应的mac地址看是否能<code>ping</code>通</p>
 <ul>
 <li><code>ping 192.168.43.31</code>正常</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220507230848046.png" alt="image-20220507230848046" style="zoom: 80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220507230848046.png" alt="image-20220507230848046" style="zoom: 80%;" /></p>
 <ul>
 <li>删除<code>arp</code>表中的内容</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220507231500587.png" alt="image-20220507231500587" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220507231500587.png" alt="image-20220507231500587" style="zoom:80%;" /></p>
 <ul>
 <li>增加<code>192.168.43.31</code>对应错误的Mac地址</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220507231418092.png" alt="image-20220507231418092" style="zoom: 67%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220507231418092.png" alt="image-20220507231418092" style="zoom: 67%;" /></p>
 <ul>
 <li>发送数据失败</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220507231625354.png" alt="image-20220507231625354" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220507231625354.png" alt="image-20220507231625354" style="zoom:80%;" /></p>
 <ul>
 <li>将arp中添加的错误项删除</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220507231922379.png" alt="image-20220507231922379" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220507231922379.png" alt="image-20220507231922379" style="zoom:80%;" /></p>
 <ul>
 <li>再次ping通</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220507231951645.png" alt="image-20220507231951645" style="zoom:80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220507231951645.png" alt="image-20220507231951645" style="zoom:80%;" /></p>
 <p><code>tracert</code>连接<code>www.163.com</code></p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502210819690.png" alt="image-20220502210819690" style="zoom:67%;" />
-
-
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502210819690.png" alt="image-20220502210819690" style="zoom:67%;" /></p>
 <p><code>nslookup</code>查询<code>www.baidu.com</code>域名信息</p>
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502211653960.png" alt="image-20220502211653960" style="zoom:67%;" />
-
-
-
-
-
+<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Win-img/image-20220502211653960.png" alt="image-20220502211653960" style="zoom:67%;" /></p>
 <h2 id="实验四-配置网络服务"><a href="#实验四-配置网络服务" class="headerlink" title="实验四 配置网络服务"></a>实验四 配置网络服务</h2><h3 id="实验内容-1"><a href="#实验内容-1" class="headerlink" title="实验内容"></a>实验内容</h3><ol>
 <li><p>文件共享    NFS（共享文件）协议</p>
 </li>
@@ -615,6 +576,8 @@
 
 
 
+
+  
 
   
 
