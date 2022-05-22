@@ -1214,7 +1214,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #81bfff;
+  background: #916694;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2645,7 +2645,4 @@ mjx-container + br {
   border-radius: 20px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
   margin-top: 12px;
-}
-.post-toc ol a {
-  border-bottom: none;
 }
