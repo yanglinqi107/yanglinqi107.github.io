@@ -28,15 +28,15 @@
 <meta property="og:site_name" content="杨记">
 <meta property="og:description" content="编译原理    第二部分 文法，推导&#x2F;归约； 句型，句子，语言； 文法的类型，正规文法，上下文无关文法，文法等价； 语法树与二义性">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172313467.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172313468.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172313469.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Compile-img/202205172313467.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Compile-img/202205172313468.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Compile-img/202205172313469.png">
 <meta property="article:published_time" content="2022-05-17T14:55:41.802Z">
-<meta property="article:modified_time" content="2022-05-19T05:39:14.254Z">
+<meta property="article:modified_time" content="2022-07-27T15:44:09.965Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="编译原理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172313467.png">
+<meta name="twitter:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Compile-img/202205172313467.png">
 
 <link rel="canonical" href="http://yanglinqi107.github.io/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/2%E3%80%81%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E8%A8%80/">
 
@@ -127,17 +127,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">22</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">16</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">90</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -227,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-19 13:39:14" itemprop="dateModified" datetime="2022-05-19T13:39:14+08:00">2022-05-19</time>
+                <time title="修改时间：2022-07-27 23:44:09" itemprop="dateModified" datetime="2022-07-27T23:44:09+08:00">2022-07-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -315,11 +315,11 @@ $S$是识别符号或开始符号，它是一个非终结符，至少要在一�
 
 #### 文法的多种写法
 
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172313467.png" alt="image-20220102161207938" style="zoom:80%;" />
+<img src="https://gitee.com/yanglinqi107/Images/raw/master/Compile-img/202205172313467.png" alt="image-20220102161207938" style="zoom:80%;" />
 
 
 
-<img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172313468.png" alt="image-20220102161237577" style="zoom: 67%;" />
+<img src="https://gitee.com/yanglinqi107/Images/raw/master/Compile-img/202205172313468.png" alt="image-20220102161237577" style="zoom: 67%;" />
 
 #### 记号
 
@@ -363,7 +363,7 @@ $\stackrel{*}{\Rightarrow}$  若有$v \stackrel{+}{\Rightarrow} w$，或v=w，�
 
 <font color=#ff0000>文法与语言的关系不是一对一的关系</font>
 
-<h3 id="由文法推导出语言"><a href="#由文法推导出语言" class="headerlink" title="由文法推导出语言"></a>由文法推导出语言</h3><p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172313469.png" alt="image-20220102170506838"></p>
+<h3 id="由文法推导出语言"><a href="#由文法推导出语言" class="headerlink" title="由文法推导出语言"></a>由文法推导出语言</h3><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Compile-img/202205172313469.png" alt="image-20220102170506838"></p>
 <h3 id="文法与语言的分类"><a href="#文法与语言的分类" class="headerlink" title="文法与语言的分类"></a>文法与语言的分类</h3><h4 id="0型文法（短语文法）"><a href="#0型文法（短语文法）" class="headerlink" title="0型文法（短语文法）"></a>0型文法（短语文法）</h4><p>$产生式α→β中α∈ (V_N∪V_T)^+,且至少含有一个非终结符，而β∈(V_N∪V_T)^*。$</p>
 <p>0型文法对应的语言称为0型语言。​</p>
 <p>0型文法对应的自动机称为图灵机(Turing)。</p>
@@ -497,20 +497,20 @@ $\stackrel{*}{\Rightarrow}$  若有$v \stackrel{+}{\Rightarrow} w$，或v=w，�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -605,6 +605,61 @@ $\stackrel{*}{\Rightarrow}$  若有$v \stackrel{+}{\Rightarrow} w$，或v=w，�
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

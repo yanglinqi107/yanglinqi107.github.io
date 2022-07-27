@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<meta name="referrer" content="no-referrer">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Apriori算法实验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Apriori算法实验">
+<meta property="og:url" content="http://yanglinqi107.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/Apriori%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C/index.html">
+<meta property="og:site_name" content="杨记">
+<meta property="og:description" content="Apriori算法实验">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/DataMining-img/1_Apriori.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/DataMining-img/2_Apriori.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/DataMining-img/2_Apriori.png">
+<meta property="article:published_time" content="2022-07-27T15:30:03.211Z">
+<meta property="article:modified_time" content="2022-07-27T15:44:09.981Z">
+<meta property="article:author" content="yanglinqi">
+<meta property="article:tag" content="数据挖掘">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/yanglinqi107/Images/raw/master/DataMining-img/1_Apriori.png">
+
+<link rel="canonical" href="http://yanglinqi107.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/Apriori%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Apriori算法实验 | 杨记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">杨记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">碎片化学习令人焦虑，系统化学习使人进步</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">22</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yanglinqi107.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/Apriori%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headpic.jpg">
+      <meta itemprop="name" content="yanglinqi">
+      <meta itemprop="description" content="用于做笔记，对学过的知识总结">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Apriori算法实验
+        </h1>
+
+        <div class="post-meta">
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-27 23:30:03 / 修改时间：23:44:09" itemprop="dateCreated datePublished" datetime="2022-07-27T23:30:03+08:00">2022-07-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/" itemprop="url" rel="index"><span itemprop="name">数据挖掘</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Apriori算法实验</p>
+<span id="more"></span>
+<h2 id="实验介绍"><a href="#实验介绍" class="headerlink" title="实验介绍"></a>实验介绍</h2><h3 id="1-实验内容"><a href="#1-实验内容" class="headerlink" title="1.实验内容"></a>1.实验内容</h3><p>本实验介绍Apriori算法。并使用python实现该算法。</p>
+<h3 id="2-实验目标"><a href="#2-实验目标" class="headerlink" title="2.实验目标"></a>2.实验目标</h3><p>通过本实验掌握Apriori算法。</p>
+<h3 id="3-实验知识点"><a href="#3-实验知识点" class="headerlink" title="3.实验知识点"></a>3.实验知识点</h3><ul>
+<li>Apriori算法</li>
+</ul>
+<h3 id="4-实验环境"><a href="#4-实验环境" class="headerlink" title="4.实验环境"></a>4.实验环境</h3><ul>
+<li>python 3.6.5  </li>
+</ul>
+<h3 id="5-预备知识"><a href="#5-预备知识" class="headerlink" title="5.预备知识"></a>5.预备知识</h3><ul>
+<li>初等数学知识  </li>
+<li>Linux命令基本操作  </li>
+<li>Python编程基础</li>
+</ul>
+<h2 id="【原理】Apriori算法原理"><a href="#【原理】Apriori算法原理" class="headerlink" title="【原理】Apriori算法原理"></a>【原理】Apriori算法原理</h2><p>Apriori算法是一种用于关联规则挖掘的代表性算法。从本节开始，我们已经进入了机器学习和数据挖掘相交叉的地带。</p>
+<h3 id="数据挖掘与机器学习"><a href="#数据挖掘与机器学习" class="headerlink" title="数据挖掘与机器学习"></a>数据挖掘与机器学习</h3><p>数据挖掘和机器学习的关系就好比，机器学习是数据挖掘的弹药库中一类相当庞大的弹药集。既然是一类弹药，其实也就是在说数据挖掘中肯定还有其他非机器学习范畴的技术存在。Apriori算法就属于一种非机器学习的数据挖掘技术。<br>在非机器学习的数据挖掘技术中，我们并不会去建立这样一个模型，而是直接从原数据集入手，设法分析出隐匿在数据背后的某些信息或知识。在后续介绍Apriori算法时，你会相当明显地感受到这一特点。</p>
+<h3 id="Apriori算法"><a href="#Apriori算法" class="headerlink" title="Apriori算法"></a>Apriori算法</h3><p>我们先从一个例子了解一下apriori原理。被大家所熟知的”啤酒尿布”的购买行为问题，其实就是一个具有关联性的行为。而发现这种关联性行为的方式，可以用apriori原理来实现。<br>从大规模数据集中寻找物品间的隐含关系被称作“关联分析”或者“关联规则学习”。而我们需要关注的问题是，如何使用更智能的方法，在更合理的时间范围内找到我们所需要的关联规则。<br>以此，引出了我们的aprori算法。</p>
+<p>我们先来介绍几个概念。</p>
+<p>关联分析，是一种在大规模数据集中寻找有趣关系的任务。在这种关系中，存在着两种形式：频繁项集或者关联规则。</p>
+<p>频繁项集(frequent item sets)，是经常出现在一块的物品的集合；关联规则(association rules)，暗示两种物品之间可能存在很强的关系。频繁项集是我们对原始数据格式化后的源数据集，而关联规则则是寻找源数据集关系得到的结果数据集。{}为集合标识。在下图中，{葡萄酒，尿布，豆奶}就是频繁项集的一个例子。在频繁项集中，我们也可以找到诸如“{尿布}-&gt;{葡萄酒}”的关联规则。这意味着如果有人买了尿布，那么他很可能也会买葡萄酒。</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/DataMining-img/1_Apriori.png" alt="img"></p>
+<p>那么应该如何定义这些有趣的关系？谁来定义什么是有趣？当寻找频繁项集时，频繁的定义又是什么？</p>
+<p>一个项集的支持度(support)被定义为数据集中包含该项集的记录所占的比例。支持度是针对项集，我们可以定义一个最小支持度，来保留满足最小支持度的项集。</p>
+<p>如在上图中，{豆奶}的支持度为4/5，而{豆奶，尿布}的支持度为3/5</p>
+<p>可信度又称为置信度(confidence)是针对一条关联规则定义的。</p>
+<p>对于关联规则“{尿布}-&gt;{葡萄酒}”，它的可信度被定义为“支持度({尿布，葡萄酒})/支持度({尿布})”，计算该规则可信度为0.75，这意味着对于包含“尿布”的所有记录，我们的规则对其中75%的记录都适用。</p>
+<p>在上面介绍的支持度和可信度被用来量化关联分析是否成功。但在实际操作的过程中，我们需要对物品所有的组合计算其支持度和可信度，当物品量上万时，上述的操作会非常非常慢。</p>
+<p>我们该如何解决这种问题呢？</p>
+<p>我们已经知道，大多数关联规则挖掘算法通常采用的一种策略是，将关联规则挖掘任务分解为如下两个主要的子任务。</p>
+<blockquote>
+<p>频繁项集产生：其目标是发现满足最小支持度阈值的所有项集，这些项集称作频繁项集（frequent itemset）。<br>规则的产生：其目标是从上一步发现的频繁项集中提取所有高置信度的规则，这些规则称作强规则（strong rule）。</p>
+</blockquote>
+<p>Apriori算法是生成频繁集的一种算法。</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/DataMining-img/2_Apriori.png" alt="img"></p>
+<p>上图显示了4种商品所有可能的组合。对给定的集合项集{0,3}，需要遍历每条记录并检查是否同时包含0和3,扫描完后除以记录总数即可得支持度。对于包含N种物品的数据集共有2的N次方-1种项集组合，即使100种，也会有1.26×10的30次方种可能的项集组成。</p>
+<p>为降低计算时间，可用Apriori原理：如果某个项集是频繁的，那么它的所有子集也是频繁的。而我们需要使用的则是它的逆反定义：如果一个项集是非频繁集，那么它的所有超集也是非频繁的。</p>
+<p>在下图中，已知阴影项集{2,3}是非频繁的，根据Apriori原理，我们知道{0,2,3},{1,2,3}以及{0,1,2,3}也是非频繁的，我们就不需要计算其支持度了。</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/DataMining-img/2_Apriori.png" alt="img"></p>
+<p>这样就可以避免项集数目的指数增长，从而找到频繁项集。</p>
+<h2 id="【实验】python实现Apriori算法——发现频繁集"><a href="#【实验】python实现Apriori算法——发现频繁集" class="headerlink" title="【实验】python实现Apriori算法——发现频繁集"></a>【实验】python实现Apriori算法——发现频繁集</h2><p>我们已经知道关联分析的目标分为：发现频繁项集和发现关联规则。</p>
+<p>首先需要找到频繁项集，然后才能获得关联规则。本节我们将重点放在如何发现频繁项集上。</p>
+<p>Apriori算法会首先构建集合C1，C1是大小为1的所有候选项集的集合，然后扫描数据集来判断只有一个元素的项集是否满足最小支持度的要求。那么满足最低要求的项集构成集合L1。</p>
+<p>而集合L1中的元素相互组合构成C2，C2再进一步过滤变成L2,以此循环直到Lk为空。</p>
+<p>在上述对Apriori算法的描述中，我们可以很清楚的看到，需要构建相应的功能函数来实现该算法：</p>
+<ol>
+<li>createC1 -构建集合C1</li>
+<li>scanD -过滤集合C1，构建L1</li>
+<li>aprioriGen -对集合Lk中的元素相互组合构建Ck+1</li>
+<li>apriori -集成函数</li>
+</ol>
+<p>我们按照该逻辑来实现我们的apriori算法，并找到频繁项集。</p>
+<p>在当前工作目录下，添加如下代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*-coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明：加载数据集</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loadDataSet</span>():</span></span><br><span class="line">    <span class="keyword">return</span> [[<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>], [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">2</span>, <span class="number">5</span>]]</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明：构建集合C1。即所有候选项元素的集合。</span></span><br><span class="line"><span class="string">parameters：</span></span><br><span class="line"><span class="string">    dataSet -数据集</span></span><br><span class="line"><span class="string">return:</span></span><br><span class="line"><span class="string">    frozenset列表</span></span><br><span class="line"><span class="string">output:</span></span><br><span class="line"><span class="string">    [forzenset([1]),forzenset([2]),……]</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createC1</span>(<span class="params">dataSet</span>):</span></span><br><span class="line">    C1 = []                     <span class="comment">#创建一个空列表</span></span><br><span class="line">    <span class="keyword">for</span> transaction <span class="keyword">in</span> dataSet: <span class="comment">#对于数据集中的每条记录</span></span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> transaction:<span class="comment">#对于每条记录中的每一个项</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> [item] <span class="keyword">in</span> C1:       <span class="comment">#如果该项不在C1中，则添加</span></span><br><span class="line">                C1.append([item])</span><br><span class="line">    C1.sort()                   <span class="comment">#对集合元素排序</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">frozenset</span>,C1))    <span class="comment">#将C1的每个单元列表元素映射到forzenset()</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明：构建符合支持度的集合Lk</span></span><br><span class="line"><span class="string">parameters:</span></span><br><span class="line"><span class="string">    D -数据集</span></span><br><span class="line"><span class="string">    Ck -候选项集列表</span></span><br><span class="line"><span class="string">    minSupport -感兴趣项集的最小支持度</span></span><br><span class="line"><span class="string">return:</span></span><br><span class="line"><span class="string">    retList -符合支持度的频繁项集合列表L</span></span><br><span class="line"><span class="string">    supportData -最频繁项集的支持度</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">scanD</span>(<span class="params">D,Ck,minSupport</span>):</span></span><br><span class="line">    ssCnt = &#123;&#125;                                              <span class="comment">#创建空字典</span></span><br><span class="line">    <span class="comment">#在下面添加代码，遍历数据集中的交易记录，统计Ck中候选集的计数，结果存放在ssCnt中</span></span><br><span class="line">    <span class="keyword">for</span> C <span class="keyword">in</span> Ck:</span><br><span class="line">        ssCnt[C] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> sset <span class="keyword">in</span> D:</span><br><span class="line">            <span class="keyword">if</span> (sset | C) == sset:</span><br><span class="line">                ssCnt[C] = ssCnt[C] + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    numItems = <span class="built_in">float</span>(<span class="built_in">len</span>(D))                                <span class="comment">#得到数据集中交易记录的条数</span></span><br><span class="line">    retList = []                                            <span class="comment">#新建空列表</span></span><br><span class="line">    supportData = &#123;&#125;                                        <span class="comment">#新建空字典用来存储最频繁集和支持度</span></span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> ssCnt:</span><br><span class="line">        support = ssCnt[key] / numItems                     <span class="comment">#计算每个元素的支持度</span></span><br><span class="line">        <span class="keyword">if</span> support &gt;= minSupport:                           <span class="comment">#如果大于最小支持度则添加到retList中</span></span><br><span class="line">            retList.insert(<span class="number">0</span>,key)</span><br><span class="line">        supportData[key] = support                          <span class="comment">#并记录当前支持度，索引值即为元素值</span></span><br><span class="line">    <span class="keyword">return</span> retList,supportData</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    dataSet = loadDataSet()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;数据集:\n&quot;</span>,dataSet)</span><br><span class="line">    C1 = createC1(dataSet)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;候选集C1:\n&quot;</span>,C1)</span><br><span class="line">    D = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">set</span>,dataSet))  <span class="comment">#将数据转换为集合形式</span></span><br><span class="line">    L1,supportData = scanD(D,C1,<span class="number">0.5</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;满足最小支持度为0.5的频繁项集L1：\n&quot;</span>,L1)</span><br></pre></td></tr></table></figure>
+<pre><code>数据集:
+ [[1, 3, 4], [2, 3, 5], [1, 2, 3, 5], [2, 5]]
+候选集C1:
+ [frozenset(&#123;1&#125;), frozenset(&#123;2&#125;), frozenset(&#123;3&#125;), frozenset(&#123;4&#125;), frozenset(&#123;5&#125;)]
+满足最小支持度为0.5的频繁项集L1：
+ [frozenset(&#123;5&#125;), frozenset(&#123;3&#125;), frozenset(&#123;2&#125;), frozenset(&#123;1&#125;)]
+</code></pre><p>其中forzenset为不可变集合，它的值是不可变的，好处是它可以作为字典的key，也可以作为其他集合的元素。我们这里必须使用forzenset而不是set，就是因为我们需要将这些集合作为字典键值使用。</p>
+<p>至此，我们完成了C1和L1的构建。那么对于L1中元素的组合，我们需要先引入一个组合定义。<br>假定我们的L1中元素为[{0},{1},{2}],我们想要aprioriGen函数生成元素的组合C2，即[{0,1},{0,2},{1,2}]。这是单个项的组合。那么我们考虑一下，如果想利用[{0,1},{0,2},{1,2}]来创建三元素的候选项集C3呢？如果依旧按照单个项的组合方法，将每两个集合合并，就会得到{0,1,2},{0,1,2},{0,1,2}。也就是说，我们重复操作了3次。</p>
+<p>接下来还需要扫描该结果来得到非重复结果，但我们要确保的是遍历列表的次数最少。那么如何解决这个问题呢？我们观察到，如果比较集合{0,1},{0,2},{1,2}的第一个元素并只对第一个元素相同的集合求并操作，我们会得到{0,1,2}相同的结果，但只操作了1次！这样的话就不需要遍历列表来寻找非重复值。也能够实现apriori算法的原理。当我们创建三元素的候选集时，k=3，但此时待组合的频繁项集元素为f=2，即我们只需比较前f-1个元素，也就是前k-2个元素。</p>
+<p>打开apriori.py文件，修改代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明:构建集合Ck</span></span><br><span class="line"><span class="string">parameters:</span></span><br><span class="line"><span class="string">    Lk -频繁项集列表L</span></span><br><span class="line"><span class="string">    k -候选集的列表中元素项的个数</span></span><br><span class="line"><span class="string">return:</span></span><br><span class="line"><span class="string">    retList -候选集项列表Ck</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">aprioriGen</span>(<span class="params">Lk,k</span>):</span></span><br><span class="line">    retList = []                                            <span class="comment">#创建一个空列表</span></span><br><span class="line">    lenLk = <span class="built_in">len</span>(Lk)                                         <span class="comment">#得到当前频繁项集合列表中元素的个数</span></span><br><span class="line">    <span class="comment">#在下面添加代码，遍历Lk，比较每两个项集，如果符合合并要求，则用集合合并操作|来产生k+1项集，并存入retList</span></span><br><span class="line">    <span class="comment">#[注]此处需要比较两个项集的前k-2个元素，试说明原因</span></span><br><span class="line">    num = k - <span class="number">2</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(lenLk):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i+<span class="number">1</span>, lenLk):</span><br><span class="line">            l1 = <span class="built_in">list</span>(Lk[i])</span><br><span class="line">            l2 = <span class="built_in">list</span>(Lk[j])</span><br><span class="line">            <span class="keyword">if</span> l1[:num] == l2[:num]:</span><br><span class="line">                retList.append(Lk[i] | Lk[j])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> retList</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明：apriori算法实现</span></span><br><span class="line"><span class="string">parameters:</span></span><br><span class="line"><span class="string">    dataSet -数据集</span></span><br><span class="line"><span class="string">    minSupport -最小支持度</span></span><br><span class="line"><span class="string">return:</span></span><br><span class="line"><span class="string">    L -候选项集的列表</span></span><br><span class="line"><span class="string">    supportData -项集支持度</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apriori</span>(<span class="params">dataSet,minSupport=<span class="number">0.5</span></span>):</span></span><br><span class="line">    C1 = createC1(dataSet)</span><br><span class="line">    D = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">set</span>,dataSet))                      <span class="comment">#将数据集转化为集合列表</span></span><br><span class="line">    L1, supportData = scanD(D,C1,minSupport)    <span class="comment">#调用scanD()函数，过滤不符合支持度的候选项集</span></span><br><span class="line">    L = [L1]                                    <span class="comment">#将过滤后的L1放入L列表中</span></span><br><span class="line">    k = <span class="number">2</span>                                       <span class="comment">#最开始为单个项的候选集，需要多个元素组合</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">len</span>(L[k-<span class="number">2</span>])&gt;<span class="number">0</span>):</span><br><span class="line">        Ck = aprioriGen(L[k-<span class="number">2</span>],k)               <span class="comment">#创建Ck</span></span><br><span class="line">        Lk, supK = scanD(D,Ck,minSupport)       <span class="comment">#由Ck得到Lk</span></span><br><span class="line">        supportData.update(supK)                <span class="comment">#更新支持度</span></span><br><span class="line">        L.append(Lk)                            <span class="comment">#将Lk放入L列表中</span></span><br><span class="line">        k += <span class="number">1</span>                                  <span class="comment">#继续生成L3，L4....</span></span><br><span class="line">    <span class="keyword">return</span> L, supportData</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    dataSet = loadDataSet()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;数据集:\n&quot;</span>,dataSet)</span><br><span class="line">    C1 = createC1(dataSet)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;候选集C1:\n&quot;</span>,C1)</span><br><span class="line">    D = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">set</span>,dataSet))  <span class="comment">#将数据转换为集合形式</span></span><br><span class="line">    L1,supportData = scanD(D,C1,<span class="number">0.5</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;满足最小支持度为0.5的频繁项集L1：\n&quot;</span>,L1)</span><br><span class="line">    L,suppData = apriori(dataSet)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;满足最小支持度为0.5的频繁项集列表L：\n&quot;</span>,L)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;L2:\n&quot;</span>,L[<span class="number">1</span>])</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;使用L2生成的C3:\n&quot;</span>,aprioriGen(L[<span class="number">1</span>],<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>数据集:
+ [[1, 3, 4], [2, 3, 5], [1, 2, 3, 5], [2, 5]]
+候选集C1:
+ [frozenset(&#123;1&#125;), frozenset(&#123;2&#125;), frozenset(&#123;3&#125;), frozenset(&#123;4&#125;), frozenset(&#123;5&#125;)]
+满足最小支持度为0.5的频繁项集L1：
+ [frozenset(&#123;5&#125;), frozenset(&#123;3&#125;), frozenset(&#123;2&#125;), frozenset(&#123;1&#125;)]
+满足最小支持度为0.5的频繁项集列表L：
+ [[frozenset(&#123;5&#125;), frozenset(&#123;3&#125;), frozenset(&#123;2&#125;), frozenset(&#123;1&#125;)], [frozenset(&#123;1, 3&#125;), frozenset(&#123;2, 3&#125;), frozenset(&#123;2, 5&#125;), frozenset(&#123;3, 5&#125;)], [frozenset(&#123;2, 3, 5&#125;)], []]
+L2:
+ [frozenset(&#123;1, 3&#125;), frozenset(&#123;2, 3&#125;), frozenset(&#123;2, 5&#125;), frozenset(&#123;3, 5&#125;)]
+使用L2生成的C3:
+ [frozenset(&#123;2, 3, 5&#125;)]
+</code></pre><p>可以看到，使用L2生成的候选项集C3，只对k-2个项相同的元素合并。那其实不生成{1,3,5}的原因是，由于{1,5}是非频繁项，那么其超集均为非频繁项。故此极大减少计算量。<br>到此我们也得到了我们的最频繁项集列表。</p>
+<h2 id="【实验】python实现Apriori算法——挖掘关联规则"><a href="#【实验】python实现Apriori算法——挖掘关联规则" class="headerlink" title="【实验】python实现Apriori算法——挖掘关联规则"></a>【实验】python实现Apriori算法——挖掘关联规则</h2><p>上一节介绍了如何使用Apriori算法来发现频繁集，现在需要解决的问题则是如何找出关联规则。</p>
+<p>在原理讲解中，我们找到诸如“{尿布}-&gt;{葡萄酒}”的关联规则。这意味着如果有人买了尿布，那么他很可能也会买葡萄酒。但是，这一条反过来，却不一定成立。有可能买葡萄酒的人，根本不会去买尿布。那么，成立的定义是什么呢？还记得我们介绍的可信度度量值，对于关联规则的量化方法，则是使用可信度。</p>
+<p>对于关联规则“P-&gt;H”，它的可信度被定义为“支持度(P | H)/支持度(P)”。其中|符合在python中为合并符。在找出关联规则的过程中，首先从一个频繁项集开始，接着创建一个规则列表，其中规则右部只包含一个元素，然后对这些规则进行测试。接下来，合并所有剩余规则来创建一个新的规则列表，其中规则右部包含两个元素。直到规则左右剩余一个元素。</p>
+<p>同样，我们需要创建相应的功能函数来实现：</p>
+<ol>
+<li>rulesFromConseq -从频繁项集生成规则列表</li>
+<li>calcConf -对规则进行测试并过滤</li>
+<li>generateRules -集成函数</li>
+</ol>
+<p>我们来看下这种方法的实际效果，对代码作出如下修改：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明：规则构建函数</span></span><br><span class="line"><span class="string">parameters:</span></span><br><span class="line"><span class="string">    freqSet -频繁项集合</span></span><br><span class="line"><span class="string">    H -可以出现在规则右部的元素列表</span></span><br><span class="line"><span class="string">    supportData -支持度字典</span></span><br><span class="line"><span class="string">    brl -规则列表</span></span><br><span class="line"><span class="string">    minConf -最小可信度</span></span><br><span class="line"><span class="string">return:</span></span><br><span class="line"><span class="string">    null</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rulesFromConseq</span>(<span class="params">freqSet,H,supportData,brl,minConf=<span class="number">0.7</span></span>):</span></span><br><span class="line">    m = <span class="built_in">len</span>(H[<span class="number">0</span>])                                               <span class="comment">#得到H中的频繁集大小m</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">len</span>(freqSet) &gt; (m+<span class="number">1</span>)):                                  <span class="comment">#查看该频繁集是否大到可以移除大小为m的子集</span></span><br><span class="line">        Hmp1 = aprioriGen(H, m+<span class="number">1</span>)                               <span class="comment">#构建候选集Hm+1，Hmp1中包含所有可能的规则</span></span><br><span class="line">        Hmp1 = calcConf(freqSet,Hmp1,supportData,brl,minConf)   <span class="comment">#测试可信度以确定规则是否满足要求</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">len</span>(Hmp1)&gt;<span class="number">1</span>):                                       <span class="comment">#如果不止一条规则满足要求，使用函数迭代判断是否能进一步组合这些规则</span></span><br><span class="line">            rulesFromConseq(freqSet,Hmp1,supportData,brl,minConf)</span><br><span class="line">        </span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明：计算规则的可信度，找到满足最小可信度要求的规则</span></span><br><span class="line"><span class="string">parameters：</span></span><br><span class="line"><span class="string">    freqSet -频繁项集合</span></span><br><span class="line"><span class="string">    H -可以出现在规则右部的元素列表</span></span><br><span class="line"><span class="string">    supportData -支持度字典</span></span><br><span class="line"><span class="string">    brl -规则列表</span></span><br><span class="line"><span class="string">    minConf -最小可信度</span></span><br><span class="line"><span class="string">return:</span></span><br><span class="line"><span class="string">    prunedH -满足要求的规则列表</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcConf</span>(<span class="params">freqSet,H,supportData,brl,minConf=<span class="number">0.7</span></span>):</span></span><br><span class="line">    prunedH = []                                                <span class="comment">#为保存满足要求的规则创建一个空列表</span></span><br><span class="line">    <span class="keyword">for</span> conseq <span class="keyword">in</span> H: </span><br><span class="line">        conf = supportData[freqSet]/supportData[freqSet-conseq] <span class="comment">#可信度计算[support(PUH)/support(P)]</span></span><br><span class="line">        <span class="keyword">if</span> conf&gt;=minConf:</span><br><span class="line">            <span class="built_in">print</span>(freqSet-conseq,<span class="string">&#x27;--&gt;&#x27;</span>,conseq,<span class="string">&#x27;可信度为:&#x27;</span>,conf)</span><br><span class="line">            brl.append((freqSet-conseq,conseq,conf))            <span class="comment">#对bigRuleList列表进行填充</span></span><br><span class="line">            prunedH.append(conseq)                              <span class="comment">#将满足要求的规则添加到规则列表</span></span><br><span class="line">    <span class="keyword">return</span> prunedH</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明：关联规则生成函数</span></span><br><span class="line"><span class="string">parameters:</span></span><br><span class="line"><span class="string">    L -频繁项集合列表</span></span><br><span class="line"><span class="string">    supportData -支持度字典</span></span><br><span class="line"><span class="string">    minConf -最小可信度</span></span><br><span class="line"><span class="string">return:</span></span><br><span class="line"><span class="string">    bigRuleList -包含可信度的规则列表</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generateRules</span>(<span class="params">L,supportData,minConf=<span class="number">0.7</span></span>):</span></span><br><span class="line">    bigRuleList = []                                        <span class="comment">#创建一个空列表</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(L)):                               <span class="comment">#遍历频繁项集合列表</span></span><br><span class="line">        <span class="keyword">for</span> freqSet <span class="keyword">in</span> L[i]:                                <span class="comment">#遍历频繁项集合</span></span><br><span class="line">            H1 = [<span class="built_in">frozenset</span>([item]) <span class="keyword">for</span> item <span class="keyword">in</span> freqSet]    <span class="comment">#为每个频繁项集合创建只包含单个元素集合的列表H1</span></span><br><span class="line">            <span class="keyword">if</span> (i&gt;<span class="number">1</span>):                                       <span class="comment">#要从包含两个或者更多元素的项集开始规则构建过程</span></span><br><span class="line">                rulesFromConseq(freqSet,H1,supportData,bigRuleList,minConf)</span><br><span class="line">            <span class="keyword">else</span>:                                           <span class="comment">#如果项集中只有两个元素，则计算可信度值，(len(L)=2)</span></span><br><span class="line">                calcConf(freqSet,H1,supportData,bigRuleList,minConf)</span><br><span class="line">    <span class="keyword">return</span> bigRuleList</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    dataSet = loadDataSet()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;数据集:\n&quot;</span>,dataSet)</span><br><span class="line">    C1 = createC1(dataSet)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;候选集C1:\n&quot;</span>,C1)</span><br><span class="line">    L,suppData = apriori(dataSet)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;满足最小支持度为0.5的频繁项集列表L：\n&quot;</span>,L)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;满足最小可信度为0.7的规则列表为:&quot;</span>)</span><br><span class="line">    rules = generateRules(L,suppData,<span class="number">0.7</span>)</span><br><span class="line">    <span class="built_in">print</span>(rules)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;满足最小可信度为0.5的规则列表为:&quot;</span>)</span><br><span class="line">    rules1 = generateRules(L,suppData,<span class="number">0.5</span>)</span><br><span class="line">    <span class="built_in">print</span>(rules1)</span><br></pre></td></tr></table></figure>
+<pre><code>数据集:
+ [[1, 3, 4], [2, 3, 5], [1, 2, 3, 5], [2, 5]]
+候选集C1:
+ [frozenset(&#123;1&#125;), frozenset(&#123;2&#125;), frozenset(&#123;3&#125;), frozenset(&#123;4&#125;), frozenset(&#123;5&#125;)]
+满足最小支持度为0.5的频繁项集列表L：
+ [[frozenset(&#123;5&#125;), frozenset(&#123;2&#125;), frozenset(&#123;3&#125;), frozenset(&#123;1&#125;)], [frozenset(&#123;2, 3&#125;), frozenset(&#123;3, 5&#125;), frozenset(&#123;2, 5&#125;), frozenset(&#123;1, 3&#125;)], [frozenset(&#123;2, 3, 5&#125;)], []]
+满足最小可信度为0.7的规则列表为:
+frozenset(&#123;5&#125;) --&gt; frozenset(&#123;2&#125;) 可信度为: 1.0
+frozenset(&#123;2&#125;) --&gt; frozenset(&#123;5&#125;) 可信度为: 1.0
+frozenset(&#123;1&#125;) --&gt; frozenset(&#123;3&#125;) 可信度为: 1.0
+[(frozenset(&#123;5&#125;), frozenset(&#123;2&#125;), 1.0), (frozenset(&#123;2&#125;), frozenset(&#123;5&#125;), 1.0), (frozenset(&#123;1&#125;), frozenset(&#123;3&#125;), 1.0)]
+满足最小可信度为0.5的规则列表为:
+frozenset(&#123;3&#125;) --&gt; frozenset(&#123;2&#125;) 可信度为: 0.6666666666666666
+frozenset(&#123;2&#125;) --&gt; frozenset(&#123;3&#125;) 可信度为: 0.6666666666666666
+frozenset(&#123;5&#125;) --&gt; frozenset(&#123;3&#125;) 可信度为: 0.6666666666666666
+frozenset(&#123;3&#125;) --&gt; frozenset(&#123;5&#125;) 可信度为: 0.6666666666666666
+frozenset(&#123;5&#125;) --&gt; frozenset(&#123;2&#125;) 可信度为: 1.0
+frozenset(&#123;2&#125;) --&gt; frozenset(&#123;5&#125;) 可信度为: 1.0
+frozenset(&#123;3&#125;) --&gt; frozenset(&#123;1&#125;) 可信度为: 0.6666666666666666
+frozenset(&#123;1&#125;) --&gt; frozenset(&#123;3&#125;) 可信度为: 1.0
+frozenset(&#123;5&#125;) --&gt; frozenset(&#123;2, 3&#125;) 可信度为: 0.6666666666666666
+frozenset(&#123;3&#125;) --&gt; frozenset(&#123;2, 5&#125;) 可信度为: 0.6666666666666666
+frozenset(&#123;2&#125;) --&gt; frozenset(&#123;3, 5&#125;) 可信度为: 0.6666666666666666
+[(frozenset(&#123;3&#125;), frozenset(&#123;2&#125;), 0.6666666666666666), (frozenset(&#123;2&#125;), frozenset(&#123;3&#125;), 0.6666666666666666), (frozenset(&#123;5&#125;), frozenset(&#123;3&#125;), 0.6666666666666666), (frozenset(&#123;3&#125;), frozenset(&#123;5&#125;), 0.6666666666666666), (frozenset(&#123;5&#125;), frozenset(&#123;2&#125;), 1.0), (frozenset(&#123;2&#125;), frozenset(&#123;5&#125;), 1.0), (frozenset(&#123;3&#125;), frozenset(&#123;1&#125;), 0.6666666666666666), (frozenset(&#123;1&#125;), frozenset(&#123;3&#125;), 1.0), (frozenset(&#123;5&#125;), frozenset(&#123;2, 3&#125;), 0.6666666666666666), (frozenset(&#123;3&#125;), frozenset(&#123;2, 5&#125;), 0.6666666666666666), (frozenset(&#123;2&#125;), frozenset(&#123;3, 5&#125;), 0.6666666666666666)]
+</code></pre><p>更改最小置信度后，可以获得更多的规则。</p>
+<h2 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h2><p>本节我们介绍了Apriori算法，并介绍了如何使用python实现Apriori算法，您应该能达到以下两个目标：</p>
+<ol>
+<li><p>掌握Apriori原理。</p>
+</li>
+<li><p>学会使用python实现相应算法。</p>
+</li>
+</ol>
+<h2 id="参考文献与延伸阅读"><a href="#参考文献与延伸阅读" class="headerlink" title="参考文献与延伸阅读"></a>参考文献与延伸阅读</h2><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料:"></a>参考资料:</h3><p>1.哈林顿，李锐. 机器学习实战 : Machine learning in action[M]. 人民邮电出版社, 2013.<br>2.周志华. 机器学习:Machine learning[M]. 清华大学出版社, 2016.</p>
+<h3 id="延伸阅读"><a href="#延伸阅读" class="headerlink" title="延伸阅读"></a>延伸阅读</h3><p>1.李航. 统计学习方法[M]. 清华大学出版社, 2012.</p>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      
+      
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">实验介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.</span> <span class="nav-text">1.实验内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E6%A0%87"><span class="nav-number">1.2.</span> <span class="nav-text">2.实验目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AE%9E%E9%AA%8C%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">1.3.</span> <span class="nav-text">3.实验知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83"><span class="nav-number">1.4.</span> <span class="nav-text">4.实验环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.5.</span> <span class="nav-text">5.预备知识</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%90%E5%8E%9F%E7%90%86%E3%80%91Apriori%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">【原理】Apriori算法原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.1.</span> <span class="nav-text">数据挖掘与机器学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apriori%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">Apriori算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%90%E5%AE%9E%E9%AA%8C%E3%80%91python%E5%AE%9E%E7%8E%B0Apriori%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E5%8F%91%E7%8E%B0%E9%A2%91%E7%B9%81%E9%9B%86"><span class="nav-number">3.</span> <span class="nav-text">【实验】python实现Apriori算法——发现频繁集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%90%E5%AE%9E%E9%AA%8C%E3%80%91python%E5%AE%9E%E7%8E%B0Apriori%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E6%8C%96%E6%8E%98%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99"><span class="nav-number">4.</span> <span class="nav-text">【实验】python实现Apriori算法——挖掘关联规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">实验总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E4%B8%8E%E5%BB%B6%E4%BC%B8%E9%98%85%E8%AF%BB"><span class="nav-number">6.</span> <span class="nav-text">参考文献与延伸阅读</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">6.1.</span> <span class="nav-text">参考资料:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%B6%E4%BC%B8%E9%98%85%E8%AF%BB"><span class="nav-number">6.2.</span> <span class="nav-text">延伸阅读</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yanglinqi"
+      src="/images/headpic.jpg">
+  <p class="site-author-name" itemprop="name">yanglinqi</p>
+  <div class="site-description" itemprop="description">用于做笔记，对学过的知识总结</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanglinqi107" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanglinqi107" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanglinqi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+</body>
+</html>

@@ -29,7 +29,7 @@
 <meta property="og:description" content="Linux的使用和常用命令，主要是在 CentOS 8 上试验">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-18T14:15:10.000Z">
-<meta property="article:modified_time" content="2022-05-15T07:55:27.519Z">
+<meta property="article:modified_time" content="2022-07-27T05:32:48.152Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -123,17 +123,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">22</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">16</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">90</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -223,7 +223,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-15 15:55:27" itemprop="dateModified" datetime="2022-05-15T15:55:27+08:00">2022-05-15</time>
+                <time title="修改时间：2022-07-27 13:32:48" itemprop="dateModified" datetime="2022-07-27T13:32:48+08:00">2022-07-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,7 +253,6 @@
 <p>linux特殊文件名可以使用<code>\</code>进行转义，</p>
 <p>如果是有 <code>-</code> 的文件如<code>-a test</code>，操作可以使用 <code>rm -- &#39;-a test&#39;</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">init 0		关机</span><br><span class="line">init 1		单用户</span><br><span class="line">init 2		多用户</span><br><span class="line">init 5		图形界面</span><br><span class="line">init 3 		字符界面</span><br><span class="line">init 6 		重启</span><br><span class="line"></span><br><span class="line">clear	清屏</span><br><span class="line">logout	注销 </span><br><span class="line"></span><br><span class="line">whereis</span><br><span class="line">whatis</span><br><span class="line">which</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> - <span class="comment"># 进入相邻工作目录</span></span><br><span class="line"><span class="built_in">cd</span> ~ <span class="comment"># 家目录</span></span><br></pre></td></tr></table></figure>
 <p>常用工具</p>
 <p>lrzsz tree screen tmux strace</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">bc    <span class="comment"># 计算器， ctrl+d 退出</span></span><br><span class="line">[root@CentOS8 ~]<span class="comment">#bc</span></span><br><span class="line">bc 1.07.1</span><br><span class="line">Copyright 1991-1994, 1997, 1998, 2000, 2004, 2006, 2008, 2012-2017 Free Software Foundation, Inc.</span><br><span class="line">This is free software with ABSOLUTELY NO WARRANTY.</span><br><span class="line">For details <span class="built_in">type</span> `warranty<span class="string">&#x27;. </span></span><br><span class="line"><span class="string">2^3 # 计算2的3次方</span></span><br><span class="line"><span class="string">8</span></span><br><span class="line"><span class="string">obase=2  # 将192按二进制输出</span></span><br><span class="line"><span class="string">192</span></span><br><span class="line"><span class="string">11000000</span></span><br></pre></td></tr></table></figure>
@@ -274,9 +273,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hostname -I   查看ip地址</span><br><span class="line"></span><br><span class="line">在windows系统终端以下命令可以远程连接</span><br><span class="line">ssh 登录的用户@上面查看到的ip地址</span><br><span class="line">例：ssh root@192.168.79.128</span><br><span class="line"></span><br><span class="line">windows远程连接的工具</span><br><span class="line">xShell  或   MobaXterm</span><br></pre></td></tr></table></figure>
 <p>使用图像化工具</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一步，运行Xmanager Power Suite 的 Xmanager.exe</span></span><br><span class="line">在安装Xmanager Power Suite后，桌面出现Xmanager Power Suite的文件夹，里面有Tools文件夹，Tools文件夹里面有Xmanager.exe的快捷方式 Xmanager - Passive，运行Xmanager - Passive，注意：不是Xmanager这个快捷方式，名字不同</span><br><span class="line">运行之后桌面右下角会有图标，鼠标移上去出现 Xmanager Server:0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二步，查看本机的ip</span></span><br><span class="line">在windows的cmd窗口，输入 ipconfig，出现多个ip</span><br><span class="line">选择无线局域网适配器 WLAN 的 IPv4 地址：我的是 192.168.0.108</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第三步</span></span><br><span class="line">在xShell的会话界面输入：<span class="built_in">export</span> DISPLAY=192.168.0.108:0.0   ip换成自己的ip</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在xShell运行图像化工具</span></span><br><span class="line">如：firefox   gedit  </span><br><span class="line"></span><br><span class="line">注：如果出现下面情况</span><br><span class="line">Unable to init server: 无法连接：拒绝连接</span><br><span class="line"></span><br><span class="line">(gedit:3216): Gtk-WARNING **: 21:40:47.754: cannot open display: 192.168.0.108:0.0</span><br><span class="line"></span><br><span class="line">在第三步试一试ipconfig查到的其他几个ip</span><br><span class="line"></span><br><span class="line"><span class="comment"># MobaXterm</span></span><br><span class="line">如果使用的远程控制工具是MobaXterm，需要在Centos或Ubuntu安装文件</span><br><span class="line">yum install xorg-x11-xauth xorg-x11-fonts-* xorg-x11-font-utils xorg-x11-fonts-Type1</span><br></pre></td></tr></table></figure>
-<hr>
 <h3 id="查看硬件信息"><a href="#查看硬件信息" class="headerlink" title="查看硬件信息"></a>查看硬件信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看cpu信息</span></span><br><span class="line">lscpu		</span><br><span class="line">cat /proc/cpuinfo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看内存大小</span></span><br><span class="line">free</span><br><span class="line">cat /proc/meminfo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看硬盘和分区</span></span><br><span class="line">lsblk		</span><br><span class="line">cat /proc/partitions</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看内核版本</span></span><br><span class="line">uname -r</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看操作系统发行版本</span></span><br><span class="line">cat /etc/redhat-release</span><br><span class="line">cat /etc/os-release</span><br><span class="line">lsb_release -a</span><br><span class="line"><span class="comment"># ubuntu</span></span><br><span class="line">cat /etc/os-release</span><br><span class="line">cat /etc/is</span><br><span class="line">cat /etc/issue</span><br></pre></td></tr></table></figure>
-<hr>
 <h3 id="日期和时间"><a href="#日期和时间" class="headerlink" title="日期和时间"></a>日期和时间</h3><p>Linux的两种时钟</p>
 <ul>
 <li>系统时钟：由Linux内核通过CPU的工作频率进行的</li>
@@ -296,7 +293,7 @@
 <p>显示日历：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cal    		<span class="comment"># 显示当月</span></span><br><span class="line">cal -y  	<span class="comment"># 显示全年</span></span><br><span class="line">cal 2022 	<span class="comment"># 显示2022年日历</span></span><br><span class="line">cal 9 1752  <span class="comment"># 显示1752年9月</span></span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="关机和重启："><a href="#关机和重启：" class="headerlink" title="关机和重启："></a>关机和重启：</h3><p>关机：</p>
+<h3 id="关机和重启"><a href="#关机和重启" class="headerlink" title="关机和重启"></a>关机和重启</h3><p>关机：</p>
 <ul>
 <li><code>halt</code></li>
 <li><code>poweroff</code></li>
@@ -311,7 +308,6 @@
 </ul>
 <p>关机或重启：<code>shutdown</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">shutdown [OPTION]... [TIME] [MESSAGE]</span><br><span class="line"></span><br><span class="line">-r		reboot</span><br><span class="line">-h		halt</span><br><span class="line">-c		cancel</span><br><span class="line">TIME：	默认为+1</span><br><span class="line">		now  立刻，相当于+0</span><br><span class="line">		+#   相对时间表示法，几分钟后，如+3</span><br><span class="line">		hh:mm  绝对时间表示，指明具体时间</span><br><span class="line"></span><br><span class="line">示例</span><br><span class="line">shutdown -h +3</span><br><span class="line">shutdown -h 17:00</span><br></pre></td></tr></table></figure>
-<hr>
 <h3 id="设置主机名"><a href="#设置主机名" class="headerlink" title="设置主机名"></a>设置主机名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#临时生效</span></span><br><span class="line">hostname NAME</span><br><span class="line"></span><br><span class="line"><span class="comment">#持久生效</span></span><br><span class="line">hostnamectl set-hostname NAME</span><br><span class="line"></span><br><span class="line"><span class="comment">#主机名不支持使用下划线，但支持横线，可使用字母、横线、数字的组合</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="提示符"><a href="#提示符" class="headerlink" title="提示符"></a>提示符</h3><ul>
@@ -341,7 +337,7 @@
 </ul>
 <hr>
 <h3 id="命令分类"><a href="#命令分类" class="headerlink" title="命令分类"></a>命令分类</h3><ul>
-<li>内部命令：由shell自带，而且通过某种命令形式提供</li>
+<li>内部命令：由shell自带，而且通过某种命令形式提供 <code>man builtin</code></li>
 <li>外部命令：在文件系统路径下有对应的可执行程序文件</li>
 </ul>
 <p>命令执行过程</p>
@@ -388,7 +384,6 @@
 <li><code>/path/command  # 只适用于外部命令</code></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 例如，要执行下面三条命令，很长，设为别名scandisk，三条命令的作用：查看新添加的硬盘</span></span><br><span class="line"><span class="built_in">echo</span> - - - &gt; /sys/class/scsi_host/host0/scan</span><br><span class="line"><span class="built_in">echo</span> - - - &gt; /sys/class/scsi_host/host1/scan</span><br><span class="line"><span class="built_in">echo</span> - - - &gt; /sys/class/scsi_host/host2/scan</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义别名，临时生效</span></span><br><span class="line"><span class="built_in">alias</span> scandisk=<span class="string">&quot;echo - - - &gt; /sys/class/scsi_host/host0/scan;echo - - - &gt; /sys/class/scsi_host/host1/scan;echo - - - &gt; /sys/class/scsi_host/host2/scan&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看别名</span></span><br><span class="line"><span class="built_in">alias</span> scandisk</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除别名</span></span><br><span class="line"><span class="built_in">unalias</span> scandisk</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写入 .bashrc文件，持久生效</span></span><br><span class="line"><span class="comment"># 可以直接在打开文件写入</span></span><br><span class="line"><span class="comment"># 也可以使用下面的命令，示例</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;alias yi=&#x27;yum -y install &#x27;&quot;</span> &gt;&gt; .bashrc</span><br><span class="line"><span class="comment"># 再运行 .bashrc 文件</span></span><br><span class="line">. .bashrc</span><br><span class="line"><span class="built_in">alias</span>  <span class="comment"># 查看yi是否生效，可以直接使用yi下载了，如 yi gcc  下载gcc编译器</span></span><br></pre></td></tr></table></figure>
-<hr>
 <h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">COMMAND [OPTIONS...] [ARGUMENTS...]</span><br><span class="line">COMMAND [COMMAND] [COMMAND] ...</span><br></pre></td></tr></table></figure>
 <p>选项：用于启用或关闭命令的某个或某些功能</p>
 <ul>
@@ -466,7 +461,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ctr1+b %   	划分左右两个商格</span><br><span class="line">ctr1+b &quot;   	划分上下两个窗格</span><br><span class="line">ctrl+b &lt;arrow key&gt;   光标切换到其他窗格。&lt;arrow key&gt;是指向要切换到的窗格的方向键，比如切换到下方窗格，就按向下的方向键</span><br><span class="line">ctr1+b ;	光标切换到上一个窗格</span><br><span class="line">ctr1+b o 	光标切换到下一个窗格。</span><br><span class="line">ctr1+b &#123;  	当前窗格左移</span><br><span class="line">ctr1+b &#125; 	当前窗格右移</span><br><span class="line">ctr1+b Ctrl+o  	当前窗格上移</span><br><span class="line">ctr1+b A1t+o 	当前窗格下移</span><br><span class="line">ctr1+b x 		关闭当前窗格</span><br><span class="line">ctr1+b ! 		将当前窗格折分为一个独立窗口</span><br><span class="line">ctr1+b z 		当前窗格全屏显示，再使用一次会变回原来大小</span><br><span class="line">ctr1+b ctr1+&lt;arrow key&gt; 	按箭头方向调整窗格大小</span><br><span class="line">Ctr1+b q 		显示窗格编号</span><br></pre></td></tr></table></figure>
 <p>列出所有Tmux命令及其参数</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux list-commands</span><br></pre></td></tr></table></figure>
-<hr>
 <h3 id="输出信息-echo"><a href="#输出信息-echo" class="headerlink" title="输出信息 echo"></a>输出信息 echo</h3><p>echo基本用法</p>
 <p>echo命令可以将后面跟的字符进行输出<br>功能：显示字符，echo会将输入的字符串送往标准输出。输出的字符串间以空白字符隔开，并在最后加上换行号</p>
 <p>语法：</p>
@@ -502,7 +496,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">\033[0m		关闭所有属性</span><br><span class="line">\033[1m		设置高亮度</span><br><span class="line">\033[4m		下划线</span><br><span class="line">\033[5m		闪烁</span><br><span class="line">\033[7m		反显</span><br><span class="line">\033[8m		消隐</span><br><span class="line">\033[nA		光标上移n行</span><br><span class="line">\033[nB		光标下移n行</span><br><span class="line">\033[nC		光标右移n列</span><br><span class="line">\033[nD		光标左移n列</span><br><span class="line">\033[x;yH	设置光标位置x行y列</span><br><span class="line">\033[2J		清屏</span><br><span class="line">\033[K		清除从光标到行尾的内客</span><br><span class="line">\033[s		保存光标位置</span><br><span class="line">\033[u		恢复光标位置</span><br><span class="line">\033[?25l	隐藏光标</span><br><span class="line">\033[?25h	显示光标</span><br><span class="line">\033[2J\033[0;0H 	清屏且将光标置顶</span><br></pre></td></tr></table></figure>
 <p>范例：显示文件的十六进制编码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@yanglinqi ~]<span class="comment"># cat &gt; myfile</span></span><br><span class="line">A</span><br><span class="line">B</span><br><span class="line">C</span><br><span class="line">D</span><br><span class="line">[root@yanglinqi ~]<span class="comment"># hexdump -C myfile</span></span><br><span class="line">00000000  41 0a 42 0a 43 0a 44 0a                           |A.B.C.D.|</span><br><span class="line">00000008</span><br></pre></td></tr></table></figure>
-<hr>
 <h3 id="字符集和编码"><a href="#字符集和编码" class="headerlink" title="字符集和编码"></a>字符集和编码</h3><p>许多场合下，字符集与编码这两个概念常被混为一谈，但两者是有差別的。字符集与字符集编码是两个不同层面的概念。</p>
 <p>charset是 character set的简写，即字符集，即二进制和字符的对应关系，不关注最终的存储形式</p>
 <p>encoding是 charset encoding的简写，即字符集编码，简称编码，实现如何将字符转化为实际的二进制进行存储或相反，编码决定了空间的使用的大小</p>
@@ -816,7 +809,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.</span> <span class="nav-text">快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E5%88%86%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">部分基础命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.</span> <span class="nav-text">远程连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%A1%AC%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="nav-number">4.</span> <span class="nav-text">查看硬件信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4"><span class="nav-number">5.</span> <span class="nav-text">日期和时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E6%9C%BA%E5%92%8C%E9%87%8D%E5%90%AF%EF%BC%9A"><span class="nav-number">6.</span> <span class="nav-text">关机和重启：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="nav-number">7.</span> <span class="nav-text">设置主机名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E7%A4%BA%E7%AC%A6"><span class="nav-number">8.</span> <span class="nav-text">提示符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E5%88%86%E7%B1%BB"><span class="nav-number">9.</span> <span class="nav-text">命令分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hash%E5%91%BD%E4%BB%A4%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95"><span class="nav-number">10.</span> <span class="nav-text">hash命令常见用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E5%88%AB%E5%90%8D"><span class="nav-number">11.</span> <span class="nav-text">命令别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">12.</span> <span class="nav-text">命令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">13.</span> <span class="nav-text">文本编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86"><span class="nav-number">14.</span> <span class="nav-text">会话管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#screen"><span class="nav-number">14.1.</span> <span class="nav-text">screen</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tmux"><span class="nav-number">14.2.</span> <span class="nav-text">Tmux</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E4%BF%A1%E6%81%AF-echo"><span class="nav-number">15.</span> <span class="nav-text">输出信息 echo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E7%BC%96%E7%A0%81"><span class="nav-number">16.</span> <span class="nav-text">字符集和编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%8A%E6%8B%AC%E5%8F%B7%E6%89%A9%E5%B1%95"><span class="nav-number">17.</span> <span class="nav-text">命令行及括号扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tab%E9%94%AE%E8%A1%A5%E5%85%A8"><span class="nav-number">18.</span> <span class="nav-text">tab键补全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8E%86%E5%8F%B2-history"><span class="nav-number">19.</span> <span class="nav-text">命令行历史 history</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bash%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">20.</span> <span class="nav-text">bash的快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%B8%AE%E5%8A%A9"><span class="nav-number">21.</span> <span class="nav-text">获取帮助</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#whatis"><span class="nav-number">21.1.</span> <span class="nav-text">whatis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%91%BD%E4%BB%A4%E7%9A%84%E5%B8%AE%E5%8A%A9"><span class="nav-number">21.2.</span> <span class="nav-text">查看命令的帮助</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#man%E5%91%BD%E4%BB%A4"><span class="nav-number">21.3.</span> <span class="nav-text">man命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#info"><span class="nav-number">21.4.</span> <span class="nav-text">info</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%8F%8A%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="nav-number">21.5.</span> <span class="nav-text">系统及第三方应用官方文档</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.</span> <span class="nav-text">快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E5%88%86%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">部分基础命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.</span> <span class="nav-text">远程连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%A1%AC%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="nav-number">4.</span> <span class="nav-text">查看硬件信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4"><span class="nav-number">5.</span> <span class="nav-text">日期和时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E6%9C%BA%E5%92%8C%E9%87%8D%E5%90%AF"><span class="nav-number">6.</span> <span class="nav-text">关机和重启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="nav-number">7.</span> <span class="nav-text">设置主机名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E7%A4%BA%E7%AC%A6"><span class="nav-number">8.</span> <span class="nav-text">提示符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E5%88%86%E7%B1%BB"><span class="nav-number">9.</span> <span class="nav-text">命令分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hash%E5%91%BD%E4%BB%A4%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95"><span class="nav-number">10.</span> <span class="nav-text">hash命令常见用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E5%88%AB%E5%90%8D"><span class="nav-number">11.</span> <span class="nav-text">命令别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">12.</span> <span class="nav-text">命令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">13.</span> <span class="nav-text">文本编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86"><span class="nav-number">14.</span> <span class="nav-text">会话管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#screen"><span class="nav-number">14.1.</span> <span class="nav-text">screen</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tmux"><span class="nav-number">14.2.</span> <span class="nav-text">Tmux</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E4%BF%A1%E6%81%AF-echo"><span class="nav-number">15.</span> <span class="nav-text">输出信息 echo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E7%BC%96%E7%A0%81"><span class="nav-number">16.</span> <span class="nav-text">字符集和编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%8A%E6%8B%AC%E5%8F%B7%E6%89%A9%E5%B1%95"><span class="nav-number">17.</span> <span class="nav-text">命令行及括号扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tab%E9%94%AE%E8%A1%A5%E5%85%A8"><span class="nav-number">18.</span> <span class="nav-text">tab键补全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8E%86%E5%8F%B2-history"><span class="nav-number">19.</span> <span class="nav-text">命令行历史 history</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bash%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">20.</span> <span class="nav-text">bash的快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%B8%AE%E5%8A%A9"><span class="nav-number">21.</span> <span class="nav-text">获取帮助</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#whatis"><span class="nav-number">21.1.</span> <span class="nav-text">whatis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%91%BD%E4%BB%A4%E7%9A%84%E5%B8%AE%E5%8A%A9"><span class="nav-number">21.2.</span> <span class="nav-text">查看命令的帮助</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#man%E5%91%BD%E4%BB%A4"><span class="nav-number">21.3.</span> <span class="nav-text">man命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#info"><span class="nav-number">21.4.</span> <span class="nav-text">info</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%8F%8A%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="nav-number">21.5.</span> <span class="nav-text">系统及第三方应用官方文档</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -832,20 +825,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -940,6 +933,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

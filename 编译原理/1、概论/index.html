@@ -28,16 +28,16 @@
 <meta property="og:site_name" content="杨记">
 <meta property="og:description" content="编译原理 第一部分">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312890.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312891.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312892.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312893.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Compile-img/202205172312890.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Compile-img/202205172312891.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Compile-img/202205172312892.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Compile-img/202205172312893.png">
 <meta property="article:published_time" content="2022-05-17T14:55:41.798Z">
-<meta property="article:modified_time" content="2022-05-19T05:39:14.255Z">
+<meta property="article:modified_time" content="2022-07-27T15:44:09.966Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="编译原理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312890.png">
+<meta name="twitter:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Compile-img/202205172312890.png">
 
 <link rel="canonical" href="http://yanglinqi107.github.io/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/1%E3%80%81%E6%A6%82%E8%AE%BA/">
 
@@ -128,17 +128,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">22</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">16</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">90</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -228,7 +228,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-19 13:39:14" itemprop="dateModified" datetime="2022-05-19T13:39:14+08:00">2022-05-19</time>
+                <time title="修改时间：2022-07-27 23:44:09" itemprop="dateModified" datetime="2022-07-27T23:44:09+08:00">2022-07-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -255,10 +255,10 @@
 <span id="more"></span> 
 <h2 id="翻译程序（Translator）"><a href="#翻译程序（Translator）" class="headerlink" title="翻译程序（Translator）"></a>翻译程序（Translator）</h2><p>将源程序译成逻辑上等价的目标程序的程序。翻译程序有二种工作方式：编译和解释</p>
 <h3 id="解释方式-Interpret"><a href="#解释方式-Interpret" class="headerlink" title="解释方式 ( Interpret )"></a>解释方式 ( Interpret )</h3><p>以源程序作为输入，输入一句解释执行一句，不产生完整的目标程序，相应的翻译程序称为解释程序(Interpreter) </p>
-<p> <img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312890.png" alt="image-20220102142837260" style="zoom:80%;" /></p>
+<p> <img src="https://gitee.com/yanglinqi107/Images/raw/master/Compile-img/202205172312890.png" alt="image-20220102142837260" style="zoom:80%;" /></p>
 <p>解释方式主要特点是：用户程序是消极的。用户程序运行时，控制点在解释程序，即用户程序的执行离不开解释程序。</p>
 <h3 id="编译方式-Compile"><a href="#编译方式-Compile" class="headerlink" title="编译方式 ( Compile )"></a>编译方式 ( Compile )</h3><p>将源程序全部译为目标程序，该目标程序可在操作系统环境下直接执行，相应的翻译程序称为编译程序(Compiler) </p>
-<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312891.png" alt="image-20220102143329383" style="zoom: 80%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Compile-img/202205172312891.png" alt="image-20220102143329383" style="zoom: 80%;" /></p>
 <ul>
 <li>编辑程序的工作结果是ASCII码形式的源程序。</li>
 <li>编译程序以ASCII码形式的源程序为输入，它的工作结果是二进制形式的目标程序，但并未包括用户程序中所使用的系统函数的目标代码。从整体上来看，程序是不完整的，程序中的部分地址尚未确定（例系统函数的调用）。</li>
@@ -290,7 +290,7 @@
 <h3 id="编译程序与解释程序的异同"><a href="#编译程序与解释程序的异同" class="headerlink" title="编译程序与解释程序的异同"></a>编译程序与解释程序的异同</h3><p>高级语言有两种翻译途径：==编译与解释==。</p>
 <p>它们的主要区别在于==是否产生目标程序==。</p>
 <p>解释程序不产生目标程序，而是边解释边执行源程序本身，是一种“会话型”语言。（如python）</p>
-<h3 id="高级语言程序的处理过程"><a href="#高级语言程序的处理过程" class="headerlink" title="高级语言程序的处理过程"></a>高级语言程序的处理过程</h3><p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312892.png" alt="image-20220102144639527" style="zoom:80%;" /></p>
+<h3 id="高级语言程序的处理过程"><a href="#高级语言程序的处理过程" class="headerlink" title="高级语言程序的处理过程"></a>高级语言程序的处理过程</h3><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Compile-img/202205172312892.png" alt="image-20220102144639527" style="zoom:80%;" /></p>
 <h3 id="编译程序的5个阶段"><a href="#编译程序的5个阶段" class="headerlink" title="编译程序的5个阶段"></a>编译程序的5个阶段</h3><p>1、词法分析</p>
 <blockquote>
 <p>任务：从左至右读字符流的源程序，识别(拼)单词。<br>【单词】单词是具有独立意义的最小语法单位。<br>多数程序语言中，单词符号一般包括 —各类型的常数、保留字、标识符、运算符、界符等等。<br>识别原则：词法规则<br>描述工具：正规式<br>                  正规文法<br>                  有穷自动机FA<br>自动生成工具：LEX</p>
@@ -348,7 +348,7 @@
 <p>标识符的各种属性是在编译的不同阶段填入符号表的。词法分析阶段只能分析出标识符名，语法分析阶段只能判断标识符在语句中出现是否合法，只有到了语义分析阶段，才能将标识符的各种属性填入符号表并使用这些属性生成中间代码。 </p>
 <h3 id="出错处理"><a href="#出错处理" class="headerlink" title="出错处理"></a>出错处理</h3><p>出错处理程序的任务包括 检查错误、报告出错信息、排错、恢复编译工作。</p>
 <h3 id="编译程序的组成"><a href="#编译程序的组成" class="headerlink" title="编译程序的组成"></a>编译程序的组成</h3><p>词法分析程序、语法分析程序、语义分析程序、中间代码生成程序、代码优化程序、目标代码生成程序、表格管理程序和出错处理程序</p>
-<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Compile-img/202205172312893.png" alt="image-20220102150408304" style="zoom:80%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Compile-img/202205172312893.png" alt="image-20220102150408304" style="zoom:80%;" /></p>
 <h3 id="遍（pass）"><a href="#遍（pass）" class="headerlink" title="遍（pass）"></a>遍（pass）</h3><p>【遍】就是对源程序或源程序的中间结果从头到尾扫描一次，并作有关的加工处理，生成新的中间结果或目标程序。<br>Turbo C是一遍完成编译，以及预处理和后续处理。<br>两遍编译：</p>
 <ul>
 <li>1.进行词法分析、语法分析、语义分析，生成中间代码作为文件保留，以及符号表文件。</li>
@@ -469,20 +469,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -577,6 +577,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

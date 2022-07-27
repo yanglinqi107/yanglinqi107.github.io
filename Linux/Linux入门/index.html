@@ -28,14 +28,19 @@
 <meta property="og:site_name" content="杨记">
 <meta property="og:description" content="Linux入门学习，介绍了Linux常用命令，Linux文件系统权限，进程，软件包管理，Shell编程的基础 学习自华为iLearnX官网">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Linux-img/image-20220121152327120.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Linux-img/image-20220329122538336.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220121152327120.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220407113940167.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220129213503119.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220329122538336.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220528154743300.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220605120200873.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220522150209246.png">
 <meta property="article:published_time" content="2022-01-29T13:05:00.000Z">
-<meta property="article:modified_time" content="2022-05-19T05:39:14.289Z">
+<meta property="article:modified_time" content="2022-07-27T15:44:10.018Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Linux-img/image-20220121152327120.png">
+<meta name="twitter:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220121152327120.png">
 
 <link rel="canonical" href="http://yanglinqi107.github.io/Linux/Linux%E5%85%A5%E9%97%A8/">
 
@@ -126,17 +131,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">22</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">16</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">90</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -226,7 +231,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-19 13:39:14" itemprop="dateModified" datetime="2022-05-19T13:39:14+08:00">2022-05-19</time>
+                <time title="修改时间：2022-07-27 23:44:10" itemprop="dateModified" datetime="2022-07-27T23:44:10+08:00">2022-07-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -254,7 +259,7 @@
 <span id="more"></span>
 <hr>
 <h3 id="Linux简介"><a href="#Linux简介" class="headerlink" title="Linux简介"></a>Linux简介</h3><hr>
-<h4 id="Linux内核版本"><a href="#Linux内核版本" class="headerlink" title="Linux内核版本"></a>Linux内核版本</h4><p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Linux-img/image-20220121152327120.png" alt="image-20220121152327120"></p>
+<h4 id="Linux内核版本"><a href="#Linux内核版本" class="headerlink" title="Linux内核版本"></a>Linux内核版本</h4><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220121152327120.png" alt="image-20220121152327120" style="zoom:80%;" /></p>
 <hr>
 <h4 id="Linux安装"><a href="#Linux安装" class="headerlink" title="Linux安装"></a>Linux安装</h4><ul>
 <li>安装程序的引导方式<ul>
@@ -328,27 +333,27 @@
 </ul>
 <hr>
 <h4 id="查看文件和文件夹"><a href="#查看文件和文件夹" class="headerlink" title="查看文件和文件夹"></a>查看文件和文件夹</h4><ul>
-<li>Is命令<ul>
+<li><code>ls</code>命令<ul>
 <li>Is命令的功能是显示指定目录下的文件目录清单</li>
 <li>相当于dos下的di命令，而且其参数更加丰富多样</li>
 </ul>
 </li>
-<li><p>Is示例一    不带参数</p>
+<li><p><code>ls</code>示例一    不带参数</p>
 <ul>
 <li><code>ls</code></li>
 <li>功能：显示指定目录中的文件清单，如果没有指定任何目录，则默认为当前目录。</li>
 </ul>
 </li>
-<li><p>Is示例二     显示隐含文件</p>
+<li><p><code>ls</code>示例二     显示隐含文件</p>
 <ul>
-<li><code>Is -a</code></li>
+<li><code>ls -a</code></li>
 <li>参数-a的功能：显示隐含文件</li>
 <li>说明：若文件名以 “.” 开头，则认为是隐含的，进而普通的ls命令不显示以 “.” 开头的文件；所以要完全显示某目录下的文件清单，必须加上 -a 参数オ行。</li>
 </ul>
 </li>
-<li><p>Is示例三       长格式输出</p>
+<li><p>ls示例三       长格式输出</p>
 <ul>
-<li><code>Is -l</code></li>
+<li><code>ls -l</code></li>
 <li>参数 -l 的功能是：以长格式列表输出指定目录中的文件清单。</li>
 <li>解释长格式输出的内容如下:</li>
 <li>文件类型  文件权限    硬连接数  属主  属组  大小  日期  时间  文件名<pre><code>    `d   rwxrwxr-x   2   user1 user1 4096 Aug 17 09:10  abc` 
@@ -356,14 +361,54 @@
 </ul>
 </li>
 <li><p>ls示例四     递归显示</p>
-</li>
+<ul>
 <li><code>ls -R</code></li>
 <li>参数-R的功能是：递归显示指定目录下的文件清单，即会显示指定目录分支内各子目录中的文件清单。</li>
 </ul>
-<p>ls -la</p>
-<p>ls -Ra /</p>
-<p>ls -Ral /etc</p>
-<hr>
+</li>
+</ul>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220407113940167.png" alt="image-20220407113940167" style="zoom:67%;" /></p>
+<p><strong>文件类型</strong>：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标识</th>
+<th>文件类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>普通文件</td>
+</tr>
+<tr>
+<td>d</td>
+<td>目录文件</td>
+</tr>
+<tr>
+<td>c</td>
+<td>字符设备文件</td>
+</tr>
+<tr>
+<td>b</td>
+<td>块设备文件</td>
+</tr>
+<tr>
+<td>p</td>
+<td>管道或FIFO</td>
+</tr>
+<tr>
+<td>l</td>
+<td>符号链接</td>
+</tr>
+<tr>
+<td>s</td>
+<td>套接字</td>
+</tr>
+</tbody>
+</table>
+</div>
 <h4 id="查看命令使用"><a href="#查看命令使用" class="headerlink" title="查看命令使用"></a>查看命令使用</h4><p><code>name --help</code></p>
 <hr>
 <h4 id="显示当前路径"><a href="#显示当前路径" class="headerlink" title="显示当前路径"></a>显示当前路径</h4><ul>
@@ -674,56 +719,90 @@
 </ul>
 </li>
 </ul>
-<hr>
-<h4 id="压缩打包命令和解压缩"><a href="#压缩打包命令和解压缩" class="headerlink" title="压缩打包命令和解压缩"></a>压缩打包命令和解压缩</h4><ul>
-<li><code>tar</code></li>
-<li>tar命令是经典的备份/还原命令，几乎所有最新的软件包都是通过tar包发布的</li>
+<h4 id="压缩和解压缩"><a href="#压缩和解压缩" class="headerlink" title="压缩和解压缩"></a>压缩和解压缩</h4><p>缺项：只能对文件分别压缩，不能打包压缩成一个文件，且不能压缩目录</p>
+<p><code>gzip</code> 命令 和 <code>gunzip</code> 命令</p>
+<ul>
+<li><code>gzip myetc.tar</code></li>
+<li><p>功能：将文件 myetc.tar 压缩为 myetc.tar.gz</p>
+</li>
+<li><p><code>gunzip myetc.tar.gz</code></p>
+</li>
+<li>功能：将文件 myetc.tar.gz 解压缩为 myetc.tar</li>
+</ul>
+<p>类似还有 <code>bzip2</code> 命令  和 <code>bunzip2</code> 命令 压缩文件后缀为<code>bz2</code> </p>
+<ul>
+<li><code>bzip2 -k *.txt</code> </li>
+<li>将所有<code>.txt</code>结尾的文件 压缩为 <code>.txt.bz2</code> </li>
+<li><code>-k</code>可以保留原文件</li>
+</ul>
+<h4 id="打包压缩"><a href="#打包压缩" class="headerlink" title="打包压缩"></a>打包压缩</h4><p><code>tar</code> 命令</p>
+<p>tar命令是经典的备份/还原命令，几乎所有最新的软件包都是通过tar包发布的</p>
+<ul>
+<li>参数：<ul>
+<li><code>-c</code>  创建  （压缩）</li>
+<li><code>-x</code>  释放  （解压缩）</li>
+<li><code>-v</code>  显示处理过程</li>
+<li><code>-f</code>  指定压缩或解压缩文件名</li>
+<li><code>-z</code>  使用<code>gzip</code>命令压缩文件 后缀<code>.tar.gz</code></li>
+<li><code>-j</code>  使用<code>bzip2</code>命令压缩文件 后缀<code>tar.bz2</code> </li>
+<li><code>-Z</code>  调用 compress 命令来压缩，扩展名为<code>.tar.Z</code> </li>
+<li><code>-C</code> 可指定解压缩位置</li>
+</ul>
+</li>
 <li>示例——打包（备份）<ul>
-<li><code>tar -cvf myetc.tar /etc</code></li>
-<li>参数 -c    打包（创建）</li>
-<li>参数 -v   显示处理过程</li>
-<li>参数 -f    指定文档名</li>
+<li><code>tar -cvf myetc.tar /etc</code> </li>
 <li>功能：将目录 /etc 打包为一个名为myetc.tar的文档</li>
 </ul>
 </li>
-<li><p>示例——打包（备份）并压缩</p>
-<ul>
+<li>示例——打包（备份）并压缩<ul>
 <li><code>tar -zcvf myetc.tar.gz /etc</code></li>
 <li>功能：将目录 /etc 打包并压缩为一个名为 myetc.tar.gz 的文档</li>
-<li>参数 -z    调用 gzip 命令压缩，扩展名为gz</li>
-<li>参数 -Z    调用 compress 命令来压缩，扩展名为Z</li>
-<li>参数 -j      调用 bzip2 命令来压缩，扩展名为bz2</li>
 </ul>
 </li>
-<li><p>示例——解压缩还原</p>
-<ul>
+<li>示例——解压缩还原<ul>
 <li><code>tar -zxvf myetc.tar.gz</code></li>
-<li>功能：参数 -c 换成 -x 即可实现还原释放的功能</li>
 <li>说明：未指明还原位置，将会还原在当前目录下</li>
 <li><code>tar -zxvf myetc.tar.gz -C /tmp</code></li>
 <li>参数 -C 可指明还原位置</li>
 </ul>
 </li>
 </ul>
-<p>gzip 命令</p>
+<p><code>rar</code> 需手动安装</p>
 <ul>
-<li>示例<ul>
-<li><code>gzip myetc.tar</code></li>
-<li>功能：将文件 myetc.tar 压缩为 myetc.tar.gz</li>
+<li>参数<ul>
+<li><code>a</code> 压缩</li>
+<li><code>x</code> 解压缩</li>
+</ul>
+</li>
+<li>压缩 <code>rar a 生成文件名 要压缩的内容</code><ul>
+<li><code>rar a alltxt dir2/</code></li>
+<li>将dir2目录压缩，会自动夹上<code>.rar</code>后缀</li>
+</ul>
+</li>
+<li>解压缩 <code>rar x 压缩文件 释放的位置</code><ul>
+<li><code>rar x dirbk.rar dir/</code></li>
+<li>将<code>dirbk.rar</code>解压缩值<code>dir</code>目录中</li>
 </ul>
 </li>
 </ul>
-<p>gunzip 命令</p>
+<p><code>zip</code></p>
 <ul>
-<li>示例<ul>
-<li><code>gunzip myetc.tar.gz</code></li>
-<li>功能：将文件 myetc.tar.gz 解压缩为 myetc.tar</li>
+<li>压缩 <code>zip 压缩包名 压缩的文件或目录</code> 压缩目录要加 <code>-r</code><ul>
+<li><code>zip -r dirbk dir</code> 压缩目录<code>dir</code>为<code>dirbk.zip</code></li>
+<li><code>zip txt *.txt</code> 压缩所有<code>.txt</code>后缀的文件为<code>txt.zip</code></li>
+</ul>
+</li>
+<li>解压缩 <code>unzip 压缩包名 -d 解压目录</code><ul>
+<li><code>zip dirbk.zip -d dir1/</code> 解压缩到dir1目录</li>
 </ul>
 </li>
 </ul>
 <hr>
 <h4 id="挂载与卸载命令"><a href="#挂载与卸载命令" class="headerlink" title="挂载与卸载命令"></a>挂载与卸载命令</h4><ul>
-<li>mount 命令</li>
+<li><code>mount</code> 命令</li>
+</ul>
+<p>如果系统挂载成功，在<code>/media</code>目录下，如果手动挂载，一般置于<code>/mnt</code>目录</p>
+<ul>
 <li>示例——挂载光盘<ul>
 <li><code>mount -t iso9660 /dev/cdrom /mnt/cdrom</code></li>
 <li>功能：参数 -t 指明要挂载的文件系统的类型，设备文件，挂载点</li>
@@ -734,7 +813,7 @@
 <li><code>mount -t vfat /dev/sda1 /mnt/myusb</code></li>
 <li>功能：将文件系统类型为 vfat 的U盘 挂载到 /mnt/myusb 目录下</li>
 <li>说明：vfat 针对的是 FAT32、FAT16文件系统；U盘采用与 SCSI 硬盘相同的设备文件；</li>
-<li>注意：一般在挂载U盘前，先执行  <code>fdisk -l</code> 命令</li>
+<li>注意：一般在挂载U盘前，先执行  <code>fdisk -l</code> 命令 查看U盘的名称，如这里是<code>/dev/sda1</code></li>
 </ul>
 </li>
 <li>示例——挂载软盘<ul>
@@ -743,7 +822,7 @@
 <li>说明：挂载点不一定必须在 /mnt 下，它可以是任意一个空目录</li>
 </ul>
 </li>
-<li>umount 命令</li>
+<li><code>umount</code> 命令</li>
 <li>示例<ul>
 <li><code>umount /mnt/cdrom</code></li>
 <li>功能：卸载光盘文件系统</li>
@@ -886,8 +965,8 @@
 <hr>
 <h4 id="管道"><a href="#管道" class="headerlink" title="管道 |"></a>管道 |</h4><ul>
 <li>管道示例—— 一级管道<ul>
-<li><code>ls -l | grep &quot;^l&quot;</code></li>
-<li>功能：以长格式显示当前目录下的符号连接文件。该命令行首先执行 ls -l,并把其结果当作grep “^l”命令的输入文件，其中 “^l” 表示以1开头。</li>
+<li><code>ls -l | grep &quot;^1&quot;</code></li>
+<li>功能：以长格式显示当前目录下的符号连接文件。该命令行首先执行 <code>ls -l</code>,并把其结果当作grep “^l”命令的输入文件，其中 “^1” 表示以1开头。</li>
 </ul>
 </li>
 <li>管道示例—— 多级管道<ul>
@@ -921,37 +1000,122 @@
 <ul>
 <li>```<br>cat &lt;&lt;! &gt;a.txt<blockquote>
 <p>hello<br>world<br>!</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - 功能：将 &quot;!&quot;之间的内容重定向到a.txt文件中去，不包括 &quot;!&quot;。</span><br><span class="line"></span><br><span class="line">  - 说明：这是一个组合使用输入输出重定向的例子，其中 &quot;!&quot; 是定界符，其它字符也可以充当定界符。</span><br><span class="line"></span><br><span class="line">  - 注意：&quot;!&quot; 与后面的 &quot;&gt;&quot; 之间至少要有一个空格。这是一种非常经典的用法，可以用在she‖编程环境中。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### 查看文件属性</span><br><span class="line"></span><br><span class="line">`stat filename`</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### vi 编辑器</span><br><span class="line"></span><br><span class="line">ⅵ编辑器是 Linux和Unix上最基本的文本编辑器，工作在字符模式下。由于不需要图形界面，vi是效率很高的文本编辑器。尽管在 Linux上也有很多图形界面的编辑器可用，但vi在系统和服务器管理中的功能是那些图形编辑器所无法比拟的。</span><br><span class="line"></span><br><span class="line">vi 有三种工作方式：命令模式 (Command mode) ，输入模式 (Insert mode) 和 底线命令模式 (Last line mode)</span><br><span class="line"></span><br><span class="line">![image-20220129164752774](https://cdn.jsdelivr.net/gh/yanglinqi107/images/Linux-img/image-20220129164752774.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- 光标相对移动n行</span><br><span class="line">  - 光标从当前位置下移 n 行，直接敲数字  `n ENTER`，或者输入 `n +` </span><br><span class="line">  - 上移 n 行，输入 `n -`</span><br><span class="line">- d命令——删除行</span><br><span class="line">  -  `dd` 删除当前行</span><br><span class="line">  - `n dd`从当前行开始连续删除 n 行，包括当前行</span><br><span class="line">- y命令——复制行</span><br><span class="line">  - `yy` 复制当前行</span><br><span class="line">  - `n yy` 从当前开始连续复制 n 行，包括当前行</span><br><span class="line">- p命令——粘贴</span><br><span class="line">  - `p` 粘贴在当前行的下方</span><br><span class="line">  - `n p` 在当前行的下方连续粘贴 n 遍</span><br><span class="line">- 显示/隐藏行号</span><br><span class="line">  - `:set number`   显示行号</span><br><span class="line">  - `:set nonumber`  隐藏行号</span><br><span class="line">- 存盘</span><br><span class="line">  - `:w`     存盘</span><br><span class="line">  - `ZZ` 或 `:wq`    存盘并退出</span><br><span class="line"></span><br><span class="line">- 退出——q命令</span><br><span class="line"></span><br><span class="line">  - `:q`  退出</span><br><span class="line">  - `:q!`   不保存修改退出</span><br><span class="line"></span><br><span class="line">- 查找</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>/字符串 ENTER        向后查找指定的字符串<br>/ ENTER             向后查找上一次查找的内容<br>?字符串              向前查找字符串<br>?                   向后查找上一次查找的内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - 功能：将 &quot;!&quot;之间的内容重定向到a.txt文件中去，不包括 &quot;!&quot;。</span><br><span class="line"></span><br><span class="line">  - 说明：这是一个组合使用输入输出重定向的例子，其中 &quot;!&quot; 是定界符，其它字符也可以充当定界符。</span><br><span class="line"></span><br><span class="line">  - 注意：&quot;!&quot; 与后面的 &quot;&gt;&quot; 之间至少要有一个空格。这是一种非常经典的用法，可以用在she‖编程环境中。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### vi 编辑器</span><br><span class="line"></span><br><span class="line">ⅵ编辑器是 Linux和Unix上最基本的文本编辑器，工作在字符模式下。由于不需要图形界面，vi是效率很高的文本编辑器。尽管在 Linux上也有很多图形界面的编辑器可用，但vi在系统和服务器管理中的功能是那些图形编辑器所无法比拟的。</span><br><span class="line"></span><br><span class="line">`vimtutor` 查看文档</span><br><span class="line"></span><br><span class="line">vi 有三种工作方式：**命令模式** (Command mode) ，**输入模式** (Insert mode) 和 **底线命令模式** (Last line mode)</span><br><span class="line"></span><br><span class="line">![image-20220129164752774](https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220129164752774.png)</span><br><span class="line"></span><br><span class="line">#### 命令模式</span><br><span class="line"></span><br><span class="line">- 光标移动</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>n -  上移n行<br>n +  下移n行</p>
 </blockquote>
 </li>
 </ul>
+<p>h    向左移动<br>l    向右<br>k    向上<br>j    向下<br>0   行首<br>$   行尾<br>gg  文件首<br>G   尾行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">- 删除（也是剪切）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>x    删除光标处的单个字符<br>X   删除光标前的单个字符<br>dd    删除光标所在行<br>dw    删除当前字符至单词尾的所有字符，包括空格<br>de    删除当前字符至单词尾的所有字符，不包括空格<br>d$    删除当前字符至行尾的所有字符<br>d^    删除当前字符至行首的所有字符<br>J    删除行尾的换行符，相当于合并当前行和下一行</p>
+<p>可以配合数字n使用:<br>n x  从当前光标开始连续删除n个字符<br>n dd 从当前行开始连续删除n行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 复制</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>yy    复制当前行<br>n yy  从当前开始连续复制 n 行，包括当前行<br>v进入视图模式-&gt;移动光标选择字符-&gt;y复制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 粘贴</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>p   粘贴在当前行的下方或当前光标后面<br>n p 在当前行的下方连续粘贴 n 遍</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 翻页</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>ctrl+f        向前翻整页<br>ctrl+b        向后翻整页<br>ctrl+u        向前翻半页<br>ctrl+d        向后翻半页</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 撤销：`u`</span><br><span class="line"></span><br><span class="line">- 恢复：`ctrl+r` </span><br><span class="line"></span><br><span class="line">- 缩进：向后 `&gt;&gt;`  向前 `&lt;&lt;`</span><br><span class="line"></span><br><span class="line">- 保存退出`ZZ` </span><br><span class="line"></span><br><span class="line">- 跳转至`man`帮助文档，`shift+k`，跳转到指定页数`n+shift+k` </span><br><span class="line"></span><br><span class="line">- `[+d` 显示宏</span><br><span class="line"></span><br><span class="line">- `%` 括号跳转</span><br><span class="line"></span><br><span class="line">- 输入`r`，从光标开始写入字符覆盖</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 末行模式</span><br><span class="line"></span><br><span class="line">- 显示/隐藏行号</span><br><span class="line"></span><br><span class="line">  - `:set number`   显示行号</span><br><span class="line"></span><br><span class="line">  - `:set nonumber`  隐藏行号</span><br><span class="line"></span><br><span class="line">- 跳行</span><br><span class="line">  </span><br><span class="line">  - `:n` 跳到第n行</span><br><span class="line">  </span><br><span class="line">- 退出</span><br><span class="line"></span><br><span class="line">  - `:q`  退出</span><br><span class="line">  - `:w`     存盘</span><br><span class="line">  - `:wq`    存盘并退出</span><br><span class="line">  - `:q!` 不保存退出</span><br><span class="line"></span><br><span class="line">- 执行shell命令</span><br><span class="line"></span><br><span class="line">  - 如：`:!ls` ， `:!pwd` </span><br><span class="line"></span><br><span class="line">- 查找</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>/字符串 ENTER        向后查找指定的字符串<br>/ ENTER             向后查找上一次查找的内容<br>?字符串              向前查找字符串<br>?                   向后查找上一次查找的内容</p>
 <p>n                    查找方向的下一个字符串<br>N                    查找方向反向的下一个字符串</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- vi光标移动与翻页</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>光标移动<br>h    向左移动<br>l    向右<br>k    向上<br>j    向下</p>
-<p>翻页<br>ctrl+f        向前翻整页<br>ctrl+b        向后翻整页<br>ctrl+u        向前翻半页<br>ctrl+d        向后翻半页</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- vi进入输入模式</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>i    当前光标处 进入插入状态<br>a    当前光标后 进入插入状态<br>A    光标移动到当前行末，进入插入状态<br>o    当前行下面插入新行，进入插入状态<br>O    当前行上面插入新行，进入插入状态<br>cw    删除当前光标至所在单词尾部的字符，进入插入状态<br>c$    删除当前光标至行尾的字符，进入插入状态<br>c^    删除当前光标之前至行首的字符，进入插入转态</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- vi 删除操作</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>x    删除光标处的单个字符<br>dd    删除光标所在行<br>dw    删除当前字符至单词尾的所有字符，包括空格<br>de    删除当前字符至单词尾的所有字符，不包括空格<br>d$    删除当前字符至行尾的所有字符<br>d^    删除当前字符至行首的所有字符<br>J    删除行尾的换行符，相当于合并当前行和下一行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### Linux文件系统权限</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### 文件系统</span><br><span class="line"></span><br><span class="line">文件系统用来存放和管理所有系统使用的文件和数据，其载体是软盘或硬盘分区。一个软盘或硬盘分区在作为文件系统使用时，必须进行初始化，并将如何组织文件的数据结构写到这些介质上，这个过程就是建立文件系统过程。</span><br><span class="line"></span><br><span class="line">Linux的文件系统是树形结构，所有的文件和目录都是树上的节点，树的根就是整个文件系统的最顶层目录，即根目录。文件连接到目录，目录再连接到上一层目录，所有的文件和目录最终都归结到根目录，形成整个文件系统。</span><br><span class="line"></span><br><span class="line">Linux使用一个统一的接口支持多种文件系统，每种文件系统都有各自的格式和特征(如文件名长度、最大文件大小等)。目前， Linux支持的文件系统类型MINIX、EXT、EXT2、EXT3、proc、hpfs、nfs、 isofs、 msdos fat、vfat、ntfs、umsdos、 xiafs 及 sysv 等。 Red Hat Linux默认的文件系统是 ext3。</span><br><span class="line"></span><br><span class="line">第一个专门为 Linux设计的文件系统被称为扩展文件系统( Extended File System)或EXT。它出现于1992年4月，但性能不太好。1993年扩展文件系统第二版ext2被设计出来并添加 Linux中。ext2是一个强大的可扩展文件系统，被认为是当时最成功的 Linux文件系统。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### ext3文件系统的特性</span><br><span class="line"></span><br><span class="line">- 可用性</span><br><span class="line">  - 除非发生硬件故障，即使非法关机，ext3也不需要文件系统校验</span><br><span class="line">- 数据完整性</span><br><span class="line">  - ext3文件系统在非法关机是，数据完整性能得到可靠的保障</span><br><span class="line"></span><br><span class="line">- 速度</span><br><span class="line">  - 尽管ext3写入数据的次数多于ext2，但是ext3常常快于ext2</span><br><span class="line"></span><br><span class="line">- 简易转换</span><br><span class="line">  - ext可以容易地不经格式化把ext2转换为ext3系统，体现了可靠的日志文件系统的优越性</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### Linux的文件系统结构</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">![image-20220129213503119](https://cdn.jsdelivr.net/gh/yanglinqi107/images/Linux-img/image-20220129213503119.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- `/home` 用户的主目录，比如说有个用户叫`wang`,那他的主目录就是 `/home/wang`</span><br><span class="line">- `/lib` 这个目录里存放着系统最基本的动态链接共享库，其作用类似于 `Windows` 里的 `.dll`文件。几乎所有的应用程序都需要用到这些共享库。</span><br><span class="line">- `/mnt` 这个目录是空的，系统提供这个目录是让用户临时挂载别的文件系统。</span><br><span class="line">- `/proc` 这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访可这个目录来获取系统信息</span><br><span class="line">- `/root` 系统管理员，超级权限者的用户主目录</span><br><span class="line">- `/sbin`  s 就是Super User的意思，也就是说这里存放的是一些系统管理员使用的系统管理程序</span><br><span class="line">- `/tmp` 用来存放一些临时文件的地方</span><br><span class="line">- `/usr` 这是个最庞大的目录，我们要用到的很多应用程序和文件几乎都存放在这个目录下。</span><br><span class="line">- `/var` 这个目录中存放着经常变动的文件，为了保持`/usr`的相对稳定，那些经常被修改的目录可以放在这个目录下。系统的日志文件就在`/var/log`目录中。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### 常见文件所在目录</span><br><span class="line"></span><br><span class="line">- hosts                                    `/etc`</span><br><span class="line">- 全局profile                          `/etc`</span><br><span class="line">- 日志文件                               `/var/log/message`</span><br><span class="line">- 用户环境变量                        `~/.bash_profile`或者`~/.profile`等</span><br><span class="line">- 用户文件                                `/etc/passwd`</span><br><span class="line">- 组对应文件                            `/etc/group`</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### 文件名与文件类型</span><br><span class="line"></span><br><span class="line">文件名是一个文件的标识。 Red Hat Linux系统中的文件名的命名规则与 Windows系统基本相同。它同样是由字母、数字、下划线、圆点等组成，最长不能超过255个字符。在 Red Hat Linux系统中，没有像 Windows系统那样明显的扩展名，但它对字母大小写是严格区分的。</span><br><span class="line"></span><br><span class="line">Linux有四种基本文件系统类型：</span><br><span class="line"></span><br><span class="line">- 普通文件：如文本文件、C语言源代码、Shel脚本、二进制的可执行文件等。</span><br><span class="line">- 目录文件：包括文件名、子目录名及其指针。它是 Linux储存文件名的唯一地方。</span><br><span class="line">- 链接文件：它是一个文件的第二个名字，这是针对多用户共享同一文件而产生的文件。</span><br><span class="line">- 特殊文件：Linux的一些设备如磁盘、终端、打印机等都在文件系统中表示出来，这类文件就是特殊文件，常放在`/dev`目录内。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>[user1@server1 ~]$ ls -l<br>drwxrwxr-x 2 user1 user1 4096 Aug 17 09:10 abc</p>
-</li>
-<li><p>：普通文件<br>d ：目录文件，在Linux中目录也是文件，不仅如此，实际上在Linux中任何设备也可以被当作文件处理<br>l ：符号连接文件<br>b ：快设备文件<br>  如硬盘的设备文件/dev/hda，其中字母a表示第一块，h表示IDE类型的硬盘，SCSI类型的硬盘用s表示<br>  分区也有相对应的设备文件，如/dev/sdb3，表示第2块SCSI硬盘上的第三个分区<br>  U盘也采用SCSI硬盘的设备文件名来命名<br>c ：表示字符设备文件，如/dev/tty1<br>p ：表示管道文件<br>s ：表示套接字文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### 文件权限</span><br><span class="line"></span><br><span class="line">Linux文件有三种典型的权限 `rwx`</span><br><span class="line"></span><br><span class="line">- r（读权限 4）</span><br><span class="line">- w（写权限 2），</span><br><span class="line">- x（执行权限 1）</span><br><span class="line"></span><br><span class="line">示例说明：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>[user1@server1 ~]$ ls -l<br>drwxrwxr-x 2 user1 user1 4096 Aug 17 09:10 abc</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 替换：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>s/jack/luck   将当前行的首个jack替换成luck<br>s/jack/luck/g 替换当前行所有jack<br>%s/jack/luck/g   全文替换<br>27,30s/jack/luck/g  27到30行替换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 分屏：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>sp    水平分屏<br>vsp   垂直分屏<br>vsp test  分屏打开test文件<br>ctrl+ww 切换分屏<br>qall  关闭所有分屏<br>q     关闭当前光标所在分屏</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 输入模式</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>i    当前光标前插入<br>I   当前行首插入<br>a    当前光标后插入<br>A    当前行末插入<br>o    当前行下面插入新行，插入<br>O    当前行上面插入新行，插入<br>s   删除光标后单个字符，插入<br>S   删除当前行，插入<br>cw    删除当前光标至所在单词尾部的字符，进入插入状态<br>c$    删除当前光标至行尾的字符，进入插入状态<br>c^    删除当前光标之前至行首的字符，进入插入转态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**vim打造IDE**：</span><br><span class="line"></span><br><span class="line">- 系统级配置文件目录：`/etc/vim/vimrc`</span><br><span class="line">- 用户级配置文件目录：`~/.vim/vimrc` </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### vi配置文件</span><br><span class="line"></span><br><span class="line">`/etc/vimrc` 或 `/etc/vim/vimrc`  所有用户的配置</span><br><span class="line"></span><br><span class="line">**设置默认显示行号**</span><br><span class="line"></span><br><span class="line">1. 拷贝`/etc/vimrc`至当前用户家目录下`~/.vimrc`</span><br><span class="line">2. 追加`set number`</span><br><span class="line"></span><br><span class="line">**设置TAB缩进**</span><br><span class="line"></span><br><span class="line">默认8空格</span><br><span class="line"></span><br><span class="line">在.vimrc中关于tab的设置：</span><br><span class="line"></span><br><span class="line">```c</span><br><span class="line">set expandtab     //将tab扩展成空格</span><br><span class="line">set noexpandtab   //将tab不扩展成空格</span><br><span class="line">set ts=4          //或set tabstop=4，ts是tabstop的缩写，设tab为4个空格，默认是8个空格</span><br><span class="line">set softtabstop=4 //表示在编辑模式的时候按退格键的时候退回缩进的长度，当使用expandtab时特别有用</span><br><span class="line">set shiftwidth=4  //每一级缩进是4个空格</span><br><span class="line"></span><br><span class="line">set cindent       //针对C语言自动缩进。</span><br><span class="line">set autoindent    //表示自动缩进</span><br><span class="line">set smarttab      //根据文件中其他地方的缩进空格个数来确定一个tab是多少个空格</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>在长格式输出中文件类型的后面有9位权限位，实际上这是针对不同用户而设定的，如下所示。</p>
-<p>属主的权限    属组的权限    其他用户的权限<br>  rwx         rwx          r-x<br>4+2+1=7        4+2+1=7        4+0+1=5</p>
-<p>所以abc这个文件夹（d 表明abc是文件夹）的权限就是775<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**修改权限**</span><br><span class="line"></span><br><span class="line">- `chmod`命令</span><br><span class="line">  </span><br></pre></td></tr></table></figure><br>    chmod [who] operator [permission] filename<br>    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- `who`的含义：</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>  u  文件属主权限<br>  g   同组用户权限<br>  o   其他用户权限<br>  a   所有用户权限（文件属主、同组用户、其他用户），默认值<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- `operator` 的含义：</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h3 id="Linux文件系统权限"><a href="#Linux文件系统权限" class="headerlink" title="Linux文件系统权限"></a>Linux文件系统权限</h3><h4 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h4><p>文件系统用来存放和管理所有系统使用的文件和数据，其载体是软盘或硬盘分区。一个软盘或硬盘分区在作为文件系统使用时，必须进行初始化，并将如何组织文件的数据结构写到这些介质上，这个过程就是建立文件系统过程。</p>
+<p>Linux的文件系统是树形结构，所有的文件和目录都是树上的节点，树的根就是整个文件系统的最顶层目录，即根目录。文件连接到目录，目录再连接到上一层目录，所有的文件和目录最终都归结到根目录，形成整个文件系统。</p>
+<p>Linux使用一个统一的接口支持多种文件系统，每种文件系统都有各自的格式和特征(如文件名长度、最大文件大小等)。目前， Linux支持的文件系统类型MINIX、EXT、EXT2、EXT3、proc、hpfs、nfs、 isofs、 msdos fat、vfat、ntfs、umsdos、 xiafs 及 sysv 等。 Red Hat Linux默认的文件系统是 ext3。</p>
+<p>第一个专门为 Linux设计的文件系统被称为扩展文件系统( Extended File System)或EXT。它出现于1992年4月，但性能不太好。1993年扩展文件系统第二版ext2被设计出来并添加 Linux中。ext2是一个强大的可扩展文件系统，被认为是当时最成功的 Linux文件系统。</p>
+<h4 id="ext3文件系统的特性"><a href="#ext3文件系统的特性" class="headerlink" title="ext3文件系统的特性"></a>ext3文件系统的特性</h4><ul>
+<li>可用性<ul>
+<li>除非发生硬件故障，即使非法关机，ext3也不需要文件系统校验</li>
+</ul>
+</li>
+<li><p>数据完整性</p>
 <ul>
-<li>增加权限，原权限基础上增加指定权限</li>
+<li>ext3文件系统在非法关机是，数据完整性能得到可靠的保障</li>
 </ul>
+</li>
+<li><p>速度</p>
 <ul>
-<li>取消权限，原权限基础上去掉指定权限<br>=    设定权限，会覆盖原权限<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- `permission` 的含义：</span><br><span class="line"></span><br><span class="line">  - `r` 读权限</span><br><span class="line">  - `w` 写权限</span><br><span class="line">  - `x` 执行权限</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">[root@CentOS8 ~]# ls -l myfile</span><br><span class="line">-rwxr-xr-x. 1 root root 225 1月  29 17:20 myfile</span><br><span class="line">[root@CentOS8 ~]# chmod -x myfile</span><br><span class="line">[root@CentOS8 ~]# ls -l myfile</span><br><span class="line">-rw-r--r--. 1 root root 225 1月  29 17:20 myfile</span><br><span class="line">[root@CentOS8 ~]# chmod u+x myfile</span><br><span class="line">[root@CentOS8 ~]# ls -l myfile</span><br><span class="line">-rwxr--r--. 1 root root 225 1月  29 17:20 myfile</span><br><span class="line"></span><br><span class="line">[root@CentOS8 ~]# chmod g-w,o=x host.conf</span><br><span class="line">[root@CentOS8 ~]# chmod 764 host.conf</span><br></pre></td></tr></table></figure>
+<li>尽管ext3写入数据的次数多于ext2，但是ext3常常快于ext2</li>
+</ul>
+</li>
+<li><p>简易转换</p>
+<ul>
+<li>ext可以容易地不经格式化把ext2转换为ext3系统，体现了可靠的日志文件系统的优越性</li>
+</ul>
 </li>
 </ul>
+<hr>
+<h4 id="Linux的文件系统结构"><a href="#Linux的文件系统结构" class="headerlink" title="Linux的文件系统结构"></a>Linux的文件系统结构</h4><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220129213503119.png" alt="image-20220129213503119"></p>
+<ul>
+<li><code>/home</code> 用户的主目录，比如说有个用户叫<code>wang</code>,那他的主目录就是 <code>/home/wang</code></li>
+<li><code>/lib</code> 这个目录里存放着系统最基本的动态链接共享库，其作用类似于 <code>Windows</code> 里的 <code>.dll</code>文件。几乎所有的应用程序都需要用到这些共享库。</li>
+<li><code>/mnt</code> 这个目录是空的，系统提供这个目录是让用户临时挂载别的文件系统。</li>
+<li><code>/proc</code> 这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访可这个目录来获取系统信息</li>
+<li><code>/root</code> 系统管理员，超级权限者的用户主目录</li>
+<li><code>/sbin</code>  s 就是Super User的意思，也就是说这里存放的是一些系统管理员使用的系统管理程序</li>
+<li><code>/tmp</code> 用来存放一些临时文件的地方</li>
+<li><code>/usr</code> 这是个最庞大的目录，我们要用到的很多应用程序和文件几乎都存放在这个目录下。</li>
+<li><code>/var</code> 这个目录中存放着经常变动的文件，为了保持<code>/usr</code>的相对稳定，那些经常被修改的目录可以放在这个目录下。系统的日志文件就在<code>/var/log</code>目录中。</li>
+</ul>
+<hr>
+<h4 id="常见文件所在目录"><a href="#常见文件所在目录" class="headerlink" title="常见文件所在目录"></a>常见文件所在目录</h4><ul>
+<li>hosts                                    <code>/etc</code></li>
+<li>全局profile                          <code>/etc</code></li>
+<li>日志文件                               <code>/var/log/message</code></li>
+<li>用户环境变量                        <code>~/.bash_profile</code>或者<code>~/.profile</code>等</li>
+<li>用户文件                                <code>/etc/passwd</code></li>
+<li>组对应文件                            <code>/etc/group</code></li>
+</ul>
+<h4 id="文件名与文件类型"><a href="#文件名与文件类型" class="headerlink" title="文件名与文件类型"></a>文件名与文件类型</h4><p>文件名是一个文件的标识。 Red Hat Linux系统中的文件名的命名规则与 Windows系统基本相同。它同样是由字母、数字、下划线、圆点等组成，最长不能超过255个字符。在 Red Hat Linux系统中，没有像 Windows系统那样明显的扩展名，但它对字母大小写是严格区分的。</p>
+<p>Linux有四种基本文件系统类型：</p>
+<ul>
+<li>普通文件：如文本文件、C语言源代码、Shel脚本、二进制的可执行文件等。</li>
+<li>目录文件：包括文件名、子目录名及其指针。它是 Linux储存文件名的唯一地方。</li>
+<li>链接文件：它是一个文件的第二个名字，这是针对多用户共享同一文件而产生的文件。</li>
+<li>特殊文件：Linux的一些设备如磁盘、终端、打印机等都在文件系统中表示出来，这类文件就是特殊文件，常放在<code>/dev</code>目录内。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[user1@server1 ~]$ ls -l</span><br><span class="line">drwxrwxr-x 2 user1 user1 4096 Aug 17 09:10 abc</span><br><span class="line"></span><br><span class="line">- ：普通文件</span><br><span class="line">d ：目录文件，在Linux中目录也是文件，不仅如此，实际上在Linux中任何设备也可以被当作文件处理</span><br><span class="line">l ：符号连接文件</span><br><span class="line">b ：快设备文件</span><br><span class="line">	如硬盘的设备文件/dev/hda，其中字母a表示第一块，h表示IDE类型的硬盘，SCSI类型的硬盘用s表示</span><br><span class="line">	分区也有相对应的设备文件，如/dev/sdb3，表示第2块SCSI硬盘上的第三个分区</span><br><span class="line">	U盘也采用SCSI硬盘的设备文件名来命名</span><br><span class="line">c ：表示字符设备文件，如/dev/tty1</span><br><span class="line">p ：表示管道文件</span><br><span class="line">s ：表示套接字文件</span><br></pre></td></tr></table></figure>
+<font color=#ff0000>只有普通文件，目录文件，软连接三种占磁盘空间。其它四种文件均是伪文件，不占磁盘空间</font>
+
+
+
+<h4 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h4><p>Linux文件有三种典型的权限 <code>rwx</code></p>
+<ul>
+<li>r（读权限 4）</li>
+<li>w（写权限 2），</li>
+<li>x（执行权限 1）</li>
+</ul>
+<p>示例说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[user1@server1 ~]$ ls -l</span><br><span class="line">drwxrwxr-x 2 user1 user1 4096 Aug 17 09:10 abc</span><br><span class="line"></span><br><span class="line">在长格式输出中文件类型的后面有9位权限位，实际上这是针对不同用户而设定的，如下所示。</span><br><span class="line"></span><br><span class="line">属主的权限	属组的权限	其他用户的权限</span><br><span class="line">  rwx		 rwx		  r-x</span><br><span class="line">4+2+1=7		4+2+1=7		4+0+1=5</span><br><span class="line"></span><br><span class="line">所以abc这个文件夹（d 表明abc是文件夹）的权限就是775</span><br></pre></td></tr></table></figure>
+<p><strong>修改权限</strong></p>
+<ul>
+<li><p><code>chmod</code>命令</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod [who] operator [permission] filename</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>who</code>的含义：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">u  文件属主权限</span><br><span class="line">g   同组用户权限</span><br><span class="line">o   其他用户权限</span><br><span class="line">a   所有用户权限（文件属主、同组用户、其他用户），默认值</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>operator</code> 的含义：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+	增加权限，原权限基础上增加指定权限</span><br><span class="line">-	取消权限，原权限基础上去掉指定权限</span><br><span class="line">=	设定权限，会覆盖原权限</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>permission</code> 的含义：</p>
+<ul>
+<li><code>r</code> 读权限</li>
+<li><code>w</code> 写权限</li>
+<li><code>x</code> 执行权限</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS8 ~]<span class="comment"># ls -l myfile</span></span><br><span class="line">-rwxr-xr-x. 1 root root 225 1月  29 17:20 myfile</span><br><span class="line">[root@CentOS8 ~]<span class="comment"># chmod -x myfile</span></span><br><span class="line">[root@CentOS8 ~]<span class="comment"># ls -l myfile</span></span><br><span class="line">-rw-r--r--. 1 root root 225 1月  29 17:20 myfile</span><br><span class="line">[root@CentOS8 ~]<span class="comment"># chmod u+x myfile</span></span><br><span class="line">[root@CentOS8 ~]<span class="comment"># ls -l myfile</span></span><br><span class="line">-rwxr--r--. 1 root root 225 1月  29 17:20 myfile</span><br><span class="line"></span><br><span class="line">[root@CentOS8 ~]<span class="comment"># chmod g-w,o=x host.conf</span></span><br><span class="line">[root@CentOS8 ~]<span class="comment"># chmod 764 host.conf</span></span><br></pre></td></tr></table></figure>
 <p><strong>文件属主和修改</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">查看属主</span><br><span class="line"></span><br><span class="line">[root@CentOS8 ~]<span class="comment"># ls -al test</span></span><br><span class="line">total 8</span><br><span class="line">drwxr-xr-x 2 oracle dba  256 Mar 05 15:09 .</span><br><span class="line">drwxr-xr-x 5 oracle dba 4096 Mar 05 15:02 ..</span><br><span class="line">-rwxr-xr-x 1 oracle dba    0 Mar 05 15:09 1.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">test</span>文件夹属主为 oracle:dba</span><br><span class="line"></span><br><span class="line">修改属主</span><br><span class="line"></span><br><span class="line">若把<span class="built_in">test</span>文件属主修改为 ta4:dba，命令如下</span><br><span class="line">[root@CentOS8 ~]<span class="comment"># chown ta4:dba test</span></span><br><span class="line"></span><br><span class="line">若把<span class="built_in">test</span>文件夹所有文件以及文件夹属主修改为 ta4:dba，命令如下</span><br><span class="line">[root@CentOS8 ~]<span class="comment"># chown -R ta4:dba test</span></span><br><span class="line">-R  表示递归，即可以深入到指定目录中的每一层</span><br></pre></td></tr></table></figure>
 <hr>
@@ -972,7 +1136,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UID  0      root用户</span><br><span class="line">UID	 1~999	占坑用户，即一些无法登录的用户</span><br><span class="line">UID	 &gt;=1000	正常的可登录用户</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<hr>
 <h4 id="创建用户账号"><a href="#创建用户账号" class="headerlink" title="创建用户账号"></a>创建用户账号</h4><p><code>useradd</code> 命令</p>
 <p>示例一：创建用户</p>
 <ul>
@@ -994,7 +1157,7 @@
 </ul>
 </li>
 </ul>
-<hr>
+<p><code>adduser</code> 命令</p>
 <h4 id="删除用户账号"><a href="#删除用户账号" class="headerlink" title="删除用户账号"></a>删除用户账号</h4><p><code>userdel</code> 命令</p>
 <p>示例一：删除用户</p>
 <ul>
@@ -1006,7 +1169,7 @@
 <li><code>[root@CentOS8 ~]# userdel -r user1</code></li>
 <li>功能：删除指定用户<code>user1</code>，同时删除其主目录</li>
 </ul>
-<hr>
+<p><code>deluser</code> 命令</p>
 <h4 id="创建组账号"><a href="#创建组账号" class="headerlink" title="创建组账号"></a>创建组账号</h4><p><code>groupadd</code> 命令</p>
 <p>示例一：创建组账号</p>
 <ul>
@@ -1020,14 +1183,12 @@
 <li>功能：创建一个新组<code>mygroup2</code>，并指定其GID号为5000</li>
 <li>-g 用来设置新组的GID号</li>
 </ul>
-<hr>
 <h4 id="删除用户组"><a href="#删除用户组" class="headerlink" title="删除用户组"></a>删除用户组</h4><p><code>groupdel</code> 命令</p>
 <ul>
 <li><code>[root@CentOS8 ~]# groupdel mygroup2</code></li>
 <li>功能：删除指定的组</li>
 <li>注意：当某个组是某现有用户的主要组时，则不能被删除</li>
 </ul>
-<hr>
 <h4 id="改变口令"><a href="#改变口令" class="headerlink" title="改变口令"></a>改变口令</h4><p><code>passwd</code>命令</p>
 <ul>
 <li>普通用户只能修改自己的密码，<code>root</code>用户可以修改所有用户的密码</li>
@@ -1066,36 +1227,29 @@
 <h4 id="修改用户"><a href="#修改用户" class="headerlink" title="修改用户"></a>修改用户</h4><p><code>usermod</code></p>
 <hr>
 <h3 id="Linux进程管理"><a href="#Linux进程管理" class="headerlink" title="Linux进程管理"></a>Linux进程管理</h3><hr>
-<h4 id="查看进程命令"><a href="#查看进程命令" class="headerlink" title="查看进程命令"></a>查看进程命令</h4><p><code>ps</code> 命令</p>
-<ul>
+<h4 id="查看进程命令"><a href="#查看进程命令" class="headerlink" title="查看进程命令"></a>查看进程命令</h4><h5 id="ps-命令"><a href="#ps-命令" class="headerlink" title="ps 命令"></a><code>ps</code> 命令</h5><ul>
 <li><p>示例一：不带参数</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS8 ~]<span class="comment"># ps</span></span><br><span class="line">    PID TTY          TIME CMD</span><br><span class="line">   2367 pts/0    00:00:00 bash</span><br><span class="line">   2413 pts/0    00:00:00 ps</span><br><span class="line">[root@CentOS8 ~]<span class="comment"># </span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>示例二：查看所有运行的进程，包括后台进程</p>
 <ul>
-<li><code>-a</code>  所有进程</li>
+<li><code>-a</code>  所有进程，会话引导进程和与终端无关进程除外</li>
 <li><code>-u</code> 显示用户</li>
 <li><code>-x</code> 包括不占用控制台的进程</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS8 ~]<span class="comment"># ps -aux</span></span><br><span class="line">USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span><br><span class="line">root           1  0.7  0.7 175500 13704 ?        Ss   17:27   0:02 /usr/lib/systemd/systemd --switched</span><br><span class="line">root           2  0.0  0.0      0     0 ?        S    17:27   0:00 [kthreadd]</span><br><span class="line">root           3  0.0  0.0      0     0 ?        I&lt;   17:27   0:00 [rcu_gp]</span><br><span class="line">省略....</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">USER 	所属用户</span><br><span class="line">PID 	进程ID</span><br><span class="line">%CPU	占用CPU百分比</span><br><span class="line">%MEM	占用内存百分比</span><br><span class="line">VSZ		虚拟内存占用大小</span><br><span class="line">RSS		实际内存占用大小</span><br><span class="line">TTY		终端类型</span><br><span class="line">STAT	进程状态</span><br><span class="line">START	进程启动时刻</span><br><span class="line">TIME	进程运行时长</span><br><span class="line">COMMAND	启动进程的命令</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
 <li><p>示例三：查看所有运行的进程，包括后台进程，显示每个进程的父进程号</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS8 ~]<span class="comment"># ps -ef</span></span><br><span class="line">UID          PID    PPID  C STIME TTY          TIME CMD</span><br><span class="line">root           1       0  0 17:27 ?        00:00:02 /usr/lib/systemd/systemd --switched-root --system </span><br><span class="line">root           2       0  0 17:27 ?        00:00:00 [kthreadd]</span><br><span class="line">root           3       2  0 17:27 ?        00:00:00 [rcu_gp]</span><br><span class="line">省略....</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p><code>top</code> 命令</p>
-<ul>
-<li><p>动态地显示系统中的进程，<code>ctrl+c</code>退出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS8 ~]<span class="comment"># top</span></span><br><span class="line">top - 17:44:26 up 16 min,  1 user,  load average: 0.00, 0.00, 0.00</span><br><span class="line">Tasks: 216 total,   1 running, 215 sleeping,   0 stopped,   0 zombie</span><br><span class="line">%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni, 99.8 id,  0.0 wa,  0.0 hi,  0.2 si,  0.0 st</span><br><span class="line">MiB Mem :   1790.0 total,    651.4 free,    563.8 used,    574.8 buff/cache</span><br><span class="line">MiB Swap:   4096.0 total,   4096.0 free,      0.0 used.   1064.3 avail Mem </span><br><span class="line"></span><br><span class="line">    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND</span><br><span class="line">    940 root      20   0  366260  12004  10220 S   0.3   0.7   0:01.38 vmtoolsd</span><br><span class="line">   2522 root      20   0   65752   5200   4292 R   0.3   0.3   0:00.08 top</span><br><span class="line">   省略。。。</span><br></pre></td></tr></table></figure>
+<li><p>示例四：<code>ps ajx</code> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PPID  PID  PGID  SID  TTY  TPGID  STAT  UID  TIME   COMMAND</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><code>free</code> 命令</p>
-<ul>
-<li><p>显示系统中的内存空闲情况</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS8 ~]<span class="comment"># free</span></span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        1832972      576388      667956       10616      588628     1090860</span><br><span class="line">Swap:       4194300           0     4194300</span><br><span class="line">[root@CentOS8 ~]<span class="comment"># free -h</span></span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:          1.7Gi       562Mi       652Mi        10Mi       574Mi       1.0Gi</span><br><span class="line">Swap:         4.0Gi          0B       4.0Gi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="top-命令"><a href="#top-命令" class="headerlink" title="top 命令"></a><code>top</code> 命令</h5><ul>
+<li><p>动态地显示系统中的进程，<code>ctrl+c</code>退出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS8 ~]<span class="comment"># top</span></span><br><span class="line">top - 17:44:26 up 16 min,  1 user,  load average: 0.00, 0.00, 0.00</span><br><span class="line">Tasks: 216 total,   1 running, 215 sleeping,   0 stopped,   0 zombie</span><br><span class="line">%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni, 99.8 id,  0.0 wa,  0.0 hi,  0.2 si,  0.0 st</span><br><span class="line">MiB Mem :   1790.0 total,    651.4 free,    563.8 used,    574.8 buff/cache</span><br><span class="line">MiB Swap:   4096.0 total,   4096.0 free,      0.0 used.   1064.3 avail Mem </span><br><span class="line"></span><br><span class="line">    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND</span><br><span class="line">    940 root      20   0  366260  12004  10220 S   0.3   0.7   0:01.38 vmtoolsd</span><br><span class="line">   2522 root      20   0   65752   5200   4292 R   0.3   0.3   0:00.08 top</span><br><span class="line">   省略。。。</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <hr>
@@ -1115,6 +1269,9 @@
 <li>说明：实际上<code>kill</code>命令是向该进程发送信号，该进程收到信号后决定是否停止运行，有些进程必须要收到参数9才终止运行</li>
 <li><code>kill -l</code> 命令了解有关信号的情况</li>
 </ul>
+</li>
+<li><p><code>kill -l</code> 列出所有信号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> 1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP</span><br><span class="line"> 6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1</span><br><span class="line">11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM</span><br><span class="line">16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP</span><br><span class="line">21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ</span><br><span class="line">26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR</span><br><span class="line">31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3</span><br><span class="line">38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8</span><br><span class="line">43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13</span><br><span class="line">48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12</span><br><span class="line">53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7</span><br><span class="line">58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2</span><br><span class="line">63) SIGRTMAX-1  64) SIGRTMAX</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <hr>
@@ -1377,7 +1534,7 @@
 <hr>
 <h4 id="Shell样例"><a href="#Shell样例" class="headerlink" title="Shell样例"></a>Shell样例</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># !/bin/bash</span></span><br><span class="line">d=`date +%H`</span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$d</span> -ge 0 -a <span class="variable">$d</span> -lt 7 ]; <span class="keyword">then</span></span><br><span class="line">	tag=1</span><br><span class="line"><span class="keyword">elif</span> [ <span class="variable">$d</span> -ge 7 -a <span class="variable">$d</span> -lt 12 ]; <span class="keyword">then</span></span><br><span class="line">	tag=2</span><br><span class="line"><span class="keyword">elif</span> [ <span class="variable">$d</span> -ge 12 -a <span class="variable">$d</span> -lt 18 ]; <span class="keyword">then</span></span><br><span class="line">	tag=3</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	tag=4</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="variable">$tag</span> <span class="keyword">in</span></span><br><span class="line">	1)</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;Good morning&quot;</span></span><br><span class="line">    ;;</span><br><span class="line">	2)</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;Morning&quot;</span></span><br><span class="line">    ;;</span><br><span class="line">	3)</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;Good Afternoon&quot;</span></span><br><span class="line">    ;;</span><br><span class="line">	4)</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Good Evening&quot;</span></span><br><span class="line">    ;;</span><br><span class="line">    *)</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;Scrip Error&quot;</span></span><br><span class="line">    ;;</span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@CentOS8 ~]<span class="comment"># chmod +x test1.sh</span></span><br><span class="line">[root@CentOS8 ~]<span class="comment"># ./test1.sh</span></span><br><span class="line">Good Evening</span><br></pre></td></tr></table></figure>
 <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><h4 id="创建用户问题"><a href="#创建用户问题" class="headerlink" title="创建用户问题"></a>创建用户问题</h4><p><code>Ubuntu</code>创建用户时，默认不会创建家目录</p>
-<p><img src="https://cdn.jsdelivr.net/gh/yanglinqi107/images/Linux-img/image-20220329122538336.png" alt="image-20220329122538336"></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220329122538336.png" alt="image-20220329122538336"></p>
 <p>使用<code>useradd -D</code>查看该命令的默认设置</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">useradd -D</span><br><span class="line">GROUP=100   <span class="comment"># 默认的群组</span></span><br><span class="line">HOME=/home  <span class="comment"># 默认家目录所在目录</span></span><br><span class="line">INACTIVE=-1  <span class="comment"># 口令失效日，在shadow的第7栏</span></span><br><span class="line">EXPIRE=      <span class="comment"># 账号失效日，在shadow的第8栏</span></span><br><span class="line">SHELL=/bin/sh  <span class="comment"># 默认的shell</span></span><br><span class="line">SKEL=/etc/skel   <span class="comment"># 家目录里面的内容，从这个目录拷贝过去的</span></span><br><span class="line">CREATE_MAIL_SPOOL=no  <span class="comment"># 是否创建邮件信箱</span></span><br></pre></td></tr></table></figure>
 <ul>
@@ -1410,6 +1567,19 @@
 <li><code>chgrp yang text</code></li>
 </ul>
 <p>相近命令<code>chown</code></p>
+<h4 id="free"><a href="#free" class="headerlink" title="free"></a>free</h4><p>显示系统中的内存空闲情况</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS8 ~]<span class="comment"># free</span></span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        1832972      576388      667956       10616      588628     1090860</span><br><span class="line">Swap:       4194300           0     4194300</span><br><span class="line">[root@CentOS8 ~]<span class="comment"># free -h</span></span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:          1.7Gi       562Mi       652Mi        10Mi       574Mi       1.0Gi</span><br><span class="line">Swap:         4.0Gi          0B       4.0Gi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="env"><a href="#env" class="headerlink" title="env"></a>env</h4><p>查看环境变量</p>
+<p>Linux系统下环境变量： <code>key=value1:value2:value3</code></p>
+<h4 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h4><p><code>ping www.baidu.com -c 4</code> 是否能上网</p>
+<h4 id="nslookup"><a href="#nslookup" class="headerlink" title="nslookup"></a>nslookup</h4><p>查看域名对应的<code>ip</code></p>
+<h4 id="file"><a href="#file" class="headerlink" title="file"></a>file</h4><p>查看文件类型</p>
+<p>如：<code>file mypp</code> ：<code>myapp: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=fd62a801dc8e73582184ccf1ec2f0e9f492ab33e, for GNU/Linux 3.2.0, not stripped</code></p>
+<h4 id="stat"><a href="#stat" class="headerlink" title="stat"></a>stat</h4><p>查看文件的状态</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220528154743300.png" alt="image-20220528154743300"></p>
+<h4 id="strace"><a href="#strace" class="headerlink" title="strace"></a>strace</h4><p>跟踪系统调用和信号</p>
+<p><code>strace</code> + <code>可执行文件</code>  查看该可执行文件执行过程中使用的系统调用和接收的信号</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220605120200873.png" alt="image-20220605120200873"></p>
 <h3 id="Ubuntu软件安装"><a href="#Ubuntu软件安装" class="headerlink" title="Ubuntu软件安装"></a>Ubuntu软件安装</h3><h4 id="在线安装"><a href="#在线安装" class="headerlink" title="在线安装"></a>在线安装</h4><p><code>apt-get</code></p>
 <ul>
 <li>安装<code>sudo apt-get install tree</code></li>
@@ -1438,6 +1608,13 @@
 <li>把库和可执行程序，安装到系统目录下：<code>sudo make install</code></li>
 <li>删除和卸载软件：<code>sudo make distclean</code></li>
 </ol>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><h4 id="磁盘命名"><a href="#磁盘命名" class="headerlink" title="磁盘命名"></a>磁盘命名</h4><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220522150209246.png" alt="image-20220522150209246"></p>
+<h4 id="安装中文包"><a href="#安装中文包" class="headerlink" title="安装中文包"></a>安装中文包</h4><p>1.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install glibc-langpack-zh.x86_64</span><br></pre></td></tr></table></figure>
+<p>2.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> LANG=zh_CN.UTF-8 &gt; /etc/locale.conf</span><br></pre></td></tr></table></figure>
+<p>3.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/locale.conf</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -1521,7 +1698,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">Linux简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC"><span class="nav-number">1.1.</span> <span class="nav-text">Linux内核版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.</span> <span class="nav-text">Linux安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">Linux安装过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E5%8F%91%E8%A1%8C%E7%89%88%E6%9C%AC"><span class="nav-number">1.4.</span> <span class="nav-text">Linux发行版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E5%9C%A8%E4%BC%81%E4%B8%9A%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.5.</span> <span class="nav-text">Linux在企业中的应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8shell%E5%88%86%E7%B1%BB"><span class="nav-number">1.6.</span> <span class="nav-text">常用shell分类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">Linux常见命令介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">Linux常见命令格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">2.2.</span> <span class="nav-text">查看文件和文件夹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8"><span class="nav-number">2.3.</span> <span class="nav-text">查看命令使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E8%B7%AF%E5%BE%84"><span class="nav-number">2.4.</span> <span class="nav-text">显示当前路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E7%9B%AE%E5%BD%95"><span class="nav-number">2.5.</span> <span class="nav-text">新建目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6"><span class="nav-number">2.6.</span> <span class="nav-text">创建文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6"><span class="nav-number">2.7.</span> <span class="nav-text">文件复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8"><span class="nav-number">2.8.</span> <span class="nav-text">文件移动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%A9%BA%E7%9B%AE%E5%BD%95"><span class="nav-number">2.9.</span> <span class="nav-text">删除空目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4"><span class="nav-number">2.10.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="nav-number">2.11.</span> <span class="nav-text">显示文件内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E5%B1%8F%E6%98%BE%E7%A4%BA"><span class="nav-number">2.12.</span> <span class="nav-text">分屏显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%A4%B4%E5%86%85%E5%AE%B9"><span class="nav-number">2.13.</span> <span class="nav-text">显示文件头内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E6%9C%80%E5%90%8E%E5%86%85%E5%AE%B9"><span class="nav-number">2.14.</span> <span class="nav-text">显示文件最后内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E7%A1%AC%E8%BF%9E%E6%8E%A5%E5%92%8C%E8%BD%AF%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.15.</span> <span class="nav-text">建立硬连接和软连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4"><span class="nav-number">2.16.</span> <span class="nav-text">查找命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7"><span class="nav-number">2.17.</span> <span class="nav-text">切换用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BE"><span class="nav-number">2.18.</span> <span class="nav-text">文件查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%93%8D%E4%BD%9C"><span class="nav-number">2.19.</span> <span class="nav-text">文件内容操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E6%8C%87%E4%BB%A4"><span class="nav-number">2.20.</span> <span class="nav-text">统计指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%89%E6%AD%A3%E5%BA%8F%E9%80%86%E5%BA%8F%E8%BE%93%E5%87%BA"><span class="nav-number">2.21.</span> <span class="nav-text">按正序逆序输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%AF%94%E8%BE%83"><span class="nav-number">2.22.</span> <span class="nav-text">文件比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E6%89%93%E5%8C%85%E5%91%BD%E4%BB%A4%E5%92%8C%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="nav-number">2.23.</span> <span class="nav-text">压缩打包命令和解压缩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD%E4%B8%8E%E5%8D%B8%E8%BD%BD%E5%91%BD%E4%BB%A4"><span class="nav-number">2.24.</span> <span class="nav-text">挂载与卸载命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E5%8D%A1%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4"><span class="nav-number">2.25.</span> <span class="nav-text">网卡配置命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%AE%E5%8A%A9%E5%91%BD%E4%BB%A4"><span class="nav-number">2.26.</span> <span class="nav-text">帮助命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%91%BD%E4%BB%A4"><span class="nav-number">2.27.</span> <span class="nav-text">定时任务命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%BC%95%E5%8F%B7%E5%91%BD%E4%BB%A4"><span class="nav-number">2.28.</span> <span class="nav-text">反引号命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9F"><span class="nav-number">2.29.</span> <span class="nav-text">时间日期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%83%85%E5%86%B5"><span class="nav-number">2.30.</span> <span class="nav-text">显示磁盘空间情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%A1%E9%81%93"><span class="nav-number">2.31.</span> <span class="nav-text">管道 |</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">2.32.</span> <span class="nav-text">输出重定向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">2.33.</span> <span class="nav-text">输入重定向</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84"><span class="nav-number">3.</span> <span class="nav-text">Linux用户和用户组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84"><span class="nav-number">3.1.</span> <span class="nav-text">用户和用户组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E8%B4%A6%E5%8F%B7"><span class="nav-number">3.2.</span> <span class="nav-text">创建用户账号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%E8%B4%A6%E5%8F%B7"><span class="nav-number">3.3.</span> <span class="nav-text">删除用户账号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%BB%84%E8%B4%A6%E5%8F%B7"><span class="nav-number">3.4.</span> <span class="nav-text">创建组账号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%E7%BB%84"><span class="nav-number">3.5.</span> <span class="nav-text">删除用户组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%B9%E5%8F%98%E5%8F%A3%E4%BB%A4"><span class="nav-number">3.6.</span> <span class="nav-text">改变口令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A6%81%E6%AD%A2%E5%92%8C%E6%81%A2%E5%A4%8D%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95"><span class="nav-number">3.7.</span> <span class="nav-text">禁止和恢复用户登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%E5%8F%A3%E4%BB%A4"><span class="nav-number">3.8.</span> <span class="nav-text">删除用户口令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="nav-number">3.9.</span> <span class="nav-text">显示用户信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7"><span class="nav-number">3.10.</span> <span class="nav-text">修改用户</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">Linux进程管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E5%91%BD%E4%BB%A4"><span class="nav-number">4.1.</span> <span class="nav-text">查看进程命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%80%E6%8E%89%E6%8C%87%E5%AE%9A%E8%BF%9B%E7%A8%8B"><span class="nav-number">4.2.</span> <span class="nav-text">杀掉指定进程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">Linux软件包管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86"><span class="nav-number">5.1.</span> <span class="nav-text">软件包管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rpm-%E5%91%BD%E4%BB%A4"><span class="nav-number">5.2.</span> <span class="nav-text">rpm 命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell%E7%BC%96%E7%A8%8B"><span class="nav-number">6.</span> <span class="nav-text">Shell编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bash"><span class="nav-number">6.1.</span> <span class="nav-text">Bash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Shell%E6%89%A7%E8%A1%8C%E6%96%B9%E5%BC%8F"><span class="nav-number">6.2.</span> <span class="nav-text">Shell执行方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8E%E5%8F%B0%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="nav-number">6.3.</span> <span class="nav-text">后台模式运行脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="nav-number">6.4.</span> <span class="nav-text">标准输入输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">6.5.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF"><span class="nav-number">6.6.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#while-until%E5%BE%AA%E7%8E%AF"><span class="nav-number">6.7.</span> <span class="nav-text">while&#x2F;until循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#if%E5%88%A4%E6%96%AD"><span class="nav-number">6.8.</span> <span class="nav-text">if判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4"><span class="nav-number">6.9.</span> <span class="nav-text">循环控制命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0"><span class="nav-number">6.10.</span> <span class="nav-text">自定义函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Shell%E6%A0%B7%E4%BE%8B"><span class="nav-number">6.11.</span> <span class="nav-text">Shell样例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E9%97%AE%E9%A2%98"><span class="nav-number">7.1.</span> <span class="nav-text">创建用户问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Unable-to-locate-package-xxx"><span class="nav-number">7.2.</span> <span class="nav-text">Unable to locate package xxx</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85"><span class="nav-number">8.</span> <span class="nav-text">命令补充</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tree"><span class="nav-number">8.1.</span> <span class="nav-text">tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#od"><span class="nav-number">8.2.</span> <span class="nav-text">od</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chgrp"><span class="nav-number">8.3.</span> <span class="nav-text">chgrp</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">9.</span> <span class="nav-text">Ubuntu软件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85"><span class="nav-number">9.1.</span> <span class="nav-text">在线安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deb%E5%8C%85%E5%AE%89%E8%A3%85"><span class="nav-number">9.2.</span> <span class="nav-text">deb包安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85"><span class="nav-number">9.3.</span> <span class="nav-text">源码安装</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">Linux简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC"><span class="nav-number">1.1.</span> <span class="nav-text">Linux内核版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.</span> <span class="nav-text">Linux安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">Linux安装过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E5%8F%91%E8%A1%8C%E7%89%88%E6%9C%AC"><span class="nav-number">1.4.</span> <span class="nav-text">Linux发行版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E5%9C%A8%E4%BC%81%E4%B8%9A%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.5.</span> <span class="nav-text">Linux在企业中的应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8shell%E5%88%86%E7%B1%BB"><span class="nav-number">1.6.</span> <span class="nav-text">常用shell分类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">Linux常见命令介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">Linux常见命令格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">2.2.</span> <span class="nav-text">查看文件和文件夹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8"><span class="nav-number">2.3.</span> <span class="nav-text">查看命令使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E8%B7%AF%E5%BE%84"><span class="nav-number">2.4.</span> <span class="nav-text">显示当前路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E7%9B%AE%E5%BD%95"><span class="nav-number">2.5.</span> <span class="nav-text">新建目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6"><span class="nav-number">2.6.</span> <span class="nav-text">创建文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6"><span class="nav-number">2.7.</span> <span class="nav-text">文件复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8"><span class="nav-number">2.8.</span> <span class="nav-text">文件移动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%A9%BA%E7%9B%AE%E5%BD%95"><span class="nav-number">2.9.</span> <span class="nav-text">删除空目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4"><span class="nav-number">2.10.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="nav-number">2.11.</span> <span class="nav-text">显示文件内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E5%B1%8F%E6%98%BE%E7%A4%BA"><span class="nav-number">2.12.</span> <span class="nav-text">分屏显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%A4%B4%E5%86%85%E5%AE%B9"><span class="nav-number">2.13.</span> <span class="nav-text">显示文件头内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E6%9C%80%E5%90%8E%E5%86%85%E5%AE%B9"><span class="nav-number">2.14.</span> <span class="nav-text">显示文件最后内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E7%A1%AC%E8%BF%9E%E6%8E%A5%E5%92%8C%E8%BD%AF%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.15.</span> <span class="nav-text">建立硬连接和软连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4"><span class="nav-number">2.16.</span> <span class="nav-text">查找命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7"><span class="nav-number">2.17.</span> <span class="nav-text">切换用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BE"><span class="nav-number">2.18.</span> <span class="nav-text">文件查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%93%8D%E4%BD%9C"><span class="nav-number">2.19.</span> <span class="nav-text">文件内容操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E6%8C%87%E4%BB%A4"><span class="nav-number">2.20.</span> <span class="nav-text">统计指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%89%E6%AD%A3%E5%BA%8F%E9%80%86%E5%BA%8F%E8%BE%93%E5%87%BA"><span class="nav-number">2.21.</span> <span class="nav-text">按正序逆序输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%AF%94%E8%BE%83"><span class="nav-number">2.22.</span> <span class="nav-text">文件比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%92%8C%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="nav-number">2.23.</span> <span class="nav-text">压缩和解压缩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E5%8E%8B%E7%BC%A9"><span class="nav-number">2.24.</span> <span class="nav-text">打包压缩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD%E4%B8%8E%E5%8D%B8%E8%BD%BD%E5%91%BD%E4%BB%A4"><span class="nav-number">2.25.</span> <span class="nav-text">挂载与卸载命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E5%8D%A1%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4"><span class="nav-number">2.26.</span> <span class="nav-text">网卡配置命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%AE%E5%8A%A9%E5%91%BD%E4%BB%A4"><span class="nav-number">2.27.</span> <span class="nav-text">帮助命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%91%BD%E4%BB%A4"><span class="nav-number">2.28.</span> <span class="nav-text">定时任务命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%BC%95%E5%8F%B7%E5%91%BD%E4%BB%A4"><span class="nav-number">2.29.</span> <span class="nav-text">反引号命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9F"><span class="nav-number">2.30.</span> <span class="nav-text">时间日期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%83%85%E5%86%B5"><span class="nav-number">2.31.</span> <span class="nav-text">显示磁盘空间情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%A1%E9%81%93"><span class="nav-number">2.32.</span> <span class="nav-text">管道 |</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">2.33.</span> <span class="nav-text">输出重定向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">2.34.</span> <span class="nav-text">输入重定向</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90"><span class="nav-number">3.</span> <span class="nav-text">Linux文件系统权限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.1.</span> <span class="nav-text">文件系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ext3%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">3.2.</span> <span class="nav-text">ext3文件系统的特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E7%9A%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84"><span class="nav-number">3.3.</span> <span class="nav-text">Linux的文件系统结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E6%89%80%E5%9C%A8%E7%9B%AE%E5%BD%95"><span class="nav-number">3.4.</span> <span class="nav-text">常见文件所在目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.5.</span> <span class="nav-text">文件名与文件类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="nav-number">3.6.</span> <span class="nav-text">文件权限</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84"><span class="nav-number">4.</span> <span class="nav-text">Linux用户和用户组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84"><span class="nav-number">4.1.</span> <span class="nav-text">用户和用户组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E8%B4%A6%E5%8F%B7"><span class="nav-number">4.2.</span> <span class="nav-text">创建用户账号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%E8%B4%A6%E5%8F%B7"><span class="nav-number">4.3.</span> <span class="nav-text">删除用户账号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%BB%84%E8%B4%A6%E5%8F%B7"><span class="nav-number">4.4.</span> <span class="nav-text">创建组账号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%E7%BB%84"><span class="nav-number">4.5.</span> <span class="nav-text">删除用户组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%B9%E5%8F%98%E5%8F%A3%E4%BB%A4"><span class="nav-number">4.6.</span> <span class="nav-text">改变口令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A6%81%E6%AD%A2%E5%92%8C%E6%81%A2%E5%A4%8D%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95"><span class="nav-number">4.7.</span> <span class="nav-text">禁止和恢复用户登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%E5%8F%A3%E4%BB%A4"><span class="nav-number">4.8.</span> <span class="nav-text">删除用户口令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="nav-number">4.9.</span> <span class="nav-text">显示用户信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7"><span class="nav-number">4.10.</span> <span class="nav-text">修改用户</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">Linux进程管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E5%91%BD%E4%BB%A4"><span class="nav-number">5.1.</span> <span class="nav-text">查看进程命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ps-%E5%91%BD%E4%BB%A4"><span class="nav-number">5.1.1.</span> <span class="nav-text">ps 命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#top-%E5%91%BD%E4%BB%A4"><span class="nav-number">5.1.2.</span> <span class="nav-text">top 命令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%80%E6%8E%89%E6%8C%87%E5%AE%9A%E8%BF%9B%E7%A8%8B"><span class="nav-number">5.2.</span> <span class="nav-text">杀掉指定进程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86"><span class="nav-number">6.</span> <span class="nav-text">Linux软件包管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86"><span class="nav-number">6.1.</span> <span class="nav-text">软件包管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rpm-%E5%91%BD%E4%BB%A4"><span class="nav-number">6.2.</span> <span class="nav-text">rpm 命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell%E7%BC%96%E7%A8%8B"><span class="nav-number">7.</span> <span class="nav-text">Shell编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bash"><span class="nav-number">7.1.</span> <span class="nav-text">Bash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Shell%E6%89%A7%E8%A1%8C%E6%96%B9%E5%BC%8F"><span class="nav-number">7.2.</span> <span class="nav-text">Shell执行方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8E%E5%8F%B0%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="nav-number">7.3.</span> <span class="nav-text">后台模式运行脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="nav-number">7.4.</span> <span class="nav-text">标准输入输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">7.5.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF"><span class="nav-number">7.6.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#while-until%E5%BE%AA%E7%8E%AF"><span class="nav-number">7.7.</span> <span class="nav-text">while&#x2F;until循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#if%E5%88%A4%E6%96%AD"><span class="nav-number">7.8.</span> <span class="nav-text">if判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4"><span class="nav-number">7.9.</span> <span class="nav-text">循环控制命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0"><span class="nav-number">7.10.</span> <span class="nav-text">自定义函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Shell%E6%A0%B7%E4%BE%8B"><span class="nav-number">7.11.</span> <span class="nav-text">Shell样例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">8.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E9%97%AE%E9%A2%98"><span class="nav-number">8.1.</span> <span class="nav-text">创建用户问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Unable-to-locate-package-xxx"><span class="nav-number">8.2.</span> <span class="nav-text">Unable to locate package xxx</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85"><span class="nav-number">9.</span> <span class="nav-text">命令补充</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tree"><span class="nav-number">9.1.</span> <span class="nav-text">tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#od"><span class="nav-number">9.2.</span> <span class="nav-text">od</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chgrp"><span class="nav-number">9.3.</span> <span class="nav-text">chgrp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#free"><span class="nav-number">9.4.</span> <span class="nav-text">free</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#env"><span class="nav-number">9.5.</span> <span class="nav-text">env</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ping"><span class="nav-number">9.6.</span> <span class="nav-text">ping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nslookup"><span class="nav-number">9.7.</span> <span class="nav-text">nslookup</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#file"><span class="nav-number">9.8.</span> <span class="nav-text">file</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stat"><span class="nav-number">9.9.</span> <span class="nav-text">stat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#strace"><span class="nav-number">9.10.</span> <span class="nav-text">strace</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">10.</span> <span class="nav-text">Ubuntu软件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85"><span class="nav-number">10.1.</span> <span class="nav-text">在线安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deb%E5%8C%85%E5%AE%89%E8%A3%85"><span class="nav-number">10.2.</span> <span class="nav-text">deb包安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85"><span class="nav-number">10.3.</span> <span class="nav-text">源码安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-number">11.</span> <span class="nav-text">补充</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E5%91%BD%E5%90%8D"><span class="nav-number">11.1.</span> <span class="nav-text">磁盘命名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E5%8C%85"><span class="nav-number">11.2.</span> <span class="nav-text">安装中文包</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1537,20 +1714,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1645,6 +1822,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
