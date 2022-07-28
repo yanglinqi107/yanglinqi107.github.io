@@ -175,7 +175,7 @@ body {
   height: 100%;
 }
 body {
-  background: url("/images/background.jpg");
+  background: url("https://gitee.com/yanglinqi107/Images/raw/master/img/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
@@ -1214,7 +1214,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #e2333e;
+  background: #fb4b47;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
