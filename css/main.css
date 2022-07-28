@@ -175,13 +175,14 @@ body {
   height: 100%;
 }
 body {
-  background: url("https://gitee.com/yanglinqi107/Images/raw/master/img/background.jpg");
+  background: url("/images/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
+  referrer: no-referrer;
   color: var(--text-color);
   font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 1em;
+  font-size: 0.75em;
   line-height: 2;
 }
 h1,
@@ -214,7 +215,7 @@ h6 {
   font-size: 0.875em;
 }
 p {
-  margin: 0 0 20px 0;
+  margin: 0 0 10px 0;
 }
 a,
 span.exturl {
@@ -1214,7 +1215,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #0bffff;
+  background: #408309;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
