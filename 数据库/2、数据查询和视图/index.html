@@ -28,18 +28,18 @@
 <meta property="og:site_name" content="杨记">
 <meta property="og:description" content="单表查询、分组统计查询和连接查询，视图的创建，删除等">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/1639229747848.jpg">
-<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/20211211215820.png">
-<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/20211211215856.png">
-<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/20211211235959.png">
-<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/20211212000030.png">
-<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/2021121200001.png">
+<meta property="og:image" content="http://106.13.232.203/Images/DB-img/1639229747848.jpg">
+<meta property="og:image" content="http://106.13.232.203/Images/DB-img/20211211215820.png">
+<meta property="og:image" content="http://106.13.232.203/Images/DB-img/20211211215856.png">
+<meta property="og:image" content="http://106.13.232.203/Images/DB-img/20211211235959.png">
+<meta property="og:image" content="http://106.13.232.203/Images/DB-img/20211212000030.png">
+<meta property="og:image" content="http://106.13.232.203/Images/DB-img/2021121200001.png">
 <meta property="article:published_time" content="2021-12-11T09:50:01.000Z">
-<meta property="article:modified_time" content="2022-07-27T15:44:09.988Z">
+<meta property="article:modified_time" content="2022-08-01T11:19:23.730Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/1639229747848.jpg">
+<meta name="twitter:image" content="http://106.13.232.203/Images/DB-img/1639229747848.jpg">
 
 <link rel="canonical" href="http://yanglinqi107.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/2%E3%80%81%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%A7%86%E5%9B%BE/">
 
@@ -135,7 +135,7 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -230,7 +230,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-27 23:44:09" itemprop="dateModified" datetime="2022-07-27T23:44:09+08:00">2022-07-27</time>
+                <time title="修改时间：2022-08-01 19:19:23" itemprop="dateModified" datetime="2022-08-01T19:19:23+08:00">2022-08-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -427,13 +427,13 @@ HAVING过滤组，WHERE过滤行
 <hr>
 <h4 id="外联结（连接）"><a href="#外联结（连接）" class="headerlink" title="外联结（连接）"></a><strong>外联结（连接）</strong></h4><p>左外联结：LEFT JOIN</p>
 <p>右外联结：RIGHT JOIN</p>
-<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/1639229747848.jpg" alt="多表连接查询"></p>
+<p><img src="http://106.13.232.203/Images/DB-img/1639229747848.jpg" alt="多表连接查询"></p>
 <hr>
 <h4 id="limit"><a href="#limit" class="headerlink" title="limit"></a><strong>limit</strong></h4><p>limit 位置偏移量,行数;</p>
 <h2 id=""><a href="#" class="headerlink" title=""></a><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> .. .. limit <span class="number">4</span>;   <span class="comment">/*取最后结果的前四行*/</span></span><br><span class="line"><span class="keyword">select</span> .. .. limit <span class="number">5</span>,<span class="number">4</span>; <span class="comment">/*最后结果的去掉前5行，再去4行*/</span>    </span><br></pre></td></tr></table></figure></h2><p>SQL书写顺序</p>
-<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/20211211215820.png" alt="SQL书写顺序"></p>
+<p><img src="http://106.13.232.203/Images/DB-img/20211211215820.png" alt="SQL书写顺序"></p>
 <p>SQL执行顺序</p>
-<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/20211211215856.png" alt="SQL执行顺序"></p>
+<p><img src="http://106.13.232.203/Images/DB-img/20211211215856.png" alt="SQL执行顺序"></p>
 <p>使用AS关键字时，执行顺序这一点会有体现，尤其注意！</p>
 <hr>
 <p>注：字符串加单引号’’，字段名即列名在特殊情况下用 `` (英文键盘下Tab上面的键)包裹</p>
@@ -462,12 +462,12 @@ HAVING过滤组，WHERE过滤行
 <p>可更新视图的更新与表更新一样</p>
 <p>可更新视图简单点理解就是视图数据的来源只能是一张表上的全部或部分数据</p>
 <p>可更新视图更新后，对应视图数据来源的表中的数据也会变化，即上例中v_cs的更新，score也会相应更新（from跟两个表，按理说v_cs不能更新的，但我测试却能更新成功，不知道是mysql的问题，还是说虽然跟着student，score两张表，但由于v_cs的数据来源于score，所以能更新？）</p>
-<p> <img src="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/20211211235959.png" alt="更新v_cs视图"></p>
+<p> <img src="http://106.13.232.203/Images/DB-img/20211211235959.png" alt="更新v_cs视图"></p>
 <p> 上图更新v_cs视图成功，但下图就指明 v_cs 是<code>join view</code>，不能删除，但却能更新，奇怪</p>
-<p> <img src="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/20211212000030.png" alt="删除数据"></p>
+<p> <img src="http://106.13.232.203/Images/DB-img/20211212000030.png" alt="删除数据"></p>
 <p>若视图 view1 数据来源于 表1、表2… 则 表1、表2…等表的数据更新会导致 view1 的数据一同更新；若还有视图 view2 的数据来源于 view1 ，则view2 也会跟着变化；<code>即表table的数据更新一定会导致对应视图view的更新，不论是可变或不可变视图，而可变视图的数据更新也会导致对应表数据的更新</code> </p>
 <p>如果视图关联了一个表中的所有字段，而该表中添加了新字段，视图中是否能查询到新字段？<code>不能</code></p>
-<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/2021121200001.png" alt=""></p>
+<p><img src="http://106.13.232.203/Images/DB-img/2021121200001.png" alt=""></p>
 
     </div>
 
@@ -578,7 +578,7 @@ select .. .. limit 5,4; &#x2F;*最后结果的去掉前5行，再去4行*&#x2F;
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
