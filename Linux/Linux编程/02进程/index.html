@@ -69,7 +69,7 @@
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220608150818204.png">
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220608153322335.png">
 <meta property="article:published_time" content="2022-04-08T06:51:35.229Z">
-<meta property="article:modified_time" content="2022-08-01T12:22:56.649Z">
+<meta property="article:modified_time" content="2022-08-05T06:32:17.659Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -264,7 +264,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-01 20:22:56" itemprop="dateModified" datetime="2022-08-01T20:22:56+08:00">2022-08-01</time>
+                <time title="修改时间：2022-08-05 14:32:17" itemprop="dateModified" datetime="2022-08-05T14:32:17+08:00">2022-08-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -313,7 +313,9 @@
 <h3 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h3><p>并发，在操作系统中，一个时间段中有多个进程都处于已启动运行到运行完毕之间的状态。但，任一个时刻点上仍只有一个进程在运行。</p>
 <p>例如，当下，我们使用计算机时可以边听音乐边聊天边上网。 若笼统的将他们均看做一个进程的话，为什么可以同时运行呢，因为并发。</p>
 <p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220531114333095.png" alt="image-20220531114333095"></p>
-<p><div align=center>【分时复用cpu】</p>
+<div align=center>【分时复用cpu】</div>
+
+
 <h3 id="单道程序设计"><a href="#单道程序设计" class="headerlink" title="单道程序设计"></a>单道程序设计</h3><p>所有进程一个一个排队执行。若A阻塞，B只能等待，即使CPU处于空闲状态。而在人机交互时阻塞的出现时必然的。所有这种模型在系统资源利用上及其不合理，在计算机发展历史上存在不久，大部分便被淘汰了。</p>
 <h3 id="多道程序设计"><a href="#多道程序设计" class="headerlink" title="多道程序设计"></a>多道程序设计</h3><p>在计算机内存中同时存放几道相互独立的程序，它们在管理程序控制之下，相互穿插的运行。多道程序设计必须有硬件基础作为保证。</p>
 <p><strong>时钟中断</strong>即为多道程序设计模型的理论基础。 并发时，任意进程在执行期间都不希望放弃cpu。因此系统需要一种强制让进程让出cpu资源的手段。时钟中断有硬件基础作为保障，对进程而言不可抗拒。 操作系统中的中断处理函数，来负责调度程序执行。</p>
@@ -321,9 +323,13 @@
 <p>1s = 1000ms, 1ms = 1000us, 1us = 1000ns   1000000000 </p>
 <p>实质上，并发是宏观并行，微观串行！——-推动了计算机蓬勃发展，将人类引入了多媒体时代。</p>
 <h3 id="CPU和MMU"><a href="#CPU和MMU" class="headerlink" title="CPU和MMU"></a>CPU和MMU</h3><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220531115154909.png" alt="image-20220531115154909"></p>
-<p><div align=center>中央处理器(CPU)</p>
+<div align=center>中央处理器(CPU)</div>
+
 <p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220531115254667.png" alt="image-20220531115254667"></p>
-<p><div align=center>内存管理单元MMU</p>
+<div align=center>内存管理单元MMU</div>
+
+
+
 <h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h3 id="进程控制块（PCB）"><a href="#进程控制块（PCB）" class="headerlink" title="进程控制块（PCB）"></a>进程控制块（PCB）</h3><p>进程ID、用户ID、进程状态、调度信息、文件管理、虚拟内存管理、信号（进程间通信机制）、时间和定时器、……</p>
 <p><strong>task_struct结构</strong>：Linux进程控制块（PCB）的结构体</p>
 <ul>
