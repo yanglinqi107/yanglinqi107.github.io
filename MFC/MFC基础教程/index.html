@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<meta name="referrer" content="no-referrer">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="传智播客&amp;黑马程序员教程文档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MFC基础教程">
+<meta property="og:url" content="http://yanglinqi107.github.io/MFC/MFC%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="杨记">
+<meta property="og:description" content="传智播客&amp;黑马程序员教程文档">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20220922202011111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20220922202811111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221018133911111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221018134011111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221018134111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221018134211111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221018134311111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221018143411111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021150216047.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221019202311111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221019202411111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021111411111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021111511111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021111611111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021111711111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021111811111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021111911111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021112011111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021112111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021154111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021155111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021156111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021157111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021158111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021159111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021200111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021201111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/button.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021202111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021203111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021204111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021205111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021154511111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021154611111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021154711111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021154811111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021154911111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021163611111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021164811111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021164911111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021165311111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021165411111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021165711111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021165911111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021172611111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021172711111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021172811111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021172911111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021173011111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021173111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021173411111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021173511111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021173611111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021173711111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021173911111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021174211111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021174311111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021174411111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021174511111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021174611111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021174711111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021174811111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021174911111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175011111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175211111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175311111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175411111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175511111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175611111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175711111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175811111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175911111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021182211111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021182311111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021182411111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021182511111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021182611111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021182711111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021182811111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021182911111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021183011111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021183111111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021183211111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021183311111.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021183511111.png">
+<meta property="article:published_time" content="2022-10-21T11:01:50.744Z">
+<meta property="article:modified_time" content="2022-10-21T11:04:47.221Z">
+<meta property="article:author" content="yanglinqi">
+<meta property="article:tag" content="MFC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20220922202011111.png">
+
+<link rel="canonical" href="http://yanglinqi107.github.io/MFC/MFC%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>MFC基础教程 | 杨记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">杨记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">碎片化学习令人焦虑，系统化学习使人进步</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">22</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yanglinqi107.github.io/MFC/MFC%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headpic.jpg">
+      <meta itemprop="name" content="yanglinqi">
+      <meta itemprop="description" content="用于做笔记，对学过的知识总结">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MFC基础教程
+        </h1>
+
+        <div class="post-meta">
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-10-21 19:01:50 / 修改时间：19:04:47" itemprop="dateCreated datePublished" datetime="2022-10-21T19:01:50+08:00">2022-10-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MFC/" itemprop="url" rel="index"><span itemprop="name">MFC</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>传智播客&amp;黑马程序员教程文档</p>
+<span id="more"></span>
+<h2 id="为什么学习MFC"><a href="#为什么学习MFC" class="headerlink" title="为什么学习MFC"></a>为什么学习MFC</h2><p>如果你是在Windows平台上做GUI开发，MFC(微软基础类库)是一个很好的选择，毕竟Windows累积用户群庞大，市场接受程度高。</p>
+<p>但是，学习MFC不仅仅要学习用MFC，还要学习MFC的框架设计思想。</p>
+<p>很多公司在一些做了很久的项目上，往往都是有自己的类库、自己的框架，我们只需要在其基础上不断的完善和扩展。如果你不了解类库，你是根本无从下手。这也是我们要学习类库、框架设计的原因。</p>
+<p>如果仅仅会用MFC的话，可能在找工作的时候，一旦工作内容离开了MFC，就什么也不会了。学习任何东西都是一样的，学的是方法，而不仅仅是某个技术本身，因为技术肯定不停地更新的，你今天学的现在能用上，但是谁也不能保住以后会怎么样，但是万变不离其中，懂得了方法，学什么都一样。</p>
+<h2 id="Windows消息机制"><a href="#Windows消息机制" class="headerlink" title="Windows消息机制"></a>Windows消息机制</h2><p>要想熟练掌握 Windows 应用程序的开发， 首先需要理解 Windows 平台下程序运行的内部机制。如果想要更好的学习掌握 MFC，必须要先了解Windows 程序的内部运行机制，为我们扫清学习路途中的第一个障碍，为进一步学习 MFC 程序打下基础。</p>
+<h3 id="基本概念解释"><a href="#基本概念解释" class="headerlink" title="基本概念解释"></a>基本概念解释</h3><p>我们在编写标准C程序的时候,经常会调用各种库函数来辅助完成某些功能：初学者使用得最多的C库函数就是printf了，这些库函数是由你所使用的编译器厂商提供的。在Windows平台下，也有类似的函数可供调用：不同的是，这些函数是由Windows操作系统本身提供的。</p>
+<h4 id="SDK和API"><a href="#SDK和API" class="headerlink" title="SDK和API"></a>SDK和API</h4><p><strong>SDK</strong>： 软件开发工具包（Software Development Kit），一般都是一些被软件工程师用于为特定的软件包、软件框架、硬件平台、操作系统等建立应用软件的开发工具的集合。</p>
+<p><strong>API函数</strong>：Windows操作系统提供给应用程序编程的接口（Application Programming Interface）。Windows应用程序API函数是通过C语言实现的，所有主要的 Windows 函数都在 <code>Windows.h</code> 头文件中进行了声明。Windows 操作系统提供了 1000 多种 API函数。</p>
+<h4 id="窗口和句柄"><a href="#窗口和句柄" class="headerlink" title="窗口和句柄"></a>窗口和句柄</h4><p>窗口是 Windows 应用程序中一个非常重要的元素，一个 Windows 应用程序至少要有一个窗口，称为主窗口。</p>
+<p>窗口是屏幕上的一块矩形区域，是 Windows 应用程序与用户进行交互的接口。利用窗口可以接收用户的输入、以及显示输出。</p>
+<p>一个应用程序窗口通常都包含标题栏、菜单栏、系统菜单、最小化框、最大化框、 可调边框，有的还有滚动条。如下图：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20220922202011111.png" style="zoom:80%;" /></p>
+<p>窗口可以分为客户区和非客户区， 如上图。 客户区是窗口的一部分， 应用程序通常在客户区中显示文字或者绘制图形。 </p>
+<p>标题栏、 菜单栏、 系统菜单、 最小化框和最大化框、 可调边框统称为窗口的非客户区， 它们由 Windows 系统来管理， 而应用程序则主要管理客户区的外观及操作。</p>
+<p><strong>窗口可以有一个父窗口， 有父窗口的窗口称为子窗口</strong>。除了上图所示类型的窗口外， 对话框和消息框也是一种窗口。 在对话框上通常还包含许多子窗口， 这些子窗口的形式有按钮、 单选按钮、 复选框、 组框、 文本编辑框等。</p>
+<p>在 Windows 应用程序中， 窗口是通过窗口句柄（ HWND） 来标识的。 我们要对某个窗口进行操作， 首先就要得到这个窗口的句柄。 </p>
+<p>句柄（ HANDLE） 是 Windows 程序中一个重要的概念， 使用也非常频繁。 在 Windows 程序中， 有各种各样的资源（ 窗口、 图标、光标,画刷等）， 系统在创建这些资源时会为它们分配内存， 并返回标识这些资源的标识号， 即句柄。 在后面的内容中我们还会看到图标句柄（ HICON）、 光标句柄（ HCURSOR） 和画刷句柄（ HBRUSH）。</p>
+<h4 id="消息与消息队列"><a href="#消息与消息队列" class="headerlink" title="消息与消息队列"></a>消息与消息队列</h4><p>Windows 程序设计是一种完全不同于传统的 DOS 方式的程序设计方法。它是一种<strong>事件驱动方式的程序设计模式，主要是基于消息的</strong>。</p>
+<p>每一个 Windows 应用程序开始执行后， 系统都会为该程序创建一个消息队列， 这个消息队列用来存放该程序创建的窗口的消息。</p>
+<p>例如，当用户在窗口中画图的时候，按下鼠标左键，此时，操作系统会感知到这一事件，于是将这个事件包装成一个消息，投递到应用程序的消息队列中，等待应用程序的处理。</p>
+<p>然后应用程序通过一个消息循环不断地从消息队列中取出消息，并进行响应。</p>
+<p>在这个处理过程中，操作系统也会给应用程序“ 发送消息”。所谓“ 发送消息”，实际上是操作系统调用程序中一个专门负责处理消息的函数，这个函数称为<strong>窗口过程</strong>。</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20220922202811111.png" alt=""></p>
+<h4 id="WinMain函数"><a href="#WinMain函数" class="headerlink" title="WinMain函数"></a>WinMain函数</h4><p>当Windows操作系统启动一个程序时，它调用的就是该程序的WinMain函数（ 实际是由插入到可执行文件中的启动代码调用的）。 WinMain是Windows程序的入口点函数，与DOS程序的入口点函数main的作用相同，当WinMain 函数结束或返回时，Windows应用程序结束。</p>
+<h3 id="Windows编程模型"><a href="#Windows编程模型" class="headerlink" title="Windows编程模型"></a>Windows编程模型</h3><p>一个完整的Win32程序(<code>#include &lt;windows.h&gt;</code>)，该程序实现的功能是创建一个窗口，并在该窗口中响应键盘及鼠标消息，程序的实现步骤为：</p>
+<ul>
+<li>WinMain函数的定义</li>
+<li>创建一个窗口</li>
+<li>进行消息循环</li>
+<li>编写窗口过程函数</li>
+</ul>
+<h4 id="项目的创建"><a href="#项目的创建" class="headerlink" title="项目的创建"></a>项目的创建</h4><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221018133911111.png" style="zoom:80%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221018134011111.png" style="zoom: 50%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221018134111111.png" style="zoom: 67%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221018134211111.png" style="zoom:67%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221018134311111.png" style="zoom: 50%;" /></p>
+<p>VS2019： Windows 桌面向导，设置配置选项</p>
+<h4 id="WinMain函数的定义"><a href="#WinMain函数的定义" class="headerlink" title="WinMain函数的定义"></a>WinMain函数的定义</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> WINAPI <span class="title">WinMain</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">	HINSTANCE hInstance,	<span class="comment">//应用程序实例</span></span></span></span><br><span class="line"><span class="params"><span class="function">	HINSTANCE hPrevInstance,	<span class="comment">//上一个应用程序实例</span></span></span></span><br><span class="line"><span class="params"><span class="function">	LPSTR lpCmdLine,		<span class="comment">//命令行参数</span></span></span></span><br><span class="line"><span class="params"><span class="function">	<span class="keyword">int</span> nShowCmd)</span></span>;		<span class="comment">//窗口显示的样式</span></span><br></pre></td></tr></table></figure>
+<p><strong>WINAP</strong>：是一个宏，它代表的是<code>__stdcall</code>（注意是两个下划线），表示的是参数传递的顺序：从右往左入栈，同时在函数返回前自动清空堆栈。</p>
+<p><strong>hInstance</strong>：表示该程序当前运行的实例的句柄，这是一个数值。当程序在Windows下运行时，它唯一标识运行中的实例（注意，只有运行中的程序实例， 才有实例句柄）。一个应用程序可以运行多个实例，每运行一个实例，系统都会给该实例分配一个句柄值，并通过hInstance参数传递给 WinMain 函数。</p>
+<p><strong>hPrevInstance</strong>：表示当前实例的前一个实例的句柄。在Win32环境下，这个参数总是NULL，即在Win32环境下，这个参数不再起作用。</p>
+<p><strong>lpCmdLine</strong>：是一个以空终止的字符串， 指定传递给应用程序的命令行参数，相当于C或C++中的main函数中的参数char *argv[]。</p>
+<p><strong>nShowCmd</strong>：表示一个窗口的显示，表示它是要最大化显示、最小化显示、正常大小显示还是隐藏显示。</p>
+<h4 id="创建一个窗口"><a href="#创建一个窗口" class="headerlink" title="创建一个窗口"></a>创建一个窗口</h4><p>创建一个完整的窗口，需要经过下面几个步骤：</p>
+<p>a. 设计一个窗口类</p>
+<p>b. 注册窗口类</p>
+<p>c. 创建窗口</p>
+<p>d. 显示及更新窗口</p>
+<h5 id="设计一个窗口"><a href="#设计一个窗口" class="headerlink" title="设计一个窗口"></a>设计一个窗口</h5><p>一个完整的窗口具有许多特征， 包括光标（鼠标进入该窗口时的形状）、图标、背景色等。窗口的创建过程类似于汽车的制造过程。</p>
+<p>我们在生产一个型号的汽车之前， 首先要对该型号的汽车进行设计， 在图纸上画出汽车的结构图， 设计各个零部件， 同时还要给该型号的汽车取一个响亮的名字， 例如“宝马 x6”。</p>
+<p>类似地， 在创建一个窗口前， 也必须对该类型的窗口进行设计， 指定窗口的特征。在Windows中，窗口的特征就是由WNDCLASS结构体来定义的，我们只需给WNDCLASS结构体对应的成员赋值，即可完成窗口类的设计。</p>
+<p>WNDCLASS结构体的定义如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">WNDCLASS</span>&#123;</span></span><br><span class="line">	UINT        style;</span><br><span class="line">	WNDPROC     lpfnWndProc;</span><br><span class="line">	<span class="keyword">int</span>         cbClsExtra;</span><br><span class="line">	<span class="keyword">int</span>         cbWndExtra;</span><br><span class="line">	HINSTANCE   hInstance;</span><br><span class="line">	HICON       hIcon;</span><br><span class="line">	HCURSOR     hCursor;</span><br><span class="line">	HBRUSH      hbrBackground;</span><br><span class="line">	LPCWSTR     lpszMenuName;</span><br><span class="line">	LPCWSTR     lpszClassName;</span><br><span class="line">&#125; WNDCLASS;</span><br></pre></td></tr></table></figure>
+<p><strong>style</strong>：指定窗口的样式(风格)，常用的样式如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>类型</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CS_HREDRAW</td>
+<td>当窗口水平方向上的宽度发生变化时， 将重新绘制整个窗口。 当窗口发生重绘时， 窗口中的文字和图形将被擦除。如果没有指定这一样式，那么在水平方向上调整窗口宽度时，将不会重绘窗口。</td>
+</tr>
+<tr>
+<td>CS_VREDRAW</td>
+<td>当窗口垂直方向上的高度发生变化时，将重新绘制整个窗口。如果没有指定这一样式，那么在垂直方向上调整窗口高度时，将不会重绘窗口。</td>
+</tr>
+<tr>
+<td>CS_NOCLOSE</td>
+<td>禁用系统菜单的 Close 命令，这将导致窗口没有关闭按钮。</td>
+</tr>
+<tr>
+<td>CS_DBLCLKS</td>
+<td>当用户在窗口中双击鼠标时，向窗口过程发送鼠标双击消息。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>lpfnWndProc</strong>：指定一个窗口回调函数，是一个函数的指针</p>
+<p>当应用程序收到给某一窗口的消息时，就应该调用某一函数来处理这条消息。这一调用过程不用应用程序自己来实施，而由操作系统来完成，但是，回调函数本身的代码必须由应用程序自己完成。对于一条消息，操作系统调用的是接受消息的窗口所属的类型中的lpfnWndProc成员指定的函数。每一种不同类型的窗口都有自己专用的回调函数，该函数就是通过lpfnWndProc成员指定的。</p>
+<p>回调函数的定义形式如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LRESULT CALLBACK <span class="title">WindowProc</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">	HWND hWnd,		<span class="comment">//信息所属的窗口句柄</span></span></span></span><br><span class="line"><span class="params"><span class="function">	UINT uMsg,		<span class="comment">//消息类型</span></span></span></span><br><span class="line"><span class="params"><span class="function">	WPARAM wParam,	<span class="comment">//附加信息(如键盘哪个键按下)</span></span></span></span><br><span class="line"><span class="params"><span class="function">	LPARAM lParam	<span class="comment">//附加信息(如鼠标点击坐标)</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<p><strong>cbClsExtra</strong>：类的附加内存，通常数情况下为0。</p>
+<p><strong>cbWndExtra</strong>：窗口附加内存，通常情况下为0。</p>
+<p><strong>hInstance</strong>：当前实例句柄，用WinMain中的形参hInstance为其赋值。</p>
+<p><strong>hIcon</strong>：指定窗口类的图标句柄，设置为NULL，则使用默认图标，也可用如下函数进行赋值：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HICON <span class="title">LoadIcon</span><span class="params">(HINSTANCE hInstance, LPCTSTR lpIconName)</span></span>;</span><br><span class="line">如：<span class="built_in">LoadIcon</span>(<span class="literal">NULL</span>, IDI_WARNING); <span class="comment">//第一个参数为NULL，加载系统默认图标</span></span><br></pre></td></tr></table></figure>
+<p><strong>hCursor</strong>：指定窗口类的光标句柄，设置为NULL，则使用默认图标，也可用如下函数进行赋值：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HCURSOR <span class="title">LoadCursor</span><span class="params">(HINSTANCE hInstance, LPCTSTR lpCursorName)</span></span>;</span><br><span class="line">如：<span class="built_in">LoadCursor</span>(<span class="literal">NULL</span>, IDC_HELP); <span class="comment">//第一个参数为NULL，加载系统默认光标</span></span><br></pre></td></tr></table></figure>
+<p><strong>hbrBackground</strong>：指示窗口的背景颜色，可用如下函数进行赋值：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HGDIOBJ <span class="title">GetStockObject</span><span class="params">(<span class="keyword">int</span> fnObject)</span></span>;</span><br><span class="line">如：<span class="built_in">GetStockObject</span>(WHITE_BRUSH);</span><br></pre></td></tr></table></figure>
+<p><strong>lpszMenuName</strong>：指定菜单资源的名字。如果设置为NULL，那么基于这个窗口类创建的窗口将没有默认菜单。</p>
+<p><strong>lpszClassName</strong>：指定窗口类的名字。</p>
+<p>示例代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">WNDCLASS wc;	<span class="comment">//窗口类变量</span></span><br><span class="line">wc.cbClsExtra = <span class="number">0</span>;	<span class="comment">//类附加内存</span></span><br><span class="line">wc.cbWndExtra = <span class="number">0</span>;	<span class="comment">//窗口附加内存</span></span><br><span class="line">wc.hbrBackground = (HBRUSH)<span class="built_in">GetStockObject</span>(WHITE_BRUSH); <span class="comment">//背景色为白色</span></span><br><span class="line">wc.hCursor = (HCURSOR)<span class="built_in">LoadCursor</span>(<span class="literal">NULL</span>, IDC_HELP);	<span class="comment">//帮助光标</span></span><br><span class="line">wc.hIcon = (HICON)<span class="built_in">LoadIcon</span>(<span class="literal">NULL</span>, IDI_WARNING);	<span class="comment">//警告图标</span></span><br><span class="line">wc.hInstance = hInstance;	<span class="comment">//应用程序实例，为WinMain第1个形参</span></span><br><span class="line">wc.lpfnWndProc = WinProc;	<span class="comment">//窗口过程函数名字</span></span><br><span class="line">wc.lpszClassName = <span class="built_in">TEXT</span>(<span class="string">&quot;MyWin&quot;</span>);	<span class="comment">//类的名字</span></span><br><span class="line">wc.lpszMenuName = <span class="literal">NULL</span>;	<span class="comment">//没有菜单</span></span><br><span class="line">wc.style = <span class="number">0</span>;	<span class="comment">//类的风格，填0，使用默认风格</span></span><br></pre></td></tr></table></figure>
+<h5 id="注册窗口类"><a href="#注册窗口类" class="headerlink" title="注册窗口类"></a>注册窗口类</h5><p>设计完窗口类（WNDCLASS）后， 需要调用RegisterClass函数对其进行注册，注册成功后，才可以创建该类型的窗口。</p>
+<p>注册函数的原型声明如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ATOM <span class="title">RegisterClass</span><span class="params">(CONST WNDCLASS *lpWndClass)</span></span>;</span><br><span class="line">使用示例：<span class="built_in">RegisterClass</span>(&amp;wc);</span><br></pre></td></tr></table></figure>
+<h5 id="创建窗口"><a href="#创建窗口" class="headerlink" title="创建窗口"></a>创建窗口</h5><p>设计好窗口类并且将其成功注册之后， 即可用CreateWindow函数产生这种类型的窗口了。</p>
+<p>CreateWindow函数的原型声明如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HWND <span class="title">CreateWindow</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    LPCTSTR lpClassName,</span></span></span><br><span class="line"><span class="params"><span class="function">    LPCTSTR lpWindowName,</span></span></span><br><span class="line"><span class="params"><span class="function">    DWORD dwStyle,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="keyword">int</span> x,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="keyword">int</span> y,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="keyword">int</span> nWidth,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="keyword">int</span> nHeight,</span></span></span><br><span class="line"><span class="params"><span class="function">    HWND hWndParent,</span></span></span><br><span class="line"><span class="params"><span class="function">    HMENU hMenu,</span></span></span><br><span class="line"><span class="params"><span class="function">    HINSTANCE hInstance,</span></span></span><br><span class="line"><span class="params"><span class="function">    LPVOID lpParam)</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>lpClassName</strong>：指定窗口类的名称，此名字必须和WNDCLASS的lpszClassName成员指定的名称一样。</li>
+<li><strong>lpWindowName</strong>：指定窗口的名字，即窗口的标题。</li>
+<li><strong>dwStyle</strong>：指定创建的窗口的样式，常指定为指WS_OVERLAPPEDWINDOW类型，这是一种多种窗口类型的组合类型。</li>
+<li><strong>x, y</strong>：指定窗口左上角的x，y坐标。如果参数x被设为<code>CW_USEDEFAULT</code>，那么系统为窗口选择默认的左上角坐标并忽略y参数。</li>
+<li><strong>nWidth，nHeight</strong>：指定窗口窗口的宽度，高度。如果参数nWidth被设为 <code>CW_USEDEFAULT</code>，那么系统为窗口选择默认的宽度和高度，参数nHeight被忽略。</li>
+<li><strong>hWndParent</strong>：指定被创建窗口的父窗口句柄，没有父窗口，则设置NULL。</li>
+<li><strong>hMenu</strong>：指定窗口菜单的句柄，没有，则设置为NULL。</li>
+<li><strong>hInstance</strong>：窗口所属的应用程序实例的句柄，用WinMain中的形参hInstance为其赋值。</li>
+<li><strong>lpParam</strong>：作为WM_CREATE消息的附加参数lParam传入的数据指针。通常设置为NULL。</li>
+</ul>
+<p>返回值说明：如果窗口创建成功，CreateWindow函数将返回系统为该窗口分配的句柄，否则，返回NULL。</p>
+<p>示例代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HWND  hWnd = <span class="built_in">CreateWindow</span>(</span><br><span class="line">    <span class="built_in">TEXT</span>(<span class="string">&quot;MyWin&quot;</span>),  <span class="comment">//窗口类名字</span></span><br><span class="line">    <span class="built_in">TEXT</span>(<span class="string">&quot;测试&quot;</span>),      <span class="comment">//窗口标题</span></span><br><span class="line">    WS_OVERLAPPEDWINDOW,  <span class="comment">//窗口风格	</span></span><br><span class="line">    CW_USEDEFAULT, CW_USEDEFAULT,  <span class="comment">//窗口x，y坐标，使用默认值</span></span><br><span class="line">    CW_USEDEFAULT, CW_USEDEFAULT,  <span class="comment">//窗口宽度，高度，使用默认值</span></span><br><span class="line">    <span class="literal">NULL</span>,  	<span class="comment">//无父窗口</span></span><br><span class="line">    <span class="literal">NULL</span>, 	<span class="comment">//无菜单</span></span><br><span class="line">    hInstance, 	<span class="comment">//应用程序实例句柄，为WinMain第1个形参</span></span><br><span class="line">    <span class="literal">NULL</span>);	<span class="comment">//附件信息，通常设置为NULL</span></span><br></pre></td></tr></table></figure>
+<h5 id="显示及更新窗口"><a href="#显示及更新窗口" class="headerlink" title="显示及更新窗口"></a>显示及更新窗口</h5><p>显示窗口函数原型：<code>BOOL ShowWindow(HWND hWnd, int nCmdShow);</code></p>
+<p>更新窗口函数原型：<code>BOOL UpdateWindow(HWND hWnd);</code></p>
+<p>示例代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ShowWindow</span>(hWnd, SW_SHOWNORMAL); <span class="comment">//SW_SHOWNORMAL为普通模式</span></span><br><span class="line"><span class="built_in">UpdateWindow</span>(hWnd);</span><br></pre></td></tr></table></figure>
+<h5 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设计一个窗口类</span></span><br><span class="line">WNDCLASS wc;	<span class="comment">//窗口类变量</span></span><br><span class="line">wc.cbClsExtra = <span class="number">0</span>;	<span class="comment">//类附加内存</span></span><br><span class="line">wc.cbWndExtra = <span class="number">0</span>;	<span class="comment">//窗口附加内存</span></span><br><span class="line">wc.hbrBackground = (HBRUSH)<span class="built_in">GetStockObject</span>(WHITE_BRUSH); <span class="comment">//背景色为白色</span></span><br><span class="line">wc.hCursor = <span class="built_in">LoadCursor</span>(<span class="literal">NULL</span>, IDC_HELP);	<span class="comment">//帮助光标</span></span><br><span class="line">wc.hIcon = <span class="built_in">LoadIcon</span>(<span class="literal">NULL</span>, IDI_WARNING);	<span class="comment">//警告图标</span></span><br><span class="line">wc.hInstance = hInstance;	<span class="comment">//应用程序实例，为WinMain第1个形参</span></span><br><span class="line">wc.lpfnWndProc = WinProc;	<span class="comment">//窗口过程函数名字</span></span><br><span class="line">wc.lpszClassName = <span class="built_in">TEXT</span>(<span class="string">&quot;MyWin&quot;</span>);	<span class="comment">//类的名字</span></span><br><span class="line">wc.lpszMenuName = <span class="literal">NULL</span>;	<span class="comment">//没有菜单</span></span><br><span class="line">wc.style = <span class="number">0</span>;	<span class="comment">//类的风格，填0，使用默认风格</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//注册窗口类</span></span><br><span class="line"><span class="built_in">RegisterClass</span>(&amp;wc);</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建窗口</span></span><br><span class="line">HWND  hWnd = <span class="built_in">CreateWindow</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;MyWin&quot;</span>), <span class="built_in">TEXT</span>(<span class="string">&quot;测试&quot;</span>), WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, <span class="literal">NULL</span>, <span class="literal">NULL</span>, hInstance, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//显示及更新窗口</span></span><br><span class="line"><span class="built_in">ShowWindow</span>(hWnd, SW_SHOWNORMAL);</span><br><span class="line"><span class="built_in">UpdateWindow</span>(hWnd);</span><br></pre></td></tr></table></figure>
+<h4 id="消息循环"><a href="#消息循环" class="headerlink" title="消息循环"></a>消息循环</h4><p>在创建窗口、显示窗口、更新窗口后，我们需要编写一个消息循环，不断地从消息队列中取出消息，并进行响应。</p>
+<h5 id="消息结构体"><a href="#消息结构体" class="headerlink" title="消息结构体"></a>消息结构体</h5><p>在Windows程序中，消息是由MSG结构体来表示的。MSG结构体的定义如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tagMSG</span> &#123;</span></span><br><span class="line">	HWND hWnd;   </span><br><span class="line">	UINT message;   </span><br><span class="line">	WPARAM wParam;</span><br><span class="line">	LPARAM lParam;   </span><br><span class="line">	DWORD time;   </span><br><span class="line">	POINT pt;</span><br><span class="line">&#125; MSG;</span><br></pre></td></tr></table></figure>
+<p><strong>hWnd</strong>：消息所属的窗口。我们通常开发的程序都是窗口应用程序，一个消息一般都是与某个窗口相关联的。例如，在某个活动窗口中按下鼠标左键，产生的按键消息就是发给该窗口的。</p>
+<p><strong>message</strong>：消息的标识符，是由一个数值来表示的，不同的消息对应不同的数值。Windows将消息对应的数值定义为WM_XXX宏(WM是Windows Message的缩写)的形式， XXX对应某种消息的英文拼写的大写形式。例如，鼠标左键按下消息是WM_LBUTTONDOWN，键盘按下消息是WM_KEYDOWN，字符消息是 WM_CHAR……。</p>
+<p><strong>wParam</strong>： 指定消息的附加信息，如键盘按下会触发WM_KEYDOWN消息，但是，具体按下哪个按键需要wParam区分。</p>
+<p><strong>lParam</strong>：指定消息的附加信息，如鼠标左击会触发WM_LBUTTONDOWN消息，但是，具体点击的坐标需要lParam区分。</p>
+<p><strong>time</strong>：标识一个消息产生时的时间。</p>
+<p><strong>pt</strong>：表示产生这个消息时光标或鼠标的坐标。</p>
+<h5 id="取消息"><a href="#取消息" class="headerlink" title="取消息"></a>取消息</h5><p>要从消息队列中取出消息，我们需要调用GetMessage()函数，该函数的原型声明如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">GetMessage</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">	LPMSG lpMsg,</span></span></span><br><span class="line"><span class="params"><span class="function">	HWND hWnd,</span></span></span><br><span class="line"><span class="params"><span class="function">	UINT wMsgFilterMin,</span></span></span><br><span class="line"><span class="params"><span class="function">	UINT wMsgFilterMax)</span></span>;</span><br></pre></td></tr></table></figure>
+<p><strong>lpMsg</strong>：指向一个消息结构体(MSG)，GetMessage从线程的消息队列中取出的消息信息将保存在该结构体变量中。</p>
+<p><strong>hWnd</strong>：指定接收属于哪一个窗口的消息。通常我们将其设置为NULL，用于接收属于调用线程的所有窗口的窗口消息。</p>
+<p><strong>wMsgFilterMin</strong>：指定消息的最小值。</p>
+<p><strong>wMsgFilterMax</strong>：指定消息的最大值。如果wMsgFilterMin和wMsgFilterMax都设置为0， 则接收所有消息。</p>
+<p>返回值说明：GetMessage函数接收到除 WM_QUIT 外的消息均返回非零值。对于WM_QUIT消息，该函数返回零。如果出现了错误，该函数返回-1，例如，当参数hWnd是无效的窗口句柄或lpMsg是无效的指针时。</p>
+<h5 id="建立消息循环"><a href="#建立消息循环" class="headerlink" title="建立消息循环"></a>建立消息循环</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MSG msg;</span><br><span class="line"><span class="keyword">while</span> (<span class="built_in">GetMessage</span>(&amp;msg, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">TranslateMessage</span>(&amp;msg);</span><br><span class="line">    <span class="built_in">DispatchMessage</span>(&amp;msg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>TranslateMessage</strong>：用于翻译、处理和转换消息并把新消息投放到消息队列中，并且此过程不会影响原来的消息队列。</p>
+<p><strong>DispatechMessage</strong>：用于把收到的消息传到窗口回调函数进行分析和处理。即将消息传递给操作系统，让操作系统调用窗口回调函数，来对信息进行处理。</p>
+<h5 id="消息处理机制"><a href="#消息处理机制" class="headerlink" title="消息处理机制"></a>消息处理机制</h5><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221018143411111.png" alt=""></p>
+<p>①　操作系统接收到应用程序的窗口消息，将消息投递到该应用程序的消息队列中。</p>
+<p>②　应用程序在消息循环中调用GetMessage函数从消息队列中取出一条一条的消息。取出消息后，应用程序可以对消息进行一些预处理，例如，放弃对某些消息的响应，或者调用TranslateMessage产生新的消息。</p>
+<p>③　应用程序调用DispatchMessage，将消息回传给操作系统。消息是由 MSG结构体对象来表示的，其中就包含了接收消息的窗口的句柄。因此，DispatchMessage函数总能进行正确的传递。</p>
+<p>④　系统利用WNDCLASS结构体的lpfnWndProc成员保存的窗口过程函数的指针调用窗口过程，对消息进行处理。</p>
+<h5 id="窗口过程函数-消息处理函数"><a href="#窗口过程函数-消息处理函数" class="headerlink" title="窗口过程函数(消息处理函数)"></a>窗口过程函数(消息处理函数)</h5><p>在完成上述步骤后，剩下的工作就是编写一个窗口过程函数，用于处理发送给窗口的消息。</p>
+<p>窗口过程函数的名字可以随便取， 如WinProc， 但函数定义的形式必须和下面声明的形式相同：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LRESULT CALLBACK <span class="title">WinProc</span><span class="params">( <span class="comment">//CALLBACK 和WINAPI 作用一样</span></span></span></span><br><span class="line"><span class="params"><span class="function">	HWND hWnd,		<span class="comment">//信息所属的窗口句柄</span></span></span></span><br><span class="line"><span class="params"><span class="function">	UINT uMsg,		<span class="comment">//消息类型</span></span></span></span><br><span class="line"><span class="params"><span class="function">	WPARAM wParam,	<span class="comment">//附加信息(如键盘哪个键按下)</span></span></span></span><br><span class="line"><span class="params"><span class="function">	LPARAM lParam	<span class="comment">//附加信息(如鼠标点击坐标)</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>示例代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LRESULT CALLBACK <span class="title">WinProc</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">	HWND hWnd,		<span class="comment">//信息所属的窗口句柄</span></span></span></span><br><span class="line"><span class="params"><span class="function">	UINT uMsg,		<span class="comment">//消息类型</span></span></span></span><br><span class="line"><span class="params"><span class="function">	WPARAM wParam,	<span class="comment">//附加信息(如键盘按键)</span></span></span></span><br><span class="line"><span class="params"><span class="function">	LPARAM lParam	<span class="comment">//附加信息(如鼠标点击坐标)</span></span></span></span><br><span class="line"><span class="params"><span class="function">	)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in"><span class="keyword">switch</span></span> (uMsg)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> WM_KEYDOWN: <span class="comment">//键盘按下</span></span><br><span class="line">		<span class="comment">//……</span></span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> WM_LBUTTONDOWN: <span class="comment">//鼠标右键按下</span></span><br><span class="line">		<span class="comment">//……</span></span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> WM_PAINT: <span class="comment">//绘图事件</span></span><br><span class="line">		<span class="comment">//……</span></span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> WM_DESTROY:</span><br><span class="line">		<span class="built_in">PostQuitMessage</span>(<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> WM_CLOSE: </span><br><span class="line">		<span class="built_in">DestroyWindow</span>(hWnd); </span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="comment">//以windows默认方式处理</span></span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">DefWindowProc</span>(hWnd, uMsg, wParam, lParam);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>DefWindowProc</strong>函数：DefWindowProc函数调用默认的窗口过程，对应用程序没有处理的其他消息提供默认处理。</p>
+<p><strong>WM_CLOSE</strong>：对WM_CLOSE消息的响应并不是必须的，如果应用程序没有对该消息进行响应，系统将把这条消息传给DefWindowProc函数而 DefWindowProc函数则调用DestroyWindow函数来响应这条WM_CLOSE消息。</p>
+<p><strong>WM_DESTROY</strong>：DestroyWindow函数在销毁窗口后，会给窗口过程发送WM_DESTROY消息，我们在该消息的响应代码中调用PostQuitMessage函数。</p>
+<p>PostQuitMessage函数向应用程序的消息队列中投递一条WM_QUIT消息并返回。WinMain函数中，GetMessage 函数只有在收到WM_QUIT消息时才返回0，此时消息循环才结束，程序退出。传递给 PostQuitMessage函数的参数值将作为WM_QUIT消息的wParam参数，这个值通常用做WinMain函数的返回值。</p>
+<h4 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h4><p><code>win.c</code> </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//6 处理消息（窗口过程）</span></span><br><span class="line"><span class="function">LRESULT CALLBACK <span class="title">WindowProc</span><span class="params">(HWND hwnd,</span></span></span><br><span class="line"><span class="params"><span class="function">    UINT uMsg,</span></span></span><br><span class="line"><span class="params"><span class="function">    WPARAM wParam,</span></span></span><br><span class="line"><span class="params"><span class="function">    LPARAM lParam</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//程序入口函数</span></span><br><span class="line"><span class="comment">//WINAPI宏定义 __stdcall，参数的传递顺序 从右到左依次入栈，并在函数返回前清空堆栈</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> WINAPI <span class="title">WinMain</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    HINSTANCE hInstance,    <span class="comment">//H 句柄  应用程序的实例句柄</span></span></span></span><br><span class="line"><span class="params"><span class="function">    HINSTANCE hPrevInstance,    <span class="comment">//前一个应用程序的句柄，在win32环境下，一般为NULL，不起作用</span></span></span></span><br><span class="line"><span class="params"><span class="function">    LPSTR lpCmdLine,        <span class="comment">//char *argv[] </span></span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="keyword">int</span> nShowCmd)</span>           <span class="comment">//显示命令，最大化，最小化，正常</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//1 设计窗口</span></span><br><span class="line">    <span class="comment">//2 注册窗口</span></span><br><span class="line">    <span class="comment">//3 创建窗口</span></span><br><span class="line">    <span class="comment">//4 显示和更新</span></span><br><span class="line">    <span class="comment">//5 通过循环取消息</span></span><br><span class="line">    <span class="comment">//6 处理消息（窗口过程）</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//1 设计窗口</span></span><br><span class="line">    WNDCLASS wc;</span><br><span class="line">    wc.cbClsExtra = <span class="number">0</span>;  <span class="comment">//类的额外的内存</span></span><br><span class="line">    wc.cbWndExtra = <span class="number">0</span>;  <span class="comment">//窗口的额外内存</span></span><br><span class="line">    wc.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);     <span class="comment">//设置背景</span></span><br><span class="line">    wc.hCursor = LoadCursor(<span class="literal">NULL</span>, IDC_HAND);      <span class="comment">//设置光标, 第一个参数为NULL，代表使用系统提供的光标</span></span><br><span class="line">    wc.hIcon = LoadIcon(<span class="literal">NULL</span>, IDI_ERROR);         <span class="comment">//设置图标,第一个参数为NULL，代表使用系统提供的图标</span></span><br><span class="line">    wc.hInstance = hInstance;                     <span class="comment">//应用程序示例句柄    传入WinMain中的形参即可</span></span><br><span class="line">    wc.lpfnWndProc = WindowProc;                  <span class="comment">//窗口过程 回调函数</span></span><br><span class="line">    wc.lpszClassName = TEXT(<span class="string">&quot;WIN&quot;</span>);      <span class="comment">//指定窗口类名称</span></span><br><span class="line">    wc.lpszMenuName = <span class="literal">NULL</span>;             <span class="comment">//菜单名称</span></span><br><span class="line">    wc.style = <span class="number">0</span>;                       <span class="comment">//显示风格，0代表默认</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//2 注册窗口</span></span><br><span class="line">    RegisterClass(&amp;wc);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//3 创建窗口</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    lpClassName,   类名</span></span><br><span class="line"><span class="comment">    lpWindowName,  标题名</span></span><br><span class="line"><span class="comment">    dwStyle,       窗口样式  WS_OVERLAPPEDWINDOW </span></span><br><span class="line"><span class="comment">    x,             窗口水平坐标  CW_USEDEFAULT</span></span><br><span class="line"><span class="comment">    y,             窗口垂直坐标</span></span><br><span class="line"><span class="comment">    nWidth,        宽</span></span><br><span class="line"><span class="comment">    nHeight,       高  </span></span><br><span class="line"><span class="comment">    hWndParent,    父窗口  NULL</span></span><br><span class="line"><span class="comment">    hMenu,         菜单   NULL</span></span><br><span class="line"><span class="comment">    hInstance,     实例句柄 hInstance</span></span><br><span class="line"><span class="comment">    lpParam        附加值 NULL</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    HWND hwnd = CreateWindow(wc.lpszClassName, TEXT(<span class="string">&quot;WINDOWS&quot;</span>), WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, <span class="literal">NULL</span>, <span class="literal">NULL</span>, hInstance, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//4 显示和更新</span></span><br><span class="line">    ShowWindow(hwnd, SW_SHOWNORMAL);</span><br><span class="line">    UpdateWindow(hwnd);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//5 通过循环取消息</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    HWND        hwnd;   主窗口句柄</span></span><br><span class="line"><span class="comment">    UINT        message; 具体消息名称</span></span><br><span class="line"><span class="comment">    WPARAM      wParam;  附加消息 键盘消息</span></span><br><span class="line"><span class="comment">    LPARAM      lParam;  附加消息 鼠标消息</span></span><br><span class="line"><span class="comment">    DWORD       time;    消息产生时间</span></span><br><span class="line"><span class="comment">    POINT       pt;      附加消息 鼠标消息</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    MSG msg;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        _Out_ LPMSG lpMsg,     消息</span></span><br><span class="line"><span class="comment">        _In_opt_ HWND hWnd,    捕获窗口，填NULL代表捕获所有的窗口</span></span><br><span class="line"><span class="comment">        _In_ UINT wMsgFilterMin,  最小和最大的过滤消息 一般填0</span></span><br><span class="line"><span class="comment">        _In_ UINT wMsgFilterMax);  填0代表捕获所有消息</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">if</span> (GetMessage(&amp;msg, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="number">0</span>) == FALSE)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//不为FALSE</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//翻译消息 </span></span><br><span class="line">        TranslateMessage(&amp;msg);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//分发消息</span></span><br><span class="line">        DispatchMessage(&amp;msg);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//6 处理消息（窗口过程）</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//6 处理消息（窗口过程）</span></span><br><span class="line"><span class="comment">//CALLBACK 宏定义 __stdcall，参数的传递顺序 从右到左依次入栈，并在函数返回前清空堆栈</span></span><br><span class="line"><span class="function">LRESULT CALLBACK <span class="title">WindowProc</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    HWND hwnd,   <span class="comment">//消息所属的窗口句柄</span></span></span></span><br><span class="line"><span class="params"><span class="function">    UINT uMsg,   <span class="comment">//具体消息名称 WM_XXXX消息名</span></span></span></span><br><span class="line"><span class="params"><span class="function">    WPARAM wParam,  <span class="comment">//键盘附加消息</span></span></span></span><br><span class="line"><span class="params"><span class="function">    LPARAM lParam   <span class="comment">//鼠标附加消息</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (uMsg)</span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">case</span> WM_CLOSE:  <span class="comment">//点击窗口的关闭</span></span><br><span class="line">        DestroyWindow(hwnd);  <span class="comment">//DestroyWindow发送另一个消息 WM_DESTROY</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> WM_DESTROY:</span><br><span class="line">        PostQuitMessage(<span class="number">0</span>);   </span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> WM_LBUTTONDOWN:  <span class="comment">//鼠标左键按下</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> xPos = LOWORD(lParam);</span><br><span class="line">        <span class="keyword">int</span> yPos = HIWORD(lParam);</span><br><span class="line">        <span class="keyword">char</span> buf[<span class="number">1024</span>];</span><br><span class="line">        wsprintf(buf, TEXT(<span class="string">&quot;x = %d y = %d&quot;</span>), xPos, yPos);</span><br><span class="line">        MessageBox(hwnd, buf, TEXT(<span class="string">&quot;鼠标左键按下&quot;</span>), MB_OK);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">case</span> WM_KEYDOWN: <span class="comment">//键盘</span></span><br><span class="line">    &#123;</span><br><span class="line">        MessageBox(hwnd, TEXT(<span class="string">&quot;键盘按下&quot;</span>), TEXT(<span class="string">&quot;键盘&quot;</span>), MB_OK);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">case</span> WM_PAINT: <span class="comment">//绘图</span></span><br><span class="line">    &#123;</span><br><span class="line">        PAINTSTRUCT ps; <span class="comment">//绘图结构体</span></span><br><span class="line">        HDC hdc = BeginPaint(hwnd, &amp;ps);</span><br><span class="line">        TextOut(hdc, <span class="number">100</span>, <span class="number">100</span>, TEXT(<span class="string">&quot;HELLO&quot;</span>), <span class="built_in">strlen</span>(<span class="string">&quot;HELLO&quot;</span>));</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回值默认处理方式</span></span><br><span class="line">    <span class="keyword">return</span> DefWindowProc(hwnd, uMsg, wParam, lParam);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021150216047.png" alt="image-20221021150216047" style="zoom: 50%;" /></p>
+<h2 id="MFC入门"><a href="#MFC入门" class="headerlink" title="MFC入门"></a>MFC入门</h2><h3 id="MFC是什么"><a href="#MFC是什么" class="headerlink" title="MFC是什么"></a>MFC是什么</h3><p>微软基础类库（英语：Microsoft Foundation Classes，简称MFC）是一个微软公司提供的类库（class libraries），以C++类的形式封装了Windows API，并且包含一个应用程序框架，以减少应用程序开发人员的工作量。其中包含的类包含大量Windows句柄封装类和很多Windows的内建控件和组件的封装类。</p>
+<p>MFC把Windows SDK API函数包装成了几百个类，MFC给Windows操作系统提供了面向对象的接口，支持可重用性、自包含性以及其他OPP原则。MFC通过编写类来封装窗口、对话框以及其他对象，引入某些关键的虚函数（覆盖这些虚函数可以改变派生类的功能）来完成，并且MFC设计者使类库带来的总开销降到了最低。</p>
+<h3 id="编写MFC程序"><a href="#编写MFC程序" class="headerlink" title="编写MFC程序"></a>编写MFC程序</h3><h4 id="代码的编写"><a href="#代码的编写" class="headerlink" title="代码的编写"></a>代码的编写</h4><p>项目的创建和之前一样，只是此次的源文件后缀为<code>.cpp</code>，因为MFC是由C++编写的，编写MFC程序需要包含<code>#include &lt;afxwin.h&gt;</code>头文件。</p>
+<p>创建项目-》Win32或Windows桌面应用程序</p>
+<p><code>mfc.h</code> </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;afxwin.h&gt;</span>  <span class="comment">//mfc头文件</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApp</span> :</span> <span class="keyword">public</span> CWinApp   <span class="comment">//CWinApp应用程序类</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//基类的虚函数，派生类只是重写</span></span><br><span class="line">    <span class="comment">//MFC程序的入口地址</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> BOOL <span class="title">InitInstance</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyFrame</span> :</span> <span class="keyword">public</span> CFrameWnd   <span class="comment">//窗口框架类</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">MyFrame</span>(); <span class="comment">//构造函数</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>mfc.cpp</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mfc.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">MyApp app;	<span class="comment">//全局应用程序变量，有且仅有一个</span></span><br><span class="line"></span><br><span class="line"><span class="function">BOOL <span class="title">MyApp::InitInstance</span><span class="params">()</span>	<span class="comment">//程序入口地址</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	MyFrame* frame = <span class="keyword">new</span> MyFrame; <span class="comment">//创建框架类对象</span></span><br><span class="line">	</span><br><span class="line">	frame-&gt;<span class="built_in">ShowWindow</span>(SW_SHOWNORMAL); <span class="comment">//显示窗口</span></span><br><span class="line">	frame-&gt;<span class="built_in">UpdateWindow</span>(); <span class="comment">//更新窗口</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//保存指向应用程序的主窗口的指针</span></span><br><span class="line">    <span class="comment">//m_pMainWnd是CWinThread的数据成员，CWinApp是CWinThread的子类</span></span><br><span class="line">	m_pMainWnd = frame;		</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MyFrame::<span class="built_in">MyFrame</span>()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">Create</span>(<span class="literal">NULL</span>, <span class="built_in">TEXT</span>(<span class="string">&quot;mfc&quot;</span>)); <span class="comment">//创建窗口</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置环境后，代码才可编译运行：</p>
+<p>项目-》配置属性-》高级-》MFC使用改成在共享DLL中使用MFC</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221019202311111.png" style="zoom:50%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221019202411111.png" style="zoom:67%;" /></p>
+<h4 id="程序执行流程"><a href="#程序执行流程" class="headerlink" title="程序执行流程"></a>程序执行流程</h4><p>①　程序开始时，先实例化应用程序对象(有且只有一个)</p>
+<p>②　执行程序的入口函数<code>InitInstance()</code></p>
+<p>③　给框架类<code>MyFrame</code>对象动态分配空间（自动调用它的构造函数），在其构造函数内部，通过<code>CWnd::Create</code>创建窗口</p>
+<p>④　框架类对象显示窗口<code>CWnd::ShowWindow</code></p>
+<p>⑤　框架类对象更新窗口<code>CWnd::UpdateWindow</code></p>
+<p>⑥　保存框架类对象指针<code>CWinThread::m_pMainWnd</code></p>
+<h4 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h4><p><strong>a) CFrameWnd 框架窗口类</strong></p>
+<p>CFrameWnd是从CWnd(窗口基类)派生出来的。CFrameWnd模仿框架窗口行为，我们可以把框架窗口作为顶层窗口看待，它是应用程序与外部世界的主要接口。</p>
+<p>如果想要创建一个窗口，可以在此类中调用CWnd::Create或CWnd::CreateEX函数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">virtual</span> BOOL <span class="title">Create</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">	LPCTSTR lpszClassName,</span></span></span><br><span class="line"><span class="params"><span class="function">	LPCTSTR lpszWindowName,</span></span></span><br><span class="line"><span class="params"><span class="function">	DWORD dwStyle,</span></span></span><br><span class="line"><span class="params"><span class="function">	<span class="keyword">const</span> RECT&amp; rect,</span></span></span><br><span class="line"><span class="params"><span class="function">	CWnd* pParentWnd,</span></span></span><br><span class="line"><span class="params"><span class="function">	UINT nID,</span></span></span><br><span class="line"><span class="params"><span class="function">	CCreateContext* pContext = <span class="literal">NULL</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<p><strong>Create</strong>接收的8个参数后6个有默认值定义。</p>
+<p><strong>lpszClassName</strong>指定了窗口基于WNDCLASS类的名称，为此将其设定为NULL将创建一个基于已注册的WNDCLASS类的默认框架窗口。</p>
+<p><strong>lpszWindowName</strong>参数指定将在窗口的标题栏出现的文字。</p>
+<p><strong>b) CWinApp应用程序类</strong></p>
+<p><strong>MFC应用程序的核心就是基于CWinApp类的应用程序对象</strong>。CWinApp提供了消息循环来检索消息并将消息调度给应用程序窗口。它还包括可被覆盖的、用来自定义应用程序行为的主要虚函数。</p>
+<p><strong>一个MFC程序可以有且仅有一个应用程序对象</strong>，此对象必须声明为在全局范围内有效，以便它在程序开始时即在内存中被实例化。</p>
+<p><strong>c) InitInstance函数</strong></p>
+<p><code>CWinApp::InitInstance</code>函数是一个虚函数，其默认操作仅有一条语句：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">MyApp::InitInstance</span><span class="params">()</span><span class="comment">//程序入口地址</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>InitInstance的目的是给应用程序提供一个自身初始化的机会，其返回值决定了框架接下来要执行的内容，如果返回FALSE将关闭应用程序，如果初始化正常返回TRUE以便允许程序继续进行。此函数是MFC应用程序的入口。</p>
+<p><strong>d) m_pMainWnd 成员变量</strong></p>
+<p>在CWinApp中有一个名为<code>CWinThread::m_pMainWnd</code>的成员变量。 该变量是一个CWnd类型的指针，它保存了应用程序框架窗口对象的指针。也就是说，是指向CFramWnd对象（框架窗口类对象）的指针。</p>
+<h3 id="消息映射"><a href="#消息映射" class="headerlink" title="消息映射"></a>消息映射</h3><p><strong>消息映射是一个将消息和成员函数相互关联的表。</strong>比如，框架窗口接收到一个鼠标左击消息，MFC将搜索该窗口的消息映射，如果存在一个处理WM_LBUTTONDOWN消息的处理程序，然后就调用OnLButtonDown。</p>
+<p>下面是是将消息映射添加到一个类中所做的全部工作：</p>
+<p>1) 所操作类中，声明消息映射宏。</p>
+<p>2) 通过放置标识消息的宏来执行消息映射，相应的类将在对<code>BEGIN_MESSAGE_MAP</code>和<code>END_MESSAGE_MAP</code>的调用之间处理消息。<br>3) 对应消息处理函数分别在类中声明，类外定义</p>
+<p><code>mfc.h</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//框架类CFrameWnd</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyFrame</span> :</span> <span class="keyword">public</span> CFrameWnd</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyFrame</span>(); <span class="comment">// 构造函数</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 声明消息映射，必须用在类声明中</span></span><br><span class="line">    <span class="built_in">DECLARE_MESSAGE_MAP</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 鼠标左击处理函数声明</span></span><br><span class="line">    <span class="function">afx_msg <span class="keyword">void</span> <span class="title">OnLButtonDown</span><span class="params">(UINT, CPoint)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>mfc.cpp</code> </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义消息宏，必须用在类实现中</span></span><br><span class="line"><span class="built_in">BEGIN_MESSAGE_MAP</span>(MyFrame, CFrameWnd) <span class="comment">// 开始</span></span><br><span class="line">    <span class="built_in">ON_WA_LBUTTONDOWN</span>()</span><br><span class="line"><span class="built_in">END_MESSAGE_MAP</span>() <span class="comment">// 结束</span></span><br><span class="line">    </span><br><span class="line">MyFrame::<span class="built_in">MyFrame</span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">Create</span>(<span class="literal">NULL</span>, <span class="built_in">TEXT</span>(<span class="string">&quot;mfc&quot;</span>)); <span class="comment">//创建窗口</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//鼠标左击处理函数的定义</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MyFrame::OnLButtonDown</span><span class="params">(UINT, CPoint)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">MessageBox</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;鼠标左键&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="帮助文档的使用"><a href="#帮助文档的使用" class="headerlink" title="帮助文档的使用"></a>帮助文档的使用</h3><h4 id="MSDN"><a href="#MSDN" class="headerlink" title="MSDN"></a>MSDN</h4><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021111411111.png" alt=""></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021111511111.png" style="zoom:80%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021111611111.png" style="zoom:80%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021111711111.png" style="zoom:80%;" /></p>
+<h4 id="VC-之MFC类库"><a href="#VC-之MFC类库" class="headerlink" title="VC++之MFC类库"></a>VC++之MFC类库</h4><p>通过此手册查找，必须加上成员所属的类作用域（类名::），否则，无法查找到匹配的关键字。</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021111811111.png" alt=""></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021111911111.png" alt=""></p>
+<h3 id="Windows字符集"><a href="#Windows字符集" class="headerlink" title="Windows字符集"></a>Windows字符集</h3><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021112011111.png" style="zoom: 50%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021112111111.png" style="zoom:67%;" /></p>
+<p><strong>1）多字节字符集（8位的ANSI字符集）</strong></p>
+<p>在Windows98以及以前的版本使用8位ANSI字符集，它类似于我们程序员熟悉的ASCII字符集。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> sz[] = <span class="string">&quot;ABCDEFG&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> *psz = <span class="string">&quot;ABCDEFG&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> len = <span class="built_in">strlen</span>(sz);</span><br></pre></td></tr></table></figure>
+<p><strong>2）宽字符集(16位的Unicode字符集)</strong></p>
+<p>在WindowsNT和Windows2000后开始使用16位的Unicode字符集，它是ANSI字符集的一个超集。Unicode适用于国际市场销售的应用程序，因为它包含各种各样来自非U.S.字母表的字符，比如中文，日文，韩文，西欧语言等。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在字符串前加字母L表示将ANSI字符集转换成Unicode字符集。</span></span><br><span class="line"><span class="keyword">wchar_t</span> wsz[] = <span class="string">L&quot;ABCDEFG&quot;</span>; </span><br><span class="line"><span class="keyword">wchar_t</span> *pwsz = <span class="string">L&quot;ABCDEFG&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> len = <span class="built_in">wcslen</span>(wsz); <span class="comment">//测试宽字节字符串的长度</span></span><br></pre></td></tr></table></figure>
+<p><strong>3）TEXT（_T）宏</strong></p>
+<p>MFC中的TEXT宏可以自动适应字符类型，如果定义了预处理器程序符号<code>_UNICODE</code>，那么编译器将使用Unicode字符，如果没用定义该预处理器程序符号，那么编译器将使用ANSI字符。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">MessageBox</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;鼠标左键&quot;</span>));</span><br><span class="line"><span class="built_in">MessageBox</span>(_T(<span class="string">&quot;鼠标左键&quot;</span>));</span><br></pre></td></tr></table></figure>
+<p><strong>4） TCHAR类型</strong></p>
+<p>如果定义了<code>_UNICODE</code>符号<code>TCHAR</code>将变为<code>wchar_t</code>类型。如果没用定义<code>_UNICODE</code>符号，<code>TCHAR</code>将变为普通古老的<code>char</code>类型。</p>
+<h2 id="用向导生成MFC应用程序"><a href="#用向导生成MFC应用程序" class="headerlink" title="用向导生成MFC应用程序"></a>用向导生成MFC应用程序</h2><h3 id="向导流程"><a href="#向导流程" class="headerlink" title="向导流程"></a>向导流程</h3><p>在VS中选择“文件” — “新建” — “项目”：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021154111111.png" style="zoom:67%;" /></p>
+<p>选择 MFC – MFC应用程序，接下来我们创建一个单文档MFC标准类型应用程序。</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021155111111.png" style="zoom: 80%;" /></p>
+<p>一路按默认值next，到最后一个页面：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021156111111.png" style="zoom:80%;" /></p>
+<p>MFC自动为我们生成了四个类，它们的继承关系如下：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021157111111.png" alt=""></p>
+<h3 id="类视图"><a href="#类视图" class="headerlink" title="类视图"></a>类视图</h3><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021158111111.png" style="zoom: 67%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021159111111.png" style="zoom: 67%;" /></p>
+<h3 id="文档-视图结构体系"><a href="#文档-视图结构体系" class="headerlink" title="文档/视图结构体系"></a>文档/视图结构体系</h3><p>MFC应用程序框架结构的基石是文档/视图体系结构，它定义了一种程序结构，这种结构依靠文档对象保存应用程序的数据，并依靠视图对象控制视图中显示的数据，把数据本身与它的显示分离开。</p>
+<p><strong>数据的存储和加载由文档类来完成，数据的显示和修改则由视类来完成。</strong> MFC在类CDocument和CView中为稳定视图提供了基础结构。CWinApp、CFrameWnd和其他类与CDocument和CView合作，把所有的片段连在了一起。</p>
+<p>CView类也派生于CWnd类，框架窗口是视图窗口的一个父窗口。主框架窗口（CFrameWnd）是整个应用程序外框所包括的部分，即图中粗框以内的内容，而视类窗口只是主框架中空白的地方。</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021200111111.png" alt=""></p>
+<h3 id="消息处理的添加"><a href="#消息处理的添加" class="headerlink" title="消息处理的添加"></a>消息处理的添加</h3><p>在主框架类中添加<code>WM_LBUTTONDOWN</code>消息的响应函数，具体操作如下：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021201111111.png" style="zoom:80%;" /></p>
+<p>从类视图中找到CMainFrame（继承自CFrameWnd），选择此类然后从属性面板中找到消息按钮<img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/button.png" alt="">，在消息列表中找到<code>WM_LBUTTONDOWN</code>消息，添加。</p>
+<p><strong>工程文件增加几处改变：</strong></p>
+<p>第一处：在框架类头文件中添加了鼠标左键消息函数的函数声明</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021202111111.png" alt=""></p>
+<p>第二处：在框架类cpp文件中添加了消息映射宏</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021203111111.png" alt=""></p>
+<p>第三处：在框架列cpp文件中添加了处理鼠标左键消息的函数定义</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021204111111.png" alt=""></p>
+<p>我们在此OnLButtonDown函数中添加一个MessageBox消息，鼠标左键按下弹出一个提示框，然后执行程序。我们会惊奇的发现程序并未如我们所愿弹出消息框。</p>
+<p>因为，<strong>框架窗口是视窗口的父窗口，那么视类窗口就应该始终覆盖在框架类窗口之上</strong>。就好比框架窗口是一面墙，视类窗口就是墙纸，它始终挡在这面墙前边。也就是说，所有操作，包括鼠标单击、鼠标移动等操作都只能有视类窗口捕获。</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021205111111.png" alt=""></p>
+<h3 id="MFC框架部分函数"><a href="#MFC框架部分函数" class="headerlink" title="MFC框架部分函数"></a>MFC框架部分函数</h3><p>1）InitInstance函数，应用程序类的一个虚函数，MFC应用程序的入口。</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021154511111.png" style="zoom:80%;" /></p>
+<p>2）PreCreateWindow函数</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021154611111.png" style="zoom:80%;" /></p>
+<p>当框架调用CreateEx函数创建窗口时，会首先调用PreCreateWindow函数。</p>
+<p>通过修改传递给PreCreateWindow的结构体类型参数CREATESTRUCT，应用程序可以更改用于创建窗口的属性。在产生窗口之前让程序员有机会修改窗口的外观。</p>
+<p>最后再调用CreateWindowEx函数完成窗口的创建。</p>
+<p>3）OnCreate函数</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021154711111.png" style="zoom:80%;" /></p>
+<p>OnCreate是一个消息响应函数，是响应WM_CREATE消息的一个函数，而WM_CREATE消息是由Create函数调用的。一个窗口创建（Create）之后，会向操作系统发送WM_CREATE消息，OnCreate()函数主要是用来响应此消息的。</p>
+<p>OnCreate与Create的区别：</p>
+<ul>
+<li>Create()负责注册并产生窗口，像动态创建控件中的Create()一样，窗口创建之后会向操作系统发送WM_CREATE消息。</li>
+<li>OnCreate()不产生窗口，只是在窗口显示前设置窗口的属性如风格、位置等。</li>
+<li>OnCreate()是消息WM_CREATE的消息响应函数。 </li>
+</ul>
+<p>4）OnDraw和OnPaint</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021154811111.png" style="zoom:80%;" /></p>
+<p>OnPaint是WM_PAINT消息的消息处理函数，在OnPaint中调用OnDraw，一般来说，用户自己的绘图代码应放在OnDraw中。</p>
+<ul>
+<li>OnPaint()是CWnd的类成员，负责响应WM_PAINT消息。</li>
+<li>OnDraw()是CView的成员函数，没有响应消息的功能。</li>
+</ul>
+<p>当视图变得无效时（包括大小的改变，移动，被遮盖等等），Windows发送WM_PAINT消息。该视图的OnPaint 处理函数通过创建CPaintDC类的DC对象来响应该消息并调用视图的OnDraw成员函数。OnPaint最后也要调用OnDraw,因此一般在OnDraw函数中进行绘制。</p>
+<p><strong>通常我们不必编写OnPaint处理函数</strong>。当在View类里添加了消息处理OnPaint()时，OnPaint()就会覆盖掉OnDraw()。</p>
+<h3 id="拓展知识点"><a href="#拓展知识点" class="headerlink" title="拓展知识点"></a>拓展知识点</h3><p>MFC中后缀名为Ex的函数都是扩展函数。</p>
+<p>在MFC中，以Afx为前缀的函数都是全局函数，可以在程序的任何地方调用它们。</p>
+<h2 id="基于对话框"><a href="#基于对话框" class="headerlink" title="基于对话框"></a>基于对话框</h2><p>对话框是一种特殊类型的窗口，绝大多数Windows程序都通过对话框与用户进行交互。在Visual C++中，对话框既可以单独组成一个简单的应用程序，又可以成为文档/视图结构程序的资源。</p>
+<p>程序的创建过程：</p>
+<p>选择“文件 | 新建 |　项目”菜单； 在“新建项目”对话框中，选择“ MFC 应用程序 ”，输入工程名称，选择“确定”。</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021154911111.png" style="zoom:80%;" /></p>
+<p>选择“ 基于对话框”，即创建基于对话框的应用程序，选择“完成”。</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021163611111.png" style="zoom:80%;" /></p>
+<h3 id="对话框应用程序框架"><a href="#对话框应用程序框架" class="headerlink" title="对话框应用程序框架"></a>对话框应用程序框架</h3><h4 id="资源视图"><a href="#资源视图" class="headerlink" title="资源视图"></a>资源视图</h4><p>用 AppWizard 创建基于对话框的应用程序框架（假定工程名为 Dialog ）后，项目工作区上增加了一个“资源视图”选项卡。</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021164811111.png" alt=""></p>
+<p>或者，通过视图找到“资源视图”选项卡：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021164911111.png" style="zoom:80%;" /></p>
+<p>在 MFC中，与用户进行交互的对话框界面被认为是一种资源。展开“Dialog”，可以看到有一个ID为IDD_ DIALOG _DIALOG（中间部分（DIALOG）与项目名称相同）的资源，对应中间的对话框设计界面。不管在何时，只要双击对话框资源的ID，对话框设计界面就会显示在中间。 </p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021165311111.png" style="zoom:67%;" /></p>
+<h4 id="类视图-1"><a href="#类视图-1" class="headerlink" title="类视图"></a>类视图</h4><p>在类视图中，可以看到生成了3 个类：<code>CAboutDlg</code>、<code>CDialogApp</code>和<code>CDialogDlg</code>。 </p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021165411111.png" alt=""></p>
+<p><strong>CAboutDlg</strong>：对应生成的版本信息对话框。</p>
+<p><strong>CDialogApp</strong>：应用程序类，从 CWinApp 继承过来，封装了初始化、运行、终止该程序的代码。</p>
+<p><strong>CDialogDlg</strong>：对话框类，从CDialogEx继承过来的，在程序运行时看到的对话框就是它的一个具体对象。</p>
+<ul>
+<li><strong>DoDataExchange</strong>函数：该函数主要完成对话框数据的交换和校验。</li>
+<li><strong>OnInitDialog</strong>函数：相当于对对话框进行初始化处理。</li>
+</ul>
+<h4 id="设计界面和工具箱"><a href="#设计界面和工具箱" class="headerlink" title="设计界面和工具箱"></a>设计界面和工具箱</h4><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021165711111.png" style="zoom: 67%;" /></p>
+<h3 id="模态对话框"><a href="#模态对话框" class="headerlink" title="模态对话框"></a>模态对话框</h3><p>当模态对话框显示时，程序会暂停执行，直到关闭这个模态对话框之后，才能执行程序中的其他任务。</p>
+<p>1）通过工具箱在界面上放一个Button，双击此按钮即可跳转到按钮处理函数：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021165911111.png" style="zoom:80%;" /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按钮处理函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CDialogDlg::OnBnClickedButton1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span>  在此添加控件通知处理程序代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2）资源视图 -&gt; Dialog -&gt; 右击 -&gt; 插入 Dialog：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021172611111.png" style="zoom:67%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021172711111.png" style="zoom:67%;" /></p>
+<p>3）修改对话框ID:</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021172811111.png" style="zoom: 67%;" /></p>
+<p>4）点击对话框模板 -&gt; 右击 -&gt; 添加类：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021172911111.png" style="zoom:67%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021173011111.png" style="zoom: 67%;" /></p>
+<p>5）类视图中多了一个自定义类：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021173111111.png" style="zoom:67%;" /></p>
+<p>6）按钮处理函数创建对话框，以模态方式运行。</p>
+<p>实现模态对话框的创建需要调用CDialog类的成员函数<code>CDialog::DoModel</code>，该函数的功能就是创建并显示一个对话框:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//启动模态对话框按钮</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CDialogDlg::OnBnClickedButton1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//需要包含头文件：#include &quot;DlgExec.h&quot;</span></span><br><span class="line">	CDlgExec dlg;</span><br><span class="line">	dlg.<span class="built_in">DoModal</span>(); <span class="comment">//以模态方式运行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="非模态对话框"><a href="#非模态对话框" class="headerlink" title="非模态对话框"></a>非模态对话框</h3><p>当非模态对话框显示时，运行转而执行程序中的其他任务，而不用关闭这个对话框。</p>
+<p>图形界面操作过程和模态对话框一样，只是，非模态对话框实现方式不一样，先创建(<code>CDialog::Create</code>)一次，然后再显示(<code>CWnd::ShowWindow</code>)。</p>
+<p>1）主对话框.h类中声明对话框对象：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021173411111.png" style="zoom:80%;" /></p>
+<p>2）创建对话框放在主对话框类的构造函数或OnCreate()函数，目的只创建一次对话框：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主对话框构造函数</span></span><br><span class="line">CDialogDlg::<span class="built_in">CDialogDlg</span>(CWnd* pParent <span class="comment">/*=NULL*/</span>)</span><br><span class="line">	: <span class="built_in">CDialogEx</span>(CDialogDlg::IDD, pParent)</span><br><span class="line">&#123;</span><br><span class="line">	m_hIcon = <span class="built_in">AfxGetApp</span>()-&gt;<span class="built_in">LoadIcon</span>(IDR_MAINFRAME);</span><br><span class="line"></span><br><span class="line">	m_dlg.<span class="built_in">Create</span>(IDD_DIALOG_SHOW); <span class="comment">//IDD_DIALOG_SHOW为对话框ID</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3）按钮处理函数显示对话框：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//启动非模态对话框按钮</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CDialogDlg::OnBnClickedButton2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	m_dlg.<span class="built_in">ShowWindow</span>(SW_SHOWNORMAL); <span class="comment">//显示非模态对话框</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="常用控件"><a href="#常用控件" class="headerlink" title="常用控件"></a>常用控件</h2><h3 id="静态文本框CStatic"><a href="#静态文本框CStatic" class="headerlink" title="静态文本框CStatic"></a>静态文本框CStatic</h3><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021173511111.png" style="zoom:80%;" /></p>
+<p>静态文本框是最简单的控件，它主要用来显示文本信息，不能接受用户输入，一般不需要连接变量，也不需要处理消息。</p>
+<p>静态文本框的重要属性有：</p>
+<ul>
+<li>ID：所有静态文本框的缺省ID都是IDC_STATIC，静态ID，不响应任何消息（事件）</li>
+<li>Caption：修改显示的内容</li>
+</ul>
+<p>常用接口：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>接口</strong></th>
+<th><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CWnd::SetWindowText</td>
+<td>设置控件内容</td>
+</tr>
+<tr>
+<td>CWnd::GetWindowText</td>
+<td>获取控件内容</td>
+</tr>
+<tr>
+<td>CStatic::SetBitmap</td>
+<td>设置位图(后缀为bmp的图片)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>关联控件变量</strong> </p>
+<p>由于<code>XXX_STATIC</code>静态ID是不能关联变量，故需把ID修改后，再关联变量：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021173611111.png" style="zoom: 67%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021173711111.png" style="zoom:67%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021173911111.png" style="zoom: 67%;" /></p>
+<p>在主对话框类OnInitDialog()中，完成相应接口测试：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021174211111.png" style="zoom:80%;" /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置静态控件内容为Tom</span></span><br><span class="line">m_label.<span class="built_in">SetWindowText</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;Tom&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取静态控件的内容</span></span><br><span class="line">CString str;</span><br><span class="line">m_label.<span class="built_in">GetWindowText</span>(str);</span><br><span class="line"><span class="built_in">MessageBox</span>(str);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置静态控件窗口风格为位图居中显示</span></span><br><span class="line">m_label.<span class="built_in">ModifyStyle</span>(<span class="number">0xf</span>, SS_BITMAP | SS_CENTERIMAGE);</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过路径获取bitmap句柄</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> HBMP(filepath,width,height) (HBITMAP)LoadImage(AfxGetInstanceHandle(),filepath,IMAGE_BITMAP,width,height,LR_LOADFROMFILE|LR_CREATEDIBSECTION)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//静态控件设置bitmap</span></span><br><span class="line">m_label.<span class="built_in">SetBitmap</span>(<span class="built_in">HBMP</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;./1.bmp&quot;</span>), <span class="number">300</span>, <span class="number">250</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="普通按钮CButton"><a href="#普通按钮CButton" class="headerlink" title="普通按钮CButton"></a>普通按钮CButton</h3><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021174311111.png" style="zoom: 80%;" /></p>
+<p>按钮是最常见的、应用最广泛的一种控件。在程序执行期间，当单击某个按钮后就会执行相应的消息处理函数。 </p>
+<p>按钮的主要属性是Caption，来设置在按钮上显示的文本。</p>
+<p>命令按钮处理的最多的消息是：<code>BN_CLICKED</code>，双击按钮即可跳转到处理函数。或者，通过按钮属性 -&gt; 控制事件 -&gt; 选择所需事件，添加处理函数：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021174411111.png" style="zoom:67%;" /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按钮BN_CLICKED事件处理函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CMFCApplication2Dlg::OnBnClickedButton1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span>  在此添加控件通知处理程序代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>常用接口：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>接口</strong></th>
+<th><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CWnd::SetWindowText</td>
+<td>设置控件内容</td>
+</tr>
+<tr>
+<td>CWnd::GetWindowText</td>
+<td>获取控件内容</td>
+</tr>
+<tr>
+<td>CWnd::EnableWindow</td>
+<td>设置控件是否变灰</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>关联控件变量</strong></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021174511111.png" style="zoom:67%;" /></p>
+<p>在主对话框类OnInitDialog()中，完成相应接口测试：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021174611111.png" style="zoom:80%;" /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取按钮的内容</span></span><br><span class="line">CString str;</span><br><span class="line">m_button.<span class="built_in">GetWindowText</span>(str);</span><br><span class="line"><span class="built_in">MessageBox</span>(str);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置按钮内容</span></span><br><span class="line">m_button.<span class="built_in">SetWindowText</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;^_^&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置按钮状态为灰色</span></span><br><span class="line">m_button.<span class="built_in">EnableWindow</span>(FALSE);</span><br><span class="line">m_button.<span class="built_in">EnableWindow</span>(TRUE);</span><br></pre></td></tr></table></figure>
+<h3 id="编辑框CEdit"><a href="#编辑框CEdit" class="headerlink" title="编辑框CEdit"></a>编辑框CEdit</h3><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021174711111.png" style="zoom:80%;" /></p>
+<p>常用属性设置：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>属性</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Number</td>
+<td>True只能输入数字</td>
+</tr>
+<tr>
+<td>Password</td>
+<td>True密码模式</td>
+</tr>
+<tr>
+<td>Want return</td>
+<td>True接收回车键，自动换行，只有在多行模式下，才能换行</td>
+</tr>
+<tr>
+<td>Multiline</td>
+<td>True多行模式</td>
+</tr>
+<tr>
+<td>Auto VScroll</td>
+<td>True 当垂直方向字符太多，自动出现滚动条，同时设置Vertical Scroll才有效</td>
+</tr>
+<tr>
+<td>Vertical Scroll</td>
+<td>True当垂直方向字符太多，自动出现滚动条，和Auto VScroll配合使用</td>
+</tr>
+<tr>
+<td>Horizontal Scroll</td>
+<td>True当垂直方向字符太多，自动出现滚动条，和Auto HScroll配合使用</td>
+</tr>
+<tr>
+<td>Read Only</td>
+<td>True 只读</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>常用接口：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>接口</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CWnd::SetWindowText</td>
+<td style="text-align:left">设置控件内容</td>
+</tr>
+<tr>
+<td>CWnd::GetWindowText</td>
+<td style="text-align:left">获取控件内容</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="关联控件变量"><a href="#关联控件变量" class="headerlink" title="关联控件变量"></a>关联控件变量</h4><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021174811111.png" style="zoom:67%;" /></p>
+<p>在主对话框类OnInitDialog()中，完成相应接口测试：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置按钮内容</span></span><br><span class="line">m_edit.<span class="built_in">SetWindowText</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;this is a test&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取按钮的内容</span></span><br><span class="line">CString str;</span><br><span class="line">m_edit.<span class="built_in">GetWindowText</span>(str);</span><br><span class="line"><span class="built_in">MessageBox</span>(str);</span><br></pre></td></tr></table></figure>
+<h4 id="关联基本类型变量"><a href="#关联基本类型变量" class="headerlink" title="关联基本类型变量"></a>关联基本类型变量</h4><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021174911111.png" style="zoom:67%;" /></p>
+<p>若一个编辑框连接了一个Value类别的变量，则该变量就表示这个编辑框，编辑框中显示的内容就是变量的值。</p>
+<p>但是，改变了编辑框的内容并不会自动更新对应的变量的值，同样，改变了变量的值也不会自动刷新编辑框的内容。若要保持一致，需要使用UpdateData()函数更新：</p>
+<ul>
+<li>若编辑框的内容改变了，则应使用语句<code>UpdateData(TRUE)</code> 获取对话框数据</li>
+<li>若变量的值改变了，则应使用语句<code>UpdateData(FALSE)</code> 初始化对话框控件</li>
+</ul>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175011111.png" alt=""></p>
+<p>在主对话框类OnInitDialog()中，完成相应代码测试：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">m_e1 = <span class="number">10.11</span>;</span><br><span class="line"><span class="built_in">UpdateData</span>(FALSE); <span class="comment">//FALSE说明把m_e1的值更新到对应的控件中</span></span><br><span class="line"><span class="built_in">UpdateData</span>(TRUE); <span class="comment">//TRUE说明把控件的值更新到m_e1变量中</span></span><br></pre></td></tr></table></figure>
+<h3 id="下拉框CComboBox"><a href="#下拉框CComboBox" class="headerlink" title="下拉框CComboBox"></a>下拉框CComboBox</h3><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175111111.png" style="zoom: 80%;" /></p>
+<p>常用属性设置：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>属性</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>设置内容，不同内容间用英文的分号“;”分隔</td>
+</tr>
+<tr>
+<td>type</td>
+<td>显示风格</td>
+</tr>
+<tr>
+<td>Sort</td>
+<td>True 内容自动排序</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>常用接口：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>接口</strong></th>
+<th><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CComboBox::AddString</td>
+<td>组合框添加一个字符串</td>
+</tr>
+<tr>
+<td>CComboBox::SetCurSel</td>
+<td>设置当前选择项(当前显示第几项)，下标从0开始</td>
+</tr>
+<tr>
+<td>CComboBox::GetCurSel</td>
+<td>获取组合框中当前选中项的下标</td>
+</tr>
+<tr>
+<td>CComboBox::GetLBText</td>
+<td>获取指定位置的内容</td>
+</tr>
+<tr>
+<td>CComboBox::DeleteString</td>
+<td>删除指定位置的字符串</td>
+</tr>
+<tr>
+<td>CComboBox::InsertString</td>
+<td>在指定位置插入字符串</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>关联控件变量后，测试接口：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175211111.png" style="zoom:67%;" /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//添加字符串内容</span></span><br><span class="line">m_combo.<span class="built_in">AddString</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;可乐&quot;</span>)); </span><br><span class="line">m_combo.<span class="built_in">AddString</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;雪碧&quot;</span>));</span><br><span class="line"></span><br><span class="line">m_combo.<span class="built_in">SetCurSel</span>(<span class="number">1</span>);<span class="comment">//显示显示第1项</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//获取组合框中当前选中项的下标</span></span><br><span class="line"><span class="keyword">int</span> index = m_combo.<span class="built_in">GetCurSel</span>(); </span><br><span class="line">CString str;</span><br><span class="line">m_combo.<span class="built_in">GetLBText</span>(index, str); <span class="comment">//获取指定下标的内容</span></span><br><span class="line"><span class="built_in">MessageBox</span>(str);</span><br><span class="line"></span><br><span class="line">m_combo.<span class="built_in">DeleteString</span>(<span class="number">0</span>); <span class="comment">//删除第0项字符串</span></span><br><span class="line"></span><br><span class="line">m_combo.<span class="built_in">InsertString</span>(<span class="number">0</span>, _T(<span class="string">&quot;hello&quot;</span>)); <span class="comment">//在第0位置插入“hello”</span></span><br></pre></td></tr></table></figure>
+<p>组合框常用的事件为：<code>CBN_SELCHANGE</code>，当选择组合框某一项时，自动触发此事件。</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175311111.png" style="zoom:67%;" /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CMFCApplication2Dlg::OnCbnSelchangeCombo1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span>  在此添加控件通知处理程序代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="列表控件CListCtrl"><a href="#列表控件CListCtrl" class="headerlink" title="列表控件CListCtrl"></a>列表控件CListCtrl</h3><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175411111.png" style="zoom:80%;" /></p>
+<p>常用属性设置：view -&gt; Report(报表方式)</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175511111.png" style="zoom:80%;" /></p>
+<p>常用接口：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>接口</strong></th>
+<th><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CListCtrl::SetExtendedStyle</td>
+<td>设置列表风格</td>
+</tr>
+<tr>
+<td>CListCtrl::GetExtendedStyle</td>
+<td>获取列表风格</td>
+</tr>
+<tr>
+<td>CListCtrl::InsertColumn</td>
+<td>插入某列内容，主要用于设置标题</td>
+</tr>
+<tr>
+<td>CListCtrl::InsertItem</td>
+<td>在某行插入新项内容</td>
+</tr>
+<tr>
+<td>CListCtrl::SetItemText</td>
+<td>设置某行某列的子项内容</td>
+</tr>
+<tr>
+<td>CListCtrl::GetItemText</td>
+<td>获取某行某列的内容</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>关联控件变量后，测试接口：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175611111.png" style="zoom:67%;" /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置风格样式</span></span><br><span class="line"><span class="comment">//LVS_EX_GRIDLINES 网格</span></span><br><span class="line"><span class="comment">//LVS_EX_FULLROWSELECT 选中整行</span></span><br><span class="line">m_list.<span class="built_in">SetExtendedStyle</span>(m_list.<span class="built_in">GetExtendedStyle</span>() | LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);</span><br><span class="line"></span><br><span class="line"><span class="comment">//插入标题</span></span><br><span class="line">CString head[] = &#123; <span class="built_in">TEXT</span>(<span class="string">&quot;姓名&quot;</span>), <span class="built_in">TEXT</span>(<span class="string">&quot;年龄&quot;</span>), <span class="built_in">TEXT</span>(<span class="string">&quot;性别&quot;</span>) &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//插入列</span></span><br><span class="line">m_list.<span class="built_in">InsertColumn</span>(<span class="number">0</span>, head[<span class="number">0</span>], LVCFMT_LEFT, <span class="number">100</span>);</span><br><span class="line">m_list.<span class="built_in">InsertColumn</span>(<span class="number">1</span>, head[<span class="number">1</span>], LVCFMT_LEFT, <span class="number">100</span>);</span><br><span class="line">m_list.<span class="built_in">InsertColumn</span>(<span class="number">2</span>, head[<span class="number">2</span>], LVCFMT_LEFT, <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//插入正文内容，先确定行，再确定列</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    CString str;</span><br><span class="line">    str.<span class="built_in">Format</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;张三_%d&quot;</span>), i );</span><br><span class="line"></span><br><span class="line">    <span class="comment">//确定行</span></span><br><span class="line">    m_list.<span class="built_in">InsertItem</span>(i, str);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置列</span></span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    m_list.<span class="built_in">SetItemText</span>(i, ++j, <span class="built_in">TEXT</span>(<span class="string">&quot;男&quot;</span>));</span><br><span class="line">    m_list.<span class="built_in">SetItemText</span>(i, ++j, <span class="built_in">TEXT</span>(<span class="string">&quot;23&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175711111.png" style="zoom:80%;" /></p>
+<h3 id="树控件CTreeCtrl"><a href="#树控件CTreeCtrl" class="headerlink" title="树控件CTreeCtrl"></a>树控件CTreeCtrl</h3><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175811111.png" style="zoom:80%;" /></p>
+<p>常用属性设置：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>属性</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>has buttons</td>
+<td>True 有展开按钮</td>
+</tr>
+<tr>
+<td>has lines</td>
+<td>True 有展开线</td>
+</tr>
+<tr>
+<td>lines at root</td>
+<td>True 有根节点</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>常用接口：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>接口</strong></th>
+<th><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AfxGetApp()</td>
+<td>获取应用程序对象指针</td>
+</tr>
+<tr>
+<td>CWinApp::LoadIcon</td>
+<td>加载自定义图标</td>
+</tr>
+<tr>
+<td>CImageList::Create</td>
+<td>创建图像列表</td>
+</tr>
+<tr>
+<td>CImageList::Add</td>
+<td>图像列表追加图标</td>
+</tr>
+<tr>
+<td>CTreeCtrl::SetImageList</td>
+<td>设置图形状态列表</td>
+</tr>
+<tr>
+<td>CTreeCtrl::InsertItem</td>
+<td>插入节点</td>
+</tr>
+<tr>
+<td>CTreeCtrl::SelectItem</td>
+<td>设置默认选中项</td>
+</tr>
+<tr>
+<td>CTreeCtrl::GetSelectedItem</td>
+<td>获取选中项</td>
+</tr>
+<tr>
+<td>CTreeCtrl::GetItemText</td>
+<td>获取某项内容</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>1）关联控件变量</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021175911111.png" style="zoom: 67%;" /></p>
+<p>2）添加图标资源(icon)</p>
+<p>把ico资源文件放在项目res文件夹中</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021182211111.png" style="zoom:80%;" /></p>
+<p>资源视图 -&gt; Icon -&gt; 添加资源：</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021182311111.png" style="zoom:80%;" /></p>
+<p>导入ico文件</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021182411111.png" style="zoom:80%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021182511111.png" style="zoom:67%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021182611111.png" alt=""></p>
+<p>3）通过代码加载图标</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//加载图标</span></span><br><span class="line">HICON icon[<span class="number">3</span>];</span><br><span class="line">icon[<span class="number">0</span>] = <span class="built_in">AfxGetApp</span>()-&gt;<span class="built_in">LoadIconW</span>(IDI_ICON1);</span><br><span class="line">icon[<span class="number">1</span>] = <span class="built_in">AfxGetApp</span>()-&gt;<span class="built_in">LoadIconW</span>(IDI_ICON2);</span><br><span class="line">icon[<span class="number">2</span>] = <span class="built_in">AfxGetApp</span>()-&gt;<span class="built_in">LoadIconW</span>(IDI_ICON3);</span><br></pre></td></tr></table></figure>
+<p>4）创建图像列表</p>
+<p> .h 文件类中定义图形列表（CImageList）对象</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CImageList m_imageList; <span class="comment">//图像列表</span></span><br></pre></td></tr></table></figure>
+<p>OnInitDialog()函数中完成图像列表的创建、图标的追加</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//图像列表，程序完毕不能释放， 创建</span></span><br><span class="line"><span class="comment">//30, 30: 图片的宽度和高度</span></span><br><span class="line"><span class="comment">//ILC_COLOR32：样式</span></span><br><span class="line"><span class="comment">// 3, 3： 有多少图片写多少</span></span><br><span class="line">m_imageList.<span class="built_in">Create</span>(<span class="number">30</span>, <span class="number">30</span>, ILC_COLOR32, <span class="number">3</span>, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//给图像列表添加图片</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//图片列表加载图标</span></span><br><span class="line">	m_imageList.<span class="built_in">Add</span>(icon[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5）树控件的相应操作</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//树控件设置图片列表</span></span><br><span class="line">m_treeCtrl.<span class="built_in">SetImageList</span>(&amp;m_imageList, TVSIL_NORMAL);</span><br><span class="line"></span><br><span class="line"><span class="comment">//给树创建节点</span></span><br><span class="line"><span class="comment">//根节点，父节点，子节点</span></span><br><span class="line">HTREEITEM root = m_treeCtrl.<span class="built_in">InsertItem</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;中国&quot;</span>), <span class="number">0</span>, <span class="number">0</span>, <span class="literal">NULL</span>);</span><br><span class="line">HTREEITEM fathter = m_treeCtrl.<span class="built_in">InsertItem</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;北京&quot;</span>), <span class="number">1</span>, <span class="number">1</span>, root);</span><br><span class="line">HTREEITEM son = m_treeCtrl.<span class="built_in">InsertItem</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;海淀&quot;</span>), <span class="number">2</span>, <span class="number">2</span>, fathter);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置某个节点被选中</span></span><br><span class="line">m_treeCtrl.<span class="built_in">SelectItem</span>(fathter);</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021182711111.png" alt=""></p>
+<p>树控件常用事件为：<code>TVN_SELCHANGED</code>，当选择某个节点时，自动触发此事件。</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021182811111.png" style="zoom: 67%;" /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CMy01_TreeCtrlDlg::OnTvnSelchangedTree1</span><span class="params">(NMHDR *pNMHDR, LRESULT *pResult)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	LPNMTREEVIEW pNMTreeView = <span class="keyword">reinterpret_cast</span>&lt;LPNMTREEVIEW&gt;(pNMHDR);</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span>  在此添加控件通知处理程序代码</span></span><br><span class="line">	*pResult = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	HTREEITEM selItem;</span><br><span class="line">	<span class="comment">//获得选择项</span></span><br><span class="line">	selItem = m_treeCtrl.<span class="built_in">GetSelectedItem</span>();</span><br><span class="line">	<span class="comment">//获取选中的内容</span></span><br><span class="line">	CString cs = m_treeCtrl.<span class="built_in">GetItemText</span>(selItem);</span><br><span class="line">	<span class="built_in">MessageBox</span>(cs);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="标签控件CTabCtrl"><a href="#标签控件CTabCtrl" class="headerlink" title="标签控件CTabCtrl"></a>标签控件CTabCtrl</h3><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021182911111.png" style="zoom:80%;" /></p>
+<p>在ui工具箱拖放 Tab Control</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021183011111.png" style="zoom:67%;" /></p>
+<p>把 TabSheet.h和TabSheet.cpp 放在项目文件同级目录，并且添加到工程目录中</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021183111111.png" style="zoom:80%;" /></p>
+<p>给ui上 Tab Control 关联Control类型（CTabSheet）</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021183211111.png" style="zoom:67%;" /></p>
+<p>添加对话框</p>
+<p>a）资源视图 -&gt; Dialog -&gt; 右击 -&gt; 插入 Dialog</p>
+<p>b）设置相应属性：</p>
+<p>​    Style -&gt; Child (子窗口)</p>
+<p>​    Border -&gt; None (无边框)</p>
+<p>c）自定义类：点击对话框模板 -&gt; 右击 -&gt; 添加类(MyDlg1、MyDlg2)</p>
+<p>d）主对话框类中, 定义自定义类对象，需要相应头文件</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021183311111.png" style="zoom:80%;" /></p>
+<p>e）主对话框类中 OnInitDialog() 做初始化工作</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//给tab控件添加对话框</span></span><br><span class="line">   <span class="comment">//IDD_DIALOG1为dlg1资源ID</span></span><br><span class="line">m_tabCtrl.<span class="built_in">AddPage</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;系统管理&quot;</span>), &amp;dlg1, IDD_DIALOG1); </span><br><span class="line"></span><br><span class="line">   <span class="comment">//IDD_DIALOG1为dlg2资源ID</span></span><br><span class="line">m_tabCtrl.<span class="built_in">AddPage</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;系统设置&quot;</span>), &amp;dlg2, IDD_DIALOG2); </span><br><span class="line"></span><br><span class="line"><span class="comment">//显示tab控件</span></span><br><span class="line">m_tabCtrl.<span class="built_in">Show</span>();</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/MFC-img/image-20221021183511111.png" style="zoom: 67%;" /></p>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      
+      
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AD%A6%E4%B9%A0MFC"><span class="nav-number">1.</span> <span class="nav-text">为什么学习MFC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6"><span class="nav-number">2.</span> <span class="nav-text">Windows消息机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E8%A7%A3%E9%87%8A"><span class="nav-number">2.1.</span> <span class="nav-text">基本概念解释</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SDK%E5%92%8CAPI"><span class="nav-number">2.1.1.</span> <span class="nav-text">SDK和API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E5%92%8C%E5%8F%A5%E6%9F%84"><span class="nav-number">2.1.2.</span> <span class="nav-text">窗口和句柄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E4%B8%8E%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97"><span class="nav-number">2.1.3.</span> <span class="nav-text">消息与消息队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WinMain%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.4.</span> <span class="nav-text">WinMain函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">Windows编程模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">2.2.1.</span> <span class="nav-text">项目的创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WinMain%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.2.2.</span> <span class="nav-text">WinMain函数的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AA%97%E5%8F%A3"><span class="nav-number">2.2.3.</span> <span class="nav-text">创建一个窗口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%AA%97%E5%8F%A3"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">设计一个窗口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E7%AA%97%E5%8F%A3%E7%B1%BB"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">注册窗口类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%AA%97%E5%8F%A3"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">创建窗口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%8F%8A%E6%9B%B4%E6%96%B0%E7%AA%97%E5%8F%A3"><span class="nav-number">2.2.3.4.</span> <span class="nav-text">显示及更新窗口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-number">2.2.3.5.</span> <span class="nav-text">示例代码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.2.4.</span> <span class="nav-text">消息循环</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">消息结构体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%96%E6%B6%88%E6%81%AF"><span class="nav-number">2.2.4.2.</span> <span class="nav-text">取消息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E6%B6%88%E6%81%AF%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.2.4.3.</span> <span class="nav-text">建立消息循环</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6"><span class="nav-number">2.2.4.4.</span> <span class="nav-text">消息处理机制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E8%BF%87%E7%A8%8B%E5%87%BD%E6%95%B0-%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.4.5.</span> <span class="nav-text">窗口过程函数(消息处理函数)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.2.5.</span> <span class="nav-text">代码示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MFC%E5%85%A5%E9%97%A8"><span class="nav-number">3.</span> <span class="nav-text">MFC入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MFC%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">3.1.</span> <span class="nav-text">MFC是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99MFC%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.2.</span> <span class="nav-text">编写MFC程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%9A%84%E7%BC%96%E5%86%99"><span class="nav-number">3.2.1.</span> <span class="nav-text">代码的编写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-number">3.2.2.</span> <span class="nav-text">程序执行流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-number">3.2.3.</span> <span class="nav-text">代码分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E6%98%A0%E5%B0%84"><span class="nav-number">3.3.</span> <span class="nav-text">消息映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.4.</span> <span class="nav-text">帮助文档的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MSDN"><span class="nav-number">3.4.1.</span> <span class="nav-text">MSDN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VC-%E4%B9%8BMFC%E7%B1%BB%E5%BA%93"><span class="nav-number">3.4.2.</span> <span class="nav-text">VC++之MFC类库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="nav-number">3.5.</span> <span class="nav-text">Windows字符集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E5%90%91%E5%AF%BC%E7%94%9F%E6%88%90MFC%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text">用向导生成MFC应用程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%91%E5%AF%BC%E6%B5%81%E7%A8%8B"><span class="nav-number">4.1.</span> <span class="nav-text">向导流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E8%A7%86%E5%9B%BE"><span class="nav-number">4.2.</span> <span class="nav-text">类视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3-%E8%A7%86%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BD%93%E7%B3%BB"><span class="nav-number">4.3.</span> <span class="nav-text">文档&#x2F;视图结构体系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86%E7%9A%84%E6%B7%BB%E5%8A%A0"><span class="nav-number">4.4.</span> <span class="nav-text">消息处理的添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MFC%E6%A1%86%E6%9E%B6%E9%83%A8%E5%88%86%E5%87%BD%E6%95%B0"><span class="nav-number">4.5.</span> <span class="nav-text">MFC框架部分函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%93%E5%B1%95%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">4.6.</span> <span class="nav-text">拓展知识点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%AF%B9%E8%AF%9D%E6%A1%86"><span class="nav-number">5.</span> <span class="nav-text">基于对话框</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%AF%9D%E6%A1%86%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6"><span class="nav-number">5.1.</span> <span class="nav-text">对话框应用程序框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B5%84%E6%BA%90%E8%A7%86%E5%9B%BE"><span class="nav-number">5.1.1.</span> <span class="nav-text">资源视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E8%A7%86%E5%9B%BE-1"><span class="nav-number">5.1.2.</span> <span class="nav-text">类视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E7%95%8C%E9%9D%A2%E5%92%8C%E5%B7%A5%E5%85%B7%E7%AE%B1"><span class="nav-number">5.1.3.</span> <span class="nav-text">设计界面和工具箱</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%80%81%E5%AF%B9%E8%AF%9D%E6%A1%86"><span class="nav-number">5.2.</span> <span class="nav-text">模态对话框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E6%A8%A1%E6%80%81%E5%AF%B9%E8%AF%9D%E6%A1%86"><span class="nav-number">5.3.</span> <span class="nav-text">非模态对话框</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%8E%A7%E4%BB%B6"><span class="nav-number">6.</span> <span class="nav-text">常用控件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%96%87%E6%9C%AC%E6%A1%86CStatic"><span class="nav-number">6.1.</span> <span class="nav-text">静态文本框CStatic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E6%8C%89%E9%92%AECButton"><span class="nav-number">6.2.</span> <span class="nav-text">普通按钮CButton</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E6%A1%86CEdit"><span class="nav-number">6.3.</span> <span class="nav-text">编辑框CEdit</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E8%81%94%E6%8E%A7%E4%BB%B6%E5%8F%98%E9%87%8F"><span class="nav-number">6.3.1.</span> <span class="nav-text">关联控件变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E8%81%94%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F"><span class="nav-number">6.3.2.</span> <span class="nav-text">关联基本类型变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E6%8B%89%E6%A1%86CComboBox"><span class="nav-number">6.4.</span> <span class="nav-text">下拉框CComboBox</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E6%8E%A7%E4%BB%B6CListCtrl"><span class="nav-number">6.5.</span> <span class="nav-text">列表控件CListCtrl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%91%E6%8E%A7%E4%BB%B6CTreeCtrl"><span class="nav-number">6.6.</span> <span class="nav-text">树控件CTreeCtrl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E6%8E%A7%E4%BB%B6CTabCtrl"><span class="nav-number">6.7.</span> <span class="nav-text">标签控件CTabCtrl</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yanglinqi"
+      src="/images/headpic.jpg">
+  <p class="site-author-name" itemprop="name">yanglinqi</p>
+  <div class="site-description" itemprop="description">用于做笔记，对学过的知识总结</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanglinqi107" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanglinqi107" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanglinqi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+</body>
+</html>

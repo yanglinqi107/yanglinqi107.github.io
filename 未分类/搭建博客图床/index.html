@@ -28,15 +28,17 @@
 <meta property="og:site_name" content="杨记">
 <meta property="og:description" content="博客图床搭建问题">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/res/202205191756005.png">
-<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/res/image-20220519172310501.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Typora-Images//202205191756005.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Typora-Images//image-20220519172310501.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Typora-Images//image-20220801140745929.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Typora-Images//image-20220801144347335.png">
 <meta property="article:published_time" content="2022-05-20T06:14:16.223Z">
-<meta property="article:modified_time" content="2022-08-01T12:22:56.613Z">
+<meta property="article:modified_time" content="2022-10-21T11:09:34.754Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="图床">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/yanglinqi107/Images/raw/master/res/202205191756005.png">
+<meta name="twitter:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Typora-Images//202205191756005.png">
 
 <link rel="canonical" href="http://yanglinqi107.github.io/%E6%9C%AA%E5%88%86%E7%B1%BB/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%8A/">
 
@@ -137,7 +139,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">98</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -235,7 +237,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-01 20:22:56" itemprop="dateModified" datetime="2022-08-01T20:22:56+08:00">2022-08-01</time>
+                <time title="修改时间：2022-10-21 19:09:34" itemprop="dateModified" datetime="2022-10-21T19:09:34+08:00">2022-10-21</time>
               </span>
 
           
@@ -259,7 +261,7 @@
 <li>执行<code>hexo g</code>命令耗时较长</li>
 <li>如果本地博客目录下有20个md文件，可能还要20个文件夹，这样管理起来也很麻烦。如下图</li>
 </ul>
-<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/res/202205191756005.png" alt="image-20220517201208638"></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Typora-Images//202205191756005.png" alt="image-20220517201208638"></p>
 <h2 id="Github图床"><a href="#Github图床" class="headerlink" title="Github图床"></a>Github图床</h2><h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1712840941546413258&amp;wfr=spider&amp;for=pc">PicGo+jsDelivr+GitHub搭建免费 CDN 加速图床 (baidu.com)</a> </p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_61313949/article/details/124511276">Typora+Github + Picgo打造个人云笔记_iheal的博客-CSDN博客</a></p>
 <h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><p>1、图片上传失败：</p>
@@ -297,7 +299,7 @@
 <p>对于上面的问题，我卸载重装了好几个版本的PicGo，也试过PicGo-Core(command line)，甚至一张张上传图片，但还是会有问题。最后即使上传成功，访问图片还是容易失败。通过<code>https://cdn.jsdelivr.net/gh/</code>来访问博客图片显示不出来。最后放弃Github了，开始尝试Gitee。</p>
 <h3 id="最终方法"><a href="#最终方法" class="headerlink" title="最终方法"></a>最终方法</h3><p>如果你是和我一样，本地有<strong>较多图片</strong>（我1000+），推荐前面<strong>红字的方法</strong>，再把本地hexo目录下<code>_post</code>文件夹下的md文件改变图片引用链接，</p>
 <p><code>https://cdn.jsdelivr.net/gh/yanglinqi107/images/img/headpic.png</code></p>
-<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/res/image-20220519172310501.png" alt="image-20220519172310501"></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Typora-Images//image-20220519172310501.png" alt="image-20220519172310501"></p>
 <p><strong>图片访问</strong>是一个大问题，即便有cdn加速服务，大概率还是访问不了</p>
 <ul>
 <li>需要使用加速器，推荐<strong>网易UU加速器</strong>，下载后搜索<strong>学术资源</strong>，开启加速，就能通过对应的URL访问图片了，博客中的图片也能显示出来。存在问题：<ul>
@@ -329,6 +331,22 @@
 <h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p>不推荐使用Gitee，总会有些幺蛾子。就算目前没事，可能后面整改一下，你的图床就要转移了。会很麻烦，而且gitee官方好像对使用仓库做图床的行为是不喜的。</p>
 <h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>如果资金允许的话，可以在腾讯云或阿里云上买个对象存储服务器，一年大概百来块吧。</p>
 <p>如果想免费的，就可以使用github+加速器，速度还是很快的。</p>
+<h2 id="服务器图床"><a href="#服务器图床" class="headerlink" title="服务器图床"></a>服务器图床</h2><h3 id="gitee回顾"><a href="#gitee回顾" class="headerlink" title="gitee回顾"></a>gitee回顾</h3><p>2022.7月</p>
+<p>我在gitee上的仓库公开申请通过，于是把重新打起了gitee图床的主意。</p>
+<p>把图片上传至gitee上，设置Next主题的请求头不带Referer，基本上图片都能通过URL进行访问。但就是有几张图片通过URL访问不了。</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Typora-Images//image-20220801140745929.png" alt="image-20220801140745929"></p>
+<p>这有强迫症的我能忍？打算用自己买的服务器作为图床</p>
+<p>我买的服务器的操作系统是CentOS8</p>
+<h3 id="安装httpd服务"><a href="#安装httpd服务" class="headerlink" title="安装httpd服务"></a>安装httpd服务</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/snake553/p/8856729.html">centos7上搭建http服务器以及设置目录访问 - Certainly - 博客园 (cnblogs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/webttt/p/10290429.html">https://www.cnblogs.com/webttt/p/10290429.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014079773/article/details/79745819">centos如何对外开放80，3306端口号或者其他端口号_陌上桑花开花的博客-CSDN博客_centos开放端口</a></p>
+<p>简单点就是两步命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install httpd	<span class="comment"># 安装httpd</span></span><br><span class="line">systemctl start httpd.service 	<span class="comment"># 启动httpd服务</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果修改过httpd的相关配置文件，要重启httpd服务才能生效</span></span><br><span class="line">systemctl restart httpd.service  </span><br></pre></td></tr></table></figure>
+<p>文档根目录： <code>/var/www/html</code></p>
+<p>把图片文件上传至<code>/var/www/html</code>下，如我所有图片都在gitee上，可以直接<code>git clone</code></p>
+<p>访问文件的URL格式：<code>http://ip/html后的路径/文件名</code></p>
+<p>如访问下图中的<code>background.jpg</code>文件：<code>http://服务器ip/Images/img/background.jpg</code></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Typora-Images//image-20220801144347335.png" alt="image-20220801144347335"></p>
 
     </div>
 
@@ -412,7 +430,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github%E5%9B%BE%E5%BA%8A"><span class="nav-number">2.</span> <span class="nav-text">Github图床</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">2.1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.2.</span> <span class="nav-text">遇到的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A2%E5%AD%97"><span class="nav-number">2.3.</span> <span class="nav-text">红字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">2.4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%96%B9%E6%B3%95"><span class="nav-number">2.5.</span> <span class="nav-text">最终方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gitee%E5%9B%BE%E5%BA%8A"><span class="nav-number">3.</span> <span class="nav-text">Gitee图床</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5-1"><span class="nav-number">3.1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">3.2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-1"><span class="nav-number">3.3.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9D%9F%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text">结束语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github%E5%9B%BE%E5%BA%8A"><span class="nav-number">2.</span> <span class="nav-text">Github图床</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">2.1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.2.</span> <span class="nav-text">遇到的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A2%E5%AD%97"><span class="nav-number">2.3.</span> <span class="nav-text">红字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">2.4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%96%B9%E6%B3%95"><span class="nav-number">2.5.</span> <span class="nav-text">最终方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gitee%E5%9B%BE%E5%BA%8A"><span class="nav-number">3.</span> <span class="nav-text">Gitee图床</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5-1"><span class="nav-number">3.1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">3.2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-1"><span class="nav-number">3.3.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9D%9F%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text">结束语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9B%BE%E5%BA%8A"><span class="nav-number">5.</span> <span class="nav-text">服务器图床</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gitee%E5%9B%9E%E9%A1%BE"><span class="nav-number">5.1.</span> <span class="nav-text">gitee回顾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85httpd%E6%9C%8D%E5%8A%A1"><span class="nav-number">5.2.</span> <span class="nav-text">安装httpd服务</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -428,7 +446,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
