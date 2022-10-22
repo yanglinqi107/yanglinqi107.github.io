@@ -91,7 +91,7 @@
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/res/202205171917184.png">
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/res/202205171917790.png">
 <meta property="article:published_time" content="2022-02-26T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-08-01T12:22:56.620Z">
+<meta property="article:modified_time" content="2022-10-22T08:12:07.134Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="数据结构和算法">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">98</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -286,7 +286,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-01 20:22:56" itemprop="dateModified" datetime="2022-08-01T20:22:56+08:00">2022-08-01</time>
+                <time title="修改时间：2022-10-22 16:12:07" itemprop="dateModified" datetime="2022-10-22T16:12:07+08:00">2022-10-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -392,7 +392,7 @@
 <p><strong>链式队列</strong>——非顺序存储</p>
 <p><img src="https://gitee.com/yanglinqi107/Images/raw/master/res/202205171852396.png" alt="image-20220220192406216"></p>
 <h2 id="串"><a href="#串" class="headerlink" title="串"></a>串</h2><p>串的逻辑结构和线性表极为相似，区别仅在于串的数据对象约束为<strong>字符集</strong>。</p>
-<p>但是串的基本操作和线性表却有很大差别。<font color=#ff000>在线性表的基本操作中，大多以“单个元素”作为操作对象</font>。如：在线性表中查找某个元素、求取某个元素、在某个位置上插入一个元素和删除一个元素等；而<font color=#ff000>在串的基本操作中，通常以“串的整体”作为操作对象</font>，如：在串中查找某个子串、求取一个子串、在串的某个位置上插入一个子串以及删除一个子串等。</p>
+<p>但是串的基本操作和线性表却有很大差别。在线性表的基本操作中，大多以“单个元素”作为操作对象。如：在线性表中查找某个元素、求取某个元素、在某个位置上插入一个元素和删除一个元素等；而在串的基本操作中，通常以“串的整体”作为操作对象，如：在串中查找某个子串、求取一个子串、在串的某个位置上插入一个子串以及删除一个子串等。</p>
 <h3 id="串的基本概念"><a href="#串的基本概念" class="headerlink" title="串的基本概念"></a>串的基本概念</h3><p><strong>串(string)</strong>也称字符串，是由零个或多个字符组成的有限序列。一般记为$S$ = “$a_1a_2…a_n$”。</p>
 <ul>
 <li>$S$是串的名字</li>
@@ -465,14 +465,12 @@
 <p><strong>示例</strong>：主串 $S=$ “$ababcabcacbab$” ，模式串$T=$ “$abcac$” 。</p>
 <p><img src="https://gitee.com/yanglinqi107/Images/raw/master/res/202205171853468.png" alt="image-20220220215002839"></p>
 <p><img src="https://gitee.com/yanglinqi107/Images/raw/master/res/202205171853639.png" alt="image-20220220215715609"></p>
-<font color=#00f>问题一：某趟在 $S_i$ 和 $T_j$ "失配"时，模式串"向右滑动"的可行距离有多远，即下一步 $S_i$ 应该与模式串中的哪个字符比较？</font>
-
+<p>问题一：某趟在 $S_i$ 和 $T_j$ “失配”时，模式串”向右滑动”的可行距离有多远，即下一步 $S_i$ 应该与模式串中的哪个字符比较？</p>
 <p>设模式串最远滑动到第 $k$ 个字符，此时要满足：（下面字符串下标从1开始，在程序中一般下标一般是0开始）</p>
 <p>$T_1$ ~ $T_{k-1}$ $=$ $S_{i-k+1}$ ~ $S_{i-1}$   和    $T_{j-k+1}$ ~ $T_{j-1}$ $=$ $S_{i-k+1}$ ~ $S_{i-1}$ </p>
 <p>联立得：$T_1$ ~ $T_{k-1}$ $=$ $T_{j-k+1}$ ~ $T_{j-1}$  $k=max\{k|1&lt;k&lt;j且T_1…T_{k-1}=T_{j-k+1}…T_{j-1}\}$</p>
 <p>即：模式中的前$k-1$个字符（最大真前缀）与模式中$T_j$字符前面的$k-1$个字符（最大真后缀）相等时，模式$T$就可以向右”滑动”至使$T_k$和$S_i$对准，继续向右进行比较即可。</p>
-<font color=#00f>问题二：求$k$值?</font>
-
+<p>问题二：求$k$值?</p>
 <p>1) $k$和$j$存在函数关系，模式串中的每一个$T_j$都对应一个$k$值，由当前失配位置$j$,可以计算出滑动位置$k$;</p>
 <p>2) 滑动位置$k$仅与模式串$T$有关，因此可以预先为模式串设定一个next数组，若令<code>next[j]=k</code>,则<code>next[j]</code>表明当模式串中的第$j$个字符与主串中相应字符“失配”时，模式串中需要重新和主串中该字符进行比较的字符的位置。</p>
 <script type="math/tex; mode=display">next[j]=\begin{cases} -1 \quad\quad\quad j=0 \\ max\{k|0<k<j且T_0...T_{k-1}=T_{j-k+1}...T_{j-1}\} \\ 0 \quad\quad\quad 其他情况 \end{cases}</script><p>计算<code>next[j]</code></p>
@@ -613,7 +611,7 @@ a_{0,0} & a_{0,1} &\cdots & a_{0,n-1} \\ a_{1,0} & a_{1,1} &\cdots & a_{1,n-1} \
 <p><strong>三元组表的两种存储方法</strong>：顺序表表示法、十字链表表示法。</p>
 <p><strong>三元组顺序表存储表示</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE1000</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> i, j; 	<span class="comment">// 第i行j列</span></span><br><span class="line">    ElemType e;	<span class="comment">// e:非0值</span></span><br><span class="line">&#125;Triple;	<span class="comment">//三元组类型</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    Triple data[MAXSIZE + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> mu, nu, tu;	<span class="comment">// mu行，nu列，tu个非0元</span></span><br><span class="line">&#125;TSMarix;	<span class="comment">//稀疏矩阵</span></span><br></pre></td></tr></table></figure>
-<p><strong>十字链表</strong>：每个非零元用一个结点表示，结点中除了<font color=#00f>表示非零元所在的行、列和值的三元组$(i,j,e)$</font>外，增加<font color=#00f>两个指针域</font>。<font color=#00f>行指针域(right)</font>：用来指向本行中下一个非零元素；<font color=#00f>列指针域(down)</font>：用来指向本列中下一个非零元素。稀疏矩阵中同一行的非零元通过向右的 right指针链接成了一个线性链表。同一列的非零元也通过down指针链接成了ー个线性链表。每个非零元既是第$i$行链表中的一个结点，又是第$j$列链表中的一个结点，相当于处在一个十字交叉路口，故称这样的存储结构为十字链表。</p>
+<p><strong>十字链表</strong>：每个非零元用一个结点表示，结点中除了<strong>表示非零元所在的行、列和值的三元组$(i,j,e)$</strong>外，增加<strong>两个指针域</strong>。<strong>行指针域(right)</strong>：用来指向本行中下一个非零元素；<strong>列指针域(down)</strong>：用来指向本列中下一个非零元素。稀疏矩阵中同一行的非零元通过向右的 right指针链接成了一个线性链表。同一列的非零元也通过down指针链接成了ー个线性链表。每个非零元既是第$i$行链表中的一个结点，又是第$j$列链表中的一个结点，相当于处在一个十字交叉路口，故称这样的存储结构为十字链表。</p>
 <p><img src="https://gitee.com/yanglinqi107/Images/raw/master/res/202205171855916.png" alt="image-20220221154547201"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">OLNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> i, j;	<span class="comment">// 该非0元素的行和列下标</span></span><br><span class="line">    ElemType e;	<span class="comment">// 同上面的自定义，就是int型</span></span><br><span class="line">    stuct OLNode *right, *down;	<span class="comment">// 非0元素所在行表和列表的后继</span></span><br><span class="line">&#125;OLNode, *OLink;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    OLink *rhead, *chead;	<span class="comment">// 行和列链表头指针向量</span></span><br><span class="line">    <span class="keyword">int</span> mu, nu, tu;	<span class="comment">// 稀疏矩阵的行数、列数、非0元个数</span></span><br><span class="line">&#125;CrossList;</span><br></pre></td></tr></table></figure>
 <p>示例：</p>
@@ -890,7 +888,7 @@ a_{0,0} & a_{0,1} &\cdots & a_{0,n-1} \\ a_{1,0} & a_{1,1} &\cdots & a_{1,n-1} \
 <p><strong>生成树林</strong>：从非连通图中任意一个顶点出发，或者从非强连通图中任意一个非根顶点出发，都不可能沿着边<br>访问到图中的所有顶点。</p>
 <p><strong>最小生成树</strong>：生成树中边的权值（代价）之和最小的树。</p>
 <p><img src="https://gitee.com/yanglinqi107/Images/raw/master/res/202205171913802.png" alt="image-20220228110032759"></p>
-<h4 id="Kruscal算法"><a href="#Kruscal算法" class="headerlink" title="Kruscal算法"></a><strong>Kruscal算法</strong></h4><p>基本思想：设$T=(U,TE)$是$G=(V,E)$的最小生成树，$U$的初值等于$V$，$TE$的初值为空集。将图中的<font color=#ff0000>边按权值从小到大的顺序依次选取</font>，若选取的边使生成树$T$不形成回路，则把它并入$TE$中，保留作为$T$的一条边；若选取的边使生成树T形成回路，则将其舍去。如此进行下去，直到$TE$中包含有$n-1$条边为止。</p>
+<h4 id="Kruscal算法"><a href="#Kruscal算法" class="headerlink" title="Kruscal算法"></a><strong>Kruscal算法</strong></h4><p>基本思想：设$T=(U,TE)$是$G=(V,E)$的最小生成树，$U$的初值等于$V$，$TE$的初值为空集。将图中的<strong>边按权值从小到大的顺序依次选取</strong>，若选取的边使生成树$T$不形成回路，则把它并入$TE$中，保留作为$T$的一条边；若选取的边使生成树T形成回路，则将其舍去。如此进行下去，直到$TE$中包含有$n-1$条边为止。</p>
 <p><img src="https://gitee.com/yanglinqi107/Images/raw/master/res/202205171914006.png" alt="image-20220228111700867"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">T = &#123;V, E&#125;;</span><br><span class="line"><span class="keyword">while</span>(T的边数 &lt; n - <span class="number">1</span>) &#123;</span><br><span class="line">    在E中选择代价最小的边(u, v);</span><br><span class="line">    并置 E = E - (u, v);</span><br><span class="line">    <span class="keyword">if</span>(不构成回路) &#123;</span><br><span class="line">        T = T + &#123;u, v&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="prim算法"><a href="#prim算法" class="headerlink" title="prim算法"></a><strong>prim算法</strong></h4><p>从某一顶点开始，找$n-1$条不构成回路的最小边（顶点偶对）。</p>
@@ -1059,7 +1057,7 @@ a_{0,0} & a_{0,1} &\cdots & a_{0,n-1} \\ a_{1,0} & a_{1,1} &\cdots & a_{1,n-1} \
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
