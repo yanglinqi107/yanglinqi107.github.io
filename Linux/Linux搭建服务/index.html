@@ -21,16 +21,16 @@
     var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Linux实现 ftp服务器搭建，nfs服务器搭建，ssh服务器搭建 120.24.186.231 Linux配置FTP服务_Ling-cheng的博客-CSDN博客_linux 配置ftp">
+  <meta name="description" content="Linux实现 ftp服务器搭建，nfs服务器搭建，ssh服务器搭建 Linux配置FTP服务_Ling-cheng的博客-CSDN博客_linux 配置ftp  （一）vsftpd服务配置（匿名，用户，虚拟用户）_Echo flower的博客-CSDN博客_vsftpd （二）vsftpd服务配置多用户多目录权限_Echo flower的博客-CSDN博客_vsftpd目录权限 Linux搭建h">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux搭建服务">
 <meta property="og:url" content="http://yanglinqi107.github.io/Linux/Linux%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/index.html">
 <meta property="og:site_name" content="杨记">
-<meta property="og:description" content="Linux实现 ftp服务器搭建，nfs服务器搭建，ssh服务器搭建 120.24.186.231 Linux配置FTP服务_Ling-cheng的博客-CSDN博客_linux 配置ftp">
+<meta property="og:description" content="Linux实现 ftp服务器搭建，nfs服务器搭建，ssh服务器搭建 Linux配置FTP服务_Ling-cheng的博客-CSDN博客_linux 配置ftp  （一）vsftpd服务配置（匿名，用户，虚拟用户）_Echo flower的博客-CSDN博客_vsftpd （二）vsftpd服务配置多用户多目录权限_Echo flower的博客-CSDN博客_vsftpd目录权限 Linux搭建h">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220523153245285.png">
 <meta property="article:published_time" content="2022-07-27T15:21:50.611Z">
-<meta property="article:modified_time" content="2022-08-01T12:22:56.650Z">
+<meta property="article:modified_time" content="2023-02-19T10:13:43.275Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -125,17 +125,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">23</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">24</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">98</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-01 20:22:56" itemprop="dateModified" datetime="2022-08-01T20:22:56+08:00">2022-08-01</time>
+                <time title="修改时间：2023-02-19 18:13:43" itemprop="dateModified" datetime="2023-02-19T18:13:43+08:00">2023-02-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,8 +249,10 @@
 
       
         <p>Linux实现 ftp服务器搭建，nfs服务器搭建，ssh服务器搭建</p>
-<p>120.24.186.231</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/l1593572468/article/details/121507798">Linux配置FTP服务_Ling-cheng的博客-CSDN博客_linux 配置ftp</a> </p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36120342/article/details/125993495">（一）vsftpd服务配置（匿名，用户，虚拟用户）_Echo flower的博客-CSDN博客_vsftpd</a></p>
+<p><a target="_blank" rel="noopener" href="https://liuhm.blog.csdn.net/article/details/125993563?spm=1001.2014.3001.5502">（二）vsftpd服务配置多用户多目录权限_Echo flower的博客-CSDN博客_vsftpd目录权限</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34267076/article/details/119741375">Linux搭建httpd服务实例_野原皮皮虾的博客-CSDN博客_linux搭建httpd</a></p>
 <span id="more"></span>
 <h2 id="ftp服务器"><a href="#ftp服务器" class="headerlink" title="ftp服务器"></a>ftp服务器</h2><p>作用：文件的上传和下载</p>
 <p>1、服务器端：</p>
@@ -280,6 +282,7 @@
 <p>使用<code>vsftpd</code>软件实现</p>
 <p>1、下载<code>vsftpd</code>软件：<code>sudo apt-get install vsftpd</code></p>
 <p>2、修改配置文件<code>/etc/vsftpd.conf</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=YES  <span class="comment">#允许匿名登录</span></span><br><span class="line">no_anon_password=YES  <span class="comment">#匿名登录时不需要密码</span></span><br><span class="line">anon_umask=022        <span class="comment">#匿名用户所上传文件的权限掩码</span></span><br><span class="line">anon_root=/var/ftp    <span class="comment">#匿名用户的 FTP 根目录</span></span><br><span class="line">anon_upload_enable=YES        <span class="comment">#允许上传文件</span></span><br><span class="line">anon_mkdir_write_enable=YES   <span class="comment">#允许创建目录</span></span><br></pre></td></tr></table></figure>
 <p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220523153245285.png" alt="image-20220523153245285" style="zoom:80%;" /></p>
 <p>3、重启<code>vsftpd</code>服务：<code>sudo service vsftpd restart</code></p>
 <p>实名用户登录，用户的权限为该用户在系统中的权限</p>
@@ -287,8 +290,11 @@
 <ul>
 <li>默认根目录<code>/srv/ftp</code>，可以在<code>/etc/passwd</code>文件中看到<code>ftp</code>用户的相关信息</li>
 <li>指定匿名用户ftp根目录，在<code>/etc/vsftpd.conf</code>中添加<code>anon_root=/home/yang/myftp</code></li>
-<li>修改根目录权限，供匿名用户使用：<code>sudo chown ftp myftp</code> 或 <code>chmod 777 myftp</code>，记得重启服务</li>
+<li>修改根目录权限，供匿名用户使用：<code>sudo chown ftp myftp</code> 或 <code>chmod 755 myftp</code>，记得重启服务</li>
 </ul>
+<p><strong>问题：</strong></p>
+<p><code>500 OOPS: vsftpd: refusing to run with writable root inside chroot()</code></p>
+<p>“如果启用chroot, 必须保证ftp根目录不可写, 这样对于ftp根直接为网站根目录的用户不方便, 所以建议假如ftp根目录是/home/${cjh}, 则将访问权限改写<code>chmod a-w /home/cjh</code> </p>
 <h2 id="nfs服务器"><a href="#nfs服务器" class="headerlink" title="nfs服务器"></a>nfs服务器</h2><p><code>net file system</code> -&gt; 网络文件系统，它允许网络中的计算机之间通过TCP/IP网络共享资源。</p>
 <p>0）安装软件：<code>sudo apt-get install nfs-kernel-server</code></p>
 <p>1）创建共享目录。如：<code>mkdir /home/yang/NfsShare</code></p>
@@ -329,6 +335,18 @@
 <li>如：<code>scp -r itcast@192.168.1.100:/home/itcast/QQ_dir/ ./mytest/360</code></li>
 <li>拷贝目录表需要使用参数<code>-r</code></li>
 </ul>
+<h2 id="http服务"><a href="#http服务" class="headerlink" title="http服务"></a>http服务</h2><h3 id="安装和启动"><a href="#安装和启动" class="headerlink" title="安装和启动"></a>安装和启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install httpd  <span class="comment"># 安装httpd包</span></span><br><span class="line">firewall-cmd --permanent --add-port=80/tcp  <span class="comment"># 开放80端口</span></span><br><span class="line">systemctl start httpd  <span class="comment"># 启动httpd服务</span></span><br></pre></td></tr></table></figure>
+<p>httpd主配置文件：<code>/etc/httpd/conf/httpd.conf</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">ServerRoot /etc/httpd   <span class="comment">#httpd服务的顶级目录为/etc/httpd</span></span><br><span class="line">Listen	80		<span class="comment">#监听在80端口80为web服务器的默认端口</span></span><br><span class="line">ServerName	0.0.0.0:80 	<span class="comment">#匹配任意IP地址，监听端口在80端口</span></span><br><span class="line">ServerAdmin root@localhost <span class="comment">#一般为你的邮箱，有事的时候给你发邮件</span></span><br><span class="line">User	apache</span><br><span class="line">Group	apache</span><br><span class="line">DoucumentRoot	/var/www/html 	<span class="comment">#网页文件存放的目录</span></span><br><span class="line">&lt;Directory /&gt;</span><br><span class="line">	AllowOverride none 	<span class="comment">#目录标记不允许覆盖</span></span><br><span class="line">	Require	all/ip/host	denied <span class="comment">#请求不允许</span></span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line">&lt;Directory /var/wwww/html&gt;</span><br><span class="line">	AllowOverride none 	<span class="comment">#目录标记不允许覆盖</span></span><br><span class="line">	Require	all/ip/host	granted <span class="comment">#请求允许</span></span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line">&lt;IfModule dir_module&gt; <span class="comment">#加载一个目录模块</span></span><br><span class="line">	DirectoryIndex index.html</span><br><span class="line">&lt;/IfModule&gt;</span><br><span class="line"></span><br><span class="line">IncludeOptional conf.d/*.conf 加载所有的自配置文件</span><br></pre></td></tr></table></figure>
+<p><code>/etc/httpd/conf.d/*.conf</code> 额外的参数文件。如果你不想要修改原始配置文件httpd.conf的话，那么你可以将你自己的额外参数文件独立出来，例如你想要有自己的额外设置值，可以将它写入<code>/etc/httpd/conf.d/vhosts.conf</code>（注意，扩展名一定是.conf），而启动Apache时，这个文件就会被读入主要配置文件当中了。</p>
+<p><code>/var/www/html/</code>这就是默认的首页所在目录，当输入网址时所显示的数据，就是放在这个目录当中的首页文件（默认为index.html）</p>
+<p>浏览器访问：<code>http://ip:80</code> 即可看到index.html文件的内容</p>
+<h3 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h3><p>新建<code>/etc/httpd/conf.d/testCtl.conf</code>，设置只有指定的用户才能访问特定的目录：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory <span class="string">&quot;/var/www/html/testCtl&quot;</span>&gt;</span><br><span class="line">	<span class="comment"># 全部禁用，不显示指定路径的链接文件，指定文件不存在不显示其他所有文件</span></span><br><span class="line">    Options None</span><br><span class="line">    <span class="comment">#.htaccess 文件无效</span></span><br><span class="line">    AllowOverride None</span><br><span class="line">    <span class="comment"># 验证类型</span></span><br><span class="line">    AuthType Basic</span><br><span class="line">    <span class="comment"># 提示信息</span></span><br><span class="line">    AuthName <span class="string">&quot;String&quot;</span></span><br><span class="line">    <span class="comment"># 存储账号密码的文件</span></span><br><span class="line">    AuthUserFile  <span class="string">&quot;/etc/httpd/.passwd&quot;</span></span><br><span class="line">    <span class="comment"># 允许账号文件中的所有用户登录访问</span></span><br><span class="line">    Require valid-user</span><br><span class="line">    <span class="comment"># Require user username1 username2 ... 允许文件中指定用户访问</span></span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
+<p>通过httpd服务自带的htpasswd工具来定义存放用户的文件以及用户的账号密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">htpasswd [options] /PATH/HTTPD_PASSWD_FILE username password</span><br><span class="line"></span><br><span class="line">options:</span><br><span class="line">-c 自动创建文件，仅应该在文件不存在时使用</span><br><span class="line">-b 非交互方式创建用户,命令后面可以接密码</span><br><span class="line">-p 明文密码</span><br><span class="line">-d CRYPT格式加密，默认</span><br><span class="line">-m md5格式加密</span><br><span class="line">-s sha格式加密</span><br><span class="line">-D 删除指定用户</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS conf.d]<span class="comment"># htpasswd -c /etc/httpd/.passwd yang  # 创建用户yang</span></span><br><span class="line">[root@CentOS conf.d]<span class="comment"># htpasswd /etc/httpd/.passwd zhang  # 创建用户zhang</span></span><br></pre></td></tr></table></figure>
+<p>使用浏览器访问<code>http://ip/testCtl</code>就会提示输入账号和密码</p>
 
     </div>
 
@@ -412,7 +430,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ftp%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">ftp服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nfs%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">nfs服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">ssh服务器</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ftp%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">ftp服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nfs%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">nfs服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">ssh服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http%E6%9C%8D%E5%8A%A1"><span class="nav-number">4.</span> <span class="nav-text">http服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E5%90%AF%E5%8A%A8"><span class="nav-number">4.1.</span> <span class="nav-text">安装和启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="nav-number">4.2.</span> <span class="nav-text">访问控制</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -428,20 +446,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-count">98</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -473,7 +491,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

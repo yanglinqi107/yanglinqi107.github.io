@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20221022114436794.png">
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20221022115041438.png">
 <meta property="article:published_time" content="2022-01-29T13:05:00.000Z">
-<meta property="article:modified_time" content="2022-11-29T10:10:23.220Z">
+<meta property="article:modified_time" content="2023-02-19T10:13:43.276Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -135,17 +135,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">23</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">24</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">98</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -235,7 +235,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-29 18:10:23" itemprop="dateModified" datetime="2022-11-29T18:10:23+08:00">2022-11-29</time>
+                <time title="修改时间：2023-02-19 18:13:43" itemprop="dateModified" datetime="2023-02-19T18:13:43+08:00">2023-02-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1423,15 +1423,12 @@
 </ul>
 </li>
 </ul>
-<hr>
-<h3 id="Shell编程"><a href="#Shell编程" class="headerlink" title="Shell编程"></a>Shell编程</h3><hr>
-<h4 id="Bash"><a href="#Bash" class="headerlink" title="Bash"></a>Bash</h4><p>Shell是用户与Linux操作系统沟通的桥梁</p>
+<h3 id="Shell编程"><a href="#Shell编程" class="headerlink" title="Shell编程"></a>Shell编程</h3><h4 id="Bash"><a href="#Bash" class="headerlink" title="Bash"></a>Bash</h4><p>Shell是用户与Linux操作系统沟通的桥梁</p>
 <p>Linux的Shell种类众多，这里的是<code>bash</code>，也就是<code>Bourne Again Shell</code></p>
 <ul>
 <li>由于易用和免费，<code>bash</code>在日常工作中被广泛使用</li>
 <li><code>bash</code>是大多数Linux系统默认的Shell</li>
 </ul>
-<hr>
 <h4 id="Shell执行方式"><a href="#Shell执行方式" class="headerlink" title="Shell执行方式"></a>Shell执行方式</h4><p><code>a.sh</code></p>
 <ul>
 <li>保证脚本具有执行权限并且在环境变量PATH中有(.)，这样在执行的时候会从当前目录查找</li>
@@ -1444,7 +1441,6 @@
 <ul>
 <li>直接可以执行，甚至这个脚本文件中的第一行都可以不引用<code>/bin/bash</code>，它是将<code>hello.sh</code>作为参数传给 sh(bash) 命令执行的</li>
 </ul>
-<hr>
 <h4 id="后台模式运行脚本"><a href="#后台模式运行脚本" class="headerlink" title="后台模式运行脚本"></a>后台模式运行脚本</h4><p>在脚本后面加一个 <code>&amp;</code></p>
 <ul>
 <li><code>tesh.sh &amp;</code></li>
@@ -1459,7 +1455,6 @@
 <li><code>nohup</code>命令将进程和终端分开，所以关闭当前会话窗口不会影响这个进程的执行</li>
 <li><code>nohup</code>会在当前执行的目录生成一个<code>nohup.out</code>日志文件</li>
 </ul>
-<hr>
 <h4 id="标准输入输出"><a href="#标准输入输出" class="headerlink" title="标准输入输出"></a>标准输入输出</h4><p>标准输入、输出、错误可以使用文件描述符 0、1、2 引用</p>
 <ul>
 <li><code>ls &gt;file</code> 或者 <code>ls 1&gt;file(ls &gt;&gt;file)</code> </li>
@@ -1467,7 +1462,6 @@
 <li><code>ls &gt; /dev/null</code>，把输出信息重定向到无底洞</li>
 </ul>
 <p>使用重定向可以把信息转换到其他位置</p>
-<hr>
 <h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><ul>
 <li><p>变量不需要声明，初始化不需要指定类型</p>
 </li>
@@ -1671,13 +1665,8 @@
 <li>把库和可执行程序，安装到系统目录下：<code>sudo make install</code></li>
 <li>删除和卸载软件：<code>sudo make distclean</code></li>
 </ol>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><h4 id="磁盘命名"><a href="#磁盘命名" class="headerlink" title="磁盘命名"></a>磁盘命名</h4><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220522150209246.png" alt="image-20220522150209246"></p>
-<h4 id="安装中文包"><a href="#安装中文包" class="headerlink" title="安装中文包"></a>安装中文包</h4><p>1.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install glibc-langpack-zh.x86_64</span><br></pre></td></tr></table></figure>
-<p>2.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> LANG=zh_CN.UTF-8 &gt; /etc/locale.conf</span><br></pre></td></tr></table></figure>
-<p>3.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/locale.conf</span><br></pre></td></tr></table></figure>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><h4 id="磁盘命名"><a href="#磁盘命名" class="headerlink" title="磁盘命名"></a>磁盘命名</h4><p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220522150209246.png" alt="image-20220522150209246" style="zoom: 67%;" /></p>
+<h4 id="安装中文包"><a href="#安装中文包" class="headerlink" title="安装中文包"></a>安装中文包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dnf install glibc-langpack-zh.x86_64</span><br><span class="line"><span class="built_in">echo</span> LANG=zh_CN.UTF-8 &gt; /etc/locale.conf</span><br><span class="line"><span class="built_in">source</span> /etc/locale.conf</span><br></pre></td></tr></table></figure>
 <h4 id="查看linux系统"><a href="#查看linux系统" class="headerlink" title="查看linux系统"></a>查看linux系统</h4><p><code>uname -a</code> 显示电脑以及操作系统的相关信息</p>
 <p><code>cat /proc/version</code> 显示正在运行的内核版本</p>
 <p><code>cat /etc/issue</code> 显示的是发行版本信息</p>
@@ -1790,20 +1779,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-count">98</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1835,7 +1824,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

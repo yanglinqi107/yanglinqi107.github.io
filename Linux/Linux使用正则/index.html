@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Typora-img/image-20220728140731327.png">
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Typora-img/image-20220728140931081.png">
 <meta property="article:published_time" content="2022-10-22T02:36:10.350Z">
-<meta property="article:modified_time" content="2022-10-22T08:42:12.159Z">
+<meta property="article:modified_time" content="2023-02-19T10:13:43.276Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -128,17 +128,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">23</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">24</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">98</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -220,10 +220,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-10-22 10:36:10 / 修改时间：16:42:12" itemprop="dateCreated datePublished" datetime="2022-10-22T10:36:10+08:00">2022-10-22</time>
+              <time title="创建时间：2022-10-22 10:36:10" itemprop="dateCreated datePublished" datetime="2022-10-22T10:36:10+08:00">2022-10-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-02-19 18:13:43" itemprop="dateModified" datetime="2023-02-19T18:13:43+08:00">2023-02-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -294,8 +300,7 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">grep man* 会匹配 <span class="string">&#x27;Batman&#x27;</span>、<span class="string">&#x27;manic&#x27;</span>、<span class="string">&#x27;man&#x27;</span>等，</span><br><span class="line">grep <span class="string">&#x27;\&lt;man&#x27;</span> * 匹配<span class="string">&#x27;manic&#x27;</span>和<span class="string">&#x27;man&#x27;</span>，但不是<span class="string">&#x27;Batman&#x27;</span>，</span><br><span class="line">grep <span class="string">&#x27;\&lt;man\&gt;&#x27;</span> 只匹配<span class="string">&#x27;man&#x27;</span>，而不是<span class="string">&#x27;Batman&#x27;</span>或<span class="string">&#x27;manic&#x27;</span>等其他的字符串。</span><br><span class="line">^ ： 指匹配的字符串在行首，</span><br><span class="line">$ ： 指匹配的字符串在行 尾，</span><br></pre></td></tr></table></figure>
 <h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><p>由于find具有强大的功能，所以它的选项也很多，其中大部分选项都值得我们花时间来了解一下。即使系统中含有网络文件系统( NFS)，find命令在该文件系统中同样有效，只要你具有相应的权限。</p>
 <p>在运行一个非常消耗资源的find命令时，很多人都倾向于把它放在后台执行，因为遍历一个大的文件系统可能会花费很长的时间（这里是指30G字节以上的文件系统）。</p>
-<p>一、 find 命令格式和说明</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">find pathname -options [-<span class="built_in">print</span> -<span class="built_in">exec</span> -ok ...]</span><br><span class="line"></span><br><span class="line">pathname: find命令所查找的目录路径。例如用.来表示当前目录，用/来表示系统根目录，递归查找。</span><br><span class="line"></span><br><span class="line">-<span class="built_in">print</span>： find命令将匹配的文件输出到标准输出。</span><br><span class="line">-<span class="built_in">exec</span>： find命令对匹配的文件执行该参数所给出的shell命令。相应命令的形式为<span class="string">&#x27;command&#x27;</span> &#123;&#125; \;，注意&#123;&#125;内部无空格，和\；之间含有一个空格分隔符。</span><br><span class="line">-ok： 和-<span class="built_in">exec</span>的作用相同，只不过以一种更为安全的模式来执行该参数所给出的shell命令，在执行每一个命令之前，都会给出提示，让用户来确定是否执行。</span><br><span class="line"></span><br><span class="line">-options:</span><br><span class="line">-name 按照文件名查找文件。</span><br><span class="line">-perm 按照文件权限来查找文件。</span><br><span class="line">-prune 使用这一选项可以使find命令不在当前指定的目录中查找，如果同时使用-depth选项，那么-prune将被find命令忽略。</span><br><span class="line">-user 按照文件属主来查找文件。</span><br><span class="line">-group 按照文件所属的组来查找文件。</span><br><span class="line">-mtime -n +n 按照文件的更改时间来查找文件，-n表示文件更改时间距现在n天以内，+n表示文件更改时间距现在n天以前。find命令还有-atime和-ctime 选项，但它们都和-mtime选项。</span><br><span class="line">-nogroup 查找无有效所属组的文件，即该文件所属的组在/etc/groups中不存在。</span><br><span class="line">-nouser 查找无有效属主的文件，即该文件的属主在/etc/passwd中不存在。</span><br><span class="line">-newer file1 ! file2 查找更改时间比文件file1新但比文件file2旧的文件。</span><br><span class="line">-<span class="built_in">type</span> 查找某一类型的文件，诸如：</span><br><span class="line">    b - 块设备文件。</span><br><span class="line">    d - 目录。</span><br><span class="line">    c - 字符设备文件。</span><br><span class="line">    p - 管道文件。</span><br><span class="line">    l - 符号链接文件。</span><br><span class="line">    f - 普通文件。</span><br><span class="line">-size n：[c] 查找文件长度为n块的文件，带有c时表示文件长度以字节计。</span><br><span class="line">-depth 在查找文件时，首先查找当前目录中的文件，然后再在其子目录中查找。</span><br><span class="line">-fstype 查找位于某一类型文件系统中的文件，这些文件系统类型通常可以在配置文件/etc/fstab中找到，该配置文件中包含了本系统中有关文件系统的信息。</span><br><span class="line">-mount 在查找文件时不跨越文件系统mount点。</span><br><span class="line">-follow 如果find命令遇到符号链接文件，就跟踪至链接所指向的文件。</span><br></pre></td></tr></table></figure>
+<h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">find pathname -options [-<span class="built_in">print</span> -<span class="built_in">exec</span> -ok ...]</span><br><span class="line"></span><br><span class="line">pathname: find命令所查找的目录路径。例如用.来表示当前目录，用/来表示系统根目录，递归查找。</span><br><span class="line"></span><br><span class="line">-<span class="built_in">print</span>： find命令将匹配的文件输出到标准输出。</span><br><span class="line">-<span class="built_in">exec</span>： find命令对匹配的文件执行该参数所给出的shell命令。相应命令的形式为<span class="string">&#x27;command&#x27;</span> &#123;&#125; \;，注意&#123;&#125;内部无空格，和\；之间含有一个空格分隔符。</span><br><span class="line">-ok： 和-<span class="built_in">exec</span>的作用相同，只不过以一种更为安全的模式来执行该参数所给出的shell命令，在执行每一个命令之前，都会给出提示，让用户来确定是否执行。</span><br><span class="line"></span><br><span class="line">-options:</span><br><span class="line">-name 按照文件名查找文件。</span><br><span class="line">-perm 按照文件权限来查找文件。</span><br><span class="line">-prune 使用这一选项可以使find命令不在当前指定的目录中查找，如果同时使用-depth选项，那么-prune将被find命令忽略。</span><br><span class="line">-user 按照文件属主来查找文件。</span><br><span class="line">-group 按照文件所属的组来查找文件。</span><br><span class="line">-mtime -n +n 按照文件的更改时间来查找文件，-n表示文件更改时间距现在n天以内，+n表示文件更改时间距现在n天以前。find命令还有-atime和-ctime 选项，但它们都和-mtime选项。</span><br><span class="line">-nogroup 查找无有效所属组的文件，即该文件所属的组在/etc/groups中不存在。</span><br><span class="line">-nouser 查找无有效属主的文件，即该文件的属主在/etc/passwd中不存在。</span><br><span class="line">-newer file1 ! file2 查找更改时间比文件file1新但比文件file2旧的文件。</span><br><span class="line">-<span class="built_in">type</span> 查找某一类型的文件，诸如：</span><br><span class="line">    b - 块设备文件。</span><br><span class="line">    d - 目录。</span><br><span class="line">    c - 字符设备文件。</span><br><span class="line">    p - 管道文件。</span><br><span class="line">    l - 符号链接文件。</span><br><span class="line">    f - 普通文件。</span><br><span class="line">-size n：[c] 查找文件长度为n块的文件，带有c时表示文件长度以字节计。</span><br><span class="line">-depth 在查找文件时，首先查找当前目录中的文件，然后再在其子目录中查找。</span><br><span class="line">-fstype 查找位于某一类型文件系统中的文件，这些文件系统类型通常可以在配置文件/etc/fstab中找到，该配置文件中包含了本系统中有关文件系统的信息。</span><br><span class="line">-mount 在查找文件时不跨越文件系统mount点。</span><br><span class="line">-follow 如果find命令遇到符号链接文件，就跟踪至链接所指向的文件。</span><br></pre></td></tr></table></figure>
 <p>下面三个的区别：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-amin n 查找系统中最后N分钟访问的文件</span><br><span class="line">-atime n 查找系统中最后n*24小时访问的文件</span><br><span class="line">-cmin n 查找系统中最后N分钟被改变文件状态的文件</span><br><span class="line">-ctime n 查找系统中最后n*24小时被改变文件状态的文件</span><br><span class="line">-mmin n 查找系统中最后N分钟被改变文件数据的文件</span><br><span class="line">-mtime n 查找系统中最后n*24小时被改变文件数据的文件</span><br></pre></td></tr></table></figure>
 <p><strong>使用exec或ok来执行shell命令</strong></p>
@@ -312,8 +317,7 @@
 <p>任何形式的命令都可以在-exec选项中使用。</p>
 <p>在下面的例子中我们使用grep命令。find命令首先匹配所有文件名为“ passwd*”的文件，例如passwd、passwd.old、passwd.bak，然后执行grep命令看看在这些文件中是否存在一个itcast用户。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ find /etc -name <span class="string">&quot;passwd*&quot;</span> -<span class="built_in">exec</span> grep <span class="string">&quot;itcast&quot;</span> &#123;&#125; \;</span><br><span class="line">itcast:x:1000:1000::/home/itcast:/bin/bash</span><br></pre></td></tr></table></figure>
-<p><strong>find命令的例子</strong></p>
-<p>1、 查找当前用户主目录下的所有文件：</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>1、 查找当前用户主目录下的所有文件：</p>
 <p>下面两种方法都可以使用</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ find <span class="variable">$HOME</span> -<span class="built_in">print</span></span><br><span class="line">$ find ~ -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
 <p>2、 让当前目录中文件属主具有读、写权限，并且文件所属组的用户和其他用户具有读权限的文件；</p>
@@ -329,7 +333,178 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find . -name <span class="string">&quot;admin.log[0-9][0-9][0-9]&quot;</span> -atime -7 -ok rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
 <p>7、 为了查找当前文件系统中的所有目录并排序；</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find . -<span class="built_in">type</span> d | sort</span><br></pre></td></tr></table></figure>
-<h3 id="xargs"><a href="#xargs" class="headerlink" title="xargs"></a>xargs</h3><p>xargs - build and execute command lines from standard input</p>
+<h4 id="xargs"><a href="#xargs" class="headerlink" title="xargs"></a>xargs</h4><p><code>xargs - build and execute command lines from standard input</code></p>
+<p>在使用find命令的-exec选项处理匹配到的文件时， find命令将所有匹配到的文件一起传递给exec执行。但有些系统对能够传递给exec的命令长度有限制，这样在find命令运行几分钟之后，就会出现溢出错误。错误信息通常是“参数列太长”或“参数列溢出”。这就是xargs命令的用处所在，特别是与find命令一起使用。</p>
+<p>find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获取一部分文件而不是全部，不像-exec选项那样。这样它可以先处理最先获取的一部分文件，然后是下一批，并如此继续下去。</p>
+<p>在有些系统中，使用-exec选项会为处理每一个匹配到的文件而发起一个相应的进程，并非将匹配到的文件全部作为参数一次执行；这样在有些情况下就会出现进程过多，系统性能下降的问题，因而效率不高；</p>
+<p>而使用xargs命令则只有一个进程。另外，在使用xargs命令时，究竟是一次获取所有的参数，还是分批取得参数，以及每一次获取参数的数目都会根据该命令的选项及系统内核中相应的可调参数来确定。</p>
+<p>来看看xargs命令是如何同find命令一起使用的，并给出一些例子。</p>
+<p>下面的例子查找系统中的每一个普通文件，然后使用xargs命令来测试它们分别属于哪类文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># find . -type f -print | xargs file</span></span><br></pre></td></tr></table></figure>
+<p>在当前目录下查找所有用户具有读、写和执行权限的文件，并收回相应的写权限：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls -l</span></span><br><span class="line"><span class="comment"># find . -perm -7 -print | xargs chmod o-w</span></span><br><span class="line"><span class="comment"># ls -l</span></span><br></pre></td></tr></table></figure>
+<p>用grep命令在所有的普通文件中搜索hello这个词：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># find . -type f -print | xargs grep &quot;hello&quot;</span></span><br></pre></td></tr></table></figure>
+<p>用grep命令在当前目录下的所有普通文件中搜索hello这个词：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># find . -name \* -type f -print | xargs grep &quot;hello&quot;</span></span><br></pre></td></tr></table></figure>
+<p>注意，在上面的例子中， \用来取消find命令中的*在shell中的特殊含义。</p>
+<p>find命令配合使用exec和xargs可以使用户对所匹配到的文件执行几乎所有的命令。</p>
+<h4 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a>常用参数</h4><p>1、使用name选项</p>
+<p>文件名选项是find命令最常用的选项，要么单独使用该选项，要么和其他选项一起使用。</p>
+<p>可以使用某种文件名模式来匹配文件，记住要用引号将文件名模式引起来。</p>
+<p>不管当前路径是什么，如果想要在自己的根目录HOME中查找文件名符合∗.txt的文件，使用 ~ 作为 pathname 的参数，波浪号代表了你的HOME目录。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find ~ -name <span class="string">&quot;*.txt&quot;</span> -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>想要在当前目录及子目录中查找所有的‘ *.txt’文件，可以用：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find . -name <span class="string">&quot;*.txt&quot;</span> -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>想要的当前目录及子目录中查找文件名以一个大写字母开头的文件，可以用：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find . -name <span class="string">&quot;[A-Z]*&quot;</span> -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>想要在/etc目录中查找文件名以host开头的文件，可以用：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find /etc -name <span class="string">&quot;host*&quot;</span> -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>想要查找$HOME目录中的文件，可以用：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find ~ -name <span class="string">&quot;*&quot;</span> -<span class="built_in">print</span> 或find . –<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>要想让系统高负荷运行，就从根目录开始查找所有的文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find / -name <span class="string">&quot;*&quot;</span> -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>如果想在当前目录查找文件名以两个小写字母开头，跟着是两个数字，最后是.txt的文件，下面的命令就能够返回例如名为ax37.txt的文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$find</span> . -name <span class="string">&quot;[a-z][a-z][0-9][0-9].txt&quot;</span> -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>2、用perm选项</p>
+<p>按照文件权限模式用-perm选项,按文件权限模式来查找文件的话。最好使用八进制的权限表示法。</p>
+<p>如在当前目录下查找文件权限位为755的文件，即文件属主可以读、写、执行，其他用户可以读、执行的文件，可以用：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find . -perm 755 -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>还有一种表达方法：在八进制数字前面要加一个横杠-，表示都匹配，如-007就相当于777，-006相当于666</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls -l</span></span><br><span class="line"><span class="comment"># find . -perm 006</span></span><br><span class="line"><span class="comment"># find . -perm -006</span></span><br><span class="line"></span><br><span class="line">-perm mode: 文件许可正好符合mode</span><br><span class="line">-perm +mode: 文件许可部分符合mode</span><br><span class="line">-perm -mode: 文件许可完全符合mode</span><br></pre></td></tr></table></figure>
+<p>3、 忽略某个目录</p>
+<p>如果在查找文件时希望忽略某个目录，因为你知道那个目录中没有你所要查找的文件，那么可以使用-prune选项来指出需要忽略的目录。在使用-prune选项时要当心，因为如果你同时使用了-depth选项，那么-prune选项就会被find命令忽略。</p>
+<p>如果希望在/apps目录下查找文件，但不希望在/apps/bin目录下查找，可以用：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find /apps -path <span class="string">&quot;/apps/bin&quot;</span> -prune -o -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>避开多个文件夹</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find /home \( -path /home/itcast/f1 -o -path /home/itcast/f2 \) -prune -o -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>4、使用user和nouser选项</p>
+<p>按文件属主查找文件，如在$HOME目录中查找文件属主为itcast的文件，可以用：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find ~ -user itcast -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>在/etc目录下查找文件属主为uucp的文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find /etc -user uucp -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>为了查找属主帐户已经被删除的文件，可以使用-nouser选项。这样就能够找到那些属主在/etc/passwd文件中没有有效帐户的文件。在使用-nouser选项时，不必给出用户名；find命令能够为你完成相应的工作。</p>
+<p>例如，希望在/home目录下查找所有的这类文件，可以用：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find /home -nouser -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>5、使用group和nogroup选项</p>
+<p>就像user和nouser选项一样，针对文件所属于的用户组， find命令也具有同样的选项，为了在/apps目录下查找属于itcast用户组的文件，可以用：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find /apps -group itcast -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>要查找没有有效所属用户组的所有文件，可以使用nogroup选项。下面的find命令从文件系统的根目录处查找这样的文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find / -nogroup -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>6、按照更改时间或访问时间等查找文件</p>
+<p>如果希望按照更改时间来查找文件，可以使用mtime, atime 或 ctime选项。如果系统突然没有可用空间了，很有可能某一个文件的长度在此期间增长迅速，这时就可以用mtime选项来查找这样的文件。</p>
+<p>用减号-来限定更改时间在距今n日以内的文件，而用加号+来限定更改时间在距今n日以前的文件。</p>
+<p>希望在系统根目录下查找更改时间在5日以内的文件，可以用：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find / -mtime -5 -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>为了在/var/adm目录下查找更改时间在3日以前的文件，可以用：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find /var/adm -mtime +3 -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>7、查找比某个文件新或旧的文件</p>
+<p>如果希望查找更改时间比某个文件新但比另一个文件旧的所有文件，可以使用-newer选项。它的一般形式为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newest_file_name ! oldest_file_name</span><br></pre></td></tr></table></figure>
+<p>其中，！是逻辑非符号。</p>
+<p>8、使用type选项</p>
+<p>在/etc目录下查找所有的目录，可以用：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find /etc -<span class="built_in">type</span> d -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>在当前目录下查找除目录以外的所有类型的文件，可以用：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find . ! -<span class="built_in">type</span> d -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>在/etc目录下查找所有的符号链接文件，可以用</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find /etc -<span class="built_in">type</span> l -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>9、使用size选项</p>
+<p>可以按照文件长度来查找文件，这里所指的文件长度既可以用块（block）来计量，也可以用字节来计量。以字节计量文件长度的表达形式为N c；以块计量文件长度只用数字表示即可。</p>
+<p>在按照文件长度查找文件时，一般使用这种以字节表示的文件长度，在查看文件系统的大小，因为这时使用块来计量更容易转换。 在当前目录下查找文件长度大于1 M字节的文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find . -size +1000000c -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>在/home/apache目录下查找文件长度恰好为100字节的文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find /home/apache -size 100c -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>在当前目录下查找长度超过10块的文件（一块等于512字节）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find . -size +10 -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>10、使用depth选项</p>
+<p>在使用find命令时，可能希望先匹配所有的文件，再在子目录中查找。使用depth选项就可以使find命令这样做。这样做的一个原因就是，当在使用find命令向磁带上备份文件系统时，希望首先备份所有的文件，其次再备份子目录中的文件。</p>
+<p>在下面的例子中， find命令从文件系统的根目录开始，查找一个名为CON.FILE的文件。</p>
+<p>它将首先匹配所有的文件然后再进入子目录中查找。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find / -name <span class="string">&quot;CON.FILE&quot;</span> -depth -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>11、使用mount选项</p>
+<p>在当前的文件系统中查找文件（不进入其他文件系统），可以使用find命令的mount选项。</p>
+<p>从当前目录开始查找位于本文件系统中文件名以XC结尾的文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find . -name <span class="string">&quot;*.XC&quot;</span> -mount -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<h3 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h3><p>sed意为流编辑器（Stream Editor），在Shell脚本和Makefile中作为过滤器使用非常普遍，也就是把前一个程序的输出引入sed的输入，经过一系列编辑命令转换为另一种格式输出。sed和vi都源于早期UNIX的ed工具，所以很多sed命令和vi的末行命令是相同的。</p>
+<p>sed命令行的基本格式为：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed option <span class="string">&#x27;script&#x27;</span> file1 file2 ...</span><br><span class="line">sed option -f scriptfile file1 file2 ...</span><br></pre></td></tr></table></figure>
+<p>选项含义：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">--version 				显示sed版本。</span><br><span class="line">--help					显示帮助文档。</span><br><span class="line">-n,--quiet,--silent 	静默输出，默认情况下，sed程序在所有的脚本指令执行完毕后，将自动打印模式空间中的内容，这些选项可以屏蔽自动打印。</span><br><span class="line">-e script 				允许多个脚本指令被执行。</span><br><span class="line">-f script-file,--file=script-file 		从文件中读取脚本指令，对编写自动脚本程序来说很棒！</span><br><span class="line">-i,--in-place 			直接修改源文件，经过脚本指令处理后的内容将被输出至源文件（源文件被修改）慎用！</span><br><span class="line">-l N, --line-length=N 	该选项指定l指令可以输出的行长度，l指令用于输出非打印字符。</span><br><span class="line">--posix 				禁用GNU sed扩展功能。</span><br><span class="line">-r, --regexp-extended 	在脚本指令中使用扩展正则表达式</span><br><span class="line">-s, --separate 			默认情况下，sed将把命令行指定的多个文件名作为一个长的连续的输入流。而GNU sed则允许把他们当作单独的文件，这样如正则表达式则不进行跨文件匹配。</span><br><span class="line">-u, --unbuffered 		最低限度的缓存输入与输出。</span><br></pre></td></tr></table></figure>
+<p>以上仅是sed程序本身的选项功能说明，至于具体的脚本指令（即对文件内容做的操作）后面我们会详细描述，这里就简单介绍几个脚本指令操作作为sed程序的例子。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a,	append 			追加</span><br><span class="line">i,	insert 			插入</span><br><span class="line">d,	delete 			删除</span><br><span class="line">s,	substitution 	替换</span><br></pre></td></tr></table></figure>
+<p>如：<code>$ sed &quot;2a itcast&quot; ./testfile</code> 在输出testfile内容的第二行后添加”itcast”。</p>
+<p>sed处理的文件既可以由标准输入重定向得到，也可以当命令行参数传入，命令行参数可以一次传入多个文件，sed会依次处理。sed的编辑命令可以直接当命令行参数传入，也可以写成一个脚本文件然后用-f参数指定，编辑命令的格式为：<code>/pattern/action</code></p>
+<p>其中pattern是正则表达式，action是编辑操作。sed程序一行一行读出待处理文件，如果某一行与pattern匹配，则执行相应的action，如果一条命令没有pattern而只有action，这个action将作用于待处理文件的每一行。</p>
+<p><strong>常用sed命令</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/pattern/p 打印匹配pattern的行</span><br><span class="line">/pattern/d 删除匹配pattern的行</span><br><span class="line">/pattern/s/pattern1/pattern2/ 查找符合pattern的行，将该行第一个匹配pattern1的字符串替换为pattern2</span><br><span class="line">/pattern/s/pattern1/pattern2/g 查找符合pattern的行，将该行所有匹配pattern1的字符串替换为pattern2</span><br></pre></td></tr></table></figure>
+<p>使用p命令需要注意，sed是把待处理文件的内容连同处理结果一起输出到标准输出的，因此p命令表示除了把文件内容打印出来之外还额外打印一遍匹配pattern的行。比如一个文件testfile的内容是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">123</span><br><span class="line">abc</span><br><span class="line">456</span><br></pre></td></tr></table></figure>
+<p>打印其中包含abc的行：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sed <span class="string">&#x27;/abc/p&#x27;</span> testfile</span><br><span class="line">123</span><br><span class="line">abc</span><br><span class="line">abc</span><br><span class="line">456</span><br></pre></td></tr></table></figure>
+<p>要想只输出处理结果，应加上-n选项，这种用法相当于grep命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sed -n <span class="string">&#x27;/abc/p&#x27;</span> testfile</span><br><span class="line">abc</span><br></pre></td></tr></table></figure>
+<p>使用d命令就不需要-n参数了，比如删除含有abc的行：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sed <span class="string">&#x27;/abc/d&#x27;</span> testfile</span><br><span class="line">123</span><br><span class="line">456</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>，sed命令不会修改原文件，删除命令只表示某些行不打印输出，而不是从原文件中删去。</p>
+<p>使用查找替换命令时，可以把匹配pattern1的字符串复制到pattern2中，比如：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sed <span class="string">&#x27;s/bc/-&amp;-/&#x27;</span> testfile</span><br><span class="line">123</span><br><span class="line">a-bc-</span><br><span class="line">456</span><br></pre></td></tr></table></figure>
+<p>pattern2中的&amp;表示原文件的当前行中与pattern1相匹配的字符串，再比如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sed <span class="string">&#x27;s/\([0-9]\)\([0-9]\)/-\1-~\2~/&#x27;</span> testfile</span></span><br><span class="line">-1-~2~3</span><br><span class="line">abc</span><br><span class="line">-4-~5~6</span><br></pre></td></tr></table></figure>
+<p>pattern2中的<code>\1</code>表示与pattern1的第一个()括号相匹配的内容，<code>\2</code>表示与pattern1的第二个()括号相匹配的内容。sed默认使用Basic正则表达式规范，如果指定了-r选项则使用Extended规范，那么()括号就不必转义了。如：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -r <span class="string">&#x27;s/([0-9])([0-9])/-\1-~\2~/&#x27;</span> out.sh</span><br></pre></td></tr></table></figure>
+<p>替换结束后，所有行，含有连续数字的第一个数字前后都添加了“-”号；第二个数字前后都添加了“~”号。</p>
+<p>可以一次指定多条不同的替换命令，用“;”隔开：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sed <span class="string">&#x27;s/yes/no/;s/static/dhcp/&#x27;</span> ./testfile</span><br></pre></td></tr></table></figure>
+<p>也可以使用 -e 参数来指定不同的替换命令，有几个替换命令需添加几个 -e 参数：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sed -e <span class="string">&#x27;s/yes/no/&#x27;</span> -e <span class="string">&#x27;s/static/dhcp/&#x27;</span> testfile</span><br></pre></td></tr></table></figure>
+<p>如果testfile的内容是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;&lt;head&gt;&lt;title&gt;Hello World&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body&gt;Welcome to the world of regexp!&lt;/body&gt;&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>现在要去掉所有的HTML标签，使输出结果为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hello World</span><br><span class="line">Welcome to the world of regexp!</span><br></pre></td></tr></table></figure>
+<p>怎么做呢？如果用下面的命令</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sed <span class="string">&#x27;s/&lt;.*&gt;//g&#x27;</span> testfile</span><br></pre></td></tr></table></figure>
+<p>结果是两个空行，把所有字符都过滤掉了。这是因为，正则表达式中的数量限定符会匹配尽可能长的字符串，这称为贪心的(Greedy)。比如sed在处理第一行时，&lt;.*&gt;匹配的并不是<code>&lt;html&gt;</code>或<code>&lt;head&gt;</code>这样的标签，而是<code>&lt;html&gt;&lt;head&gt;&lt;title&gt;Hello World&lt;/title&gt;</code></p>
+<h3 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h3><p>sed以行为单位处理文件，awk比sed强的地方在于不仅能以行为单位还能以列为单位处理文件。<strong>awk缺省的行分隔符是换行，缺省的列分隔符是连续的空格和Tab</strong>，但是行分隔符和列分隔符都可以自定义，比如/etc/passwd文件的每一行有若干个字段，字段之间以:分隔，就可以重新定义awk的列分隔符为:并以列为单位处理这个文件。awk实际上是一门很复杂的脚本语言，还有像C语言一样的分支和循环结构，但是基本用法和sed类似，awk命令行的基本形式为：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">awk option <span class="string">&#x27;script&#x27;</span> file1 file2 ...</span><br><span class="line">awk option -f scriptfile file1 file2 ...</span><br></pre></td></tr></table></figure>
+<p>和sed一样，awk处理的文件既可以由标准输入重定向得到，也可以当命令行参数传入，编辑命令可以直接当命令行参数传入，也可以用-f参数指定一个脚本文件，编辑命令的格式为：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/pattern/&#123;actions&#125;</span><br><span class="line">condition&#123;actions&#125;</span><br></pre></td></tr></table></figure>
+<p>和sed类似，<strong>pattern是正则表达式，actions是一系列操作</strong>。awk程序一行一行读出待处理文件，如果某一行与pattern匹配，或者满足condition条件，则执行相应的actions，如果一条awk命令只有actions部分，则actions作用于待处理文件的每一行。比如文件testfile的内容表示某商店的库存量：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ProductA 30</span><br><span class="line">ProductB 76</span><br><span class="line">ProductC 55</span><br></pre></td></tr></table></figure>
+<p>打印每一行的第二列：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ awk <span class="string">&#x27;&#123;print $2;&#125;&#x27;</span> testfile</span><br><span class="line">30</span><br><span class="line">76</span><br><span class="line">55</span><br></pre></td></tr></table></figure>
+<p>自动变量$1、$2分别表示第一列、第二列等，类似于Shell脚本的位置参数，而$0表示整个当前行。再比如，如果某种产品的库存量低于75则在行末标注需要订货：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ awk <span class="string">&#x27;$2&lt;75 &#123;printf &quot;%s\t%s\n&quot;, $0, &quot;REORDER&quot;;&#125; $2&gt;=75 &#123;print $0;&#125;&#x27;</span> testfile</span><br><span class="line">ProductA 30 REORDER</span><br><span class="line">ProductB 76</span><br><span class="line">ProductC 55 REORDER</span><br></pre></td></tr></table></figure>
+<p>可见awk也有和C语言非常相似的printf函数。awk命令的condition部分还可以是两个特殊的condition－BEGIN和END，对于每个待处理文件，BEGIN后面的actions在处理整个文件之前执行一次，END后面的actions在整个文件处理完之后执行一次。</p>
+<p>awk命令可以像C语言一样使用变量（但不需要定义变量），比如统计一个文件中的空行数</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ awk <span class="string">&#x27;/^ *$/ &#123;x=x+1;&#125; END &#123;print x;&#125;&#x27;</span> testfile</span><br></pre></td></tr></table></figure>
+<p>就像Shell的环境变量一样，有些awk变量是预定义的有特殊含义的，awk常用的内建变量：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FILENAME 	当前输入文件的文件名，该变量是只读的</span><br><span class="line">NR 			当前行的行号，该变量是只读的，R代表record</span><br><span class="line">NF 			当前行所拥有的列数，该变量是只读的，F代表field</span><br><span class="line">OFS 			输出格式的列分隔符，缺省是空格</span><br><span class="line">FS 			输入文件的列分融符，缺省是连续的空格和Tab</span><br><span class="line">ORS 			输出格式的行分隔符，缺省是换行符</span><br><span class="line">RS 			输入文件的行分隔符，缺省是换行符</span><br></pre></td></tr></table></figure>
+<p>例如打印系统中的用户帐号列表</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ awk <span class="string">&#x27;BEGIN &#123;FS=&quot;:&quot;&#125; &#123;print $1;&#125;&#x27;</span> /etc/passwd</span><br></pre></td></tr></table></figure>
+<h2 id="C程序使用正则"><a href="#C程序使用正则" class="headerlink" title="C程序使用正则"></a>C程序使用正则</h2><p>POSIX规定了正则表达式的C语言库函数，详见regex(3)。我们已经学习了很多C语言库函数的用法，读者应该具备自己看懂man手册的能力了。本章介绍了正则表达式在grep、sed、awk中的用法，学习要能够举一反三，请读者根据regex(3)自己总结正则表达式在C语言中的用法，写一些简单的程序，例如验证用户输入的IP地址或email地址格式是否正确。</p>
+<p>C语言处理正则表达式常用的函数有regcomp()、regexec()、regfree()和regerror()，一般分为三个步骤，如下所示： </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">编译正则表达式 regcomp()</span><br><span class="line">匹配正则表达式 regexec()</span><br><span class="line">释放正则表达式 regfree()</span><br></pre></td></tr></table></figure>
+<p><code>regcomp</code>函数把指定的正则表达式pattern编译成一种特定的数据格式compiled，这样可以使匹配更有效。函数regexec 会使用这个数据在目标文本串中进行模式匹配。执行成功返回０。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int regcomp (regex_t *compiled, const char *pattern, int cflags)</span><br><span class="line"></span><br><span class="line">	regex_t 	是一个结构体数据类型，用来存放编译后的正则表达式，它的成员re_nsub 用来存储正则表达式中的子正则表达式的个数，子正则表达式就是用圆括号包起来的部分表达式。</span><br><span class="line">	pattern 	是指向我们写好的正则表达式的指针。</span><br><span class="line">	cflags 		有如下4个值或者是它们或运算(|)后的值：</span><br><span class="line">		REG_EXTENDED 	以功能更加强大的扩展正则表达式的方式进行匹配。</span><br><span class="line">		REG_ICASE 		匹配字母时忽略大小写。</span><br><span class="line">		REG_NOSUB 		不用存储匹配后的结果,只返回是否成功匹配。如果设置该标志位，那么在regexec将忽略nmatch和pmatch两个参数。</span><br><span class="line">		REG_NEWLINE 	识别换行符，这样&#x27;$&#x27;就可以从行尾开始匹配，&#x27;^&#x27;就可以从行的开头开始匹配。</span><br></pre></td></tr></table></figure>
+<p>当我们编译好正则表达式后，就可以用regexec 匹配我们的目标文本串了，如果在编译正则表达式的时候没有指定cflags的参数为REG_NEWLINE，则默认情况下是忽略换行符的，也就是把整个文本串当作一个字符串处理。执行成功返回０。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int regexec (regex_t *compiled, char *string, size_t nmatch, regmatch_t matchptr[], int eflags)</span><br><span class="line">compiled 	是已经用regcomp函数编译好的正则表达式。</span><br><span class="line">string 		是目标文本串。</span><br><span class="line">nmatch 		是regmatch_t结构体数组的长度。</span><br><span class="line">matchptr 	regmatch_t类型的结构体数组，存放匹配文本串的位置信息。</span><br><span class="line">eflags 有两个值:</span><br><span class="line">	REG_NOTBOL 让特殊字符^无作用</span><br><span class="line">	REG_NOTEOL 让特殊字符＄无作用</span><br></pre></td></tr></table></figure>
+<p>regmatch_t 是一个结构体数据类型，在regex.h中定义：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">	<span class="keyword">regoff_t</span> rm_so;</span><br><span class="line">	<span class="keyword">regoff_t</span> rm_eo;</span><br><span class="line">&#125; <span class="keyword">regmatch_t</span>;</span><br></pre></td></tr></table></figure>
+<p>成员rm_so 存放匹配文本串在目标串中的开始位置，rm_eo 存放结束位置。通常我们以数组的形式定义一组这样的结构。因为往往我们的正则表达式中还包含子正则表达式。数组0单元存放主正则表达式位置，后边的单元依次存放子正则表达式位置。</p>
+<p>当我们使用完编译好的正则表达式后，或者要重新编译其他正则表达式的时候，我们可以用这个函数清空compiled指向的regex_t结构体的内容，请记住，如果是重新编译的话，一定要先清空regex_t结构体。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">regfree</span> <span class="params">(<span class="keyword">regex_t</span> *compiled)</span></span></span><br></pre></td></tr></table></figure>
+<p>当执行regcomp 或者regexec 产生错误的时候，就可以调用这个函数而返回一个包含错误信息的字符串。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">size_t regerror (int errcode, regex_t *compiled, char *buffer, size_t length)</span><br><span class="line"></span><br><span class="line">errcode 	是由regcomp 和 regexec 函数返回的错误代号。</span><br><span class="line">compiled 	是已经用regcomp函数编译好的正则表达式，这个值可以为NULL。</span><br><span class="line">buffer 		指向用来存放错误信息的字符串的内存空间。</span><br><span class="line">length 		指明buffer的长度，如果这个错误信息的长度大于这个值，则regerror 函数会自动截断超出的字符串，但他仍然会返回完整的字符串的长度。所以我们可以用如下的方法先得到错误字符串的长度: size_t length = regerror (errcode, compiled, NULL, 0);</span><br></pre></td></tr></table></figure>
+<p>测试用例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;regex.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> ** argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (argc != <span class="number">3</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Usage: %s RegexString Text\n&quot;</span>, argv[<span class="number">0</span>]);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span> * pregexstr = argv[<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span> * ptext = argv[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">regex_t</span> oregex;</span><br><span class="line">	<span class="keyword">int</span> nerrcode = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> szerrmsg[<span class="number">1024</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">size_t</span> unerrmsglen = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> ((nerrcode = regcomp(&amp;oregex, pregexstr, REG_EXTENDED|REG_NOSUB)) == <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> ((nerrcode = regexec(&amp;oregex, ptext, <span class="number">0</span>, <span class="literal">NULL</span>, <span class="number">0</span>)) == <span class="number">0</span>)	&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%s matches %s\n&quot;</span>, ptext, pregexstr);</span><br><span class="line">			regfree(&amp;oregex);</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	unerrmsglen = regerror(nerrcode, &amp;oregex, szerrmsg, <span class="keyword">sizeof</span>(szerrmsg));</span><br><span class="line">	unerrmsglen = unerrmsglen &lt; <span class="keyword">sizeof</span>(szerrmsg) ? unerrmsglen : <span class="keyword">sizeof</span>(szerrmsg) - <span class="number">1</span>;</span><br><span class="line">	szerrmsg[unerrmsglen] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;ErrMsg: %s\n&quot;</span>, szerrmsg);</span><br><span class="line">	regfree(&amp;oregex);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>匹配网址：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./a.out <span class="string">&quot;http:\/\/www\..*\.com&quot;</span> <span class="string">&quot;http://www.taobao.com&quot;</span></span><br></pre></td></tr></table></figure>
+<p>匹配邮箱：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./a.out <span class="string">&quot;^[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+&quot;</span> <span class="string">&quot;itcast123@itcast.com&quot;</span></span><br><span class="line">./a.out <span class="string">&quot;\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*&quot;</span> <span class="string">&quot;itcast@qq.com&quot;</span>  <span class="comment"># \w匹配一个字符，包含下划线</span></span><br></pre></td></tr></table></figure>
+<p>除了gnu提供的函数外，还常用PCRE处理正则，全称是Perl Compatible Regular Ex-pressions。从名字我们可以看出PCRE库是与Perl中正则表达式相兼容的一个正则表达式库。PCRE是免费开源的库，它是由C语言实现的，这里是它的官方主页：<a target="_blank" rel="noopener" href="http://www.pcre.org/，感兴趣的朋友可以在这里了解更多的内容。">http://www.pcre.org/，感兴趣的朋友可以在这里了解更多的内容。</a> 要得到PCRE库，可以从这里下载：<a target="_blank" rel="noopener" href="http://sourceforge.net/projects/pcre/files/">http://sourceforge.net/projects/pcre/files/</a></p>
+<p>PCRE++是一个对PCRE库的C++封装，它提供了更加方便、易用的C++接口。这里是它的官方主页：<a target="_blank" rel="noopener" href="http://www.daemon.de/PCRE，感兴趣的朋友可以在这里了解更多的内容。">http://www.daemon.de/PCRE，感兴趣的朋友可以在这里了解更多的内容。</a> 要得到PCRE++库，可以从这里下载：<a target="_blank" rel="noopener" href="http://www.daemon.de/PcreDownload">http://www.daemon.de/PcreDownload</a></p>
+<p>另外c++中常用 boost regex。</p>
 
     </div>
 
@@ -413,7 +588,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E7%B1%BB"><span class="nav-number">1.1.1.</span> <span class="nav-text">字符类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E9%87%8F%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="nav-number">1.1.2.</span> <span class="nav-text">数量限定符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%8D%E7%BD%AE%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="nav-number">1.1.3.</span> <span class="nav-text">位置限定符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E5%AE%83%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="nav-number">1.1.4.</span> <span class="nav-text">其它特殊字符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic%E6%AD%A3%E5%88%99%E5%92%8CExtended%E6%AD%A3%E5%88%99"><span class="nav-number">1.2.</span> <span class="nav-text">Basic正则和Extended正则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">正则相关工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#grep"><span class="nav-number">2.1.</span> <span class="nav-text">grep</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find"><span class="nav-number">2.2.</span> <span class="nav-text">find</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xargs"><span class="nav-number">2.3.</span> <span class="nav-text">xargs</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E7%B1%BB"><span class="nav-number">1.1.1.</span> <span class="nav-text">字符类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E9%87%8F%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="nav-number">1.1.2.</span> <span class="nav-text">数量限定符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%8D%E7%BD%AE%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="nav-number">1.1.3.</span> <span class="nav-text">位置限定符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E5%AE%83%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="nav-number">1.1.4.</span> <span class="nav-text">其它特殊字符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic%E6%AD%A3%E5%88%99%E5%92%8CExtended%E6%AD%A3%E5%88%99"><span class="nav-number">1.2.</span> <span class="nav-text">Basic正则和Extended正则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">正则相关工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#grep"><span class="nav-number">2.1.</span> <span class="nav-text">grep</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find"><span class="nav-number">2.2.</span> <span class="nav-text">find</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.2.1.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.2.2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xargs"><span class="nav-number">2.2.3.</span> <span class="nav-text">xargs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0"><span class="nav-number">2.2.4.</span> <span class="nav-text">常用参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sed"><span class="nav-number">2.3.</span> <span class="nav-text">sed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk"><span class="nav-number">2.4.</span> <span class="nav-text">awk</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C%E7%A8%8B%E5%BA%8F%E4%BD%BF%E7%94%A8%E6%AD%A3%E5%88%99"><span class="nav-number">3.</span> <span class="nav-text">C程序使用正则</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -429,20 +604,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-count">98</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -474,7 +649,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
