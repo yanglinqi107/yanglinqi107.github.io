@@ -33,6 +33,8 @@
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Cpp-img/1541383817248.png">
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Cpp-img/1541384140042.png">
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Cpp-img/1541384818688.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Cpp-img/v2-749cc641eb4d5dafd085e8c23f8826aa_hd.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Cpp-img/v2-48240f0e1e0dd33ec89100cbe2d30707_hd.png">
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Cpp-img/clip_image002.png">
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Cpp-img/clip_image002-1541662519170.png">
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Cpp-img/clip_image002-1541662566808.png">
@@ -48,7 +50,7 @@
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Cpp-img/1541905327273.png">
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Cpp-img/1541905559138.png">
 <meta property="article:published_time" content="2022-05-17T14:55:39.348Z">
-<meta property="article:modified_time" content="2022-10-22T07:49:32.840Z">
+<meta property="article:modified_time" content="2023-08-06T06:37:44.657Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary">
@@ -143,17 +145,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">26</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">28</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">19</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">98</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -243,7 +245,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-22 15:49:32" itemprop="dateModified" datetime="2022-10-22T15:49:32+08:00">2022-10-22</time>
+                <time title="修改时间：2023-08-06 14:37:44" itemprop="dateModified" datetime="2023-08-06T14:37:44+08:00">2023-08-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -311,12 +313,12 @@
 <ol>
 <li><p><strong>#define</strong> 宏常量： <code>#define 常量名 常量值</code></p>
 <ul>
-<li>==通常在文件上方定义==，表示一个常量</li>
+<li>通常在文件上方定义，表示一个常量</li>
 </ul>
 </li>
 <li><p><strong>const</strong>修饰的变量 <code>const 数据类型 常量名 = 常量值</code></p>
 <ul>
-<li>==通常在变量定义前加关键字const==，修饰该变量为常量，不可修改</li>
+<li>通常在变量定义前加关键字const，修饰该变量为常量，不可修改</li>
 </ul>
 </li>
 </ol>
@@ -426,6 +428,7 @@
 </table>
 </div>
 <p><code>提示：在给变量或者常量起名称时候，不要用C++得关键字，否则会产生歧义。</code></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/cpp-keyword-intro.html">C++ 的关键字（保留字）完整介绍 | 菜鸟教程 (runoob.com)</a> </p>
 <h3 id="标识符命名规则"><a href="#标识符命名规则" class="headerlink" title="标识符命名规则"></a>标识符命名规则</h3><p><strong>作用</strong>：C++规定给标识符（变量、常量）命名时，有一套自己的规则</p>
 <ul>
 <li>标识符不能是关键字</li>
@@ -437,6 +440,102 @@
 <p>建议：给标识符命名时，争取做到见名知意的效果，方便自己和他人的阅读</p>
 </blockquote>
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>C++规定在创建一个变量或者常量时，必须要指定出相应的数据类型，否则无法给变量分配内存</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">位</th>
+<th style="text-align:left">范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">char</td>
+<td style="text-align:left">1 个字节</td>
+<td style="text-align:left">-128 到 127 或者 0 到 255</td>
+</tr>
+<tr>
+<td style="text-align:left">unsigned char</td>
+<td style="text-align:left">1 个字节</td>
+<td style="text-align:left">0 到 255</td>
+</tr>
+<tr>
+<td style="text-align:left">signed char</td>
+<td style="text-align:left">1 个字节</td>
+<td style="text-align:left">-128 到 127</td>
+</tr>
+<tr>
+<td style="text-align:left">int</td>
+<td style="text-align:left">4 个字节</td>
+<td style="text-align:left">-2147483648 到 2147483647</td>
+</tr>
+<tr>
+<td style="text-align:left">unsigned int</td>
+<td style="text-align:left">4 个字节</td>
+<td style="text-align:left">0 到 4294967295</td>
+</tr>
+<tr>
+<td style="text-align:left">signed int</td>
+<td style="text-align:left">4 个字节</td>
+<td style="text-align:left">-2147483648 到 2147483647</td>
+</tr>
+<tr>
+<td style="text-align:left">short int</td>
+<td style="text-align:left">2 个字节</td>
+<td style="text-align:left">-32768 到 32767</td>
+</tr>
+<tr>
+<td style="text-align:left">unsigned short int</td>
+<td style="text-align:left">2 个字节</td>
+<td style="text-align:left">0 到 65,535</td>
+</tr>
+<tr>
+<td style="text-align:left">signed short int</td>
+<td style="text-align:left">2 个字节</td>
+<td style="text-align:left">-32768 到 32767</td>
+</tr>
+<tr>
+<td style="text-align:left">long int</td>
+<td style="text-align:left">8 个字节</td>
+<td style="text-align:left">-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807</td>
+</tr>
+<tr>
+<td style="text-align:left">signed long int</td>
+<td style="text-align:left">8 个字节</td>
+<td style="text-align:left">-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807</td>
+</tr>
+<tr>
+<td style="text-align:left">unsigned long int</td>
+<td style="text-align:left">8 个字节</td>
+<td style="text-align:left">0 到 18,446,744,073,709,551,615</td>
+</tr>
+<tr>
+<td style="text-align:left">float</td>
+<td style="text-align:left">4 个字节</td>
+<td style="text-align:left">精度型占4个字节（32位）内存空间，+/- 3.4e +/- 38 (~7 个数字)</td>
+</tr>
+<tr>
+<td style="text-align:left">double</td>
+<td style="text-align:left">8 个字节</td>
+<td style="text-align:left">双精度型占8 个字节（64位）内存空间，+/- 1.7e +/- 308 (~15 个数字)</td>
+</tr>
+<tr>
+<td style="text-align:left">long double</td>
+<td style="text-align:left">16 个字节</td>
+<td style="text-align:left">长双精度型 16 个字节（128位）内存空间，可提供18-19位有效数字。</td>
+</tr>
+<tr>
+<td style="text-align:left">wchar_t</td>
+<td style="text-align:left">2 或 4 个字节</td>
+<td style="text-align:left">1 个宽字符</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>wchar_t 是这样来的：<code>typedef short int wchar_t;</code></p>
+</blockquote>
 <h3 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h3><p><strong>作用</strong>：整型变量表示的是==整数类型==的数据</p>
 <p>C++中能够表示整型的类型有以下几种方式，<strong>区别在于所占内存空间不同</strong>：</p>
 <div class="table-container">
@@ -475,17 +574,20 @@
 <h3 id="sizeof关键字"><a href="#sizeof关键字" class="headerlink" title="sizeof关键字"></a>sizeof关键字</h3><p><strong>作用：</strong>利用sizeof关键字可以==统计数据类型所占内存大小==</p>
 <p><strong>语法：</strong> <code>sizeof( 数据类型 / 变量)</code></p>
 <p><strong>示例：</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;short 类型所占内存空间为： &quot;</span> &lt;&lt; <span class="built_in"><span class="keyword">sizeof</span></span>(<span class="keyword">short</span>) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;int 类型所占内存空间为： &quot;</span> &lt;&lt; <span class="built_in"><span class="keyword">sizeof</span></span>(<span class="keyword">int</span>) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;long 类型所占内存空间为： &quot;</span> &lt;&lt; <span class="built_in"><span class="keyword">sizeof</span></span>(<span class="keyword">long</span>) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;long long 类型所占内存空间为： &quot;</span> &lt;&lt; <span class="built_in"><span class="keyword">sizeof</span></span>(<span class="keyword">long</span> <span class="keyword">long</span>) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;short 类型所占内存空间为： &quot;</span> &lt;&lt; <span class="built_in"><span class="keyword">sizeof</span></span>(<span class="keyword">short</span>) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;int 类型所占内存空间为： &quot;</span> &lt;&lt; <span class="built_in"><span class="keyword">sizeof</span></span>(<span class="keyword">int</span>) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;long 类型所占内存空间为： &quot;</span> &lt;&lt; <span class="built_in"><span class="keyword">sizeof</span></span>(<span class="keyword">long</span>) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;long long 类型所占内存空间为： &quot;</span> &lt;&lt; <span class="built_in"><span class="keyword">sizeof</span></span>(<span class="keyword">long</span> <span class="keyword">long</span>) &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><strong>整型结论</strong>：==short &lt; int &lt;= long &lt;= long long==</p>
+<p><strong>整型结论</strong>：short &lt; int &lt;= long &lt;= long long</p>
 </blockquote>
-<h3 id="实型（浮点型）"><a href="#实型（浮点型）" class="headerlink" title="实型（浮点型）"></a>实型（浮点型）</h3><p><strong>作用</strong>：用于==表示小数==</p>
+<h3 id="实型（浮点型）"><a href="#实型（浮点型）" class="headerlink" title="实型（浮点型）"></a>实型（浮点型）</h3><p><strong>作用</strong>：用于表示小数</p>
 <p>浮点型变量分为两种：</p>
 <ol>
-<li>单精度float</li>
-<li>双精度double</li>
+<li><p>单精度float （1位符号，8位指数，23位小数）</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Cpp-img/v2-749cc641eb4d5dafd085e8c23f8826aa_hd.png" alt="img"></p>
+</li>
+<li><p>双精度double（1位符号，11位指数，52位小数）</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Cpp-img/v2-48240f0e1e0dd33ec89100cbe2d30707_hd.png" alt="img"></p>
+</li>
 </ol>
-<p>两者的<strong>区别</strong>在于表示的有效数字范围不同。</p>
 <div class="table-container">
 <table>
 <thead>
@@ -509,7 +611,6 @@
 </tbody>
 </table>
 </div>
-<p><strong>示例：</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">float</span> f1 = <span class="number">3.14f</span>;</span><br><span class="line">	<span class="keyword">double</span> d1 = <span class="number">3.14</span>;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; f1 &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; d1&lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;float  sizeof = &quot;</span> &lt;&lt; <span class="built_in"><span class="keyword">sizeof</span></span>(f1) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;double sizeof = &quot;</span> &lt;&lt; <span class="built_in"><span class="keyword">sizeof</span></span>(d1) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//科学计数法</span></span><br><span class="line">	<span class="keyword">float</span> f2 = <span class="number">3e2</span>; <span class="comment">// 3 * 10 ^ 2 </span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;f2 = &quot;</span> &lt;&lt; f2 &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">float</span> f3 = <span class="number">3e-2</span>;  <span class="comment">// 3 * 0.1 ^ 2</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;f3 = &quot;</span> &lt;&lt; f3 &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h3><p><strong>作用：</strong>字符型变量用于显示单个字符</p>
 <p><strong>语法：</strong><code>char ch = &#39;a&#39;;</code></p>
@@ -518,7 +619,7 @@
 <p>注意2：单引号内只能有一个字符，不可以是字符串</p>
 </blockquote>
 <ul>
-<li>C和C++中字符型变量只占用==1个字节==。</li>
+<li>C和C++中字符型变量只占用1个字节。</li>
 <li>字符型变量并不是把字符本身放到内存中存储，而是将对应的ASCII编码放入到存储单元</li>
 </ul>
 <p>示例：</p>
@@ -998,7 +1099,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Exp1 ? Exp2 : Exp3;</span><br></pre></td></tr></table></figure>
 <p>其中，Exp1、Exp2 和 Exp3 是表达式。请注意，冒号的使用和位置。</p>
 <p>? 表达式的值是由 Exp1 决定的。如果 Exp1 为真，则计算 Exp2 的值，结果即为整个 ? 表达式的值。如果 Exp1 为假，则计算 Exp3 的值，结果即为整个 ? 表达式的值。</p>
-<h2 id="程序流程结构"><a href="#程序流程结构" class="headerlink" title="程序流程结构"></a>程序流程结构</h2><p>C/C++支持最基本的三种程序运行结构：==顺序结构、选择结构、循环结构==</p>
+<h2 id="程序流程结构"><a href="#程序流程结构" class="headerlink" title="程序流程结构"></a>程序流程结构</h2><p>C/C++支持最基本的三种程序运行结构：顺序结构、选择结构、循环结构</p>
 <ul>
 <li>顺序结构：程序按顺序执行，不发生跳转</li>
 <li>选择结构：依据条件是否满足，有选择的执行相应功能</li>
@@ -1334,7 +1435,7 @@
 <p><strong>用途：</strong>初始化指针变量</p>
 <p><strong>注意：</strong>空指针指向的内存是不可以访问的</p>
 <p><strong>示例1：空指针</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//指针变量p指向内存地址编号为0的空间</span></span><br><span class="line">	<span class="keyword">int</span> * p = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//访问空指针报错 </span></span><br><span class="line">	<span class="comment">//内存编号0 ~255为系统占用内存，不允许用户访问</span></span><br><span class="line">	cout &lt;&lt; *p &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//指针变量p指向内存地址编号为0的空间</span></span><br><span class="line">	<span class="keyword">int</span> * p = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//访问空指针报错 </span></span><br><span class="line">	<span class="comment">//内存编号0 ~255为系统占用内存，不允许用户访问</span></span><br><span class="line">	cout &lt;&lt; *p &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>野指针</strong>：指针变量指向非法的内存空间</p>
 <p><strong>示例2：野指针</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//指针变量p指向内存地址编号为0x1100的空间</span></span><br><span class="line">	<span class="keyword">int</span> * p = (<span class="keyword">int</span> *)<span class="number">0x1100</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//访问野指针报错 </span></span><br><span class="line">	cout &lt;&lt; *p &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1348,7 +1449,7 @@
 <li>const即修饰指针，又修饰常量</li>
 </ol>
 <p><strong>示例：</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">	<span class="keyword">int</span> b = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//const修饰的是指针，指针指向可以改，指针指向的值不可以更改</span></span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">int</span> * p1 = &amp;a; </span><br><span class="line">	p1 = &amp;b; <span class="comment">//正确</span></span><br><span class="line">	<span class="comment">//*p1 = 100;  报错</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//const修饰的是常量，指针指向不可以改，指针指向的值可以更改</span></span><br><span class="line">	<span class="keyword">int</span> * <span class="keyword">const</span> p2 = &amp;a;</span><br><span class="line">	<span class="comment">//p2 = &amp;b; //错误</span></span><br><span class="line">	*p2 = <span class="number">100</span>; <span class="comment">//正确</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//const既修饰指针又修饰常量</span></span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">int</span> * <span class="keyword">const</span> p3 = &amp;a;</span><br><span class="line">	<span class="comment">//p3 = &amp;b; //错误</span></span><br><span class="line">	<span class="comment">//*p3 = 100; //错误</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">	<span class="keyword">int</span> b = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//const修饰的是指针，指针指向可以改，指针指向的值不可以更改</span></span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">int</span>* p1 = &amp;a;  <span class="comment">// 或 int const* p1 = &amp;a; </span></span><br><span class="line">	p1 = &amp;b; <span class="comment">//正确</span></span><br><span class="line">	<span class="comment">//*p1 = 100;  报错</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//const修饰的是常量，指针指向不可以改，指针指向的值可以更改</span></span><br><span class="line">	<span class="keyword">int</span>* <span class="keyword">const</span> p2 = &amp;a;</span><br><span class="line">	<span class="comment">//p2 = &amp;b; //错误</span></span><br><span class="line">	*p2 = <span class="number">100</span>; <span class="comment">//正确</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//const既修饰指针又修饰常量</span></span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">int</span> * <span class="keyword">const</span> p3 = &amp;a;</span><br><span class="line">	<span class="comment">//p3 = &amp;b; //错误</span></span><br><span class="line">	<span class="comment">//*p3 = 100; //错误</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>技巧：看const右侧紧跟着的是指针还是常量, 是指针就是常量指针，是常量就是指针常量</p>
 </blockquote>
@@ -1429,7 +1530,21 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;刘备&quot;</span>,<span class="number">23</span>,<span class="string">&quot;男&quot;</span>&#125;,</span><br><span class="line">&#123;<span class="string">&quot;关羽&quot;</span>,<span class="number">22</span>,<span class="string">&quot;男&quot;</span>&#125;,</span><br><span class="line">&#123;<span class="string">&quot;张飞&quot;</span>,<span class="number">20</span>,<span class="string">&quot;男&quot;</span>&#125;,</span><br><span class="line">&#123;<span class="string">&quot;赵云&quot;</span>,<span class="number">21</span>,<span class="string">&quot;男&quot;</span>&#125;,</span><br><span class="line">&#123;<span class="string">&quot;貂蝉&quot;</span>,<span class="number">19</span>,<span class="string">&quot;女&quot;</span>&#125;,</span><br></pre></td></tr></table></figure>
 <p><strong>示例：</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//英雄结构体</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">hero</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	string name;</span><br><span class="line">	<span class="keyword">int</span> age;</span><br><span class="line">	string sex;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//冒泡排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(hero arr[] , <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (arr[j].age &gt; arr[j + <span class="number">1</span>].age)</span><br><span class="line">			&#123;</span><br><span class="line">				hero temp = arr[j];</span><br><span class="line">				arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">				arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//打印数组</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printHeros</span><span class="params">(hero arr[], <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;姓名： &quot;</span> &lt;&lt; arr[i].name &lt;&lt; <span class="string">&quot; 性别： &quot;</span> &lt;&lt; arr[i].sex &lt;&lt; <span class="string">&quot; 年龄： &quot;</span> &lt;&lt; arr[i].age &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">hero</span> <span class="title">arr</span>[5] =</span></span><br><span class="line">	&#123;</span><br><span class="line">		&#123;<span class="string">&quot;刘备&quot;</span>,<span class="number">23</span>,<span class="string">&quot;男&quot;</span>&#125;,</span><br><span class="line">		&#123;<span class="string">&quot;关羽&quot;</span>,<span class="number">22</span>,<span class="string">&quot;男&quot;</span>&#125;,</span><br><span class="line">		&#123;<span class="string">&quot;张飞&quot;</span>,<span class="number">20</span>,<span class="string">&quot;男&quot;</span>&#125;,</span><br><span class="line">		&#123;<span class="string">&quot;赵云&quot;</span>,<span class="number">21</span>,<span class="string">&quot;男&quot;</span>&#125;,</span><br><span class="line">		&#123;<span class="string">&quot;貂蝉&quot;</span>,<span class="number">19</span>,<span class="string">&quot;女&quot;</span>&#125;,</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> len = <span class="built_in"><span class="keyword">sizeof</span></span>(arr) / <span class="built_in"><span class="keyword">sizeof</span></span>(hero); <span class="comment">//获取数组元素个数</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">bubbleSort</span>(arr, len); <span class="comment">//排序</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">printHeros</span>(arr, len); <span class="comment">//打印</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="条件编译"><a href="#条件编译" class="headerlink" title="条件编译"></a>条件编译</h3><p><strong>#if 0 … #endif</strong> 属于条件编译，0 即为参数。</p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><p>类型转换是将一个数据类型的值转换为另一种数据类型的值。</p>
+<p>C++ 中有四种类型转换：静态转换、动态转换、常量转换和重新解释转换。</p>
+<h4 id="静态转换-Static-Cast"><a href="#静态转换-Static-Cast" class="headerlink" title="静态转换(Static Cast)"></a>静态转换(Static Cast)</h4><p>静态转换是将一种数据类型的值强制转换为另一种数据类型的值。</p>
+<p>静态转换通常用于比较类型相似的对象之间的转换，例如将 int 类型转换为 float 类型。</p>
+<p>静态转换<strong>不进行任何运行时类型检查</strong>，因此可能会导致运行时错误。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">float</span> f = <span class="keyword">static_cast</span>&lt;<span class="keyword">float</span>&gt;(i); <span class="comment">// 静态将int类型转换为float类型</span></span><br></pre></td></tr></table></figure>
+<h4 id="动态转换-Dynamic-Cast"><a href="#动态转换-Dynamic-Cast" class="headerlink" title="动态转换(Dynamic Cast)"></a>动态转换(Dynamic Cast)</h4><p>动态转换通常用于将一个基类指针或引用转换为派生类指针或引用。动态转换在运行时进行类型检查，如果不能进行转换则返回空指针或引发异常。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> &#123;</span>&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived</span> :</span> <span class="keyword">public</span> Base &#123;&#125;;</span><br><span class="line">Base* ptr_base = <span class="keyword">new</span> Derived;</span><br><span class="line">Derived* ptr_derived = <span class="keyword">dynamic_cast</span>&lt;Derived*&gt;(ptr_base); <span class="comment">// 将基类指针转换为派生类指针</span></span><br></pre></td></tr></table></figure>
+<h4 id="常量转换-Const-Cast"><a href="#常量转换-Const-Cast" class="headerlink" title="常量转换(Const Cast)"></a>常量转换(Const Cast)</h4><p>常量转换用于将 const 类型的对象转换为非 const 类型的对象。</p>
+<p>常量转换只能用于转换掉 const 属性，不能改变对象的类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span>&amp; r = <span class="keyword">const_cast</span>&lt;<span class="keyword">int</span>&amp;&gt;(i); <span class="comment">// 常量转换，将const int转换为int</span></span><br></pre></td></tr></table></figure>
+<h4 id="重新解释转换-Reinterpret-Cast"><a href="#重新解释转换-Reinterpret-Cast" class="headerlink" title="重新解释转换(Reinterpret Cast)"></a>重新解释转换(Reinterpret Cast)</h4><p>重新解释转换将一个数据类型的值重新解释为另一个数据类型的值，通常用于在不同的数据类型之间进行转换。</p>
+<p>重新解释转换不进行任何类型检查，因此可能会导致未定义的行为。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">float</span> f = <span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">float</span>&amp;&gt;(i); <span class="comment">// 重新解释将int类型转换为float类型</span></span><br></pre></td></tr></table></figure>
+<h3 id="条件编译"><a href="#条件编译" class="headerlink" title="条件编译"></a>条件编译</h3><p><strong>#if 0 … #endif</strong> 属于条件编译，0 即为参数。</p>
 <p>此外，我们还可以使用 <strong>#if 0 … #endif</strong> 来实现注释，且可以实现嵌套，格式为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#if 0</span><br><span class="line">   code</span><br><span class="line">#endif </span><br></pre></td></tr></table></figure>
 <p>你可以把 <strong>#if 0</strong> 改成 <strong>#if 1</strong> 来执行 <strong>code</strong> 的代码。</p>
@@ -2261,111 +2376,6 @@
 <p>如果希望在源程序中有两个连续的问号，且不希望被预处理器替换，这种情况出现在字符常量、字符串字面值或者是程序注释中，可选办法是用字符串的自动连接：”…?””?…”或者转义序列：”…?\?…”。</p>
 <p>从Microsoft Visual C++ 2010版开始，该编译器默认不再自动替换三字符组。如果需要使用三字符组替换（如为了兼容古老的软件代码），需要设置编译器命令行选项/Zc:trigraphs</p>
 <p>g++仍默认支持三字符组，但会给出编译警告。</p>
-<h3 id="C-关键字"><a href="#C-关键字" class="headerlink" title="C++ 关键字"></a>C++ 关键字</h3><p>下表列出了 C++ 中的保留字。这些保留字不能作为常量名、变量名或其他标识符名称。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>asm</th>
-<th>else</th>
-<th>new</th>
-<th>this</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>auto</strong></td>
-<td><strong>enum</strong></td>
-<td><strong>operator</strong></td>
-<td><strong>throw</strong></td>
-</tr>
-<tr>
-<td><strong>bool</strong></td>
-<td><strong>explicit</strong></td>
-<td><strong>private</strong></td>
-<td><strong>true</strong></td>
-</tr>
-<tr>
-<td><strong>break</strong></td>
-<td><strong>export</strong></td>
-<td><strong>protected</strong></td>
-<td><strong>try</strong></td>
-</tr>
-<tr>
-<td><strong>case</strong></td>
-<td><strong>extern</strong></td>
-<td><strong>public</strong></td>
-<td><strong>typedef</strong></td>
-</tr>
-<tr>
-<td><strong>catch</strong></td>
-<td><strong>false</strong></td>
-<td><strong>register</strong></td>
-<td><strong>typeid</strong></td>
-</tr>
-<tr>
-<td><strong>char</strong></td>
-<td><strong>float</strong></td>
-<td><strong>reinterpret_cast</strong></td>
-<td><strong>typename</strong></td>
-</tr>
-<tr>
-<td><strong>class</strong></td>
-<td><strong>for</strong></td>
-<td><strong>return</strong></td>
-<td><strong>union</strong></td>
-</tr>
-<tr>
-<td><strong>const</strong></td>
-<td><strong>friend</strong></td>
-<td><strong>short</strong></td>
-<td><strong>unsigned</strong></td>
-</tr>
-<tr>
-<td><strong>const_cast</strong></td>
-<td><strong>goto</strong></td>
-<td><strong>signed</strong></td>
-<td><strong>using</strong></td>
-</tr>
-<tr>
-<td><strong>continue</strong></td>
-<td><strong>if</strong></td>
-<td><strong>sizeof</strong></td>
-<td><strong>virtual</strong></td>
-</tr>
-<tr>
-<td><strong>default</strong></td>
-<td><strong>inline</strong></td>
-<td><strong>static</strong></td>
-<td><strong>void</strong></td>
-</tr>
-<tr>
-<td><strong>delete</strong></td>
-<td><strong>int</strong></td>
-<td><strong>static_cast</strong></td>
-<td><strong>volatile</strong></td>
-</tr>
-<tr>
-<td><strong>do</strong></td>
-<td><strong>long</strong></td>
-<td><strong>struct</strong></td>
-<td><strong>wchar_t</strong></td>
-</tr>
-<tr>
-<td><strong>double</strong></td>
-<td><strong>mutable</strong></td>
-<td><strong>switch</strong></td>
-<td><strong>while</strong></td>
-</tr>
-<tr>
-<td><strong>dynamic_cast</strong></td>
-<td><strong>namespace</strong></td>
-<td><strong>template</strong></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>详细介绍<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/cpp-keyword-intro.html">C++ 的关键字（保留字）完整介绍 | 菜鸟教程 (runoob.com)</a></p>
 <h3 id="数学运算cmath"><a href="#数学运算cmath" class="headerlink" title="数学运算cmath"></a>数学运算cmath</h3><p>在 C++ 中，除了可以创建各种函数，还包含了各种有用的函数供您使用。这些函数写在标准 C 和 C++ 库中，叫做<strong>内置</strong>函数。您可以在程序中引用这些函数。</p>
 <p>C++ 内置了丰富的数学函数，可对各种数字进行运算。下表列出了 C++ 中一些有用的内置的数学函数在 <strong>\<cmath\></strong>。</p>
 <div class="table-container">
@@ -2508,7 +2518,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">C++基础入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E5%88%9D%E8%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">C++初识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AAC-%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">第一个C++程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">创建文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">编写代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">运行程序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number">1.1.2.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.3.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F"><span class="nav-number">1.1.4.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.1.5.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="nav-number">1.1.6.</span> <span class="nav-text">标识符命名规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E5%9E%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">整型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sizeof%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.2.2.</span> <span class="nav-text">sizeof关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E5%9E%8B%EF%BC%88%E6%B5%AE%E7%82%B9%E5%9E%8B%EF%BC%89"><span class="nav-number">1.2.3.</span> <span class="nav-text">实型（浮点型）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%9E%8B"><span class="nav-number">1.2.4.</span> <span class="nav-text">字符型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="nav-number">1.2.5.</span> <span class="nav-text">转义字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9E%8B"><span class="nav-number">1.2.6.</span> <span class="nav-text">字符串型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B-bool"><span class="nav-number">1.2.7.</span> <span class="nav-text">布尔类型 bool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E8%BE%93%E5%85%A5"><span class="nav-number">1.2.8.</span> <span class="nav-text">数据的输入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.2.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.3.</span> <span class="nav-text">比较运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.4.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.5.</span> <span class="nav-text">位运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.6.</span> <span class="nav-text">条件运算符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.</span> <span class="nav-text">程序流程结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.1.</span> <span class="nav-text">选择结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#if%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">if语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">三目运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#switch%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">switch语句</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.2.</span> <span class="nav-text">循环结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#while%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">while循环语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#do%E2%80%A6while%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">do…while循环语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">for循环语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B5%8C%E5%A5%97%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.4.2.4.</span> <span class="nav-text">嵌套循环</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%BD%AC%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.3.</span> <span class="nav-text">跳转语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#break%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">break语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#continue%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">continue语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#goto%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">goto语句</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.5.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.5.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">1.5.2.</span> <span class="nav-text">一维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E5%AE%9A%E4%B9%89%E6%96%B9%E5%BC%8F"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">一维数组定义方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E6%95%B0%E7%BB%84%E5%90%8D"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">一维数组数组名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">冒泡排序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">1.5.3.</span> <span class="nav-text">二维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%AE%9A%E4%B9%89%E6%96%B9%E5%BC%8F"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">二维数组定义方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E6%95%B0%E7%BB%84%E5%90%8D"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">二维数组数组名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="nav-number">1.5.3.3.</span> <span class="nav-text">二维数组应用案例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.6.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0-1"><span class="nav-number">1.6.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.6.2.</span> <span class="nav-text">函数的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E8%B0%83%E7%94%A8"><span class="nav-number">1.6.3.</span> <span class="nav-text">函数的调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%BC%E4%BC%A0%E9%80%92"><span class="nav-number">1.6.4.</span> <span class="nav-text">值传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%B8%B8%E8%A7%81%E6%A0%B7%E5%BC%8F"><span class="nav-number">1.6.5.</span> <span class="nav-text">函数的常见样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%A3%B0%E6%98%8E"><span class="nav-number">1.6.6.</span> <span class="nav-text">函数的声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%86%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99"><span class="nav-number">1.6.7.</span> <span class="nav-text">函数的分文件编写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E9%92%88"><span class="nav-number">1.7.</span> <span class="nav-text">指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.7.1.</span> <span class="nav-text">指针的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="nav-number">1.7.2.</span> <span class="nav-text">指针变量的定义和使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E6%89%80%E5%8D%A0%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4"><span class="nav-number">1.7.3.</span> <span class="nav-text">指针所占内存空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E6%8C%87%E9%92%88%E5%92%8C%E9%87%8E%E6%8C%87%E9%92%88"><span class="nav-number">1.7.4.</span> <span class="nav-text">空指针和野指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const%E4%BF%AE%E9%A5%B0%E6%8C%87%E9%92%88"><span class="nav-number">1.7.5.</span> <span class="nav-text">const修饰指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E5%92%8C%E6%95%B0%E7%BB%84"><span class="nav-number">1.7.6.</span> <span class="nav-text">指针和数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E5%92%8C%E5%87%BD%E6%95%B0"><span class="nav-number">1.7.7.</span> <span class="nav-text">指针和函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E5%87%BD%E6%95%B0"><span class="nav-number">1.7.8.</span> <span class="nav-text">指针、数组、函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">1.8.</span> <span class="nav-text">结构体</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.8.1.</span> <span class="nav-text">结构体基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="nav-number">1.8.2.</span> <span class="nav-text">结构体定义和使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E6%95%B0%E7%BB%84"><span class="nav-number">1.8.3.</span> <span class="nav-text">结构体数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E6%8C%87%E9%92%88"><span class="nav-number">1.8.4.</span> <span class="nav-text">结构体指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%B5%8C%E5%A5%97%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">1.8.5.</span> <span class="nav-text">结构体嵌套结构体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%81%9A%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="nav-number">1.8.6.</span> <span class="nav-text">结构体做函数参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%AD-const%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.8.7.</span> <span class="nav-text">结构体中 const使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E6%A1%88%E4%BE%8B"><span class="nav-number">1.8.8.</span> <span class="nav-text">结构体案例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B1"><span class="nav-number">1.8.8.1.</span> <span class="nav-text">案例1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B2"><span class="nav-number">1.8.8.2.</span> <span class="nav-text">案例2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-number">1.9.</span> <span class="nav-text">补充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91"><span class="nav-number">1.9.1.</span> <span class="nav-text">条件编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-1"><span class="nav-number">1.9.2.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.9.3.</span> <span class="nav-text">枚举类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E5%8F%8A%E5%85%B6%E5%AE%9A%E4%B9%89"><span class="nav-number">1.9.4.</span> <span class="nav-text">常量及其定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">1.9.5.</span> <span class="nav-text">运算符优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda%E5%92%8C%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0"><span class="nav-number">1.9.6.</span> <span class="nav-text">Lambda和匿名函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#function"><span class="nav-number">1.9.7.</span> <span class="nav-text">function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="nav-number">1.9.8.</span> <span class="nav-text">函数指针</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88-1"><span class="nav-number">1.9.8.1.</span> <span class="nav-text">函数指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%87%E5%90%91%E7%B1%BB%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E7%9A%84%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="nav-number">1.9.8.2.</span> <span class="nav-text">指向类成员函数的函数指针</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">1.10.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ASCII%E7%A0%81%E8%A1%A8%E6%A0%BC"><span class="nav-number">1.10.1.</span> <span class="nav-text">ASCII码表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%AD%97%E7%AC%A6%E7%BB%84"><span class="nav-number">1.10.2.</span> <span class="nav-text">三字符组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.10.3.</span> <span class="nav-text">C++ 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97cmath"><span class="nav-number">1.10.4.</span> <span class="nav-text">数学运算cmath</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="nav-number">1.10.5.</span> <span class="nav-text">C++随机数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C"><span class="nav-number">1.10.6.</span> <span class="nav-text">C字符串操作</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">C++基础入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E5%88%9D%E8%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">C++初识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AAC-%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">第一个C++程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">创建文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">编写代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">运行程序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number">1.1.2.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.3.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F"><span class="nav-number">1.1.4.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.1.5.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="nav-number">1.1.6.</span> <span class="nav-text">标识符命名规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E5%9E%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">整型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sizeof%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.2.2.</span> <span class="nav-text">sizeof关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E5%9E%8B%EF%BC%88%E6%B5%AE%E7%82%B9%E5%9E%8B%EF%BC%89"><span class="nav-number">1.2.3.</span> <span class="nav-text">实型（浮点型）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%9E%8B"><span class="nav-number">1.2.4.</span> <span class="nav-text">字符型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="nav-number">1.2.5.</span> <span class="nav-text">转义字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9E%8B"><span class="nav-number">1.2.6.</span> <span class="nav-text">字符串型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B-bool"><span class="nav-number">1.2.7.</span> <span class="nav-text">布尔类型 bool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E8%BE%93%E5%85%A5"><span class="nav-number">1.2.8.</span> <span class="nav-text">数据的输入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.2.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.3.</span> <span class="nav-text">比较运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.4.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.5.</span> <span class="nav-text">位运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.6.</span> <span class="nav-text">条件运算符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.</span> <span class="nav-text">程序流程结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.1.</span> <span class="nav-text">选择结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#if%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">if语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">三目运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#switch%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">switch语句</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.2.</span> <span class="nav-text">循环结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#while%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">while循环语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#do%E2%80%A6while%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">do…while循环语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">for循环语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B5%8C%E5%A5%97%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.4.2.4.</span> <span class="nav-text">嵌套循环</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%BD%AC%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.3.</span> <span class="nav-text">跳转语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#break%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">break语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#continue%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">continue语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#goto%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">goto语句</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.5.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.5.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">1.5.2.</span> <span class="nav-text">一维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E5%AE%9A%E4%B9%89%E6%96%B9%E5%BC%8F"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">一维数组定义方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E6%95%B0%E7%BB%84%E5%90%8D"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">一维数组数组名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">冒泡排序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">1.5.3.</span> <span class="nav-text">二维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%AE%9A%E4%B9%89%E6%96%B9%E5%BC%8F"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">二维数组定义方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E6%95%B0%E7%BB%84%E5%90%8D"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">二维数组数组名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="nav-number">1.5.3.3.</span> <span class="nav-text">二维数组应用案例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.6.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0-1"><span class="nav-number">1.6.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.6.2.</span> <span class="nav-text">函数的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E8%B0%83%E7%94%A8"><span class="nav-number">1.6.3.</span> <span class="nav-text">函数的调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%BC%E4%BC%A0%E9%80%92"><span class="nav-number">1.6.4.</span> <span class="nav-text">值传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%B8%B8%E8%A7%81%E6%A0%B7%E5%BC%8F"><span class="nav-number">1.6.5.</span> <span class="nav-text">函数的常见样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%A3%B0%E6%98%8E"><span class="nav-number">1.6.6.</span> <span class="nav-text">函数的声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%86%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99"><span class="nav-number">1.6.7.</span> <span class="nav-text">函数的分文件编写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E9%92%88"><span class="nav-number">1.7.</span> <span class="nav-text">指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.7.1.</span> <span class="nav-text">指针的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="nav-number">1.7.2.</span> <span class="nav-text">指针变量的定义和使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E6%89%80%E5%8D%A0%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4"><span class="nav-number">1.7.3.</span> <span class="nav-text">指针所占内存空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E6%8C%87%E9%92%88%E5%92%8C%E9%87%8E%E6%8C%87%E9%92%88"><span class="nav-number">1.7.4.</span> <span class="nav-text">空指针和野指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const%E4%BF%AE%E9%A5%B0%E6%8C%87%E9%92%88"><span class="nav-number">1.7.5.</span> <span class="nav-text">const修饰指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E5%92%8C%E6%95%B0%E7%BB%84"><span class="nav-number">1.7.6.</span> <span class="nav-text">指针和数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E5%92%8C%E5%87%BD%E6%95%B0"><span class="nav-number">1.7.7.</span> <span class="nav-text">指针和函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E5%87%BD%E6%95%B0"><span class="nav-number">1.7.8.</span> <span class="nav-text">指针、数组、函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">1.8.</span> <span class="nav-text">结构体</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.8.1.</span> <span class="nav-text">结构体基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="nav-number">1.8.2.</span> <span class="nav-text">结构体定义和使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E6%95%B0%E7%BB%84"><span class="nav-number">1.8.3.</span> <span class="nav-text">结构体数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E6%8C%87%E9%92%88"><span class="nav-number">1.8.4.</span> <span class="nav-text">结构体指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%B5%8C%E5%A5%97%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">1.8.5.</span> <span class="nav-text">结构体嵌套结构体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%81%9A%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="nav-number">1.8.6.</span> <span class="nav-text">结构体做函数参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%AD-const%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.8.7.</span> <span class="nav-text">结构体中 const使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E6%A1%88%E4%BE%8B"><span class="nav-number">1.8.8.</span> <span class="nav-text">结构体案例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B1"><span class="nav-number">1.8.8.1.</span> <span class="nav-text">案例1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B2"><span class="nav-number">1.8.8.2.</span> <span class="nav-text">案例2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-number">1.9.</span> <span class="nav-text">补充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.9.1.</span> <span class="nav-text">类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E8%BD%AC%E6%8D%A2-Static-Cast"><span class="nav-number">1.9.1.1.</span> <span class="nav-text">静态转换(Static Cast)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%BD%AC%E6%8D%A2-Dynamic-Cast"><span class="nav-number">1.9.1.2.</span> <span class="nav-text">动态转换(Dynamic Cast)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E8%BD%AC%E6%8D%A2-Const-Cast"><span class="nav-number">1.9.1.3.</span> <span class="nav-text">常量转换(Const Cast)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E8%A7%A3%E9%87%8A%E8%BD%AC%E6%8D%A2-Reinterpret-Cast"><span class="nav-number">1.9.1.4.</span> <span class="nav-text">重新解释转换(Reinterpret Cast)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91"><span class="nav-number">1.9.2.</span> <span class="nav-text">条件编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-1"><span class="nav-number">1.9.3.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.9.4.</span> <span class="nav-text">枚举类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E5%8F%8A%E5%85%B6%E5%AE%9A%E4%B9%89"><span class="nav-number">1.9.5.</span> <span class="nav-text">常量及其定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">1.9.6.</span> <span class="nav-text">运算符优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda%E5%92%8C%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0"><span class="nav-number">1.9.7.</span> <span class="nav-text">Lambda和匿名函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#function"><span class="nav-number">1.9.8.</span> <span class="nav-text">function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="nav-number">1.9.9.</span> <span class="nav-text">函数指针</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88-1"><span class="nav-number">1.9.9.1.</span> <span class="nav-text">函数指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%87%E5%90%91%E7%B1%BB%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E7%9A%84%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="nav-number">1.9.9.2.</span> <span class="nav-text">指向类成员函数的函数指针</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">1.10.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ASCII%E7%A0%81%E8%A1%A8%E6%A0%BC"><span class="nav-number">1.10.1.</span> <span class="nav-text">ASCII码表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%AD%97%E7%AC%A6%E7%BB%84"><span class="nav-number">1.10.2.</span> <span class="nav-text">三字符组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97cmath"><span class="nav-number">1.10.3.</span> <span class="nav-text">数学运算cmath</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="nav-number">1.10.4.</span> <span class="nav-text">C++随机数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C"><span class="nav-number">1.10.5.</span> <span class="nav-text">C字符串操作</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -2524,20 +2534,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-count">98</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

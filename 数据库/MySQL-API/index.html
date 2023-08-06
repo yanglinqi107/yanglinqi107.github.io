@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<meta name="referrer" content="no-referrer">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="MySQL的C API  https:&#x2F;&#x2F;www.mysqlzh.com&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL的C API">
+<meta property="og:url" content="http://yanglinqi107.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL-API/index.html">
+<meta property="og:site_name" content="杨记">
+<meta property="og:description" content="MySQL的C API  https:&#x2F;&#x2F;www.mysqlzh.com&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-06T06:45:57.777Z">
+<meta property="article:modified_time" content="2023-08-05T11:04:46.606Z">
+<meta property="article:author" content="yanglinqi">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yanglinqi107.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL-API/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>MySQL的C API | 杨记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">杨记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">碎片化学习令人焦虑，系统化学习使人进步</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">28</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">98</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yanglinqi107.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL-API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headpic.jpg">
+      <meta itemprop="name" content="yanglinqi">
+      <meta itemprop="description" content="用于做笔记，对学过的知识总结">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MySQL的C API
+        </h1>
+
+        <div class="post-meta">
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-06 14:45:57" itemprop="dateCreated datePublished" datetime="2023-08-06T14:45:57+08:00">2023-08-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-08-05 19:04:46" itemprop="dateModified" datetime="2023-08-05T19:04:46+08:00">2023-08-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>MySQL的C API  <a target="_blank" rel="noopener" href="https://www.mysqlzh.com/">https://www.mysqlzh.com/</a></p>
+<span id="more"></span>
+<p><code>01_hello.c</code> </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mysql.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __HOST__    <span class="meta-string">&quot;127.0.0.1&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __USER__     <span class="meta-string">&quot;root&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __PASSWD__  <span class="meta-string">&quot;yanglinqi&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __DBNAME__  <span class="meta-string">&quot;fi11_tv&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    MYSQL* mysql = mysql_init(<span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span> (mysql == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;init err\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    mysql = mysql_real_connect(mysql, __HOST__, __USER__, __PASSWD__, __DBNAME__, <span class="number">0</span>, <span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> (mysql == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;connect err\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello mysql\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    mysql_close(mysql);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>02_insert.c</code> </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mysql.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __HOST__    <span class="meta-string">&quot;127.0.0.1&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __USER__     <span class="meta-string">&quot;root&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __PASSWD__  <span class="meta-string">&quot;yanglinqi&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __DBNAME__  <span class="meta-string">&quot;fi11_tv&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    MYSQL* mysql = mysql_init(<span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span> (mysql == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;init err\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    mysql = mysql_real_connect(mysql, __HOST__, __USER__, __PASSWD__, __DBNAME__, <span class="number">0</span>, <span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> (mysql == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;connect err\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello mysql\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> rSql[<span class="number">256</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="built_in">strcpy</span>(rSql, <span class="string">&quot;insert into video_location values(4, &#x27;aliyun&#x27;, &#x27;11111&#x27;, &#x27;houzhui&#x27;)&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(mysql_query(mysql,rSql) != <span class="number">0</span>)&#123;</span><br><span class="line"> 	      <span class="built_in">printf</span>(<span class="string">&quot;mysql_query err\n&quot;</span>);</span><br><span class="line">	      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    mysql_close(mysql);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>03_select.c</code> </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mysql.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _HOST_ <span class="meta-string">&quot;127.0.0.1&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _USER_ <span class="meta-string">&quot;root&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _PASSWD_ <span class="meta-string">&quot;yanglinqi&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _DBNAME_ <span class="meta-string">&quot;fi11_tv&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_result</span><span class="params">(MYSQL_RES *result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 打印表头</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> num_fields;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> i;</span><br><span class="line">    MYSQL_FIELD *fields;</span><br><span class="line"></span><br><span class="line">    num_fields = mysql_num_fields(result);</span><br><span class="line">    fields = mysql_fetch_fields(result);</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; num_fields; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%s\t&quot;</span>, fields[i].name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n------------------------------------------------------------\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    MYSQL_ROW row;</span><br><span class="line">    <span class="keyword">while</span> ((row = mysql_fetch_row(result)) != <span class="literal">NULL</span>) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; num_fields; ++i) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%s\t&quot;</span>, row[i] ? row[i] : <span class="string">&quot;NULL&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// first:  init</span></span><br><span class="line">    MYSQL *mysql = mysql_init(<span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">NULL</span> == mysql) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;init err\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// second: real_connect</span></span><br><span class="line">    mysql = mysql_real_connect(mysql, _HOST_, _USER_, _PASSWD_, _DBNAME_, <span class="number">0</span>, <span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">NULL</span> == mysql) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;connect err\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello mysql!\n&quot;</span>);</span><br><span class="line">    <span class="comment">// third: query</span></span><br><span class="line">    <span class="keyword">char</span> rSql[<span class="number">256</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="built_in">strcpy</span>(rSql, <span class="string">&quot;select * from video_location&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (mysql_query(mysql, rSql) != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;mysql_query err\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 取结果集</span></span><br><span class="line">    MYSQL_RES *result = mysql_store_result(mysql);</span><br><span class="line">    <span class="keyword">if</span> (result != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        show_result(result);</span><br><span class="line">        <span class="comment">//释放结果集</span></span><br><span class="line">        mysql_free_result(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// last : close</span></span><br><span class="line">    mysql_close(mysql);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>04_client.c</code> </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mysql.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _HOST_ <span class="meta-string">&quot;127.0.0.1&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _USER_ <span class="meta-string">&quot;root&quot;</span>  <span class="comment">//数据库用户</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _PASSWD_ <span class="meta-string">&quot;yanglinqi&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _DBNAME_ <span class="meta-string">&quot;fi11_tv&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _MAX_COLS_ 30</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//定义格式化输出结构体</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">strFormat</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> length; <span class="comment">// 每个字段最终显示的长度</span></span><br><span class="line">    <span class="keyword">char</span> sfm[<span class="number">10</span>]; <span class="comment">// 每个列的展示串的格式化效果</span></span><br><span class="line">    <span class="keyword">char</span> Column[<span class="number">100</span>]; <span class="comment">// 列显示效果 | empno</span></span><br><span class="line">    <span class="keyword">char</span> splitLine[<span class="number">100</span>]; <span class="comment">// 分割线显示效果 +------</span></span><br><span class="line">&#125; strFormat;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">+-------+--------+-----------+------+------------+------+------+--------+</span></span><br><span class="line"><span class="comment">| empno | ename  | job       | mgr  | hiredate   | sal  | comm | deptno |</span></span><br><span class="line"><span class="comment">+-------+--------+-----------+------+------------+------+------+--------+</span></span><br><span class="line"><span class="comment">|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800 | NULL |     20 |</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_result</span><span class="params">(MYSQL_RES * result,MYSQL *mysql)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  	<span class="comment">//打印表头</span></span><br><span class="line">  	<span class="keyword">unsigned</span> <span class="keyword">int</span> num_fields;</span><br><span class="line">  	<span class="keyword">unsigned</span> <span class="keyword">int</span> i;</span><br><span class="line">  	MYSQL_FIELD *fields;</span><br><span class="line">  	 </span><br><span class="line">  	num_fields = mysql_num_fields(result);</span><br><span class="line">  	fields = mysql_fetch_fields(result);</span><br><span class="line">  	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; num_fields; i++)</span><br><span class="line">  	&#123;</span><br><span class="line">  	   <span class="built_in">printf</span>(<span class="string">&quot;%s\t&quot;</span>, fields[i].name);</span><br><span class="line">  	&#125;</span><br><span class="line">  	<span class="built_in">printf</span>(<span class="string">&quot;\n----------------------------------------------------------\n&quot;</span>);<span class="comment">//华丽分割线</span></span><br><span class="line">  	</span><br><span class="line">  	</span><br><span class="line">  	MYSQL_ROW row;</span><br><span class="line">  	<span class="keyword">while</span> ((row = mysql_fetch_row(result)))<span class="comment">//循环取一行</span></span><br><span class="line">  	&#123;</span><br><span class="line">  	   <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; num_fields; i++)</span><br><span class="line">  	   &#123;</span><br><span class="line">  	       <span class="built_in">printf</span>(<span class="string">&quot;%s\t&quot;</span>,  row[i] ? row[i] : <span class="string">&quot;NULL&quot;</span>);</span><br><span class="line">  	   &#125;</span><br><span class="line">  	   <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">  	&#125;</span><br><span class="line">  	<span class="built_in">printf</span>(<span class="string">&quot;\n----------------------------------------------------------\n&quot;</span>);<span class="comment">//华丽分割线</span></span><br><span class="line">  	<span class="comment">//3 rows in set (0.28 sec)</span></span><br><span class="line">  	<span class="built_in">printf</span>(<span class="string">&quot;%ld rows in set \n&quot;</span>,mysql_affected_rows(mysql));<span class="comment">//影响的数目</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_result_format</span><span class="params">(MYSQL_RES *result, MYSQL *mysql)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//展示result的结果</span></span><br><span class="line">    <span class="keyword">if</span> (result-&gt;row_count == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Empty set\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//打印表头</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> num_fields;</span><br><span class="line">    strFormat fm[_MAX_COLS_];</span><br><span class="line">    bzero(&amp;fm, <span class="keyword">sizeof</span>(strFormat)*_MAX_COLS_);</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> i,j ;</span><br><span class="line">    MYSQL_FIELD *fields;</span><br><span class="line">    num_fields = mysql_num_fields(result);</span><br><span class="line">    fields = mysql_fetch_fields(result);<span class="comment">//取回表头,即各个列名</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; num_fields; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//每个字段有多个长度,取名字长度和内容最长 两者之间的最大值</span></span><br><span class="line">        fm[i].length = fields[i].name_length &gt; fields[i].max_length ? fields[i].name_length : fields[i].max_length;</span><br><span class="line">        fm[i].splitLine[<span class="number">0</span>] = <span class="string">&#x27;+&#x27;</span>;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt; fm[i].length+<span class="number">3</span>; ++j) </span><br><span class="line">        &#123;</span><br><span class="line">            fm[i].splitLine[j] = <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (i == num_fields<span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">sprintf</span>(fm[i].sfm, <span class="string">&quot;| %c-%ds |&quot;</span>, <span class="string">&#x27;%&#x27;</span>, fm[i].length); <span class="comment">// 得到&quot;| %-10s |&quot;</span></span><br><span class="line">            fm[i].splitLine[j] = <span class="string">&#x27;+&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">sprintf</span>(fm[i].sfm, <span class="string">&quot;| %c-%ds &quot;</span>, <span class="string">&#x27;%&#x27;</span>, fm[i].length);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">sprintf</span>(fm[i].Column, fm[i].sfm, fields[i].name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; <span class="number">3</span>; ++j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(j == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; num_fields; ++i)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, fm[i].Column);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; num_fields; ++i)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, fm[i].splitLine);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    MYSQL_ROW row;</span><br><span class="line">    <span class="keyword">while</span> ((row = mysql_fetch_row(result)))<span class="comment">//循环展示每一行的的内容</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; num_fields; i++)<span class="comment">//针对每一行,展示每一列,使用之前得到的输出格式化串</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(fm[i].sfm, row[i] ? row[i] : <span class="string">&quot;NULL&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; num_fields; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>,fm[i].splitLine);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n%ld rows in set \n&quot;</span>,(<span class="keyword">long</span>) mysql_affected_rows(mysql));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//1. init </span></span><br><span class="line">    MYSQL*mysql = mysql_init(<span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span>(mysql == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;init err\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//2. real_connect</span></span><br><span class="line">    mysql = mysql_real_connect(mysql, _HOST_, _USER_, _PASSWD_, _DBNAME_ ,<span class="number">0</span>, <span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(mysql == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;connect err\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;welcome to mysql!\n&quot;</span>);</span><br><span class="line">	</span><br><span class="line">  	<span class="keyword">char</span> rSql[<span class="number">1024</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">  	<span class="keyword">const</span> <span class="keyword">char</span> tip[] = <span class="string">&quot;yoursql&gt; &quot;</span>;</span><br><span class="line">  	<span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">    	write(STDOUT_FILENO, tip, <span class="built_in">strlen</span>(tip));</span><br><span class="line">  		<span class="built_in">memset</span>(rSql, <span class="number">0x00</span>, <span class="keyword">sizeof</span>(rSql));</span><br><span class="line">        read(STDIN_FILENO, rSql, <span class="keyword">sizeof</span>(rSql));</span><br><span class="line">    	<span class="keyword">if</span> (<span class="built_in">strncmp</span>(rSql, <span class="string">&quot;quit&quot;</span>, <span class="number">4</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;bye bye!\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//执行sql</span></span><br><span class="line">        <span class="keyword">if</span>(mysql_query(mysql,rSql) != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;mysql_query err\n&quot;</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//取回结果集</span></span><br><span class="line">        MYSQL_RES *result = mysql_store_result(mysql);</span><br><span class="line">        <span class="keyword">if</span> (result != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            <span class="comment">//打印结果集</span></span><br><span class="line">            show_result_format(result, mysql);</span><br><span class="line">            <span class="comment">//释放结果集</span></span><br><span class="line">            mysql_free_result(result);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;Query OK, %ld row affected \n&quot;</span>, mysql_affected_rows(mysql));</span><br><span class="line">        &#125;</span><br><span class="line">	  &#125;</span><br><span class="line">    <span class="comment">//3. close</span></span><br><span class="line">    mysql_close(mysql);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>05_tran.c</code> </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//mysql中的事务</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mysql.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SET_TRAN	<span class="meta-string">&quot;SET AUTOCOMMIT=0&quot;</span>  		<span class="comment">//手动commit	————手动commit</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> UNSET_TRAN	<span class="meta-string">&quot;SET AUTOCOMMIT=1&quot;</span>			<span class="comment">//自动commit</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _HOST_ <span class="meta-string">&quot;127.0.0.1&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _USER_ <span class="meta-string">&quot;root&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _PASSWD_ <span class="meta-string">&quot;yanglinqi&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _DBNAME_ <span class="meta-string">&quot;fi11_tv&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置事务为手动提交</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mysql_OperationTran</span><span class="params">(MYSQL *mysql)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// --设置事务为手动提交</span></span><br><span class="line">    <span class="keyword">int</span> ret = mysql_query(mysql, SET_TRAN);</span><br><span class="line">    <span class="keyword">if</span> (ret != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%s query set err: %s\n&quot;</span>, __FUNCTION__, mysql_error(mysql));</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置事务为自动提交</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mysql_AutoTran</span><span class="params">(MYSQL *mysql)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//--设置事务为自动提交</span></span><br><span class="line">	<span class="keyword">int</span> ret = mysql_query(mysql, UNSET_TRAN);  <span class="comment">//&quot;set autocommit = 1&quot;</span></span><br><span class="line">	<span class="keyword">if</span> (ret != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%s query set err: %s\n&quot;</span>, __FUNCTION__, mysql_error(mysql));</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret;		</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行commit，手动提交事务</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mysql_Commit</span><span class="params">(MYSQL *mysql)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret = mysql_query(mysql, <span class="string">&quot;COMMIT&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (ret != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;commit err: %s\n&quot;</span>, mysql_error(mysql));</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//执行rollback，回滚事务		</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mysql_Rollback</span><span class="params">(MYSQL *mysql)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ret = mysql_query(mysql, <span class="string">&quot;ROLLBACK&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (ret != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;rollback err: %s\n&quot;</span>, mysql_error(mysql));</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DROP_SAMPLE_TABLE <span class="meta-string">&quot;DROP TABLE IF EXISTS test_table&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CREATE_SAMPLE_TABLE <span class="meta-string">&quot;CREATE TABLE test_table(col1 INT,\</span></span></span><br><span class="line"><span class="meta-string"><span class="meta">                                                 col2 VARCHAR(10),\</span></span></span><br><span class="line"><span class="meta-string"><span class="meta">                                                 col3 VARCHAR(10))&quot;</span></span></span><br><span class="line">                                                                                       </span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> sql01 <span class="meta-string">&quot;INSERT INTO test_table(col1,col2,col3) VALUES(10, &#x27;AAA&#x27;, &#x27;A1&#x27;)&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> sql02 <span class="meta-string">&quot;INSERT INTO test_table(col1,col2,col3) VALUES(20, &#x27;BBB&#x27;, &#x27;B2&#x27;)&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> sql03 <span class="meta-string">&quot;INSERT INTO test_table(col1,col2,col3) VALUES(30, &#x27;CCC&#x27;, &#x27;C3&#x27;)&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> sql04 <span class="meta-string">&quot;INSERT INTO test_table(col1,col2,col3) VALUES(40, &#x27;DDD&#x27;, &#x27;D4&#x27;)&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	MYSQL *mysql = mysql_init(<span class="literal">NULL</span>);</span><br><span class="line">	</span><br><span class="line">	mysql = mysql_real_connect(mysql, _HOST_, _USER_, _PASSWD_, _DBNAME_, <span class="number">0</span>, <span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">if</span> (mysql == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		ret = mysql_errno(mysql);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;func mysql_real_connect() err：%d\n&quot;</span>, ret);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125; 	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot; --- connect ok......\n&quot;</span>);	</span><br><span class="line">	<span class="comment">//执行删除表</span></span><br><span class="line">	<span class="keyword">if</span> (mysql_query(mysql, DROP_SAMPLE_TABLE)) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot; DROP TABLE failed\n&quot;</span>);</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot; %s\n&quot;</span>, mysql_error(mysql));</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//执行创建表</span></span><br><span class="line">	<span class="keyword">if</span> (mysql_query(mysql, CREATE_SAMPLE_TABLE)) &#123;</span><br><span class="line">	  <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot; CREATE TABLE failed\n&quot;</span>);</span><br><span class="line">	  <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot; %s\n&quot;</span>, mysql_error(mysql));</span><br><span class="line">	  <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">	&#125;	</span><br><span class="line">	</span><br><span class="line">	ret = mysql_OperationTran(mysql); 	<span class="comment">//开启事务，并修改事务属性为手动commit </span></span><br><span class="line">	<span class="keyword">if</span> (ret != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;mysql_OperationTran() err:%d\n&quot;</span>, ret);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	ret = mysql_query(mysql, sql01);	<span class="comment">//向表中插入第一行数据 ‘AAA’</span></span><br><span class="line">	<span class="keyword">if</span> (ret != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;mysql_query() err:%d\n&quot;</span>, ret);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	ret = mysql_query(mysql, sql02);	<span class="comment">//向表中插入第二行数据 ‘BBB’</span></span><br><span class="line">	<span class="keyword">if</span> (ret != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;mysql_query() err:%d\n&quot;</span>, ret);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	ret = mysql_Commit(mysql); 			<span class="comment">//手动提交事务</span></span><br><span class="line">	<span class="keyword">if</span> (ret != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;mysql_Commit() err:%d\n&quot;</span>, ret);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//////////AAA BBB  进去了。</span></span><br><span class="line">	</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 0</span></span><br><span class="line">	ret = mysql_AutoTran(mysql); 		<span class="comment">// =再次= 修改事务属性为【自动】commit</span></span><br><span class="line">	<span class="keyword">if</span> (ret != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;mysql_OperationTran() err:%d\n&quot;</span>, ret);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span> </span></span><br><span class="line">	ret = mysql_OperationTran(mysql); 	<span class="comment">// =再次= 修改事务属性为【手动】commit</span></span><br><span class="line">	<span class="keyword">if</span> (ret != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;mysql_OperationTran() err:%d\n&quot;</span>, ret);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">	ret = mysql_query(mysql, sql03);	<span class="comment">//向表中插入第三行数据 ‘CCC’</span></span><br><span class="line">	<span class="keyword">if</span> (ret != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;mysql_query() err:%d\n&quot;</span>, ret);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	ret = mysql_query(mysql, sql04);	<span class="comment">//向表中插入第四行数据 ‘DDD’</span></span><br><span class="line">	<span class="keyword">if</span> (ret != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;mysql_query() err:%d\n&quot;</span>, ret);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	ret = mysql_Rollback(mysql);		<span class="comment">//直接rollback操作</span></span><br><span class="line">	<span class="keyword">if</span> (ret != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;mysql_Rollback() err:%d\n&quot;</span>, ret);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//rollback操作是否能回退掉CCC、DDD的值，取决于事务属性。</span></span><br><span class="line">	</span><br><span class="line">	mysql_close(mysql);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Makefile</code></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SrcFiles=<span class="variable">$(<span class="built_in">wildcard</span> *.c)</span></span><br><span class="line">TargetFiles=<span class="variable">$(<span class="built_in">patsubst</span> %.c,%,<span class="variable">$(SrcFiles)</span>)</span></span><br><span class="line"></span><br><span class="line">IncPath=/usr/<span class="keyword">include</span>/mysql</span><br><span class="line">LibPath=/usr/lib64/mysql</span><br><span class="line">PubLib=-lmysqlclient -ldl -lpthread -lrt </span><br><span class="line"></span><br><span class="line"><span class="section">all:<span class="variable">$(TargetFiles)</span></span></span><br><span class="line"></span><br><span class="line"><span class="section">%:%.c</span></span><br><span class="line">	gcc -o <span class="variable">$@</span> <span class="variable">$^</span> -I<span class="variable">$(IncPath)</span> -L<span class="variable">$(LibPath)</span> <span class="variable">$(PubLib)</span></span><br><span class="line"></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	-rm -f <span class="variable">$(TargetFiles)</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      
+      
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yanglinqi"
+      src="/images/headpic.jpg">
+  <p class="site-author-name" itemprop="name">yanglinqi</p>
+  <div class="site-description" itemprop="description">用于做笔记，对学过的知识总结</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanglinqi107" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanglinqi107" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanglinqi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+</body>
+</html>

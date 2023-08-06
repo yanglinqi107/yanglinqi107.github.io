@@ -83,7 +83,7 @@
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220608150818204.png">
 <meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220608153322335.png">
 <meta property="article:published_time" content="2022-04-08T06:51:35.229Z">
-<meta property="article:modified_time" content="2022-10-22T07:59:56.947Z">
+<meta property="article:modified_time" content="2023-08-06T06:37:44.648Z">
 <meta property="article:author" content="yanglinqi">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -178,17 +178,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">26</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">28</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">19</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">98</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -278,7 +278,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-22 15:59:56" itemprop="dateModified" datetime="2022-10-22T15:59:56+08:00">2022-10-22</time>
+                <time title="修改时间：2023-08-06 14:37:44" itemprop="dateModified" datetime="2023-08-06T14:37:44+08:00">2023-08-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -317,7 +317,7 @@
 <p><strong>进程</strong>：是一个抽象的概念，与操作系统原理联系紧密。进程是活跃的程序，占用系统资源。在内存中执行。当程序被操作系统装载到内存并分配给它一定资源后，此时可称为进程。</p>
 <p>程序是静态概念，进程是动态概念。</p>
 <h3 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h3><p>操作系统会为每个进程分配和维护虚拟内存地址</p>
-<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220527165812134.png" alt="image-20220527165812134"></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220527165812134.png" alt="image-20220527165812134" style="zoom:80%;" /></p>
 <p>cpu 为什么要使用虚拟地址空间与物理地址空间映射？解决了什么样的问题？</p>
 <ol>
 <li>方便编译器和操作系统安排程序的地址分布。程序可以使用一系列相邻的虚拟地址来访问物理内存中不相邻的大内存缓冲区。</li>
@@ -390,7 +390,7 @@
 <p><strong>中止状态</strong></p>
 <p>状态标志<code>state</code>的值为<code>TASK_DEAD</code>。进程因某种原因而中止运行，进程占有的所有资源将被回收，除了<code>task_struct</code>结构（以及少数资源）以外，并且系统对它不再予以理睬，所以这种状态也叫做“僵死状态”，进程成为僵尸进程。</p>
 <p><strong>进程状态切换</strong></p>
-<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220408152319518.png" alt="image-20220408152319518"></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220408152319518.png" alt="image-20220408152319518" style="zoom:80%;" /></p>
 <h3 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h3><p><code>struct fs_struct *fs;     // 文件描述表</code></p>
 <p><code>struct files_struct *files;    // 文件表</code> </p>
 <p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220408152511000.png" alt="image-20220408152511000"></p>
@@ -432,8 +432,7 @@
 <p><strong>真实用户和真实用户组</strong></p>
 <p>进程真实用户为执行命令/可执行文件的用户，真实用户组为真实用户所在的组</p>
 <p><strong>有效用户和有效用户组</strong></p>
-<font color=#ff0000>进程有效用户和有效用户组只有当可执行文件设置了`setuid`位或`setgid`位时才会发生变化</font>
-
+<p>进程有效用户和有效用户组只有当可执行文件设置了<code>setuid</code>位或<code>setgid</code>位时才会发生变化</p>
 <p>示例：<code>passwd</code>命令程序就设置了<strong>设置用户ID位</strong></p>
 <p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220408155713660.png" alt="image-20220408155713660"></p>
 <p>使用<code>chmod</code>对可执行文件修改<strong>设置用户ID位</strong></p>
@@ -1095,7 +1094,7 @@
 <p>启动<code>mmap_w</code>后，再运行<code>mmap_r</code> </p>
 <p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220605114841501.png" alt="image-20220605114841501"></p>
 <h2 id="XSI-IPC机制"><a href="#XSI-IPC机制" class="headerlink" title="XSI IPC机制"></a>XSI IPC机制</h2><p><strong>进程通信机制</strong></p>
-<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220409175106240.png" alt="image-20220409175106240"></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/Linux-img/image-20220409175106240.png" alt="image-20220409175106240" style="zoom:67%;" /></p>
 <p>System V（“系统五”）系统上发明了三种IPC机制（消息队列、信号量和共享内存），通常称为<code>System V IPC</code>。又因为后来被收录到Unix的XSI标准之中故又称为<code>XSI IPC</code>。所以当你看到System V IPC 和 XSI IPC的时候实际上指的是同一种东西。</p>
 <ul>
 <li><strong>信号量集（semaphore set）</strong>，用于实现进程之间的同步与互斥</li>
@@ -1623,20 +1622,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-count">98</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

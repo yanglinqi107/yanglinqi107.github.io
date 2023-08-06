@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<meta name="referrer" content="no-referrer">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;mxnote&#x2F;p&#x2F;17098385.html mongodb C驱动安装    mongodb C++驱动安装   mongo-cxx-driver github源码地址  mongodb的API文档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongocxx安装和使用">
+<meta property="og:url" content="http://yanglinqi107.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/mongocxx/index.html">
+<meta property="og:site_name" content="杨记">
+<meta property="og:description" content="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;mxnote&#x2F;p&#x2F;17098385.html mongodb C驱动安装    mongodb C++驱动安装   mongo-cxx-driver github源码地址  mongodb的API文档">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/image-20230730105731103.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/image-20230730110116673.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/image-20230805182700262.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/image-20230805182804046.png">
+<meta property="article:published_time" content="2023-08-06T06:45:57.777Z">
+<meta property="article:modified_time" content="2023-08-06T07:06:48.655Z">
+<meta property="article:author" content="yanglinqi">
+<meta property="article:tag" content="mongodb">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/image-20230730105731103.png">
+
+<link rel="canonical" href="http://yanglinqi107.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/mongocxx/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>mongocxx安装和使用 | 杨记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">杨记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">碎片化学习令人焦虑，系统化学习使人进步</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">28</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">98</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yanglinqi107.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/mongocxx/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headpic.jpg">
+      <meta itemprop="name" content="yanglinqi">
+      <meta itemprop="description" content="用于做笔记，对学过的知识总结">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mongocxx安装和使用
+        </h1>
+
+        <div class="post-meta">
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-08-06 14:45:57 / 修改时间：15:06:48" itemprop="dateCreated datePublished" datetime="2023-08-06T14:45:57+08:00">2023-08-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mxnote/p/17098385.html">https://www.cnblogs.com/mxnote/p/17098385.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d77680254418">mongodb C驱动安装</a>    <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c982a2960175">mongodb C++驱动安装</a>  </p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mongodb/mongo-cxx-driver/tree/master">mongo-cxx-driver github源码地址</a> </p>
+<p><a target="_blank" rel="noopener" href="https://mongocxx.org/api/current/">mongodb的API文档</a> </p>
+<span id="more"></span>
+<h3 id="mongodb安装"><a href="#mongodb安装" class="headerlink" title="mongodb安装"></a>mongodb安装</h3><p>官方教程：<a target="_blank" rel="noopener" href="https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/">https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/majiabin/p/17140195.html">CentOS 7 yum安装MongoDB - 斌言 - 博客园 (cnblogs.com)</a> </p>
+<p>1、配置MongoDB的yum源（这里使用阿里云的源），创建文件<code>/etc/yum.repos.d/mongodb-org-6.0.repo</code>，并输入以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[mngodb-org]</span><br><span class="line">name=MongoDB Repository</span><br><span class="line">baseurl=http://mirrors.aliyun.com/mongodb/yum/redhat/$releasever/mongodb-org/6.0/x86_64/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ yum update -y   <span class="comment"># 更新yum</span></span><br><span class="line">$ yum install mongodb-org -y   <span class="comment"># 下载MongoDB</span></span><br><span class="line">$ rpm -qa | grep mongodb      <span class="comment"># 查看安装的mongodb组件</span></span><br><span class="line">$ systemctl start mongod  <span class="comment"># 开启mongodb服务</span></span><br></pre></td></tr></table></figure>
+<h3 id="C-驱动安装"><a href="#C-驱动安装" class="headerlink" title="C++驱动安装"></a>C++驱动安装</h3><p><a target="_blank" rel="noopener" href="https://www.mongodb.com/docs/drivers/cxx/#mongodb-compatibility">https://www.mongodb.com/docs/drivers/cxx/#mongodb-compatibility</a></p>
+<p><a target="_blank" rel="noopener" href="https://mongocxx.org/mongocxx-v3/installation/">https://mongocxx.org/mongocxx-v3/installation/</a></p>
+<p>安装mongocxx 3.8，对应mongodb 6.0</p>
+<p>安装过程中可能会因为缺少依赖而报错，只要根据错误信息安装相关依赖即可</p>
+<p>官方标注的前提条件</p>
+<ul>
+<li>Any standard Unix platform, or Windows 7 SP1+</li>
+<li>A compiler that supports C++11 (gcc, clang, or Visual Studio)</li>
+<li><a target="_blank" rel="noopener" href="https://cmake.org/">CMake</a> 3.2 or later</li>
+<li><a target="_blank" rel="noopener" href="https://www.boost.org/">boost</a> headers (optional)</li>
+</ul>
+<h4 id="安装Cmake"><a href="#安装Cmake" class="headerlink" title="安装Cmake"></a>安装Cmake</h4><p>根据实际需要安装对应的Cmake</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://github.com/Kitware/CMake/releases/download/v3.27.1/cmake-3.27.1.tar.gz</span><br><span class="line">$ tar zxvf cmake-3.27.1.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> cmake-3.27.1</span><br><span class="line">$ ./bootstrap</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br><span class="line">$ cmake --version  <span class="comment"># 查看版本</span></span><br></pre></td></tr></table></figure>
+<h4 id="安装mongoc"><a href="#安装mongoc" class="headerlink" title="安装mongoc"></a>安装mongoc</h4><p>详细过程和解释参照官网：<a target="_blank" rel="noopener" href="http://mongoc.org/libmongoc/current/installing.html">http://mongoc.org/libmongoc/current/installing.html</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ yum install mongo-c-driver-devel</span><br><span class="line">$ yum install libbson-devel</span><br><span class="line">$ yum install openssl-devel cyrus-sasl-devel libbsd-devel libzstd-devel bind-utils libicu-devel</span><br><span class="line">$ wget https://github.com/mongodb/mongo-c-driver/releases/download/1.24.2/mongo-c-driver-1.24.2.tar.gz</span><br><span class="line">$ tar xzf mongo-c-driver-1.24.2.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> mongo-c-driver-1.24.2</span><br><span class="line">$ mkdir cmake-build</span><br><span class="line">$ <span class="built_in">cd</span> cmake-build</span><br><span class="line">$ cmake -DENABLE_AUTOMATIC_INIT_AND_CLEANUP=OFF ..</span><br></pre></td></tr></table></figure>
+<p>cmake成功显示如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-- Build files have been written to: /home/user/mongo-c-driver-1.24.2/cmake-build</span><br></pre></td></tr></table></figure>
+<p><strong>问题1</strong>）<code>-- Looking for ASN1_STRING_get0_data in /usr/lib64/libcrypto.so - not found</code> </p>
+<ul>
+<li>当openssl &lt;= 1.0.1时，ASN1_STRING_get0_data该方法不存在，作为替代是ASN1_STRING_data方法</li>
+<li>当openssl &gt; 1.0.1时，ASN1_STRING_get0_data方法存在，但实际出问题的时候，服务器版本是Open SSL1.0.2.k，建议安装之后的版本</li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.bbsmax.com/A/xl56YnWxJr/">https://www.bbsmax.com/A/xl56YnWxJr/</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装1.1.0f版本</span></span><br><span class="line">$ wget http://www.openssl.org/<span class="built_in">source</span>/openssl-1.1.0f.tar.gz</span><br><span class="line">$ tar zxvf openssl-1.1.0f.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> openssl-1.1.0f</span><br><span class="line">$ ./config --prefix=/usr/<span class="built_in">local</span>/ssl</span><br><span class="line">$ make &amp;&amp; make install</span><br><span class="line"><span class="comment"># 将旧的openssl执行文件及目录重命令</span></span><br><span class="line">$ mv -f /usr/bin/openssl /usr/bin/openssl.old</span><br><span class="line">$ mv -f /usr/include/openssl /usr/include/openssl.old</span><br><span class="line"><span class="comment"># 修改软链，指向新版本的openssl路径</span></span><br><span class="line">$ ln -s /usr/<span class="built_in">local</span>/ssl/bin/openssl /usr/bin/openssl</span><br><span class="line">$ ln -s /usr/<span class="built_in">local</span>/ssl/include/openssl /usr/include/openssl</span><br><span class="line"><span class="comment"># 将指向libcrypto.so.1.0.2k的软链接删除，创建指向libcrypto.so.1.1的软链接</span></span><br><span class="line">$ rm /usr/lib64/libcrypto.so</span><br><span class="line">$ ln -s /usr/<span class="built_in">local</span>/ssl/lib/libcrypto.so.1.1 /usr/lib64/libcrypto.so</span><br><span class="line"><span class="comment"># 查看是否有ASN1_STRING_get0_data方法</span></span><br><span class="line">$ nm /usr/lib64/libcrypto.so | grep ASN1_STRING_get0_data</span><br><span class="line">0000000000088f20 T ASN1_STRING_get0_data</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cmake --build .</span><br><span class="line">$ cmake --build . --target install</span><br></pre></td></tr></table></figure>
+<p>测试mongoc是否安装成功：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mongoc/mongoc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mongoc_init();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;libmongoc version: %s\n&quot;</span>, mongoc_get_version());</span><br><span class="line">    mongoc_cleanup();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ gcc test_mongoc.c -I/usr/<span class="built_in">local</span>/include/libmongoc-1.0 -I/usr/<span class="built_in">local</span>/include/libbson-1.0 -L/usr/<span class="built_in">local</span>/lib64 -lmongoc-1.0 -lbson-1.0</span><br><span class="line">$ ./a.out</span><br><span class="line">libmongoc version: 1.3.6</span><br></pre></td></tr></table></figure>
+<h4 id="安装boost库"><a href="#安装boost库" class="headerlink" title="安装boost库"></a>安装boost库</h4><p>1、使用yum安装，版本可能不合适（不推荐）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install boost boost-devel boost-doc</span><br></pre></td></tr></table></figure>
+<p>2、源码安装（国内下载巨慢，建议魔法上网）</p>
+<p>去官网选择对应版本下载：<a target="_blank" rel="noopener" href="https://www.boost.org/users/history/">https://www.boost.org/users/history/</a> ，我下载的为1.70.0版本：<a target="_blank" rel="noopener" href="https://www.boost.org/users/history/version_1_70_0.html">https://www.boost.org/users/history/version_1_70_0.html</a></p>
+<p>注意：</p>
+<ul>
+<li>安装boost库对GCC版本也有要求，建议安装高版本的GCC，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jixiaohua/p/11732225.html">CentOS 7升级gcc版本 - 姬无华 - 博客园 (cnblogs.com)</a> </li>
+<li>安装python：<code>yum install python python-devel</code> </li>
+</ul>
+<p>安装boost库的指令流程，下载对应版本的压缩包后：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ tar zxvf boost_1_70_0.tar.gz </span><br><span class="line">$ <span class="built_in">cd</span> boost_1_70_0</span><br><span class="line">$ yum install bzip2 bzip2-devel xz xz-devel</span><br><span class="line">$ ./bootstrap.sh --prefix=/usr/<span class="built_in">local</span>/boost   <span class="comment"># 指定安装目录，需要自己创建</span></span><br><span class="line">$ ./b2</span><br><span class="line">The Boost C++ Libraries were successfully built!</span><br><span class="line">$ ./b2 install</span><br></pre></td></tr></table></figure>
+<p>安装过程中可能会出一些问题，根据提示信息处理，示例如下：</p>
+<p>1）缺少Boost库的Unicode/ICU支持，安装ICU库<code>yum install -y libicu-devel</code></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/image-20230730105731103.png" alt="image-20230730105731103" style="zoom: 80%;" /></p>
+<p>2）</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/image-20230730110116673.png" alt="image-20230730110116673" style="zoom:80%;" /></p>
+<p>在<code>/etc/ld.so.conf</code>文件中追加：<code>/usr/local/boost/lib</code></p>
+<p>测试是否安装成功：<code>g++ -o test test.cpp -I /usr/local/boost/include/</code> </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/algorithm/string.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string str = <span class="string">&quot;hello, boost library!&quot;</span>;</span><br><span class="line">    boost::algorithm::<span class="built_in">to_upper</span>(str);</span><br><span class="line">    std::cout &lt;&lt; str &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="安装mongocxx"><a href="#安装mongocxx" class="headerlink" title="安装mongocxx"></a>安装mongocxx</h4><p>注意GCC的版本要支持C++17，建议使用GCC7以后的版本</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://github.com/mongodb/mongo-cxx-driver/releases/download/r3.8.0/mongo-cxx-driver-r3.8.0.tar.gz</span><br><span class="line">$ tar -xzf mongo-cxx-driver-r3.8.0.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> mongo-cxx-driver-r3.8.0/build</span><br><span class="line">$ cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/<span class="built_in">local</span></span><br><span class="line">$ cmake --build . --target EP_mnmlstc_core</span><br><span class="line">$ cmake --build .</span><br><span class="line">$ cmake --build . --target install</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;/usr/local/lib64&#x27;</span> &gt;&gt; /etc/ld.so.conf   <span class="comment"># 增加libmongocxx.so._noabi的链接路径</span></span><br><span class="line">$ find /usr -name libmongocxx*.pc   <span class="comment"># 查找libmongocxx.pc所在位置</span></span><br><span class="line">/usr/<span class="built_in">local</span>/lib64/pkgconfig/libmongocxx.pc</span><br><span class="line">$ <span class="built_in">export</span> PKG_CONFIG_PATH=/usr/<span class="built_in">local</span>/lib64/pkgconfig   <span class="comment"># 设置pkg-config查找pc文件路径</span></span><br><span class="line">$ pkg-config --cflags --libs libmongocxx    <span class="comment"># </span></span><br><span class="line">-I/usr/<span class="built_in">local</span>/include/mongocxx/v_noabi -I/usr/<span class="built_in">local</span>/include/bsoncxx/v_noabi  -L/usr/<span class="built_in">local</span>/lib64 -lmongocxx -lbsoncxx</span><br></pre></td></tr></table></figure>
+<h3 id="mongodb测试"><a href="#mongodb测试" class="headerlink" title="mongodb测试"></a>mongodb测试</h3><p><code>g++ -o testmongo testmongo.cpp $(pkg-config --cflags --libs libmongocxx)</code> </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mongocxx/client.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mongocxx/instance.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mongocxx/exception/exception.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bsoncxx/builder/stream/document.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bsoncxx/json.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> bsoncxx::builder::stream::document;</span><br><span class="line"><span class="keyword">using</span> bsoncxx::builder::stream::finalize;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printIfAge</span><span class="params">(mongocxx::client&amp; client, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> collection = client[<span class="string">&quot;tutorial&quot;</span>][<span class="string">&quot;persons&quot;</span>];</span><br><span class="line">    <span class="keyword">auto</span> cursor = collection.<span class="built_in">find</span>(document&#123;&#125; &lt;&lt; <span class="string">&quot;age&quot;</span> &lt;&lt; age &lt;&lt; finalize);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp;&amp; doc : cursor) &#123;</span><br><span class="line">        cout &lt;&lt; doc[<span class="string">&quot;name&quot;</span>].<span class="built_in">get_utf8</span>().value.<span class="built_in">to_string</span>() &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* dbhost)</span> </span>&#123;</span><br><span class="line">    mongocxx::instance instance&#123;&#125;; <span class="comment">// Required to initialize the driver</span></span><br><span class="line">    mongocxx::client client&#123;mongocxx::uri&#123;dbhost&#125;&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;connected ok&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">auto</span> collection = client[<span class="string">&quot;tutorial&quot;</span>][<span class="string">&quot;persons&quot;</span>];</span><br><span class="line">    collection.<span class="built_in">insert_one</span>(document&#123;&#125; &lt;&lt; <span class="string">&quot;name&quot;</span> &lt;&lt; <span class="string">&quot;Joe&quot;</span> &lt;&lt; <span class="string">&quot;age&quot;</span> &lt;&lt; <span class="number">33</span> &lt;&lt; finalize);</span><br><span class="line">    collection.<span class="built_in">insert_one</span>(document&#123;&#125; &lt;&lt; <span class="string">&quot;name&quot;</span> &lt;&lt; <span class="string">&quot;Jane&quot;</span> &lt;&lt; <span class="string">&quot;age&quot;</span> &lt;&lt; <span class="number">40</span> &lt;&lt; finalize);</span><br><span class="line">    collection.<span class="built_in">insert_one</span>(document&#123;&#125; &lt;&lt; <span class="string">&quot;name&quot;</span> &lt;&lt; <span class="string">&quot;Abe&quot;</span> &lt;&lt; <span class="string">&quot;age&quot;</span> &lt;&lt; <span class="number">33</span> &lt;&lt; finalize);</span><br><span class="line">    collection.<span class="built_in">insert_one</span>(document&#123;&#125; &lt;&lt; <span class="string">&quot;name&quot;</span> &lt;&lt; <span class="string">&quot;Samantha&quot;</span> &lt;&lt; <span class="string">&quot;age&quot;</span> &lt;&lt; <span class="number">21</span> &lt;&lt; <span class="string">&quot;city&quot;</span> &lt;&lt; <span class="string">&quot;Los Angeles&quot;</span> &lt;&lt; <span class="string">&quot;state&quot;</span> &lt;&lt; <span class="string">&quot;CA&quot;</span> &lt;&lt; finalize);</span><br><span class="line">    collection.<span class="built_in">create_index</span>(document&#123;&#125; &lt;&lt; <span class="string">&quot;age&quot;</span> &lt;&lt; <span class="number">1</span> &lt;&lt; finalize);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;count: &quot;</span> &lt;&lt; collection.<span class="built_in">count_documents</span>(&#123;&#125;) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">auto</span> cursor = collection.<span class="built_in">find</span>(&#123;&#125;);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp;&amp; doc : cursor) &#123;</span><br><span class="line">        cout &lt;&lt; bsoncxx::<span class="built_in">to_json</span>(doc) &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;\nprintifage:\n&quot;</span>;</span><br><span class="line">    <span class="built_in">printIfAge</span>(client, <span class="number">33</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* dbhost = <span class="string">&quot;mongodb://localhost:27017&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (argc == <span class="number">2</span>) &#123;</span><br><span class="line">        dbhost = argv[<span class="number">1</span>];</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;connect to dbhost:[%s]\n&quot;</span>, dbhost);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;connect to dbhost:[%s]\n&quot;</span>, dbhost);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;if you need to connect to a remote service, please input IP address!\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="built_in">run</span>(dbhost);</span><br><span class="line">    &#125; <span class="built_in"><span class="keyword">catch</span></span> (<span class="keyword">const</span> mongocxx::exception&amp; e) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;caught &quot;</span> &lt;&lt; e.<span class="built_in">what</span>() &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="GirdFS示例"><a href="#GirdFS示例" class="headerlink" title="GirdFS示例"></a>GirdFS示例</h3><p>源自黑马教程</p>
+<p><strong>需求总体描述</strong>：开发类似于网盘功能,支持文件(图片,视频,mp3等)的上传和下载.mongodb的优势</p>
+<p><strong>功能需求</strong>：支持多用户 </p>
+<ol>
+<li>用户的校验,必须是注册用户,用户名和密码正确才能上传和下载.(注册部分正常需要web前端开发,该案列不做注册部分功能,直接在mysql的用户表增加记录即可).</li>
+<li>查看登陆用户上传的文件信息.(支持命令行的方式查看即可,不需要做web前端),实现管理台.</li>
+<li>上传文件</li>
+<li>下载上传过的文件到本地.</li>
+<li>删除上传的文件.(可根据情况是否添加,不是必须) </li>
+</ol>
+<p><strong>技术实现要求</strong>：Mysql+mongo </p>
+<ol>
+<li>用mysql存储用户的信息,文件上传和下载的对应关系(本地和mongo中文件的对应关系)</li>
+<li>Mongo存放文件.</li>
+</ol>
+<p><strong>MySQL建库建表</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">create database ods character set utf8;</span><br><span class="line"></span><br><span class="line">use ods;</span><br><span class="line"></span><br><span class="line">// 用户信息表：用户id，用户姓名，密码，手机号，公司，邮箱，备注</span><br><span class="line">create table t_user_info(</span><br><span class="line">    user_id varchar(30),</span><br><span class="line">    user_name varchar(50),</span><br><span class="line">    pass_word varchar(16),</span><br><span class="line">    remark varchar(100)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">// 文件信息表：本地文件名，文件类型，大小，上传时间，修改时间，下载次数，用户id，mongo文件名，备注</span><br><span class="line">create table t_file_info(</span><br><span class="line">    file_id int primary key auto_increment,</span><br><span class="line">    local_file_name varchar(50),</span><br><span class="line">    mongo_file_name varchar(50),</span><br><span class="line">    file_size int,</span><br><span class="line">    upload_date timestamp,</span><br><span class="line">    user_id varchar(30),</span><br><span class="line">    remark varchar(100)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">insert into t_user_info values(&#x27;yekai&#x27;,&#x27;叶开&#x27;,&#x27;123&#x27;,&#x27;bianchenglangzi&#x27;);</span><br><span class="line">insert into t_user_info values(&#x27;fuhongxue&#x27;,&#x27;傅红雪&#x27;,&#x27;456&#x27;,&#x27;bianchenglangzi&#x27;);</span><br><span class="line"></span><br><span class="line">// 在文件信息表中增加上传状态：上传中，上传成功</span><br><span class="line">alter table t_file_info add column status varchar(2);</span><br></pre></td></tr></table></figure>
+<p><strong>实现：</strong></p>
+<ol>
+<li><code>CMysql.h</code>和<code>CMysql.cpp</code>实现和mysql的交互</li>
+<li><code>CMongo.h</code>和<code>CMongo.cpp</code>实现和mongodb的交互</li>
+<li><code>main.cpp</code>控制台，和用户交互</li>
+</ol>
+<p><strong>操作指令：</strong></p>
+<ul>
+<li>上传 upload srcfile mongofile</li>
+<li>下载 download mongofile desfile</li>
+<li>查看 list</li>
+<li>退出 quit</li>
+<li>删除 delete mongofile  localfile</li>
+</ul>
+<p><strong>代码</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CMysql.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CMysql</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">CMysql</span>();</span><br><span class="line">	~<span class="built_in">CMysql</span>();</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">UserLogin</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* User, <span class="keyword">const</span> <span class="keyword">char</span>* Passwd)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">ListFileInfo</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* User)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">UploadFile</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* User, <span class="keyword">const</span> <span class="keyword">char</span>* LocalFile, <span class="keyword">const</span> <span class="keyword">char</span>* MongoFile)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">UpdateFileInfo</span><span class="params">(<span class="keyword">int</span> FileSize, <span class="keyword">const</span> <span class="keyword">char</span>* User, <span class="keyword">const</span> <span class="keyword">char</span>* LocalFile, <span class="keyword">const</span> <span class="keyword">char</span>* MongoFile)</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CMysql.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;CMysql.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mysql.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">MYSQL* mysql = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">CMysql::<span class="built_in">CMysql</span>()</span><br><span class="line">&#123;</span><br><span class="line">	mysql = <span class="built_in">mysql_init</span>(<span class="literal">NULL</span>);</span><br><span class="line">	<span class="keyword">if</span> (mysql == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;mysql init err\n&quot;</span>);</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	mysql = <span class="built_in">mysql_real_connect</span>(mysql, <span class="string">&quot;localhost&quot;</span>, <span class="string">&quot;root&quot;</span>, <span class="string">&quot;123456&quot;</span>, <span class="string">&quot;ods&quot;</span>, <span class="number">0</span>, <span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">if</span> (mysql == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;mysql connect err\n&quot;</span>);</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">CMysql::~<span class="built_in">CMysql</span>()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (mysql) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">mysql_close</span>(mysql);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//用户登录</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CMysql::UserLogin</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* User, <span class="keyword">const</span> <span class="keyword">char</span>* Passwd)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// select * from t_user_info where user_id=&#x27;yekai&#x27; and pass_word=&#x27;123&#x27;;</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">strstr</span>(Passwd, <span class="string">&quot; or &quot;</span>))  <span class="comment">// select * from t_user_info where user_id=&#x27;yekai&#x27; and pass_word=&#x27;0&#x27; or &#x27;1=1&#x27;   sql注入</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;zhe yang bu hao!\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">char</span> rSql[<span class="number">512</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="built_in">sprintf</span>(rSql, <span class="string">&quot;select user_id from t_user_info where user_id=&#x27;%s&#x27; and pass_word=&#x27;%s&#x27;&quot;</span>, User, Passwd);</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">mysql_query</span>(mysql, rSql) != <span class="number">0</span>) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;mysql exe err: %s\n&quot;</span>, rSql);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	MYSQL_RES* result = <span class="built_in">mysql_store_result</span>(mysql); <span class="comment">// 取结果集</span></span><br><span class="line">	<span class="keyword">if</span> (result != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> ret = (<span class="keyword">int</span>)result-&gt;row_count;</span><br><span class="line">		<span class="built_in">mysql_free_result</span>(result);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CMysql::ListFileInfo</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* User)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// select * from t_file_info where user_id=&#x27;yekai&#x27;;</span></span><br><span class="line">	<span class="keyword">char</span> rSql[<span class="number">512</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="built_in">sprintf</span>(rSql, <span class="string">&quot;select * from t_file_info where user_id=&#x27;%s&#x27;&quot;</span>, User);</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">mysql_query</span>(mysql, rSql) != <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;mysql exe err: %s\n&quot;</span>, rSql);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	MYSQL_RES* result = <span class="built_in">mysql_store_result</span>(mysql); <span class="comment">// 取结果集</span></span><br><span class="line">	<span class="keyword">if</span> (result != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		MYSQL_ROW row;</span><br><span class="line">		<span class="keyword">unsigned</span> <span class="keyword">int</span> num_fields;</span><br><span class="line">		<span class="keyword">unsigned</span> <span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">		num_fields = <span class="built_in">mysql_num_fields</span>(result);</span><br><span class="line">		<span class="keyword">while</span> ((row = <span class="built_in">mysql_fetch_row</span>(result)))</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">unsigned</span> <span class="keyword">long</span>* lengths;</span><br><span class="line">			lengths = <span class="built_in">mysql_fetch_lengths</span>(result);</span><br><span class="line">			<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; num_fields; i++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">&quot;%s\t&quot;</span>, row[i] ? row[i] : <span class="string">&quot;NULL&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">mysql_free_result</span>(result);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CMysql::UploadFile</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* User, <span class="keyword">const</span> <span class="keyword">char</span>* LocalFile, <span class="keyword">const</span> <span class="keyword">char</span>* MongoFile)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// insert into t_file_info(local_file_name, mongo_file_name, file_size, user_id, status, remark)</span></span><br><span class="line">	<span class="comment">// values(&#x27;xxx.11&#x27;, &#x27;yyy.11&#x27;, 1024, &#x27;yekai&#x27;, &#x27;0&#x27;, &#x27;upload success&#x27;);</span></span><br><span class="line">	<span class="keyword">char</span> rSql[<span class="number">512</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="built_in">sprintf</span>(rSql, <span class="string">&quot;insert into t_file_info(local_file_name, mongo_file_name, file_size, user_id, status, remark)\</span></span><br><span class="line"><span class="string">					values(&#x27;%s&#x27;, &#x27;%s&#x27;, 0, &#x27;%s&#x27;, &#x27;0&#x27;, &#x27;uploading&#x27;)&quot;</span>, LocalFile, MongoFile, User);</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">mysql_query</span>(mysql, rSql) != <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;run upload err: %s\n&quot;</span>, rSql);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CMysql::UpdateFileInfo</span><span class="params">(<span class="keyword">int</span> FileSize, <span class="keyword">const</span> <span class="keyword">char</span>* User, <span class="keyword">const</span> <span class="keyword">char</span>* LocalFile, <span class="keyword">const</span> <span class="keyword">char</span>* MongoFile)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// update t_file_info set file_size=1011, status=&#x27;1&#x27;, remark=&#x27;upload success&#x27; where user_id=&#x27;yekai&#x27; and local_file_name=&#x27;xxx.11&#x27; and mongo_file_name=&#x27;yyy.11&#x27;</span></span><br><span class="line">	<span class="keyword">char</span> rSql[<span class="number">512</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="built_in">sprintf</span>(rSql, <span class="string">&quot;update t_file_info set file_size=%d, status=&#x27;1&#x27;, remark=&#x27;upload success&#x27; where user_id=&#x27;%s&#x27; \</span></span><br><span class="line"><span class="string">			and local_file_name=&#x27;%s&#x27; and mongo_file_name=&#x27;%s&#x27;&quot;</span>, FileSize, User, LocalFile, MongoFile);</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">mysql_query</span>(mysql, rSql) != <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;run update err: %s\n&quot;</span>, rSql);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CMongo.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CMongo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">CMongo</span>();</span><br><span class="line">	<span class="function"><span class="keyword">size_t</span> <span class="title">UploadFile</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* LocalFile, <span class="keyword">const</span> <span class="keyword">char</span>* MongoFile)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">DownloadFile</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* MongoFile, <span class="keyword">const</span> <span class="keyword">char</span>* DesFile)</span></span>;</span><br><span class="line">	~<span class="built_in">CMongo</span>();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CMongo.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;CMongo.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bsoncxx/builder/basic/document.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bsoncxx/json.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mongocxx/client.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mongocxx/instance.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mongocxx/stdx.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mongocxx/uri.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> bsoncxx::builder::basic::kvp;</span><br><span class="line"><span class="keyword">using</span> bsoncxx::builder::basic::make_array;</span><br><span class="line"><span class="keyword">using</span> bsoncxx::builder::basic::make_document;</span><br><span class="line"></span><br><span class="line">mongocxx::instance instance&#123;&#125;;  <span class="comment">// Required to initialize the driver</span></span><br><span class="line">mongocxx::client client&#123; mongocxx::uri&#123; <span class="string">&quot;mongodb://localhost:27017&quot;</span> &#125; &#125;;</span><br><span class="line"><span class="comment">//mongocxx::database db = client[&quot;ods&quot;];</span></span><br><span class="line">mongocxx::gridfs::bucket bucket = client[<span class="string">&quot;ods&quot;</span>].<span class="built_in">gridfs_bucket</span>();</span><br><span class="line"></span><br><span class="line">CMongo::<span class="built_in">CMongo</span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 检查连接是否成功</span></span><br><span class="line">    <span class="keyword">auto</span> databases = client.<span class="built_in">list_databases</span>();</span><br><span class="line">    <span class="keyword">if</span> (databases.<span class="built_in">begin</span>() == databases.<span class="built_in">end</span>()) </span><br><span class="line">    &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Failed to connect to MongoDB server.&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">CMongo::~<span class="built_in">CMongo</span>()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">size_t</span> <span class="title">CMongo::UploadFile</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* LocalFile, <span class="keyword">const</span> <span class="keyword">char</span>* MongoFile)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">std::ifstream <span class="title">file</span><span class="params">(LocalFile, std::ios::in | std::ios::binary)</span></span>;</span><br><span class="line">    <span class="keyword">if</span> (!file) &#123;</span><br><span class="line">        <span class="keyword">throw</span> std::runtime_error&#123; <span class="string">&quot;unable to open file: &quot;</span> + std::<span class="built_in">string</span>(LocalFile) &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    mongocxx::gridfs::uploader uploader = bucket.<span class="built_in">open_upload_stream</span>(MongoFile);</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> buffer_size = <span class="number">40960</span>;</span><br><span class="line">    <span class="keyword">char</span> buffer[buffer_size];</span><br><span class="line">    <span class="keyword">size_t</span> fileSize = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (!file.<span class="built_in">eof</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        file.<span class="built_in">read</span>(buffer, buffer_size);</span><br><span class="line">        std::streamsize bytesRead = file.<span class="built_in">gcount</span>();</span><br><span class="line">        uploader.<span class="built_in">write</span>(<span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">uint8_t</span>*&gt;(buffer), bytesRead);</span><br><span class="line">        fileSize += (<span class="keyword">size_t</span>)bytesRead;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">auto</span> result = uploader.<span class="built_in">close</span>();</span><br><span class="line">    <span class="keyword">if</span> (result.<span class="built_in">id</span>().<span class="built_in">type</span>() == bsoncxx::type::k_oid) &#123;</span><br><span class="line">        <span class="comment">// 文件上传成功，可以获取文件的唯一ID</span></span><br><span class="line">        <span class="keyword">auto</span> fileId = result.<span class="built_in">id</span>().<span class="built_in">get_oid</span>().value.<span class="built_in">to_string</span>();</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;文件上传成功，文件ID：&quot;</span> &lt;&lt; fileId &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    file.<span class="built_in">close</span>();</span><br><span class="line">    <span class="keyword">return</span> fileSize;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CMongo::DownloadFile</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* MongoFile, <span class="keyword">const</span> <span class="keyword">char</span>* DesFile)</span> </span>&#123;</span><br><span class="line">    bsoncxx::document::value filter = <span class="built_in">make_document</span>(<span class="built_in">kvp</span>(<span class="string">&quot;filename&quot;</span>, MongoFile));</span><br><span class="line">    mongocxx::cursor cursor = bucket.<span class="built_in">find</span>(filter.<span class="built_in">view</span>());</span><br><span class="line">    <span class="keyword">if</span> (cursor.<span class="built_in">begin</span>() != cursor.<span class="built_in">end</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">std::ofstream <span class="title">file</span><span class="params">(DesFile, std::ios::out | std::ios::binary)</span></span>;</span><br><span class="line">        bsoncxx::document::view documentView = *cursor.<span class="built_in">begin</span>();</span><br><span class="line">        bsoncxx::types::bson_value::view id = documentView[<span class="string">&quot;_id&quot;</span>].<span class="built_in">get_value</span>();</span><br><span class="line">        <span class="keyword">auto</span> downloader = bucket.<span class="built_in">open_download_stream</span>(id);</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> buffer_size = <span class="number">4096</span>;</span><br><span class="line">        <span class="keyword">char</span> buffer[buffer_size];</span><br><span class="line">        <span class="keyword">size_t</span> readbyte = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> ((readbyte = downloader.<span class="built_in">read</span>((<span class="keyword">uint8_t</span>*)buffer, buffer_size)) != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            file.<span class="built_in">write</span>(buffer, readbyte);</span><br><span class="line">        &#125;</span><br><span class="line">        file.<span class="built_in">close</span>();</span><br><span class="line">        downloader.<span class="built_in">close</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">// 返回0表示下载成功</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;CMysql.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;CMongo.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">splitString</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* Src, <span class="keyword">char</span> delim, vector&lt;string&gt;&amp; vsplit)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	string tmp = Src;</span><br><span class="line">	vsplit.<span class="built_in">clear</span>();</span><br><span class="line">	<span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">size_t</span> last = <span class="number">0</span>;</span><br><span class="line">	last = tmp.<span class="built_in">find_first_not_of</span>(delim, last); <span class="comment">// 找到第一个不为分隔符的字符</span></span><br><span class="line">	index = tmp.<span class="built_in">find_first_of</span>(delim, last); <span class="comment">//找到第一个分隔符</span></span><br><span class="line">	<span class="keyword">while</span> (index != string::npos) <span class="comment">// npos代表字符串的结尾</span></span><br><span class="line">	&#123;</span><br><span class="line">		vsplit.<span class="built_in">push_back</span>(tmp.<span class="built_in">substr</span>(last, index - last));</span><br><span class="line">		last = tmp.<span class="built_in">find_first_not_of</span>(delim, index);</span><br><span class="line">		index = tmp.<span class="built_in">find_first_of</span>(delim, last);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (index == string::npos &amp;&amp; tmp.<span class="built_in">length</span>() &gt; last)<span class="comment">//到末尾了,如果整个长度大于last坐标,说明还有最后一个字符要放到vector</span></span><br><span class="line">	&#123;</span><br><span class="line">		vsplit.<span class="built_in">push_back</span>(tmp.<span class="built_in">substr</span>(last));</span><br><span class="line">	&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 0</span></span><br><span class="line">	cout &lt;&lt; vsplit.<span class="built_in">size</span>() &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; vsplit.<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;i=&quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; vsplit[i].<span class="built_in">c_str</span>() &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;stty erase ^H&quot;</span>);  <span class="comment">// 解决backspace键显示^H问题</span></span><br><span class="line">	<span class="keyword">if</span> (argc != <span class="number">3</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;./main user passwd&quot;</span> &lt;&lt; endl;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	vector&lt;string&gt; vCmd;</span><br><span class="line">	string line;</span><br><span class="line">	CMysql cmysql;</span><br><span class="line">	CMongo cmongo;</span><br><span class="line">	<span class="keyword">if</span> (cmysql.<span class="built_in">UserLogin</span>(argv[<span class="number">1</span>], argv[<span class="number">2</span>]) &lt; <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;login err&quot;</span> &lt;&lt; endl;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;ods&gt; &quot;</span>;</span><br><span class="line">		<span class="built_in">getline</span>(cin, line);</span><br><span class="line">		<span class="built_in">splitString</span>(line.<span class="built_in">c_str</span>(), <span class="string">&#x27; &#x27;</span>, vCmd);</span><br><span class="line">		<span class="keyword">if</span> (vCmd.<span class="built_in">empty</span>()) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span> (vCmd[<span class="number">0</span>].<span class="built_in">compare</span>(<span class="string">&quot;quit&quot;</span>) == <span class="number">0</span>) <span class="comment">// quit</span></span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;bye bye!&quot;</span> &lt;&lt; endl;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (vCmd[<span class="number">0</span>].<span class="built_in">compare</span>(<span class="string">&quot;upload&quot;</span>) == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;upload&quot;</span> &lt;&lt; vCmd[<span class="number">1</span>] &lt;&lt; <span class="string">&quot;, &quot;</span> &lt;&lt; vCmd[<span class="number">2</span>] &lt;&lt; endl;</span><br><span class="line">			cmysql.<span class="built_in">UploadFile</span>(argv[<span class="number">1</span>], vCmd[<span class="number">1</span>].<span class="built_in">c_str</span>(), vCmd[<span class="number">2</span>].<span class="built_in">c_str</span>());</span><br><span class="line">			<span class="keyword">size_t</span> size = cmongo.<span class="built_in">UploadFile</span>(vCmd[<span class="number">1</span>].<span class="built_in">c_str</span>(), vCmd[<span class="number">2</span>].<span class="built_in">c_str</span>());</span><br><span class="line">			cmysql.<span class="built_in">UpdateFileInfo</span>(size, argv[<span class="number">1</span>], vCmd[<span class="number">1</span>].<span class="built_in">c_str</span>(), vCmd[<span class="number">2</span>].<span class="built_in">c_str</span>());</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (vCmd[<span class="number">0</span>].<span class="built_in">compare</span>(<span class="string">&quot;download&quot;</span>) == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;download&quot;</span> &lt;&lt; vCmd[<span class="number">1</span>] &lt;&lt; <span class="string">&quot;, &quot;</span> &lt;&lt; vCmd[<span class="number">2</span>] &lt;&lt; endl;</span><br><span class="line">			<span class="keyword">if</span> (cmongo.<span class="built_in">DownloadFile</span>(vCmd[<span class="number">1</span>].<span class="built_in">c_str</span>(), vCmd[<span class="number">2</span>].<span class="built_in">c_str</span>()) != <span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				cout &lt;&lt; <span class="string">&quot;文件未找到&quot;</span> &lt;&lt; endl;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (vCmd[<span class="number">0</span>].<span class="built_in">compare</span>(<span class="string">&quot;list&quot;</span>) == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">// cout &lt;&lt; &quot;list&quot; &lt;&lt; endl;</span></span><br><span class="line">			cmysql.<span class="built_in">ListFileInfo</span>(argv[<span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>编译指令：</strong> 注意GCC的版本</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ main.cpp CMysql.cpp CMongo.cpp -o main -I/usr/include/mysql -L/usr/lib64/mysql -lmysqlclient -ldl -lpthread -lrt -I/usr/<span class="built_in">local</span>/include/mongocxx/v_noabi -I/usr/<span class="built_in">local</span>/include/bsoncxx/v_noabi  -L/usr/<span class="built_in">local</span>/lib64 -lmongocxx -lbsoncxx</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/image-20230805182700262.png" alt="image-20230805182700262" style="zoom:80%;" /></p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/DB-img/image-20230805182804046.png" alt="image-20230805182804046" style="zoom: 80%;" /></p>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      
+      
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#mongodb%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">mongodb安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">C++驱动安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Cmake"><span class="nav-number">2.1.</span> <span class="nav-text">安装Cmake</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85mongoc"><span class="nav-number">2.2.</span> <span class="nav-text">安装mongoc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85boost%E5%BA%93"><span class="nav-number">2.3.</span> <span class="nav-text">安装boost库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85mongocxx"><span class="nav-number">2.4.</span> <span class="nav-text">安装mongocxx</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mongodb%E6%B5%8B%E8%AF%95"><span class="nav-number">3.</span> <span class="nav-text">mongodb测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GirdFS%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">GirdFS示例</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yanglinqi"
+      src="/images/headpic.jpg">
+  <p class="site-author-name" itemprop="name">yanglinqi</p>
+  <div class="site-description" itemprop="description">用于做笔记，对学过的知识总结</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanglinqi107" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanglinqi107" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanglinqi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+</body>
+</html>
