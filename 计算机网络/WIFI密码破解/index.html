@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<meta name="referrer" content="no-referrer">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yanglinqi107.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="黑客视角揭秘WiFi钓鱼，零信任带来防护突破  Wifi_认证 、关联 和 四次握手（WPA&#x2F;WPA2）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WIFI密码破解">
+<meta property="og:url" content="http://yanglinqi107.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/WIFI%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3/index.html">
+<meta property="og:site_name" content="杨记">
+<meta property="og:description" content="黑客视角揭秘WiFi钓鱼，零信任带来防护突破  Wifi_认证 、关联 和 四次握手（WPA&#x2F;WPA2）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/res/image-20241106195316124.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/res/image-20241106195843644.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/res/image-20241106201232130.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/res/image-20241106204643889.png">
+<meta property="og:image" content="https://gitee.com/yanglinqi107/Images/raw/master/res/image-20241106222848071.png">
+<meta property="article:published_time" content="2024-11-06T13:46:00.000Z">
+<meta property="article:modified_time" content="2024-11-06T14:53:58.457Z">
+<meta property="article:author" content="yanglinqi">
+<meta property="article:tag" content="WIFI破解">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/yanglinqi107/Images/raw/master/res/image-20241106195316124.png">
+
+<link rel="canonical" href="http://yanglinqi107.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/WIFI%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>WIFI密码破解 | 杨记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">杨记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">碎片化学习令人焦虑，系统化学习使人进步</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">30</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yanglinqi107.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/WIFI%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headpic.jpg">
+      <meta itemprop="name" content="yanglinqi">
+      <meta itemprop="description" content="用于做笔记，对学过的知识总结">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          WIFI密码破解
+        </h1>
+
+        <div class="post-meta">
+
+          
+            <span class="post-meta.item">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-thumb-tack"></i>
+            </span>
+            <font color=7D26CD>置顶</font>
+            <span class="post-meta-divider">|</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-11-06 21:46:00 / 修改时间：22:53:58" itemprop="dateCreated datePublished" datetime="2024-11-06T21:46:00+08:00">2024-11-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/453854621">黑客视角揭秘WiFi钓鱼，零信任带来防护突破</a> </p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43415201/article/details/122079543">Wifi_认证 、关联 和 四次握手（WPA/WPA2）</a> </p>
+<span id="more"></span>
+<h2 id="WiFi"><a href="#WiFi" class="headerlink" title="WiFi"></a>WiFi</h2><p>WiFi，即无线局域网技术（WLAN），于1997年推出，允许设备在不使用物理线缆的情况下进行数据传输。WiFi技术基于IEEE 802.11标准，该标准定义了数据传输的物理层和MAC层，形成了如今广泛使用的无线通信协议。</p>
+<h3 id="WiFi版本"><a href="#WiFi版本" class="headerlink" title="WiFi版本"></a>WiFi版本</h3><p>WiFi标准版本从802.11b起步，到现如今的802.11ax（WiFi 6）。随着技术的进步，WiFi的速度、稳定性和覆盖范围显著提高，不同版本的WiFi也带来了不同的加密和安全标准。</p>
+<ul>
+<li>1999年：<strong>802.11b</strong>：2.4GHz，11 Mbps ；<strong>802.11a</strong>：5GHz，54Mbps</li>
+<li>2003年：<strong>802.11g</strong>：2.4GHz，54 Mbps</li>
+<li>2009年：<strong>802.11n (WiFi 4)</strong>：2.4GHz/5GHz，288Mbps/600Mbps</li>
+<li>2013年：<strong>802.11ac (WiFi 5)</strong>：5GHz，1.6Gbps</li>
+<li>2019年：<strong>802.11ax (WiFi 6)</strong>：2.4GHz和5GHz，10Gbps</li>
+</ul>
+<h3 id="WiFi协议"><a href="#WiFi协议" class="headerlink" title="WiFi协议"></a>WiFi协议</h3><p>WiFi协议的安全性经历了WEP、WPA、WPA2和WPA3的演变：</p>
+<ul>
+<li><strong>WEP (Wired Equivalent Privacy)</strong>：早期的加密协议，使用RC4算法，安全性较差，易被破解。</li>
+<li><strong>WPA (Wi-Fi Protected Access)</strong>：引入了TKIP加密，改善了WEP的漏洞。</li>
+<li><strong>WPA2</strong>：引入AES加密，极大增强了WiFi网络的安全性，是目前最普遍使用的安全标准。</li>
+<li><strong>WPA3</strong>：最新标准，引入更强大的加密方法并增强了对离线字典攻击的防护。</li>
+</ul>
+<p><strong>WEP</strong>是最早用于无线网络的加密协议，诞生于1997年，旨在提供与有线网络相当的安全性。然而，由于使用了较弱的加密算法和固定的加密密钥，WEP存在严重的安全漏洞。</p>
+<ul>
+<li><strong>加密算法</strong>：基于RC4流加密算法，使用静态40位或104位密钥。</li>
+<li><strong>安全性问题</strong>：WEP在加密时采用了相同的密钥初始化向量（IV），导致在较短时间内IV重复，这使得攻击者能够通过捕获足够多的数据包来分析密钥。这个问题可以被使用工具（如Aircrack-ng）轻易破解。</li>
+</ul>
+<p><strong>WPA</strong>是为了解决WEP的安全缺陷而临时推出的协议，于2003年发布。它引入了TKIP（Temporal Key Integrity Protocol），动态生成加密密钥，增强了数据包的加密强度。尽管WPA比WEP安全性高，但仍然存在一些弱点。</p>
+<ul>
+<li><strong>加密算法</strong>：TKIP结合RC4算法，相比WEP提供了动态加密密钥，防止了固定密钥的重用。</li>
+<li><strong>安全性问题</strong>：虽然TKIP提高了加密的动态性，但仍然依赖于RC4算法。由于RC4存在已知的弱点，WPA的安全性也容易受到攻击（如“Michael”攻击）。</li>
+</ul>
+<p><strong>WPA2</strong>在2004年发布，是WPA的升级版，也是目前广泛使用的WiFi安全协议。WPA2采用更为安全的AES加密算法，显著增强了数据加密的强度。</p>
+<ul>
+<li><strong>加密算法</strong>：使用AES（高级加密标准）加密算法代替RC4，并引入CCMP（Counter Mode with Cipher Block Chaining Message Authentication Code Protocol）作为数据完整性校验方法，确保数据的安全性和完整性。</li>
+<li><strong>安全性问题</strong>：尽管WPA2被认为非常安全，但在2017年被发现存在KRACK（Key Reinstallation Attack）漏洞。该漏洞允许攻击者在受害者和路由器之间进行中间人攻击，从而解密部分传输数据。不过，KRACK漏洞可通过更新软件补丁来修复。</li>
+</ul>
+<p><strong>WPA3</strong>是最新一代WiFi安全协议，于2018年发布，旨在应对现代化的安全挑战。WPA3在WPA2的基础上进一步增强了加密和认证机制，显著提高了WiFi网络的安全性。</p>
+<ul>
+<li><strong>加密算法</strong>：基于192位的AES加密（WPA3-Enterprise）或128位的SAE加密（WPA3-Personal），确保即使在开放网络中，数据也受到保护。</li>
+<li><strong>主要改进</strong>：<ul>
+<li><strong>SAE（Simultaneous Authentication of Equals）</strong>：在WPA3-Personal模式下引入了SAE替代PSK（预共享密钥）认证方式。SAE利用“密码一致性密钥交换协议”（Dragonfly Key Exchange）防止离线字典攻击，使得密码安全性显著提升。</li>
+<li><strong>前向安全</strong>：WPA3引入了前向安全性（Forward Secrecy），确保即使会话密钥泄露，攻击者也无法解密先前的会话数据。</li>
+<li><strong>开放网络保护</strong>：WPA3支持Opportunistic Wireless Encryption (OWE)，即使在没有密码的开放网络中，也能提供加密保护。</li>
+</ul>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>加密算法</th>
+<th>数据完整性</th>
+<th>认证方式</th>
+<th>主要缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WEP</td>
+<td>RC4</td>
+<td>无</td>
+<td>静态密钥</td>
+<td>易被破解</td>
+</tr>
+<tr>
+<td>WPA</td>
+<td>TKIP + RC4</td>
+<td>有</td>
+<td>PSK</td>
+<td>TKIP存在弱点</td>
+</tr>
+<tr>
+<td>WPA2</td>
+<td>AES + CCMP</td>
+<td>强</td>
+<td>PSK/企业级认证</td>
+<td>可能受KRACK攻击</td>
+</tr>
+<tr>
+<td>WPA3</td>
+<td>AES/SAE</td>
+<td>强</td>
+<td>SAE/企业级认证</td>
+<td>尚未完全普及</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="握手过程"><a href="#握手过程" class="headerlink" title="握手过程"></a>握手过程</h3><p>WiFi的握手过程，尤其是WPA2的“四次握手”（4-Way Handshake），是WiFi网络中确保设备和路由器之间安全通信的关键机制。这一过程在每次新设备连接到网络时都会发生，用于验证连接双方的身份并生成加密密钥，保护数据的传输。</p>
+<p><strong>WPA2 四次握手的主要目的包括</strong>：</p>
+<ol>
+<li><strong>身份验证</strong>：确保客户端和路由器共享相同的预共享密钥（PSK），即WiFi密码。</li>
+<li><strong>加密密钥生成</strong>：在握手过程中生成一个用于加密通信数据的会话密钥，使数据传输更加安全。</li>
+<li><strong>防止中间人攻击</strong>：通过独特的加密方式防止会话密钥的泄露，确保数据在传输中不会被篡改或伪造。</li>
+</ol>
+<p><strong>四次握手的具体过程</strong>：以下是四次握手的详细步骤，涉及客户端设备（如手机、笔记本电脑等）和WiFi路由器：</p>
+<ol>
+<li>第一步：<strong>路由器发送Anonce</strong><ul>
+<li><strong>路由器生成一个随机数</strong>（称为<code>Anonce</code>，即Authenticator Nonce）并发送给客户端。</li>
+<li><strong>目的</strong>：这一随机数是用来生成会话密钥的独特输入。它保证每次连接都具有不同的加密密钥，即使WiFi密码相同，也会有新的会话密钥。</li>
+</ul>
+</li>
+<li>第二步：<strong>客户端生成Snonce并计算MIC</strong><ul>
+<li><strong>客户端接收到Anonce后</strong>，生成自己的随机数（称为<code>Snonce</code>，即Supplicant Nonce），并使用PSK（WiFi密码）和MAC地址等信息计算出<strong>会话密钥（PTK，Pairwise Transient Key）</strong>。</li>
+<li><strong>会话密钥的生成</strong>：客户端使用Anonce和Snonce，加上双方的MAC地址，通过特定的算法（如PMKID等）计算出PTK。</li>
+<li><strong>发送Snonce和MIC</strong>：客户端将Snonce和消息完整性码（MIC，Message Integrity Code）发送给路由器，MIC用于验证会话密钥的正确性和数据的完整性。</li>
+</ul>
+</li>
+<li><p>第三步：<strong>路由器验证并发送GTK</strong></p>
+<ul>
+<li><strong>路由器验证PTK</strong>：路由器收到客户端的Snonce后，计算出相同的PTK，并用该PTK校验MIC，确保客户端使用了正确的PSK。</li>
+<li><strong>生成组密钥（GTK）</strong>：在某些多用户场景中，路由器还会生成一个组密钥（GTK，Group Temporal Key）用于管理多个设备的广播通信。</li>
+<li><strong>发送GTK</strong>：路由器将GTK和一个新的MIC发送给客户端，以便客户端能够解密广播数据。</li>
+</ul>
+</li>
+<li><p>第四步：<strong>客户端确认</strong></p>
+<ul>
+<li><strong>客户端确认握手成功</strong>：客户端验证路由器的MIC，确认GTK是否正确。</li>
+<li><strong>握手完成</strong>：客户端向路由器发送确认消息，表示四次握手完成。此时，客户端和路由器均已生成相同的PTK，用于加密数据传输。</li>
+</ul>
+</li>
+</ol>
+<p><strong>握手的关键点</strong></p>
+<ul>
+<li><strong>PTK的生成</strong>：PTK是通信中最核心的会话密钥，生成过程中使用了Anonce、Snonce、双方MAC地址和PSK。这确保即使攻击者知道了握手包，若不知道PSK，也无法解密通信。</li>
+<li><strong>MIC校验</strong>：MIC用来确保数据的完整性和身份验证。在握手过程中，如果MIC验证失败，说明PSK不一致，握手会终止。即密码错误只会握手两次。</li>
+</ul>
+<p><strong>四次握手过程的简化图解</strong></p>
+<ol>
+<li><strong>路由器 -&gt; 客户端</strong>：发送Anonce。</li>
+<li><strong>客户端 -&gt; 路由器</strong>：生成Snonce，计算PTK，发送Snonce和MIC。</li>
+<li><strong>路由器 -&gt; 客户端</strong>：验证PTK，生成GTK，发送GTK和新的MIC。</li>
+<li><strong>客户端 -&gt; 路由器</strong>：验证MIC，确认握手成功。</li>
+</ol>
+<p>在无线网络攻击中，渗透测试人员可以监听和捕获四次握手的数据包（EAPOL帧），其中包含加密后的Anonce、Snonce和MIC。</p>
+<p>攻击者可以通过离线暴力破解或字典攻击来尝试猜测PSK。破解工具（如Hashcat）会从字典文件中逐一取出密码候选项，与握手包中的加密数据进行比对，找到正确的PSK。</p>
+<h2 id="抓包破解"><a href="#抓包破解" class="headerlink" title="抓包破解"></a>抓包破解</h2><p>WiFi网络的握手包（Handshake）是设备与路由器建立安全连接时生成的数据包。通过监听抓取WiFi握手包，可以利用字典攻击推算出WiFi密码。<strong>抓包和破解应仅用于合法的渗透测试和网络安全研究，确保操作在授权范围内进行。</strong></p>
+<p><strong>所需工具及环境</strong></p>
+<ul>
+<li><strong>操作系统</strong>：Kali Linux（一个专为渗透测试设计的Linux发行版，包含丰富的网络安全工具）</li>
+<li><strong>USB无线网卡</strong>：支持<strong>监控模式（monitor）</strong>和<strong>数据包注入</strong>功能的无线网卡（如Atheros或Ralink系列）</li>
+<li><strong>抓包工具</strong>：Aircrack-ng（WiFi网络分析工具套件），包含airmon-ng, airodump-ng, aireplay-ng</li>
+<li><strong>密码破解工具</strong>：Hashcat（高级密码破解工具）</li>
+</ul>
+<p>数据包注入在渗透测试中的常见应用包括：</p>
+<ol>
+<li><strong>强制断开连接（Deauthentication）</strong>：<ul>
+<li>通过发送断开连接的数据包，可以让客户端设备（如手机、笔记本电脑）临时断开WiFi网络连接。客户端通常会自动尝试重新连接，此时会触发握手过程。</li>
+<li>渗透测试人员可以利用这一过程捕获WiFi的握手包，以便后续破解WiFi密码。</li>
+</ul>
+</li>
+<li><strong>欺骗攻击</strong>：<ul>
+<li>网卡可以发送伪造的数据包，模拟合法客户端或路由器的身份，以便在无线网络中实施中间人攻击（MITM）。</li>
+<li>通过数据包注入，攻击者可以假装是接入点，诱导设备连接，从而拦截、查看或篡改传输的数据。</li>
+</ul>
+</li>
+<li><strong>网络故障测试</strong>：<ul>
+<li>数据包注入也可用于测试网络的稳定性和响应能力。例如，通过发送大量伪造的数据包，可以测试网络是否能够有效应对流量峰值或抗拒恶意攻击。</li>
+</ul>
+</li>
+</ol>
+<h3 id="破解原理"><a href="#破解原理" class="headerlink" title="破解原理"></a>破解原理</h3><p>WiFi密码破解的关键在于抓取握手包（handshake）数据包，利用该数据包的加密信息对密码进行推算。握手包的破解原理如下：</p>
+<ol>
+<li><strong>握手包的获取</strong>：WiFi握手包是客户端设备与WiFi路由器建立连接时所传输的加密信息。握手包通常包含四次数据交换（称为“四次握手”），确保连接双方共享正确的加密密钥，并验证其一致性。<ul>
+<li>当设备尝试连接到加密的WiFi网络时，它会通过加密协议（如WPA2）与路由器进行身份验证，交换经过加密的身份和密钥信息。</li>
+<li>监听者可以在设备连接到WiFi时抓取这个握手过程的数据包，并保存其中的加密信息，用于后续破解。</li>
+</ul>
+</li>
+<li><strong>破解过程</strong>：握手包本身不会直接包含WiFi密码的明文，而是含有密码的hash信息。破解的目标是在已捕获的握手包中，找到一个与正确密码对应的加密值。<ul>
+<li>工具生成的哈希值将与握手包中的加密值逐一比对。当发现匹配的哈希值时，即找到与该握手包匹配的密码，从而破解出WiFi的访问密码。</li>
+</ul>
+</li>
+</ol>
+<p><strong>原理</strong>：通过监听目标WiFi网络，捕获客户端与路由器连接时产生的握手包。之后，使用破解工具从密码字典中逐一尝试密码，通过加密算法计算每个密码的哈希值，并与握手包中的加密信息进行比对。如果某个候选密码的哈希值与握手包中的加密信息匹配，说明该密码是目标WiFi的正确密码。</p>
+<h3 id="抓包流程"><a href="#抓包流程" class="headerlink" title="抓包流程"></a>抓包流程</h3><p>1、使用装有kali系统的电脑或在VMware Workstation虚拟机中安装kali系统</p>
+<p>2、将无线网卡插入电脑，并确保它被系统识别，可以使用<code>ifconfig</code>命令检查，无线网卡的接口通常为<code>wlan0</code>，也可能为其他名称。</p>
+<p>有时候可能有BUG，看不到也没事，只要后面的命令不报错即可。</p>
+<p>3、<strong>开启监控模式</strong> 使用<code>airmon-ng</code>工具将无线网卡置于监控模式：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airmon-ng start wlan0</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/res/image-20241106195316124.png" alt="image-20241106195316124" style="zoom:60%;" /></p>
+<p>此时，通过<code>ifconfig</code>命令可以看到<code>wlan0</code>变为<code>wlan0mon</code>，表示已进入监控模式。</p>
+<p>4、<strong>扫描WiFi网络</strong> 使用<code>airodump-ng</code>扫描当前信号范围内的WiFi网络，获得目标WiFi的BSSID和信道（CH）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airodump-ng wlan0mon</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/res/image-20241106195843644.png" alt="image-20241106195843644" style="zoom:67%;" /></p>
+<p>上半部分是扫描到的WiFi信息，下半部分是路由器和客户端连接信息。</p>
+<p>5、<strong>监听并捕获握手包</strong> 通过指定目标WiFi的BSSID和信道，使用以下命令进行监听并捕获握手包：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">airodump-ng --bssid &lt;BSSID&gt; -c &lt;Channel&gt; -w &lt;output file name&gt; wlan0mon</span><br><span class="line">--bssid 路由器的mac</span><br><span class="line">-c 信道</span><br><span class="line">-w 握手包的保存文件</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/res/image-20241106201232130.png" alt="image-20241106201232130" style="zoom:60%;" /></p>
+<p>需要一直等待有客户端连接WiFi才可捕获握手包。从上图中可以看出有3个客户端已连接该WiFi，还可以通过对目标设备进行断开连接来加速握手包的捕获，使用以下命令强制客户端重新连接WiFi，从而产生握手包，新开终端：输入以下任意一条命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aireplay-ng --deauth 0 -a &lt;BSSID&gt; wlan0mon</span><br><span class="line">aireplay-ng -0 0 -a &lt;BSSID&gt; -c &lt;STATION&gt; wlan0mon</span><br><span class="line">-0 即 --deauth : Deauthentication（断开连接）攻击</span><br><span class="line">0 : 攻击次数，任意数字，0为一直攻击</span><br></pre></td></tr></table></figure>
+<p>等待上图中的位置出现<code>WPA handshake: [BSSID]</code>字样，即表示成功捕获握手包。记得CTRL+C关闭攻击。</p>
+<p>6、<strong>关闭监控模式</strong>：<code>airmon-ng stop wlan0</code></p>
+<p>捕获成功可以看到这些文件，握手包是.cap文件</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/res/image-20241106204643889.png" alt="image-20241106204643889" style="zoom:60%;" /></p>
+<h3 id="破解密码"><a href="#破解密码" class="headerlink" title="破解密码"></a>破解密码</h3><p>成功抓取握手包后，使用软件对握手包密码破解。如：EWSA，WIFIPR，hashcat。我推荐使用hashcat破解。</p>
+<p>Hashcat支持多种攻击方式，包括字典攻击、掩码攻击等，其中字典攻击是最常见的方法。</p>
+<p>1、<strong>将握手包.cap转换为Hashcat可识别格式.hc22000</strong>，使用<code>hcxpcaptool</code>工具将<code>.cap</code>格式的抓包文件转换为<code>.hc22000</code>格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hcxpcapngtool xxx.cap -o xxx.hc22000</span><br></pre></td></tr></table></figure>
+<p>或者在线转换地址： <a target="_blank" rel="noopener" href="https://hashcat.net/cap2hashcat/">https://hashcat.net/cap2hashcat/</a></p>
+<p>2、<strong>安装hashcat</strong>：<code>sudo apt install hashcat</code> ，<a target="_blank" rel="noopener" href="https://hashcat.net/wiki/doku.php?id=hashcat">hashcat官网</a> </p>
+<p>3、<strong>准备密码字典</strong> 确保字典足够大，涵盖尽可能多的密码组合。kali自带密码字典有rockyou.txt，位于<code>/usr/share/wordlists/rockyou.txt.gz</code>。</p>
+<p>我找到的密码字典，链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1SPEiQHVBjE3Eyexe6IPdFA?pwd=hmmq">https://pan.baidu.com/s/1SPEiQHVBjE3Eyexe6IPdFA?pwd=hmmq</a></p>
+<p>4、<strong>字典破解</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -m 22000 -a 0 &lt;handshake_file&gt;.hc22000 &lt;dictionary_file&gt;.txt</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-m 22000</code>：指定了哈希模式<code>22000</code>，这是<code>hashcat</code>用于破解<strong>WPA/WPA2 PMKID和EAPOL握手文件</strong>的模式。</li>
+<li><code>-a 0</code>：指定攻击模式为字典攻击。</li>
+<li><code>&lt;handshake_file&gt;.hccapx</code>：转换后的握手包文件。</li>
+<li><code>&lt;dictionary_file&gt;.txt</code>：密码字典文件。</li>
+</ul>
+<p>Hashcat会尝试从字典中找到匹配的密码，如果找到了则会在输出中显示。</p>
+<p><img src="https://gitee.com/yanglinqi107/Images/raw/master/res/image-20241106222848071.png" alt="image-20241106222848071" style="zoom:80%;" /></p>
+<p>如果破解过程太长需要暂停，这是就需要保存进度：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -m 22000 -a 0 &lt;handshake_file&gt;.hc22000 &lt;dictionary_file&gt;.txt --session=mydz -o output</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>--session</code> 指定会话名称</li>
+<li><code>-o</code> 指定破解结果保存位置</li>
+<li>按[c]heckpoint保存，恢复进度：<code>hashcat -m 22000 --session=mydz --restore</code></li>
+</ul>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><p>1、在华为的云服务器上运行hashcat报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">=== CL_PROGRAM_BUILD_LOG ===</span><br><span class="line">error: unknown target CPU &#x27;generic&#x27;</span><br><span class="line">Device pthread-General Purpose Processor failed to build the program, log: error: unknown target CPU &#x27;generic&#x27;</span><br><span class="line">Device #1: Kernel /usr/local/share/hashcat/OpenCL/shared.cl build failed.</span><br></pre></td></tr></table></figure>
+<p>缺少依赖，解决方法：安装 OpenCL&amp;POCL<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install pocl-opencl-icd</span><br><span class="line">sudo apt-get install ocl-icd-opencl-dev</span><br></pre></td></tr></table></figure></p>
+<p>2、windows下运行hashcat报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* Device #1: WARNING! Kernel exec timeout is not disabled.</span><br><span class="line">             This may cause &quot;CL_OUT_OF_RESOURCES&quot; or related errors.</span><br><span class="line">             To disable the timeout, see: https://hashcat.net/q/timeoutpatch </span><br><span class="line">* Device #2: WARNING! Kernel exec timeout is not disabled.</span><br><span class="line">             This may cause &quot;CL_OUT_OF_RESOURCES&quot; or related errors.</span><br><span class="line">             To disable the timeout, see: https://hashcat.net/q/timeoutpatch </span><br><span class="line">nvmlDeviceGetFanSpeed(): Not Supported</span><br></pre></td></tr></table></figure>
+<p>解决方法：创建一个名为wddm_timeout_patch.reg的注册表文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers]</span><br><span class="line">&quot;TdrLevel&quot;=dword:00000000</span><br></pre></td></tr></table></figure>
+<p>运行注册表文件：以管理员身份运行这个注册表文件，并重启计算机。</p>
+<p>想恢复原样从注册表里删除新增的这项即可，且这个问题忽略也不影响使用。</p>
+<h2 id="钓鱼WiFi—待续"><a href="#钓鱼WiFi—待续" class="headerlink" title="钓鱼WiFi—待续"></a>钓鱼WiFi—待续</h2><p>hostapd是一个运行在Linux系统上的守护进程，它的主要功能是将无线网卡配置为无线接入点（Access Point, AP）模式，并作为控制身份验证的后端组件。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liuwe1ye/article/details/139186912">hostapd通过读取用户的配置文件，接收用户的管理信息，并可以通过nl80211来控制底层的无线状态。它连接了上层用户配置模块和底层无线内核，作为中间件起到了向下set和向上get的功能。</a>  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#open.conf</span></span><br><span class="line">interface=wlan0</span><br><span class="line">ssid=FreeWiFi</span><br><span class="line">driver=nl80211</span><br><span class="line">channel=1</span><br><span class="line">hw_mode=g</span><br></pre></td></tr></table></figure>
+<p>interface表示无线网卡接口名称，ssid 表示热点名称，channel 表示信道，hw_mode 用于指定无线模式，g代表 IEEE 802.11g</p>
+<p>dnsmasq 是一款可同时提供 DNS 和 DHCP 服务功能、较易配置的轻量工具。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#/etc/dnsmasq.conf</span></span><br><span class="line">dhcp-range=172.5.5.100, 172.5.5.250, 12h</span><br><span class="line">interface=wlan0</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nmcli radio wifi off</span><br><span class="line">rfkill unblock wlan</span><br><span class="line">ifconfig wlan0 172.5.5.1/24</span><br><span class="line">systemctl restart dnsmasq</span><br><span class="line">hostapd open.conf</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      
+      
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#WiFi"><span class="nav-number">1.</span> <span class="nav-text">WiFi</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WiFi%E7%89%88%E6%9C%AC"><span class="nav-number">1.1.</span> <span class="nav-text">WiFi版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WiFi%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.2.</span> <span class="nav-text">WiFi协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">握手过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%93%E5%8C%85%E7%A0%B4%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">抓包破解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A0%B4%E8%A7%A3%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">破解原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%93%E5%8C%85%E6%B5%81%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">抓包流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A0%B4%E8%A7%A3%E5%AF%86%E7%A0%81"><span class="nav-number">2.3.</span> <span class="nav-text">破解密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.4.</span> <span class="nav-text">遇到的问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%92%93%E9%B1%BCWiFi%E2%80%94%E5%BE%85%E7%BB%AD"><span class="nav-number">3.</span> <span class="nav-text">钓鱼WiFi—待续</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="yanglinqi"
+      src="/images/headpic.jpg">
+  <p class="site-author-name" itemprop="name">yanglinqi</p>
+  <div class="site-description" itemprop="description">用于做笔记，对学过的知识总结</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanglinqi107" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanglinqi107" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanglinqi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+</body>
+</html>
